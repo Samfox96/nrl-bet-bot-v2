@@ -1,0 +1,27 @@
+{
+  "_comment": "Maps every known position variant -> canonical position code + label. Jersey number is the ultimate source of truth for edge/side logic; position label is for display and TPG baselines.",
+  "canonical_positions": {
+    "FB":  {"label": "Fullback",    "jersey": [1]},
+    "WG":  {"label": "Winger",      "jersey": [2, 5]},
+    "CE":  {"label": "Centre",      "jersey": [3, 4]},
+    "FE":  {"label": "Five-Eighth", "jersey": [6]},
+    "HB":  {"label": "Halfback",    "jersey": [7]},
+    "HK":  {"label": "Hooker",      "jersey": [9]},
+    "PR":  {"label": "Prop",        "jersey": [8, 10]},
+    "2RF": {"label": "2nd Row",     "jersey": [11, 12]},
+    "LK":  {"label": "Lock",        "jersey": [13]},
+    "IC":  {"label": "Interchange", "jersey": [14, 15, 16, 17]}
+  },
+  "aliases": {
+    "Fullback": "FB", "FB": "FB",
+    "Winger": "WG", "Wing": "WG", "W": "WG", "WG": "WG",
+    "Centre": "CE", "Center": "CE", "C": "CE", "CE": "CE",
+    "Five-Eighth": "FE", "Five Eighth": "FE", "FE": "FE",
+    "Halfback": "HB", "Half Back": "HB", "HB": "HB",
+    "Hooker": "HK", "HK": "HK",
+    "Prop": "PR", "Front Row": "PR", "FR": "PR", "PR": "PR",
+    "2nd Row": "2RF", "Second Row": "2RF", "2R": "2RF", "2RF": "2RF",
+    "Lock": "LK", "L": "LK", "LK": "LK",
+    "Interchange": "IC", "Bench": "IC", "Reserve": "IC", "Replacement": "IC", "B": "IC", "R": "IC", "IC": "IC"
+  }
+}
