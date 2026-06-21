@@ -1,0 +1,95 @@
+name: Weekly NRL Round Update
+
+# Runs every Thursday at 6:00 AM AEST (20:00 UTC Wednesday).
+# Can also be triggered manually from the Actions tab for testing or catch-up.
+on:
+  schedule:
+    - cron: '0 20 * * 3'
+  workflow_dispatch: {}
+
+jobs:
+  scrape-validate-merge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install pandas selenium webdriver-manager
+
+      - name: Install Chrome
+        uses: browser-actions/setup-chrome@v1
+
+      - name: Determine next round to scrape
+        id: next_round
+        run: |
+          NEXT_ROUND=$(python3 -c "
+          import pandas as pd
+          df = pd.read_csv('data/nrl_master.csv')
+          print(int(df['round'].max()) + 1)
+          ")
+          echo "round=$NEXT_ROUND" >> "$GITHUB_OUTPUT"
+          echo "Next round to scrape: $NEXT_ROUND"
+
+      - name: Run scraper for next round
+        id: scrape
+        continue-on-error: true
+        run: |
+          mkdir -p data/pending
+          python3 scripts/nrl_update_single_round.py \
+            --round "${{ steps.next_round.outputs.round }}" \
+            --output "data/pending/nrl_round_${{ steps.next_round.outputs.round }}_new.csv"
+
+      - name: Validate and merge
+        id: validate_merge
+        continue-on-error: true
+        run: |
+          python3 scripts/merge_round.py
+
+      - name: Commit changes (only runs if merge succeeded)
+        if: steps.validate_merge.outcome == 'success'
+        run: |
+          git config user.name "nrl-bot-automation"
+          git config user.email "actions@github.com"
+          git add data/nrl_master.csv STATUS.md
+          git commit -m "Auto-merge round ${{ steps.next_round.outputs.round }} (validated)" || echo "Nothing to commit"
+          git push
+
+      - name: Commit pending file for review (only runs if validation failed)
+        if: steps.validate_merge.outcome == 'failure' || steps.scrape.outcome == 'failure'
+        run: |
+          git config user.name "nrl-bot-automation"
+          git config user.email "actions@github.com"
+          git add data/pending/
+          git commit -m "Round ${{ steps.next_round.outputs.round }}: scrape/validation needs review" || echo "Nothing to commit"
+          git push
+
+      - name: Open issue on failure
+        if: steps.validate_merge.outcome == 'failure' || steps.scrape.outcome == 'failure'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `Round ${{ steps.next_round.outputs.round }} needs manual review`,
+              body: [
+                `The automated weekly scrape for round ${{ steps.next_round.outputs.round }} did not pass validation, or the scrape itself failed.`,
+                ``,
+                `**nrl_master.csv has NOT been changed.** The raw scrape (if any) is committed at \`data/pending/nrl_round_${{ steps.next_round.outputs.round }}_new.csv\` for review.`,
+                ``,
+                `Check the workflow run log for the full validation report:`,
+                `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+                ``,
+                `Common causes: nrl.com blocking the cloud IP (different from a home connection), a page structure change, or a genuine data anomaly (e.g. unscheduled bye, postponed match).`
+              ].join('\n'),
+              labels: ['needs-review', 'automation']
+            })
