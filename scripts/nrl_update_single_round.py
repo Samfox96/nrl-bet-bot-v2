@@ -1,5 +1,6 @@
 import time
 import os
+import argparse
 import pandas as pd
 import traceback
 import warnings
@@ -13,11 +14,31 @@ from webdriver_manager.chrome import ChromeDriverManager
 # ============================================================
 # SETTINGS
 # ============================================================
+# Phase 3 update: round number and output path are now CLI arguments so this
+# script can run unattended in GitHub Actions. Local manual use still works
+# exactly as before -- if no args are passed, it falls back to DEFAULT_ROUND,
+# same as the original single-round workflow.
+DEFAULT_ROUND = 16  # fallback only used if --round is not passed
+
+parser = argparse.ArgumentParser(description="Scrape a single NRL round's player stats.")
+parser.add_argument("--round", type=int, default=None,
+                     help="Round number to scrape. If omitted, falls back to DEFAULT_ROUND for local manual runs.")
+parser.add_argument("--output", type=str, default=None,
+                     help="Output CSV path. If omitted, defaults to nrl_round_<N>_new.csv in the current directory.")
+parser.add_argument("--headless", action="store_true",
+                     help="Run Chrome headless. Automatically enabled when running in GitHub Actions (CI=true).")
+args = parser.parse_args()
+
 SEASON = 2026
-ROUND_TO_SCRAPE = 16  # <-- change this number each week to scrape just that round
+ROUND_TO_SCRAPE = args.round if args.round is not None else DEFAULT_ROUND
 ROUNDS_TO_SCRAPE = range(ROUND_TO_SCRAPE, ROUND_TO_SCRAPE + 1)
 EXISTING_CSV = None  # single-round mode: don't merge into nrl_master.csv automatically
-OUTPUT_CSV = f"nrl_round_{ROUND_TO_SCRAPE}_new.csv"  # separate file - review before merging
+OUTPUT_CSV = args.output if args.output else f"nrl_round_{ROUND_TO_SCRAPE}_new.csv"
+
+# Run headless automatically in CI (GitHub Actions sets CI=true), or if explicitly requested
+RUN_HEADLESS = args.headless or os.environ.get("CI", "").lower() == "true"
+
+print(f"Scraping round {ROUND_TO_SCRAPE}, output -> {OUTPUT_CSV}, headless={RUN_HEADLESS}")
 
 BASE = "https://www.nrl.com/draw/nrl-premiership/2026"
 FALLBACK_URLS = {
@@ -258,6 +279,18 @@ def clean_dataframe(df):
 
 
 options = webdriver.ChromeOptions()
+if RUN_HEADLESS:
+    options.add_argument("--headless=new")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--disable-gpu")
+    options.add_argument("--window-size=1920,1080")
+    # A realistic user-agent reduces (does not eliminate) the chance of being
+    # served a different/degraded page than a real browser would see.
+    options.add_argument(
+        "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+        "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+    )
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 wait = WebDriverWait(driver, 15)
 new_rows = []
