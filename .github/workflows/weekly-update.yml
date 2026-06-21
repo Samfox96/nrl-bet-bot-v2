@@ -48,6 +48,15 @@ jobs:
             --round "${{ steps.next_round.outputs.round }}" \
             --output "data/pending/nrl_round_${{ steps.next_round.outputs.round }}_new.csv"
 
+      - name: Upload debug screenshots (only if scraper had trouble)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: debug-screenshots-round-${{ steps.next_round.outputs.round }}
+          path: debug_screenshots/
+          if-no-files-found: ignore
+          retention-days: 14
+
       - name: Validate and merge
         id: validate_merge
         continue-on-error: true
