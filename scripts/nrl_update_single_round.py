@@ -293,6 +293,51 @@ if RUN_HEADLESS:
     )
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 wait = WebDriverWait(driver, 15)
+
+
+def dismiss_cookie_banner(driver):
+    """
+    Best-effort dismissal of a cookie/consent banner. A first-run headless
+    profile (as every GitHub Actions run is) has never accepted cookies before,
+    unlike a real browser profile that has -- this is the most likely reason a
+    page would render differently (or appear to hang waiting on an overlay)
+    in CI versus on a local machine.
+
+    Tries a handful of common selector patterns. Failure to find/click a
+    banner is not an error -- many pages won't have one, especially on repeat
+    visits within the same browser session.
+    """
+    selectors = [
+        "//button[contains(translate(text(), 'ACEPT', 'acept'), 'accept')]",
+        "//button[contains(translate(text(), 'ACEPT', 'acept'), 'agree')]",
+        "//button[@id='onetrust-accept-btn-handler']",
+        "//button[contains(@class, 'cookie') and contains(@class, 'accept')]",
+    ]
+    for sel in selectors:
+        try:
+            btn = driver.find_element(By.XPATH, sel)
+            driver.execute_script("arguments[0].click();", btn)
+            time.sleep(1)
+            return True
+        except Exception:
+            continue
+    return False
+
+
+def save_failure_screenshot(driver, label):
+    """
+    Saves a screenshot for debugging when something unexpected happens.
+    In CI these land in the workflow's working directory; the Actions workflow
+    should upload them as an artifact so they're inspectable after the run
+    (headless runs have no other way to "see" what the browser saw).
+    """
+    try:
+        os.makedirs("debug_screenshots", exist_ok=True)
+        path = f"debug_screenshots/{label}_{int(time.time())}.png"
+        driver.save_screenshot(path)
+        print(f"    Saved debug screenshot: {path}")
+    except Exception as e:
+        print(f"    Could not save debug screenshot: {e}")
 new_rows = []
 
 
@@ -458,8 +503,29 @@ for round_num in ROUNDS_TO_SCRAPE:
 
     if not match_urls:
         draw_url = f"https://www.nrl.com/draw/?competition=111&round={round_num}&season={SEASON}"
-        driver.get(draw_url)
-        time.sleep(5)
+        try:
+            driver.set_page_load_timeout(30)  # fail fast instead of hanging for the default ~120s
+            driver.get(draw_url)
+        except Exception as e:
+            print(f"  Page load timed out or failed for {draw_url}: {e}")
+            continue
+
+        dismiss_cookie_banner(driver)
+        time.sleep(3)
+
+        # Detect nrl.com's own "not published yet" state before trying to find match links.
+        # Seen verbatim on the site for rounds whose draw hasn't been published/dated yet.
+        page_text = ""
+        try:
+            page_text = driver.find_element(By.TAG_NAME, "body").text
+        except Exception:
+            pass
+
+        if "couldn't load that draw" in page_text.lower() or "no data available" in page_text.lower():
+            print(f"  Round {round_num} draw is not yet available on nrl.com "
+                  f"(page reports no data for this round). Skipping -- try again closer to game day.")
+            continue
+
         try:
             link_els = driver.find_elements(By.XPATH, "//a[contains(@href, '/draw/nrl-premiership/')]")
             match_urls = list(set([
@@ -469,6 +535,13 @@ for round_num in ROUNDS_TO_SCRAPE:
             ]))
         except Exception as e:
             print(f"  Could not find match links: {e}")
+            save_failure_screenshot(driver, f"round{round_num}_no_match_links")
+            continue
+
+        if not match_urls:
+            print(f"  No match links found for round {round_num} even though the page loaded. "
+                  f"The draw page structure may have changed, or this round genuinely has no "
+                  f"fixtures published yet.")
             continue
 
     print(f"  Scraping {len(match_urls)} matches")
@@ -476,7 +549,9 @@ for round_num in ROUNDS_TO_SCRAPE:
     for match_url in match_urls:
         print(f"\n  Visiting: {match_url}")
         try:
+            driver.set_page_load_timeout(30)
             driver.get(match_url)
+            dismiss_cookie_banner(driver)
             time.sleep(4)
 
             try:
@@ -506,6 +581,7 @@ for round_num in ROUNDS_TO_SCRAPE:
                 time.sleep(3)
             except Exception as e:
                 print(f"    Could not click Player Stats tab: {e}")
+                save_failure_screenshot(driver, f"round{round_num}_no_stats_tab")
                 continue
 
             # Wait for table
