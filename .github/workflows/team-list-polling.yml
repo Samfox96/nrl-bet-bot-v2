@@ -13,18 +13,24 @@ name: Team List Polling (Job B)
 # kickoff, which GitHub Actions cron can't do natively (no dynamic/per-data
 # scheduling -- cron entries are static).
 #
-# Depends on Job A having already run for this round and produced
-# data/pending/round_{N}_kickoffs.json (or wherever that file ends up after
-# merge -- NOT YET CONFIRMED where this sidecar file lives post-merge, since
-# merge_round.py currently only moves the main stats CSV, not this sidecar.
-# See note in TODO below.)
+# SELF-CONTAINED, no dependency on Job A: an earlier version of this workflow
+# relied on a sidecar file Job A was supposed to produce. That failed in a
+# real test (2026-06-22) because Job A's schedule doesn't naturally produce
+# that file for the round Job B needs. Job B now gets everything -- team
+# list AND kickoff times -- from a single plain HTTP fetch of nrl.com's
+# team-list article, which embeds both. See scrape_team_lists.py docstring.
 on:
   schedule:
     # Every hour, Thursday (3) through Sunday (0). Cron weekday numbering:
-    # 0=Sunday, 1=Monday, ... 6=Saturday. "3,4,5,6,0" = Wed,Thu,Fri,Sat,Sun --
-    # using 4,5,6,0 for Thu-Sun (cron days here are UTC days, which can be
-    # one calendar day behind AEST -- NOT YET VERIFIED this maps perfectly
-    # to the intended AEST Thu-Sun window at the UTC boundary hours).
+    # 0=Sunday, 1=Monday, ... 6=Saturday. "4,5,6,0" = Thu,Fri,Sat,Sun --
+    # NOTE, NOT YET VERIFIED: cron days here are UTC days, which can be one
+    # calendar day behind AEST depending on the hour. This may cause this
+    # workflow to start ~10 hours "late" relative to AEST Thursday, or
+    # similar boundary effects on Sunday night/Monday morning AEST. Since
+    # the script's own kickoff-window check is the real gate (not the cron
+    # schedule), an imprecise cron window is a minor inefficiency (a few
+    # wasted/missed hourly checks at the edges), not a correctness bug --
+    # but worth tightening once there's a live round to verify against.
     - cron: '0 * * * *'
   workflow_dispatch: {}
 
@@ -44,32 +50,38 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install pandas requests
+          pip install requests
 
       - name: Poll for team list updates
         id: poll
         run: |
           python3 scripts/scrape_team_lists.py \
-            --nrl-master data/nrl_master.csv \
-            --kickoff-sidecar-dir data/pending \
             --output data/team_lists_current.csv
 
       - name: Commit if updated
         run: |
           git config user.name "nrl-bot-automation"
           git config user.email "actions@github.com"
-          git add data/team_lists_current.csv
-          git diff --staged --quiet && echo "No changes to commit" || (
-            git commit -m "Update team lists ($(date -u +%Y-%m-%dT%H:%M:%SZ))"
-            git push
-          )
+          if [ -f data/team_lists_current.csv ]; then
+            git add data/team_lists_current.csv
+            git diff --staged --quiet && echo "No changes to commit" || (
+              git commit -m "Update team lists ($(date -u +%Y-%m-%dT%H:%M:%SZ))"
+              git push
+            )
+          else
+            echo "data/team_lists_current.csv was not created this run -- nothing to commit."
+          fi
 
-# TODO before this is fully reliable, none of these are done yet:
-# 1. Confirm requests-based fetch actually works against nrl.com from GitHub's
-#    IP -- only Selenium-based fetches have been tested live so far.
-# 2. Confirm where round_{N}_kickoffs.json lives after Job A's merge step
-#    (merge_round.py doesn't currently handle this sidecar file at all).
-# 3. Verify the UTC cron-hour vs AEST day-of-week boundary doesn't cause this
-#    to run (or skip) an extra hour at the edges of the Thu-Sun window.
-# 4. This has had ZERO live test runs. Treat the first several real runs as
-#    test runs to validate against, not as proven working automation.
+# STATUS as of 2026-06-22:
+# - Confirmed working (unit-tested against real fetched nrl.com content):
+#   team-list parsing (54/54 players, 7/7 matches), kickoff-time extraction
+#   and UTC->AEST conversion, kickoff-window gating logic.
+# - Confirmed working (real Actions run): graceful no-op when nothing is
+#   due, no crash on missing output file.
+# - NOT YET CONFIRMED: the live `requests`-based fetch against nrl.com from
+#   GitHub's IP has never actually executed -- every previous real test run
+#   exited before reaching that code path (first due to a missing module,
+#   then due to the now-removed sidecar-file dependency). The very next
+#   manual trigger of this workflow will be the first real test of the
+#   actual live fetch. Treat that run's result as new information, not
+#   confirmation of something already proven.
