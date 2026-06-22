@@ -52,6 +52,16 @@ def run_validation(pending_csv, round_num):
 
 
 def merge_into_master(pending_csv, round_num):
+    """
+    NOTE: this function intentionally only touches the stats CSV
+    (nrl_round_{N}_new.csv), never any round_{N}_kickoffs.json sidecar file
+    that may exist alongside it in the same directory. The kickoff sidecar
+    is for the round CURRENTLY being played (used by Job B's polling), while
+    this merge function only ever processes a round that has ALREADY
+    finished (the round immediately after the last one in nrl_master.csv).
+    At any point during a Thu-Sun window these are two different round
+    numbers -- conflating their cleanup would delete data Job B still needs.
+    """
     new_df = pd.read_csv(pending_csv)
     master_df = pd.read_csv(MASTER_CSV)
 
@@ -64,7 +74,7 @@ def merge_into_master(pending_csv, round_num):
 
     combined.to_csv(MASTER_CSV, index=False)
 
-    pending_csv.unlink()  # remove the pending file now that it's merged
+    pending_csv.unlink()  # remove ONLY the stats pending file, never the kickoff sidecar
 
     return before, after, len(new_df)
 
