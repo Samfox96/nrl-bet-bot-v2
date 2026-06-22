@@ -33,7 +33,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 from parse_team_list import parse_match_headers, parse_team_list_page
-from kickoff_time import resolve_kickoff_datetime, is_within_n_hours_before
+from kickoff_time import is_within_n_hours_before
 
 
 def find_team_list_url(listing_page_text, round_num=None):
