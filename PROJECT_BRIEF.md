@@ -59,11 +59,22 @@ A rigorous, data-driven NRL prediction system (xTry model: win probability, marg
 
 - Pre-2026 individual player history is not recoverable (no name lookup exists for `player_id`)
 - `try_minute` data is not yet captured by the scraper — still relies on Sam's weekly screenshots
-- No automation yet — everything is manual (Sam runs scraper, uploads, Claude validates/merges)
 - Recency-weighted historical baselines (2025=100%/2024=75%/2023=50%) are built but not yet wired into live model calculations
+
+---
+
+## AUTOMATION STATUS (as of 2026-06-22)
+
+Weekly automation (Phase 3) is built and has been live-tested successfully at least once each for both jobs, but neither has completed a full real-world cycle yet:
+- **Job A** (completed-round stats: scrape → validate → merge): proven live against real fixtures; first full real-world success expected Thursday July 2, 2026, once Round 17 finishes.
+- **Job B** (hourly team-list polling near kickoff, Thu–Sun): proven live end-to-end including a correct no-op; first real "write new data" moment expected before Round 17's first kickoff.
+
+Until both have completed at least one full real cycle, treat Phase 3 as "live-tested, not yet fully proven."
 
 ---
 
 ## ROADMAP (for context — full detail tracked in chat, not duplicated here)
 
-Phase 0 ✅ Data integrity | Phase 1 ✅ Current season caught up | Phase 2 GitHub repo | Phase 3 Weekly automation | Phase 4 Notifications | Phase 5 Daily late mail | Phase 6 Live repo connection | Phase 7 Recency weighting | Phase 8 try_minute capture | Phase 9 Dashboard (GitHub Pages) | Phase 10 TAB/Sportsbet comparison
+Reordered 2026-06-22 — Phase 5 (daily late-mail scraping) merged into Phase 3, since Job B's hourly team-list polling already covers and exceeds that scope.
+
+Phase 0 ✅ Data integrity | Phase 1 ✅ Current season caught up | Phase 2 ✅ GitHub repo | Phase 3 🔶 Weekly automation (Job A + Job B built and live-tested once each; full real-world cycle pending — Job A's next test is Thursday July 2, 2026) | Phase 4 ⬜ try_minute capture | Phase 5 ⬜ Notifications | Phase 6 ⬜ Live repo connection | Phase 7 ⬜ Recency weighting | Phase 8 ⬜ TAB/Sportsbet odds comparison | Phase 9 ⬜ Dashboard (GitHub Pages)
