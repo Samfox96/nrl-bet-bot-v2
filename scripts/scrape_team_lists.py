@@ -41,34 +41,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 from parse_team_list import parse_team_list_page
-from parse_draw_link_text import parse_draw_link
+from parse_draw_link_text import extract_kickoffs_from_html
 from kickoff_time import is_within_n_hours_before
-
-
-def extract_kickoffs_from_team_list_page(page_text):
-    """
-    Extracts every match's AEST kickoff time directly from a team-list
-    article's page text, using the same draw-widget link pattern
-    parse_draw_link_text.py already parses (and already converts UTC -> AEST
-    for). Confirmed via real test: this pattern is embedded in the team-list
-    article itself, not just the separate draw page.
-
-    Returns a list of dicts: {round, home_team, away_team, kickoff_aest}.
-    """
-    import re
-    candidate_lines = re.findall(
-        r'\[([^\]]+)\]\(https://www\.nrl\.com/draw/[^\)]+\)', page_text
-    )
-    kickoffs = []
-    seen = set()
-    for line in candidate_lines:
-        parsed = parse_draw_link(line)
-        if parsed:
-            pair = (parsed["home_team"], parsed["away_team"])
-            if pair not in seen:
-                seen.add(pair)
-                kickoffs.append(parsed)
-    return kickoffs
 
 
 def find_team_list_url(listing_page_text, round_num=None):
@@ -203,7 +177,7 @@ if __name__ == "__main__":
     print(f"Saved raw team-list page response ({len(page_resp.text)} chars) to "
           f"debug_output/team_list_page_response.html for inspection.")
 
-    kickoffs = extract_kickoffs_from_team_list_page(page_resp.text)
+    kickoffs = extract_kickoffs_from_html(page_resp.text)
     print(f"Extracted {len(kickoffs)} match kickoff times from the page.")
 
     did_write = run(round_num, kickoffs, page_resp.text, args.output,
