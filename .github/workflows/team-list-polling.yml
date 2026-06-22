@@ -50,7 +50,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install requests
+          pip install requests beautifulsoup4
 
       - name: Poll for team list updates
         id: poll
@@ -58,7 +58,7 @@ jobs:
           python3 scripts/scrape_team_lists.py \
             --output data/team_lists_current.csv
 
-      - name: Upload debug output (only if discovery failed)
+      - name: Upload debug output (listing page if discovery failed; team-list page always)
         if: always()
         uses: actions/upload-artifact@v4
         with:
