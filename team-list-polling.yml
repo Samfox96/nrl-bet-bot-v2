@@ -1,0 +1,75 @@
+name: Team List Polling (Job B)
+
+# JOB B of two Thursday-anchored jobs (Job A = completed-round stats merge,
+# in weekly-update.yml). This one polls for team-list/lineup changes for the
+# CURRENT round (the one being played right now, Thu-Sun), so predictions
+# can use the most recent lineup info right up until just before kickoff.
+#
+# Runs hourly, Thursday through Sunday, but the script itself only does real
+# work (writes data/team_lists_current.csv) when at least one match in the
+# round is within 1 hour of its actual AEST kickoff time -- most hourly runs
+# will correctly do nothing. This was a deliberate design choice (see
+# scrape_team_lists.py) over trying to schedule one cron trigger per exact
+# kickoff, which GitHub Actions cron can't do natively (no dynamic/per-data
+# scheduling -- cron entries are static).
+#
+# Depends on Job A having already run for this round and produced
+# data/pending/round_{N}_kickoffs.json (or wherever that file ends up after
+# merge -- NOT YET CONFIRMED where this sidecar file lives post-merge, since
+# merge_round.py currently only moves the main stats CSV, not this sidecar.
+# See note in TODO below.)
+on:
+  schedule:
+    # Every hour, Thursday (3) through Sunday (0). Cron weekday numbering:
+    # 0=Sunday, 1=Monday, ... 6=Saturday. "3,4,5,6,0" = Wed,Thu,Fri,Sat,Sun --
+    # using 4,5,6,0 for Thu-Sun (cron days here are UTC days, which can be
+    # one calendar day behind AEST -- NOT YET VERIFIED this maps perfectly
+    # to the intended AEST Thu-Sun window at the UTC boundary hours).
+    - cron: '0 * * * *'
+  workflow_dispatch: {}
+
+jobs:
+  poll-team-lists:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install pandas requests
+
+      - name: Poll for team list updates
+        id: poll
+        run: |
+          python3 scripts/scrape_team_lists.py \
+            --nrl-master data/nrl_master.csv \
+            --kickoff-sidecar-dir data/pending \
+            --output data/team_lists_current.csv
+
+      - name: Commit if updated
+        run: |
+          git config user.name "nrl-bot-automation"
+          git config user.email "actions@github.com"
+          git add data/team_lists_current.csv
+          git diff --staged --quiet && echo "No changes to commit" || (
+            git commit -m "Update team lists ($(date -u +%Y-%m-%dT%H:%M:%SZ))"
+            git push
+          )
+
+# TODO before this is fully reliable, none of these are done yet:
+# 1. Confirm requests-based fetch actually works against nrl.com from GitHub's
+#    IP -- only Selenium-based fetches have been tested live so far.
+# 2. Confirm where round_{N}_kickoffs.json lives after Job A's merge step
+#    (merge_round.py doesn't currently handle this sidecar file at all).
+# 3. Verify the UTC cron-hour vs AEST day-of-week boundary doesn't cause this
+#    to run (or skip) an extra hour at the edges of the Thu-Sun window.
+# 4. This has had ZERO live test runs. Treat the first several real runs as
+#    test runs to validate against, not as proven working automation.
