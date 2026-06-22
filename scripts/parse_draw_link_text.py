@@ -1,151 +1,136 @@
 """
-parse_team_list.py
-====================
-Parses an NRL.com "Team Lists: Round N" article into structured rows: one
-row per player, with team, opponent, position, jersey number, and name.
+parse_draw_link_text.py
+=========================
+Extracts each match's kickoff time and team names from a team-list (or
+draw) page's embedded match-header markup.
 
 REWRITTEN 2026-06-22 after a real live Actions run revealed the actual raw
-HTML structure differs from what a regex-on-flattened-text approach (the
-original version of this module) assumed. The real markup separates a
-match's header (kickoff time, team names -- see parse_draw_link_text.py)
-from its player roster into sibling sections, not nested parent/child, and
-each player's data lives across a few small elements rather than one
-single line of readable text:
+HTML structure is considerably cleaner than what this module originally
+assumed. The real markup looks like:
 
-    <div class="team-list-profile team-list-profile--home">
-      <div class="team-list-profile__name">
-        <span class="u-visually-hidden">Fullback for Knights is number 6</span>
-        Fletcher
-        <span class="u-font-weight-700 ...">Sharpe</span>
-      </div>
-    </div>
+    <div class="match ...">
+      <h3 class="u-visually-hidden">Match: Knights v Dragons</h3>
+      <a href="/draw/nrl-premiership/2026/round-16/knights-v-dragons/">
+        <div class="match-header ...">
+          <p class="match-header__title">Round 16 -
+            <time class="js-local-datetime" datetime="2026-06-19T10:00:00Z"
+                  data-local-datetime-options="dddd Do MMMM">
+              Round 16 - Friday 19 Jun
+            </time>
+          </p>
+          ...
+          <div class="match-team match-team--home">
+            ...<p class="match-team__name match-team__name--home">Knights</p>
+          ...
 
-The accessibility label span conveniently still contains a clean,
-parseable sentence ("Fullback for Knights is number 6") -- this module
-extracts position/team/number from that label, and the player's full name
-from the surrounding text content of the same div (direct text + the
-nested surname span).
+Two real findings from inspecting this, both better than the original
+(now-deleted) text-regex approach:
+  - The <time> element's `datetime` attribute is a proper ISO 8601 UTC
+    timestamp (e.g. "2026-06-19T10:00:00Z") -- no fragile parsing of
+    "Friday 19 Jun 10:00 am" text required, no month-name lookup table
+    needed. This is more robust than the original approach.
+  - Team names are reliably recoverable from the match URL's slug
+    (".../knights-v-dragons/") OR from match-team__name elements -- the
+    slug is used here since it's already needed for match identification
+    and is simpler to extract consistently for both teams in one place.
 
-Match/opponent context: confirmed via real data that match-header divs
-(class="match") and team-list-profile divs appear in document order, with
-all of one match's ~38 profile divs (19 players x 2 teams, give or take
-empty slots) appearing between one match header and the next. This module
-walks the document in order, tracking "current match" as it encounters
-each header, and attaches that context to subsequent profiles -- rather
-than relying on any DOM nesting relationship (there isn't one).
+The UTC -> AEST (+10h) conversion finding from the original version still
+holds and is still required: the datetime attribute is UTC, confirmed by
+cross-referencing against the team-list page's own prose ("Friday 8.00pm"
+kickoff time stated elsewhere on the same page).
 """
 
 import re
+from datetime import datetime, timedelta
 from bs4 import BeautifulSoup
 
+AEST_OFFSET_HOURS = 10
+
 MATCH_URL_PATTERN = re.compile(r"/round-(\d+)/([\w-]+)-v-([\w-]+)/")
-PROFILE_LABEL_PATTERN = re.compile(
-    r"(?P<position>[\w\s\-/]+?) for (?P<team>[\w\s\-']+?) is number (?P<number>\d+)"
-)
 
 
 def _slug_to_team_name(slug):
-    """Converts a URL slug fragment like 'wests-tigers' to 'Wests Tigers'."""
+    """
+    Converts a URL slug fragment like "wests-tigers" into a display-style
+    team name "Wests Tigers". Simple title-casing on hyphen-split words --
+    matches the team names already used elsewhere in this project's alias
+    files closely enough to run through team_aliases.json for final
+    normalization (not done here -- this module stays focused on kickoff
+    times; alias normalization is the caller's responsibility, consistent
+    with how the rest of this project handles team-name normalization).
+    """
     return " ".join(word.capitalize() for word in slug.split("-"))
 
 
-def _is_match_header(tag):
-    if tag.name != "div":
-        return False
-    classes = tag.get("class") or []
-    return classes == ["match"] or (len(classes) <= 2 and "match" in classes)
-
-
-def _is_profile(tag):
-    if tag.name != "div":
-        return False
-    classes = tag.get("class") or []
-    return "team-list-profile" in classes
-
-
-def parse_team_list_page(page_html, round_num, season=2026):
+def extract_kickoffs_from_html(page_html):
     """
-    Returns a list of dicts, one per player: player_name, team, opponent,
-    position, jersey_number, round, season. Empty roster slots (a team
-    that didn't name a player for a given bench spot) are silently skipped
-    -- confirmed via real data this is a genuine, expected occurrence, not
-    a parsing failure.
+    Returns a list of dicts: {round, home_team, away_team, kickoff_aest},
+    one per match found in the page's match-header markup.
+
+    Best-effort: a match div missing either the URL link or the <time>
+    element is silently skipped (logged by the caller if it cares), since
+    a partial page (e.g. mid-deploy on nrl.com's end) shouldn't crash the
+    whole scrape over one malformed entry.
     """
     soup = BeautifulSoup(page_html, "html.parser")
-    elements = soup.find_all(lambda t: _is_match_header(t) or _is_profile(t))
+    match_divs = soup.find_all("div", class_="match")
 
-    rows = []
-    current_home, current_away = None, None
-
-    for el in elements:
-        if _is_match_header(el):
-            link = el.find("a", href=MATCH_URL_PATTERN)
-            href = link.get("href", "") if link else ""
-            m = MATCH_URL_PATTERN.search(href)
-            if m:
-                _, home_slug, away_slug = m.groups()
-                current_home = _slug_to_team_name(home_slug)
-                current_away = _slug_to_team_name(away_slug)
+    results = []
+    for div in match_divs:
+        link = div.find("a", href=MATCH_URL_PATTERN)
+        time_el = div.find("time", attrs={"datetime": True})
+        if not link or not time_el:
             continue
 
-        # It's a profile div
-        label_span = el.find("span", class_="u-visually-hidden")
-        if not label_span:
-            continue  # empty roster slot -- expected, not an error
-        label_text = label_span.get_text()
-        label_match = PROFILE_LABEL_PATTERN.search(label_text)
-        if not label_match:
+        href = link.get("href", "")
+        url_match = MATCH_URL_PATTERN.search(href)
+        if not url_match:
             continue
 
-        team = label_match.group("team").strip()
-        position = label_match.group("position").strip()
-        jersey_number = int(label_match.group("number"))
+        round_num, home_slug, away_slug = url_match.groups()
+        utc_str = time_el.get("datetime", "")
+        try:
+            utc_dt = datetime.fromisoformat(utc_str.replace("Z", "+00:00")).replace(tzinfo=None)
+        except ValueError:
+            continue
 
-        name_div = el.find("div", class_="team-list-profile__name")
-        full_text = name_div.get_text(separator=" ", strip=True) if name_div else ""
-        player_name = full_text.replace(label_text, "", 1).strip()
-        player_name = re.sub(r"\s+", " ", player_name)
-        if not player_name:
-            continue  # label existed but no name text -- treat as empty slot
+        aest_dt = utc_dt + timedelta(hours=AEST_OFFSET_HOURS)
 
-        if current_home and team == current_home:
-            opponent = current_away
-        elif current_away and team == current_away:
-            opponent = current_home
-        else:
-            opponent = None  # shouldn't happen with real data; don't guess
-
-        rows.append({
-            "player_name": player_name,
-            "team": team,
-            "opponent": opponent,
-            "position": position,
-            "jersey_number": jersey_number,
-            "round": round_num,
-            "season": season,
+        results.append({
+            "round": int(round_num),
+            "home_team": _slug_to_team_name(home_slug),
+            "away_team": _slug_to_team_name(away_slug),
+            "kickoff_aest": aest_dt,
         })
 
-    return rows
+    return results
 
 
 if __name__ == "__main__":
     # Self-test against the REAL team-list page response captured from a
-    # live GitHub Actions run (2026-06-22).
+    # live GitHub Actions run (2026-06-22) -- not a hand-typed sample.
     with open("real_team_list_response.html") as f:
         html = f.read()
 
-    rows = parse_team_list_page(html, round_num=16)
-    print(f"Parsed {len(rows)} player rows (expect roughly 266, per real data)")
+    print("Testing against REAL live-fetched team-list page response:\n")
+    results = extract_kickoffs_from_html(html)
+    print(f"Found {len(results)} matches (expect 7):\n")
 
-    teams_seen = sorted(set(r["team"] for r in rows))
-    print(f"Teams seen ({len(teams_seen)}): {teams_seen}")
+    expected_first = {
+        "round": 16, "home_team": "Knights", "away_team": "Dragons",
+        "kickoff_aest": datetime(2026, 6, 19, 20, 0),
+    }
 
-    # Spot check: Knights #6 should be Fletcher Sharpe, opponent Dragons
-    knights_6 = [r for r in rows if r["team"] == "Knights" and r["jersey_number"] == 6]
-    print(f"\nKnights #6: {knights_6}")
-    assert knights_6 and knights_6[0]["player_name"] == "Fletcher Sharpe"
-    assert knights_6[0]["opponent"] == "Dragons"
-    print("PASS -- Knights #6 is Fletcher Sharpe, opponent correctly Dragons")
+    all_passed = True
+    for r in results:
+        print(f"  R{r['round']}: {r['home_team']} v {r['away_team']} -- {r['kickoff_aest']} AEST")
 
-    missing_opponent = [r for r in rows if r["opponent"] is None]
-    print(f"\nRows with unresolved opponent: {len(missing_opponent)} (expect 0)")
+    first = results[0] if results else None
+    passed = first == expected_first
+    all_passed &= passed
+    print(f"\n[{'PASS' if passed else 'FAIL'}] First match matches expected Knights v Dragons, 8pm AEST")
+
+    assert len(results) == 7, f"Expected 7 matches, got {len(results)}"
+    print(f"[PASS] Found all 7 matches")
+
+    print(f"\nAll checks passed: {all_passed}")
