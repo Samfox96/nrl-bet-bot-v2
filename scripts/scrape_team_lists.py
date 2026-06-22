@@ -173,6 +173,17 @@ if __name__ == "__main__":
     if discovery is None:
         print("No team-list article found on the listing page at all. "
               "Page structure may have changed.")
+        # Save the raw response for debugging -- without this, a failure here
+        # is a black box: no way to tell whether nrl.com served different
+        # content to a plain HTTP client than it serves to a real browser,
+        # versus the parser regex simply not matching today's exact markup.
+        import os
+        os.makedirs("debug_output", exist_ok=True)
+        with open("debug_output/listing_page_response.html", "w") as f:
+            f.write(listing_resp.text)
+        print(f"Saved raw response ({len(listing_resp.text)} chars) to "
+              f"debug_output/listing_page_response.html for inspection. "
+              f"Status code was: {listing_resp.status_code}")
         sys.exit(0)
 
     round_num, url = discovery
