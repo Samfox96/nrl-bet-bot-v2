@@ -433,6 +433,43 @@ def extract_table(table_el, team_name, opponent_name, round_num):
     return rows_out
 
 
+def extract_kickoff_times(driver, round_num):
+    """
+    Extracts each match's AEST kickoff time from the draw page's link
+    elements -- the same elements used for match-URL discovery carry a text/
+    aria-label pattern like:
+        "Round 16 - Round 16 - Friday 19 Jun 10:00 am Knightshome TeamKnights
+         Dragonsaway TeamDragons"
+    which encodes kickoff time in UTC. Confirmed via cross-check against the
+    independently-sourced team-list page (2026-06-22): this text's time is
+    UTC, requiring a +10h conversion to AEST. See parse_draw_link_text.py
+    for the parser and its self-test.
+
+    Returns a list of dicts: {round, home_team, away_team, kickoff_aest}.
+    Best-effort -- if this fails, callers should treat it as "kickoff times
+    unavailable this run," NOT as a reason to abort the whole scrape, since
+    match-URL discovery (the more critical path) doesn't depend on this.
+    """
+    from parse_draw_link_text import parse_draw_link
+
+    results = []
+    try:
+        link_els = driver.find_elements(By.XPATH, "//a[contains(@href, '/draw/nrl-premiership/')]")
+        seen_pairs = set()
+        for el in link_els:
+            label = el.get_attribute("aria-label") or el.text or ""
+            parsed = parse_draw_link(label)
+            if parsed:
+                pair = (parsed["home_team"], parsed["away_team"])
+                if pair not in seen_pairs:
+                    seen_pairs.add(pair)
+                    results.append(parsed)
+    except Exception as e:
+        print(f"  Could not extract kickoff times (non-fatal): {e}")
+
+    return results
+
+
 def click_team_tab(driver, team_name, is_away=False):
     """
     Click the team tab by matching button text on the page.
@@ -537,6 +574,25 @@ for round_num in ROUNDS_TO_SCRAPE:
             print(f"  Could not find match links: {e}")
             save_failure_screenshot(driver, f"round{round_num}_no_match_links")
             continue
+
+        # Best-effort: also capture kickoff times from this same page visit,
+        # so Job B (team-list polling) can know exactly when to check without
+        # a second browser session. Written as a sidecar file next to the
+        # main output -- failure here never blocks the main stats scrape.
+        kickoffs = extract_kickoff_times(driver, round_num)
+        if kickoffs:
+            import json
+            kickoff_path = os.path.join(os.path.dirname(OUTPUT_CSV) or ".",
+                                         f"round_{round_num}_kickoffs.json")
+            try:
+                with open(kickoff_path, "w") as f:
+                    json.dump(
+                        [{**k, "kickoff_aest": k["kickoff_aest"].isoformat()} for k in kickoffs],
+                        f, indent=2
+                    )
+                print(f"  Saved {len(kickoffs)} kickoff times to {kickoff_path}")
+            except Exception as e:
+                print(f"  Could not save kickoff times sidecar file (non-fatal): {e}")
 
         if not match_urls:
             print(f"  No match links found for round {round_num} even though the page loaded. "
