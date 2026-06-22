@@ -6,34 +6,69 @@ but only does real work when at least one match in the round is within 1
 hour of kickoff -- otherwise exits immediately (cheap, frequent polling).
 
 Designed to run hourly Thursday-Sunday via GitHub Actions. Each invocation:
-  1. Works out which round is "this week's" round (the one currently being played).
-  2. Finds that round's actual team-list article URL (the URL embeds a publish
-     date we can't predict in advance -- discovered via the team-lists topic page).
-  3. Parses it into structured player rows (parse_team_list.py).
-  4. Checks each match's kickoff time (kickoff_time.py) against the current time.
-  5. If nothing is within the 1-hour pre-kickoff window, exits without writing
+  1. Fetches nrl.com's team-lists topic listing page (plain HTTP, no JS-gating
+     issue -- confirmed via real fetch) to find the current round's team-list
+     article URL.
+  2. Fetches that article (also plain HTTP).
+  3. Extracts kickoff times for every match in the round directly from THIS
+     SAME page -- the article embeds the same draw-widget link text the draw
+     page itself uses (e.g. "Round 16 - Friday 19 Jun 10:00 am ..."), which
+     parse_draw_link_text.py already parses correctly, including the UTC ->
+     AEST conversion. Confirmed via real test (2026-06-22): all 7 Round 16
+     matches' kickoff times extracted correctly from the team-list page text
+     alone -- no separate draw-page visit needed.
+  4. Parses the same page into structured player rows (parse_team_list.py).
+  5. Checks each match's kickoff time against the current time.
+  6. If nothing is within the 1-hour pre-kickoff window, exits without writing
      anything -- this is the expected/normal outcome on most hourly runs.
-  6. If something IS in-window, overwrites data/team_lists_current.csv with the
-     latest full scrape (per the decision to keep this simple -- no history
-     of intermediate versions, just the latest).
+  7. If something IS in-window, overwrites data/team_lists_current.csv with
+     the latest full scrape.
 
-Round-start-date assumption: every NRL round starts on a Thursday. This holds
-for the vast majority of the season but is NOT guaranteed for every round
-(bye-heavy rounds, representative weekends, finals). round_start_date is
-passed as an explicit override option specifically so a human can correct it
-on the weeks it doesn't hold, rather than the script silently assuming a
-cadence that's wrong that week.
+DESIGN CHANGE from an earlier version: kickoff times used to come from a
+sidecar file Job A was supposed to produce. That created a fragile cross-job
+dependency -- Job A only runs Thursdays scraping the round that just
+FINISHED, never the round currently being played, so the sidecar file Job B
+needed often wouldn't exist yet (confirmed by a real failed test run,
+2026-06-22). Job B is now fully self-contained: one HTTP fetch gives it
+everything (team list AND kickoff times), no dependency on Job A's timing
+or output at all.
 """
 
 import sys
 import argparse
-import re
-from datetime import datetime, timedelta
+from datetime import datetime
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from parse_team_list import parse_match_headers, parse_team_list_page
+from parse_team_list import parse_team_list_page
+from parse_draw_link_text import parse_draw_link
 from kickoff_time import is_within_n_hours_before
+
+
+def extract_kickoffs_from_team_list_page(page_text):
+    """
+    Extracts every match's AEST kickoff time directly from a team-list
+    article's page text, using the same draw-widget link pattern
+    parse_draw_link_text.py already parses (and already converts UTC -> AEST
+    for). Confirmed via real test: this pattern is embedded in the team-list
+    article itself, not just the separate draw page.
+
+    Returns a list of dicts: {round, home_team, away_team, kickoff_aest}.
+    """
+    import re
+    candidate_lines = re.findall(
+        r'\[([^\]]+)\]\(https://www\.nrl\.com/draw/[^\)]+\)', page_text
+    )
+    kickoffs = []
+    seen = set()
+    for line in candidate_lines:
+        parsed = parse_draw_link(line)
+        if parsed:
+            pair = (parsed["home_team"], parsed["away_team"])
+            if pair not in seen:
+                seen.add(pair)
+                kickoffs.append(parsed)
+    return kickoffs
 
 
 def find_team_list_url(listing_page_text, round_num=None):
@@ -62,65 +97,17 @@ def find_team_list_url(listing_page_text, round_num=None):
     return None
 
 
-def get_current_round_and_kickoffs(nrl_master_path, kickoff_sidecar_dir):
-    """
-    Determines which round Job B should be polling for, and that round's
-    kickoff times -- using two sources already produced elsewhere in the
-    project, rather than recalculating from a date pattern:
-
-      - "Which round": (max round in nrl_master.csv) + 1, same logic as
-        Job A's merge_round.py. This is the round that's currently being
-        played (Job A only merges AFTER a round finishes, so the round
-        after the last merged one is, by construction, the in-progress one
-        during the Thu-Sun window).
-      - "Kickoff times for that round": read from the
-        round_{N}_kickoffs.json sidecar file that nrl_update_single_round.py
-        now saves during its draw-page visit (see parse_draw_link_text.py).
-
-    Returns (round_num, list_of_kickoff_dicts). Raises FileNotFoundError
-    with a clear message if the sidecar file doesn't exist yet -- this can
-    legitimately happen if Job A hasn't run yet for this round, which Job B
-    should treat as "nothing to do yet," not crash on.
-    """
-    import pandas as pd
-    import json
-    from pathlib import Path
-    from datetime import datetime
-
-    df = pd.read_csv(nrl_master_path)
-    current_round = int(df["round"].max()) + 1
-
-    sidecar_path = Path(kickoff_sidecar_dir) / f"round_{current_round}_kickoffs.json"
-    if not sidecar_path.exists():
-        raise FileNotFoundError(
-            f"No kickoff data found at {sidecar_path}. This likely means Job A "
-            f"hasn't visited round {current_round}'s draw page yet this week. "
-            f"Job B has nothing to do until that sidecar file exists."
-        )
-
-    with open(sidecar_path) as f:
-        raw_kickoffs = json.load(f)
-
-    kickoffs = [
-        {**k, "kickoff_aest": datetime.fromisoformat(k["kickoff_aest"])}
-        for k in raw_kickoffs
-    ]
-    return current_round, kickoffs
-
-
 def run(round_num, kickoffs, page_text, output_path, now=None, hours_before=1):
     """
     kickoffs: list of dicts with 'home_team', 'away_team', 'kickoff_aest'
-    (a datetime) -- as produced by get_current_round_and_kickoffs(), sourced
-    from Job A's sidecar file. This is more precise than recomputing from
-    day-name + round-start-date (the original approach), since it uses the
-    same UTC-to-AEST-converted timestamps already extracted from the live
-    draw page for this specific round.
+    (a datetime), extracted directly from the same team-list page being
+    parsed for player rows -- see extract_kickoffs_from_team_list_page().
     """
     now = now or datetime.now()
 
     if not kickoffs:
-        print(f"No kickoff data available for round {round_num}. Nothing to do.")
+        print(f"No kickoff data could be extracted from the round {round_num} "
+              f"team-list page. Nothing to do.")
         return False
 
     in_window_matches = [
@@ -159,38 +146,18 @@ def run(round_num, kickoffs, page_text, output_path, now=None, hours_before=1):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Job B: poll and scrape team lists near kickoff.")
-    parser.add_argument("--nrl-master", type=str, default="data/nrl_master.csv")
-    parser.add_argument("--kickoff-sidecar-dir", type=str, default="data/pending",
-                         help="Directory where Job A saves round_{N}_kickoffs.json")
     parser.add_argument("--output", type=str, default="data/team_lists_current.csv")
     parser.add_argument("--hours-before", type=int, default=1)
     args = parser.parse_args()
 
-    try:
-        round_num, kickoffs = get_current_round_and_kickoffs(
-            args.nrl_master, args.kickoff_sidecar_dir
-        )
-    except FileNotFoundError as e:
-        print(str(e))
-        sys.exit(0)  # not an error -- just nothing to do yet this week
-
-    print(f"Polling for round {round_num}, {len(kickoffs)} matches tracked.")
-
-    # NOTE: live fetch of the listing page + team-list page is the one piece
-    # not yet exercised end-to-end against a live connection from this
-    # script (the parsers themselves ARE tested against real fetched
-    # content -- see find_team_list_url.py and parse_team_list.py self-tests).
-    #
-    # IMPORTANT, NOT YET VERIFIED: this uses plain `requests` rather than
-    # Selenium, on the theory that both target pages render server-side
-    # (no "couldn't load" JS-gating was observed when fetched). That's true
-    # for what was actually fetched and inspected -- but nrl.com may still
-    # serve different content to a plain HTTP client vs a real browser
-    # (e.g. requiring a User-Agent header, or some anti-bot check that only
-    # triggers on non-browser requests). This has NOT been tested from
-    # within GitHub Actions. If this fails in practice, the fallback is
-    # switching these two fetches to the same Selenium pattern
-    # nrl_update_single_round.py already uses successfully.
+    # IMPORTANT, NOT YET VERIFIED LIVE: this uses plain `requests` rather than
+    # Selenium, since both target pages were confirmed (via real fetch,
+    # 2026-06-22) to be server-rendered with no JS-gating. That's true for
+    # what was actually fetched and inspected from outside GitHub Actions --
+    # but nrl.com may still respond differently to a plain HTTP client from
+    # GitHub's IP range specifically. If this fails in practice, the fallback
+    # is switching to the same Selenium pattern nrl_update_single_round.py
+    # already uses successfully against the (harder, JS-gated) draw page.
     import requests
 
     headers = {
@@ -201,17 +168,21 @@ if __name__ == "__main__":
     listing_resp = requests.get("https://www.nrl.com/news/topic/team-lists/",
                                   headers=headers, timeout=30)
     listing_resp.raise_for_status()
-    discovery = find_team_list_url(listing_resp.text, round_num=round_num)
+
+    discovery = find_team_list_url(listing_resp.text, round_num=None)  # latest published
     if discovery is None:
-        print(f"No published team-list article found yet for round {round_num}. "
-              f"Nothing to do this run.")
+        print("No team-list article found on the listing page at all. "
+              "Page structure may have changed.")
         sys.exit(0)
 
-    found_round, url = discovery
-    print(f"Found team-list URL for round {found_round}: {url}")
+    round_num, url = discovery
+    print(f"Latest published team list: round {round_num} -> {url}")
 
     page_resp = requests.get(url, headers=headers, timeout=30)
     page_resp.raise_for_status()
+
+    kickoffs = extract_kickoffs_from_team_list_page(page_resp.text)
+    print(f"Extracted {len(kickoffs)} match kickoff times from the page.")
 
     did_write = run(round_num, kickoffs, page_resp.text, args.output,
                      hours_before=args.hours_before)
