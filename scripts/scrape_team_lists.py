@@ -192,6 +192,17 @@ if __name__ == "__main__":
     page_resp = requests.get(url, headers=headers, timeout=30)
     page_resp.raise_for_status()
 
+    # Always save the raw team-list page response for inspection, regardless
+    # of outcome. The listing page already proved real raw HTML can differ
+    # significantly from what was tested against during development -- don't
+    # repeat that mistake here by assuming success without checking.
+    import os
+    os.makedirs("debug_output", exist_ok=True)
+    with open("debug_output/team_list_page_response.html", "w") as f:
+        f.write(page_resp.text)
+    print(f"Saved raw team-list page response ({len(page_resp.text)} chars) to "
+          f"debug_output/team_list_page_response.html for inspection.")
+
     kickoffs = extract_kickoffs_from_team_list_page(page_resp.text)
     print(f"Extracted {len(kickoffs)} match kickoff times from the page.")
 
