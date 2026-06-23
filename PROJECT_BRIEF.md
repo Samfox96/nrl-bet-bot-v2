@@ -24,6 +24,11 @@ A rigorous, data-driven NRL prediction system (xTry model: win probability, marg
 | `validate_round.py` / `merge_round.py` | Validation gate + safe merge logic for Job A | Weekly automation |
 | `scrape_team_lists.py` / `parse_team_list.py` / `parse_draw_link_text.py` / `find_team_list_url.py` | Job B — team-list polling near kickoff | Weekly automation |
 | `schedule_kickoff_triggers.py` | Creates precise per-match triggers via cron-job.org | Weekly automation (runs Tue/Wed) |
+| `parse_try_minutes.py` | Try-minute parser, wired into the scraper | Phase 4 — adds `try_minutes` column (e.g. "5;8") to scraped rows |
+| `generate_round_digest.py` | Builds the weekly digest content (top performances, form trends, DUE WATCH, defense watch) | Phase 5 — called by Job A's final step on a successful merge |
+| `send_round_digest.py` | Sends the digest via Resend's API | Phase 5 — needs `RESEND_API_KEY` + `DIGEST_TO_EMAIL` secrets |
+| `due_flags_v2.py` | Composite DUE WATCH scoring (drought + opponent matchup + team form + usage trend + structure share) | Phase 5 — see its own header comment for the real-data-driven design history |
+| `season_draw_2026.json` | NRL season fixture pairings by round (sourced from official draw PDF) | Phase 5's opponent-matchup factor — currently covers rounds 17-18 only, extend manually as the season progresses |
 | `STATUS.md` | Live checkpoint — data freshness, known issues, outstanding gaps | Read FIRST every session |
 
 ---
@@ -59,8 +64,10 @@ A rigorous, data-driven NRL prediction system (xTry model: win probability, marg
 ## KNOWN LIMITATIONS (be upfront about these, don't paper over them)
 
 - Pre-2026 individual player history is not recoverable (no name lookup exists for `player_id`)
-- `try_minute` data is not yet captured by the scraper — parser logic is built and tested against real captured HTML (2026-06-22) but not yet wired into the live scraper or merge logic (Phase 4)
+- `try_minute` parser is wired into the scraper (Phase 4) but has not yet run against a real finished round through the actual Job A pipeline — first real test alongside Job A's own first full-cycle proof, expected Thursday July 2, 2026. Extra-time try-minute formatting is also unconfirmed — see `parse_try_minutes.py`'s own header comment.
 - Recency-weighted historical baselines (2025=100%/2024=75%/2023=50%) are built but not yet wired into live model calculations (Phase 7)
+- `season_draw_2026.json` only covers rounds 17-18 — needs manual extension before DUE WATCH can run for later rounds
+- The repo is **public** as of 2026-06-23 (changed specifically to let Claude read live files directly each session, Phase 6) — confirmed no secrets have ever lived in committed files, only as GitHub Actions repository secrets
 
 ---
 
@@ -79,6 +86,6 @@ See `STATUS.md` for full detail, known gotchas (e.g. cron-job.org's rate limit n
 
 ## ROADMAP (for context — full detail tracked in chat, not duplicated here)
 
-Reordered 2026-06-22 — Phase 5 (daily late-mail scraping) merged into Phase 3, since Job B's hourly-turned-precise team-list polling already covers and exceeds that scope.
+Reordered 2026-06-22 — the ORIGINAL Phase 5 concept (daily late-mail scraping) was merged into Phase 3, since Job B's hourly-turned-precise team-list polling already covers and exceeds that scope. The phase NUMBER 5 was then reassigned to weekly digest notifications (built and proven live 2026-06-23) — these are two unrelated things that happen to share a number across the project's history; don't confuse them.
 
-Phase 0 ✅ Data integrity | Phase 1 ✅ Current season caught up | Phase 2 ✅ GitHub repo | Phase 3 🔶 Weekly automation — Job A + Job B + cron-job.org scheduler all built and live-tested; full real-world cycle pending (Job A's next test: Thursday July 2, 2026) | Phase 4 🔶 try_minute capture — parser built and tested against real HTML, not yet wired into the live scraper | Phase 5 ⬜ Notifications | Phase 6 ⬜ Live repo connection | Phase 7 ⬜ Recency weighting | Phase 8 ⬜ TAB/Sportsbet odds comparison | Phase 9 ⬜ Dashboard (GitHub Pages)
+Phase 0 ✅ Data integrity | Phase 1 ✅ Current season caught up | Phase 2 ✅ GitHub repo | Phase 3 🔶 Weekly automation — Job A + Job B + cron-job.org scheduler all built and live-tested; full real-world cycle pending (Job A's next test: Thursday July 2, 2026) | Phase 4 🔶 try_minute capture — parser built and wired into the live scraper, not yet proven against a real finished round | Phase 5 ✅ Digest notifications — built, fixed through 3 real bugs, proven live end-to-end | Phase 6 ✅ Live repo connection — repo made public, Claude reads raw files directly each session | Phase 7 ⬜ Recency weighting | Phase 8 ⬜ TAB/Sportsbet odds comparison | Phase 9 ⬜ Dashboard (GitHub Pages)
