@@ -301,7 +301,7 @@ def due_flags(master_rows, season, up_to_round, position_aliases, position_tpg_b
     return flags
 
 
-def zcr_shift_facts(round_rows, round_num, team_aliases, zcr_baseline, n=3):
+def zcr_shift_facts(round_rows, round_num, team_aliases, position_aliases, zcr_baseline, n=3):
     """
     Compares each team's tries CONCEDED this round, by position, against
     their 2021-2025 ZCR baseline rate for that position. Surfaces teams
@@ -322,8 +322,6 @@ def zcr_shift_facts(round_rows, round_num, team_aliases, zcr_baseline, n=3):
 
     # Tries conceded this round by (defending_team_short, position_code)
     conceded = defaultdict(int)
-    position_aliases_path = "position_aliases.json"
-    position_aliases = load_json(position_aliases_path)["aliases"]
 
     for row in round_rows:
         tries = safe_int(row["tries"])
@@ -384,7 +382,7 @@ def build_digest(master_csv_path, round_num, season,
         "top_performances": top_performances(round_rows),
         "form_trends": form_trend_facts(round_rows, season_averages),
         "due_flags": due_flags(master_rows, season, round_num, position_aliases, position_tpg_baseline, top_n=5),
-        "zcr_shifts": zcr_shift_facts(round_rows, round_num, team_aliases, zcr_baseline),
+        "zcr_shifts": zcr_shift_facts(round_rows, round_num, team_aliases, position_aliases, zcr_baseline),
     }
     return digest
 
