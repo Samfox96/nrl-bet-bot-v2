@@ -4,6 +4,7 @@ import argparse
 import pandas as pd
 import traceback
 import warnings
+from parse_try_minutes import parse_try_minutes, aggregate_try_minutes, validate_try_minutes
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
@@ -209,7 +210,7 @@ FALLBACK_URLS = {
 OUTPUT_COLUMNS = [
     "player_name", "team", "opponent", "round", "season",
     "position", "mins_played",
-    "tries", "points",
+    "tries", "try_minutes", "points",
     "all_runs", "all_run_metres", "post_contact_metres", "kick_return_metres",
     "line_breaks", "line_break_assists", "try_assists", "line_engaged_runs",
     "tackle_breaks", "hit_ups", "play_the_ball", "average_play_the_ball_speed",
@@ -262,7 +263,8 @@ def clean_dataframe(df):
     skip_cols = [
         "player_name", "team", "opponent", "position",
         "stint_one", "stint_two", "average_play_the_ball_speed",
-        "passes_to_run_ratio", "tackle_efficiency", "mins_played"
+        "passes_to_run_ratio", "tackle_efficiency", "mins_played",
+        "try_minutes",  # e.g. "5;8" -- must not be coerced to numeric
     ]
     for col in df.columns:
         if col not in skip_cols:
@@ -388,6 +390,7 @@ def extract_table(table_el, team_name, opponent_name, round_num):
                 "position": row_dict.get("position", ""),
                 "mins_played": row_dict.get("mins_played", ""),
                 "tries": row_dict.get("tries", ""),
+                "try_minutes": "",  # filled in later from the Tries summary box, see merge_try_minutes_into_rows()
                 "points": row_dict.get("points", ""),
                 "all_runs": row_dict.get("all_runs", ""),
                 "all_run_metres": row_dict.get("all_run_metres", ""),
@@ -431,6 +434,32 @@ def extract_table(table_el, team_name, opponent_name, round_num):
         print(f"      Error: {e}")
         traceback.print_exc()
     return rows_out
+
+
+def merge_try_minutes_into_rows(rows, try_minutes_agg):
+    """
+    Fills in the try_minutes field on each player row using the aggregated
+    (player_name, team_canonical) -> "5;8" dict produced by
+    aggregate_try_minutes() in parse_try_minutes.py.
+
+    Matching is by exact player_name string match within this match's rows
+    only (rows is already scoped to one team's table at the point this is
+    called from the main loop) -- team_canonical isn't used to filter here
+    since rows are already team-scoped, but mismatches are still possible if
+    the Tries box name and Player Stats table name differ in formatting
+    (e.g. a nickname). This is a known, real risk -- see
+    parse_try_minutes.py's module docstring -- and is NOT silently swallowed:
+    any player with tries > 0 but no try_minutes match after this merge
+    should be caught by the validate_try_minutes() cross-check before
+    merging into nrl_master.csv, not assumed fine just because this
+    function ran without an exception.
+    """
+    for row in rows:
+        for (player_name, team_canonical), minute_str in try_minutes_agg.items():
+            if row["player_name"] == player_name:
+                row["try_minutes"] = minute_str
+                break
+    return rows
 
 
 def extract_kickoff_times(driver, round_num):
@@ -628,6 +657,26 @@ for round_num in ROUNDS_TO_SCRAPE:
                 pass
             print(f"    {home_team} vs {away_team}")
 
+            # ── TRY MINUTES (Phase 4) ────────────────────────────────────────
+            # Captured here, BEFORE clicking into Player Stats, because the
+            # Tries summary box renders on the page's default/initial view
+            # (it sits above the News & Video / Play by Play / Team Lists /
+            # Team Stats / Player Stats tab row -- confirmed via real DevTools
+            # capture, Round 16, 2026-06-23). Best-effort: failure here must
+            # never block the main player-stats scrape, since that's the more
+            # critical data path.
+            try:
+                match_page_html = driver.page_source
+                parsed_tries = parse_try_minutes(match_page_html, team_aliases_path="team_aliases.json")
+                try_minutes_agg = aggregate_try_minutes(parsed_tries)
+                if try_minutes_agg:
+                    print(f"    Parsed {len(parsed_tries)} try entries from Tries summary box")
+                else:
+                    print(f"    No Tries summary box entries found (0-0 first half, or page structure differs)")
+            except Exception as e:
+                print(f"    Could not parse try minutes (non-fatal): {e}")
+                try_minutes_agg = {}
+
             # Click Player Stats tab
             try:
                 tab = wait.until(EC.element_to_be_clickable((
@@ -659,6 +708,7 @@ for round_num in ROUNDS_TO_SCRAPE:
                 if rows:
                     home_rows = rows
                     break
+            home_rows = merge_try_minutes_into_rows(home_rows, try_minutes_agg)
             new_rows.extend(home_rows)
             print(f"    Got {len(home_rows)} home rows for {home_team}")
 
@@ -676,6 +726,7 @@ for round_num in ROUNDS_TO_SCRAPE:
                 if rows:
                     away_rows = rows
                     break
+            away_rows = merge_try_minutes_into_rows(away_rows, try_minutes_agg)
 
             # Dedup guard
             if away_rows and home_rows:
@@ -693,6 +744,31 @@ for round_num in ROUNDS_TO_SCRAPE:
                 print(f"    Got {len(away_rows)} away rows for {away_team}")
             else:
                 print(f"    No away rows captured for {away_team}")
+
+            # ── TRY MINUTES VALIDATION (Phase 4) ─────────────────────────────
+            # Cross-checks parsed try_minutes counts against this match's own
+            # `tries` column, per the validation gap flagged in STATUS.md
+            # ("no validation cross-check against the existing tries column
+            # count exists yet"). Never silently trusts a clean-looking parse.
+            # A failure here is logged loudly but does NOT abort the scrape --
+            # the underlying player-stats data (tries, points, etc.) is still
+            # good even if try_minutes attribution has an issue this match.
+            try:
+                this_match_rows = [r for r in (home_rows + away_rows) if r.get("tries")]
+                if this_match_rows and try_minutes_agg:
+                    validation = validate_try_minutes(parsed_tries, this_match_rows)
+                    if validation["ok"]:
+                        print(f"    Try-minute validation: OK ({len(parsed_tries)} tries matched)")
+                    else:
+                        print(f"    Try-minute validation: MISMATCH — review needed")
+                        if validation["mismatches"]:
+                            print(f"      Count mismatches: {validation['mismatches']}")
+                        if validation["unmatched_team_names"]:
+                            print(f"      Unresolved team names: {validation['unmatched_team_names']}")
+                        if validation["unparsed_entries"]:
+                            print(f"      Unparsed li entries (unexpected minute format?): {validation['unparsed_entries']}")
+            except Exception as e:
+                print(f"    Try-minute validation failed to run (non-fatal): {e}")
 
         except Exception as e:
             print(f"    Error processing match: {e}")
