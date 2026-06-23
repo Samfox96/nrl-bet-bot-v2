@@ -164,6 +164,25 @@ def create_cronjob_trigger(api_key, github_token, round_num, match, trigger_dt):
         timeout=30,
     )
 
+    # Safety net beyond the fixed inter-call delay: if we still hit the
+    # rate limit (e.g. due to request latency variance), wait out a full
+    # minute window and retry once rather than silently losing this
+    # match's trigger. One retry is enough given the fixed delay between
+    # calls already keeps us comfortably under the limit in normal cases.
+    if response.status_code == 429:
+        print(f"  Rate limited creating trigger for {match['home_team']} v "
+              f"{match['away_team']} -- waiting 60s and retrying once.")
+        time.sleep(60)
+        response = requests.put(
+            f"{CRONJOB_API_BASE}/jobs",
+            headers={
+                "Authorization": f"Bearer {api_key}",
+                "Content-Type": "application/json",
+            },
+            json=payload,
+            timeout=30,
+        )
+
     if response.status_code == 200:
         job_id = response.json().get("jobId")
         print(f"  Created cron-job.org job {job_id}: {job_title}")
@@ -214,10 +233,17 @@ def main():
         if job_id:
             created_count += 1
 
-        # cron-job.org's job-creation rate limit: 1 request/second, 5/minute.
-        # A fixed delay keeps us comfortably under both limits for a round's
-        # worth of matches (typically 6-8).
-        time.sleep(2)
+        # cron-job.org's job-creation rate limit is TWO separate caps:
+        # 1 request/second AND 5 requests/minute. A 2-second delay only
+        # respects the per-second cap -- for a round with 8 matches, the
+        # 6th call still lands inside the same 60-second window and gets
+        # rejected with HTTP 429. CONFIRMED via a real run (2026-06-23):
+        # exactly the 6th, 7th, and 8th calls failed with 429, matching
+        # this exact math (5 succeeded within one minute, then 3 more
+        # arrived too soon). Fixed by spacing calls 13 seconds apart,
+        # comfortably under 5/minute (12s would be the exact limit; 13s
+        # leaves margin for request latency).
+        time.sleep(13)
 
     print(f"\nDone. {created_count}/{len(kickoffs)} triggers "
           f"{'would be ' if args.dry_run else ''}created for round {round_num}.")
