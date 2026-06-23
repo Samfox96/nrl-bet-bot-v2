@@ -297,7 +297,8 @@ def build_league_tpg_by_position(position_tpg_baseline):
 
 
 def build_due_watch(master_rows, season, up_to_round, team_aliases, position_aliases,
-                     zcr_baseline, position_tpg_baseline, season_draw, top_n=5):
+                     zcr_baseline, position_tpg_baseline, season_draw, top_n=5,
+                     weighted_zcr_lookup=None, weighted_league_tpg_by_position=None):
     """
     Top-level entry point. Returns a sorted list of dicts, each with the
     composite score, every contributing factor's raw + normalised value
@@ -305,6 +306,20 @@ def build_due_watch(master_rows, season, up_to_round, team_aliases, position_ali
     and which factors were unavailable (e.g. no opponent data, too few
     games for structure share) rather than silently treating missing
     data as zero.
+
+    PHASE 7 INTEGRATION (added 2026-06-23, opt-in, not yet the default):
+    weighted_zcr_lookup and weighted_league_tpg_by_position let a caller
+    pass in recency+confidence-weighted baselines (from
+    recency_weighted_baselines.py) instead of the flat 2021-2025
+    averages computed from zcr_baseline/position_tpg_baseline directly
+    below. Both default to None, meaning "use the existing flat
+    baseline" -- this keeps every current caller's behaviour identical
+    until someone deliberately opts in by passing the weighted dicts.
+    weighted_zcr_lookup, if provided, should be keyed exactly like the
+    existing zcr_lookup below: (defending_team_full, position_code) ->
+    concede_rate. weighted_league_tpg_by_position, if provided, should
+    be keyed by position_code -> tpg, same shape as
+    build_league_tpg_by_position()'s return value.
     """
     round_key = str(up_to_round)
     if round_key not in season_draw["rounds"]:
@@ -319,10 +334,19 @@ def build_due_watch(master_rows, season, up_to_round, team_aliases, position_ali
         opponent_of[home] = away
         opponent_of[away] = home
 
-    zcr_lookup = {}
-    for row in zcr_baseline:
-        zcr_lookup[(row["defending_team"], row["position"])] = safe_float(row["concede_rate"])
+    if weighted_zcr_lookup is not None:
+        zcr_lookup = weighted_zcr_lookup
+    else:
+        zcr_lookup = {}
+        for row in zcr_baseline:
+            zcr_lookup[(row["defending_team"], row["position"])] = safe_float(row["concede_rate"])
 
+    # league_avg_zcr_by_position is still computed from the flat baseline
+    # either way -- it's a league-wide average used only to judge whether
+    # a SPECIFIC opponent's rate is above/below normal, not itself a
+    # candidate for recency weighting in the same sense (it's already an
+    # average across all 17 teams, so the per-team weighted_zcr_lookup
+    # above is where Phase 7's actual effect shows up).
     league_avg_zcr_by_position = defaultdict(list)
     for row in zcr_baseline:
         league_avg_zcr_by_position[row["position"]].append(safe_float(row["concede_rate"]))
@@ -330,7 +354,11 @@ def build_due_watch(master_rows, season, up_to_round, team_aliases, position_ali
         code: sum(vals) / len(vals) for code, vals in league_avg_zcr_by_position.items()
     }
 
-    league_tpg_by_position = build_league_tpg_by_position(position_tpg_baseline)
+    if weighted_league_tpg_by_position is not None:
+        league_tpg_by_position = weighted_league_tpg_by_position
+    else:
+        league_tpg_by_position = build_league_tpg_by_position(position_tpg_baseline)
+
     by_player = build_player_game_log(master_rows, season, up_to_round)
     team_round_tries, team_round_receipts = build_team_round_aggregates(master_rows, season, up_to_round)
 
