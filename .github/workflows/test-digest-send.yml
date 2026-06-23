@@ -71,6 +71,7 @@ jobs:
               position_aliases_path='data/position_aliases.json',
               zcr_baseline_path='data/historical_zcr_baseline.csv',
               position_tpg_baseline_path='data/historical_position_tpg_baseline.csv',
+              season_draw_path='data/season_draw_2026.json',
           )
 
           print('=== DIGEST CONTENT (preview before sending) ===')
