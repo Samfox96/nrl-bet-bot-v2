@@ -1,0 +1,28 @@
+{
+  "_comment": "Full 2026 NRL season draw, team pairings by round. Source: nrl.com official draw PDF (nrl-draw-2026---final.pdf), confirmed 2026-06-23. Team names here use the SHORT form matching nrl_master.csv's team column (e.g. 'Tigers' here is normalised to 'Wests Tigers' via team_aliases.json's alias map before use elsewhere -- this file intentionally mirrors the PDF's own short labels, not pre-normalised, so it's a faithful transcription of the source).",
+  "rounds": {
+    "17": {
+      "fixtures": [
+        ["Eels", "Rabbitohs"],
+        ["Titans", "Bulldogs"],
+        ["Broncos", "Roosters"],
+        ["Dolphins", "Warriors"],
+        ["Cowboys", "Panthers"],
+        ["Sea Eagles", "Storm"],
+        ["Raiders", "Dragons"],
+        ["Knights", "Tigers"]
+      ],
+      "byes": ["Sharks"]
+    },
+    "18": {
+      "fixtures": [
+        ["Panthers", "Rabbitohs"],
+        ["Dragons", "Tigers"],
+        ["Broncos", "Sharks"],
+        ["Eels", "Sea Eagles"],
+        ["Knights", "Dolphins"]
+      ],
+      "byes": ["Bulldogs", "Cowboys", "Raiders", "Roosters", "Storm", "Titans", "Warriors"]
+    }
+  }
+}
