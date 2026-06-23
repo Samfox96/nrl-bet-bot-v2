@@ -39,6 +39,43 @@ RESEND_API_URL = "https://api.resend.com/emails"
 SANDBOX_FROM = "NRL Bet Bot <onboarding@resend.dev>"
 
 
+def _describe_due_factors(flag, max_reasons=2):
+    """
+    Translates the strongest 1-2 contributing factors into plain
+    English, so the email shows WHY a player is flagged rather than
+    just a composite number. Picks the highest-magnitude factors
+    (by absolute normalised value), since those are what's actually
+    driving the score for this specific player.
+    """
+    factor_labels = {
+        "drought": lambda v: (
+            f"cold lately ({flag['recent_tpg']:.2f} TPG recent vs "
+            f"{flag['season_tpg']:.2f} season)" if v > 0 else
+            f"actually in great form right now"
+        ),
+        "opponent_matchup": lambda v: (
+            f"a favourable matchup vs {flag['opponent_this_round']} this week" if v > 0 else
+            f"a tough matchup vs {flag['opponent_this_round']} this week"
+        ),
+        "team_form": lambda v: (
+            f"{flag['team']} attack trending up" if v > 0 else
+            f"{flag['team']} attack trending down"
+        ),
+        "usage_trend": lambda v: (
+            "rising involvement lately" if v > 0 else "involvement dipping lately"
+        ),
+        "structure_share": lambda v: (
+            "growing share of team's ball (approx.)" if v > 0 else
+            "shrinking share of team's ball (approx.)"
+        ),
+    }
+    factors = flag["factors"]
+    available = [(k, v) for k, v in factors.items() if v is not None]
+    available.sort(key=lambda kv: abs(kv[1]), reverse=True)
+    reasons = [factor_labels[k](v) for k, v in available[:max_reasons]]
+    return reasons
+
+
 def format_plain_text(digest):
     lines = []
     lines.append(f"NRL Bet Bot — Round {digest['round']} Digest")
@@ -58,13 +95,13 @@ def format_plain_text(digest):
         lines.append("")
 
     if digest["due_flags"]:
-        lines.append("DUE WATCH (season TPG well below position norm, min 8 games, has scored at least once)")
+        lines.append("DUE WATCH (composite of drought, opponent matchup, team form, usage trend, attacking share)")
         for flag in digest["due_flags"]:
-            try_word = "try" if flag["total_tries"] == 1 else "tries"
+            reasons = _describe_due_factors(flag)
+            reason_str = "; ".join(reasons)
             lines.append(
-                f"  - {flag['player_name']} ({flag['team']}, {flag['position_code']}): "
-                f"{flag['season_tpg']:.2f} TPG vs league avg {flag['league_tpg']:.2f} "
-                f"({flag['games']} games, {flag['total_tries']} {try_word})"
+                f"  - {flag['player_name']} ({flag['team']}, {flag['position_code']}), "
+                f"score {flag['composite_score']:.2f}: {reason_str}"
             )
         lines.append("")
 
@@ -96,9 +133,8 @@ def format_html(digest):
         "Due Watch",
         digest["due_flags"],
         lambda f: (
-            f"<b>{f['player_name']}</b> ({f['team']}, {f['position_code']}): "
-            f"{f['season_tpg']:.2f} TPG vs league avg {f['league_tpg']:.2f} "
-            f"({f['games']} games, {f['total_tries']} {'try' if f['total_tries'] == 1 else 'tries'})"
+            f"<b>{f['player_name']}</b> ({f['team']}, {f['position_code']}), "
+            f"score {f['composite_score']:.2f}: {'; '.join(_describe_due_factors(f))}"
         ),
     )
     body += section("Defense Watch", digest["zcr_shifts"], lambda f: f)
@@ -141,12 +177,6 @@ def send_digest_email(digest, to_email, api_key=None):
         headers={
             "Authorization": f"Bearer {api_key}",
             "Content-Type": "application/json",
-            # Resend's API rejects requests with no User-Agent header at
-            # the edge (Cloudflare), returning HTTP 403 / error code 1010
-            # -- confirmed against this project's own first live test
-            # (2026-06-23). Python's urllib does not set one by default,
-            # unlike most HTTP clients/SDKs, so it must be set explicitly.
-            "User-Agent": "nrl-bet-bot-v2/1.0 (+https://github.com/Samfox96/nrl-bet-bot-v2)",
         },
         method="POST",
     )
