@@ -61,6 +61,7 @@ import csv
 import json
 import os
 from collections import defaultdict
+from due_flags_v2 import build_due_watch
 
 
 def load_json(path):
@@ -216,89 +217,12 @@ def form_trend_facts(round_rows, season_averages, min_games=4):
     return facts
 
 
-def due_flags(master_rows, season, up_to_round, position_aliases, position_tpg_baseline, min_games=8, top_n=None):
-    """
-    Players whose season TPG sits well below the league baseline for
-    their position, per the project's DUE-flag principle: season TPG,
-    not recent-drought-period TPG, and a minimum of 8 games played.
-
-    Returns a list of dicts: {player_name, team, position_code,
-    season_tpg, league_tpg, ratio}, sorted by how far below baseline
-    they are (most "due" first). A player is flagged only if their
-    season TPG is at least 40% below the league baseline for their
-    position AND they've played enough games for that to mean something
-    (>= min_games) AND the position itself has a meaningful scoring rate
-    (skips e.g. props/hookers where a low TPG is just normal for the
-    position, not a drought).
-    """
-    # Aggregate 2021-2025 league TPG by position code (consistent with
-    # how historical_zcr_baseline.csv is already used as an all-season
-    # aggregate elsewhere in this project).
-    league_tpg_by_position = defaultdict(lambda: [0, 0])  # code -> [tries, games]
-    for row in position_tpg_baseline:
-        code = row["position"]  # baseline file already uses canonical codes
-        league_tpg_by_position[code][0] += safe_int(row["total_tries"])
-        league_tpg_by_position[code][1] += safe_int(row["total_player_games"])
-
-    league_tpg = {
-        code: (tries / games if games else 0)
-        for code, (tries, games) in league_tpg_by_position.items()
-    }
-
-    by_player = defaultdict(list)
-    for row in master_rows:
-        if row["season"] != str(season):
-            continue
-        if safe_int(row["round"]) >= up_to_round:
-            continue
-        by_player[row["player_name"]].append(row)
-
-    flags = []
-    for player, rows in by_player.items():
-        games = len(rows)
-        if games < min_games:
-            continue
-
-        total_tries = sum(safe_int(r["tries"]) for r in rows)
-        season_tpg = total_tries / games
-
-        # A real DUE flag requires evidence the player is a credible
-        # scoring threat in the first place -- a prop with 0 tries in 12
-        # games isn't "due", that's just normal for the role. Without
-        # this check, every non-try-scoring forward in the league would
-        # be flagged, which is exactly what happened on first attempt
-        # against real Round 16 data and is NOT a useful digest fact.
-        if total_tries == 0:
-            continue
-
-        # Use this player's most recent position entry (positions can
-        # shift -- interchange players especially -- so "most recent"
-        # is more meaningful than "most frequent" for a DUE read).
-        most_recent = sorted(rows, key=lambda r: safe_int(r["round"]))[-1]
-        position_code = normalise_position(most_recent["position"], position_aliases)
-        if position_code is None:
-            continue  # flag via omission rather than guess a position
-
-        baseline = league_tpg.get(position_code)
-        if not baseline or baseline < 0.05:
-            continue  # position doesn't score enough for "DUE" to be meaningful
-
-        if season_tpg < baseline * 0.6:  # at least 40% below the league norm
-            flags.append({
-                "player_name": player,
-                "team": rows[-1]["team"],
-                "position_code": position_code,
-                "season_tpg": round(season_tpg, 3),
-                "league_tpg": round(baseline, 3),
-                "ratio": round(season_tpg / baseline, 2) if baseline else None,
-                "games": games,
-                "total_tries": total_tries,
-            })
-
-    flags.sort(key=lambda f: f["ratio"])
-    if top_n is not None:
-        flags = flags[:top_n]
-    return flags
+### due_flags() removed 2026-06-23 -- replaced by due_flags_v2.build_due_watch().
+### The original measured "season TPG below position average", which surfaced
+### chronic non-scorers as "due" (a real bug, caught from live production
+### feedback after the first real email send). See due_flags_v2.py for the
+### rebuilt composite signal (drought + opponent matchup + team form + usage
+### trend + structure share) and its own detailed history of fixes.
 
 
 def zcr_shift_facts(round_rows, round_num, team_aliases, position_aliases, zcr_baseline, n=3):
@@ -359,21 +283,49 @@ def build_digest(master_csv_path, round_num, season,
                   team_aliases_path="team_aliases.json",
                   position_aliases_path="position_aliases.json",
                   zcr_baseline_path="historical_zcr_baseline.csv",
-                  position_tpg_baseline_path="historical_position_tpg_baseline.csv"):
+                  position_tpg_baseline_path="historical_position_tpg_baseline.csv",
+                  season_draw_path="season_draw_2026.json"):
     """
     Top-level entry point. Returns a dict with all digest sections, ready
     to be handed to the email-formatting layer. Does NOT send anything --
     this function's only job is producing the content.
+
+    IMPORTANT: round_num is the round that JUST FINISHED and was merged
+    into nrl_master.csv (e.g. 16). The DUE WATCH section's opponent-
+    matchup factor needs the UPCOMING round's fixtures (e.g. 17) -- this
+    is a different round number, intentionally computed as round_num + 1
+    below. Conflating these would silently point the matchup factor at
+    the wrong round's draw. This wasn't an issue for the other digest
+    sections (top performances, form trends, ZCR shifts), which all
+    describe round_num itself, not what's coming next.
     """
     master_rows = load_csv(master_csv_path)
     team_aliases = load_json(team_aliases_path)["aliases"]
     position_aliases = load_json(position_aliases_path)["aliases"]
     zcr_baseline = load_csv(zcr_baseline_path)
     position_tpg_baseline = load_csv(position_tpg_baseline_path)
+    season_draw = load_json(season_draw_path)
 
     round_rows = [r for r in master_rows if r["round"] == str(round_num) and r["season"] == str(season)]
 
     season_averages = build_season_averages(master_rows, season, up_to_round=round_num)
+
+    upcoming_round = round_num + 1
+    try:
+        due_watch = build_due_watch(
+            master_rows, season=season, up_to_round=upcoming_round,
+            team_aliases=team_aliases, position_aliases=position_aliases,
+            zcr_baseline=zcr_baseline, position_tpg_baseline=position_tpg_baseline,
+            season_draw=season_draw, top_n=5,
+        )
+    except KeyError as e:
+        # season_draw_2026.json doesn't cover this round yet (it's
+        # extended manually as the season progresses -- see that file's
+        # own header comment). Missing draw data for an upcoming round
+        # should not break the WHOLE digest -- the other sections are
+        # still real and useful even without DUE WATCH this one week.
+        due_watch = []
+        print(f"WARNING: DUE WATCH skipped -- {e}")
 
     digest = {
         "round": round_num,
@@ -381,7 +333,7 @@ def build_digest(master_csv_path, round_num, season,
         "row_count": len(round_rows),
         "top_performances": top_performances(round_rows),
         "form_trends": form_trend_facts(round_rows, season_averages),
-        "due_flags": due_flags(master_rows, season, round_num, position_aliases, position_tpg_baseline, top_n=5),
+        "due_flags": due_watch,
         "zcr_shifts": zcr_shift_facts(round_rows, round_num, team_aliases, position_aliases, zcr_baseline),
     }
     return digest
