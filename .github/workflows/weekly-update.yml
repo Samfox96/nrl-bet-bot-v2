@@ -72,6 +72,73 @@ jobs:
           git commit -m "Auto-merge round ${{ steps.next_round.outputs.round }} (validated)" || echo "Nothing to commit"
           git push
 
+
+    # ============================================================
+# Phase 5 addition to .github/workflows/weekly-update.yml
+# ============================================================
+# Insert this step immediately AFTER the existing
+# "Commit changes (only runs if merge succeeded)" step, and BEFORE
+# the "Commit pending file for review" step. It deliberately uses the
+# same `if: steps.validate_merge.outcome == 'success'` condition as the
+# commit step above it, so the digest email only fires on a genuine
+# clean merge -- never on a validation failure (those already get a
+# GitHub Issue via the existing "Open issue on failure" step, and
+# should NOT also receive a "good news" digest).
+#
+# Requires one new repository secret: RESEND_API_KEY
+# (Settings -> Secrets and variables -> Actions -> New repository secret)
+# Get a free API key at https://resend.com -- free tier is 3,000
+# emails/month, 100/day, comfortably covers one email per week.
+#
+# Also requires DIGEST_TO_EMAIL as a repository secret (or variable) --
+# the inbox the digest should land in. Stored as a secret rather than
+# hardcoded so the email address itself isn't sitting in plain text in
+# a public repo (the repo is public as of 2026-06-23).
+
+      - name: Install digest dependencies
+        if: steps.validate_merge.outcome == 'success'
+        run: |
+          pip install pandas
+
+      - name: Generate and send round digest
+        if: steps.validate_merge.outcome == 'success'
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          DIGEST_TO_EMAIL: ${{ secrets.DIGEST_TO_EMAIL }}
+        run: |
+          python3 -c "
+          import sys
+          sys.path.insert(0, 'scripts')
+          from generate_round_digest import build_digest
+          from send_round_digest import send_digest_email, write_due_flags_snapshot
+
+          round_num = ${{ steps.next_round.outputs.round }}
+          digest = build_digest(
+              'data/nrl_master.csv',
+              round_num=round_num,
+              season=2026,
+              team_aliases_path='data/team_aliases.json',
+              position_aliases_path='data/position_aliases.json',
+              zcr_baseline_path='data/historical_zcr_baseline.csv',
+              position_tpg_baseline_path='data/historical_position_tpg_baseline.csv',
+          )
+          to_email = '${{ secrets.DIGEST_TO_EMAIL }}'.strip()
+          if not to_email:
+              raise RuntimeError('DIGEST_TO_EMAIL secret is not set -- add it under Settings > Secrets and variables > Actions')
+          send_digest_email(digest, to_email=to_email)
+          write_due_flags_snapshot(digest, path='data/due_flags_last_run.json')
+          print(f'Digest sent for round {round_num}')
+          "
+
+      - name: Commit digest snapshot
+        if: steps.validate_merge.outcome == 'success'
+        run: |
+          git config user.name "nrl-bot-automation"
+          git config user.email "actions@github.com"
+          git add data/due_flags_last_run.json
+          git commit -m "Save DUE flags snapshot for round ${{ steps.next_round.outputs.round }}" || echo "Nothing to commit"
+          git push
+
       - name: Commit pending file for review (only runs if validation failed)
         if: steps.validate_merge.outcome == 'failure' || steps.scrape.outcome == 'failure'
         run: |
