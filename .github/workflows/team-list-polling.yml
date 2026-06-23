@@ -5,13 +5,24 @@ name: Team List Polling (Job B)
 # CURRENT round (the one being played right now, Thu-Sun), so predictions
 # can use the most recent lineup info right up until just before kickoff.
 #
-# Runs hourly, Thursday through Sunday, but the script itself only does real
-# work (writes data/team_lists_current.csv) when at least one match in the
-# round is within 1 hour of its actual AEST kickoff time -- most hourly runs
-# will correctly do nothing. This was a deliberate design choice (see
-# scrape_team_lists.py) over trying to schedule one cron trigger per exact
-# kickoff, which GitHub Actions cron can't do natively (no dynamic/per-data
-# scheduling -- cron entries are static).
+# TRIGGER MECHANISM CHANGED 2026-06-23: this used to run on a fixed hourly
+# GitHub Actions cron schedule. That was confirmed unreliable in practice --
+# real observed gaps of 1-5 hours between supposedly-hourly runs
+# (2026-06-22), caused by GitHub's shared-runner queueing delays, which are
+# well documented to be worst at the top of the hour. For a job whose whole
+# purpose is "catch changes within 1 hour of kickoff," that imprecision
+# defeated the purpose.
+#
+# This workflow is now triggered EXCLUSIVELY via workflow_dispatch, called
+# precisely by cron-job.org (see schedule-kickoffs.yml, which sets up one
+# precisely-timed external trigger per match, 1 hour before each kickoff,
+# every week). No more GitHub-native `schedule:` trigger here at all.
+#
+# The script's own kickoff-window check (scrape_team_lists.py) is STILL
+# kept as a safety gate even though triggers are now precise -- if for any
+# reason this gets triggered at the wrong time (e.g. someone manually runs
+# it, or a future bug in the scheduling script), it will still correctly
+# do nothing unless a match is genuinely within the window.
 #
 # SELF-CONTAINED, no dependency on Job A: an earlier version of this workflow
 # relied on a sidecar file Job A was supposed to produce. That failed in a
@@ -20,18 +31,6 @@ name: Team List Polling (Job B)
 # list AND kickoff times -- from a single plain HTTP fetch of nrl.com's
 # team-list article, which embeds both. See scrape_team_lists.py docstring.
 on:
-  schedule:
-    # Every hour, Thursday (3) through Sunday (0). Cron weekday numbering:
-    # 0=Sunday, 1=Monday, ... 6=Saturday. "4,5,6,0" = Thu,Fri,Sat,Sun --
-    # NOTE, NOT YET VERIFIED: cron days here are UTC days, which can be one
-    # calendar day behind AEST depending on the hour. This may cause this
-    # workflow to start ~10 hours "late" relative to AEST Thursday, or
-    # similar boundary effects on Sunday night/Monday morning AEST. Since
-    # the script's own kickoff-window check is the real gate (not the cron
-    # schedule), an imprecise cron window is a minor inefficiency (a few
-    # wasted/missed hourly checks at the edges), not a correctness bug --
-    # but worth tightening once there's a live round to verify against.
-    - cron: '0 * * * *'
   workflow_dispatch: {}
 
 jobs:
