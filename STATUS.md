@@ -4,7 +4,21 @@ _This file is the single source of truth for "is the data trustworthy right now.
 ---
 
 ## Last Updated
-**2026-06-22** — Round 16 merged in (single-round scrape workflow)
+**2026-06-23** — Round 16 merged in (single-round scrape workflow); full weekly automation (Job A, Job B, precise cron-job.org triggers) built and live-tested
+
+## Automation Status (Phase 3)
+
+**Job A — completed-round stats** (`weekly-update.yml`): runs Thursday mornings, scrapes the round that just finished, validates (zero dupes, bye-schedule match, per-team row-count sanity), merges into `nrl_master.csv` only on a clean pass; opens a GitHub Issue and leaves data untouched on failure. Proven live against real Round 17 fixtures (2026-06-22).
+
+**Job B — team-list polling near kickoff** (`team-list-polling.yml`): fetches the current round's published team list, extracts player/position/jersey data plus exact kickoff times, writes `data/team_lists_current.csv` only when a match is within 1 hour of kickoff. Self-contained — no dependency on Job A. Proven live end-to-end (2026-06-23).
+
+**Precise per-match triggering** (`schedule-kickoffs.yml`, runs Tue/Wed): GitHub's native hourly cron for Job B was confirmed unreliable in practice (real observed gaps of 1–5 hours between supposedly-hourly runs, 2026-06-22) — GitHub's shared-runner scheduling is documented to be imprecise, especially at the top of the hour. Replaced with **cron-job.org** as an external scheduler: each week, `schedule_kickoff_triggers.py` reads the round's real kickoff times and creates one precisely-timed job per match via cron-job.org's REST API, each firing a `workflow_dispatch` call to Job B exactly 1 hour before that match's kickoff. Confirmed live end-to-end (2026-06-23): all 8 of Round 17's triggers created successfully and verified against the console.
+
+Credentials: `CRONJOB_API_KEY` and `WORKFLOW_DISPATCH_TOKEN` are stored as GitHub Actions repository secrets (Settings → Secrets and variables → Actions). Never pasted in chat or hardcoded — this was deliberately enforced after an earlier session accidentally had a token pasted into chat (immediately revoked).
+
+**Known gotcha**: cron-job.org's job-creation API allows 1 request/second AND 5/minute. The script must space calls ~13 seconds apart — a tighter delay caused real `HTTP 429` failures on a round's 6th–8th match in testing (2026-06-22), since 8 matches at less than 12s apart breaches the per-minute cap even though each individual call respects the per-second cap.
+
+**Still outstanding**: Job A's first genuine full-cycle success (real scrape → validate → merge of a just-finished round, not just a "round not played yet" test) is expected **Thursday July 2, 2026**, once Round 17 finishes.
 
 ## Current Data Coverage
 
@@ -44,11 +58,12 @@ This is faster and lower-risk than full rescrapes — existing rounds are never 
 7. Erroneous R13 `dolphins-v-rabbitohs` fallback URL removed (both teams were on bye, fixture never existed)
 
 ## Outstanding Gaps
-- [ ] No scraper running automatically yet — still manual (you run it, paste results)
-- [ ] `try_minute` column not yet present — still arriving via weekly scorecard screenshots only
-- [ ] No GitHub repo/Actions workflow created yet (Phase 2-3)
+- [x] ~~No scraper running automatically~~ — Job A + Job B both automated and live-tested (see Automation Status above)
+- [x] ~~No GitHub repo/Actions workflow~~ — repo live at github.com/Samfox96/nrl-bet-bot-v2, both jobs + the cron-job.org scheduler all wired in
+- [ ] `try_minute` column not yet present in `nrl_master.csv` — parser for the match-summary "Tries" box is built and tested against real captured HTML (2026-06-22), but NOT yet wired into `nrl_update_single_round.py`, and no validation cross-check against the existing `tries` column exists yet (Phase 4, next up)
 - [ ] Recency-weighted position TPG baseline calculated but not yet wired into the live model (Phase 7)
-- [ ] No team lists received yet for Round 17 predictions
+- [ ] No team lists received yet for Round 17 *predictions* specifically — team-list data IS now being captured automatically via Job B, but this hasn't yet been used to generate actual xTry predictions for an upcoming round
+- [ ] Job A's first full real-world cycle (scrape a just-finished round, not a "too early" test) not yet observed — expected Thursday July 2, 2026
 
 ## Validation Checks Run Every Update
 - Row count sanity check (expected range per round, bye-adjusted)
