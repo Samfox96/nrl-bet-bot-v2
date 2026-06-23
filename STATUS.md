@@ -4,7 +4,7 @@ _This file is the single source of truth for "is the data trustworthy right now.
 ---
 
 ## Last Updated
-**2026-06-23** — Round 16 merged in (single-round scrape workflow); full weekly automation (Job A, Job B, precise cron-job.org triggers) built and live-tested
+**2026-06-23** — Round 16 merged in (single-round scrape workflow); full weekly automation (Job A, Job B, precise cron-job.org triggers) built and live-tested; Phase 4 (try-minute parser) wired into the scraper, pending its first live proof against a real finished round; Phase 5 (digest email) built, fixed through three real bugs, and proven live end-to-end (real email delivered with correct content); Phase 6 (Claude reads the live repo directly) done — repo changed to **public** specifically to enable this, no secrets were ever stored in committed files so this was a safe change
 
 ## Automation Status (Phase 3)
 
@@ -20,6 +20,29 @@ Credentials: `CRONJOB_API_KEY` and `WORKFLOW_DISPATCH_TOKEN` are stored as GitHu
 
 **Still outstanding**: Job A's first genuine full-cycle success (real scrape → validate → merge of a just-finished round, not just a "round not played yet" test) is expected **Thursday July 2, 2026**, once Round 17 finishes.
 
+## Try-Minute Capture (Phase 4)
+
+Parser (`parse_try_minutes.py`) built and tested against 2 real captured DOM structures (Knights v Dragons R16; Bulldogs v Sea Eagles R16 golden-point game). Wired into `nrl_update_single_round.py`: captures the Tries summary box via `driver.page_source` before the Player Stats tab click, merges `try_minutes` (e.g. `"5;8"` for multiple tries) onto each player row, validates parsed counts against the existing `tries` column.
+
+**Known, deliberate gap**: extra-time TRY minute format unconfirmed (both real captures only showed a golden-point FIELD GOAL in extra time, not a try). The parser's regex will not silently mishandle an unexpected format — it flags via `unparsed_entries` in `validate_try_minutes()` rather than guessing. Revisit when a real extra-time try is captured.
+
+**Not yet proven live**: this has not yet run against a real finished round through the actual GitHub Actions Job A pipeline. First real test: Thursday July 2, 2026, alongside Job A's own first full-cycle proof.
+
+## Weekly Digest Email (Phase 5)
+
+Built, tested, and **proven live** 2026-06-23 — a real email was sent and received with correct content.
+
+**Components**: `generate_round_digest.py` (content), `send_round_digest.py` (Resend API send), `due_flags_v2.py` (composite DUE WATCH scoring), `season_draw_2026.json` (fixture data for the opponent-matchup factor, currently covers rounds 17-18 only, **must be extended** as the season progresses or DUE WATCH will raise a clear error for rounds beyond what's transcribed).
+
+**Real bugs found and fixed during build-and-test** (kept here as institutional memory, same spirit as the Phase 0 issues list below):
+1. `zcr_shift_facts()` hardcoded a bare `"position_aliases.json"` path instead of using the function's own parameter — worked in every local test (coincidentally run from a directory containing that bare filename) but failed immediately on the real GitHub Actions checkout structure (`scripts/` and `data/` as separate folders). Fixed by passing the already-loaded dict through, matching the pattern `due_flags()` already used correctly.
+2. Resend's API returns `HTTP 403 / error code 1010` for any request missing a `User-Agent` header — Python's `urllib` doesn't set one by default, unlike most HTTP clients/SDKs. Fixed by adding an explicit header. **This fix was accidentally dropped between commits once** (an older local copy of `send_round_digest.py` got committed alongside an unrelated change) and had to be reapplied a second time after a real test run reproduced the exact same error — worth being careful, when editing multiple files in one session, to always re-pull the live version of a file immediately before editing it, not reuse an in-memory copy that might predate a later commit.
+3. **Original DUE WATCH logic was conceptually wrong, not just buggy**: it measured "season TPG below position average," which surfaces chronic non-scorers (e.g. a winger with 0.08 TPG against a 0.62 league average) as "due" — caught from real user feedback after the first live email, since this is *the opposite* of a genuine DUE signal. Rebuilt as a weighted composite (drought 50%, opponent matchup 25%, team form/usage/structure-share 8.3% each) gated by a "proven scorer" check. That gate itself needed two further fixes once tested against the FULL real 2026 prop/hooker/lock dataset, not just one borderline case — see `due_flags_v2.py`'s own header comment for the detailed history.
+
+## Live Repo Reads (Phase 6)
+
+Done 2026-06-23. The repo was changed from private to **public** specifically to enable this — Claude fetches `https://raw.githubusercontent.com/Samfox96/nrl-bet-bot-v2/main/<path>` directly via `bash_tool`/`curl` at the start of each session rather than relying on uploaded file snapshots. Confirmed safe: `CRONJOB_API_KEY`, `WORKFLOW_DISPATCH_TOKEN`, `RESEND_API_KEY`, and `DIGEST_TO_EMAIL` have always lived only as GitHub Actions repository secrets, never in committed files.
+
 ## Current Data Coverage
 
 | File | Rows | Coverage | Status |
@@ -31,6 +54,8 @@ Credentials: `CRONJOB_API_KEY` and `WORKFLOW_DISPATCH_TOKEN` are stored as GitHu
 | `match_data_FINAL_fixed.csv` | 1,121 | 2021–2026 | ✅ Round-numbering bug fixed |
 | `team_aliases.json` | — | All 17 teams | ✅ Canonical standard locked |
 | `position_aliases.json` | — | All positions | ✅ Canonical standard locked |
+| `season_draw_2026.json` | — | Rounds 17-18 only | ⚠️ Must be extended round-by-round — DUE WATCH raises a clear error for rounds beyond what's transcribed |
+| `due_flags_last_run.json` | — | Most recent digest run | ✅ Snapshot only, no diffing logic built yet (Phase 5 future work) |
 
 ## Round 16 Validation Summary (2026-06-22)
 - Scraped via `nrl_update_single_round.py` (new single-round workflow — scrapes only the target round, saves to a separate file for review before merging, never touches `nrl_master.csv` directly)
@@ -60,10 +85,14 @@ This is faster and lower-risk than full rescrapes — existing rounds are never 
 ## Outstanding Gaps
 - [x] ~~No scraper running automatically~~ — Job A + Job B both automated and live-tested (see Automation Status above)
 - [x] ~~No GitHub repo/Actions workflow~~ — repo live at github.com/Samfox96/nrl-bet-bot-v2, both jobs + the cron-job.org scheduler all wired in
-- [ ] `try_minute` column not yet present in `nrl_master.csv` — parser for the match-summary "Tries" box is built and tested against real captured HTML (2026-06-22), but NOT yet wired into `nrl_update_single_round.py`, and no validation cross-check against the existing `tries` column exists yet (Phase 4, next up)
+- [x] ~~Claude requires manual file uploads each session~~ — repo is public, Claude reads live files directly (Phase 6)
+- [x] ~~No weekly digest notification~~ — built and proven live (Phase 5), fires as the final step of a successful Job A merge
+- [ ] `try_minute` column logic is wired into `nrl_update_single_round.py` (Phase 4) but has NOT yet run against a real finished round through the actual Job A pipeline — first real test alongside Job A's own first full-cycle proof, expected Thursday July 2, 2026
+- [ ] `season_draw_2026.json` only covers rounds 17-18 — needs manual extension from the official NRL draw PDF before DUE WATCH can run for round 19 onward
 - [ ] Recency-weighted position TPG baseline calculated but not yet wired into the live model (Phase 7)
 - [ ] No team lists received yet for Round 17 *predictions* specifically — team-list data IS now being captured automatically via Job B, but this hasn't yet been used to generate actual xTry predictions for an upcoming round
 - [ ] Job A's first full real-world cycle (scrape a just-finished round, not a "too early" test) not yet observed — expected Thursday July 2, 2026
+- [ ] No week-over-week DUE-flag diffing yet — `due_flags_last_run.json` snapshot mechanism exists, but the actual diff logic is deliberately not built until there are two real runs to compare against
 
 ## Validation Checks Run Every Update
 - Row count sanity check (expected range per round, bye-adjusted)
