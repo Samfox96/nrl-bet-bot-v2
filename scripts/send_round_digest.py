@@ -141,6 +141,12 @@ def send_digest_email(digest, to_email, api_key=None):
         headers={
             "Authorization": f"Bearer {api_key}",
             "Content-Type": "application/json",
+            # Resend's API rejects requests with no User-Agent header at
+            # the edge (Cloudflare), returning HTTP 403 / error code 1010
+            # -- confirmed against this project's own first live test
+            # (2026-06-23). Python's urllib does not set one by default,
+            # unlike most HTTP clients/SDKs, so it must be set explicitly.
+            "User-Agent": "nrl-bet-bot-v2/1.0 (+https://github.com/Samfox96/nrl-bet-bot-v2)",
         },
         method="POST",
     )
