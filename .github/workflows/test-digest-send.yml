@@ -1,0 +1,88 @@
+name: TEST - Digest Send Only
+
+# Standalone test workflow, added 2026-06-23 to prove the Phase 5 digest
+# email actually sends via Resend, ahead of Job A's next real cycle
+# (Thursday July 2, once Round 17 has actually finished).
+#
+# Deliberately isolated from weekly-update.yml's scrape/merge pipeline:
+# this workflow does NOT call nrl_update_single_round.py or
+# merge_round.py, and does NOT write to nrl_master.csv or STATUS.md.
+# It only reads the already-correct, already-merged Round 16 data that's
+# already live in the repo, and exercises generate_round_digest.py +
+# send_round_digest.py exactly as Job A's real "Generate and send round
+# digest" step will once it's added there.
+#
+# Why this exists as a separate file rather than reusing round_override
+# logic inside weekly-update.yml: merge_round.py independently computes
+# its OWN "next round" as max(round)+1 in nrl_master.csv, regardless of
+# what a scraper override might request. Forcing the scraper to fetch
+# round 16 would NOT make merge_round.py validate it as round 16 -- it
+# would still expect round 17, guaranteeing a validation failure, or
+# worse, risk re-scraping and overwriting real Round 16 production data
+# via the merge step's keep="last" dedup. Calling the digest scripts
+# directly, bypassing merge_round.py entirely, avoids both risks.
+#
+# Safe to delete this file once the real digest step in weekly-update.yml
+# has fired successfully on a genuine Job A run (expected 2026-07-02).
+
+on:
+  workflow_dispatch:
+    inputs:
+      round_to_test:
+        description: 'Which already-merged round to build the digest from (must already exist in nrl_master.csv)'
+        required: false
+        default: '16'
+
+jobs:
+  test-digest-send:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      # No pip install step -- generate_round_digest.py and
+      # send_round_digest.py use only the Python standard library
+      # (csv, json, os, urllib, collections), confirmed 2026-06-23.
+
+      - name: Build and send test digest
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          DIGEST_TO_EMAIL: ${{ secrets.DIGEST_TO_EMAIL }}
+        run: |
+          python3 -c "
+          import sys
+          sys.path.insert(0, 'scripts')
+          from generate_round_digest import build_digest
+          from send_round_digest import send_digest_email, format_plain_text
+
+          round_num = int('${{ inputs.round_to_test }}')
+          digest = build_digest(
+              'data/nrl_master.csv',
+              round_num=round_num,
+              season=2026,
+              team_aliases_path='data/team_aliases.json',
+              position_aliases_path='data/position_aliases.json',
+              zcr_baseline_path='data/historical_zcr_baseline.csv',
+              position_tpg_baseline_path='data/historical_position_tpg_baseline.csv',
+          )
+
+          print('=== DIGEST CONTENT (preview before sending) ===')
+          print(format_plain_text(digest))
+          print()
+
+          to_email = '${{ secrets.DIGEST_TO_EMAIL }}'.strip()
+          if not to_email:
+              raise RuntimeError('DIGEST_TO_EMAIL secret is not set.')
+
+          result = send_digest_email(digest, to_email=to_email)
+          print('=== SEND RESULT ===')
+          print(result)
+          print(f'TEST PASSED: digest for round {round_num} sent to {to_email}')
+          "
