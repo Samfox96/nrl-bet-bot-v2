@@ -281,12 +281,12 @@ def zcr_shift_facts(round_rows, round_num, team_aliases, position_aliases, zcr_b
 
 
 def build_digest(master_csv_path, round_num, season,
-                  team_aliases_path="team_aliases.json",
-                  position_aliases_path="position_aliases.json",
-                  zcr_baseline_path="historical_zcr_baseline.csv",
-                  position_tpg_baseline_path="historical_position_tpg_baseline.csv",
-                  season_draw_path="season_draw_2026.json",
-                  historical_player_match_rows_path="historical_player_match_rows.csv"):
+                  team_aliases_path="data/team_aliases.json",
+                  position_aliases_path="data/position_aliases.json",
+                  zcr_baseline_path="data/historical_zcr_baseline.csv",
+                  position_tpg_baseline_path="data/historical_position_tpg_baseline.csv",
+                  season_draw_path="data/season_draw_2026.json",
+                  historical_player_match_rows_path="data/historical_player_match_rows.csv"):
     """
     Top-level entry point. Returns a dict with all digest sections, ready
     to be handed to the email-formatting layer. Does NOT send anything --
@@ -378,6 +378,25 @@ def build_digest(master_csv_path, round_num, season,
 
 if __name__ == "__main__":
     # Self-test against real, live-pulled data (Round 16, the latest
-    # complete round in nrl_master.csv as of 2026-06-23).
-    digest = build_digest("nrl_master.csv", round_num=16, season=2026)
+    # complete round in nrl_master.csv as of 2026-06-23). Explicit
+    # bare-filename paths here -- defaults were changed to data/-
+    # prefixed paths 2026-06-24 (see this function's own real bug,
+    # caught via a genuine live Actions failure: the workflow's call
+    # site only overrode 4 of 6 path arguments, leaving
+    # season_draw_path and historical_player_match_rows_path on their
+    # old bare-filename defaults, which don't exist at that location
+    # when the real working directory is the repo root, as it is in
+    # Actions). Local ad-hoc testing (this self-test block) keeps its
+    # files alongside the script itself, not under data/, so it must
+    # override every path explicitly now rather than rely on defaults
+    # tuned for the real deployed layout.
+    digest = build_digest(
+        "nrl_master.csv", round_num=16, season=2026,
+        team_aliases_path="team_aliases.json",
+        position_aliases_path="position_aliases.json",
+        zcr_baseline_path="historical_zcr_baseline.csv",
+        position_tpg_baseline_path="historical_position_tpg_baseline.csv",
+        season_draw_path="season_draw_2026.json",
+        historical_player_match_rows_path="historical_player_match_rows.csv",
+    )
     print(json.dumps(digest, indent=2))
