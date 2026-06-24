@@ -98,6 +98,7 @@ from odds_fetcher import (  # noqa: E402
 )
 from odds_probability import consensus_true_probability  # noqa: E402
 from edge_finder import find_edges_for_match  # noqa: E402
+from due_flags_v2 import build_due_watch  # noqa: E402
 
 from collections import defaultdict
 
@@ -239,6 +240,34 @@ def generate_round_predictions(season, up_to_round, the_odds_api_key, data_dir="
 
     elo_ratings = build_elo_ratings(baselines["match_rows"], team_aliases)
 
+    # Real DUE WATCH for the whole round (top_n=None -- no truncation --
+    # since this needs filtering back down to "due players in fixture X"
+    # per game below, not a single round-wide top list). Reuses the
+    # exact same Phase 7 weighted baselines already loaded into
+    # `baselines` for xtry_model.py's own components -- not a second,
+    # separately-computed copy.
+    zcr_baseline = load_csv(f"{data_dir}/historical_zcr_baseline.csv")
+    position_tpg_baseline = load_csv(f"{data_dir}/historical_position_tpg_baseline.csv")
+    try:
+        due_watch_all = build_due_watch(
+            master_rows, season=season, up_to_round=up_to_round,
+            team_aliases=team_aliases, position_aliases=baselines["position_aliases"],
+            zcr_baseline=zcr_baseline, position_tpg_baseline=position_tpg_baseline,
+            season_draw=season_draw, top_n=None,
+            weighted_zcr_lookup=baselines["weighted_zcr"],
+            weighted_league_tpg_by_position=baselines["weighted_tpg"],
+        )
+    except KeyError as e:
+        # Same real degrade-don't-break pattern as generate_round_digest.py
+        # -- season_draw_2026.json not covering this round shouldn't kill
+        # the whole predictions run, just the "due" section.
+        due_watch_all = []
+        print(f"WARNING: DUE WATCH skipped for predictions -- {e}")
+
+    due_watch_by_team = defaultdict(list)
+    for entry in due_watch_all:
+        due_watch_by_team[entry["team"]].append(entry)
+
     real_events = get_upcoming_events(the_odds_api_key)
 
     results = []
@@ -293,11 +322,20 @@ def generate_round_predictions(season, up_to_round, the_odds_api_key, data_dir="
         if h2h_odds:
             market_consensus = consensus_true_probability(h2h_odds, [home_full, away_full])
             market_home_win_prob = market_consensus.get(home_full)
+            # Our own fair odds for the home team, same de-margined-
+            # probability-to-decimal-odds conversion already used for
+            # try-scorer fair odds elsewhere (1/probability) -- this is
+            # OUR number, not the market's, so it's intentionally not
+            # run through any bookmaker margin.
+            our_home_fair_odds = round(1 / our_home_win_prob, 3) if our_home_win_prob > 0 else None
+            our_away_fair_odds = round(1 / (1 - our_home_win_prob), 3) if our_home_win_prob < 1 else None
             h2h_result = {
                 "our_home_win_prob": round(our_home_win_prob, 4),
                 "market_home_win_prob": (
                     round(market_home_win_prob, 4) if market_home_win_prob else None
                 ),
+                "our_home_fair_odds": our_home_fair_odds,
+                "our_away_fair_odds": our_away_fair_odds,
                 "edge": (
                     round(our_home_win_prob - market_home_win_prob, 4)
                     if market_home_win_prob else None
@@ -306,11 +344,22 @@ def generate_round_predictions(season, up_to_round, the_odds_api_key, data_dir="
                 "margin_mae": MARGIN_MAE_POINTS,
                 "market_spread_bookmaker": market_bookmaker,
                 "market_spread_point": market_spread_point,
+                "market_spread_price": market_spread_price,
                 "status": "ok" if market_home_win_prob else "skipped: no real consensus available",
             }
         else:
             h2h_result = {"status": "skipped: no real h2h odds in response"}
         fixture_result["h2h"] = h2h_result
+
+        # --- real DUE WATCH entries for this fixture's two teams ---
+        # (computed once for the whole round above; filtered back down
+        # to "who's due in THIS specific game" here -- the composite
+        # score is comparable across the whole round, so the top 2 per
+        # team here are genuinely the most-due, not an arbitrary subset)
+        fixture_result["due_watch"] = {
+            "home": due_watch_by_team.get(home_short, [])[:2] if home_short else [],
+            "away": due_watch_by_team.get(away_short, [])[:2] if away_short else [],
+        }
 
         # --- player try-scorer via xtry_model.py + edge_finder.py ---
         if home_short and away_short:
@@ -327,6 +376,20 @@ def generate_round_predictions(season, up_to_round, the_odds_api_key, data_dir="
             edge_result = find_edges_for_match(
                 home_raw, away_raw, real_avg_tries, try_scorer_odds
             )
+            # Attach raw_season_tpg from the original raw-score data
+            # (already computed by xtry_model.py's Component 1, see
+            # calculate_player_xtry_raw's "components" dict) onto each
+            # real edge -- added 2026-06-24 specifically so
+            # send_predictions_digest.py can show "this player's real
+            # season rate is Nx the league average for their position"
+            # alongside its is_positionally_unusual flag, rather than
+            # just flagging "unusual" with no real number backing it.
+            raw_season_tpg_by_player = {
+                r["player_name"]: r["components"]["raw_season_tpg"] for r in home_raw + away_raw
+            }
+            for edge in edge_result["edges"]:
+                edge["raw_season_tpg"] = raw_season_tpg_by_player.get(edge["player_name"])
+
             fixture_result["try_scorer_edges"] = edge_result["edges"]
             fixture_result["try_scorer_unmatched_in_model"] = edge_result["unmatched_in_model"]
         else:
@@ -372,6 +435,7 @@ def write_predictions_csv(results, path="data/predictions_current.csv"):
                 "status": "ok (no try-scorer edges -- no real odds matched)",
                 "our_home_win_prob": h2h.get("our_home_win_prob"),
                 "market_home_win_prob": h2h.get("market_home_win_prob"),
+                "our_home_fair_odds": h2h.get("our_home_fair_odds"),
                 "h2h_edge": h2h.get("edge"),
                 "our_predicted_margin": h2h.get("our_predicted_margin"),
                 "margin_mae": h2h.get("margin_mae"),
@@ -387,6 +451,7 @@ def write_predictions_csv(results, path="data/predictions_current.csv"):
                 "status": "ok",
                 "our_home_win_prob": h2h.get("our_home_win_prob"),
                 "market_home_win_prob": h2h.get("market_home_win_prob"),
+                "our_home_fair_odds": h2h.get("our_home_fair_odds"),
                 "h2h_edge": h2h.get("edge"),
                 "our_predicted_margin": h2h.get("our_predicted_margin"),
                 "margin_mae": h2h.get("margin_mae"),
@@ -404,7 +469,7 @@ def write_predictions_csv(results, path="data/predictions_current.csv"):
 
     fieldnames = [
         "home_team", "away_team", "status",
-        "our_home_win_prob", "market_home_win_prob", "h2h_edge",
+        "our_home_win_prob", "market_home_win_prob", "our_home_fair_odds", "h2h_edge",
         "our_predicted_margin", "margin_mae", "market_spread_bookmaker", "market_spread_point",
         "player_name", "player_team", "position_code", "bookmaker",
         "our_try_probability", "market_try_probability", "try_scorer_edge", "fair_odds",
@@ -420,6 +485,26 @@ def write_predictions_csv(results, path="data/predictions_current.csv"):
     return path
 
 
+def write_predictions_json(results, path="data/predictions_current.json"):
+    """
+    Writes the full, real per-fixture results structure as JSON --
+    added 2026-06-24 specifically because the per-game digest sections
+    (most-likely-to-score, due, biggest-margin, golden boy) need
+    nested, grouped data that doesn't fit cleanly into the flat
+    one-row-per-try-scorer-edge CSV shape. write_predictions_csv()
+    stays exactly as it was (a flat, greppable snapshot for Sam's
+    manual mid-week recheck workflow) -- this is a real, separate
+    output for send_predictions_digest.py to build the richer email
+    from, not a replacement for the CSV.
+    """
+    dirname = os.path.dirname(path)
+    if dirname:
+        os.makedirs(dirname, exist_ok=True)
+    with open(path, "w") as f:
+        json.dump(results, f, indent=2)
+    return path
+
+
 if __name__ == "__main__":
     import argparse
 
@@ -428,6 +513,7 @@ if __name__ == "__main__":
     parser.add_argument("--round", type=int, required=True, dest="round_num")
     parser.add_argument("--data-dir", default="data")
     parser.add_argument("--output", default="data/predictions_current.csv")
+    parser.add_argument("--json-output", default="data/predictions_current.json")
     args = parser.parse_args()
 
     api_key = os.environ.get("ODDS_API_KEY")
@@ -437,6 +523,7 @@ if __name__ == "__main__":
 
     results = generate_round_predictions(args.season, args.round_num, api_key, args.data_dir)
     path = write_predictions_csv(results, args.output)
+    json_path = write_predictions_json(results, args.json_output)
 
     n_ok = sum(1 for r in results if r["status"] == "ok")
     n_skipped = len(results) - n_ok
@@ -445,3 +532,4 @@ if __name__ == "__main__":
         if r["status"] != "ok":
             print(f"  SKIPPED: {r['home_team']} v {r['away_team']} -- {r['status']}")
     print(f"Written to {path}")
+    print(f"Written to {json_path}")
