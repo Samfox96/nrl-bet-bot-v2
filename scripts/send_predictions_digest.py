@@ -171,6 +171,19 @@ def build_predictions_digest(predictions_json_path, round_num, top_n_overall=10,
     h2h_summaries = []
     per_game = []
     all_edges_for_overall = []
+    all_position_changes = []
+    # Real, round-wide collection of every position-resolution change
+    # surfaced by generate_predictions.py's resolve_squad_positions()
+    # -- added 2026-06-24 per Sam's explicit requirement that real
+    # positional changes (a confirmed team-list position differing
+    # from a player's historical-frequency baseline, OR a real team
+    # list being entirely unavailable for a team) should visibly alert
+    # him, not be silently absorbed into the model. Genuine "no
+    # historical row, new to the list" and "no real team list at all
+    # this round" cases are included here too, not filtered out --
+    # this function doesn't decide what's "major enough" to read, it
+    # surfaces everything real and lets the email layer decide how
+    # prominently to show it.
 
     for fixture in results:
         home = fixture["home_team"]
@@ -183,6 +196,9 @@ def build_predictions_digest(predictions_json_path, round_num, top_n_overall=10,
 
         fixtures_ok.append({"home_team": home, "away_team": away})
         h2h = fixture.get("h2h", {})
+
+        for change in fixture.get("position_changes", []):
+            all_position_changes.append({"home_team": home, "away_team": away, "change": change})
 
         # --- h2h: name the real favourite, separately for our model and the market ---
         h2h_summary = None
@@ -356,6 +372,7 @@ def build_predictions_digest(predictions_json_path, round_num, top_n_overall=10,
         "h2h_summaries": h2h_summaries,
         "per_game": per_game,
         "best_overall_edges": best_overall_edges,
+        "position_changes": all_position_changes,
     }
 
 
@@ -461,6 +478,12 @@ def format_plain_text(digest):
                  f"{len(digest['fixtures_skipped'])} skipped)")
     lines.append("")
 
+    if digest.get("position_changes"):
+        lines.append("⚠ POSITION CHANGES THIS WEEK (real team-list updates vs historical baseline)")
+        for c in digest["position_changes"]:
+            lines.append(f"  - [{c['home_team']} v {c['away_team']}] {c['change']}")
+        lines.append("")
+
     if digest["h2h_summaries"]:
         lines.append("MATCH WIN PROBABILITY")
         for s in digest["h2h_summaries"]:
@@ -555,6 +578,15 @@ def format_html(digest):
     body = f"<h2>NRL Bet Bot — Round {digest['round']} Predictions</h2>"
     body += (f"<p>{len(digest['fixtures_ok'])} fixtures processed, "
              f"{len(digest['fixtures_skipped'])} skipped.</p>")
+
+    if digest.get("position_changes"):
+        body += (
+            '<h3 style="color:#b45309;">&#9888; Position Changes This Week '
+            "(real team-list updates vs historical baseline)</h3><ul>"
+        )
+        for c in digest["position_changes"]:
+            body += f"<li><b>[{c['home_team']} v {c['away_team']}]</b> {c['change']}</li>"
+        body += "</ul>"
 
     body += section(
         "Match Win Probability",
