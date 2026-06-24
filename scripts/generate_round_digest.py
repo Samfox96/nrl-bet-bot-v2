@@ -1,70 +1,68 @@
 """
-due_flags_v2.py
+generate_round_digest.py
 
-Phase 5 rebuild (2026-06-23) of the DUE WATCH section, replacing the
-original "season TPG vs position average" approach -- which was real,
-working code, but measured the wrong thing. It surfaced players who are
-simply below-average scorers at their position all season (e.g. Jed
-Stuart, 0.08 TPG vs 0.62 league average across 12 games) rather than
-players who are "due": proven scorers currently in an unusual dip, or
-trending toward a breakout via team form, usage, and matchup signals.
+Phase 5: builds a plain-English "what happened this round" digest after
+Job A's clean merge into nrl_master.csv. Designed to be called with the
+round number that was just merged; compares that round's data against
+the player's own season-to-date average, league/position norms, and the
+2021-2025 ZCR baseline.
 
-REBUILT CONCEPT (confirmed against real Round 16 data, 2026-06-23):
-A genuine DUE signal is a composite of:
-  1. Drought (50% weight) -- recent form (last 4 games) well below the
-     player's OWN season average. This is the anchor signal: real proven
-     scorers (Reece Walsh, James Tedesco, Dylan Edwards, Josh Addo-Carr)
-     who've gone cold recently, confirmed via real game-by-game data.
-  2. Opponent matchup (25% weight) -- this round's opponent's historical
-     ZCR (tries conceded by position, 2021-2025 baseline) at the
-     player's position, vs the league-average ZCR for that position. A
-     weak defensive matchup is a positive signal; a tough one is
-     negative. Requires the season draw (see season_draw_2026.json) --
-     team pairings ARE known well ahead of kickoff (sourced from the
-     official NRL draw PDF), unlike named team lists which only firm up
-     near kickoff via Job B. This was a real design correction during
-     this session: the original assumption (this factor needs Job B's
-     team-list data) was wrong.
-  3. Team form (8.3% weight) -- team's own tries-per-game, recent vs
-     season average. Rising team form means more scoring opportunities
-     for everyone on it.
-  4. Usage trend (8.3% weight) -- player's involvement (all_runs),
-     recent vs season average. Rising usage despite a try drought is
-     arguably a STRONGER due signal (more opportunity, just hasn't
-     converted yet) than usage also declining.
-  5. Attacking structure share (8.3% weight, APPROXIMATE -- explicitly
-     labelled as such in output) -- player's share of team receipts,
-     recent vs season. This is a proxy, not a direct measurement: there
-     is no real play-calling/structure data available in nrl_master.csv,
-     only stat outputs. Real shifts here tend to be small (single-digit
-     percentage points), confirmed against real data -- this factor is
-     deliberately the lightest-weighted for that reason.
+REAL DATA FINDINGS THIS WAS BUILT AGAINST (confirmed 2026-06-23, not
+assumed -- see Phase 4's parser for why this matters):
 
-HARD GATE (not weighted, must pass to appear at all):
-  Proven scorer: season TPG must be at or above a credible threshold for
-  the player's position (same logic as the original bug fix -- without
-  this gate, a low-output player with a "rising" trend off a near-zero
-  base could still surface, which isn't a real DUE signal). This gate
-  is the one piece of the original design kept unchanged, since it was
-  correct -- the bug was treating "below average" as sufficient on its
-  own, not the gate itself.
+  - nrl_master.csv stores SHORT team names ("Knights", "Dragons"), while
+    historical_zcr_baseline.csv's `defending_team` column stores FULL
+    canonical names ("Newcastle Knights", "St George Illawarra Dragons").
+    Every short name in nrl_master.csv was confirmed to resolve cleanly
+    via team_aliases.json's aliases dict -- direct lookup, no fallback
+    logic needed (unlike Phase 4's parser, which needed a punctuation-
+    stripping fallback for "St. George..." from a different source).
 
-WHAT THIS DELIBERATELY DOES NOT DO:
-  - Does not require ANY drought to appear -- factor 1 is weighted, not
-    gated, so a player trending up on team form + usage + a favourable
-    matchup can surface even without an extreme recent dip. This was an
-    explicit design decision (2026-06-23): catches breakout candidates,
-    not just slump-recovery candidates.
-  - season_draw_2026.json currently only covers rounds 17-18 (the
-    immediately relevant rounds at time of writing), NOT the full
-    27-round season. Calling this for a round beyond what's in that
-    file raises a clear KeyError rather than silently returning no
-    opponent-matchup signal -- extend the file as the season progresses.
+  - nrl_master.csv stores FULL position labels ("2nd Row", "Centre",
+    "Replacement", "Reserve"), while historical_zcr_baseline.csv and
+    historical_position_tpg_baseline.csv use canonical CODES ("2RF", "CE",
+    "IC"). Confirmed every nrl_master.csv position value resolves via
+    position_aliases.json -- including the many-to-one case where BOTH
+    "Replacement" and "Reserve" map to the single code "IC". A naive
+    direct-string join would silently produce zero matches for any
+    interchange player, exactly as the team-name mismatch did on first
+    attempt in the Phase 4 session.
+
+  - historical_position_tpg_baseline.csv has a `season` column (2021-2025
+    each present separately) and must be filtered to a specific season
+    before use, per established project convention -- the 2021-2025
+    AGGREGATE across all seasons is used here for the season-norm
+    comparison, consistent with how historical_zcr_baseline.csv (which
+    has no season column at all) is already used as an aggregate
+    baseline elsewhere in this project.
+
+  - DUE-flag eligibility, per the project's own Data Quality Rules:
+    tries are divided by games actually appeared in, never by rounds
+    elapsed, and a player needs >= 8 games played before a TPG multiple
+    is considered meaningful. Same threshold is used here.
+
+WHAT THIS DOES NOT DO (explicit, not an oversight):
+  - No real betting-market "line movement" -- Phase 10 (odds comparison)
+    isn't built yet. "Line movements" in this digest means FORM trend
+    movement (a player's recent TPG/metres vs their own season average),
+    not bookmaker odds movement. Do not conflate the two in the email
+    copy.
+  - No week-over-week "NEW due flags since last digest" diff yet -- this
+    requires snapshotting each week's DUE list to compare against. First
+    run has nothing to diff against; this version reports the current
+    week's DUE list each time, not deltas. A snapshot file
+    (data/due_flags_last_run.json) is written each run specifically so a
+    future version CAN diff against it -- but the diffing logic itself
+    is intentionally not built yet, to avoid guessing at a format before
+    there's two real runs to compare.
 """
 
 import csv
 import json
+import os
 from collections import defaultdict
+from due_flags_v2 import build_due_watch
+from recency_weighted_baselines import build_weighted_tpg_baseline, build_weighted_zcr_baseline
 
 
 def load_json(path):
@@ -91,19 +89,29 @@ def safe_float(val, default=0.0):
         return default
 
 
+def normalise_team(short_name, team_aliases):
+    """nrl_master.csv short name -> canonical full name. Returns None,
+    never guesses, if the short name isn't a recognised alias -- callers
+    should treat that as a flag, not a silent skip."""
+    return team_aliases.get(short_name)
+
+
 def normalise_position(label, position_aliases):
+    """nrl_master.csv full position label -> canonical code. Returns
+    None, never guesses, if unrecognised."""
     return position_aliases.get(label)
 
 
-def clip(value, lo, hi):
-    return max(lo, min(hi, value))
-
-
-def build_player_game_log(master_rows, season, up_to_round):
+def build_season_averages(master_rows, season, up_to_round):
     """
-    Per-player list of their own game rows for the given season, only
-    rounds strictly before up_to_round (so "recent form" never includes
-    the round the digest is currently reporting on), sorted by round.
+    Per-player season-to-date averages (tries per game, run metres per
+    game, etc), computed over games actually played (mins_played not
+    blank/zero), for rounds BEFORE up_to_round -- i.e. the player's form
+    going into this round, not including this round itself, so "this
+    round vs season average" is a genuine before/after comparison.
+
+    Returns dict: player_name -> {games, tries_pg, run_metres_pg,
+    tackle_breaks_pg, line_breaks_pg}
     """
     by_player = defaultdict(list)
     for row in master_rows:
@@ -112,345 +120,264 @@ def build_player_game_log(master_rows, season, up_to_round):
         if safe_int(row["round"]) >= up_to_round:
             continue
         by_player[row["player_name"]].append(row)
-    for player in by_player:
-        by_player[player].sort(key=lambda r: safe_int(r["round"]))
-    return by_player
 
-
-def build_team_round_aggregates(master_rows, season, up_to_round):
-    """
-    Team-level per-round totals (tries, receipts) -- needed for the team
-    form and structure-share factors, which compare a player's numbers
-    against their own team's totals, not the league's.
-    """
-    team_round_tries = defaultdict(lambda: defaultdict(int))
-    team_round_receipts = defaultdict(lambda: defaultdict(int))
-    for row in master_rows:
-        if row["season"] != str(season):
+    averages = {}
+    for player, rows in by_player.items():
+        games = len(rows)
+        if games == 0:
             continue
-        if safe_int(row["round"]) >= up_to_round:
-            continue
-        rnd = safe_int(row["round"])
-        team_round_tries[row["team"]][rnd] += safe_int(row["tries"])
-        team_round_receipts[row["team"]][rnd] += safe_int(row["receipts"])
-    return team_round_tries, team_round_receipts
+        averages[player] = {
+            "games": games,
+            "tries_pg": sum(safe_int(r["tries"]) for r in rows) / games,
+            "run_metres_pg": sum(safe_int(r["all_run_metres"]) for r in rows) / games,
+            "tackle_breaks_pg": sum(safe_int(r["tackle_breaks"]) for r in rows) / games,
+            "line_breaks_pg": sum(safe_int(r["line_breaks"]) for r in rows) / games,
+        }
+    return averages
 
 
-def drought_signal(games, recent_n=4):
-    """
-    Factor 1 (50% weight). Returns (raw_diff, normalised) where raw_diff
-    is season_tpg - recent_tpg (positive = drought, negative = hot
-    streak) and normalised is clipped to [-1, 1] using +/-0.6 as the
-    bound -- chosen from the real observed distribution of this metric
-    across the whole 2026 season to date (5th/95th percentile sat at
-    roughly +/-0.37, so 0.6 gives headroom without letting one extreme
-    outlier dominate the score).
-    """
-    season_tpg = sum(safe_int(g["tries"]) for g in games) / len(games)
-    recent = games[-recent_n:]
-    recent_tpg = sum(safe_int(g["tries"]) for g in recent) / len(recent)
-    raw_diff = season_tpg - recent_tpg
-    normalised = clip(raw_diff / 0.6, -1, 1)
-    return season_tpg, recent_tpg, normalised
+def top_performances(round_rows, n=5):
+    """Standout individual stat-lines this round -- simple superlatives,
+    no baseline needed. These are facts, not model outputs."""
+    facts = []
 
-
-def team_form_signal(team, team_round_tries, recent_n=4):
-    """
-    Factor 3 (8.3% weight). Positive = team scoring MORE lately than
-    their season average (more opportunity for everyone on the team).
-    """
-    rounds_played = sorted(team_round_tries[team].keys())
-    if len(rounds_played) < 4:
-        return None
-    tries_seq = [team_round_tries[team][r] for r in rounds_played]
-    season_avg = sum(tries_seq) / len(tries_seq)
-    recent_avg = sum(tries_seq[-recent_n:]) / min(recent_n, len(tries_seq))
-    if season_avg == 0:
-        return 0.0
-    raw_pct_change = (recent_avg - season_avg) / season_avg
-    normalised = clip(raw_pct_change / 0.5, -1, 1)  # +/-50% change maps to +/-1
-    return normalised
-
-
-def usage_trend_signal(games, recent_n=4):
-    """
-    Factor 4 (8.3% weight). Positive = rising involvement (all_runs)
-    recently vs season average.
-    """
-    season_runs = sum(safe_int(g["all_runs"]) for g in games) / len(games)
-    recent = games[-recent_n:]
-    recent_runs = sum(safe_int(g["all_runs"]) for g in recent) / len(recent)
-    if season_runs == 0:
-        return 0.0
-    raw_pct_change = (recent_runs - season_runs) / season_runs
-    normalised = clip(raw_pct_change / 0.5, -1, 1)
-    return normalised
-
-
-def structure_share_signal(games, team, team_round_receipts, recent_n=4):
-    """
-    Factor 5 (8.3% weight, APPROXIMATE). Player's share of team receipts,
-    recent vs season. Real shifts here are small (confirmed against real
-    data: single-digit percentage-point changes even for genuine cases),
-    so this factor is deliberately light-weighted and explicitly labelled
-    as approximate wherever it's surfaced in output.
-    """
-    season_shares = []
-    for g in games:
-        rnd = safe_int(g["round"])
-        team_total = team_round_receipts[team][rnd]
-        if team_total > 0:
-            season_shares.append(safe_int(g["receipts"]) / team_total)
-    if len(season_shares) < 4:
-        return None
-    recent_shares = season_shares[-recent_n:]
-    season_avg = sum(season_shares) / len(season_shares)
-    recent_avg = sum(recent_shares) / len(recent_shares)
-    if season_avg == 0:
-        return 0.0
-    raw_pct_change = (recent_avg - season_avg) / season_avg
-    normalised = clip(raw_pct_change / 0.5, -1, 1)
-    return normalised
-
-
-def opponent_matchup_signal(position_code, opponent_team_short, team_aliases, zcr_baseline_lookup, league_avg_zcr_by_position):
-    """
-    Factor 2 (25% weight). Compares the upcoming opponent's historical
-    ZCR at this player's position against the league-average ZCR for
-    that position. Positive = favourable (weak defensive) matchup.
-
-    Returns None if the opponent can't be resolved to a canonical name,
-    or if there's no ZCR baseline entry for that (team, position) pair
-    -- never guesses a value.
-    """
-    opponent_full = team_aliases.get(opponent_team_short)
-    if opponent_full is None:
-        return None
-    opponent_rate = zcr_baseline_lookup.get((opponent_full, position_code))
-    league_avg = league_avg_zcr_by_position.get(position_code)
-    if opponent_rate is None or league_avg is None or league_avg == 0:
-        return None
-    raw_pct_diff = (opponent_rate - league_avg) / league_avg
-    normalised = clip(raw_pct_diff / 0.5, -1, 1)
-    return normalised
-
-
-def is_proven_scorer(games, position_code, league_tpg_by_position, min_games=8, min_total_tries=2):
-    """
-    Hard gate, refined twice during the 2026-06-23 session after real
-    Round 17 test data exposed two separate problems with the original
-    simple ratio gate (season_tpg >= 0.5 * league_baseline):
-
-    Problem 1 (caught first): for low-scoring positions (props, hookers,
-    locks, halves -- league baseline 0.076-0.254), HALF of an already-
-    tiny number is still tiny in absolute terms, so the ratio barely
-    filtered anything. First fix: raised the ratio to 0.75x for those
-    positions specifically.
-
-    Problem 2 (caught testing the first fix against the FULL set of
-    real 2026 props, not just the borderline case that prompted it):
-    even a RAISED ratio against PR's league baseline (0.079) sits so
-    close to zero that it passed all 19 of 19 props who scored even
-    once this season -- the ratio gate does literally nothing for that
-    position no matter how high the multiplier goes, since the
-    baseline itself is too compressed for a ratio to ever bind
-    meaningfully. Real fix: an ABSOLUTE minimum tries floor in addition
-    to the ratio, which scales itself to "did this person do something
-    notable" rather than chasing a ratio across position baselines of
-    wildly different magnitudes. min_total_tries=2 was chosen by testing
-    candidate floors (1-4) against every low-scoring position's real
-    2026 data: 2 gives a genuine, non-trivial cut at every position
-    (e.g. PR: 7/19 pass instead of 19/19) without being so aggressive
-    it leaves a position with almost no candidates (LK at a floor of 3
-    drops to just 2 passers).
-
-    Both gates must pass: the ratio gate still matters for high-scoring
-    positions (CE/FB/WG) where it's doing real work, and the absolute
-    floor catches what the ratio structurally cannot for low-scoring
-    ones.
-    """
-    if len(games) < min_games:
-        return False
-    total_tries = sum(safe_int(g["tries"]) for g in games)
-    if total_tries < min_total_tries:
-        return False
-    season_tpg = total_tries / len(games)
-    league_baseline = league_tpg_by_position.get(position_code)
-    if not league_baseline or league_baseline < 0.05:
-        return False
-
-    LOW_SCORING_POSITIONS = {"IC", "PR", "LK", "HK", "HB", "2RF", "FE"}
-    required_ratio = 0.75 if position_code in LOW_SCORING_POSITIONS else 0.5
-    return season_tpg >= league_baseline * required_ratio
-
-
-def build_league_tpg_by_position(position_tpg_baseline):
-    league_tpg_by_position = defaultdict(lambda: [0, 0])
-    for row in position_tpg_baseline:
-        code = row["position"]
-        league_tpg_by_position[code][0] += safe_int(row["total_tries"])
-        league_tpg_by_position[code][1] += safe_int(row["total_player_games"])
-    return {
-        code: (tries / games if games else 0)
-        for code, (tries, games) in league_tpg_by_position.items()
-    }
-
-
-def build_due_watch(master_rows, season, up_to_round, team_aliases, position_aliases,
-                     zcr_baseline, position_tpg_baseline, season_draw, top_n=5,
-                     weighted_zcr_lookup=None, weighted_league_tpg_by_position=None):
-    """
-    Top-level entry point. Returns a sorted list of dicts, each with the
-    composite score, every contributing factor's raw + normalised value
-    (so the email can show WHY a player is flagged, not just a number),
-    and which factors were unavailable (e.g. no opponent data, too few
-    games for structure share) rather than silently treating missing
-    data as zero.
-
-    PHASE 7 INTEGRATION (added 2026-06-23, opt-in, not yet the default):
-    weighted_zcr_lookup and weighted_league_tpg_by_position let a caller
-    pass in recency+confidence-weighted baselines (from
-    recency_weighted_baselines.py) instead of the flat 2021-2025
-    averages computed from zcr_baseline/position_tpg_baseline directly
-    below. Both default to None, meaning "use the existing flat
-    baseline" -- this keeps every current caller's behaviour identical
-    until someone deliberately opts in by passing the weighted dicts.
-    weighted_zcr_lookup, if provided, should be keyed exactly like the
-    existing zcr_lookup below: (defending_team_full, position_code) ->
-    concede_rate. weighted_league_tpg_by_position, if provided, should
-    be keyed by position_code -> tpg, same shape as
-    build_league_tpg_by_position()'s return value.
-    """
-    round_key = str(up_to_round)
-    if round_key not in season_draw["rounds"]:
-        raise KeyError(
-            f"No draw data for round {up_to_round} in season_draw_2026.json. "
-            f"This file currently covers rounds: {list(season_draw['rounds'].keys())}. "
-            f"Extend it with the next rounds from the official NRL draw PDF."
+    by_tries = sorted(round_rows, key=lambda r: safe_int(r["tries"]), reverse=True)
+    if by_tries and safe_int(by_tries[0]["tries"]) >= 2:
+        top = by_tries[0]
+        facts.append(
+            f"{top['player_name']} ({top['team']}) bagged {top['tries']} tries"
         )
-    fixtures = season_draw["rounds"][round_key]["fixtures"]
-    opponent_of = {}
-    for home, away in fixtures:
-        opponent_of[home] = away
-        opponent_of[away] = home
 
-    if weighted_zcr_lookup is not None:
-        zcr_lookup = weighted_zcr_lookup
-    else:
-        zcr_lookup = {}
-        for row in zcr_baseline:
-            zcr_lookup[(row["defending_team"], row["position"])] = safe_float(row["concede_rate"])
+    by_metres = sorted(round_rows, key=lambda r: safe_int(r["all_run_metres"]), reverse=True)
+    if by_metres:
+        top = by_metres[0]
+        facts.append(
+            f"{top['player_name']} ({top['team']}) led all running with "
+            f"{top['all_run_metres']}m from {top['all_runs']} runs"
+        )
 
-    # league_avg_zcr_by_position is still computed from the flat baseline
-    # either way -- it's a league-wide average used only to judge whether
-    # a SPECIFIC opponent's rate is above/below normal, not itself a
-    # candidate for recency weighting in the same sense (it's already an
-    # average across all 17 teams, so the per-team weighted_zcr_lookup
-    # above is where Phase 7's actual effect shows up).
-    league_avg_zcr_by_position = defaultdict(list)
-    for row in zcr_baseline:
-        league_avg_zcr_by_position[row["position"]].append(safe_float(row["concede_rate"]))
-    league_avg_zcr_by_position = {
-        code: sum(vals) / len(vals) for code, vals in league_avg_zcr_by_position.items()
-    }
+    by_breaks = sorted(round_rows, key=lambda r: safe_int(r["tackle_breaks"]), reverse=True)
+    if by_breaks:
+        top = by_breaks[0]
+        facts.append(
+            f"{top['player_name']} ({top['team']}) broke the line {top['tackle_breaks']} times"
+        )
 
-    if weighted_league_tpg_by_position is not None:
-        league_tpg_by_position = weighted_league_tpg_by_position
-    else:
-        league_tpg_by_position = build_league_tpg_by_position(position_tpg_baseline)
+    # Tackle efficiency among players with a genuine workload (avoid a
+    # small-sample 100% from a player who made 2 tackles).
+    workhorses = [r for r in round_rows if safe_int(r["tackles_made"]) >= 20]
+    by_eff = sorted(workhorses, key=lambda r: safe_float(r["tackle_efficiency"]), reverse=True)
+    if by_eff:
+        top = by_eff[0]
+        facts.append(
+            f"{top['player_name']} ({top['team']}) was the defensive standout: "
+            f"{top['tackle_efficiency']}% efficiency from {top['tackles_made']} tackles"
+        )
 
-    by_player = build_player_game_log(master_rows, season, up_to_round)
-    team_round_tries, team_round_receipts = build_team_round_aggregates(master_rows, season, up_to_round)
+    return facts
 
-    WEIGHTS = {
-        "drought": 0.50,
-        "opponent_matchup": 0.25,
-        "team_form": 0.083,
-        "usage_trend": 0.083,
-        "structure_share": 0.083,
-    }
 
-    results = []
-    for player, games in by_player.items():
-        if len(games) < 8:
+def form_trend_facts(round_rows, season_averages, min_games=4):
+    """
+    Compares this round's individual performances against each player's
+    own season-to-date average -- genuine form movement, not betting
+    odds. Flags the most significant positive and negative swings in
+    tries and run metres. min_games guards against a single early-season
+    game looking like a huge "swing" against a tiny sample average.
+    """
+    facts = []
+    swings = []
+
+    for row in round_rows:
+        player = row["player_name"]
+        avg = season_averages.get(player)
+        if not avg or avg["games"] < min_games:
             continue
 
-        most_recent = games[-1]
-        team = most_recent["team"]
-        position_code = normalise_position(most_recent["position"], position_aliases)
-        if position_code is None:
-            continue
+        this_round_metres = safe_int(row["all_run_metres"])
+        metres_diff = this_round_metres - avg["run_metres_pg"]
+        swings.append((player, row["team"], metres_diff, this_round_metres, avg["run_metres_pg"]))
 
-        if not is_proven_scorer(games, position_code, league_tpg_by_position):
-            continue
-
-        season_tpg, recent_tpg, drought_norm = drought_signal(games)
-        team_form_norm = team_form_signal(team, team_round_tries)
-        usage_norm = usage_trend_signal(games)
-        structure_norm = structure_share_signal(games, team, team_round_receipts)
-
-        opponent_short = opponent_of.get(team)
-        opponent_norm = None
-        if opponent_short is not None:
-            opponent_norm = opponent_matchup_signal(
-                position_code, opponent_short, team_aliases, zcr_lookup, league_avg_zcr_by_position
+    swings.sort(key=lambda x: x[2], reverse=True)
+    if swings:
+        player, team, diff, this_round, avg_val = swings[0]
+        if diff > 40:  # meaningful breakout, not noise
+            facts.append(
+                f"{player} ({team}) ran for {this_round}m, well above his "
+                f"season average of {avg_val:.0f}m — a real breakout game"
             )
 
-        factor_values = {
-            "drought": drought_norm,
-            "opponent_matchup": opponent_norm,
-            "team_form": team_form_norm,
-            "usage_trend": usage_norm,
-            "structure_share": structure_norm,
-        }
+    if swings:
+        player, team, diff, this_round, avg_val = swings[-1]
+        if diff < -40 and avg_val > 60:  # quiet game for someone who's normally productive
+            facts.append(
+                f"{player} ({team}) managed just {this_round}m, down from a "
+                f"season average of {avg_val:.0f}m — a quiet one"
+            )
 
-        # Composite score uses only the factors that resolved to a real
-        # value -- a missing factor is excluded and its weight is NOT
-        # silently redistributed to other factors (that would let a
-        # player with lots of missing data get an inflated score from
-        # fewer inputs). Instead we track total_weight_used so a low
-        # total_weight_used is itself visible in the output.
-        composite = 0.0
-        total_weight_used = 0.0
-        for factor, value in factor_values.items():
-            if value is not None:
-                composite += WEIGHTS[factor] * value
-                total_weight_used += WEIGHTS[factor]
+    return facts
 
-        if total_weight_used == 0:
+
+### due_flags() removed 2026-06-23 -- replaced by due_flags_v2.build_due_watch().
+### The original measured "season TPG below position average", which surfaced
+### chronic non-scorers as "due" (a real bug, caught from live production
+### feedback after the first real email send). See due_flags_v2.py for the
+### rebuilt composite signal (drought + opponent matchup + team form + usage
+### trend + structure share) and its own detailed history of fixes.
+
+
+def zcr_shift_facts(round_rows, round_num, team_aliases, position_aliases, zcr_baseline, n=3):
+    """
+    Compares each team's tries CONCEDED this round, by position, against
+    their 2021-2025 ZCR baseline rate for that position. Surfaces teams
+    whose defense at a given position let in more (or fewer) tries than
+    their historical norm would suggest -- this is the real "ZCR shift"
+    the project brief describes, using actual historical baseline data
+    rather than a synthetic placeholder.
+
+    Tries conceded this round, by (team, position), is derived from the
+    OPPONENT's tries in nrl_master.csv -- e.g. if a Knights player scored
+    a try as a Winger, that's one try CONCEDED by the Dragons (the
+    Knights' opponent that round) at the WG position.
+    """
+    # Build canonical ZCR lookup: (team_full, position_code) -> concede_rate
+    zcr_lookup = {}
+    for row in zcr_baseline:
+        zcr_lookup[(row["defending_team"], row["position"])] = safe_float(row["concede_rate"])
+
+    # Tries conceded this round by (defending_team_short, position_code)
+    conceded = defaultdict(int)
+
+    for row in round_rows:
+        tries = safe_int(row["tries"])
+        if tries == 0:
             continue
+        position_code = normalise_position(row["position"], position_aliases)
+        if position_code is None:
+            continue
+        # This try was scored AGAINST the opponent -- they conceded it.
+        conceded[(row["opponent"], position_code)] += tries
 
-        results.append({
-            "player_name": player,
-            "team": team,
-            "position_code": position_code,
-            "season_tpg": round(season_tpg, 3),
-            "recent_tpg": round(recent_tpg, 3),
-            "opponent_this_round": opponent_short,
-            "composite_score": round(composite, 3),
-            "weight_coverage": round(total_weight_used, 3),
-            "factors": {k: (round(v, 3) if v is not None else None) for k, v in factor_values.items()},
-            "structure_share_is_approximate": True,
-        })
+    facts = []
+    for (defending_team_short, position_code), tries_conceded in conceded.items():
+        team_full = team_aliases.get(defending_team_short)
+        if team_full is None:
+            continue
+        baseline_rate = zcr_lookup.get((team_full, position_code))
+        if baseline_rate is None:
+            continue
+        # A single round conceding 2+ tries at a position with a low
+        # historical concede rate for that position is a real signal,
+        # not noise -- e.g. conceding 2 tries to props when the
+        # historical rate suggests that's rare for this team.
+        if tries_conceded >= 2 and baseline_rate < 0.3:
+            facts.append(
+                f"{defending_team_short} conceded {tries_conceded} tries to "
+                f"{position_code}s this round — well above their historical "
+                f"rate for that position ({baseline_rate:.0%} per game historically)"
+            )
 
-    results.sort(key=lambda r: r["composite_score"], reverse=True)
-    if top_n is not None:
-        results = results[:top_n]
-    return results
+    return facts[:n]
+
+
+def build_digest(master_csv_path, round_num, season,
+                  team_aliases_path="team_aliases.json",
+                  position_aliases_path="position_aliases.json",
+                  zcr_baseline_path="historical_zcr_baseline.csv",
+                  position_tpg_baseline_path="historical_position_tpg_baseline.csv",
+                  season_draw_path="season_draw_2026.json",
+                  historical_player_match_rows_path="historical_player_match_rows.csv"):
+    """
+    Top-level entry point. Returns a dict with all digest sections, ready
+    to be handed to the email-formatting layer. Does NOT send anything --
+    this function's only job is producing the content.
+
+    IMPORTANT: round_num is the round that JUST FINISHED and was merged
+    into nrl_master.csv (e.g. 16). The DUE WATCH section's opponent-
+    matchup factor needs the UPCOMING round's fixtures (e.g. 17) -- this
+    is a different round number, intentionally computed as round_num + 1
+    below. Conflating these would silently point the matchup factor at
+    the wrong round's draw. This wasn't an issue for the other digest
+    sections (top performances, form trends, ZCR shifts), which all
+    describe round_num itself, not what's coming next.
+
+    PHASE 7 (wired in 2026-06-23, then found MISSING from this exact
+    function during a full system audit and re-applied -- the first
+    attempt at this wiring was generated and handed over correctly, but
+    never actually got committed to the live repo; only due_flags_v2.py
+    and recency_weighted_baselines.py made it in, leaving the import
+    that actually USES them absent. Caught by re-pulling every live
+    file and checking for the literal parameter name, not by assuming
+    a prior handoff succeeded): DUE WATCH now uses recency+confidence-
+    weighted historical baselines by default (see
+    recency_weighted_baselines.py for the full design rationale --
+    gentler decay than the original 100/75/50 plan, plus a sqrt-based
+    confidence discount for 2025's unusually thin sample). If building
+    the weighted baselines fails for ANY reason (missing source file,
+    a bug in the weighting math, an unexpected data shape), this falls
+    back to the original flat 2021-2025 baseline rather than breaking
+    the whole digest -- DUE WATCH with a flat baseline is still a real,
+    useful signal, and a digest with one degraded section beats no
+    digest at all. This mirrors the existing season_draw KeyError
+    handling below, which follows the same "degrade, don't break"
+    principle for a different missing-data scenario.
+    """
+    master_rows = load_csv(master_csv_path)
+    team_aliases = load_json(team_aliases_path)["aliases"]
+    position_aliases = load_json(position_aliases_path)["aliases"]
+    zcr_baseline = load_csv(zcr_baseline_path)
+    position_tpg_baseline = load_csv(position_tpg_baseline_path)
+    season_draw = load_json(season_draw_path)
+
+    round_rows = [r for r in master_rows if r["round"] == str(round_num) and r["season"] == str(season)]
+
+    season_averages = build_season_averages(master_rows, season, up_to_round=round_num)
+
+    try:
+        weighted_tpg = build_weighted_tpg_baseline(position_tpg_baseline)
+        historical_player_match_rows = load_csv(historical_player_match_rows_path)
+        weighted_zcr = build_weighted_zcr_baseline(historical_player_match_rows)
+        print("DUE WATCH: using Phase 7 recency-weighted baselines")
+    except Exception as e:
+        weighted_tpg = None
+        weighted_zcr = None
+        print(f"WARNING: Phase 7 weighted baselines unavailable, falling back to flat "
+              f"2021-2025 baseline for DUE WATCH ({e})")
+
+    upcoming_round = round_num + 1
+    try:
+        due_watch = build_due_watch(
+            master_rows, season=season, up_to_round=upcoming_round,
+            team_aliases=team_aliases, position_aliases=position_aliases,
+            zcr_baseline=zcr_baseline, position_tpg_baseline=position_tpg_baseline,
+            season_draw=season_draw, top_n=5,
+            weighted_zcr_lookup=weighted_zcr,
+            weighted_league_tpg_by_position=weighted_tpg,
+        )
+    except KeyError as e:
+        # season_draw_2026.json doesn't cover this round yet (it's
+        # extended manually as the season progresses -- see that file's
+        # own header comment). Missing draw data for an upcoming round
+        # should not break the WHOLE digest -- the other sections are
+        # still real and useful even without DUE WATCH this one week.
+        due_watch = []
+        print(f"WARNING: DUE WATCH skipped -- {e}")
+
+    digest = {
+        "round": round_num,
+        "season": season,
+        "row_count": len(round_rows),
+        "top_performances": top_performances(round_rows),
+        "form_trends": form_trend_facts(round_rows, season_averages),
+        "due_flags": due_watch,
+        "due_watch_used_weighted_baseline": weighted_tpg is not None and weighted_zcr is not None,
+        "zcr_shifts": zcr_shift_facts(round_rows, round_num, team_aliases, position_aliases, zcr_baseline),
+    }
+    return digest
 
 
 if __name__ == "__main__":
-    master_rows = load_csv("nrl_master.csv")
-    team_aliases = load_json("team_aliases.json")["aliases"]
-    position_aliases = load_json("position_aliases.json")["aliases"]
-    zcr_baseline = load_csv("historical_zcr_baseline.csv")
-    position_tpg_baseline = load_csv("historical_position_tpg_baseline.csv")
-    season_draw = load_json("season_draw_2026.json")
-
-    due_list = build_due_watch(
-        master_rows, season=2026, up_to_round=17,
-        team_aliases=team_aliases, position_aliases=position_aliases,
-        zcr_baseline=zcr_baseline, position_tpg_baseline=position_tpg_baseline,
-        season_draw=season_draw, top_n=5,
-    )
-    print(json.dumps(due_list, indent=2))
+    # Self-test against real, live-pulled data (Round 16, the latest
+    # complete round in nrl_master.csv as of 2026-06-23).
+    digest = build_digest("nrl_master.csv", round_num=16, season=2026)
+    print(json.dumps(digest, indent=2))
