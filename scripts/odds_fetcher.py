@@ -168,7 +168,11 @@ def fetch_h2h_and_tryscorer_odds(api_key, event_id, regions="au"):
     Real endpoint: /v4/sports/rugbyleague_nrl/events/{id}/odds. This
     DOES cost usage credits (unlike get_upcoming_events()) -- confirmed
     real cost shape per the-odds-api.com's docs: cost scales with
-    [markets] x [regions]. Requesting 2 markets x 1 region (au) here.
+    [markets] x [regions]. Requesting 3 markets x 1 region (au) here
+    (h2h, player_try_scorer_anytime, spreads -- spreads added 2026-06-24
+    specifically to support a real margin-vs-market comparison; see
+    extract_single_bookmaker_spread()'s docstring for why this is read
+    from ONE bookmaker rather than pooled across all of them).
 
     Returns the real raw response dict: id, sport_key, commence_time,
     home_team, away_team, bookmakers (list of {key, title, markets:
@@ -176,7 +180,7 @@ def fetch_h2h_and_tryscorer_odds(api_key, event_id, regions="au"):
     """
     url = (
         f"{BASE_URL}/sports/{SPORT_KEY}/events/{event_id}/odds"
-        f"?apiKey={api_key}&regions={regions}&markets=h2h,player_try_scorer_anytime"
+        f"?apiKey={api_key}&regions={regions}&markets=h2h,player_try_scorer_anytime,spreads"
         f"&oddsFormat=decimal"
     )
     return _get(url)
@@ -241,6 +245,53 @@ def extract_try_scorer_odds(odds_response):
                 if player_prices:
                     result[bookmaker["key"]] = player_prices
     return result
+
+
+def extract_single_bookmaker_spread(odds_response, home_team_full, preferred_bookmaker="sportsbet"):
+    """
+    Returns ONE real bookmaker's spread line for the home team, rather
+    than pooling across bookmakers -- DELIBERATE, not a shortcut.
+    Confirmed real data 2026-06-24 (Knights v Wests Tigers): real
+    spreads points are NOT standardised across bookmakers (3 distinct
+    real lines seen for one match: -6.5, -7.5, -8.5). Pooling these
+    into a consensus would average together genuinely different bets,
+    not find a real edge -- the same problem already documented for
+    `totals`. Reading a single named bookmaker's own real line sidesteps
+    this entirely: it's always an internally-consistent real number
+    (one bookmaker's own price + point for their own market), just not
+    a market-wide consensus. Sam explicitly chose this trade-off over
+    waiting for a real line-grouping fix (2026-06-24).
+
+    Falls back to whichever real bookmaker actually has a spreads
+    market for this fixture if the preferred one doesn't (mirrors
+    build_predictions_digest's same real fallback pattern for try-
+    scorer coverage) -- never silently returns nothing if a real spread
+    exists from ANY bookmaker.
+
+    Returns (bookmaker_used, home_team_point, home_team_price) or
+    (None, None, None) if no real bookmaker has a spreads market for
+    this fixture at all.
+    """
+    spreads_by_bookmaker = {}
+    for bookmaker in odds_response.get("bookmakers", []):
+        for market in bookmaker.get("markets", []):
+            if market["key"] == "spreads":
+                for outcome in market["outcomes"]:
+                    if outcome["name"] == home_team_full:
+                        spreads_by_bookmaker[bookmaker["key"]] = (
+                            outcome.get("point"), outcome.get("price")
+                        )
+
+    if not spreads_by_bookmaker:
+        return None, None, None
+
+    if preferred_bookmaker in spreads_by_bookmaker:
+        bookmaker_used = preferred_bookmaker
+    else:
+        bookmaker_used = next(iter(spreads_by_bookmaker))
+
+    point, price = spreads_by_bookmaker[bookmaker_used]
+    return bookmaker_used, point, price
 
 
 if __name__ == "__main__":
