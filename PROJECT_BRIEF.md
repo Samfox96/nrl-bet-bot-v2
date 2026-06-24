@@ -7,6 +7,8 @@ _Read STATUS.md first, every session, before doing anything else._
 
 A rigorous, data-driven NRL prediction system (xTry model: win probability, margin, try scorer odds) built on data that has actually been validated — not assumed. This project replaces the old NRL_Predictor setup after a full data-integrity audit found and fixed several silent bugs (see "Known Issues Fixed" in STATUS.md).
 
+**Institutional memory note (2026-06-24)**: the actual xTry formula spec (`NRL_MASTER_PROMPT_V2.md`) was discovered to have never been committed to this repo, despite being cited by name elsewhere in this very file for a while. This is the same silent-loss pattern documented in STATUS.md's Phase 5 section (the dropped Phase 7 wiring, the dropped `User-Agent` fix) — but this time it was the foundational model spec, not a small function, and it went unnoticed across multiple sessions because every doc only ever cited it, never reproduced its contents. Recovered directly from Sam and reconstructed as `xtry_model.py` (now committed). **Lesson for future sessions: if a doc cites a spec or file by name, confirm that file actually exists in the repo before trusting that the citation means the thing is real and available — a citation is not the same as a committed artifact.**
+
 ---
 
 ## FILES IN THIS PROJECT
@@ -15,8 +17,8 @@ A rigorous, data-driven NRL prediction system (xTry model: win probability, marg
 |---|---|---|
 | `nrl_master.csv` | 2026 season, player-level, all rounds scraped so far | All current-season xTry calculations |
 | `historical_player_match_rows.csv` | 2021-2025, player-level, **no player names** (opaque player_id only) | Team/position-level baselines ONLY — not individual player history |
-| `historical_position_tpg_baseline.csv` | League-average TPG by position, by season (2021-2025) | Position normalisation in xTry Component 1 |
-| `historical_zcr_baseline.csv` | Tries conceded by team by position (2021-2025) | Zone Concede Rate (xTry Component 4) baseline |
+| `historical_position_tpg_baseline.csv` | League-average TPG by position, by season (2021-2025) | Position normalisation in xTry Component 1 (`xtry_model.py`) |
+| `historical_zcr_baseline.csv` | Tries conceded by team by position (2021-2025) | Zone Concede Rate (xTry Component 4, `xtry_model.py`) baseline |
 | `match_data_FINAL_fixed.csv` | Match results 2021-2026, round numbers corrected | Historical match context, H2H |
 | `team_aliases.json` | Canonical team name mapping | ALWAYS use this to normalise team names — never hardcode |
 | `position_aliases.json` | Canonical position code mapping | ALWAYS use this to normalise positions |
@@ -31,7 +33,9 @@ A rigorous, data-driven NRL prediction system (xTry model: win probability, marg
 | `season_draw_2026.json` | NRL season fixture pairings by round (sourced from official draw PDF, canonical team names) | Phase 5's opponent-matchup factor — currently covers rounds 17-18 only, extend manually as the season progresses |
 | `recency_weighted_baselines.py` | Recency + confidence-weighted historical baselines (TPG and ZCR) | Phase 7 — wired into `due_flags_v2.py` by default as of 2026-06-24, with automatic fallback to flat baseline |
 | `migrate_nrl_master_to_canonical.py` | One-time migration tool, NOT part of the regular pipeline | Run only if `nrl_master.csv` ever needs re-normalizing (e.g. after a manual edit reintroduces raw values) |
-| `odds_probability.py` | Implied probability, de-margining, exchange-reliability filter, edge calculation | Phase 8 — built and tested against real the-odds-api.com data 2026-06-24, **NOT YET COMMITTED to the repo** |
+| `odds_probability.py` | Implied probability, de-margining, exchange-reliability filter, edge calculation | Phase 8 — committed and live |
+| `xtry_model.py` | The actual 8-component xTry formula (reconstructed 2026-06-24 from the original `NRL_MASTER_PROMPT_V2.md` spec, which was confirmed to have never been committed to this repo — see STATUS.md's Phase 8 section). Produces "our probability" a player scores, per match | Phase 8 — committed and validated against 17 real fixtures across 2 full rounds |
+| `edge_finder.py` | Connects `xtry_model.py`'s output to `odds_probability.py`'s market-side functions; matches player names against real bookmaker odds (explicitly surfacing unmatched names rather than dropping them) and calls `calculate_edge()` | Phase 8 — committed, tested against real squad data with synthetic odds (not yet a live API call) |
 | `STATUS.md` | Live checkpoint — data freshness, known issues, outstanding gaps | Read FIRST every session |
 
 ---
@@ -50,7 +54,7 @@ A rigorous, data-driven NRL prediction system (xTry model: win probability, marg
 
 **Team lists (Job B + cron-job.org scheduler)**: a weekly script reads the round's real kickoff times and schedules a precise trigger 1 hour before each match. At that moment, Job B fetches the latest team list and writes `data/team_lists_current.csv` if anything's changed.
 
-**What Sam still does manually**: nothing, day to day. Only needed if something fails (a GitHub Issue will say so) or when actually requesting predictions from Claude for an upcoming round — team lists are authoritative and override all other sources, same as always. **Note**: there is no committed, version-controlled prediction script yet — when Sam asks for predictions, Claude reasons through the latest merged data live in conversation each time, not from a saved model. This is a real gap (see Phase 8 notes in STATUS.md), not an oversight.
+**What Sam still does manually**: nothing, day to day. Only needed if something fails (a GitHub Issue will say so) or when actually requesting predictions from Claude for an upcoming round — team lists are authoritative and override all other sources, same as always. **`xtry_model.py` and `edge_finder.py` are now committed, real, tested modules** (as of 2026-06-24) that produce an actual per-player try-scoring probability and compare it against real bookmaker odds — but neither is wired into the weekly automation pipeline yet (no GitHub Actions workflow calls them), and the odds side has only ever been tested against synthetic data shaped to match the real API format, not a genuine live call. See STATUS.md's Phase 8 section for the real, current state — don't assume this is fully automated yet, but also don't assume "no model exists" the way earlier versions of this doc said.
 
 ---
 
@@ -70,7 +74,7 @@ A rigorous, data-driven NRL prediction system (xTry model: win probability, marg
 - `try_minute` parser is wired into the scraper (Phase 4) but has not yet run against a real finished round through the actual Job A pipeline — first real test fires tonight, 20:00 UTC 2026-06-24, alongside Job A's own first full-cycle proof. Extra-time try-minute formatting is also unconfirmed — see `parse_try_minutes.py`'s own header comment.
 - `season_draw_2026.json` only covers rounds 17-18 — needs manual extension before DUE WATCH can run for later rounds
 - The repo is **public** as of 2026-06-23 (changed specifically to let Claude read live files directly each session, Phase 6) — confirmed no secrets have ever lived in committed files, only as GitHub Actions repository secrets
-- Phase 8 (odds comparison) is exploratory only as of 2026-06-24 — real market data has been fetched and a probability/edge module built and tested, but it is NOT yet committed to the repo, and there is no real "our model's probability" output for any market yet, only the market-side plumbing. See STATUS.md's Phase 8 section for the full real findings (Betfair Exchange reliability issues, inconsistent totals lines across bookmakers, team-name spelling mismatches vs `team_aliases.json`).
+- Phase 8 (odds comparison / xTry model) — `xtry_model.py` and `edge_finder.py` are both built, committed, and validated against real data (17 real fixtures across 2 full rounds for the model; real squad data with synthetic odds for the edge-matching). What's still missing: `odds_fetcher.py` (an actual live API-calling script) doesn't exist yet, nothing is wired into the weekly automation pipeline, the `totals` line-mismatch problem is unsolved, and the player-name matching in `edge_finder.py` has never been tested against a genuinely live odds response. See STATUS.md's Phase 8 section for full detail.
 
 ---
 
@@ -91,4 +95,4 @@ See `STATUS.md` for full detail, known gotchas (e.g. cron-job.org's rate limit n
 
 Reordered 2026-06-22 — the ORIGINAL Phase 5 concept (daily late-mail scraping) was merged into Phase 3, since Job B's hourly-turned-precise team-list polling already covers and exceeds that scope. The phase NUMBER 5 was then reassigned to weekly digest notifications (built and proven live 2026-06-23) — these are two unrelated things that happen to share a number across the project's history; don't confuse them.
 
-Phase 0 ✅ Data integrity | Phase 1 ✅ Current season caught up | Phase 2 ✅ GitHub repo | Phase 3 🔶 Weekly automation — Job A + Job B + cron-job.org scheduler all built and live-tested; full real-world cycle fires tonight, 20:00 UTC 2026-06-24 | Phase 4 🔶 try_minute capture — parser built and wired into the live scraper, not yet proven against a real finished round (same test tonight) | Phase 5 ✅ Digest notifications — built, fixed through 3 real bugs, proven live end-to-end | Phase 6 ✅ Live repo connection — repo made public, Claude reads raw files directly each session | Phase 7 ✅ Recency weighting — wired into the live digest pipeline, proven via real end-to-end test 2026-06-24 | Phase 8 🔶 Odds comparison — exploratory build started 2026-06-24, real market data fetched and a probability/edge module built + tested, NOT yet committed to the repo, no "our model's probability" exists yet for any market | Phase 9 ⬜ Dashboard (GitHub Pages)
+Phase 0 ✅ Data integrity | Phase 1 ✅ Current season caught up | Phase 2 ✅ GitHub repo | Phase 3 🔶 Weekly automation — Job A + Job B + cron-job.org scheduler all built and live-tested; full real-world cycle fired tonight, 20:00 UTC 2026-06-24 (check Actions log next session for the result) | Phase 4 🔶 try_minute capture — parser built and wired into the live scraper, not yet proven against a real finished round (same test tonight) | Phase 5 ✅ Digest notifications — built, fixed through 3 real bugs, proven live end-to-end | Phase 6 ✅ Live repo connection — repo made public, Claude reads raw files directly each session | Phase 7 ✅ Recency weighting — wired into the live digest pipeline, proven via real end-to-end test 2026-06-24 | Phase 8 🔶 Odds comparison & xTry model — `xtry_model.py` (the real 8-component formula, recovered after discovering its spec was never committed) and `edge_finder.py` both built, committed, and validated against real data 2026-06-24; still missing: live odds fetching (`odds_fetcher.py`), automation wiring, and the `totals` line-mismatch fix | Phase 9 ⬜ Dashboard (GitHub Pages)
