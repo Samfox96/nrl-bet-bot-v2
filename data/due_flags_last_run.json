@@ -1,0 +1,96 @@
+{
+  "round": 16,
+  "season": 2026,
+  "due_flags": [
+    {
+      "player_name": "Greg Marzhew",
+      "team": "Newcastle Knights",
+      "position_code": "WG",
+      "season_tpg": 1.154,
+      "recent_tpg": 0.5,
+      "opponent_this_round": "Wests Tigers",
+      "composite_score": 0.615,
+      "weight_coverage": 0.999,
+      "factors": {
+        "drought": 1,
+        "opponent_matchup": 0.424,
+        "team_form": 0.0,
+        "usage_trend": 0.035,
+        "structure_share": 0.079
+      },
+      "structure_share_is_approximate": true
+    },
+    {
+      "player_name": "Sualauvi Faalogo",
+      "team": "Melbourne Storm",
+      "position_code": "FB",
+      "season_tpg": 0.867,
+      "recent_tpg": 0.25,
+      "opponent_this_round": "Manly-Warringah Sea Eagles",
+      "composite_score": 0.611,
+      "weight_coverage": 0.999,
+      "factors": {
+        "drought": 1,
+        "opponent_matchup": 0.29,
+        "team_form": 0.174,
+        "usage_trend": 0.247,
+        "structure_share": 0.044
+      },
+      "structure_share_is_approximate": true
+    },
+    {
+      "player_name": "Trey Mooney",
+      "team": "Newcastle Knights",
+      "position_code": "PR",
+      "season_tpg": 0.385,
+      "recent_tpg": 0.0,
+      "opponent_this_round": "Wests Tigers",
+      "composite_score": 0.515,
+      "weight_coverage": 0.999,
+      "factors": {
+        "drought": 0.641,
+        "opponent_matchup": 0.756,
+        "team_form": 0.0,
+        "usage_trend": 0.152,
+        "structure_share": -0.087
+      },
+      "structure_share_is_approximate": true
+    },
+    {
+      "player_name": "Tallis Duncan",
+      "team": "South Sydney Rabbitohs",
+      "position_code": "CE",
+      "season_tpg": 0.385,
+      "recent_tpg": 0.0,
+      "opponent_this_round": "Parramatta Eels",
+      "composite_score": 0.496,
+      "weight_coverage": 0.999,
+      "factors": {
+        "drought": 0.641,
+        "opponent_matchup": 0.591,
+        "team_form": -0.566,
+        "usage_trend": 0.483,
+        "structure_share": 0.415
+      },
+      "structure_share_is_approximate": true
+    },
+    {
+      "player_name": "Ali Leiataua",
+      "team": "New Zealand Warriors",
+      "position_code": "CE",
+      "season_tpg": 0.273,
+      "recent_tpg": 0.0,
+      "opponent_this_round": "Dolphins",
+      "composite_score": 0.463,
+      "weight_coverage": 0.999,
+      "factors": {
+        "drought": 0.455,
+        "opponent_matchup": 0.575,
+        "team_form": -0.347,
+        "usage_trend": 0.722,
+        "structure_share": 0.728
+      },
+      "structure_share_is_approximate": true
+    }
+  ]
+}
