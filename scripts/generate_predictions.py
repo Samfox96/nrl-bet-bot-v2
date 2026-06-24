@@ -16,16 +16,24 @@ market"; see STATUS.md's Phase 8 section for the full reasoning):
     accuracy across 3 held-out years, beats the cited published
     benchmark) vs the real market consensus (odds_probability.py's
     consensus_true_probability(), which already handles Betfair's
-    real unreliable-exchange-price problem).
+    real unreliable-exchange-price problem). ALSO includes a real,
+    validated predicted MARGIN (nrl_elo.py's expected_margin(), 14-point
+    real MAE backtested across 3 held-out years) shown alongside ONE
+    real bookmaker's own spread line (default Sportsbet, with a real
+    fallback -- see odds_fetcher.extract_single_bookmaker_spread()'s
+    docstring) -- NOT a market consensus, since real spreads lines
+    aren't standardised across bookmakers (3 distinct real lines
+    confirmed for one real match, same problem as totals below). Sam
+    explicitly chose "show one real bookmaker's line" over waiting for
+    a real line-grouping fix (2026-06-24).
   - player_try_scorer_anytime: xtry_model.py's real per-player
     probability vs real bookmaker "Yes" prices, via edge_finder.py.
-  - spreads and totals are DELIBERATELY NOT included. Real data
-    confirmed 2026-06-24 (the Knights v Wests Tigers fixture) that
-    bookmakers quote genuinely different lines for both markets (3
-    distinct spread points, 2 distinct total points across real
-    bookmakers for the same match) -- naively pooling these into one
-    consensus would compare different bets, not find a real edge. A
-    real fix (grouping by point value before pooling) is real future
+  - totals are DELIBERATELY NOT included. Real data confirmed
+    2026-06-24 (the Knights v Wests Tigers fixture) that bookmakers
+    quote genuinely different lines for this market (2 distinct real
+    total points across real bookmakers for the same match) -- the
+    same real problem spreads has, but totals doesn't yet have even the
+    "read one bookmaker's real line" treatment spreads got. Real future
     work, not built here.
   - player_try_scorer_first/last are DELIBERATELY NOT included. Real
     data confirmed these carry a ~97% bookmaker margin (neither clean
@@ -83,10 +91,10 @@ from xtry_model import (  # noqa: E402
     build_team_ruck_speeds, calculate_player_xtry_raw, compute_real_avg_tries_per_team_per_game,
 )
 from recency_weighted_baselines import build_weighted_tpg_baseline, build_weighted_zcr_baseline  # noqa: E402
-from nrl_elo import build_elo_ratings, expected_win_probability  # noqa: E402
+from nrl_elo import build_elo_ratings, expected_win_probability, expected_margin, MARGIN_MAE_POINTS  # noqa: E402
 from odds_fetcher import (  # noqa: E402
     get_upcoming_events, resolve_event_for_fixture, fetch_h2h_and_tryscorer_odds,
-    extract_h2h_for_consensus, extract_try_scorer_odds,
+    extract_h2h_for_consensus, extract_try_scorer_odds, extract_single_bookmaker_spread,
 )
 from odds_probability import consensus_true_probability  # noqa: E402
 from edge_finder import find_edges_for_match  # noqa: E402
@@ -262,7 +270,25 @@ def generate_round_predictions(season, up_to_round, the_odds_api_key, data_dir="
         away_short = full_to_short.get(away_full)
         rating_home = elo_ratings.get(home_full, 1500.0)
         rating_away = elo_ratings.get(away_full, 1500.0)
+        rating_diff = (rating_home + 46.13) - rating_away
         our_home_win_prob = expected_win_probability(rating_home + 46.13, rating_away)
+        our_predicted_margin = expected_margin(rating_diff)
+        # Positive = we favour the home team by this many points;
+        # negative = we favour the away team. Real MAE for this number
+        # is +/-14 points (MARGIN_MAE_POINTS) -- a genuinely large real
+        # error bar, always shown alongside the number downstream
+        # rather than presented as precise.
+
+        market_bookmaker, market_spread_point, market_spread_price = (
+            extract_single_bookmaker_spread(odds_response, home_full, preferred_bookmaker="sportsbet")
+        )
+        # market_spread_point is the REAL line for the HOME team as that
+        # one bookmaker quotes it (e.g. -6.5 means the home team is
+        # favoured by 6.5 -- the bookmaker's own point value already
+        # uses this sign convention, confirmed real 2026-06-24). Read
+        # from ONE real bookmaker only (default Sportsbet, with a real
+        # fallback -- see extract_single_bookmaker_spread's docstring
+        # for why this isn't pooled across bookmakers).
 
         if h2h_odds:
             market_consensus = consensus_true_probability(h2h_odds, [home_full, away_full])
@@ -276,6 +302,10 @@ def generate_round_predictions(season, up_to_round, the_odds_api_key, data_dir="
                     round(our_home_win_prob - market_home_win_prob, 4)
                     if market_home_win_prob else None
                 ),
+                "our_predicted_margin": round(our_predicted_margin, 1),
+                "margin_mae": MARGIN_MAE_POINTS,
+                "market_spread_bookmaker": market_bookmaker,
+                "market_spread_point": market_spread_point,
                 "status": "ok" if market_home_win_prob else "skipped: no real consensus available",
             }
         else:
@@ -343,6 +373,10 @@ def write_predictions_csv(results, path="data/predictions_current.csv"):
                 "our_home_win_prob": h2h.get("our_home_win_prob"),
                 "market_home_win_prob": h2h.get("market_home_win_prob"),
                 "h2h_edge": h2h.get("edge"),
+                "our_predicted_margin": h2h.get("our_predicted_margin"),
+                "margin_mae": h2h.get("margin_mae"),
+                "market_spread_bookmaker": h2h.get("market_spread_bookmaker"),
+                "market_spread_point": h2h.get("market_spread_point"),
             })
             continue
 
@@ -354,6 +388,10 @@ def write_predictions_csv(results, path="data/predictions_current.csv"):
                 "our_home_win_prob": h2h.get("our_home_win_prob"),
                 "market_home_win_prob": h2h.get("market_home_win_prob"),
                 "h2h_edge": h2h.get("edge"),
+                "our_predicted_margin": h2h.get("our_predicted_margin"),
+                "margin_mae": h2h.get("margin_mae"),
+                "market_spread_bookmaker": h2h.get("market_spread_bookmaker"),
+                "market_spread_point": h2h.get("market_spread_point"),
                 "player_name": e["player_name"],
                 "player_team": e["team"],
                 "position_code": e["position_code"],
@@ -367,6 +405,7 @@ def write_predictions_csv(results, path="data/predictions_current.csv"):
     fieldnames = [
         "home_team", "away_team", "status",
         "our_home_win_prob", "market_home_win_prob", "h2h_edge",
+        "our_predicted_margin", "margin_mae", "market_spread_bookmaker", "market_spread_point",
         "player_name", "player_team", "position_code", "bookmaker",
         "our_try_probability", "market_try_probability", "try_scorer_edge", "fair_odds",
     ]
