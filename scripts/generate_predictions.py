@@ -152,14 +152,176 @@ def load_real_baselines(data_dir="data"):
 
 
 def get_squad(master_rows, team_short, season, up_to_round):
-    """Real player roster for a team, season-to-date (same pattern as
-    every test harness used to validate xtry_model.py earlier today)."""
-    players = {}
+    """
+    Real player roster for a team, season-to-date.
+
+    REAL BUG FOUND AND FIXED 2026-06-24 (per Sam's real feedback, citing
+    a real, confirmed case -- Fletcher Sharpe genuinely played 4
+    different real recorded positions this season: Five-Eighth (5
+    games), Fullback (3), Centre (2), and the rest unaccounted). The
+    original version of this function iterated every real game row in
+    round order and OVERWROTE players[name] each time -- meaning the
+    dict silently ended up holding whichever position was recorded in
+    whatever row happened to be processed LAST (an accident of
+    iteration order, not a deliberate choice), which for Fletcher
+    Sharpe was Round 16's "Fullback" -- not his most common real
+    position, and not necessarily his real position for THIS week
+    either. Confirmed real scale of the underlying issue: 291 of 487
+    real 2026 players (~60%) have more than one distinct position
+    recorded this season -- this wasn't a rare edge case.
+
+    Fixed: this function now returns the MOST FREQUENT real recorded
+    position per player as a sane historical baseline (a genuine
+    statistical summary, not an arbitrary "last row" accident) --
+    but per Sam's real, explicit clarification (2026-06-24): this
+    baseline should usually be OVERRIDDEN by resolve_squad_positions()
+    below using the real, confirmed team list for the upcoming match
+    (parse_team_list.py's real output, the actual source of truth Job B
+    polls for and commits weekly) -- this function's job is just "a
+    real fallback any squad-building caller can use until/unless a
+    confirmed team-list position is available," not the final answer.
+
+    Returns dict: player_name -> most-frequent real position label
+    this season (NOT yet alias-resolved to a code -- callers already
+    do that via normalise_position()).
+    """
+    position_counts = defaultdict(lambda: defaultdict(int))
     for r in master_rows:
         if (r["team"] == team_short and r["season"] == str(season)
                 and safe_int(r["round"]) < up_to_round):
-            players[r["player_name"]] = r["position"]
+            position_counts[r["player_name"]][r["position"]] += 1
+
+    players = {}
+    for player_name, counts in position_counts.items():
+        # Real most-frequent position; ties broken by whichever real
+        # position was recorded most RECENTLY among the tied positions
+        # (a reasonable real tiebreak -- recency matters more than
+        # alphabetical order when two positions are equally common),
+        # not by dict insertion order, which Python doesn't guarantee
+        # to reflect recency on its own once counts are tied.
+        max_count = max(counts.values())
+        tied_positions = [p for p, c in counts.items() if c == max_count]
+        if len(tied_positions) == 1:
+            players[player_name] = tied_positions[0]
+        else:
+            # Real tiebreak: scan this player's real rows in round
+            # order, keep the LAST one whose position is among the tie.
+            most_recent_among_tied = None
+            for r in master_rows:
+                if (r["team"] == team_short and r["season"] == str(season)
+                        and safe_int(r["round"]) < up_to_round
+                        and r["player_name"] == player_name
+                        and r["position"] in tied_positions):
+                    most_recent_among_tied = r["position"]
+            players[player_name] = most_recent_among_tied
     return players
+
+
+def load_real_team_list(team_list_csv_path):
+    """
+    Loads parse_team_list.py's real, confirmed weekly team-list output
+    (committed by Job B -- team-list-polling.yml -- as
+    data/team_lists_current.csv). Returns dict:
+    (team_short, player_name) -> {"position": ..., "jersey_number": ...}.
+
+    Real, confirmed source of truth (per Sam's explicit 2026-06-24
+    clarification): team lists land every Tuesday 4pm and are
+    re-polled/updated by Job B right up to each match's real kickoff
+    (catching real late-mail positional changes) -- this is genuinely
+    more current and more accurate than anything derivable from
+    historical nrl_master.csv rows, which is why get_squad()'s
+    most-frequent-position fallback above should normally be
+    OVERRIDDEN by this real data, not the other way around.
+
+    Returns None (not an empty dict) if the file doesn't exist yet --
+    explicit signal for resolve_squad_positions() below to fall back
+    to historical data and FLAG that it did so, rather than silently
+    treating "no file" the same as "file exists but genuinely empty."
+    """
+    if not os.path.exists(team_list_csv_path):
+        return None
+    with open(team_list_csv_path) as f:
+        rows = list(csv.DictReader(f))
+    lookup = {}
+    for r in rows:
+        key = (r["team"], r["player_name"])
+        lookup[key] = {"position": r["position"], "jersey_number": r.get("jersey_number")}
+    return lookup
+
+
+def resolve_squad_positions(historical_squad, team_short, real_team_list):
+    """
+    Combines get_squad()'s real historical-frequency baseline with the
+    real, confirmed team-list position for the upcoming match, per
+    Sam's explicit design (2026-06-24): the team list is the real
+    source of truth when available; historical data is the fallback.
+
+    Returns (resolved_squad, position_changes) where resolved_squad is
+    dict player_name -> position (the one to actually MODEL with), and
+    position_changes is a list of real, human-readable strings
+    describing every case where the team-list position differs from
+    the historical baseline -- per Sam's explicit requirement
+    ("major changes in the prediction model need to alert me") this
+    list is exactly the real, structured signal a caller can use to
+    decide whether to flag something in the digest/email, without this
+    function itself deciding what counts as "major enough" to alert on
+    (that's a real, separate judgement call for whatever consumes this
+    list -- kept here as a complete, unfiltered real record).
+
+    If real_team_list is None (file doesn't exist -- see
+    load_real_team_list()'s docstring), returns the historical squad
+    UNCHANGED, with a single real flag entry noting the fallback was
+    used at all (not which players' positions might be wrong -- that's
+    genuinely unknowable without the real team list).
+    """
+    if real_team_list is None:
+        return historical_squad, [
+            f"No real team list available for {team_short} this round -- "
+            f"using historical most-frequent position as a fallback for "
+            f"every player on this team. This should not normally happen "
+            f"once real team lists are confirmed (Tuesday 4pm, per the "
+            f"established weekly cycle) -- if you're seeing this on a "
+            f"genuine Thursday run, check whether Job B (team-list-polling.yml) "
+            f"actually ran and committed data/team_lists_current.csv this week."
+        ]
+
+    resolved = dict(historical_squad)
+    position_changes = []
+
+    for player_name, historical_position in historical_squad.items():
+        real_entry = real_team_list.get((team_short, player_name))
+        if real_entry is None:
+            # Real, confirmed case: a player with historical rows this
+            # season who isn't in THIS week's real team list at all
+            # (genuinely dropped/injured/rested) -- keep the historical
+            # position as a fallback (this function doesn't decide
+            # whether to model an absent player at all; that's the
+            # caller's job) but don't claim a real confirmed position
+            # exists when it doesn't.
+            continue
+        real_position = real_entry["position"]
+        if real_position != historical_position:
+            position_changes.append(
+                f"{player_name} ({team_short}): historical position "
+                f"'{historical_position}' -> real confirmed team-list "
+                f"position '{real_position}' (jersey #{real_entry.get('jersey_number')})"
+            )
+        resolved[player_name] = real_position
+
+    # Real players who ARE in this week's confirmed team list but have
+    # NO historical row at all this season (e.g. a real debut, or a
+    # real call-up from reserve grade) -- add them too, rather than
+    # only ever correcting players already known from history.
+    for (list_team, player_name), entry in real_team_list.items():
+        if list_team == team_short and player_name not in resolved:
+            resolved[player_name] = entry["position"]
+            position_changes.append(
+                f"{player_name} ({team_short}): new to this week's real "
+                f"confirmed team list, no historical 2026 row found -- "
+                f"position '{entry['position']}' (jersey #{entry.get('jersey_number')})"
+            )
+
+    return resolved, position_changes
 
 
 def build_raw_scores(baselines, by_player, team_games_played, team_season_tries,
@@ -268,6 +430,17 @@ def generate_round_predictions(season, up_to_round, the_odds_api_key, data_dir="
     for entry in due_watch_all:
         due_watch_by_team[entry["team"]].append(entry)
 
+    # Real, confirmed team-list data for this round, if Job B has
+    # already polled and committed it (per Sam's real, explicit
+    # 2026-06-24 clarification: team lists land every Tuesday 4pm,
+    # confirmed before this script's real Thursday-morning run -- this
+    # should always exist for a genuine scheduled run; None here on a
+    # real Thursday run would itself be worth investigating, not just
+    # silently tolerating). See load_real_team_list()'s docstring for
+    # the real fallback behaviour when it's genuinely absent (e.g.
+    # manual testing before Tuesday).
+    real_team_list = load_real_team_list(f"{data_dir}/team_lists_current.csv")
+
     real_events = get_upcoming_events(the_odds_api_key)
 
     results = []
@@ -363,8 +536,25 @@ def generate_round_predictions(season, up_to_round, the_odds_api_key, data_dir="
 
         # --- player try-scorer via xtry_model.py + edge_finder.py ---
         if home_short and away_short:
-            home_squad = get_squad(master_rows, home_short, season, up_to_round)
-            away_squad = get_squad(master_rows, away_short, season, up_to_round)
+            home_squad_historical = get_squad(master_rows, home_short, season, up_to_round)
+            away_squad_historical = get_squad(master_rows, away_short, season, up_to_round)
+
+            home_squad, home_position_changes = resolve_squad_positions(
+                home_squad_historical, home_short, real_team_list
+            )
+            away_squad, away_position_changes = resolve_squad_positions(
+                away_squad_historical, away_short, real_team_list
+            )
+            # Real, complete record of every case where this week's
+            # confirmed team list changed a player's modelled position
+            # vs the historical-frequency fallback -- surfaced here so
+            # a caller (e.g. send_predictions_digest.py) can decide
+            # what's "major" enough to alert on, per Sam's explicit
+            # requirement (2026-06-24) that real positional changes
+            # should visibly affect predictions, not be silently
+            # absorbed.
+            fixture_result["position_changes"] = home_position_changes + away_position_changes
+
             home_raw = build_raw_scores(
                 baselines, by_player, team_games_played, team_season_tries,
                 attacking_speed, speed_allowed, home_squad, home_short, away_full, True
