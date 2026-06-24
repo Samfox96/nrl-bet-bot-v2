@@ -2,15 +2,64 @@ name: Weekly NRL Round Update
 
 # Runs every Thursday at 6:00 AM AEST (20:00 UTC Wednesday).
 # Can also be triggered manually from the Actions tab for testing or catch-up.
+#
+# FAIL-SAFE FOR THE DIGEST STEP (added 2026-06-24, after a real failure:
+# the digest step failed on a real run due to a missing data/ path
+# prefix -- since fixed, see generate_round_digest.py's own docstring --
+# but the underlying need for an easy manual recovery path is real and
+# independent of any one specific bug). A bare workflow_dispatch re-run
+# is NOT sufficient to recover from a failed digest: "Determine next
+# round to scrape" always computes nrl_master.csv's max round + 1, so
+# re-running the whole job after a successful merge would try to
+# scrape/merge the round AFTER the one whose digest failed, never
+# actually resending the digest that's actually missing.
+#
+# Real fix: a `resend_digest_for_round` input. If set, this run SKIPS
+# scraping/merging entirely and only re-runs the digest generation +
+# send for the round number given -- safe to use any time a round's
+# real merge already succeeded but its digest email didn't arrive
+# (check the Actions log for the round number; it's also visible as
+# the commit message on the most recent "Auto-merge round N" commit).
+#
+# TO USE: Actions tab -> "Weekly NRL Round Update" -> "Run workflow" ->
+# enter the round number (e.g. "16") in resend_digest_for_round -> Run.
+# Leave it blank for a normal scheduled-style run (scrape + merge +
+# digest for whatever the next real round is).
+#
+# IMPLEMENTATION NOTE: every "if" condition below checks
+# `github.event_name == 'workflow_dispatch' && github.event.inputs...`
+# rather than relying on the input alone. Confirmed via real, multiple
+# independent sources (2026-06-24) that `github.event.inputs.X` on a
+# schedule trigger SHOULD correctly evaluate to empty string, but other
+# real GitHub Actions users have hit type-coercion errors trusting
+# `github.event.inputs.X` alone in conditions evaluated across multiple
+# trigger types (e.g. "Unexpected type of value '', expected type:
+# String" in a concurrency block). Explicitly gating on event_name
+# first removes any ambiguity for the one trigger type (the real
+# Wednesday schedule) that must never be accidentally skipped.
 on:
   schedule:
     - cron: '0 20 * * 3'
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      resend_digest_for_round:
+        description: 'Round number to RESEND THE DIGEST ONLY for (skips scrape/merge entirely -- use this to recover from a digest-send failure on an already-merged round). Leave blank for a normal full run.'
+        required: false
+        type: string
 
 jobs:
   scrape-validate-merge:
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    env:
+      # Real, single source of truth for "are we in digest-resend mode"
+      # -- computed ONCE here rather than repeating the same compound
+      # github.event_name/inputs check in every single step's `if:`.
+      # On a schedule trigger, github.event.inputs is not populated at
+      # all, so this correctly evaluates to empty string (confirmed via
+      # multiple real sources 2026-06-24) -- the && short-circuits
+      # before ever touching .inputs on a non-dispatch trigger.
+      RESEND_ROUND: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.resend_digest_for_round || '' }}
 
     steps:
       - name: Check out repo
@@ -22,14 +71,17 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
+        if: env.RESEND_ROUND == ''
         run: |
           pip install pandas selenium webdriver-manager
 
       - name: Install Chrome
+        if: env.RESEND_ROUND == ''
         uses: browser-actions/setup-chrome@v1
 
       - name: Determine next round to scrape
         id: next_round
+        if: env.RESEND_ROUND == ''
         run: |
           NEXT_ROUND=$(python3 -c "
           import pandas as pd
@@ -41,6 +93,7 @@ jobs:
 
       - name: Run scraper for next round
         id: scrape
+        if: env.RESEND_ROUND == ''
         continue-on-error: true
         run: |
           mkdir -p data/pending
@@ -49,7 +102,7 @@ jobs:
             --output "data/pending/nrl_round_${{ steps.next_round.outputs.round }}_new.csv"
 
       - name: Upload debug screenshots (only if scraper had trouble)
-        if: always()
+        if: always() && env.RESEND_ROUND == ''
         uses: actions/upload-artifact@v4
         with:
           name: debug-screenshots-round-${{ steps.next_round.outputs.round }}
@@ -59,12 +112,13 @@ jobs:
 
       - name: Validate and merge
         id: validate_merge
+        if: env.RESEND_ROUND == ''
         continue-on-error: true
         run: |
           python3 scripts/merge_round.py
 
       - name: Commit changes (only runs if merge succeeded)
-        if: steps.validate_merge.outcome == 'success'
+        if: env.RESEND_ROUND == '' && steps.validate_merge.outcome == 'success'
         run: |
           git config user.name "nrl-bot-automation"
           git config user.email "actions@github.com"
@@ -96,12 +150,12 @@ jobs:
 # a public repo (the repo is public as of 2026-06-23).
 
       - name: Install digest dependencies
-        if: steps.validate_merge.outcome == 'success'
+        if: env.RESEND_ROUND == '' && steps.validate_merge.outcome == 'success'
         run: |
           pip install pandas
 
       - name: Generate and send round digest
-        if: steps.validate_merge.outcome == 'success'
+        if: env.RESEND_ROUND == '' && steps.validate_merge.outcome == 'success'
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           DIGEST_TO_EMAIL: ${{ secrets.DIGEST_TO_EMAIL }}
@@ -133,7 +187,7 @@ jobs:
           "
 
       - name: Commit digest snapshot
-        if: steps.validate_merge.outcome == 'success'
+        if: env.RESEND_ROUND == '' && steps.validate_merge.outcome == 'success'
         run: |
           git config user.name "nrl-bot-automation"
           git config user.email "actions@github.com"
@@ -142,7 +196,7 @@ jobs:
           git push
 
       - name: Commit pending file for review (only runs if validation failed)
-        if: steps.validate_merge.outcome == 'failure' || steps.scrape.outcome == 'failure'
+        if: env.RESEND_ROUND == '' && (steps.validate_merge.outcome == 'failure' || steps.scrape.outcome == 'failure')
         run: |
           git config user.name "nrl-bot-automation"
           git config user.email "actions@github.com"
@@ -151,7 +205,7 @@ jobs:
           git push
 
       - name: Open issue on failure
-        if: steps.validate_merge.outcome == 'failure' || steps.scrape.outcome == 'failure'
+        if: env.RESEND_ROUND == '' && (steps.validate_merge.outcome == 'failure' || steps.scrape.outcome == 'failure')
         uses: actions/github-script@v7
         with:
           script: |
@@ -171,3 +225,58 @@ jobs:
               ].join('\n'),
               labels: ['needs-review', 'automation']
             })
+
+      # ============================================================
+      # DIGEST-ONLY RESEND PATH (added 2026-06-24) -- runs ONLY when
+      # RESEND_ROUND is set, and does NOT depend on any of the
+      # scrape/merge steps above (which all skipped themselves in this
+      # mode) -- this step alone reads nrl_master.csv (already real and
+      # current from whatever round previously merged) and resends the
+      # digest for the EXACT round number given, rather than
+      # recomputing "next round" the way a normal run does.
+      # ============================================================
+      - name: Install digest dependencies (resend-only mode)
+        if: env.RESEND_ROUND != ''
+        run: |
+          pip install pandas
+
+      - name: Resend digest for a specific already-merged round
+        if: env.RESEND_ROUND != ''
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          DIGEST_TO_EMAIL: ${{ secrets.DIGEST_TO_EMAIL }}
+        run: |
+          python3 -c "
+          import sys
+          sys.path.insert(0, 'scripts')
+          from generate_round_digest import build_digest
+          from send_round_digest import send_digest_email, write_due_flags_snapshot
+
+          round_num = ${{ env.RESEND_ROUND }}
+          digest = build_digest(
+              'data/nrl_master.csv',
+              round_num=round_num,
+              season=2026,
+              team_aliases_path='data/team_aliases.json',
+              position_aliases_path='data/position_aliases.json',
+              zcr_baseline_path='data/historical_zcr_baseline.csv',
+              position_tpg_baseline_path='data/historical_position_tpg_baseline.csv',
+              season_draw_path='data/season_draw_2026.json',
+              historical_player_match_rows_path='data/historical_player_match_rows.csv',
+          )
+          to_email = '${{ secrets.DIGEST_TO_EMAIL }}'.strip()
+          if not to_email:
+              raise RuntimeError('DIGEST_TO_EMAIL secret is not set -- add it under Settings > Secrets and variables > Actions')
+          send_digest_email(digest, to_email=to_email)
+          write_due_flags_snapshot(digest, path='data/due_flags_last_run.json')
+          print(f'RESEND: digest sent for round {round_num}')
+          "
+
+      - name: Commit digest snapshot (resend-only mode)
+        if: env.RESEND_ROUND != ''
+        run: |
+          git config user.name "nrl-bot-automation"
+          git config user.email "actions@github.com"
+          git add data/due_flags_last_run.json
+          git commit -m "Resend digest snapshot for round ${{ env.RESEND_ROUND }}" || echo "Nothing to commit"
+          git push
