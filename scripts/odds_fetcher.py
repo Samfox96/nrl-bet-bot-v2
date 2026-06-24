@@ -186,14 +186,42 @@ def fetch_h2h_and_tryscorer_odds(api_key, event_id, regions="au"):
     return _get(url)
 
 
-def extract_h2h_for_consensus(odds_response):
+def extract_h2h_for_consensus(odds_response, team_aliases=None):
     """
     Reshapes the real odds_response into the
     {bookmaker_key: {outcome_name: decimal_price}} shape
     odds_probability.py's consensus_true_probability() and
-    de_margin() expect. Confirmed real shape 2026-06-24: every
-    bookmaker's h2h market outcomes are keyed by the real team name
-    (e.g. "Newcastle Knights": 1.47, "Wests Tigers": 2.7).
+    de_margin() expect.
+
+    REAL BUG FOUND AND FIXED 2026-06-24: the original version of this
+    function assumed every bookmaker's h2h outcome name already matches
+    team_aliases.json's canonical form, based on the one real fixture
+    confirmed that day (Newcastle Knights v Wests Tigers -- outcomes
+    were genuinely "Newcastle Knights"/"Wests Tigers", an exact
+    canonical match). That was an untested assumption masquerading as a
+    confirmed fact: a SECOND real fixture (Gold Coast Titans v
+    Canterbury Bulldogs, confirmed live 2026-06-24) showed every single
+    one of 10 real bookmakers using "Canterbury Bulldogs" (no hyphen),
+    never "Canterbury-Bankstown Bulldogs" -- the SAME real gap already
+    found and fixed in team_aliases.json's aliases dict for event
+    discovery, but this function never actually consulted that alias
+    map, so the fix didn't help here. Real consequence: every
+    bookmaker got silently excluded from consensus_true_probability()
+    (its own `any(p is None...)` check correctly excludes a bookmaker
+    missing an expected outcome key -- doing exactly what it was
+    designed to do, given outcome names that didn't match), producing
+    a real, silent "no h2h data" for that fixture with no error
+    surfaced anywhere until a human noticed the email was missing it.
+
+    Fix: every outcome name is now resolved through team_aliases.json
+    BEFORE being used as a dict key, exactly the same alias-resolution
+    discipline already applied everywhere else in this project (team
+    short-name -> canonical, position label -> canonical code) --
+    this function was the one real place still assuming, rather than
+    enforcing, canonical naming. If team_aliases is None (not supplied),
+    falls back to the original unresolved name -- explicit opt-in
+    needed since this function has no other dependency on
+    team_aliases.json and shouldn't assume a path silently.
 
     Skips any bookmaker that doesn't have an h2h market at all (real,
     confirmed case: playup had h2h but not every bookmaker carries
@@ -204,9 +232,20 @@ def extract_h2h_for_consensus(odds_response):
     for bookmaker in odds_response.get("bookmakers", []):
         for market in bookmaker.get("markets", []):
             if market["key"] == "h2h":
-                result[bookmaker["key"]] = {
-                    outcome["name"]: outcome["price"] for outcome in market["outcomes"]
-                }
+                outcomes = {}
+                for outcome in market["outcomes"]:
+                    name = outcome["name"]
+                    if team_aliases is not None:
+                        name = team_aliases.get(name, name)
+                        # .get(name, name): if this exact string isn't a
+                        # real key in the alias map, fall back to the
+                        # raw name rather than silently dropping it --
+                        # a genuinely new/unmapped real bookmaker string
+                        # should surface as a visible mismatch downstream
+                        # (consensus_true_probability's own exclusion
+                        # logic), not be swallowed here.
+                    outcomes[name] = outcome["price"]
+                result[bookmaker["key"]] = outcomes
     return result
 
 
@@ -247,7 +286,8 @@ def extract_try_scorer_odds(odds_response):
     return result
 
 
-def extract_single_bookmaker_spread(odds_response, home_team_full, preferred_bookmaker="sportsbet"):
+def extract_single_bookmaker_spread(odds_response, home_team_full, preferred_bookmaker="sportsbet",
+                                     team_aliases=None):
     """
     Returns ONE real bookmaker's spread line for the home team, rather
     than pooling across bookmakers -- DELIBERATE, not a shortcut.
@@ -261,6 +301,17 @@ def extract_single_bookmaker_spread(odds_response, home_team_full, preferred_boo
     (one bookmaker's own price + point for their own market), just not
     a market-wide consensus. Sam explicitly chose this trade-off over
     waiting for a real line-grouping fix (2026-06-24).
+
+    REAL BUG FOUND AND FIXED 2026-06-24 (same root cause as
+    extract_h2h_for_consensus's own fix, see its docstring for the full
+    real story): this function's `outcome["name"] == home_team_full`
+    check is an exact string comparison against the CANONICAL name,
+    but real bookmakers don't always use canonical-matching strings
+    (confirmed: "Canterbury Bulldogs" vs canonical "Canterbury-
+    Bankstown Bulldogs"). Fixed the same way -- resolve each real
+    outcome name through team_aliases.json before comparing, rather
+    than comparing the raw API string directly against the canonical
+    target.
 
     Falls back to whichever real bookmaker actually has a spreads
     market for this fixture if the preferred one doesn't (mirrors
@@ -277,7 +328,10 @@ def extract_single_bookmaker_spread(odds_response, home_team_full, preferred_boo
         for market in bookmaker.get("markets", []):
             if market["key"] == "spreads":
                 for outcome in market["outcomes"]:
-                    if outcome["name"] == home_team_full:
+                    real_name = outcome["name"]
+                    if team_aliases is not None:
+                        real_name = team_aliases.get(real_name, real_name)
+                    if real_name == home_team_full:
                         spreads_by_bookmaker[bookmaker["key"]] = (
                             outcome.get("point"), outcome.get("price")
                         )
