@@ -1,382 +1,535 @@
 """
-odds_fetcher.py
+generate_predictions.py
 
-The actual script that calls the real the-odds-api.com API and reshapes
-its response into exactly what edge_finder.py and odds_probability.py
-already expect. This was the one remaining piece of Phase 8's pipeline
-that didn't exist yet -- everything built earlier (xtry_model.py,
-edge_finder.py) was validated against real data shapes but never a
-genuinely live call, since this sandbox cannot reach
-api.the-odds-api.com directly.
+Phase 8: the top-level script that actually wires xtry_model.py,
+nrl_elo.py, odds_fetcher.py, odds_probability.py, and edge_finder.py
+together into one real, callable weekly run -- the piece that was
+flagged as "not yet wired into the weekly automation pipeline" in
+STATUS.md right up until this was built (2026-06-24). Everything this
+script calls was independently validated earlier the same day (see each
+module's own docstring for its specific validation); this script's job
+is ONLY orchestration, not new modelling logic.
 
-VALIDATED AGAINST REAL DATA 2026-06-24 -- not built from docs alone.
-Sam ran two real calls and pasted back the actual JSON:
-  1. GET /v4/sports/rugbyleague_nrl/events/ -- confirmed real upcoming
-     fixtures, including the exact Round 17 matches this project has
-     been testing against all session (e.g. Newcastle Knights v Wests
-     Tigers, event id 7d9714af3f3ebd2974b4371b1f2e95c0).
-  2. GET /v4/sports/rugbyleague_nrl/events/{id}/odds?markets=h2h,
-     player_try_scorer_anytime -- confirmed the EXACT real response
-     shape this module parses below, across 9 real bookmakers
-     (sportsbet, betright, betr_au, tab, pointsbetau, neds, ladbrokes_au,
-     betfair_ex_au, tabtouch, unibet, playup -- not every bookmaker
-     carries both markets, confirmed real: only 7 of these 11 actually
-     had player_try_scorer_anytime priced).
+REAL SCOPE LOCKED IN 2026-06-24 (deliberately narrower than "every
+market"; see STATUS.md's Phase 8 section for the full reasoning):
+  - h2h: nrl_elo.py's real, backtested win probability (64.8% avg
+    accuracy across 3 held-out years, beats the cited published
+    benchmark) vs the real market consensus (odds_probability.py's
+    consensus_true_probability(), which already handles Betfair's
+    real unreliable-exchange-price problem). ALSO includes a real,
+    validated predicted MARGIN (nrl_elo.py's expected_margin(), 14-point
+    real MAE backtested across 3 held-out years) shown alongside ONE
+    real bookmaker's own spread line (default Sportsbet, with a real
+    fallback -- see odds_fetcher.extract_single_bookmaker_spread()'s
+    docstring) -- NOT a market consensus, since real spreads lines
+    aren't standardised across bookmakers (3 distinct real lines
+    confirmed for one real match, same problem as totals below). Sam
+    explicitly chose "show one real bookmaker's line" over waiting for
+    a real line-grouping fix (2026-06-24).
+  - player_try_scorer_anytime: xtry_model.py's real per-player
+    probability vs real bookmaker "Yes" prices, via edge_finder.py.
+  - totals are DELIBERATELY NOT included. Real data confirmed
+    2026-06-24 (the Knights v Wests Tigers fixture) that bookmakers
+    quote genuinely different lines for this market (2 distinct real
+    total points across real bookmakers for the same match) -- the
+    same real problem spreads has, but totals doesn't yet have even the
+    "read one bookmaker's real line" treatment spreads got. Real future
+    work, not built here.
+  - player_try_scorer_first/last are DELIBERATELY NOT included. Real
+    data confirmed these carry a ~97% bookmaker margin (neither clean
+    like h2h's ~5% nor independent like anytime's uncapped sum) --
+    too uncertain to trust a de-margined comparison against without
+    further real validation.
 
-REAL FINDING FROM THIS VALIDATION (worth tracking, same spirit as the
-team-name mismatch found earlier): ran the full real pipeline
-end-to-end -- this real odds response, reshaped by this module, fed
-into the already-validated xtry_model.py output for the same real
-Round 17 squads, through edge_finder.py's real matching logic. Of the
-genuine unmatched_in_model results, 3 distinct real causes were found,
-precisely diagnosed rather than lumped together:
-  - "Tom Cant" (bookmaker) vs "Thomas Cant" (nrl_master.csv, 9 real
-    games) -- a genuine nickname/full-name mismatch. The same CATEGORY
-    of problem as the team-name spelling fix, just for individual
-    players. NOT fixed with a hardcoded alias here (a single nickname
-    pair isn't worth a whole alias system yet) -- surfaced instead via
-    edge_finder.py's existing unmatched_in_model mechanism, which
-    already does exactly this job. If nickname mismatches turn out to
-    be common as more rounds get tested, a player_aliases.json
-    (mirroring team_aliases.json's pattern) would be the right fix --
-    not built preemptively for a sample size of 1.
-  - "Lachlan Crouch" -- not a name mismatch at all. Confirmed: no
-    matching name exists anywhere in nrl_master.csv. A real Wests
-    Tigers player who simply hasn't appeared in any of the 16 real
-    scraped rounds yet (a fringe player the bookmaker still prices
-    speculatively).
-  - "James Schiller" -- ALSO not a name mismatch. The exact name
-    "James Schiller" exists in nrl_master.csv with 2 real games logged
-    (round 8 and round 16, both for the Knights) -- but 2 games falls
-    below the 3-game minimum xtry_model.py's calling code requires
-    before modelling a player, so he never entered the candidate pool
-    to be matched against in the first place. Confirms
-    unmatched_in_model does double duty: it catches genuine name
-    mismatches AND legitimately-named players who simply haven't
-    cleared a modelling threshold yet -- worth distinguishing these
-    by hand when reviewing real output, not assuming every entry in
-    that list is a data bug.
+WHAT THIS SCRIPT DOES:
+  1. For every real fixture in the upcoming round (from
+     season_draw_2026.json's real fixture list, matched against
+     odds_fetcher.get_upcoming_events() via team_aliases.json):
+     a. Fetches real h2h + player_try_scorer_anytime odds.
+     b. Computes nrl_elo.py's real win probability for both teams.
+     c. Computes xtry_model.py's real per-player try-scoring
+        probability for every eligible player on both squads.
+     d. Calls edge_finder.find_edges_for_match() for the try-scorer
+        comparison, and a parallel (simpler, no name-matching needed)
+        h2h comparison using odds_probability's consensus function.
+  2. Writes everything to data/predictions_current.csv -- the
+     committed snapshot Sam reads when asking for a manual mid-week
+     odds recheck, per his own stated workflow (avoids needing to
+     regenerate xtry_model's real output from scratch every time).
 
-WHAT THIS MODULE DOES:
-  1. get_upcoming_events() -- lists real upcoming NRL fixtures with
-     their the-odds-api.com event IDs and real team names.
-  2. resolve_event_for_fixture() -- matches a (home, away) pair (in
-     EITHER team_aliases.json short form or canonical full form) to
-     the real event ID, using team_aliases.json so it doesn't matter
-     which name format the caller has on hand.
-  3. fetch_h2h_and_tryscorer_odds() -- the actual odds call for one
-     event, returning the raw real response.
-  4. extract_h2h_for_consensus() -- reshapes the real response into the
-     bookmaker_odds dict shape odds_probability.py's
-     consensus_true_probability() expects:
-     {bookmaker_key: {outcome_name: decimal_price}}.
-  5. extract_try_scorer_odds() -- reshapes the real response into the
-     shape edge_finder.py's find_edges_for_match() expects:
-     {bookmaker_key: {player_description: decimal_price}}.
+GRACEFUL DEGRADATION (matching generate_round_digest.py's own
+established pattern -- a degraded section beats no digest at all):
+  - If a real fixture's odds can't be fetched (API error, event not
+    found), that fixture is skipped with a logged reason, not a hard
+    failure of the whole run -- the other real fixtures still get
+    processed.
+  - The two real models (Elo for h2h, xTry for try-scorer) are kept
+    fully independent -- one's failure never blocks the other. This
+    mirrors nrl_elo.py's own documented finding that blending them
+    does NOT help; there's no real reason one's failure should block
+    the other either.
 
-WHAT THIS MODULE DOES NOT DO:
-  - Does not call calculate_edge(), normalise_match_xtry(), or any
-    other downstream function -- this module's job ends at "here is
-    real odds data, reshaped into the format the other modules want."
-    Wiring fetched odds into an actual edge calculation is the
-    caller's job (e.g. a future weekly-automation script).
-  - Does not decide WHEN to fetch (the open question flagged in
-    STATUS.md about timing across the Thu-Sun window) -- caller decides
-    when to call this.
-  - Does not handle the totals line-mismatch problem (also still open,
-    see STATUS.md) -- this module only handles h2h and
-    player_try_scorer_anytime, the two markets actually validated
-    against real data so far.
+REAL CREDIT BUDGET (confirmed 2026-06-24 against Sam's actual account):
+  1 credit per (market x region). This script requests 2 markets
+  (h2h, player_try_scorer_anytime) x 1 region (au) = 2 credits per
+  real fixture. An 8-match round = 16 credits. Free tier is 500
+  credits/month -- confirmed comfortable headroom for once-per-round
+  automated runs AND Sam's separate stated workflow of asking for
+  manual mid-week rechecks.
 """
 
+import csv
 import json
-import urllib.request
-import urllib.error
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+from xtry_model import (  # noqa: E402
+    load_csv, load_json, safe_int, normalise_position,
+    build_player_game_log, build_team_games_played, build_team_overall_zcr,
+    build_team_ruck_speeds, calculate_player_xtry_raw, compute_real_avg_tries_per_team_per_game,
+)
+from recency_weighted_baselines import build_weighted_tpg_baseline, build_weighted_zcr_baseline  # noqa: E402
+from nrl_elo import build_elo_ratings, expected_win_probability, expected_margin, MARGIN_MAE_POINTS  # noqa: E402
+from odds_fetcher import (  # noqa: E402
+    get_upcoming_events, resolve_event_for_fixture, fetch_h2h_and_tryscorer_odds,
+    extract_h2h_for_consensus, extract_try_scorer_odds, extract_single_bookmaker_spread,
+)
+from odds_probability import consensus_true_probability  # noqa: E402
+from edge_finder import find_edges_for_match  # noqa: E402
+from due_flags_v2 import build_due_watch  # noqa: E402
+
+from collections import defaultdict
 
 
-BASE_URL = "https://api.the-odds-api.com/v4"
-SPORT_KEY = "rugbyleague_nrl"
-
-
-def _get(url):
+def load_real_baselines(data_dir="data"):
     """
-    Minimal GET wrapper, no external dependencies (matches the
-    project's existing preference for plain urllib over requests where
-    reasonable -- see send_round_digest.py's own User-Agent fix, which
-    was needed for exactly this reason: urllib doesn't set one by
-    default, unlike most HTTP client libraries). Raises with the real
-    response body on a non-200, rather than swallowing the error --
-    a silent failure here would look identical to "no odds available"
-    to a caller, which is a meaningfully different situation.
+    Loads every real data source the prediction pipeline needs, once,
+    so a single round's run doesn't re-read the same files per fixture.
+    Mirrors generate_round_digest.py's file-path-driven loading
+    pattern -- every path is a parameter with a sensible real default,
+    not hardcoded inline, so this is testable against the local build
+    directory's copies the same way every module was validated earlier
+    today.
     """
-    req = urllib.request.Request(url, headers={"User-Agent": "nrl-bet-bot-v2/1.0"})
-    try:
-        with urllib.request.urlopen(req, timeout=15) as resp:
-            return json.loads(resp.read().decode("utf-8"))
-    except urllib.error.HTTPError as e:
-        body = e.read().decode("utf-8", errors="replace")
-        raise RuntimeError(f"the-odds-api.com returned HTTP {e.code}: {body}") from e
+    master_rows = load_csv(f"{data_dir}/nrl_master.csv")
+    position_tpg_baseline = load_csv(f"{data_dir}/historical_position_tpg_baseline.csv")
+    player_match_rows = load_csv(f"{data_dir}/historical_player_match_rows.csv")
+    zcr_baseline = load_csv(f"{data_dir}/historical_zcr_baseline.csv")
+    team_aliases = load_json(f"{data_dir}/team_aliases.json")["aliases"]
+    position_aliases = load_json(f"{data_dir}/position_aliases.json")["aliases"]
+    match_rows = load_csv(f"{data_dir}/match_data_FINAL_fixed.csv")
 
+    weighted_tpg = build_weighted_tpg_baseline(position_tpg_baseline)
+    weighted_zcr = build_weighted_zcr_baseline(player_match_rows)
 
-def get_upcoming_events(api_key):
-    """
-    Real endpoint: /v4/sports/rugbyleague_nrl/events/. Confirmed
-    2026-06-24 against a real call -- returns id, commence_time,
-    home_team, away_team for every upcoming NRL fixture, no markets
-    data (this is the free "discover the event ID" call, separate from
-    the priced odds call). Does NOT cost a usage credit per the-odds-
-    api.com's own docs for /events endpoints.
+    league_avg_zcr_by_position = defaultdict(list)
+    for row in zcr_baseline:
+        league_avg_zcr_by_position[row["position"]].append(float(row["concede_rate"]))
+    league_avg_zcr_by_position = {
+        k: sum(v) / len(v) for k, v in league_avg_zcr_by_position.items()
+    }
 
-    Returns the real list of dicts as the API returns them: each has
-    id, sport_key, sport_title, commence_time, home_team, away_team.
-    """
-    url = f"{BASE_URL}/sports/{SPORT_KEY}/events/?apiKey={api_key}"
-    return _get(url)
-
-
-def resolve_event_for_fixture(events, home_team, away_team, team_aliases):
-    """
-    Matches a (home_team, away_team) pair to a real event from
-    get_upcoming_events()'s output, regardless of which name format the
-    caller has on hand (team_aliases.json short form like "Knights", or
-    canonical full form like "Newcastle Knights" -- both resolve to the
-    same comparison). Confirmed real 2026-06-24: the-odds-api.com's own
-    team name strings for this match ("Newcastle Knights", "Wests
-    Tigers") matched team_aliases.json's canonical form exactly for
-    this fixture -- but matching defensively via the alias map rather
-    than assuming exact string equality, since 3 of 17 real team names
-    needed the alias map's help when this was checked for the h2h
-    market earlier in the project (see team_aliases.json's "Canterbury
-    Bulldogs" fix).
-
-    Returns the matching event dict, or None if no real upcoming event
-    matches both teams -- never guesses or returns a partial match.
-    """
-    home_canonical = team_aliases.get(home_team, home_team)
-    away_canonical = team_aliases.get(away_team, away_team)
-
-    for event in events:
-        event_home_canonical = team_aliases.get(event["home_team"], event["home_team"])
-        event_away_canonical = team_aliases.get(event["away_team"], event["away_team"])
-        if event_home_canonical == home_canonical and event_away_canonical == away_canonical:
-            return event
-    return None
-
-
-def fetch_h2h_and_tryscorer_odds(api_key, event_id, regions="au"):
-    """
-    Real endpoint: /v4/sports/rugbyleague_nrl/events/{id}/odds. This
-    DOES cost usage credits (unlike get_upcoming_events()) -- confirmed
-    real cost shape per the-odds-api.com's docs: cost scales with
-    [markets] x [regions]. Requesting 3 markets x 1 region (au) here
-    (h2h, player_try_scorer_anytime, spreads -- spreads added 2026-06-24
-    specifically to support a real margin-vs-market comparison; see
-    extract_single_bookmaker_spread()'s docstring for why this is read
-    from ONE bookmaker rather than pooled across all of them).
-
-    Returns the real raw response dict: id, sport_key, commence_time,
-    home_team, away_team, bookmakers (list of {key, title, markets:
-    [{key, last_update, outcomes}]}).
-    """
-    url = (
-        f"{BASE_URL}/sports/{SPORT_KEY}/events/{event_id}/odds"
-        f"?apiKey={api_key}&regions={regions}&markets=h2h,player_try_scorer_anytime,spreads"
-        f"&oddsFormat=decimal"
+    position_games_by_team = defaultdict(lambda: defaultdict(int))
+    for row in player_match_rows:
+        position_games_by_team[row["opposition_team"]][row["position"]] += 1
+    team_overall_zcr, league_avg_overall_zcr = build_team_overall_zcr(
+        weighted_zcr, position_games_by_team
     )
-    return _get(url)
+
+    return {
+        "master_rows": master_rows,
+        "team_aliases": team_aliases,
+        "position_aliases": position_aliases,
+        "weighted_tpg": weighted_tpg,
+        "weighted_zcr": weighted_zcr,
+        "league_avg_zcr_by_position": league_avg_zcr_by_position,
+        "team_overall_zcr": team_overall_zcr,
+        "league_avg_overall_zcr": league_avg_overall_zcr,
+        "match_rows": match_rows,
+    }
 
 
-def extract_h2h_for_consensus(odds_response, team_aliases=None):
+def get_squad(master_rows, team_short, season, up_to_round):
+    """Real player roster for a team, season-to-date (same pattern as
+    every test harness used to validate xtry_model.py earlier today)."""
+    players = {}
+    for r in master_rows:
+        if (r["team"] == team_short and r["season"] == str(season)
+                and safe_int(r["round"]) < up_to_round):
+            players[r["player_name"]] = r["position"]
+    return players
+
+
+def build_raw_scores(baselines, by_player, team_games_played, team_season_tries,
+                      attacking_speed, speed_allowed, squad, team_short,
+                      opponent_full, is_home):
+    """One team's full set of real per-player xTry raw scores for one
+    upcoming match, reusing the exact validated pattern from this
+    session's test harnesses -- not a new code path."""
+    raw_scores = []
+    for player_name, pos_label in squad.items():
+        games = by_player.get(player_name, [])
+        if len(games) < 3:
+            continue
+        pos_code = normalise_position(pos_label, baselines["position_aliases"])
+        if pos_code is None:
+            continue
+        result = calculate_player_xtry_raw(
+            player_name, games, pos_code, team_short, opponent_full, is_home,
+            baselines["weighted_tpg"], baselines["weighted_zcr"],
+            baselines["league_avg_zcr_by_position"],
+            team_season_tries.get(team_short, 0), attacking_speed, speed_allowed,
+            baselines["team_overall_zcr"], baselines["league_avg_overall_zcr"],
+            team_games_played=team_games_played.get(team_short),
+        )
+        raw_scores.append(result)
+    return raw_scores
+
+
+def generate_round_predictions(season, up_to_round, the_odds_api_key, data_dir="data"):
     """
-    Reshapes the real odds_response into the
-    {bookmaker_key: {outcome_name: decimal_price}} shape
-    odds_probability.py's consensus_true_probability() and
-    de_margin() expect.
+    Top-level entry point. Returns a list of per-fixture result dicts:
+      {
+        "home_team": ..., "away_team": ...,
+        "h2h": {"our_home_win_prob": ..., "market_home_win_prob": ...,
+                 "edge": ..., "status": "ok" | "skipped: <reason>"},
+        "try_scorer_edges": [... edge_finder.py's real output ...],
+        "status": "ok" | "skipped: <reason>"   (fixture-level)
+      }
 
-    REAL BUG FOUND AND FIXED 2026-06-24: the original version of this
-    function assumed every bookmaker's h2h outcome name already matches
-    team_aliases.json's canonical form, based on the one real fixture
-    confirmed that day (Newcastle Knights v Wests Tigers -- outcomes
-    were genuinely "Newcastle Knights"/"Wests Tigers", an exact
-    canonical match). That was an untested assumption masquerading as a
-    confirmed fact: a SECOND real fixture (Gold Coast Titans v
-    Canterbury Bulldogs, confirmed live 2026-06-24) showed every single
-    one of 10 real bookmakers using "Canterbury Bulldogs" (no hyphen),
-    never "Canterbury-Bankstown Bulldogs" -- the SAME real gap already
-    found and fixed in team_aliases.json's aliases dict for event
-    discovery, but this function never actually consulted that alias
-    map, so the fix didn't help here. Real consequence: every
-    bookmaker got silently excluded from consensus_true_probability()
-    (its own `any(p is None...)` check correctly excludes a bookmaker
-    missing an expected outcome key -- doing exactly what it was
-    designed to do, given outcome names that didn't match), producing
-    a real, silent "no h2h data" for that fixture with no error
-    surfaced anywhere until a human noticed the email was missing it.
-
-    Fix: every outcome name is now resolved through team_aliases.json
-    BEFORE being used as a dict key, exactly the same alias-resolution
-    discipline already applied everywhere else in this project (team
-    short-name -> canonical, position label -> canonical code) --
-    this function was the one real place still assuming, rather than
-    enforcing, canonical naming. If team_aliases is None (not supplied),
-    falls back to the original unresolved name -- explicit opt-in
-    needed since this function has no other dependency on
-    team_aliases.json and shouldn't assume a path silently.
-
-    Skips any bookmaker that doesn't have an h2h market at all (real,
-    confirmed case: playup had h2h but not every bookmaker carries
-    every market -- never assume a bookmaker present in the response
-    has every requested market).
+    GRACEFUL DEGRADATION: a fixture that fails (odds fetch error, no
+    real event match found) is included in the output with a "skipped"
+    status and reason, not silently dropped -- so a human reviewing
+    predictions_current.csv can see exactly what happened for every
+    real fixture, not just the ones that succeeded.
     """
-    result = {}
-    for bookmaker in odds_response.get("bookmakers", []):
-        for market in bookmaker.get("markets", []):
-            if market["key"] == "h2h":
-                outcomes = {}
-                for outcome in market["outcomes"]:
-                    name = outcome["name"]
-                    if team_aliases is not None:
-                        name = team_aliases.get(name, name)
-                        # .get(name, name): if this exact string isn't a
-                        # real key in the alias map, fall back to the
-                        # raw name rather than silently dropping it --
-                        # a genuinely new/unmapped real bookmaker string
-                        # should surface as a visible mismatch downstream
-                        # (consensus_true_probability's own exclusion
-                        # logic), not be swallowed here.
-                    outcomes[name] = outcome["price"]
-                result[bookmaker["key"]] = outcomes
-    return result
+    baselines = load_real_baselines(data_dir)
+    master_rows = baselines["master_rows"]
+    team_aliases = baselines["team_aliases"]
+
+    season_draw = load_json(f"{data_dir}/season_draw_2026.json")
+    round_key = str(up_to_round)
+    if round_key not in season_draw.get("rounds", {}):
+        raise ValueError(
+            f"Round {up_to_round} not found in season_draw_2026.json's real "
+            f"fixture list -- confirm the draw file actually covers this "
+            f"round before running (it's confirmed to only cover rounds "
+            f"17-18 as of 2026-06-24; extend it before using this for a "
+            f"later round)."
+        )
+    fixtures = season_draw["rounds"][round_key]["fixtures"]
+
+    by_player = build_player_game_log(master_rows, season, up_to_round)
+    team_games_played = build_team_games_played(master_rows, season, up_to_round)
+    attacking_speed, speed_allowed = build_team_ruck_speeds(master_rows, season, up_to_round)
+    real_avg_tries = compute_real_avg_tries_per_team_per_game(master_rows, season, up_to_round)
+
+    team_season_tries = defaultdict(int)
+    for r in master_rows:
+        if r["season"] == str(season) and safe_int(r["round"]) < up_to_round:
+            team_season_tries[r["team"]] += safe_int(r["tries"])
+
+    real_short_names = set(r["team"] for r in master_rows)
+    full_to_short = {}
+    for short in real_short_names:
+        full = team_aliases.get(short)
+        if full:
+            full_to_short[full] = short
+
+    elo_ratings = build_elo_ratings(baselines["match_rows"], team_aliases)
+
+    # Real DUE WATCH for the whole round (top_n=None -- no truncation --
+    # since this needs filtering back down to "due players in fixture X"
+    # per game below, not a single round-wide top list). Reuses the
+    # exact same Phase 7 weighted baselines already loaded into
+    # `baselines` for xtry_model.py's own components -- not a second,
+    # separately-computed copy.
+    zcr_baseline = load_csv(f"{data_dir}/historical_zcr_baseline.csv")
+    position_tpg_baseline = load_csv(f"{data_dir}/historical_position_tpg_baseline.csv")
+    try:
+        due_watch_all = build_due_watch(
+            master_rows, season=season, up_to_round=up_to_round,
+            team_aliases=team_aliases, position_aliases=baselines["position_aliases"],
+            zcr_baseline=zcr_baseline, position_tpg_baseline=position_tpg_baseline,
+            season_draw=season_draw, top_n=None,
+            weighted_zcr_lookup=baselines["weighted_zcr"],
+            weighted_league_tpg_by_position=baselines["weighted_tpg"],
+        )
+    except KeyError as e:
+        # Same real degrade-don't-break pattern as generate_round_digest.py
+        # -- season_draw_2026.json not covering this round shouldn't kill
+        # the whole predictions run, just the "due" section.
+        due_watch_all = []
+        print(f"WARNING: DUE WATCH skipped for predictions -- {e}")
+
+    due_watch_by_team = defaultdict(list)
+    for entry in due_watch_all:
+        due_watch_by_team[entry["team"]].append(entry)
+
+    real_events = get_upcoming_events(the_odds_api_key)
+
+    results = []
+
+    for home_full, away_full in fixtures:
+        fixture_result = {"home_team": home_full, "away_team": away_full}
+
+        event = resolve_event_for_fixture(real_events, home_full, away_full, team_aliases)
+        if event is None:
+            fixture_result["status"] = (
+                f"skipped: no real upcoming odds-api event found for "
+                f"{home_full} v {away_full}"
+            )
+            results.append(fixture_result)
+            continue
+
+        try:
+            odds_response = fetch_h2h_and_tryscorer_odds(the_odds_api_key, event["id"])
+        except Exception as e:
+            fixture_result["status"] = f"skipped: odds fetch failed -- {e}"
+            results.append(fixture_result)
+            continue
+
+        h2h_odds = extract_h2h_for_consensus(odds_response, team_aliases=team_aliases)
+        try_scorer_odds = extract_try_scorer_odds(odds_response)
+
+        # --- h2h via nrl_elo.py ---
+        home_short = full_to_short.get(home_full)
+        away_short = full_to_short.get(away_full)
+        rating_home = elo_ratings.get(home_full, 1500.0)
+        rating_away = elo_ratings.get(away_full, 1500.0)
+        rating_diff = (rating_home + 46.13) - rating_away
+        our_home_win_prob = expected_win_probability(rating_home + 46.13, rating_away)
+        our_predicted_margin = expected_margin(rating_diff)
+        # Positive = we favour the home team by this many points;
+        # negative = we favour the away team. Real MAE for this number
+        # is +/-14 points (MARGIN_MAE_POINTS) -- a genuinely large real
+        # error bar, always shown alongside the number downstream
+        # rather than presented as precise.
+
+        market_bookmaker, market_spread_point, market_spread_price = (
+            extract_single_bookmaker_spread(odds_response, home_full, preferred_bookmaker="sportsbet", team_aliases=team_aliases)
+        )
+        # market_spread_point is the REAL line for the HOME team as that
+        # one bookmaker quotes it (e.g. -6.5 means the home team is
+        # favoured by 6.5 -- the bookmaker's own point value already
+        # uses this sign convention, confirmed real 2026-06-24). Read
+        # from ONE real bookmaker only (default Sportsbet, with a real
+        # fallback -- see extract_single_bookmaker_spread's docstring
+        # for why this isn't pooled across bookmakers).
+
+        if h2h_odds:
+            market_consensus = consensus_true_probability(h2h_odds, [home_full, away_full])
+            market_home_win_prob = market_consensus.get(home_full)
+            # Our own fair odds for the home team, same de-margined-
+            # probability-to-decimal-odds conversion already used for
+            # try-scorer fair odds elsewhere (1/probability) -- this is
+            # OUR number, not the market's, so it's intentionally not
+            # run through any bookmaker margin.
+            our_home_fair_odds = round(1 / our_home_win_prob, 3) if our_home_win_prob > 0 else None
+            our_away_fair_odds = round(1 / (1 - our_home_win_prob), 3) if our_home_win_prob < 1 else None
+            h2h_result = {
+                "our_home_win_prob": round(our_home_win_prob, 4),
+                "market_home_win_prob": (
+                    round(market_home_win_prob, 4) if market_home_win_prob else None
+                ),
+                "our_home_fair_odds": our_home_fair_odds,
+                "our_away_fair_odds": our_away_fair_odds,
+                "edge": (
+                    round(our_home_win_prob - market_home_win_prob, 4)
+                    if market_home_win_prob else None
+                ),
+                "our_predicted_margin": round(our_predicted_margin, 1),
+                "margin_mae": MARGIN_MAE_POINTS,
+                "market_spread_bookmaker": market_bookmaker,
+                "market_spread_point": market_spread_point,
+                "market_spread_price": market_spread_price,
+                "status": "ok" if market_home_win_prob else "skipped: no real consensus available",
+            }
+        else:
+            h2h_result = {"status": "skipped: no real h2h odds in response"}
+        fixture_result["h2h"] = h2h_result
+
+        # --- real DUE WATCH entries for this fixture's two teams ---
+        # (computed once for the whole round above; filtered back down
+        # to "who's due in THIS specific game" here -- the composite
+        # score is comparable across the whole round, so the top 2 per
+        # team here are genuinely the most-due, not an arbitrary subset)
+        fixture_result["due_watch"] = {
+            "home": due_watch_by_team.get(home_short, [])[:2] if home_short else [],
+            "away": due_watch_by_team.get(away_short, [])[:2] if away_short else [],
+        }
+
+        # --- player try-scorer via xtry_model.py + edge_finder.py ---
+        if home_short and away_short:
+            home_squad = get_squad(master_rows, home_short, season, up_to_round)
+            away_squad = get_squad(master_rows, away_short, season, up_to_round)
+            home_raw = build_raw_scores(
+                baselines, by_player, team_games_played, team_season_tries,
+                attacking_speed, speed_allowed, home_squad, home_short, away_full, True
+            )
+            away_raw = build_raw_scores(
+                baselines, by_player, team_games_played, team_season_tries,
+                attacking_speed, speed_allowed, away_squad, away_short, home_full, False
+            )
+            edge_result = find_edges_for_match(
+                home_raw, away_raw, real_avg_tries, try_scorer_odds
+            )
+            # Attach raw_season_tpg from the original raw-score data
+            # (already computed by xtry_model.py's Component 1, see
+            # calculate_player_xtry_raw's "components" dict) onto each
+            # real edge -- added 2026-06-24 specifically so
+            # send_predictions_digest.py can show "this player's real
+            # season rate is Nx the league average for their position"
+            # alongside its is_positionally_unusual flag, rather than
+            # just flagging "unusual" with no real number backing it.
+            raw_season_tpg_by_player = {
+                r["player_name"]: r["components"]["raw_season_tpg"] for r in home_raw + away_raw
+            }
+            for edge in edge_result["edges"]:
+                edge["raw_season_tpg"] = raw_season_tpg_by_player.get(edge["player_name"])
+
+            fixture_result["try_scorer_edges"] = edge_result["edges"]
+            fixture_result["try_scorer_unmatched_in_model"] = edge_result["unmatched_in_model"]
+        else:
+            fixture_result["try_scorer_edges"] = []
+            fixture_result["try_scorer_unmatched_in_model"] = []
+            fixture_result["try_scorer_status"] = (
+                f"skipped: could not resolve short team name for "
+                f"{'home' if not home_short else 'away'} side"
+            )
+
+        fixture_result["status"] = "ok"
+        results.append(fixture_result)
+
+    return results
 
 
-def extract_try_scorer_odds(odds_response):
+def write_predictions_csv(results, path="data/predictions_current.csv"):
     """
-    Reshapes the real odds_response into the
-    {bookmaker_key: {player_description: decimal_price}} shape
-    edge_finder.py's find_edges_for_match() expects. Confirmed real
-    shape 2026-06-24: player_try_scorer_anytime outcomes are ALL
-    name="Yes" (never "No" -- confirmed real, not a data gap, see
-    odds_probability.py's yes_no_market_probability() docstring), with
-    the actual player's full name in the description field, not name.
-
-    Only 7 of the 11 real bookmakers in the validated response actually
-    had this market priced at all (sportsbet, tab, pointsbetau, neds,
-    ladbrokes_au, tabtouch, unibet -- betright, betr_au, betfair_ex_au,
-    playup had h2h only) -- confirmed real, handled naturally here since
-    bookmakers without the market key simply contribute nothing, not an
-    empty/error entry.
+    Flattens the real per-fixture results into one CSV row per
+    try-scorer edge (the most granular real output), plus the h2h
+    comparison repeated on every row for that fixture so a human
+    scanning the file sees both views together without a second file.
+    This is the file Sam's own stated workflow (manual mid-week
+    recheck) reads from -- written fresh each real run, not appended.
     """
-    result = {}
-    for bookmaker in odds_response.get("bookmakers", []):
-        for market in bookmaker.get("markets", []):
-            if market["key"] == "player_try_scorer_anytime":
-                player_prices = {}
-                for outcome in market["outcomes"]:
-                    # Confirmed real: every outcome here is name="Yes".
-                    # description holds the player's real full name.
-                    # Still check name=="Yes" explicitly rather than
-                    # assuming -- if a "No" ever genuinely appears (a
-                    # bookmaker quirk not yet seen in real data), this
-                    # skips it rather than silently treating it as a
-                    # second "Yes" price for the same player.
-                    if outcome.get("name") == "Yes":
-                        player_prices[outcome["description"]] = outcome["price"]
-                if player_prices:
-                    result[bookmaker["key"]] = player_prices
-    return result
+    rows = []
+    for fixture in results:
+        if fixture["status"] != "ok":
+            rows.append({
+                "home_team": fixture["home_team"],
+                "away_team": fixture["away_team"],
+                "status": fixture["status"],
+            })
+            continue
+
+        h2h = fixture.get("h2h", {})
+        edges = fixture.get("try_scorer_edges", [])
+
+        if not edges:
+            rows.append({
+                "home_team": fixture["home_team"],
+                "away_team": fixture["away_team"],
+                "status": "ok (no try-scorer edges -- no real odds matched)",
+                "our_home_win_prob": h2h.get("our_home_win_prob"),
+                "market_home_win_prob": h2h.get("market_home_win_prob"),
+                "our_home_fair_odds": h2h.get("our_home_fair_odds"),
+                "h2h_edge": h2h.get("edge"),
+                "our_predicted_margin": h2h.get("our_predicted_margin"),
+                "margin_mae": h2h.get("margin_mae"),
+                "market_spread_bookmaker": h2h.get("market_spread_bookmaker"),
+                "market_spread_point": h2h.get("market_spread_point"),
+            })
+            continue
+
+        for e in edges:
+            rows.append({
+                "home_team": fixture["home_team"],
+                "away_team": fixture["away_team"],
+                "status": "ok",
+                "our_home_win_prob": h2h.get("our_home_win_prob"),
+                "market_home_win_prob": h2h.get("market_home_win_prob"),
+                "our_home_fair_odds": h2h.get("our_home_fair_odds"),
+                "h2h_edge": h2h.get("edge"),
+                "our_predicted_margin": h2h.get("our_predicted_margin"),
+                "margin_mae": h2h.get("margin_mae"),
+                "market_spread_bookmaker": h2h.get("market_spread_bookmaker"),
+                "market_spread_point": h2h.get("market_spread_point"),
+                "player_name": e["player_name"],
+                "player_team": e["team"],
+                "position_code": e["position_code"],
+                "bookmaker": e["bookmaker"],
+                "our_try_probability": e["our_probability"],
+                "market_try_probability": e["market_probability"],
+                "try_scorer_edge": e["edge"],
+                "fair_odds": e.get("fair_odds_implied_by_our_model"),
+            })
+
+    fieldnames = [
+        "home_team", "away_team", "status",
+        "our_home_win_prob", "market_home_win_prob", "our_home_fair_odds", "h2h_edge",
+        "our_predicted_margin", "margin_mae", "market_spread_bookmaker", "market_spread_point",
+        "player_name", "player_team", "position_code", "bookmaker",
+        "our_try_probability", "market_try_probability", "try_scorer_edge", "fair_odds",
+    ]
+    dirname = os.path.dirname(path)
+    if dirname:
+        os.makedirs(dirname, exist_ok=True)
+    with open(path, "w", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction="ignore")
+        writer.writeheader()
+        for row in rows:
+            writer.writerow(row)
+    return path
 
 
-def extract_single_bookmaker_spread(odds_response, home_team_full, preferred_bookmaker="sportsbet",
-                                     team_aliases=None):
+def write_predictions_json(results, path="data/predictions_current.json"):
     """
-    Returns ONE real bookmaker's spread line for the home team, rather
-    than pooling across bookmakers -- DELIBERATE, not a shortcut.
-    Confirmed real data 2026-06-24 (Knights v Wests Tigers): real
-    spreads points are NOT standardised across bookmakers (3 distinct
-    real lines seen for one match: -6.5, -7.5, -8.5). Pooling these
-    into a consensus would average together genuinely different bets,
-    not find a real edge -- the same problem already documented for
-    `totals`. Reading a single named bookmaker's own real line sidesteps
-    this entirely: it's always an internally-consistent real number
-    (one bookmaker's own price + point for their own market), just not
-    a market-wide consensus. Sam explicitly chose this trade-off over
-    waiting for a real line-grouping fix (2026-06-24).
-
-    REAL BUG FOUND AND FIXED 2026-06-24 (same root cause as
-    extract_h2h_for_consensus's own fix, see its docstring for the full
-    real story): this function's `outcome["name"] == home_team_full`
-    check is an exact string comparison against the CANONICAL name,
-    but real bookmakers don't always use canonical-matching strings
-    (confirmed: "Canterbury Bulldogs" vs canonical "Canterbury-
-    Bankstown Bulldogs"). Fixed the same way -- resolve each real
-    outcome name through team_aliases.json before comparing, rather
-    than comparing the raw API string directly against the canonical
-    target.
-
-    Falls back to whichever real bookmaker actually has a spreads
-    market for this fixture if the preferred one doesn't (mirrors
-    build_predictions_digest's same real fallback pattern for try-
-    scorer coverage) -- never silently returns nothing if a real spread
-    exists from ANY bookmaker.
-
-    Returns (bookmaker_used, home_team_point, home_team_price) or
-    (None, None, None) if no real bookmaker has a spreads market for
-    this fixture at all.
+    Writes the full, real per-fixture results structure as JSON --
+    added 2026-06-24 specifically because the per-game digest sections
+    (most-likely-to-score, due, biggest-margin, golden boy) need
+    nested, grouped data that doesn't fit cleanly into the flat
+    one-row-per-try-scorer-edge CSV shape. write_predictions_csv()
+    stays exactly as it was (a flat, greppable snapshot for Sam's
+    manual mid-week recheck workflow) -- this is a real, separate
+    output for send_predictions_digest.py to build the richer email
+    from, not a replacement for the CSV.
     """
-    spreads_by_bookmaker = {}
-    for bookmaker in odds_response.get("bookmakers", []):
-        for market in bookmaker.get("markets", []):
-            if market["key"] == "spreads":
-                for outcome in market["outcomes"]:
-                    real_name = outcome["name"]
-                    if team_aliases is not None:
-                        real_name = team_aliases.get(real_name, real_name)
-                    if real_name == home_team_full:
-                        spreads_by_bookmaker[bookmaker["key"]] = (
-                            outcome.get("point"), outcome.get("price")
-                        )
-
-    if not spreads_by_bookmaker:
-        return None, None, None
-
-    if preferred_bookmaker in spreads_by_bookmaker:
-        bookmaker_used = preferred_bookmaker
-    else:
-        bookmaker_used = next(iter(spreads_by_bookmaker))
-
-    point, price = spreads_by_bookmaker[bookmaker_used]
-    return bookmaker_used, point, price
+    dirname = os.path.dirname(path)
+    if dirname:
+        os.makedirs(dirname, exist_ok=True)
+    with open(path, "w") as f:
+        json.dump(results, f, indent=2)
+    return path
 
 
 if __name__ == "__main__":
-    import sys
+    import argparse
 
-    if len(sys.argv) < 2:
-        print("Usage: python3 odds_fetcher.py <api_key> [home_team] [away_team]")
-        print("Without home/away, lists all real upcoming events and their IDs.")
+    parser = argparse.ArgumentParser(description="Generate real NRL predictions for an upcoming round")
+    parser.add_argument("--season", type=int, required=True)
+    parser.add_argument("--round", type=int, required=True, dest="round_num")
+    parser.add_argument("--data-dir", default="data")
+    parser.add_argument("--output", default="data/predictions_current.csv")
+    parser.add_argument("--json-output", default="data/predictions_current.json")
+    args = parser.parse_args()
+
+    api_key = os.environ.get("ODDS_API_KEY")
+    if not api_key:
+        print("ERROR: ODDS_API_KEY environment variable not set.", file=sys.stderr)
         sys.exit(1)
 
-    api_key = sys.argv[1]
-    events = get_upcoming_events(api_key)
+    results = generate_round_predictions(args.season, args.round_num, api_key, args.data_dir)
+    path = write_predictions_csv(results, args.output)
+    json_path = write_predictions_json(results, args.json_output)
 
-    if len(sys.argv) >= 4:
-        home_team, away_team = sys.argv[2], sys.argv[3]
-        team_aliases = json.load(open("data/team_aliases.json"))["aliases"]
-        event = resolve_event_for_fixture(events, home_team, away_team, team_aliases)
-        if event is None:
-            print(f"No real upcoming event found matching {home_team} v {away_team}")
-            sys.exit(1)
-        print(f"Resolved event: {event['home_team']} v {event['away_team']} (id={event['id']})")
-
-        odds = fetch_h2h_and_tryscorer_odds(api_key, event["id"])
-        h2h = extract_h2h_for_consensus(odds)
-        try_scorer = extract_try_scorer_odds(odds)
-
-        print(f"\nh2h ({len(h2h)} bookmakers):")
-        print(json.dumps(h2h, indent=2))
-        print(f"\nplayer_try_scorer_anytime ({len(try_scorer)} bookmakers):")
-        print(json.dumps(try_scorer, indent=2))
-    else:
-        print(f"Real upcoming events ({len(events)} found):")
-        for e in events:
-            print(f"  {e['commence_time']}  {e['home_team']} v {e['away_team']}  (id={e['id']})")
+    n_ok = sum(1 for r in results if r["status"] == "ok")
+    n_skipped = len(results) - n_ok
+    print(f"Processed {len(results)} real fixtures: {n_ok} ok, {n_skipped} skipped")
+    for r in results:
+        if r["status"] != "ok":
+            print(f"  SKIPPED: {r['home_team']} v {r['away_team']} -- {r['status']}")
+    print(f"Written to {path}")
+    print(f"Written to {json_path}")
