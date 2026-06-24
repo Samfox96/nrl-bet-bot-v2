@@ -1,0 +1,77 @@
+{
+  "_comment": "Full 2026 NRL season draw, team pairings by round. Source: nrl.com official draw PDF (nrl-draw-2026---final.pdf), confirmed 2026-06-23. Team names use FULL CANONICAL form (matching team_aliases.json canonical_teams and nrl_master.csv team column as of the 2026-06-23 source-normalization migration) -- converted from short-form labels via team_aliases.json, NOT hand-typed, to avoid any spelling mismatch against the canonical names.",
+  "rounds": {
+    "17": {
+      "fixtures": [
+        [
+          "Parramatta Eels",
+          "South Sydney Rabbitohs"
+        ],
+        [
+          "Gold Coast Titans",
+          "Canterbury-Bankstown Bulldogs"
+        ],
+        [
+          "Brisbane Broncos",
+          "Sydney Roosters"
+        ],
+        [
+          "Dolphins",
+          "New Zealand Warriors"
+        ],
+        [
+          "North Queensland Cowboys",
+          "Penrith Panthers"
+        ],
+        [
+          "Manly-Warringah Sea Eagles",
+          "Melbourne Storm"
+        ],
+        [
+          "Canberra Raiders",
+          "St George Illawarra Dragons"
+        ],
+        [
+          "Newcastle Knights",
+          "Wests Tigers"
+        ]
+      ],
+      "byes": [
+        "Cronulla-Sutherland Sharks"
+      ]
+    },
+    "18": {
+      "fixtures": [
+        [
+          "Penrith Panthers",
+          "South Sydney Rabbitohs"
+        ],
+        [
+          "St George Illawarra Dragons",
+          "Wests Tigers"
+        ],
+        [
+          "Brisbane Broncos",
+          "Cronulla-Sutherland Sharks"
+        ],
+        [
+          "Parramatta Eels",
+          "Manly-Warringah Sea Eagles"
+        ],
+        [
+          "Newcastle Knights",
+          "Dolphins"
+        ]
+      ],
+      "byes": [
+        "Canterbury-Bankstown Bulldogs",
+        "North Queensland Cowboys",
+        "Canberra Raiders",
+        "Sydney Roosters",
+        "Melbourne Storm",
+        "Gold Coast Titans",
+        "New Zealand Warriors"
+      ]
+    }
+  }
+}
