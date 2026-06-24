@@ -33,6 +33,36 @@ empty slots) appearing between one match header and the next. This module
 walks the document in order, tracking "current match" as it encounters
 each header, and attaches that context to subsequent profiles -- rather
 than relying on any DOM nesting relationship (there isn't one).
+
+REAL FINDING 2026-06-24 (Sam provided 3 real consecutive rounds' worth of
+team-list URLs -- Round 15, 16, 17 -- as a real cross-check): nrl.com's
+RETROSPECTIVE team-list pages (i.e. fetched AFTER a round has been played,
+like Round 16's real article, vs Round 17's real PRE-match article) show
+an internally inconsistent-LOOKING accessibility label for any player
+whose real on-field position differed from what was announced Tuesday.
+Confirmed real example: Round 16's Knights v Dragons article literally
+says "Fullback for Knights is number 6 Fletcher Sharpe" -- position label
+"Fullback" (his real, true on-field position for that match, confirmed
+matching nrl_master.csv's own recorded position for that exact game) paired
+with jersey number "6" (his ORIGINALLY ANNOUNCED Tuesday number, for the
+Five-Eighth slot he was announced to play before a real, later positional
+swap). The page visibly shows a SECOND bracketed number too (e.g. "6 1"),
+almost certainly the real corrected/final slot number -- not yet parsed
+or used by this module, since PROFILE_LABEL_PATTERN only captures the
+first number, but worth knowing this second number exists in the real
+markup for any future real refinement.
+
+PRACTICAL CONSEQUENCE: this module's regex (PROFILE_LABEL_PATTERN) is
+confirmed to correctly extract the REAL, TRUE on-field position from
+retrospective pages (the position label itself is accurate -- verified
+against nrl_master.csv's own real recorded position for the same player/
+round, twice, independently) -- it's only the paired jersey NUMBER that
+may be stale/pre-match on a retrospective page. Since this project's real
+use case for this module is fetching the CURRENT round's PRE-match team
+list (where position and number are freshly announced together and
+therefore consistent), this ambiguity doesn't affect generate_predictions.py's
+real fetch_real_team_list_live() fallback in practice -- but it's worth
+knowing if this module is ever pointed at a past round's article instead.
 """
 
 import re
