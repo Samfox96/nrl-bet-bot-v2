@@ -4,15 +4,17 @@
     "away_team": "South Sydney Rabbitohs",
     "h2h": {
       "our_home_win_prob": 0.484,
-      "market_home_win_prob": 0.3868,
+      "market_home_win_prob": 0.3856,
       "our_home_fair_odds": 2.066,
       "our_away_fair_odds": 1.938,
-      "edge": 0.0973,
+      "edge": 0.0984,
       "our_predicted_margin": -0.4,
       "margin_mae": 14.0,
       "market_spread_bookmaker": "sportsbet",
       "market_spread_point": 5.5,
       "market_spread_price": 1.96,
+      "rating_home": 1431.4,
+      "rating_away": 1488.7,
       "status": "ok"
     },
     "due_watch": {
@@ -94,8 +96,8 @@
       ]
     },
     "position_changes": [
-      "No real team list available for Parramatta Eels this round -- using historical most-frequent position as a fallback for every player on this team. This should not normally happen once real team lists are confirmed (Tuesday 4pm, per the established weekly cycle) -- if you're seeing this on a genuine Thursday run, check whether Job B (team-list-polling.yml) actually ran and committed data/team_lists_current.csv this week.",
-      "No real team list available for South Sydney Rabbitohs this round -- using historical most-frequent position as a fallback for every player on this team. This should not normally happen once real team lists are confirmed (Tuesday 4pm, per the established weekly cycle) -- if you're seeing this on a genuine Thursday run, check whether Job B (team-list-polling.yml) actually ran and committed data/team_lists_current.csv this week."
+      "No real team list available for Parramatta Eels this round, from EITHER the committed Job B file or the real live nrl.com fallback -- using historical most-frequent position for every player on this team. This should be rare: team lists are confirmed real and published every Tuesday 4pm, well before this script's real Thursday-morning run, and there are now two independent real sources for them. If you're seeing this on a genuine Thursday run, something has gone wrong with BOTH Job B and nrl.com's real listing page -- worth investigating directly.",
+      "No real team list available for South Sydney Rabbitohs this round, from EITHER the committed Job B file or the real live nrl.com fallback -- using historical most-frequent position for every player on this team. This should be rare: team lists are confirmed real and published every Tuesday 4pm, well before this script's real Thursday-morning run, and there are now two independent real sources for them. If you're seeing this on a genuine Thursday run, something has gone wrong with BOTH Job B and nrl.com's real listing page -- worth investigating directly."
     ],
     "try_scorer_edges": [
       {
@@ -3231,6 +3233,8 @@
       "market_spread_bookmaker": "sportsbet",
       "market_spread_point": 0.5,
       "market_spread_price": 1.91,
+      "rating_home": 1341.8,
+      "rating_away": 1461.8,
       "status": "ok"
     },
     "due_watch": {
@@ -3312,8 +3316,8 @@
       ]
     },
     "position_changes": [
-      "No real team list available for Gold Coast Titans this round -- using historical most-frequent position as a fallback for every player on this team. This should not normally happen once real team lists are confirmed (Tuesday 4pm, per the established weekly cycle) -- if you're seeing this on a genuine Thursday run, check whether Job B (team-list-polling.yml) actually ran and committed data/team_lists_current.csv this week.",
-      "No real team list available for Canterbury-Bankstown Bulldogs this round -- using historical most-frequent position as a fallback for every player on this team. This should not normally happen once real team lists are confirmed (Tuesday 4pm, per the established weekly cycle) -- if you're seeing this on a genuine Thursday run, check whether Job B (team-list-polling.yml) actually ran and committed data/team_lists_current.csv this week."
+      "No real team list available for Gold Coast Titans this round, from EITHER the committed Job B file or the real live nrl.com fallback -- using historical most-frequent position for every player on this team. This should be rare: team lists are confirmed real and published every Tuesday 4pm, well before this script's real Thursday-morning run, and there are now two independent real sources for them. If you're seeing this on a genuine Thursday run, something has gone wrong with BOTH Job B and nrl.com's real listing page -- worth investigating directly.",
+      "No real team list available for Canterbury-Bankstown Bulldogs this round, from EITHER the committed Job B file or the real live nrl.com fallback -- using historical most-frequent position for every player on this team. This should be rare: team lists are confirmed real and published every Tuesday 4pm, well before this script's real Thursday-morning run, and there are now two independent real sources for them. If you're seeing this on a genuine Thursday run, something has gone wrong with BOTH Job B and nrl.com's real listing page -- worth investigating directly."
     ],
     "try_scorer_edges": [
       {
@@ -6626,6 +6630,8 @@
       "market_spread_bookmaker": "sportsbet",
       "market_spread_point": 7.5,
       "market_spread_price": 1.91,
+      "rating_home": 1569.6,
+      "rating_away": 1633.5,
       "status": "ok"
     },
     "due_watch": {
@@ -6707,8 +6713,8 @@
       ]
     },
     "position_changes": [
-      "No real team list available for Brisbane Broncos this round -- using historical most-frequent position as a fallback for every player on this team. This should not normally happen once real team lists are confirmed (Tuesday 4pm, per the established weekly cycle) -- if you're seeing this on a genuine Thursday run, check whether Job B (team-list-polling.yml) actually ran and committed data/team_lists_current.csv this week.",
-      "No real team list available for Sydney Roosters this round -- using historical most-frequent position as a fallback for every player on this team. This should not normally happen once real team lists are confirmed (Tuesday 4pm, per the established weekly cycle) -- if you're seeing this on a genuine Thursday run, check whether Job B (team-list-polling.yml) actually ran and committed data/team_lists_current.csv this week."
+      "No real team list available for Brisbane Broncos this round, from EITHER the committed Job B file or the real live nrl.com fallback -- using historical most-frequent position for every player on this team. This should be rare: team lists are confirmed real and published every Tuesday 4pm, well before this script's real Thursday-morning run, and there are now two independent real sources for them. If you're seeing this on a genuine Thursday run, something has gone wrong with BOTH Job B and nrl.com's real listing page -- worth investigating directly.",
+      "No real team list available for Sydney Roosters this round, from EITHER the committed Job B file or the real live nrl.com fallback -- using historical most-frequent position for every player on this team. This should be rare: team lists are confirmed real and published every Tuesday 4pm, well before this script's real Thursday-morning run, and there are now two independent real sources for them. If you're seeing this on a genuine Thursday run, something has gone wrong with BOTH Job B and nrl.com's real listing page -- worth investigating directly."
     ],
     "try_scorer_edges": [
       {
@@ -9868,6 +9874,8 @@
       "market_spread_bookmaker": "sportsbet",
       "market_spread_point": -6.5,
       "market_spread_price": 1.91,
+      "rating_home": 1514.6,
+      "rating_away": 1545.4,
       "status": "ok"
     },
     "due_watch": {
@@ -9949,8 +9957,8 @@
       ]
     },
     "position_changes": [
-      "No real team list available for Dolphins this round -- using historical most-frequent position as a fallback for every player on this team. This should not normally happen once real team lists are confirmed (Tuesday 4pm, per the established weekly cycle) -- if you're seeing this on a genuine Thursday run, check whether Job B (team-list-polling.yml) actually ran and committed data/team_lists_current.csv this week.",
-      "No real team list available for New Zealand Warriors this round -- using historical most-frequent position as a fallback for every player on this team. This should not normally happen once real team lists are confirmed (Tuesday 4pm, per the established weekly cycle) -- if you're seeing this on a genuine Thursday run, check whether Job B (team-list-polling.yml) actually ran and committed data/team_lists_current.csv this week."
+      "No real team list available for Dolphins this round, from EITHER the committed Job B file or the real live nrl.com fallback -- using historical most-frequent position for every player on this team. This should be rare: team lists are confirmed real and published every Tuesday 4pm, well before this script's real Thursday-morning run, and there are now two independent real sources for them. If you're seeing this on a genuine Thursday run, something has gone wrong with BOTH Job B and nrl.com's real listing page -- worth investigating directly.",
+      "No real team list available for New Zealand Warriors this round, from EITHER the committed Job B file or the real live nrl.com fallback -- using historical most-frequent position for every player on this team. This should be rare: team lists are confirmed real and published every Tuesday 4pm, well before this script's real Thursday-morning run, and there are now two independent real sources for them. If you're seeing this on a genuine Thursday run, something has gone wrong with BOTH Job B and nrl.com's real listing page -- worth investigating directly."
     ],
     "try_scorer_edges": [
       {
@@ -13210,6 +13218,8 @@
       "market_spread_bookmaker": "sportsbet",
       "market_spread_point": 13.5,
       "market_spread_price": 1.97,
+      "rating_home": 1495.5,
+      "rating_away": 1714.0,
       "status": "ok"
     },
     "due_watch": {
@@ -13291,8 +13301,8 @@
       ]
     },
     "position_changes": [
-      "No real team list available for North Queensland Cowboys this round -- using historical most-frequent position as a fallback for every player on this team. This should not normally happen once real team lists are confirmed (Tuesday 4pm, per the established weekly cycle) -- if you're seeing this on a genuine Thursday run, check whether Job B (team-list-polling.yml) actually ran and committed data/team_lists_current.csv this week.",
-      "No real team list available for Penrith Panthers this round -- using historical most-frequent position as a fallback for every player on this team. This should not normally happen once real team lists are confirmed (Tuesday 4pm, per the established weekly cycle) -- if you're seeing this on a genuine Thursday run, check whether Job B (team-list-polling.yml) actually ran and committed data/team_lists_current.csv this week."
+      "No real team list available for North Queensland Cowboys this round, from EITHER the committed Job B file or the real live nrl.com fallback -- using historical most-frequent position for every player on this team. This should be rare: team lists are confirmed real and published every Tuesday 4pm, well before this script's real Thursday-morning run, and there are now two independent real sources for them. If you're seeing this on a genuine Thursday run, something has gone wrong with BOTH Job B and nrl.com's real listing page -- worth investigating directly.",
+      "No real team list available for Penrith Panthers this round, from EITHER the committed Job B file or the real live nrl.com fallback -- using historical most-frequent position for every player on this team. This should be rare: team lists are confirmed real and published every Tuesday 4pm, well before this script's real Thursday-morning run, and there are now two independent real sources for them. If you're seeing this on a genuine Thursday run, something has gone wrong with BOTH Job B and nrl.com's real listing page -- worth investigating directly."
     ],
     "try_scorer_edges": [
       {
@@ -16698,15 +16708,17 @@
     "away_team": "Melbourne Storm",
     "h2h": {
       "our_home_win_prob": 0.5214,
-      "market_home_win_prob": 0.6353,
+      "market_home_win_prob": 0.6351,
       "our_home_fair_odds": 1.918,
       "our_away_fair_odds": 2.089,
-      "edge": -0.1139,
+      "edge": -0.1137,
       "our_predicted_margin": 0.6,
       "margin_mae": 14.0,
       "market_spread_bookmaker": "sportsbet",
       "market_spread_point": -6.5,
       "market_spread_price": 1.91,
+      "rating_home": 1541.2,
+      "rating_away": 1572.4,
       "status": "ok"
     },
     "due_watch": {
@@ -16788,8 +16800,8 @@
       ]
     },
     "position_changes": [
-      "No real team list available for Manly-Warringah Sea Eagles this round -- using historical most-frequent position as a fallback for every player on this team. This should not normally happen once real team lists are confirmed (Tuesday 4pm, per the established weekly cycle) -- if you're seeing this on a genuine Thursday run, check whether Job B (team-list-polling.yml) actually ran and committed data/team_lists_current.csv this week.",
-      "No real team list available for Melbourne Storm this round -- using historical most-frequent position as a fallback for every player on this team. This should not normally happen once real team lists are confirmed (Tuesday 4pm, per the established weekly cycle) -- if you're seeing this on a genuine Thursday run, check whether Job B (team-list-polling.yml) actually ran and committed data/team_lists_current.csv this week."
+      "No real team list available for Manly-Warringah Sea Eagles this round, from EITHER the committed Job B file or the real live nrl.com fallback -- using historical most-frequent position for every player on this team. This should be rare: team lists are confirmed real and published every Tuesday 4pm, well before this script's real Thursday-morning run, and there are now two independent real sources for them. If you're seeing this on a genuine Thursday run, something has gone wrong with BOTH Job B and nrl.com's real listing page -- worth investigating directly.",
+      "No real team list available for Melbourne Storm this round, from EITHER the committed Job B file or the real live nrl.com fallback -- using historical most-frequent position for every player on this team. This should be rare: team lists are confirmed real and published every Tuesday 4pm, well before this script's real Thursday-morning run, and there are now two independent real sources for them. If you're seeing this on a genuine Thursday run, something has gone wrong with BOTH Job B and nrl.com's real listing page -- worth investigating directly."
     ],
     "try_scorer_edges": [
       {
@@ -20268,6 +20280,8 @@
       "market_spread_bookmaker": "sportsbet",
       "market_spread_point": -10.5,
       "market_spread_price": 1.98,
+      "rating_home": 1487.8,
+      "rating_away": 1309.5,
       "status": "ok"
     },
     "due_watch": {
@@ -20349,8 +20363,8 @@
       ]
     },
     "position_changes": [
-      "No real team list available for Canberra Raiders this round -- using historical most-frequent position as a fallback for every player on this team. This should not normally happen once real team lists are confirmed (Tuesday 4pm, per the established weekly cycle) -- if you're seeing this on a genuine Thursday run, check whether Job B (team-list-polling.yml) actually ran and committed data/team_lists_current.csv this week.",
-      "No real team list available for St George Illawarra Dragons this round -- using historical most-frequent position as a fallback for every player on this team. This should not normally happen once real team lists are confirmed (Tuesday 4pm, per the established weekly cycle) -- if you're seeing this on a genuine Thursday run, check whether Job B (team-list-polling.yml) actually ran and committed data/team_lists_current.csv this week."
+      "No real team list available for Canberra Raiders this round, from EITHER the committed Job B file or the real live nrl.com fallback -- using historical most-frequent position for every player on this team. This should be rare: team lists are confirmed real and published every Tuesday 4pm, well before this script's real Thursday-morning run, and there are now two independent real sources for them. If you're seeing this on a genuine Thursday run, something has gone wrong with BOTH Job B and nrl.com's real listing page -- worth investigating directly.",
+      "No real team list available for St George Illawarra Dragons this round, from EITHER the committed Job B file or the real live nrl.com fallback -- using historical most-frequent position for every player on this team. This should be rare: team lists are confirmed real and published every Tuesday 4pm, well before this script's real Thursday-morning run, and there are now two independent real sources for them. If you're seeing this on a genuine Thursday run, something has gone wrong with BOTH Job B and nrl.com's real listing page -- worth investigating directly."
     ],
     "try_scorer_edges": [
       {
@@ -23797,6 +23811,8 @@
       "market_spread_bookmaker": "sportsbet",
       "market_spread_point": -6.5,
       "market_spread_price": 1.9,
+      "rating_home": 1423.8,
+      "rating_away": 1402.6,
       "status": "ok"
     },
     "due_watch": {
@@ -23878,8 +23894,8 @@
       ]
     },
     "position_changes": [
-      "No real team list available for Newcastle Knights this round -- using historical most-frequent position as a fallback for every player on this team. This should not normally happen once real team lists are confirmed (Tuesday 4pm, per the established weekly cycle) -- if you're seeing this on a genuine Thursday run, check whether Job B (team-list-polling.yml) actually ran and committed data/team_lists_current.csv this week.",
-      "No real team list available for Wests Tigers this round -- using historical most-frequent position as a fallback for every player on this team. This should not normally happen once real team lists are confirmed (Tuesday 4pm, per the established weekly cycle) -- if you're seeing this on a genuine Thursday run, check whether Job B (team-list-polling.yml) actually ran and committed data/team_lists_current.csv this week."
+      "No real team list available for Newcastle Knights this round, from EITHER the committed Job B file or the real live nrl.com fallback -- using historical most-frequent position for every player on this team. This should be rare: team lists are confirmed real and published every Tuesday 4pm, well before this script's real Thursday-morning run, and there are now two independent real sources for them. If you're seeing this on a genuine Thursday run, something has gone wrong with BOTH Job B and nrl.com's real listing page -- worth investigating directly.",
+      "No real team list available for Wests Tigers this round, from EITHER the committed Job B file or the real live nrl.com fallback -- using historical most-frequent position for every player on this team. This should be rare: team lists are confirmed real and published every Tuesday 4pm, well before this script's real Thursday-morning run, and there are now two independent real sources for them. If you're seeing this on a genuine Thursday run, something has gone wrong with BOTH Job B and nrl.com's real listing page -- worth investigating directly."
     ],
     "try_scorer_edges": [
       {
