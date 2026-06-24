@@ -41,6 +41,7 @@ import os
 import urllib.request
 import urllib.error
 from collections import defaultdict
+from send_round_digest import _describe_due_factors
 
 
 RESEND_API_URL = "https://api.resend.com/emails"
@@ -271,24 +272,37 @@ def build_predictions_digest(predictions_json_path, round_num, top_n_overall=10,
         # generate_predictions.py is exactly n_due*2 -- re-sort+slice
         # here in case n_due is ever configured differently than the
         # upstream default of 2-per-team).
+        #
+        # REAL FIX 2026-06-24, per Sam's real feedback: DUE WATCH's
+        # composite score is 50% weighted on "drought" (due_flags_v2.py's
+        # own real WEIGHTS dict) -- it's fundamentally a BACKWARD-looking
+        # "this player has gone unusually cold relative to his own
+        # record" signal, genuinely independent of xtry_model.py's
+        # forward-looking scoring probability. The original version of
+        # this section showed our_probability/fair_odds next to the DUE
+        # score, which a real reader (correctly) read as "the model
+        # thinks he'll probably score" -- but a real cold player (e.g.
+        # confirmed real case: Jojo Fifita and Matt Burton, BOTH 0
+        # tries across their real last 4 games) can be genuinely "due"
+        # while ALSO having a genuinely low real probability this week
+        # -- those are two different real questions, and showing one
+        # number under a label that implies the other was actively
+        # misleading, not a units bug. Fixed: drop probability/odds
+        # from this section entirely (Sam's explicit choice), show only
+        # the real DUE score plus WHY (reusing send_round_digest.py's
+        # already-built _describe_due_factors(), not reinventing it --
+        # same real reasoning the player-stats digest already shows).
         due_entries_raw = fixture.get("due_watch", {}).get("home", []) + fixture.get("due_watch", {}).get("away", [])
         due_entries_sorted = sorted(due_entries_raw, key=lambda d: -d["composite_score"])[:n_due]
-        # Attach each due player's real Sportsbet price for $ odds
-        # display, by matching against the same bookmaker's try-scorer
-        # rows (a due player may not always have a real anytime-
-        # try-scorer price at this bookmaker -- e.g. a forward DUE WATCH
-        # flags who isn't priced -- handled as None, not fabricated).
         due = []
         for d in due_entries_sorted:
-            matching_edge = by_player_at_bookmaker.get(d["player_name"])
+            reasons = _describe_due_factors(d)
             due.append({
                 "player_name": d["player_name"],
                 "team": d["team"],
                 "position_code": d["position_code"],
                 "composite_score": d["composite_score"],
-                "our_probability": matching_edge["our_probability"] if matching_edge else None,
-                "fair_odds": matching_edge.get("fair_odds_implied_by_our_model") if matching_edge else None,
-                "bookmaker_price": (1 / matching_edge["market_probability"]) if matching_edge else None,
+                "reasons": reasons,
             })
 
         # 3. Biggest margin -- real edge size at this bookmaker, deduped by player.
@@ -383,7 +397,10 @@ def _build_fixture_analysis(h2h_summary, most_likely, due, biggest_margin, golde
 
     if due:
         names = " and ".join(d["player_name"] for d in due)
-        parts.append(f"Keep an eye on {names} -- both are due a return to form based on our model.")
+        parts.append(
+            f"{names} have both gone quiet relative to their own real record and are flagged as due -- "
+            f"this reflects how cold they've been, not a prediction they'll score this week."
+        )
 
     if biggest_margin:
         top = biggest_margin[0]
@@ -484,14 +501,13 @@ def format_plain_text(digest):
                     )
 
             if g["due"]:
-                lines.append("  Due to score:")
+                lines.append("  Due to score (cold streak signal, not a scoring prediction):")
                 for d in g["due"]:
                     gb_tag = " [GOLDEN BOY]" if g["golden_boy"] and d["player_name"] == g["golden_boy"]["player_name"] else ""
-                    prob_note = f"our {d['our_probability']*100:.1f}%, " if d["our_probability"] is not None else ""
-                    odds_note = f"our odds ${d['fair_odds']}" if d["fair_odds"] else "not priced by this bookmaker"
+                    reasons_note = "; ".join(d["reasons"]) if d.get("reasons") else "no real factors available"
                     lines.append(
                         f"    - {d['player_name']} ({d['team']}): DUE score {d['composite_score']:+.2f} "
-                        f"({prob_note}{odds_note}){gb_tag}"
+                        f"-- {reasons_note}{gb_tag}"
                     )
 
             if g["biggest_margin"]:
@@ -584,13 +600,12 @@ def format_html(digest):
                 body += "</ul>"
 
             if g["due"]:
-                body += "<p>Due to score:</p><ul>"
+                body += "<p>Due to score <i>(cold streak signal, not a scoring prediction)</i>:</p><ul>"
                 for d in g["due"]:
-                    prob_note = f"our {d['our_probability']*100:.1f}%, " if d["our_probability"] is not None else ""
-                    odds_note = f"our odds ${d['fair_odds']}" if d["fair_odds"] else "not priced by this bookmaker"
+                    reasons_note = "; ".join(d["reasons"]) if d.get("reasons") else "no real factors available"
                     body += (
                         f"<li>{d['player_name']} ({d['team']}): DUE score {d['composite_score']:+.2f} "
-                        f"({prob_note}{odds_note}){gb_tag(d['player_name'])}</li>"
+                        f"&mdash; {reasons_note}{gb_tag(d['player_name'])}</li>"
                     )
                 body += "</ul>"
 
