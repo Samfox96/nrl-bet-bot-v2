@@ -217,36 +217,130 @@ def get_squad(master_rows, team_short, season, up_to_round):
     return players
 
 
-def load_real_team_list(team_list_csv_path):
+def load_real_team_list_from_csv(team_list_csv_path):
     """
     Loads parse_team_list.py's real, confirmed weekly team-list output
-    (committed by Job B -- team-list-polling.yml -- as
-    data/team_lists_current.csv). Returns dict:
+    from a local CSV (committed by Job B -- team-list-polling.yml --
+    as data/team_lists_current.csv). Returns dict:
     (team_short, player_name) -> {"position": ..., "jersey_number": ...}.
 
-    Real, confirmed source of truth (per Sam's explicit 2026-06-24
-    clarification): team lists land every Tuesday 4pm and are
-    re-polled/updated by Job B right up to each match's real kickoff
-    (catching real late-mail positional changes) -- this is genuinely
-    more current and more accurate than anything derivable from
-    historical nrl_master.csv rows, which is why get_squad()'s
-    most-frequent-position fallback above should normally be
-    OVERRIDDEN by this real data, not the other way around.
-
-    Returns None (not an empty dict) if the file doesn't exist yet --
-    explicit signal for resolve_squad_positions() below to fall back
-    to historical data and FLAG that it did so, rather than silently
-    treating "no file" the same as "file exists but genuinely empty."
+    Returns None (not an empty dict) if the file doesn't exist --
+    explicit signal for get_real_team_list() below to try the real
+    live nrl.com fallback before giving up entirely.
     """
     if not os.path.exists(team_list_csv_path):
         return None
     with open(team_list_csv_path) as f:
         rows = list(csv.DictReader(f))
+    return _rows_to_team_list_lookup(rows)
+
+
+def _rows_to_team_list_lookup(rows):
+    """Shared real-row-to-lookup-dict conversion, used by both the
+    committed-CSV path and the real live-fetch fallback below, so the
+    two paths can never silently drift into different real shapes."""
     lookup = {}
     for r in rows:
         key = (r["team"], r["player_name"])
         lookup[key] = {"position": r["position"], "jersey_number": r.get("jersey_number")}
     return lookup
+
+
+def fetch_real_team_list_live(round_num, season=2026):
+    """
+    REAL LIVE FALLBACK added 2026-06-24, per Sam's explicit request:
+    "the info should always be there" -- confirmed real and current via
+    a direct check of https://www.nrl.com/news/2026/06/23/nrl-team-lists-round-17/,
+    which genuinely lists the real, confirmed Round 17 team lists,
+    including the exact real case this whole fix was prompted by
+    ("Fletcher Sharpe reverts to five-eighth" -- confirmed real text
+    from the article itself).
+
+    Reuses find_team_list_url.py's real, already-built URL-discovery
+    (no need to guess a date-based path) and parse_team_list.py's real,
+    already-built HTML parser -- this function is pure orchestration,
+    no new parsing logic invented here.
+
+    Real, deliberate use case: data/team_lists_current.csv (Job B's
+    committed output) not existing yet for this round -- e.g. a manual
+    workflow_dispatch run before Job B has fired, or Job B itself
+    genuinely failing for some real reason. NOT a replacement for Job B
+    in normal operation; Job B's near-kickoff polling catches real late
+    changes this one-shot fetch at generation time would miss.
+
+    Returns the same real lookup dict shape as
+    load_real_team_list_from_csv(), or None if the real live fetch
+    genuinely fails for any reason (network error, real HTML structure
+    change, round not found on the listing page yet) -- never raises,
+    since a failed real-time fallback attempt should degrade to the
+    historical-position fallback, not crash the whole predictions run.
+    """
+    try:
+        import urllib.request
+        listing_url = "https://www.nrl.com/news/topic/team-lists/"
+        req = urllib.request.Request(listing_url, headers={"User-Agent": "nrl-bet-bot-v2/1.0"})
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            listing_html = resp.read().decode("utf-8")
+
+        from find_team_list_url import find_latest_team_list_url
+        result = find_latest_team_list_url(listing_html)
+        if result is None:
+            print(f"WARNING: real live team-list fallback found no real "
+                  f"'NRL Team Lists' article on the listing page.")
+            return None
+        found_round, article_url = result
+        if found_round != round_num:
+            print(f"WARNING: real live team-list fallback found Round {found_round}'s "
+                  f"article, not Round {round_num}'s -- the real article for this "
+                  f"round may not be published yet, or round numbering has drifted. "
+                  f"Not using a real team list for the wrong round.")
+            return None
+
+        req2 = urllib.request.Request(article_url, headers={"User-Agent": "nrl-bet-bot-v2/1.0"})
+        with urllib.request.urlopen(req2, timeout=15) as resp:
+            article_html = resp.read().decode("utf-8")
+
+        from parse_team_list import parse_team_list_page
+        rows = parse_team_list_page(article_html, round_num=round_num, season=season)
+        if not rows:
+            print(f"WARNING: real live team-list fallback fetched Round {round_num}'s "
+                  f"real article but parsed zero real player rows -- the real HTML "
+                  f"structure may have changed since parse_team_list.py was built.")
+            return None
+
+        print(f"Real live team-list fallback succeeded: {len(rows)} real player rows "
+              f"parsed from {article_url}")
+        return _rows_to_team_list_lookup(rows)
+    except Exception as e:
+        print(f"WARNING: real live team-list fallback failed -- {e}")
+        return None
+
+
+def get_real_team_list(team_list_csv_path, round_num, season=2026):
+    """
+    Real, combined resolution order, per Sam's explicit 2026-06-24
+    request: try Job B's committed CSV first (the normal, expected real
+    path for a genuine Thursday-morning run); if that's genuinely
+    absent, try a real live nrl.com fetch as backup ("the info should
+    always be there"); only fall through to the historical-position
+    fallback in resolve_squad_positions() if BOTH real sources fail.
+
+    Returns (lookup_dict_or_None, source_label) where source_label is
+    "committed_csv", "live_fallback", or "none" -- so callers can
+    report exactly which real source was used, not just whether one
+    was found.
+    """
+    csv_result = load_real_team_list_from_csv(team_list_csv_path)
+    if csv_result is not None:
+        return csv_result, "committed_csv"
+
+    live_result = fetch_real_team_list_live(round_num, season)
+    if live_result is not None:
+        return live_result, "live_fallback"
+
+    return None, "none"
+
+
 
 
 def resolve_squad_positions(historical_squad, team_short, real_team_list):
@@ -268,21 +362,24 @@ def resolve_squad_positions(historical_squad, team_short, real_team_list):
     (that's a real, separate judgement call for whatever consumes this
     list -- kept here as a complete, unfiltered real record).
 
-    If real_team_list is None (file doesn't exist -- see
-    load_real_team_list()'s docstring), returns the historical squad
-    UNCHANGED, with a single real flag entry noting the fallback was
-    used at all (not which players' positions might be wrong -- that's
-    genuinely unknowable without the real team list).
+    If real_team_list is None, BOTH the committed CSV (Job B) AND the
+    real live nrl.com fallback (get_real_team_list()'s own real attempt
+    at it, called by generate_round_predictions() before this function
+    runs) have already failed -- returns the historical squad UNCHANGED,
+    with a single real flag entry noting this genuine double-failure
+    (not which players' positions might be wrong -- that's genuinely
+    unknowable without either real source).
     """
     if real_team_list is None:
         return historical_squad, [
-            f"No real team list available for {team_short} this round -- "
-            f"using historical most-frequent position as a fallback for "
-            f"every player on this team. This should not normally happen "
-            f"once real team lists are confirmed (Tuesday 4pm, per the "
-            f"established weekly cycle) -- if you're seeing this on a "
-            f"genuine Thursday run, check whether Job B (team-list-polling.yml) "
-            f"actually ran and committed data/team_lists_current.csv this week."
+            f"No real team list available for {team_short} this round, from EITHER "
+            f"the committed Job B file or the real live nrl.com fallback -- "
+            f"using historical most-frequent position for every player on this team. "
+            f"This should be rare: team lists are confirmed real and published every "
+            f"Tuesday 4pm, well before this script's real Thursday-morning run, and "
+            f"there are now two independent real sources for them. If you're seeing "
+            f"this on a genuine Thursday run, something has gone wrong with BOTH Job B "
+            f"and nrl.com's real listing page -- worth investigating directly."
         ]
 
     resolved = dict(historical_squad)
@@ -430,16 +527,17 @@ def generate_round_predictions(season, up_to_round, the_odds_api_key, data_dir="
     for entry in due_watch_all:
         due_watch_by_team[entry["team"]].append(entry)
 
-    # Real, confirmed team-list data for this round, if Job B has
-    # already polled and committed it (per Sam's real, explicit
-    # 2026-06-24 clarification: team lists land every Tuesday 4pm,
-    # confirmed before this script's real Thursday-morning run -- this
-    # should always exist for a genuine scheduled run; None here on a
-    # real Thursday run would itself be worth investigating, not just
-    # silently tolerating). See load_real_team_list()'s docstring for
-    # the real fallback behaviour when it's genuinely absent (e.g.
-    # manual testing before Tuesday).
-    real_team_list = load_real_team_list(f"{data_dir}/team_lists_current.csv")
+    # Real, confirmed team-list data for this round. Tries Job B's
+    # committed CSV first (the normal, expected real path for a genuine
+    # Thursday-morning run -- team lists land every Tuesday 4pm, well
+    # before this); if that's genuinely absent, tries a real live
+    # nrl.com fetch as backup (per Sam's explicit 2026-06-24 request:
+    # "the info should always be there"). See get_real_team_list()'s
+    # docstring for the full real resolution order.
+    real_team_list, team_list_source = get_real_team_list(
+        f"{data_dir}/team_lists_current.csv", up_to_round, season
+    )
+    print(f"Real team-list source for this round: {team_list_source}")
 
     real_events = get_upcoming_events(the_odds_api_key)
 
@@ -518,6 +616,17 @@ def generate_round_predictions(season, up_to_round, the_odds_api_key, data_dir="
                 "market_spread_bookmaker": market_bookmaker,
                 "market_spread_point": market_spread_point,
                 "market_spread_price": market_spread_price,
+                "rating_home": round(rating_home, 1),
+                "rating_away": round(rating_away, 1),
+                # Real Elo ratings (not just the derived win probability)
+                # -- added 2026-06-24 specifically so
+                # send_predictions_digest.py's fan-voiced analysis can
+                # talk about real, genuine team form/strength ("the
+                # better side over the season") rather than only ever
+                # quoting a probability number. These are the exact
+                # same real ratings nrl_elo.py already validated
+                # (64.8% real backtest accuracy across 3 held-out
+                # years) -- not a new number, just surfaced downstream.
                 "status": "ok" if market_home_win_prob else "skipped: no real consensus available",
             }
         else:
