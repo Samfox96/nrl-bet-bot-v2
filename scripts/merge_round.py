@@ -19,6 +19,7 @@ treated as final.
 """
 
 import sys
+import json
 import subprocess
 import pandas as pd
 from pathlib import Path
@@ -30,6 +31,8 @@ PENDING_DIR = DATA_DIR / "pending"
 MASTER_CSV = DATA_DIR / "nrl_master.csv"
 STATUS_MD = REPO_ROOT / "STATUS.md"
 VALIDATE_SCRIPT = REPO_ROOT / "scripts" / "validate_round.py"
+TEAM_ALIASES_JSON = DATA_DIR / "team_aliases.json"
+POSITION_ALIASES_JSON = DATA_DIR / "position_aliases.json"
 
 
 def get_next_round():
@@ -51,6 +54,48 @@ def run_validation(pending_csv, round_num):
     return result.returncode == 0, result.stdout
 
 
+def normalize_to_canonical(df):
+    """
+    Added 2026-06-23 after a full system audit found nrl_master.csv had
+    stored raw, unnormalized team/position values since the scraper was
+    first built -- normalization only ever happened at point-of-use in
+    each consumer script, never at the source. A one-time migration
+    (migrate_nrl_master_to_canonical.py) fixed all EXISTING rows; this
+    function is the companion piece that keeps every FUTURE merged round
+    consistent, by normalizing team/opponent/position to canonical form
+    (via team_aliases.json/position_aliases.json) right before each new
+    round's rows join nrl_master.csv. Without this, the very next merge
+    after the migration would silently reintroduce the old raw format
+    and the inconsistency would return within a week.
+
+    Raises (does not silently skip) if any value fails to resolve --
+    matching migrate_nrl_master_to_canonical.py's own refuse-rather-than-
+    guess behaviour, since a silently-unconverted row is worse than a
+    loud failure that gets investigated.
+    """
+    with open(TEAM_ALIASES_JSON) as f:
+        team_aliases = json.load(f)["aliases"]
+    with open(POSITION_ALIASES_JSON) as f:
+        position_aliases = json.load(f)["aliases"]
+
+    def normalize_or_raise(value, aliases, field_name):
+        canonical = aliases.get(value)
+        if canonical is None:
+            raise ValueError(
+                f"Cannot merge: unmapped {field_name} value '{value}' found in "
+                f"the freshly-scraped round data -- not present in the relevant "
+                f"aliases.json file. Add it there first (this is exactly the "
+                f"kind of new/renamed team or position variant the alias files "
+                f"exist to catch), then re-run the merge."
+            )
+        return canonical
+
+    df["team"] = df["team"].apply(lambda v: normalize_or_raise(v, team_aliases, "team"))
+    df["opponent"] = df["opponent"].apply(lambda v: normalize_or_raise(v, team_aliases, "opponent"))
+    df["position"] = df["position"].apply(lambda v: normalize_or_raise(v, position_aliases, "position"))
+    return df
+
+
 def merge_into_master(pending_csv, round_num):
     """
     NOTE: this function intentionally only touches the stats CSV
@@ -63,6 +108,7 @@ def merge_into_master(pending_csv, round_num):
     numbers -- conflating their cleanup would delete data Job B still needs.
     """
     new_df = pd.read_csv(pending_csv)
+    new_df = normalize_to_canonical(new_df)
     master_df = pd.read_csv(MASTER_CSV)
 
     before = len(master_df)
