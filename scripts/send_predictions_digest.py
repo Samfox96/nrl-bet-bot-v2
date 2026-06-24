@@ -47,7 +47,8 @@ RESEND_API_URL = "https://api.resend.com/emails"
 SANDBOX_FROM = "NRL Bet Bot <onboarding@resend.dev>"
 
 
-def build_predictions_digest(predictions_csv_path, round_num, top_n_edges=10):
+def build_predictions_digest(predictions_csv_path, round_num, top_n_overall=10,
+                              per_fixture_bookmaker="sportsbet", per_fixture_top_n=3):
     """
     Reads generate_predictions.py's real CSV output and builds a plain
     dict digest, mirroring generate_round_digest.py's build_digest()
@@ -55,15 +56,48 @@ def build_predictions_digest(predictions_csv_path, round_num, top_n_edges=10):
     mixed in here -- that's format_plain_text()/format_html()'s job
     below, same separation as the existing digest module).
 
+    REVISED 2026-06-24 after real feedback on the first genuinely live
+    email (Round 17): the original h2h section forced the reader to
+    compare two raw percentages themselves to figure out who's actually
+    favoured -- fixed by naming the real favourite explicitly (by our
+    model, separately by the market, since they can disagree -- e.g.
+    real Round 17 Knights v Wests Tigers: our model favours the Knights,
+    market favours them MORE strongly, so "favourite" agrees but
+    "edge direction" doesn't -- collapsing this to one favourite would
+    have hidden that distinction).
+
+    The original try-scorer section was also a single flat top-10
+    across the WHOLE round, which in practice (confirmed via the real
+    Round 17 email) gets dominated by one or two players' prices shopped
+    across every bookmaker (Kurtis Morrin alone took 6 of 10 slots) --
+    not genuinely 10 different real opportunities. Replaced with two
+    real sections instead:
+      1. Per-fixture, top `per_fixture_top_n` edges via ONE bookmaker
+         (`per_fixture_bookmaker`, default sportsbet) -- gives genuine
+         coverage across every real fixture rather than one match's
+         hottest player crowding out the rest. Falls back to whichever
+         bookmaker actually has the most try-scorer coverage for a given
+         real fixture if the preferred one has none (confirmed real
+         case to guard against: coverage varies by bookmaker and
+         fixture, not guaranteed present every week) -- never silently
+         shows an empty section for a fixture that has real data
+         elsewhere.
+      2. A real "best overall" section: the single best REAL price
+         across ALL bookmakers per player (not one row per bookmaker --
+         deduplicated to the best fair_odds/edge for that player), top
+         `top_n_overall` by edge. This answers "if I could bet anywhere,
+         what's the single best real opportunity," distinct from
+         section 1's "what does Sportsbet specifically offer me per
+         game."
+
     Returns:
       {
         "round": ...,
-        "fixtures_ok": [...],       # real fixtures that processed cleanly
-        "fixtures_skipped": [...],  # real fixtures skipped, with reasons
-        "top_h2h_edges": [...],     # fixtures where our Elo model and
-                                     # the real market disagree most
-        "top_try_scorer_edges": [...],  # biggest real player-prop edges
-                                          # across ALL fixtures combined
+        "fixtures_ok": [...],
+        "fixtures_skipped": [...],
+        "h2h_summaries": [...],     # named-favourite real h2h comparisons
+        "per_fixture_edges": [...], # list of {fixture, bookmaker_used, edges: [...]}
+        "best_overall_edges": [...],# deduplicated-by-player, best real price
       }
     """
     with open(predictions_csv_path) as f:
@@ -77,8 +111,9 @@ def build_predictions_digest(predictions_csv_path, round_num, top_n_edges=10):
 
     fixtures_ok = []
     fixtures_skipped = []
-    h2h_edges = []
-    try_scorer_edges = []
+    h2h_summaries = []
+    per_fixture_edges = []
+    all_edges_for_overall = []
 
     for (home, away), data in fixtures.items():
         status = data["status"]
@@ -87,24 +122,45 @@ def build_predictions_digest(predictions_csv_path, round_num, top_n_edges=10):
             continue
 
         fixtures_ok.append({"home_team": home, "away_team": away})
-
         first_row = data["rows"][0]
-        if first_row.get("h2h_edge"):
+
+        # --- h2h: name the real favourite, separately for our model and the market ---
+        if first_row.get("our_home_win_prob") and first_row.get("market_home_win_prob"):
             try:
-                h2h_edges.append({
+                our_home_prob = float(first_row["our_home_win_prob"])
+                market_home_prob = float(first_row["market_home_win_prob"])
+                our_favourite = home if our_home_prob >= 0.5 else away
+                our_favourite_prob = our_home_prob if our_home_prob >= 0.5 else 1 - our_home_prob
+                market_favourite = home if market_home_prob >= 0.5 else away
+                market_favourite_prob = market_home_prob if market_home_prob >= 0.5 else 1 - market_home_prob
+
+                our_margin = float(first_row["our_predicted_margin"]) if first_row.get("our_predicted_margin") else None
+                margin_mae = float(first_row["margin_mae"]) if first_row.get("margin_mae") else None
+                spread_bookmaker = first_row.get("market_spread_bookmaker") or None
+                spread_point = float(first_row["market_spread_point"]) if first_row.get("market_spread_point") else None
+
+                h2h_summaries.append({
                     "home_team": home,
                     "away_team": away,
-                    "our_home_win_prob": float(first_row["our_home_win_prob"]),
-                    "market_home_win_prob": float(first_row["market_home_win_prob"]),
-                    "edge": float(first_row["h2h_edge"]),
+                    "our_favourite": our_favourite,
+                    "our_favourite_prob": our_favourite_prob,
+                    "market_favourite": market_favourite,
+                    "market_favourite_prob": market_favourite_prob,
+                    "agree": our_favourite == market_favourite,
+                    "our_margin": our_margin,
+                    "margin_mae": margin_mae,
+                    "spread_bookmaker": spread_bookmaker,
+                    "spread_point": spread_point,
                 })
             except (ValueError, TypeError):
                 pass
 
+        # --- try-scorer: real per-fixture rows, grouped by bookmaker ---
+        fixture_edges_by_bookmaker = defaultdict(list)
         for r in data["rows"]:
             if r.get("player_name") and r.get("try_scorer_edge"):
                 try:
-                    try_scorer_edges.append({
+                    edge_row = {
                         "player_name": r["player_name"],
                         "team": r["player_team"],
                         "bookmaker": r["bookmaker"],
@@ -112,20 +168,72 @@ def build_predictions_digest(predictions_csv_path, round_num, top_n_edges=10):
                         "market_probability": float(r["market_try_probability"]),
                         "edge": float(r["try_scorer_edge"]),
                         "fair_odds": r.get("fair_odds"),
-                    })
+                        "home_team": home,
+                        "away_team": away,
+                    }
+                    fixture_edges_by_bookmaker[r["bookmaker"]].append(edge_row)
+                    all_edges_for_overall.append(edge_row)
                 except (ValueError, TypeError):
                     continue
 
-    h2h_edges.sort(key=lambda e: abs(e["edge"]), reverse=True)
-    try_scorer_edges.sort(key=lambda e: e["edge"], reverse=True)
+        if fixture_edges_by_bookmaker:
+            if per_fixture_bookmaker in fixture_edges_by_bookmaker:
+                bookmaker_used = per_fixture_bookmaker
+            else:
+                # Real fallback: preferred bookmaker has no try-scorer
+                # coverage for THIS fixture -- use whichever real
+                # bookmaker has the most rows instead of showing nothing.
+                bookmaker_used = max(fixture_edges_by_bookmaker, key=lambda b: len(fixture_edges_by_bookmaker[b]))
+            fixture_rows = sorted(
+                fixture_edges_by_bookmaker[bookmaker_used], key=lambda e: -e["edge"]
+            )[:per_fixture_top_n]
+            per_fixture_edges.append({
+                "home_team": home,
+                "away_team": away,
+                "bookmaker_used": bookmaker_used,
+                "edges": fixture_rows,
+            })
+
+    # Real "best overall" -- one row per PLAYER (not per player-bookmaker
+    # pair), keeping only their single best real edge across all books.
+    best_by_player = {}
+    for e in all_edges_for_overall:
+        key = (e["player_name"], e["home_team"], e["away_team"])
+        if key not in best_by_player or e["edge"] > best_by_player[key]["edge"]:
+            best_by_player[key] = e
+    best_overall_edges = sorted(best_by_player.values(), key=lambda e: -e["edge"])[:top_n_overall]
 
     return {
         "round": round_num,
         "fixtures_ok": fixtures_ok,
         "fixtures_skipped": fixtures_skipped,
-        "top_h2h_edges": h2h_edges,
-        "top_try_scorer_edges": try_scorer_edges[:top_n_edges],
+        "h2h_summaries": h2h_summaries,
+        "per_fixture_edges": per_fixture_edges,
+        "best_overall_edges": best_overall_edges,
     }
+
+
+def _margin_text(s):
+    """
+    Shared between format_plain_text and format_html so the real
+    sign-conversion logic (our_margin is home-minus-away; the real
+    bookmaker spread point is the home team's own line) lives in one
+    place, not duplicated and at risk of drifting out of sync between
+    the two renderers.
+    """
+    if s["our_margin"] is None:
+        return ""
+    margin_for_favourite = abs(s["our_margin"])
+    mae_note = f" (real avg error +/-{s['margin_mae']:.0f}pts)" if s["margin_mae"] else ""
+    text = f". We predict {s['our_favourite']} by {margin_for_favourite:.1f}pts{mae_note}"
+    if s["spread_bookmaker"] and s["spread_point"] is not None:
+        market_margin_for_home = -s["spread_point"]
+        market_margin_favourite = s["home_team"] if market_margin_for_home > 0 else s["away_team"]
+        text += (
+            f", {s['spread_bookmaker']} has {market_margin_favourite} "
+            f"by {abs(market_margin_for_home):.1f}pts"
+        )
+    return text
 
 
 def format_plain_text(digest):
@@ -135,24 +243,38 @@ def format_plain_text(digest):
                  f"{len(digest['fixtures_skipped'])} skipped)")
     lines.append("")
 
-    if digest["top_h2h_edges"]:
-        lines.append("MATCH WIN PROBABILITY (our model vs real market consensus)")
-        for e in digest["top_h2h_edges"]:
-            direction = "favours" if e["edge"] > 0 else "against"
+    if digest["h2h_summaries"]:
+        lines.append("MATCH WIN PROBABILITY")
+        for s in digest["h2h_summaries"]:
+            agree_note = "" if s["agree"] else " -- our model DISAGREES with the market on who wins"
             lines.append(
-                f"  - {e['home_team']} v {e['away_team']}: our model {e['our_home_win_prob']*100:.0f}% "
-                f"home win vs market {e['market_home_win_prob']*100:.0f}% "
-                f"({direction} the home side by {abs(e['edge'])*100:.1f}pp)"
+                f"  - {s['home_team']} v {s['away_team']}: "
+                f"we favour {s['our_favourite']} ({s['our_favourite_prob']*100:.0f}%), "
+                f"market favours {s['market_favourite']} ({s['market_favourite_prob']*100:.0f}%)"
+                f"{agree_note}{_margin_text(s)}"
             )
         lines.append("")
 
-    if digest["top_try_scorer_edges"]:
-        lines.append(f"TOP TRY-SCORER EDGES (our model vs real bookmaker odds, biggest disagreement first)")
-        for e in digest["top_try_scorer_edges"]:
+    if digest["per_fixture_edges"]:
+        lines.append(f"TOP TRY-SCORER PICKS PER GAME (top {len(digest['per_fixture_edges'][0]['edges'])} each)")
+        for fx in digest["per_fixture_edges"]:
+            lines.append(f"  {fx['home_team']} v {fx['away_team']}  (via {fx['bookmaker_used']})")
+            for e in fx["edges"]:
+                lines.append(
+                    f"    - {e['player_name']} ({e['team']}): our {e['our_probability']*100:.1f}% "
+                    f"vs market {e['market_probability']*100:.1f}% "
+                    f"(edge {e['edge']*100:+.1f}pp, fair odds {e['fair_odds']})"
+                )
+        lines.append("")
+
+    if digest["best_overall_edges"]:
+        lines.append("BEST BETS OVERALL (best real price across any bookmaker)")
+        for e in digest["best_overall_edges"]:
             lines.append(
-                f"  - {e['player_name']} ({e['team']}) via {e['bookmaker']}: "
-                f"our {e['our_probability']*100:.1f}% vs market {e['market_probability']*100:.1f}% "
-                f"(edge {e['edge']*100:+.1f}pp, fair odds {e['fair_odds']})"
+                f"  - {e['player_name']} ({e['team']}, {e['home_team']} v {e['away_team']}) "
+                f"via {e['bookmaker']}: our {e['our_probability']*100:.1f}% vs market "
+                f"{e['market_probability']*100:.1f}% (edge {e['edge']*100:+.1f}pp, "
+                f"fair odds {e['fair_odds']})"
             )
         lines.append("")
 
@@ -162,7 +284,7 @@ def format_plain_text(digest):
             lines.append(f"  - {f['home_team']} v {f['away_team']}: {f['reason']}")
         lines.append("")
 
-    if not digest["top_h2h_edges"] and not digest["top_try_scorer_edges"]:
+    if not digest["h2h_summaries"] and not digest["best_overall_edges"]:
         lines.append("No real edges surfaced this round.")
 
     return "\n".join(lines)
@@ -181,20 +303,35 @@ def format_html(digest):
 
     body += section(
         "Match Win Probability",
-        digest["top_h2h_edges"],
-        lambda e: (
-            f"<b>{e['home_team']} v {e['away_team']}</b>: our model "
-            f"{e['our_home_win_prob']*100:.0f}% vs market {e['market_home_win_prob']*100:.0f}% "
-            f"({'favours' if e['edge'] > 0 else 'against'} home by {abs(e['edge'])*100:.1f}pp)"
+        digest["h2h_summaries"],
+        lambda s: (
+            f"<b>{s['home_team']} v {s['away_team']}</b>: we favour "
+            f"<b>{s['our_favourite']}</b> ({s['our_favourite_prob']*100:.0f}%), "
+            f"market favours <b>{s['market_favourite']}</b> ({s['market_favourite_prob']*100:.0f}%)"
+            + ("" if s["agree"] else " &mdash; <i>we disagree with the market on who wins</i>")
+            + _margin_text(s)
         ),
     )
+
+    if digest["per_fixture_edges"]:
+        body += "<h3>Top Try-Scorer Picks Per Game</h3>"
+        for fx in digest["per_fixture_edges"]:
+            body += f"<p><b>{fx['home_team']} v {fx['away_team']}</b> (via {fx['bookmaker_used']})</p><ul>"
+            for e in fx["edges"]:
+                body += (
+                    f"<li>{e['player_name']} ({e['team']}): our {e['our_probability']*100:.1f}% "
+                    f"vs market {e['market_probability']*100:.1f}% "
+                    f"(edge {e['edge']*100:+.1f}pp, fair odds {e['fair_odds']})</li>"
+                )
+            body += "</ul>"
+
     body += section(
-        "Top Try-Scorer Edges",
-        digest["top_try_scorer_edges"],
+        "Best Bets Overall",
+        digest["best_overall_edges"],
         lambda e: (
-            f"<b>{e['player_name']}</b> ({e['team']}) via {e['bookmaker']}: "
-            f"our {e['our_probability']*100:.1f}% vs market {e['market_probability']*100:.1f}% "
-            f"(edge {e['edge']*100:+.1f}pp, fair odds {e['fair_odds']})"
+            f"<b>{e['player_name']}</b> ({e['team']}, {e['home_team']} v {e['away_team']}) "
+            f"via {e['bookmaker']}: our {e['our_probability']*100:.1f}% vs market "
+            f"{e['market_probability']*100:.1f}% (edge {e['edge']*100:+.1f}pp, fair odds {e['fair_odds']})"
         ),
     )
     body += section(
@@ -203,7 +340,7 @@ def format_html(digest):
         lambda f: f"{f['home_team']} v {f['away_team']}: {f['reason']}",
     )
 
-    if not digest["top_h2h_edges"] and not digest["top_try_scorer_edges"]:
+    if not digest["h2h_summaries"] and not digest["best_overall_edges"]:
         body += "<p>No real edges surfaced this round.</p>"
 
     return body
