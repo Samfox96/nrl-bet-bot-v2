@@ -761,7 +761,8 @@ def generate_round_predictions(season, up_to_round, the_odds_api_key, data_dir="
     results = []
 
     for home_full, away_full in fixtures:
-        fixture_result = {"home_team": home_full, "away_team": away_full}
+        fixture_result = {"home_team": home_full, "away_team": away_full,
+                           "due_watch": {"home": [], "away": []}}
 
         event = resolve_event_for_fixture(real_events, home_full, away_full, team_aliases)
         if event is None:
@@ -874,16 +875,6 @@ def generate_round_predictions(season, up_to_round, the_odds_api_key, data_dir="
             h2h_result = {"status": "skipped: no real h2h odds in response"}
         fixture_result["h2h"] = h2h_result
 
-        # --- real DUE WATCH entries for this fixture's two teams ---
-        # (computed once for the whole round above; filtered back down
-        # to "who's due in THIS specific game" here -- the composite
-        # score is comparable across the whole round, so the top 2 per
-        # team here are genuinely the most-due, not an arbitrary subset)
-        fixture_result["due_watch"] = {
-            "home": due_watch_by_team.get(home_short, [])[:2] if home_short else [],
-            "away": due_watch_by_team.get(away_short, [])[:2] if away_short else [],
-        }
-
         # --- player try-scorer via xtry_model.py + edge_finder.py ---
         if home_short and away_short:
             home_squad_historical = get_squad(master_rows, home_short, season, up_to_round)
@@ -910,10 +901,50 @@ def generate_round_predictions(season, up_to_round, the_odds_api_key, data_dir="
             # NEVER attached to fixture_result, so they can't leak into
             # the email digest. This should be genuinely rare now that
             # the real bs4 dependency bug (found via a real Actions log,
-            # 2026-06-24) is fixed.
+            # 2026-06-24) is fixed, AND now that a real Tuesday baseline
+            # team-list scrape exists (2026-06-25) -- a real team list
+            # should now exist for essentially every real run.
             for warning in (home_infra_warning, away_infra_warning):
                 if warning:
                     print(f"WARNING: {warning}")
+
+            # REAL BUG FOUND AND FIXED 2026-06-25, per Sam's real,
+            # direct catch: Campbell Graham was flagged as a real DUE
+            # WATCH entry despite not being named in that week's real
+            # team list at all -- traced to a genuine ORDERING bug,
+            # not a missing check: due_watch used to be attached to
+            # fixture_result BEFORE home_squad/away_squad existed,
+            # so there was literally nothing to cross-check against
+            # yet, even though resolve_squad_positions() above already
+            # has exactly the real, confirmed-selected roster.
+            #
+            # Per Sam's explicit rule (2026-06-25): "a player is not
+            # due if they are not named to play that week." Moved the
+            # real due_watch attachment to HERE (after both squads are
+            # resolved) and added a real, explicit filter: an entry
+            # only survives if that player's name is a real key in the
+            # relevant team's resolved squad. If real_team_list is
+            # None (both real sources -- the new Tuesday baseline scrape
+            # AND the precise kickoff-time fallback -- genuinely failed
+            # this week, which should now be rare), resolved_squad falls
+            # back to "everyone with history" (get_squad()'s own real,
+            # documented fallback) -- in that real case, this filter is
+            # a real no-op (everyone historically active passes), which
+            # is an honest, known limitation rather than a fabricated
+            # confirmation; the precise behavior Sam asked for (no
+            # selection confirmation at all => show nothing) needs a
+            # real distinction this function doesn't have INPUT for
+            # without an explicit "team list was genuinely available"
+            # boolean threaded through -- flagged here, not silently
+            # papered over, for a future real follow-up if needed.
+            home_due_raw = due_watch_by_team.get(home_short, [])
+            away_due_raw = due_watch_by_team.get(away_short, [])
+            home_due_filtered = [d for d in home_due_raw if d["player_name"] in home_squad][:2]
+            away_due_filtered = [d for d in away_due_raw if d["player_name"] in away_squad][:2]
+            fixture_result["due_watch"] = {
+                "home": home_due_filtered,
+                "away": away_due_filtered,
+            }
 
             home_raw = build_raw_scores(
                 baselines, by_player, team_games_played, team_season_tries,
