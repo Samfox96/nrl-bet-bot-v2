@@ -151,6 +151,150 @@ def load_real_baselines(data_dir="data"):
     }
 
 
+def get_real_head_to_head(match_rows, team_aliases, home_full, away_full, current_season, current_round, max_games=5):
+    """
+    Real, genuine head-to-head history between these two specific teams,
+    added 2026-06-24 per Sam's explicit request for a more analytical,
+    less repetitive narrative -- this is a fundamentally different real
+    signal from the Elo rating gap (season-long overall strength): it's
+    "how have THESE TWO specifically fared against each other,"
+    independent of how either has played against everyone else.
+
+    Resolves match_data_FINAL_fixed.csv's real short team-name strings
+    (confirmed real format, e.g. "Newcastle", "South Sydney" -- NOT the
+    canonical full names used elsewhere in this module) through
+    team_aliases.json before comparing against home_full/away_full, the
+    same real resolution every other real consumer of this file
+    already does (nrl_elo.py).
+
+    Excludes the CURRENT real fixture itself (matches strictly before
+    current_season/current_round) -- this is real PAST history, not a
+    preview of the match this function is being called to help narrate.
+
+    Returns dict: {"games_found": n, "team_a_wins": n, "team_b_wins": n,
+    "draws": n, "most_recent": {...} or None} where team_a is
+    home_full, team_b is away_full (labels kept consistent regardless
+    of which team was actually home/away in each historical real
+    match) -- or None if NO real historical matches exist between these
+    two (genuinely possible for newer combinations, e.g. Dolphins vs
+    anyone before 2023).
+    """
+    games = []
+    for m in match_rows:
+        home_resolved = team_aliases.get(m["home_team"])
+        away_resolved = team_aliases.get(m["away_team"])
+        if {home_resolved, away_resolved} != {home_full, away_full}:
+            continue
+        if safe_int(m["season"]) > current_season:
+            continue
+        if safe_int(m["season"]) == current_season and safe_int(m["round"]) >= current_round:
+            continue
+        games.append(m)
+
+    if not games:
+        return None
+
+    games.sort(key=lambda m: (safe_int(m["season"]), safe_int(m["round"])))
+    games = games[-max_games:]
+
+    team_a_wins = team_b_wins = draws = 0
+    for m in games:
+        home_resolved = team_aliases.get(m["home_team"])
+        home_score, away_score = safe_int(m["home_score"]), safe_int(m["away_score"])
+        if home_score == away_score:
+            draws += 1
+            continue
+        home_won = home_score > away_score
+        if (home_resolved == home_full) == home_won:
+            team_a_wins += 1
+        else:
+            team_b_wins += 1
+
+    last = games[-1]
+    last_home_resolved = team_aliases.get(last["home_team"])
+    last_home_score, last_away_score = safe_int(last["home_score"]), safe_int(last["away_score"])
+    last_away_resolved = away_full if last_home_resolved == home_full else home_full
+    # REAL BUG FOUND AND FIXED 2026-06-24: the original version of this
+    # winner-determination used a broken if/elif/elif/else chain that
+    # could return the LOSING team as "winner" -- confirmed real case:
+    # Gold Coast Titans (home) lost 18-38 to Canterbury in a real 2025
+    # match, but the original logic returned "Gold Coast Titans" as the
+    # winner. Caught by manually verifying this function's real output
+    # against the raw real match row, not assumed correct from a
+    # plausible-looking result. Fixed with simple, directly correct
+    # logic: whichever real team scored more, full stop.
+    if last_home_score > last_away_score:
+        real_winner = last_home_resolved
+    elif last_away_score > last_home_score:
+        real_winner = last_away_resolved
+    else:
+        real_winner = None  # genuine real draw
+    most_recent = {
+        "season": safe_int(last["season"]),
+        "round": safe_int(last["round"]),
+        "winner": real_winner,
+        "score": f"{last['home_score']}-{last['away_score']}",
+    }
+
+    return {
+        "games_found": len(games),
+        "team_a_wins": team_a_wins,
+        "team_b_wins": team_b_wins,
+        "draws": draws,
+        "most_recent": most_recent,
+    }
+
+
+def get_real_form_streak(match_rows, team_aliases, team_full, current_season, current_round, last_n=5):
+    """
+    Real, genuine recent-form streak for ONE team, added 2026-06-24
+    alongside get_real_head_to_head() -- a real, different angle again
+    from both the Elo rating gap (season-long) and h2h (specific
+    opponent): "how has this team performed, period, in its last few
+    real matches against anyone." Returns a real win/loss/draw string
+    (e.g. "WWLWL", most recent last) plus the real win count, or None
+    if fewer than 2 real real games exist this season to draw from
+    (too little real signal to be worth narrating).
+    """
+    games = []
+    for m in match_rows:
+        if safe_int(m["season"]) != current_season:
+            continue
+        if safe_int(m["round"]) >= current_round:
+            continue
+        home_resolved = team_aliases.get(m["home_team"])
+        away_resolved = team_aliases.get(m["away_team"])
+        if team_full not in (home_resolved, away_resolved):
+            continue
+        games.append(m)
+
+    if len(games) < 2:
+        return None
+
+    games.sort(key=lambda m: safe_int(m["round"]))
+    games = games[-last_n:]
+
+    results = []
+    for m in games:
+        home_resolved = team_aliases.get(m["home_team"])
+        home_score, away_score = safe_int(m["home_score"]), safe_int(m["away_score"])
+        is_home = home_resolved == team_full
+        own_score = home_score if is_home else away_score
+        opp_score = away_score if is_home else home_score
+        if own_score > opp_score:
+            results.append("W")
+        elif own_score < opp_score:
+            results.append("L")
+        else:
+            results.append("D")
+
+    return {
+        "results": "".join(results),
+        "wins": results.count("W"),
+        "games": len(results),
+    }
+
+
 def get_squad(master_rows, team_short, season, up_to_round):
     """
     Real player roster for a team, season-to-date.
@@ -350,37 +494,40 @@ def resolve_squad_positions(historical_squad, team_short, real_team_list):
     Sam's explicit design (2026-06-24): the team list is the real
     source of truth when available; historical data is the fallback.
 
-    Returns (resolved_squad, position_changes) where resolved_squad is
-    dict player_name -> position (the one to actually MODEL with), and
-    position_changes is a list of real, human-readable strings
-    describing every case where the team-list position differs from
-    the historical baseline -- per Sam's explicit requirement
-    ("major changes in the prediction model need to alert me") this
-    list is exactly the real, structured signal a caller can use to
-    decide whether to flag something in the digest/email, without this
-    function itself deciding what counts as "major enough" to alert on
-    (that's a real, separate judgement call for whatever consumes this
-    list -- kept here as a complete, unfiltered real record).
+    REVISED 2026-06-24 after a real, confirmed root-cause fix (the live
+    nrl.com fallback was failing on every real run due to a missing
+    `beautifulsoup4` dependency in the workflow -- now fixed -- so this
+    fallback path should be genuinely rare going forward, not a regular
+    occurrence). Per Sam's explicit choice: the email should show ONLY
+    real positional swaps (a genuine, interesting signal worth a fan's
+    attention) -- the "no real team list at all" infrastructure-failure
+    case is now log-only (printed for operational visibility, e.g. in
+    the real Actions log), never surfaced in the email itself. Mixing
+    "here's a genuinely interesting player update" with "our own
+    pipeline had a problem this week" in the same reader-facing section
+    was confusing and not what a fan-facing email should carry.
 
-    If real_team_list is None, BOTH the committed CSV (Job B) AND the
-    real live nrl.com fallback (get_real_team_list()'s own real attempt
-    at it, called by generate_round_predictions() before this function
-    runs) have already failed -- returns the historical squad UNCHANGED,
-    with a single real flag entry noting this genuine double-failure
-    (not which players' positions might be wrong -- that's genuinely
-    unknowable without either real source).
+    Returns (resolved_squad, position_changes, infra_warning) where:
+      - resolved_squad: dict player_name -> position (the one to
+        actually MODEL with)
+      - position_changes: list of real, human-readable strings, ONLY
+        for genuine team-list-vs-historical swaps -- this is the real,
+        email-worthy signal per Sam's explicit requirement that major
+        changes should alert him.
+      - infra_warning: a single string if real_team_list was
+        unavailable (BOTH real sources failed), else None -- intended
+        for logging only, NOT for inclusion in the email digest.
     """
     if real_team_list is None:
-        return historical_squad, [
+        return historical_squad, [], (
             f"No real team list available for {team_short} this round, from EITHER "
             f"the committed Job B file or the real live nrl.com fallback -- "
             f"using historical most-frequent position for every player on this team. "
-            f"This should be rare: team lists are confirmed real and published every "
-            f"Tuesday 4pm, well before this script's real Thursday-morning run, and "
-            f"there are now two independent real sources for them. If you're seeing "
-            f"this on a genuine Thursday run, something has gone wrong with BOTH Job B "
-            f"and nrl.com's real listing page -- worth investigating directly."
-        ]
+            f"This should be rare now that the real bs4 dependency bug is fixed "
+            f"(2026-06-24) -- if you're seeing this on a genuine Thursday run, "
+            f"something has gone wrong with BOTH Job B and nrl.com's real listing "
+            f"page -- worth investigating directly."
+        )
 
     resolved = dict(historical_squad)
     position_changes = []
@@ -418,7 +565,7 @@ def resolve_squad_positions(historical_squad, team_short, real_team_list):
                 f"position '{entry['position']}' (jersey #{entry.get('jersey_number')})"
             )
 
-    return resolved, position_changes
+    return resolved, position_changes, None
 
 
 def build_raw_scores(baselines, by_player, team_games_played, team_season_tries,
@@ -590,6 +737,20 @@ def generate_round_predictions(season, up_to_round, the_odds_api_key, data_dir="
         # fallback -- see extract_single_bookmaker_spread's docstring
         # for why this isn't pooled across bookmakers).
 
+        # Real, new analytical angles added 2026-06-24 per Sam's
+        # explicit request for a less repetitive, more analytical
+        # narrative -- both grounded in match_data_FINAL_fixed.csv,
+        # the same real, validated source nrl_elo.py already uses.
+        real_h2h_history = get_real_head_to_head(
+            baselines["match_rows"], team_aliases, home_full, away_full, season, up_to_round
+        )
+        real_home_form = get_real_form_streak(
+            baselines["match_rows"], team_aliases, home_full, season, up_to_round
+        )
+        real_away_form = get_real_form_streak(
+            baselines["match_rows"], team_aliases, away_full, season, up_to_round
+        )
+
         if h2h_odds:
             market_consensus = consensus_true_probability(h2h_odds, [home_full, away_full])
             market_home_win_prob = market_consensus.get(home_full)
@@ -627,6 +788,16 @@ def generate_round_predictions(season, up_to_round, the_odds_api_key, data_dir="
                 # same real ratings nrl_elo.py already validated
                 # (64.8% real backtest accuracy across 3 held-out
                 # years) -- not a new number, just surfaced downstream.
+                "real_h2h_history": real_h2h_history,
+                "real_home_form": real_home_form,
+                "real_away_form": real_away_form,
+                # Real, new analytical angles (2026-06-24) -- genuinely
+                # different real signals from the Elo rating gap above:
+                # h2h history is "how have these two specific teams
+                # fared against EACH OTHER", form streak is "how has
+                # each team performed lately, period" (not adjusted for
+                # opponent strength the way Elo is). Both real, both
+                # independently checkable against match_data_FINAL_fixed.csv.
                 "status": "ok" if market_home_win_prob else "skipped: no real consensus available",
             }
         else:
@@ -648,21 +819,31 @@ def generate_round_predictions(season, up_to_round, the_odds_api_key, data_dir="
             home_squad_historical = get_squad(master_rows, home_short, season, up_to_round)
             away_squad_historical = get_squad(master_rows, away_short, season, up_to_round)
 
-            home_squad, home_position_changes = resolve_squad_positions(
+            home_squad, home_position_changes, home_infra_warning = resolve_squad_positions(
                 home_squad_historical, home_short, real_team_list
             )
-            away_squad, away_position_changes = resolve_squad_positions(
+            away_squad, away_position_changes, away_infra_warning = resolve_squad_positions(
                 away_squad_historical, away_short, real_team_list
             )
-            # Real, complete record of every case where this week's
-            # confirmed team list changed a player's modelled position
-            # vs the historical-frequency fallback -- surfaced here so
+            # Real, ONLY-genuine-swaps record (per Sam's explicit
+            # 2026-06-24 design: the email shows real positional
+            # changes only, never an "our pipeline had a problem"
+            # notice -- that's log-only, see below) -- surfaced here so
             # a caller (e.g. send_predictions_digest.py) can decide
             # what's "major" enough to alert on, per Sam's explicit
-            # requirement (2026-06-24) that real positional changes
-            # should visibly affect predictions, not be silently
-            # absorbed.
+            # requirement that real positional changes should visibly
+            # affect predictions, not be silently absorbed.
             fixture_result["position_changes"] = home_position_changes + away_position_changes
+
+            # Real infra-failure warnings (both real sources unavailable
+            # for a team) are printed for operational visibility only --
+            # NEVER attached to fixture_result, so they can't leak into
+            # the email digest. This should be genuinely rare now that
+            # the real bs4 dependency bug (found via a real Actions log,
+            # 2026-06-24) is fixed.
+            for warning in (home_infra_warning, away_infra_warning):
+                if warning:
+                    print(f"WARNING: {warning}")
 
             home_raw = build_raw_scores(
                 baselines, by_player, team_games_played, team_season_tries,
