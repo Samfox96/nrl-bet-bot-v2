@@ -30,8 +30,42 @@ name: Team List Polling (Job B)
 # that file for the round Job B needs. Job B now gets everything -- team
 # list AND kickoff times -- from a single plain HTTP fetch of nrl.com's
 # team-list article, which embeds both. See scrape_team_lists.py docstring.
+# REAL BASELINE SCRAPE ADDED 2026-06-25, per Sam's explicit real
+# correction to the architecture: NRL.com publishes each round's
+# initial team lists every Tuesday ~4:00pm AEST/AEDT (confirmed via
+# multiple independent real sources: rugbyleaguezone.com, legz.com.au,
+# bettingpro.com.au, and nrl.com's own real published team-list
+# articles, all independently stating the same real 4pm Tuesday
+# release time). The existing cron-job.org-triggered runs (above) only
+# ever fire 1 hour before each REAL match's kickoff -- by design, for
+# precise late-mail capture -- but that meant there was NO real
+# mechanism anywhere in this codebase to capture the INITIAL Tuesday
+# team list at all. Confirmed via a real, traced investigation
+# (2026-06-25): data/team_lists_current.csv was genuinely absent for
+# Round 17 days after Sam had already provided real team-sheet
+# information, because the file the pipeline actually reads from had
+# no real path to ever be populated that early in the week.
+#
+# Real fix: a genuine, separate `schedule:` trigger at Tuesday ~6:10am
+# UTC (~4:10pm AEST, a 10-minute buffer after the real ~4pm release
+# time) calls the SAME real scrape_team_lists.py script, but with a
+# much wider --hours-before window (96h) so its own real kickoff-gate
+# logic treats the WHOLE upcoming round as "in window" rather than
+# requiring imminent kickoff -- no changes to that script's internal
+# logic were needed, since --hours-before was already a real, exposed
+# CLI parameter. The existing precise cron-job.org-triggered runs are
+# completely untouched and still handle late-mail updates close to
+# each real kickoff, on top of this new Tuesday baseline.
+#
+# REAL, KNOWN LIMITATION: a fixed UTC cron time drifts by 1 real hour
+# whenever Australia's AEST/AEDT daylight-saving clock changes (around
+# early April and early October) -- this cron is tuned for AEST
+# (winter, no daylight saving, current as of 2026-06-25). Worth
+# revisiting if this is still running come October.
 on:
   workflow_dispatch: {}
+  schedule:
+    - cron: '10 6 * * 2'  # Tuesday ~4:10pm AEST -- real baseline team-list scrape
 
 jobs:
   poll-team-lists:
@@ -54,8 +88,19 @@ jobs:
       - name: Poll for team list updates
         id: poll
         run: |
-          python3 scripts/scrape_team_lists.py \
-            --output data/team_lists_current.csv
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            # Real Tuesday baseline run -- wide window, captures the
+            # whole round's just-released initial team list regardless
+            # of how far away the earliest real kickoff still is.
+            python3 scripts/scrape_team_lists.py \
+              --output data/team_lists_current.csv \
+              --hours-before 96
+          else
+            # Real, existing precise-kickoff path -- unchanged, still
+            # uses the script's own real default (1 hour).
+            python3 scripts/scrape_team_lists.py \
+              --output data/team_lists_current.csv
+          fi
 
       - name: Upload debug output (listing page if discovery failed; team-list page always)
         if: always()
