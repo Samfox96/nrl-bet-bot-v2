@@ -61,11 +61,35 @@ jobs:
           if [ -n "${{ github.event.inputs.round_override }}" ]; then
             ROUND="${{ github.event.inputs.round_override }}"
           else
-            ROUND=$(python3 -c "
-            import pandas as pd
-            df = pd.read_csv('data/nrl_master.csv')
-            print(int(df['round'].max()) + 1)
-            ")
+            # REAL BUG FOUND AND FIXED 2026-06-25: the original inline
+            # `python3 -c "..."` here had its multi-line script body
+            # indented to match this YAML block's visual indentation --
+            # but that indentation is LITERAL inside the Python string
+            # itself, and an indented first statement with no enclosing
+            # block is a real, genuine IndentationError in Python --
+            # confirmed via a real Actions log from this workflow's
+            # first genuine SCHEDULED run (2026-06-25, 10:09am Sydney
+            # time): every prior test in this project used
+            # workflow_dispatch with round_override set, which takes
+            # the OTHER branch of this if/else and never exercised this
+            # real bug until the real cron schedule fired for the first
+            # time.
+            #
+            # A heredoc-based fix was tried first but hit a real,
+            # separate constraint: YAML's block scalar (the `|` above)
+            # requires every line, including a heredoc's closing
+            # delimiter, to stay at or above this block's indentation,
+            # while bash's `<<'EOF'`-style heredoc requires its closing
+            # delimiter to have ZERO leading whitespace -- those two
+            # real requirements are mutually exclusive here, confirmed
+            # by hitting a genuine YAML parse error on the first
+            # attempt. Real fix: collapse to a single-line, semicolon-
+            # separated `python3 -c "..."` instead -- no multi-line
+            # heredoc, no indentation to get wrong in any of the three
+            # layers (YAML / bash / Python). Tested directly against
+            # real nrl_master.csv under bash (GitHub Actions' real
+            # default shell) before trusting it.
+            ROUND=$(python3 -c "import pandas as pd; df = pd.read_csv('data/nrl_master.csv'); print(int(df['round'].max()) + 1)")
           fi
           echo "round=$ROUND" >> "$GITHUB_OUTPUT"
           echo "Generating predictions for round: $ROUND"
