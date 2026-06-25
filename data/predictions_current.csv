@@ -1,292 +1,292 @@
 home_team,away_team,status,our_home_win_prob,market_home_win_prob,our_home_fair_odds,h2h_edge,our_predicted_margin,margin_mae,market_spread_bookmaker,market_spread_point,player_name,player_team,position_code,bookmaker,our_try_probability,market_try_probability,try_scorer_edge,fair_odds
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Jamie Humphreys,South Sydney Rabbitohs,HB,pointsbetau,0.1579,0.1111111111111111,0.04678888888888891,6.333
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Kelma Tuilagi,Parramatta Eels,2RF,sportsbet,0.2227,0.17857142857142858,0.044128571428571434,4.49
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Kelma Tuilagi,Parramatta Eels,2RF,neds,0.2227,0.1923076923076923,0.03039230769230772,4.49
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Kelma Tuilagi,Parramatta Eels,2RF,ladbrokes_au,0.2227,0.1923076923076923,0.03039230769230772,4.49
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Kitione Kautoga,Parramatta Eels,2RF,sportsbet,0.2167,0.19047619047619047,0.026223809523809538,4.615
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Kelma Tuilagi,Parramatta Eels,2RF,pointsbetau,0.2227,0.2,0.022699999999999998,4.49
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Kelma Tuilagi,Parramatta Eels,2RF,tabtouch,0.2227,0.2,0.022699999999999998,4.49
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Kelma Tuilagi,Parramatta Eels,2RF,unibet,0.2227,0.2,0.022699999999999998,4.49
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Alex Johnston,South Sydney Rabbitohs,WG,sportsbet,0.65,0.6289308176100629,0.021069182389937158,1.538
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Dylan Walker,Parramatta Eels,IC,pointsbetau,0.1189,0.1,0.0189,8.41
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Alex Johnston,South Sydney Rabbitohs,WG,neds,0.65,0.6329113924050632,0.0170886075949368,1.538
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Alex Johnston,South Sydney Rabbitohs,WG,ladbrokes_au,0.65,0.6329113924050632,0.0170886075949368,1.538
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Kitione Kautoga,Parramatta Eels,2RF,pointsbetau,0.2167,0.2,0.016699999999999993,4.615
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Kitione Kautoga,Parramatta Eels,2RF,neds,0.2167,0.2,0.016699999999999993,4.615
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Kitione Kautoga,Parramatta Eels,2RF,ladbrokes_au,0.2167,0.2,0.016699999999999993,4.615
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Kitione Kautoga,Parramatta Eels,2RF,tabtouch,0.2167,0.2,0.016699999999999993,4.615
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Kitione Kautoga,Parramatta Eels,2RF,unibet,0.2167,0.2,0.016699999999999993,4.615
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Jamie Humphreys,South Sydney Rabbitohs,HB,neds,0.1579,0.14705882352941177,0.010841176470588243,6.333
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Jamie Humphreys,South Sydney Rabbitohs,HB,ladbrokes_au,0.1579,0.14705882352941177,0.010841176470588243,6.333
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Jamie Humphreys,South Sydney Rabbitohs,HB,sportsbet,0.1579,0.14814814814814814,0.009751851851851873,6.333
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Dylan Walker,Parramatta Eels,IC,neds,0.1189,0.11428571428571428,0.0046142857142857235,8.41
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Dylan Walker,Parramatta Eels,IC,ladbrokes_au,0.1189,0.11428571428571428,0.0046142857142857235,8.41
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Kelma Tuilagi,Parramatta Eels,2RF,betright,0.2227,0.22727272727272727,-0.004572727272727256,4.49
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Dylan Walker,Parramatta Eels,IC,sportsbet,0.1189,0.125,-0.006099999999999994,8.41
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Dylan Walker,Parramatta Eels,IC,tabtouch,0.1189,0.125,-0.006099999999999994,8.41
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Dylan Walker,Parramatta Eels,IC,unibet,0.1189,0.125,-0.006099999999999994,8.41
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Jamie Humphreys,South Sydney Rabbitohs,HB,tabtouch,0.1579,0.16666666666666666,-0.008766666666666645,6.333
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Jamie Humphreys,South Sydney Rabbitohs,HB,unibet,0.1579,0.16666666666666666,-0.008766666666666645,6.333
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Kitione Kautoga,Parramatta Eels,2RF,betright,0.2167,0.22727272727272727,-0.010572727272727261,4.615
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Jamie Humphreys,South Sydney Rabbitohs,HB,betright,0.1579,0.17391304347826086,-0.016013043478260852,6.333
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Alex Johnston,South Sydney Rabbitohs,WG,tab,0.65,0.6666666666666666,-0.016666666666666607,1.538
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Alex Johnston,South Sydney Rabbitohs,WG,pointsbetau,0.65,0.6666666666666666,-0.016666666666666607,1.538
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Alex Johnston,South Sydney Rabbitohs,WG,betr_au,0.65,0.6666666666666666,-0.016666666666666607,1.538
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Alex Johnston,South Sydney Rabbitohs,WG,tabtouch,0.65,0.6666666666666666,-0.016666666666666607,1.538
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Alex Johnston,South Sydney Rabbitohs,WG,unibet,0.65,0.6666666666666666,-0.016666666666666607,1.538
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Jamie Humphreys,South Sydney Rabbitohs,HB,tab,0.1579,0.18181818181818182,-0.02391818181818181,6.333
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Kelma Tuilagi,Parramatta Eels,2RF,tab,0.2227,0.25,-0.02729999999999999,4.49
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Kelma Tuilagi,Parramatta Eels,2RF,betr_au,0.2227,0.25,-0.02729999999999999,4.49
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Jordan Samrani,Parramatta Eels,CE,tab,0.2788,0.3076923076923077,-0.028892307692307717,3.587
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Cameron Murray,South Sydney Rabbitohs,LK,tab,0.1102,0.14285714285714285,-0.03265714285714284,9.074
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Kitione Kautoga,Parramatta Eels,2RF,tab,0.2167,0.25,-0.033299999999999996,4.615
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Kitione Kautoga,Parramatta Eels,2RF,betr_au,0.2167,0.25,-0.033299999999999996,4.615
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Cameron Murray,South Sydney Rabbitohs,LK,sportsbet,0.1102,0.14814814814814814,-0.037948148148148134,9.074
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Jordan Samrani,Parramatta Eels,CE,neds,0.2788,0.31746031746031744,-0.03866031746031745,3.587
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Jordan Samrani,Parramatta Eels,CE,ladbrokes_au,0.2788,0.31746031746031744,-0.03866031746031745,3.587
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Dylan Walker,Parramatta Eels,IC,tab,0.1189,0.16666666666666666,-0.04776666666666665,8.41
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Jordan Samrani,Parramatta Eels,CE,sportsbet,0.2788,0.3278688524590164,-0.04906885245901643,3.587
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Cameron Murray,South Sydney Rabbitohs,LK,neds,0.1102,0.16,-0.0498,9.074
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Cameron Murray,South Sydney Rabbitohs,LK,ladbrokes_au,0.1102,0.16,-0.0498,9.074
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Ronald Volkman,Parramatta Eels,FE,sportsbet,0.1254,0.17857142857142858,-0.053171428571428564,7.974
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Jordan Samrani,Parramatta Eels,CE,pointsbetau,0.2788,0.3333333333333333,-0.05453333333333332,3.587
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Jordan Samrani,Parramatta Eels,CE,tabtouch,0.2788,0.3333333333333333,-0.05453333333333332,3.587
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Jordan Samrani,Parramatta Eels,CE,unibet,0.2788,0.3333333333333333,-0.05453333333333332,3.587
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Cameron Murray,South Sydney Rabbitohs,LK,tabtouch,0.1102,0.16666666666666666,-0.05646666666666665,9.074
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Cameron Murray,South Sydney Rabbitohs,LK,unibet,0.1102,0.16666666666666666,-0.05646666666666665,9.074
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Ronald Volkman,Parramatta Eels,FE,neds,0.1254,0.18518518518518517,-0.05978518518518516,7.974
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Ronald Volkman,Parramatta Eels,FE,ladbrokes_au,0.1254,0.18518518518518517,-0.05978518518518516,7.974
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Jordan Samrani,Parramatta Eels,CE,betright,0.2788,0.3389830508474576,-0.06018305084745762,3.587
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Tallyn Da Silva,Parramatta Eels,IC,sportsbet,0.1284,0.18867924528301888,-0.060279245283018895,7.788
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Luca Moretti,Parramatta Eels,PR,pointsbetau,0.0191,0.08333333333333333,-0.06423333333333334,52.356
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Teancum Brown,Parramatta Eels,IC,pointsbetau,0.0073,0.07692307692307693,-0.06962307692307693,136.986
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Sam Tuivaiti,Parramatta Eels,IC,pointsbetau,0.0072,0.07692307692307693,-0.06972307692307693,138.889
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Tallyn Da Silva,Parramatta Eels,IC,tab,0.1284,0.2,-0.07160000000000002,7.788
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Tallyn Da Silva,Parramatta Eels,IC,pointsbetau,0.1284,0.2,-0.07160000000000002,7.788
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Tallyn Da Silva,Parramatta Eels,IC,neds,0.1284,0.2,-0.07160000000000002,7.788
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Tallyn Da Silva,Parramatta Eels,IC,ladbrokes_au,0.1284,0.2,-0.07160000000000002,7.788
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Cameron Murray,South Sydney Rabbitohs,LK,pointsbetau,0.1102,0.18181818181818182,-0.07161818181818182,9.074
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Cameron Murray,South Sydney Rabbitohs,LK,betright,0.1102,0.18181818181818182,-0.07161818181818182,9.074
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Luca Moretti,Parramatta Eels,PR,betright,0.0191,0.09090909090909091,-0.0718090909090909,52.356
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Luca Moretti,Parramatta Eels,PR,tabtouch,0.0191,0.09090909090909091,-0.0718090909090909,52.356
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Luca Moretti,Parramatta Eels,PR,unibet,0.0191,0.09090909090909091,-0.0718090909090909,52.356
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Ronald Volkman,Parramatta Eels,FE,tabtouch,0.1254,0.2,-0.0746,7.974
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Ronald Volkman,Parramatta Eels,FE,unibet,0.1254,0.2,-0.0746,7.974
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Keaon Koloamatangi,South Sydney Rabbitohs,PR,sportsbet,0.079,0.15384615384615385,-0.07484615384615385,12.658
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Keaon Koloamatangi,South Sydney Rabbitohs,PR,pointsbetau,0.079,0.15384615384615385,-0.07484615384615385,12.658
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Keaon Koloamatangi,South Sydney Rabbitohs,PR,tabtouch,0.079,0.15384615384615385,-0.07484615384615385,12.658
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Keaon Koloamatangi,South Sydney Rabbitohs,PR,unibet,0.079,0.15384615384615385,-0.07484615384615385,12.658
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Teancum Brown,Parramatta Eels,IC,betright,0.0073,0.08333333333333333,-0.07603333333333333,136.986
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Sam Tuivaiti,Parramatta Eels,IC,betright,0.0072,0.08333333333333333,-0.07613333333333333,138.889
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Luca Moretti,Parramatta Eels,PR,tab,0.0191,0.1,-0.0809,52.356
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Keaon Koloamatangi,South Sydney Rabbitohs,PR,neds,0.079,0.16,-0.081,12.658
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Keaon Koloamatangi,South Sydney Rabbitohs,PR,ladbrokes_au,0.079,0.16,-0.081,12.658
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Teancum Brown,Parramatta Eels,IC,tabtouch,0.0073,0.09090909090909091,-0.08360909090909091,136.986
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Teancum Brown,Parramatta Eels,IC,unibet,0.0073,0.09090909090909091,-0.08360909090909091,136.986
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Sam Tuivaiti,Parramatta Eels,IC,tabtouch,0.0072,0.09090909090909091,-0.08370909090909091,138.889
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Sam Tuivaiti,Parramatta Eels,IC,unibet,0.0072,0.09090909090909091,-0.08370909090909091,138.889
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Jordan Samrani,Parramatta Eels,CE,betr_au,0.2788,0.36363636363636365,-0.08483636363636365,3.587
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Ronald Volkman,Parramatta Eels,FE,betright,0.1254,0.21052631578947367,-0.08512631578947366,7.974
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Luca Moretti,Parramatta Eels,PR,betr_au,0.0191,0.10526315789473684,-0.08616315789473683,52.356
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Liam Le Blanc,South Sydney Rabbitohs,IC,pointsbetau,0.0041,0.09090909090909091,-0.0868090909090909,243.902
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Liam Le Blanc,South Sydney Rabbitohs,IC,neds,0.0041,0.09090909090909091,-0.0868090909090909,243.902
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Liam Le Blanc,South Sydney Rabbitohs,IC,ladbrokes_au,0.0041,0.09090909090909091,-0.0868090909090909,243.902
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Liam Le Blanc,South Sydney Rabbitohs,IC,betright,0.0041,0.09090909090909091,-0.0868090909090909,243.902
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Tevita Tatola,South Sydney Rabbitohs,PR,pointsbetau,0.0038,0.09090909090909091,-0.08710909090909091,263.158
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Tevita Tatola,South Sydney Rabbitohs,PR,betright,0.0038,0.09090909090909091,-0.08710909090909091,263.158
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Keaon Koloamatangi,South Sydney Rabbitohs,PR,tab,0.079,0.16666666666666666,-0.08766666666666666,12.658
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Sam Tuivaiti,Parramatta Eels,IC,neds,0.0072,0.09523809523809523,-0.08803809523809523,138.889
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Sam Tuivaiti,Parramatta Eels,IC,ladbrokes_au,0.0072,0.09523809523809523,-0.08803809523809523,138.889
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Luca Moretti,Parramatta Eels,PR,sportsbet,0.0191,0.10810810810810811,-0.08900810810810811,52.356
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Cameron Murray,South Sydney Rabbitohs,LK,betr_au,0.1102,0.2,-0.0898,9.074
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Lachlan Hubner,South Sydney Rabbitohs,IC,sportsbet,0.0123,0.10256410256410256,-0.09026410256410256,81.301
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Jack De Belin,Parramatta Eels,LK,tab,0.0096,0.1,-0.09040000000000001,104.167
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Jack De Belin,Parramatta Eels,LK,betright,0.0096,0.1,-0.09040000000000001,104.167
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Jack De Belin,Parramatta Eels,LK,tabtouch,0.0096,0.1,-0.09040000000000001,104.167
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Jack De Belin,Parramatta Eels,LK,unibet,0.0096,0.1,-0.09040000000000001,104.167
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Sean Russell,Parramatta Eels,CE,sportsbet,0.2169,0.3076923076923077,-0.0907923076923077,4.61
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Sean Russell,Parramatta Eels,CE,tab,0.2169,0.3076923076923077,-0.0907923076923077,4.61
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Sean Russell,Parramatta Eels,CE,neds,0.2169,0.3076923076923077,-0.0907923076923077,4.61
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Sean Russell,Parramatta Eels,CE,ladbrokes_au,0.2169,0.3076923076923077,-0.0907923076923077,4.61
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Lachlan Hubner,South Sydney Rabbitohs,IC,neds,0.0123,0.10526315789473684,-0.09296315789473683,81.301
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Lachlan Hubner,South Sydney Rabbitohs,IC,ladbrokes_au,0.0123,0.10526315789473684,-0.09296315789473683,81.301
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Tallyn Da Silva,Parramatta Eels,IC,tabtouch,0.1284,0.2222222222222222,-0.09382222222222222,7.788
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Tallyn Da Silva,Parramatta Eels,IC,unibet,0.1284,0.2222222222222222,-0.09382222222222222,7.788
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Keaon Koloamatangi,South Sydney Rabbitohs,PR,betright,0.079,0.17391304347826086,-0.09491304347826086,12.658
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Charlie Guymer,Parramatta Eels,IC,betright,0.0049,0.1,-0.0951,204.082
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Sam Tuivaiti,Parramatta Eels,IC,sportsbet,0.0072,0.10256410256410256,-0.09536410256410256,138.889
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Jack De Belin,Parramatta Eels,LK,sportsbet,0.0096,0.10526315789473684,-0.09566315789473684,104.167
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Jack De Belin,Parramatta Eels,LK,pointsbetau,0.0096,0.10526315789473684,-0.09566315789473684,104.167
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Luca Moretti,Parramatta Eels,PR,neds,0.0191,0.11764705882352941,-0.0985470588235294,52.356
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Luca Moretti,Parramatta Eels,PR,ladbrokes_au,0.0191,0.11764705882352941,-0.0985470588235294,52.356
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Lachlan Hubner,South Sydney Rabbitohs,IC,tabtouch,0.0123,0.1111111111111111,-0.0988111111111111,81.301
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Lachlan Hubner,South Sydney Rabbitohs,IC,unibet,0.0123,0.1111111111111111,-0.0988111111111111,81.301
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Tallyn Da Silva,Parramatta Eels,IC,betright,0.1284,0.22727272727272727,-0.09887272727272728,7.788
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Charlie Guymer,Parramatta Eels,IC,pointsbetau,0.0049,0.10526315789473684,-0.10036315789473683,204.082
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Tevita Tatola,South Sydney Rabbitohs,PR,betr_au,0.0038,0.10526315789473684,-0.10146315789473684,263.158
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Jack De Belin,Parramatta Eels,LK,betr_au,0.0096,0.1111111111111111,-0.10151111111111111,104.167
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Sam Tuivaiti,Parramatta Eels,IC,tab,0.0072,0.1111111111111111,-0.1039111111111111,138.889
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Jack Williams,Parramatta Eels,PR,tab,0.0066,0.1111111111111111,-0.10451111111111111,151.515
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Lachlan Hubner,South Sydney Rabbitohs,IC,tab,0.0123,0.11764705882352941,-0.1053470588235294,81.301
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Ronald Volkman,Parramatta Eels,FE,betr_au,0.1254,0.23094688221709006,-0.10554688221709005,7.974
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Jayden Sullivan,South Sydney Rabbitohs,IC,betright,0.0052,0.1111111111111111,-0.10591111111111111,192.308
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Ronald Volkman,Parramatta Eels,FE,pointsbetau,0.1254,0.23255813953488372,-0.1071581395348837,7.974
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Tevita Tatola,South Sydney Rabbitohs,PR,sportsbet,0.0038,0.1111111111111111,-0.10731111111111111,263.158
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Tevita Tatola,South Sydney Rabbitohs,PR,tabtouch,0.0038,0.1111111111111111,-0.10731111111111111,263.158
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Tevita Tatola,South Sydney Rabbitohs,PR,unibet,0.0038,0.1111111111111111,-0.10731111111111111,263.158
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Bronson Garlick,South Sydney Rabbitohs,HK,tab,0.0096,0.11764705882352941,-0.10804705882352941,104.167
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Teancum Brown,Parramatta Eels,IC,neds,0.0073,0.11764705882352941,-0.11034705882352941,136.986
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Teancum Brown,Parramatta Eels,IC,ladbrokes_au,0.0073,0.11764705882352941,-0.11034705882352941,136.986
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Jayden Sullivan,South Sydney Rabbitohs,IC,pointsbetau,0.0052,0.11764705882352941,-0.11244705882352941,192.308
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Lachlan Hubner,South Sydney Rabbitohs,IC,pointsbetau,0.0123,0.125,-0.1127,81.301
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Lachlan Hubner,South Sydney Rabbitohs,IC,betright,0.0123,0.125,-0.1127,81.301
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Jack Williams,Parramatta Eels,PR,sportsbet,0.0066,0.12121212121212122,-0.11461212121212122,151.515
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Jack De Belin,Parramatta Eels,LK,neds,0.0096,0.125,-0.1154,104.167
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Jack De Belin,Parramatta Eels,LK,ladbrokes_au,0.0096,0.125,-0.1154,104.167
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Sean Russell,Parramatta Eels,CE,pointsbetau,0.2169,0.3333333333333333,-0.1164333333333333,4.61
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Sean Russell,Parramatta Eels,CE,tabtouch,0.2169,0.3333333333333333,-0.1164333333333333,4.61
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Sean Russell,Parramatta Eels,CE,unibet,0.2169,0.3333333333333333,-0.1164333333333333,4.61
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Isaiah Iongi,Parramatta Eels,FB,pointsbetau,0.2281,0.3448275862068966,-0.11672758620689658,4.384
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Jack Williams,Parramatta Eels,PR,tabtouch,0.0066,0.125,-0.1184,151.515
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Jack Williams,Parramatta Eels,PR,unibet,0.0066,0.125,-0.1184,151.515
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Keaon Koloamatangi,South Sydney Rabbitohs,PR,betr_au,0.079,0.2,-0.12100000000000001,12.658
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Tevita Tatola,South Sydney Rabbitohs,PR,tab,0.0038,0.125,-0.1212,263.158
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Tevita Tatola,South Sydney Rabbitohs,PR,neds,0.0038,0.125,-0.1212,263.158
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Tevita Tatola,South Sydney Rabbitohs,PR,ladbrokes_au,0.0038,0.125,-0.1212,263.158
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Tallyn Da Silva,Parramatta Eels,IC,betr_au,0.1284,0.25,-0.12160000000000001,7.788
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Sean Russell,Parramatta Eels,CE,betright,0.2169,0.3389830508474576,-0.1220830508474576,4.61
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Jack Williams,Parramatta Eels,PR,neds,0.0066,0.12903225806451613,-0.12243225806451613,151.515
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Jack Williams,Parramatta Eels,PR,ladbrokes_au,0.0066,0.12903225806451613,-0.12243225806451613,151.515
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Isaiah Iongi,Parramatta Eels,FB,neds,0.2281,0.35714285714285715,-0.12904285714285715,4.384
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Isaiah Iongi,Parramatta Eels,FB,ladbrokes_au,0.2281,0.35714285714285715,-0.12904285714285715,4.384
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Joash Papalii,Parramatta Eels,FB,tabtouch,0.2039,0.3333333333333333,-0.12943333333333332,4.904
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Joash Papalii,Parramatta Eels,FB,unibet,0.2039,0.3333333333333333,-0.12943333333333332,4.904
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Isaiah Iongi,Parramatta Eels,FB,sportsbet,0.2281,0.36363636363636365,-0.13553636363636365,4.384
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Isaiah Iongi,Parramatta Eels,FB,tabtouch,0.2281,0.36363636363636365,-0.13553636363636365,4.384
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Isaiah Iongi,Parramatta Eels,FB,unibet,0.2281,0.36363636363636365,-0.13553636363636365,4.384
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Jack Williams,Parramatta Eels,PR,betright,0.0066,0.14285714285714285,-0.13625714285714285,151.515
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Joash Papalii,Parramatta Eels,FB,tab,0.2039,0.3448275862068966,-0.14092758620689658,4.904
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Ronald Volkman,Parramatta Eels,FE,tab,0.1254,0.26666666666666666,-0.14126666666666665,7.974
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Bronson Garlick,South Sydney Rabbitohs,HK,tabtouch,0.0096,0.15384615384615385,-0.14424615384615386,104.167
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Bronson Garlick,South Sydney Rabbitohs,HK,unibet,0.0096,0.15384615384615385,-0.14424615384615386,104.167
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Sean Russell,Parramatta Eels,CE,betr_au,0.2169,0.36363636363636365,-0.14673636363636364,4.61
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,David Fifita,South Sydney Rabbitohs,2RF,sportsbet,0.1706,0.31746031746031744,-0.14686031746031744,5.862
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Jack Williams,Parramatta Eels,PR,betr_au,0.0066,0.15384615384615385,-0.14724615384615386,151.515
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Euan Aitken,South Sydney Rabbitohs,2RF,sportsbet,0.0738,0.2222222222222222,-0.1484222222222222,13.55
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Isaiah Iongi,Parramatta Eels,FB,betright,0.2281,0.37735849056603776,-0.14925849056603777,4.384
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Liam Le Blanc,South Sydney Rabbitohs,IC,tab,0.0041,0.15384615384615385,-0.14974615384615386,243.902
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,David Fifita,South Sydney Rabbitohs,2RF,pointsbetau,0.1706,0.3225806451612903,-0.1519806451612903,5.862
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Mitchell Moses,Parramatta Eels,HB,betright,0.0559,0.21052631578947367,-0.15462631578947367,17.889
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Mitchell Moses,Parramatta Eels,HB,sportsbet,0.0559,0.2127659574468085,-0.1568659574468085,17.889
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Brandon Smith,South Sydney Rabbitohs,HK,sportsbet,0.0195,0.17857142857142858,-0.15907142857142859,51.282
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Ashton Ward,South Sydney Rabbitohs,HB,sportsbet,0.016,0.17543859649122806,-0.15943859649122805,62.5
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Jack Williams,Parramatta Eels,PR,pointsbetau,0.0066,0.16666666666666666,-0.16006666666666666,151.515
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Euan Aitken,South Sydney Rabbitohs,2RF,neds,0.0738,0.23529411764705882,-0.16149411764705882,13.55
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Euan Aitken,South Sydney Rabbitohs,2RF,ladbrokes_au,0.0738,0.23529411764705882,-0.16149411764705882,13.55
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Charlie Guymer,Parramatta Eels,IC,tab,0.0049,0.16666666666666666,-0.16176666666666667,204.082
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Charlie Guymer,Parramatta Eels,IC,tabtouch,0.0049,0.16666666666666666,-0.16176666666666667,204.082
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Charlie Guymer,Parramatta Eels,IC,unibet,0.0049,0.16666666666666666,-0.16176666666666667,204.082
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Liam Le Blanc,South Sydney Rabbitohs,IC,tabtouch,0.0041,0.16666666666666666,-0.16256666666666666,243.902
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Liam Le Blanc,South Sydney Rabbitohs,IC,unibet,0.0041,0.16666666666666666,-0.16256666666666666,243.902
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,David Fifita,South Sydney Rabbitohs,2RF,neds,0.1706,0.3333333333333333,-0.1627333333333333,5.862
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,David Fifita,South Sydney Rabbitohs,2RF,ladbrokes_au,0.1706,0.3333333333333333,-0.1627333333333333,5.862
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Brian Kelly,Parramatta Eels,WG,sportsbet,0.2801,0.4444444444444444,-0.1643444444444444,3.57
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Brian Kelly,Parramatta Eels,WG,neds,0.2801,0.4444444444444444,-0.1643444444444444,3.57
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Brian Kelly,Parramatta Eels,WG,ladbrokes_au,0.2801,0.4444444444444444,-0.1643444444444444,3.57
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Ashton Ward,South Sydney Rabbitohs,HB,pointsbetau,0.016,0.18181818181818182,-0.1658181818181818,62.5
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Ashton Ward,South Sydney Rabbitohs,HB,betright,0.016,0.18181818181818182,-0.1658181818181818,62.5
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Mitchell Moses,Parramatta Eels,HB,tab,0.0559,0.2222222222222222,-0.1663222222222222,17.889
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Mitchell Moses,Parramatta Eels,HB,neds,0.0559,0.2222222222222222,-0.1663222222222222,17.889
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Mitchell Moses,Parramatta Eels,HB,ladbrokes_au,0.0559,0.2222222222222222,-0.1663222222222222,17.889
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Mitchell Moses,Parramatta Eels,HB,tabtouch,0.0559,0.2222222222222222,-0.1663222222222222,17.889
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Mitchell Moses,Parramatta Eels,HB,unibet,0.0559,0.2222222222222222,-0.1663222222222222,17.889
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Isaiah Iongi,Parramatta Eels,FB,tab,0.2281,0.4,-0.17190000000000003,4.384
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Isaiah Iongi,Parramatta Eels,FB,betr_au,0.2281,0.4,-0.17190000000000003,4.384
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Brandon Smith,South Sydney Rabbitohs,HK,neds,0.0195,0.1923076923076923,-0.1728076923076923,51.282
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Brandon Smith,South Sydney Rabbitohs,HK,ladbrokes_au,0.0195,0.1923076923076923,-0.1728076923076923,51.282
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,David Fifita,South Sydney Rabbitohs,2RF,betr_au,0.1706,0.3448275862068966,-0.17422758620689657,5.862
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Mitchell Moses,Parramatta Eels,HB,betr_au,0.0559,0.23094688221709006,-0.17504688221709006,17.889
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Euan Aitken,South Sydney Rabbitohs,2RF,pointsbetau,0.0738,0.25,-0.1762,13.55
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Euan Aitken,South Sydney Rabbitohs,2RF,tabtouch,0.0738,0.25,-0.1762,13.55
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Euan Aitken,South Sydney Rabbitohs,2RF,unibet,0.0738,0.25,-0.1762,13.55
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Ashton Ward,South Sydney Rabbitohs,HB,neds,0.016,0.1923076923076923,-0.17630769230769228,62.5
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Ashton Ward,South Sydney Rabbitohs,HB,ladbrokes_au,0.016,0.1923076923076923,-0.17630769230769228,62.5
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Mitchell Moses,Parramatta Eels,HB,pointsbetau,0.0559,0.23255813953488372,-0.1766581395348837,17.889
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Brandon Smith,South Sydney Rabbitohs,HK,tabtouch,0.0195,0.2,-0.18050000000000002,51.282
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Brandon Smith,South Sydney Rabbitohs,HK,unibet,0.0195,0.2,-0.18050000000000002,51.282
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Ashton Ward,South Sydney Rabbitohs,HB,betr_au,0.016,0.2,-0.184,62.5
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Ashton Ward,South Sydney Rabbitohs,HB,tabtouch,0.016,0.2,-0.184,62.5
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Ashton Ward,South Sydney Rabbitohs,HB,unibet,0.016,0.2,-0.184,62.5
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Brian Kelly,Parramatta Eels,WG,tab,0.2801,0.46511627906976744,-0.18501627906976742,3.57
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Brian Kelly,Parramatta Eels,WG,betr_au,0.2801,0.46511627906976744,-0.18501627906976742,3.57
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Cody Walker,South Sydney Rabbitohs,FE,pointsbetau,0.1047,0.29411764705882354,-0.18941764705882352,9.551
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Brandon Smith,South Sydney Rabbitohs,HK,betright,0.0195,0.21052631578947367,-0.19102631578947368,51.282
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,David Fifita,South Sydney Rabbitohs,2RF,tab,0.1706,0.36363636363636365,-0.19303636363636364,5.862
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,David Fifita,South Sydney Rabbitohs,2RF,tabtouch,0.1706,0.36363636363636365,-0.19303636363636364,5.862
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,David Fifita,South Sydney Rabbitohs,2RF,unibet,0.1706,0.36363636363636365,-0.19303636363636364,5.862
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Brian Kelly,Parramatta Eels,WG,pointsbetau,0.2801,0.47619047619047616,-0.19609047619047615,3.57
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Brian Kelly,Parramatta Eels,WG,tabtouch,0.2801,0.47619047619047616,-0.19609047619047615,3.57
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Brian Kelly,Parramatta Eels,WG,unibet,0.2801,0.47619047619047616,-0.19609047619047615,3.57
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Brandon Smith,South Sydney Rabbitohs,HK,tab,0.0195,0.2222222222222222,-0.20272222222222222,51.282
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Brandon Smith,South Sydney Rabbitohs,HK,pointsbetau,0.0195,0.2222222222222222,-0.20272222222222222,51.282
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Brandon Smith,South Sydney Rabbitohs,HK,betr_au,0.0195,0.2222222222222222,-0.20272222222222222,51.282
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Teancum Brown,Parramatta Eels,IC,tab,0.0073,0.21052631578947367,-0.20322631578947367,136.986
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Euan Aitken,South Sydney Rabbitohs,2RF,betright,0.0738,0.2777777777777778,-0.20397777777777779,13.55
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Ashton Ward,South Sydney Rabbitohs,HB,tab,0.016,0.2222222222222222,-0.2062222222222222,62.5
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Cody Walker,South Sydney Rabbitohs,FE,tab,0.1047,0.3225806451612903,-0.2178806451612903,9.551
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Cody Walker,South Sydney Rabbitohs,FE,betright,0.1047,0.3225806451612903,-0.2178806451612903,9.551
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Euan Aitken,South Sydney Rabbitohs,2RF,betr_au,0.0738,0.29411764705882354,-0.22031764705882353,13.55
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Cody Walker,South Sydney Rabbitohs,FE,sportsbet,0.1047,0.3278688524590164,-0.2231688524590164,9.551
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Cody Walker,South Sydney Rabbitohs,FE,neds,0.1047,0.3333333333333333,-0.2286333333333333,9.551
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Cody Walker,South Sydney Rabbitohs,FE,ladbrokes_au,0.1047,0.3333333333333333,-0.2286333333333333,9.551
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Cody Walker,South Sydney Rabbitohs,FE,tabtouch,0.1047,0.3333333333333333,-0.2286333333333333,9.551
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Cody Walker,South Sydney Rabbitohs,FE,unibet,0.1047,0.3333333333333333,-0.2286333333333333,9.551
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Cody Walker,South Sydney Rabbitohs,FE,betr_au,0.1047,0.3484320557491289,-0.24373205574912887,9.551
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Jayden Sullivan,South Sydney Rabbitohs,IC,tab,0.0052,0.25,-0.2448,192.308
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Jayden Sullivan,South Sydney Rabbitohs,IC,tabtouch,0.0052,0.25,-0.2448,192.308
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Jayden Sullivan,South Sydney Rabbitohs,IC,unibet,0.0052,0.25,-0.2448,192.308
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Tallis Duncan,South Sydney Rabbitohs,2RF,sportsbet,0.1039,0.3508771929824561,-0.24697719298245613,9.625
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Josh Addo-Carr,Parramatta Eels,WG,pointsbetau,0.2615,0.5128205128205129,-0.2513205128205129,3.824
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Tallis Duncan,South Sydney Rabbitohs,2RF,neds,0.1039,0.36363636363636365,-0.25973636363636365,9.625
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Tallis Duncan,South Sydney Rabbitohs,2RF,ladbrokes_au,0.1039,0.36363636363636365,-0.25973636363636365,9.625
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Tallis Duncan,South Sydney Rabbitohs,2RF,betr_au,0.1039,0.36363636363636365,-0.25973636363636365,9.625
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Josh Addo-Carr,Parramatta Eels,WG,tab,0.2615,0.5263157894736842,-0.26481578947368417,3.824
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Josh Addo-Carr,Parramatta Eels,WG,betr_au,0.2615,0.5263157894736842,-0.26481578947368417,3.824
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Josh Addo-Carr,Parramatta Eels,WG,tabtouch,0.2615,0.5405405405405405,-0.27904054054054045,3.824
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Josh Addo-Carr,Parramatta Eels,WG,unibet,0.2615,0.5405405405405405,-0.27904054054054045,3.824
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Tallis Duncan,South Sydney Rabbitohs,2RF,tab,0.1039,0.3846153846153846,-0.2807153846153846,9.625
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Tallis Duncan,South Sydney Rabbitohs,2RF,pointsbetau,0.1039,0.3846153846153846,-0.2807153846153846,9.625
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Josh Addo-Carr,Parramatta Eels,WG,sportsbet,0.2615,0.5434782608695652,-0.2819782608695652,3.824
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Euan Aitken,South Sydney Rabbitohs,2RF,tab,0.0738,0.36363636363636365,-0.28983636363636367,13.55
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Josh Addo-Carr,Parramatta Eels,WG,neds,0.2615,0.5555555555555556,-0.29405555555555557,3.824
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Josh Addo-Carr,Parramatta Eels,WG,ladbrokes_au,0.2615,0.5555555555555556,-0.29405555555555557,3.824
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Tallis Duncan,South Sydney Rabbitohs,2RF,tabtouch,0.1039,0.4,-0.29610000000000003,9.625
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Tallis Duncan,South Sydney Rabbitohs,2RF,unibet,0.1039,0.4,-0.29610000000000003,9.625
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Jye Gray,South Sydney Rabbitohs,FB,sportsbet,0.0772,0.37735849056603776,-0.30015849056603777,12.953
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Jye Gray,South Sydney Rabbitohs,FB,tab,0.0772,0.3846153846153846,-0.3074153846153846,12.953
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Latrell Siegwalt,South Sydney Rabbitohs,CE,tab,0.0308,0.3448275862068966,-0.3140275862068966,32.468
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Jye Gray,South Sydney Rabbitohs,FB,neds,0.0772,0.3921568627450981,-0.3149568627450981,12.953
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Jye Gray,South Sydney Rabbitohs,FB,ladbrokes_au,0.0772,0.3921568627450981,-0.3149568627450981,12.953
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Edward Kosi,South Sydney Rabbitohs,WG,sportsbet,0.179,0.49504950495049505,-0.31604950495049505,5.587
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Edward Kosi,South Sydney Rabbitohs,WG,neds,0.179,0.49504950495049505,-0.31604950495049505,5.587
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Edward Kosi,South Sydney Rabbitohs,WG,ladbrokes_au,0.179,0.49504950495049505,-0.31604950495049505,5.587
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Latrell Siegwalt,South Sydney Rabbitohs,CE,pointsbetau,0.0308,0.3508771929824561,-0.3200771929824561,32.468
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Jye Gray,South Sydney Rabbitohs,FB,betr_au,0.0772,0.4,-0.32280000000000003,12.953
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Jye Gray,South Sydney Rabbitohs,FB,tabtouch,0.0772,0.4,-0.32280000000000003,12.953
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Jye Gray,South Sydney Rabbitohs,FB,unibet,0.0772,0.4,-0.32280000000000003,12.953
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Latrell Siegwalt,South Sydney Rabbitohs,CE,betright,0.0308,0.35714285714285715,-0.32634285714285716,32.468
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Latrell Siegwalt,South Sydney Rabbitohs,CE,sportsbet,0.0308,0.36363636363636365,-0.33283636363636365,32.468
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Latrell Siegwalt,South Sydney Rabbitohs,CE,tabtouch,0.0308,0.36363636363636365,-0.33283636363636365,32.468
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Latrell Siegwalt,South Sydney Rabbitohs,CE,unibet,0.0308,0.36363636363636365,-0.33283636363636365,32.468
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Edward Kosi,South Sydney Rabbitohs,WG,pointsbetau,0.179,0.5128205128205129,-0.3338205128205129,5.587
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Edward Kosi,South Sydney Rabbitohs,WG,betr_au,0.179,0.5128205128205129,-0.3338205128205129,5.587
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Jye Gray,South Sydney Rabbitohs,FB,pointsbetau,0.0772,0.4166666666666667,-0.3394666666666667,12.953
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Latrell Siegwalt,South Sydney Rabbitohs,CE,neds,0.0308,0.37037037037037035,-0.33957037037037036,32.468
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Latrell Siegwalt,South Sydney Rabbitohs,CE,ladbrokes_au,0.0308,0.37037037037037035,-0.33957037037037036,32.468
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Edward Kosi,South Sydney Rabbitohs,WG,tabtouch,0.179,0.5291005291005292,-0.3501005291005292,5.587
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Edward Kosi,South Sydney Rabbitohs,WG,unibet,0.179,0.5291005291005292,-0.3501005291005292,5.587
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Latrell Siegwalt,South Sydney Rabbitohs,CE,betr_au,0.0308,0.38167938931297707,-0.3508793893129771,32.468
-Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3874,2.066,0.0966,-0.4,14.0,sportsbet,5.5,Edward Kosi,South Sydney Rabbitohs,WG,tab,0.179,0.5405405405405405,-0.36154054054054047,5.587
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Jamie Humphreys,South Sydney Rabbitohs,HB,pointsbetau,0.1579,0.1111111111111111,0.04678888888888891,6.333
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Kelma Tuilagi,Parramatta Eels,2RF,sportsbet,0.2227,0.17857142857142858,0.044128571428571434,4.49
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Kelma Tuilagi,Parramatta Eels,2RF,neds,0.2227,0.1923076923076923,0.03039230769230772,4.49
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Kelma Tuilagi,Parramatta Eels,2RF,ladbrokes_au,0.2227,0.1923076923076923,0.03039230769230772,4.49
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Kitione Kautoga,Parramatta Eels,2RF,sportsbet,0.2167,0.19047619047619047,0.026223809523809538,4.615
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Kelma Tuilagi,Parramatta Eels,2RF,pointsbetau,0.2227,0.2,0.022699999999999998,4.49
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Kelma Tuilagi,Parramatta Eels,2RF,tabtouch,0.2227,0.2,0.022699999999999998,4.49
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Kelma Tuilagi,Parramatta Eels,2RF,unibet,0.2227,0.2,0.022699999999999998,4.49
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Alex Johnston,South Sydney Rabbitohs,WG,sportsbet,0.65,0.6289308176100629,0.021069182389937158,1.538
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Dylan Walker,Parramatta Eels,IC,pointsbetau,0.1189,0.1,0.0189,8.41
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Alex Johnston,South Sydney Rabbitohs,WG,neds,0.65,0.6329113924050632,0.0170886075949368,1.538
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Alex Johnston,South Sydney Rabbitohs,WG,ladbrokes_au,0.65,0.6329113924050632,0.0170886075949368,1.538
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Kitione Kautoga,Parramatta Eels,2RF,pointsbetau,0.2167,0.2,0.016699999999999993,4.615
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Kitione Kautoga,Parramatta Eels,2RF,neds,0.2167,0.2,0.016699999999999993,4.615
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Kitione Kautoga,Parramatta Eels,2RF,ladbrokes_au,0.2167,0.2,0.016699999999999993,4.615
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Kitione Kautoga,Parramatta Eels,2RF,tabtouch,0.2167,0.2,0.016699999999999993,4.615
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Kitione Kautoga,Parramatta Eels,2RF,unibet,0.2167,0.2,0.016699999999999993,4.615
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Jamie Humphreys,South Sydney Rabbitohs,HB,neds,0.1579,0.14705882352941177,0.010841176470588243,6.333
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Jamie Humphreys,South Sydney Rabbitohs,HB,ladbrokes_au,0.1579,0.14705882352941177,0.010841176470588243,6.333
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Jamie Humphreys,South Sydney Rabbitohs,HB,sportsbet,0.1579,0.14814814814814814,0.009751851851851873,6.333
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Dylan Walker,Parramatta Eels,IC,neds,0.1189,0.11428571428571428,0.0046142857142857235,8.41
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Dylan Walker,Parramatta Eels,IC,ladbrokes_au,0.1189,0.11428571428571428,0.0046142857142857235,8.41
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Kelma Tuilagi,Parramatta Eels,2RF,betright,0.2227,0.22727272727272727,-0.004572727272727256,4.49
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Dylan Walker,Parramatta Eels,IC,sportsbet,0.1189,0.125,-0.006099999999999994,8.41
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Dylan Walker,Parramatta Eels,IC,tabtouch,0.1189,0.125,-0.006099999999999994,8.41
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Dylan Walker,Parramatta Eels,IC,unibet,0.1189,0.125,-0.006099999999999994,8.41
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Jamie Humphreys,South Sydney Rabbitohs,HB,tabtouch,0.1579,0.16666666666666666,-0.008766666666666645,6.333
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Jamie Humphreys,South Sydney Rabbitohs,HB,unibet,0.1579,0.16666666666666666,-0.008766666666666645,6.333
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Kitione Kautoga,Parramatta Eels,2RF,betright,0.2167,0.22727272727272727,-0.010572727272727261,4.615
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Jamie Humphreys,South Sydney Rabbitohs,HB,betright,0.1579,0.17391304347826086,-0.016013043478260852,6.333
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Alex Johnston,South Sydney Rabbitohs,WG,tab,0.65,0.6666666666666666,-0.016666666666666607,1.538
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Alex Johnston,South Sydney Rabbitohs,WG,pointsbetau,0.65,0.6666666666666666,-0.016666666666666607,1.538
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Alex Johnston,South Sydney Rabbitohs,WG,betr_au,0.65,0.6666666666666666,-0.016666666666666607,1.538
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Alex Johnston,South Sydney Rabbitohs,WG,tabtouch,0.65,0.6666666666666666,-0.016666666666666607,1.538
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Alex Johnston,South Sydney Rabbitohs,WG,unibet,0.65,0.6666666666666666,-0.016666666666666607,1.538
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Jamie Humphreys,South Sydney Rabbitohs,HB,tab,0.1579,0.18181818181818182,-0.02391818181818181,6.333
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Kelma Tuilagi,Parramatta Eels,2RF,tab,0.2227,0.25,-0.02729999999999999,4.49
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Kelma Tuilagi,Parramatta Eels,2RF,betr_au,0.2227,0.25,-0.02729999999999999,4.49
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Jordan Samrani,Parramatta Eels,CE,tab,0.2788,0.3076923076923077,-0.028892307692307717,3.587
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Cameron Murray,South Sydney Rabbitohs,LK,tab,0.1102,0.14285714285714285,-0.03265714285714284,9.074
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Kitione Kautoga,Parramatta Eels,2RF,tab,0.2167,0.25,-0.033299999999999996,4.615
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Kitione Kautoga,Parramatta Eels,2RF,betr_au,0.2167,0.25,-0.033299999999999996,4.615
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Cameron Murray,South Sydney Rabbitohs,LK,sportsbet,0.1102,0.14814814814814814,-0.037948148148148134,9.074
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Jordan Samrani,Parramatta Eels,CE,neds,0.2788,0.31746031746031744,-0.03866031746031745,3.587
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Jordan Samrani,Parramatta Eels,CE,ladbrokes_au,0.2788,0.31746031746031744,-0.03866031746031745,3.587
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Dylan Walker,Parramatta Eels,IC,tab,0.1189,0.16666666666666666,-0.04776666666666665,8.41
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Jordan Samrani,Parramatta Eels,CE,sportsbet,0.2788,0.3278688524590164,-0.04906885245901643,3.587
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Cameron Murray,South Sydney Rabbitohs,LK,neds,0.1102,0.16,-0.0498,9.074
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Cameron Murray,South Sydney Rabbitohs,LK,ladbrokes_au,0.1102,0.16,-0.0498,9.074
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Ronald Volkman,Parramatta Eels,FE,sportsbet,0.1254,0.17857142857142858,-0.053171428571428564,7.974
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Jordan Samrani,Parramatta Eels,CE,pointsbetau,0.2788,0.3333333333333333,-0.05453333333333332,3.587
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Jordan Samrani,Parramatta Eels,CE,tabtouch,0.2788,0.3333333333333333,-0.05453333333333332,3.587
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Jordan Samrani,Parramatta Eels,CE,unibet,0.2788,0.3333333333333333,-0.05453333333333332,3.587
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Cameron Murray,South Sydney Rabbitohs,LK,tabtouch,0.1102,0.16666666666666666,-0.05646666666666665,9.074
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Cameron Murray,South Sydney Rabbitohs,LK,unibet,0.1102,0.16666666666666666,-0.05646666666666665,9.074
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Ronald Volkman,Parramatta Eels,FE,neds,0.1254,0.18518518518518517,-0.05978518518518516,7.974
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Ronald Volkman,Parramatta Eels,FE,ladbrokes_au,0.1254,0.18518518518518517,-0.05978518518518516,7.974
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Jordan Samrani,Parramatta Eels,CE,betright,0.2788,0.3389830508474576,-0.06018305084745762,3.587
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Tallyn Da Silva,Parramatta Eels,IC,sportsbet,0.1284,0.18867924528301888,-0.060279245283018895,7.788
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Luca Moretti,Parramatta Eels,PR,pointsbetau,0.0191,0.08333333333333333,-0.06423333333333334,52.356
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Teancum Brown,Parramatta Eels,IC,pointsbetau,0.0073,0.07692307692307693,-0.06962307692307693,136.986
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Sam Tuivaiti,Parramatta Eels,IC,pointsbetau,0.0072,0.07692307692307693,-0.06972307692307693,138.889
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Tallyn Da Silva,Parramatta Eels,IC,tab,0.1284,0.2,-0.07160000000000002,7.788
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Tallyn Da Silva,Parramatta Eels,IC,pointsbetau,0.1284,0.2,-0.07160000000000002,7.788
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Tallyn Da Silva,Parramatta Eels,IC,neds,0.1284,0.2,-0.07160000000000002,7.788
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Tallyn Da Silva,Parramatta Eels,IC,ladbrokes_au,0.1284,0.2,-0.07160000000000002,7.788
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Cameron Murray,South Sydney Rabbitohs,LK,pointsbetau,0.1102,0.18181818181818182,-0.07161818181818182,9.074
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Cameron Murray,South Sydney Rabbitohs,LK,betright,0.1102,0.18181818181818182,-0.07161818181818182,9.074
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Luca Moretti,Parramatta Eels,PR,betright,0.0191,0.09090909090909091,-0.0718090909090909,52.356
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Luca Moretti,Parramatta Eels,PR,tabtouch,0.0191,0.09090909090909091,-0.0718090909090909,52.356
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Luca Moretti,Parramatta Eels,PR,unibet,0.0191,0.09090909090909091,-0.0718090909090909,52.356
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Ronald Volkman,Parramatta Eels,FE,tabtouch,0.1254,0.2,-0.0746,7.974
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Ronald Volkman,Parramatta Eels,FE,unibet,0.1254,0.2,-0.0746,7.974
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Keaon Koloamatangi,South Sydney Rabbitohs,PR,sportsbet,0.079,0.15384615384615385,-0.07484615384615385,12.658
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Keaon Koloamatangi,South Sydney Rabbitohs,PR,pointsbetau,0.079,0.15384615384615385,-0.07484615384615385,12.658
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Keaon Koloamatangi,South Sydney Rabbitohs,PR,tabtouch,0.079,0.15384615384615385,-0.07484615384615385,12.658
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Keaon Koloamatangi,South Sydney Rabbitohs,PR,unibet,0.079,0.15384615384615385,-0.07484615384615385,12.658
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Teancum Brown,Parramatta Eels,IC,betright,0.0073,0.08333333333333333,-0.07603333333333333,136.986
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Sam Tuivaiti,Parramatta Eels,IC,betright,0.0072,0.08333333333333333,-0.07613333333333333,138.889
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Luca Moretti,Parramatta Eels,PR,tab,0.0191,0.1,-0.0809,52.356
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Keaon Koloamatangi,South Sydney Rabbitohs,PR,neds,0.079,0.16,-0.081,12.658
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Keaon Koloamatangi,South Sydney Rabbitohs,PR,ladbrokes_au,0.079,0.16,-0.081,12.658
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Teancum Brown,Parramatta Eels,IC,tabtouch,0.0073,0.09090909090909091,-0.08360909090909091,136.986
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Teancum Brown,Parramatta Eels,IC,unibet,0.0073,0.09090909090909091,-0.08360909090909091,136.986
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Sam Tuivaiti,Parramatta Eels,IC,tabtouch,0.0072,0.09090909090909091,-0.08370909090909091,138.889
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Sam Tuivaiti,Parramatta Eels,IC,unibet,0.0072,0.09090909090909091,-0.08370909090909091,138.889
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Jordan Samrani,Parramatta Eels,CE,betr_au,0.2788,0.36363636363636365,-0.08483636363636365,3.587
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Ronald Volkman,Parramatta Eels,FE,betright,0.1254,0.21052631578947367,-0.08512631578947366,7.974
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Luca Moretti,Parramatta Eels,PR,betr_au,0.0191,0.10526315789473684,-0.08616315789473683,52.356
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Liam Le Blanc,South Sydney Rabbitohs,IC,pointsbetau,0.0041,0.09090909090909091,-0.0868090909090909,243.902
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Liam Le Blanc,South Sydney Rabbitohs,IC,neds,0.0041,0.09090909090909091,-0.0868090909090909,243.902
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Liam Le Blanc,South Sydney Rabbitohs,IC,ladbrokes_au,0.0041,0.09090909090909091,-0.0868090909090909,243.902
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Liam Le Blanc,South Sydney Rabbitohs,IC,betright,0.0041,0.09090909090909091,-0.0868090909090909,243.902
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Tevita Tatola,South Sydney Rabbitohs,PR,pointsbetau,0.0038,0.09090909090909091,-0.08710909090909091,263.158
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Tevita Tatola,South Sydney Rabbitohs,PR,betright,0.0038,0.09090909090909091,-0.08710909090909091,263.158
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Keaon Koloamatangi,South Sydney Rabbitohs,PR,tab,0.079,0.16666666666666666,-0.08766666666666666,12.658
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Sam Tuivaiti,Parramatta Eels,IC,neds,0.0072,0.09523809523809523,-0.08803809523809523,138.889
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Sam Tuivaiti,Parramatta Eels,IC,ladbrokes_au,0.0072,0.09523809523809523,-0.08803809523809523,138.889
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Luca Moretti,Parramatta Eels,PR,sportsbet,0.0191,0.10810810810810811,-0.08900810810810811,52.356
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Cameron Murray,South Sydney Rabbitohs,LK,betr_au,0.1102,0.2,-0.0898,9.074
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Lachlan Hubner,South Sydney Rabbitohs,IC,sportsbet,0.0123,0.10256410256410256,-0.09026410256410256,81.301
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Jack De Belin,Parramatta Eels,LK,tab,0.0096,0.1,-0.09040000000000001,104.167
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Jack De Belin,Parramatta Eels,LK,betright,0.0096,0.1,-0.09040000000000001,104.167
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Jack De Belin,Parramatta Eels,LK,tabtouch,0.0096,0.1,-0.09040000000000001,104.167
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Jack De Belin,Parramatta Eels,LK,unibet,0.0096,0.1,-0.09040000000000001,104.167
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Sean Russell,Parramatta Eels,CE,sportsbet,0.2169,0.3076923076923077,-0.0907923076923077,4.61
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Sean Russell,Parramatta Eels,CE,tab,0.2169,0.3076923076923077,-0.0907923076923077,4.61
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Sean Russell,Parramatta Eels,CE,neds,0.2169,0.3076923076923077,-0.0907923076923077,4.61
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Sean Russell,Parramatta Eels,CE,ladbrokes_au,0.2169,0.3076923076923077,-0.0907923076923077,4.61
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Lachlan Hubner,South Sydney Rabbitohs,IC,neds,0.0123,0.10526315789473684,-0.09296315789473683,81.301
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Lachlan Hubner,South Sydney Rabbitohs,IC,ladbrokes_au,0.0123,0.10526315789473684,-0.09296315789473683,81.301
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Tallyn Da Silva,Parramatta Eels,IC,tabtouch,0.1284,0.2222222222222222,-0.09382222222222222,7.788
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Tallyn Da Silva,Parramatta Eels,IC,unibet,0.1284,0.2222222222222222,-0.09382222222222222,7.788
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Keaon Koloamatangi,South Sydney Rabbitohs,PR,betright,0.079,0.17391304347826086,-0.09491304347826086,12.658
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Charlie Guymer,Parramatta Eels,IC,betright,0.0049,0.1,-0.0951,204.082
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Sam Tuivaiti,Parramatta Eels,IC,sportsbet,0.0072,0.10256410256410256,-0.09536410256410256,138.889
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Jack De Belin,Parramatta Eels,LK,sportsbet,0.0096,0.10526315789473684,-0.09566315789473684,104.167
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Jack De Belin,Parramatta Eels,LK,pointsbetau,0.0096,0.10526315789473684,-0.09566315789473684,104.167
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Luca Moretti,Parramatta Eels,PR,neds,0.0191,0.11764705882352941,-0.0985470588235294,52.356
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Luca Moretti,Parramatta Eels,PR,ladbrokes_au,0.0191,0.11764705882352941,-0.0985470588235294,52.356
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Lachlan Hubner,South Sydney Rabbitohs,IC,tabtouch,0.0123,0.1111111111111111,-0.0988111111111111,81.301
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Lachlan Hubner,South Sydney Rabbitohs,IC,unibet,0.0123,0.1111111111111111,-0.0988111111111111,81.301
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Tallyn Da Silva,Parramatta Eels,IC,betright,0.1284,0.22727272727272727,-0.09887272727272728,7.788
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Charlie Guymer,Parramatta Eels,IC,pointsbetau,0.0049,0.10526315789473684,-0.10036315789473683,204.082
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Tevita Tatola,South Sydney Rabbitohs,PR,betr_au,0.0038,0.10526315789473684,-0.10146315789473684,263.158
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Jack De Belin,Parramatta Eels,LK,betr_au,0.0096,0.1111111111111111,-0.10151111111111111,104.167
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Sam Tuivaiti,Parramatta Eels,IC,tab,0.0072,0.1111111111111111,-0.1039111111111111,138.889
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Jack Williams,Parramatta Eels,PR,tab,0.0066,0.1111111111111111,-0.10451111111111111,151.515
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Lachlan Hubner,South Sydney Rabbitohs,IC,tab,0.0123,0.11764705882352941,-0.1053470588235294,81.301
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Ronald Volkman,Parramatta Eels,FE,betr_au,0.1254,0.23094688221709006,-0.10554688221709005,7.974
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Jayden Sullivan,South Sydney Rabbitohs,IC,betright,0.0052,0.1111111111111111,-0.10591111111111111,192.308
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Ronald Volkman,Parramatta Eels,FE,pointsbetau,0.1254,0.23255813953488372,-0.1071581395348837,7.974
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Tevita Tatola,South Sydney Rabbitohs,PR,sportsbet,0.0038,0.1111111111111111,-0.10731111111111111,263.158
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Tevita Tatola,South Sydney Rabbitohs,PR,tabtouch,0.0038,0.1111111111111111,-0.10731111111111111,263.158
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Tevita Tatola,South Sydney Rabbitohs,PR,unibet,0.0038,0.1111111111111111,-0.10731111111111111,263.158
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Bronson Garlick,South Sydney Rabbitohs,HK,tab,0.0096,0.11764705882352941,-0.10804705882352941,104.167
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Teancum Brown,Parramatta Eels,IC,neds,0.0073,0.11764705882352941,-0.11034705882352941,136.986
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Teancum Brown,Parramatta Eels,IC,ladbrokes_au,0.0073,0.11764705882352941,-0.11034705882352941,136.986
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Jayden Sullivan,South Sydney Rabbitohs,IC,pointsbetau,0.0052,0.11764705882352941,-0.11244705882352941,192.308
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Lachlan Hubner,South Sydney Rabbitohs,IC,pointsbetau,0.0123,0.125,-0.1127,81.301
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Lachlan Hubner,South Sydney Rabbitohs,IC,betright,0.0123,0.125,-0.1127,81.301
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Jack Williams,Parramatta Eels,PR,sportsbet,0.0066,0.12121212121212122,-0.11461212121212122,151.515
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Jack De Belin,Parramatta Eels,LK,neds,0.0096,0.125,-0.1154,104.167
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Jack De Belin,Parramatta Eels,LK,ladbrokes_au,0.0096,0.125,-0.1154,104.167
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Sean Russell,Parramatta Eels,CE,pointsbetau,0.2169,0.3333333333333333,-0.1164333333333333,4.61
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Sean Russell,Parramatta Eels,CE,tabtouch,0.2169,0.3333333333333333,-0.1164333333333333,4.61
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Sean Russell,Parramatta Eels,CE,unibet,0.2169,0.3333333333333333,-0.1164333333333333,4.61
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Isaiah Iongi,Parramatta Eels,FB,pointsbetau,0.2281,0.3448275862068966,-0.11672758620689658,4.384
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Jack Williams,Parramatta Eels,PR,tabtouch,0.0066,0.125,-0.1184,151.515
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Jack Williams,Parramatta Eels,PR,unibet,0.0066,0.125,-0.1184,151.515
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Keaon Koloamatangi,South Sydney Rabbitohs,PR,betr_au,0.079,0.2,-0.12100000000000001,12.658
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Tevita Tatola,South Sydney Rabbitohs,PR,tab,0.0038,0.125,-0.1212,263.158
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Tevita Tatola,South Sydney Rabbitohs,PR,neds,0.0038,0.125,-0.1212,263.158
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Tevita Tatola,South Sydney Rabbitohs,PR,ladbrokes_au,0.0038,0.125,-0.1212,263.158
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Tallyn Da Silva,Parramatta Eels,IC,betr_au,0.1284,0.25,-0.12160000000000001,7.788
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Sean Russell,Parramatta Eels,CE,betright,0.2169,0.3389830508474576,-0.1220830508474576,4.61
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Jack Williams,Parramatta Eels,PR,neds,0.0066,0.12903225806451613,-0.12243225806451613,151.515
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Jack Williams,Parramatta Eels,PR,ladbrokes_au,0.0066,0.12903225806451613,-0.12243225806451613,151.515
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Isaiah Iongi,Parramatta Eels,FB,neds,0.2281,0.35714285714285715,-0.12904285714285715,4.384
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Isaiah Iongi,Parramatta Eels,FB,ladbrokes_au,0.2281,0.35714285714285715,-0.12904285714285715,4.384
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Joash Papalii,Parramatta Eels,FB,tabtouch,0.2039,0.3333333333333333,-0.12943333333333332,4.904
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Joash Papalii,Parramatta Eels,FB,unibet,0.2039,0.3333333333333333,-0.12943333333333332,4.904
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Isaiah Iongi,Parramatta Eels,FB,sportsbet,0.2281,0.36363636363636365,-0.13553636363636365,4.384
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Isaiah Iongi,Parramatta Eels,FB,tabtouch,0.2281,0.36363636363636365,-0.13553636363636365,4.384
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Isaiah Iongi,Parramatta Eels,FB,unibet,0.2281,0.36363636363636365,-0.13553636363636365,4.384
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Jack Williams,Parramatta Eels,PR,betright,0.0066,0.14285714285714285,-0.13625714285714285,151.515
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Joash Papalii,Parramatta Eels,FB,tab,0.2039,0.3448275862068966,-0.14092758620689658,4.904
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Ronald Volkman,Parramatta Eels,FE,tab,0.1254,0.26666666666666666,-0.14126666666666665,7.974
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Bronson Garlick,South Sydney Rabbitohs,HK,tabtouch,0.0096,0.15384615384615385,-0.14424615384615386,104.167
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Bronson Garlick,South Sydney Rabbitohs,HK,unibet,0.0096,0.15384615384615385,-0.14424615384615386,104.167
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Sean Russell,Parramatta Eels,CE,betr_au,0.2169,0.36363636363636365,-0.14673636363636364,4.61
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,David Fifita,South Sydney Rabbitohs,2RF,sportsbet,0.1706,0.31746031746031744,-0.14686031746031744,5.862
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Jack Williams,Parramatta Eels,PR,betr_au,0.0066,0.15384615384615385,-0.14724615384615386,151.515
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Euan Aitken,South Sydney Rabbitohs,2RF,sportsbet,0.0738,0.2222222222222222,-0.1484222222222222,13.55
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Isaiah Iongi,Parramatta Eels,FB,betright,0.2281,0.37735849056603776,-0.14925849056603777,4.384
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Liam Le Blanc,South Sydney Rabbitohs,IC,tab,0.0041,0.15384615384615385,-0.14974615384615386,243.902
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,David Fifita,South Sydney Rabbitohs,2RF,pointsbetau,0.1706,0.3225806451612903,-0.1519806451612903,5.862
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Mitchell Moses,Parramatta Eels,HB,betright,0.0559,0.21052631578947367,-0.15462631578947367,17.889
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Mitchell Moses,Parramatta Eels,HB,sportsbet,0.0559,0.2127659574468085,-0.1568659574468085,17.889
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Brandon Smith,South Sydney Rabbitohs,HK,sportsbet,0.0195,0.17857142857142858,-0.15907142857142859,51.282
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Ashton Ward,South Sydney Rabbitohs,HB,sportsbet,0.016,0.17543859649122806,-0.15943859649122805,62.5
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Jack Williams,Parramatta Eels,PR,pointsbetau,0.0066,0.16666666666666666,-0.16006666666666666,151.515
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Euan Aitken,South Sydney Rabbitohs,2RF,neds,0.0738,0.23529411764705882,-0.16149411764705882,13.55
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Euan Aitken,South Sydney Rabbitohs,2RF,ladbrokes_au,0.0738,0.23529411764705882,-0.16149411764705882,13.55
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Charlie Guymer,Parramatta Eels,IC,tab,0.0049,0.16666666666666666,-0.16176666666666667,204.082
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Charlie Guymer,Parramatta Eels,IC,tabtouch,0.0049,0.16666666666666666,-0.16176666666666667,204.082
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Charlie Guymer,Parramatta Eels,IC,unibet,0.0049,0.16666666666666666,-0.16176666666666667,204.082
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Liam Le Blanc,South Sydney Rabbitohs,IC,tabtouch,0.0041,0.16666666666666666,-0.16256666666666666,243.902
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Liam Le Blanc,South Sydney Rabbitohs,IC,unibet,0.0041,0.16666666666666666,-0.16256666666666666,243.902
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,David Fifita,South Sydney Rabbitohs,2RF,neds,0.1706,0.3333333333333333,-0.1627333333333333,5.862
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,David Fifita,South Sydney Rabbitohs,2RF,ladbrokes_au,0.1706,0.3333333333333333,-0.1627333333333333,5.862
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Brian Kelly,Parramatta Eels,WG,sportsbet,0.2801,0.4444444444444444,-0.1643444444444444,3.57
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Brian Kelly,Parramatta Eels,WG,neds,0.2801,0.4444444444444444,-0.1643444444444444,3.57
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Brian Kelly,Parramatta Eels,WG,ladbrokes_au,0.2801,0.4444444444444444,-0.1643444444444444,3.57
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Ashton Ward,South Sydney Rabbitohs,HB,pointsbetau,0.016,0.18181818181818182,-0.1658181818181818,62.5
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Ashton Ward,South Sydney Rabbitohs,HB,betright,0.016,0.18181818181818182,-0.1658181818181818,62.5
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Mitchell Moses,Parramatta Eels,HB,tab,0.0559,0.2222222222222222,-0.1663222222222222,17.889
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Mitchell Moses,Parramatta Eels,HB,neds,0.0559,0.2222222222222222,-0.1663222222222222,17.889
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Mitchell Moses,Parramatta Eels,HB,ladbrokes_au,0.0559,0.2222222222222222,-0.1663222222222222,17.889
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Mitchell Moses,Parramatta Eels,HB,tabtouch,0.0559,0.2222222222222222,-0.1663222222222222,17.889
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Mitchell Moses,Parramatta Eels,HB,unibet,0.0559,0.2222222222222222,-0.1663222222222222,17.889
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Isaiah Iongi,Parramatta Eels,FB,tab,0.2281,0.4,-0.17190000000000003,4.384
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Isaiah Iongi,Parramatta Eels,FB,betr_au,0.2281,0.4,-0.17190000000000003,4.384
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Brandon Smith,South Sydney Rabbitohs,HK,neds,0.0195,0.1923076923076923,-0.1728076923076923,51.282
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Brandon Smith,South Sydney Rabbitohs,HK,ladbrokes_au,0.0195,0.1923076923076923,-0.1728076923076923,51.282
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,David Fifita,South Sydney Rabbitohs,2RF,betr_au,0.1706,0.3448275862068966,-0.17422758620689657,5.862
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Mitchell Moses,Parramatta Eels,HB,betr_au,0.0559,0.23094688221709006,-0.17504688221709006,17.889
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Euan Aitken,South Sydney Rabbitohs,2RF,pointsbetau,0.0738,0.25,-0.1762,13.55
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Euan Aitken,South Sydney Rabbitohs,2RF,tabtouch,0.0738,0.25,-0.1762,13.55
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Euan Aitken,South Sydney Rabbitohs,2RF,unibet,0.0738,0.25,-0.1762,13.55
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Ashton Ward,South Sydney Rabbitohs,HB,neds,0.016,0.1923076923076923,-0.17630769230769228,62.5
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Ashton Ward,South Sydney Rabbitohs,HB,ladbrokes_au,0.016,0.1923076923076923,-0.17630769230769228,62.5
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Mitchell Moses,Parramatta Eels,HB,pointsbetau,0.0559,0.23255813953488372,-0.1766581395348837,17.889
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Brandon Smith,South Sydney Rabbitohs,HK,tabtouch,0.0195,0.2,-0.18050000000000002,51.282
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Brandon Smith,South Sydney Rabbitohs,HK,unibet,0.0195,0.2,-0.18050000000000002,51.282
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Ashton Ward,South Sydney Rabbitohs,HB,betr_au,0.016,0.2,-0.184,62.5
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Ashton Ward,South Sydney Rabbitohs,HB,tabtouch,0.016,0.2,-0.184,62.5
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Ashton Ward,South Sydney Rabbitohs,HB,unibet,0.016,0.2,-0.184,62.5
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Brian Kelly,Parramatta Eels,WG,tab,0.2801,0.46511627906976744,-0.18501627906976742,3.57
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Brian Kelly,Parramatta Eels,WG,betr_au,0.2801,0.46511627906976744,-0.18501627906976742,3.57
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Cody Walker,South Sydney Rabbitohs,FE,pointsbetau,0.1047,0.29411764705882354,-0.18941764705882352,9.551
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Brandon Smith,South Sydney Rabbitohs,HK,betright,0.0195,0.21052631578947367,-0.19102631578947368,51.282
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,David Fifita,South Sydney Rabbitohs,2RF,tab,0.1706,0.36363636363636365,-0.19303636363636364,5.862
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,David Fifita,South Sydney Rabbitohs,2RF,tabtouch,0.1706,0.36363636363636365,-0.19303636363636364,5.862
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,David Fifita,South Sydney Rabbitohs,2RF,unibet,0.1706,0.36363636363636365,-0.19303636363636364,5.862
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Brian Kelly,Parramatta Eels,WG,pointsbetau,0.2801,0.47619047619047616,-0.19609047619047615,3.57
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Brian Kelly,Parramatta Eels,WG,tabtouch,0.2801,0.47619047619047616,-0.19609047619047615,3.57
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Brian Kelly,Parramatta Eels,WG,unibet,0.2801,0.47619047619047616,-0.19609047619047615,3.57
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Brandon Smith,South Sydney Rabbitohs,HK,tab,0.0195,0.2222222222222222,-0.20272222222222222,51.282
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Brandon Smith,South Sydney Rabbitohs,HK,pointsbetau,0.0195,0.2222222222222222,-0.20272222222222222,51.282
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Brandon Smith,South Sydney Rabbitohs,HK,betr_au,0.0195,0.2222222222222222,-0.20272222222222222,51.282
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Teancum Brown,Parramatta Eels,IC,tab,0.0073,0.21052631578947367,-0.20322631578947367,136.986
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Euan Aitken,South Sydney Rabbitohs,2RF,betright,0.0738,0.2777777777777778,-0.20397777777777779,13.55
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Ashton Ward,South Sydney Rabbitohs,HB,tab,0.016,0.2222222222222222,-0.2062222222222222,62.5
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Cody Walker,South Sydney Rabbitohs,FE,tab,0.1047,0.3225806451612903,-0.2178806451612903,9.551
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Cody Walker,South Sydney Rabbitohs,FE,betright,0.1047,0.3225806451612903,-0.2178806451612903,9.551
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Euan Aitken,South Sydney Rabbitohs,2RF,betr_au,0.0738,0.29411764705882354,-0.22031764705882353,13.55
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Cody Walker,South Sydney Rabbitohs,FE,sportsbet,0.1047,0.3278688524590164,-0.2231688524590164,9.551
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Cody Walker,South Sydney Rabbitohs,FE,neds,0.1047,0.3333333333333333,-0.2286333333333333,9.551
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Cody Walker,South Sydney Rabbitohs,FE,ladbrokes_au,0.1047,0.3333333333333333,-0.2286333333333333,9.551
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Cody Walker,South Sydney Rabbitohs,FE,tabtouch,0.1047,0.3333333333333333,-0.2286333333333333,9.551
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Cody Walker,South Sydney Rabbitohs,FE,unibet,0.1047,0.3333333333333333,-0.2286333333333333,9.551
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Cody Walker,South Sydney Rabbitohs,FE,betr_au,0.1047,0.3484320557491289,-0.24373205574912887,9.551
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Jayden Sullivan,South Sydney Rabbitohs,IC,tab,0.0052,0.25,-0.2448,192.308
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Jayden Sullivan,South Sydney Rabbitohs,IC,tabtouch,0.0052,0.25,-0.2448,192.308
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Jayden Sullivan,South Sydney Rabbitohs,IC,unibet,0.0052,0.25,-0.2448,192.308
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Tallis Duncan,South Sydney Rabbitohs,2RF,sportsbet,0.1039,0.3508771929824561,-0.24697719298245613,9.625
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Josh Addo-Carr,Parramatta Eels,WG,pointsbetau,0.2615,0.5128205128205129,-0.2513205128205129,3.824
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Tallis Duncan,South Sydney Rabbitohs,2RF,neds,0.1039,0.36363636363636365,-0.25973636363636365,9.625
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Tallis Duncan,South Sydney Rabbitohs,2RF,ladbrokes_au,0.1039,0.36363636363636365,-0.25973636363636365,9.625
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Tallis Duncan,South Sydney Rabbitohs,2RF,betr_au,0.1039,0.36363636363636365,-0.25973636363636365,9.625
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Josh Addo-Carr,Parramatta Eels,WG,tab,0.2615,0.5263157894736842,-0.26481578947368417,3.824
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Josh Addo-Carr,Parramatta Eels,WG,betr_au,0.2615,0.5263157894736842,-0.26481578947368417,3.824
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Josh Addo-Carr,Parramatta Eels,WG,tabtouch,0.2615,0.5405405405405405,-0.27904054054054045,3.824
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Josh Addo-Carr,Parramatta Eels,WG,unibet,0.2615,0.5405405405405405,-0.27904054054054045,3.824
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Tallis Duncan,South Sydney Rabbitohs,2RF,tab,0.1039,0.3846153846153846,-0.2807153846153846,9.625
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Tallis Duncan,South Sydney Rabbitohs,2RF,pointsbetau,0.1039,0.3846153846153846,-0.2807153846153846,9.625
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Josh Addo-Carr,Parramatta Eels,WG,sportsbet,0.2615,0.5434782608695652,-0.2819782608695652,3.824
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Euan Aitken,South Sydney Rabbitohs,2RF,tab,0.0738,0.36363636363636365,-0.28983636363636367,13.55
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Josh Addo-Carr,Parramatta Eels,WG,neds,0.2615,0.5555555555555556,-0.29405555555555557,3.824
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Josh Addo-Carr,Parramatta Eels,WG,ladbrokes_au,0.2615,0.5555555555555556,-0.29405555555555557,3.824
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Tallis Duncan,South Sydney Rabbitohs,2RF,tabtouch,0.1039,0.4,-0.29610000000000003,9.625
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Tallis Duncan,South Sydney Rabbitohs,2RF,unibet,0.1039,0.4,-0.29610000000000003,9.625
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Jye Gray,South Sydney Rabbitohs,FB,sportsbet,0.0772,0.37735849056603776,-0.30015849056603777,12.953
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Jye Gray,South Sydney Rabbitohs,FB,tab,0.0772,0.3846153846153846,-0.3074153846153846,12.953
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Latrell Siegwalt,South Sydney Rabbitohs,CE,tab,0.0308,0.3448275862068966,-0.3140275862068966,32.468
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Jye Gray,South Sydney Rabbitohs,FB,neds,0.0772,0.3921568627450981,-0.3149568627450981,12.953
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Jye Gray,South Sydney Rabbitohs,FB,ladbrokes_au,0.0772,0.3921568627450981,-0.3149568627450981,12.953
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Edward Kosi,South Sydney Rabbitohs,WG,sportsbet,0.179,0.49504950495049505,-0.31604950495049505,5.587
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Edward Kosi,South Sydney Rabbitohs,WG,neds,0.179,0.49504950495049505,-0.31604950495049505,5.587
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Edward Kosi,South Sydney Rabbitohs,WG,ladbrokes_au,0.179,0.49504950495049505,-0.31604950495049505,5.587
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Latrell Siegwalt,South Sydney Rabbitohs,CE,pointsbetau,0.0308,0.3508771929824561,-0.3200771929824561,32.468
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Jye Gray,South Sydney Rabbitohs,FB,betr_au,0.0772,0.4,-0.32280000000000003,12.953
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Jye Gray,South Sydney Rabbitohs,FB,tabtouch,0.0772,0.4,-0.32280000000000003,12.953
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Jye Gray,South Sydney Rabbitohs,FB,unibet,0.0772,0.4,-0.32280000000000003,12.953
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Latrell Siegwalt,South Sydney Rabbitohs,CE,betright,0.0308,0.35714285714285715,-0.32634285714285716,32.468
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Latrell Siegwalt,South Sydney Rabbitohs,CE,sportsbet,0.0308,0.36363636363636365,-0.33283636363636365,32.468
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Latrell Siegwalt,South Sydney Rabbitohs,CE,tabtouch,0.0308,0.36363636363636365,-0.33283636363636365,32.468
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Latrell Siegwalt,South Sydney Rabbitohs,CE,unibet,0.0308,0.36363636363636365,-0.33283636363636365,32.468
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Edward Kosi,South Sydney Rabbitohs,WG,pointsbetau,0.179,0.5128205128205129,-0.3338205128205129,5.587
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Edward Kosi,South Sydney Rabbitohs,WG,betr_au,0.179,0.5128205128205129,-0.3338205128205129,5.587
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Jye Gray,South Sydney Rabbitohs,FB,pointsbetau,0.0772,0.4166666666666667,-0.3394666666666667,12.953
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Latrell Siegwalt,South Sydney Rabbitohs,CE,neds,0.0308,0.37037037037037035,-0.33957037037037036,32.468
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Latrell Siegwalt,South Sydney Rabbitohs,CE,ladbrokes_au,0.0308,0.37037037037037035,-0.33957037037037036,32.468
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Edward Kosi,South Sydney Rabbitohs,WG,tabtouch,0.179,0.5291005291005292,-0.3501005291005292,5.587
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Edward Kosi,South Sydney Rabbitohs,WG,unibet,0.179,0.5291005291005292,-0.3501005291005292,5.587
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Latrell Siegwalt,South Sydney Rabbitohs,CE,betr_au,0.0308,0.38167938931297707,-0.3508793893129771,32.468
+Parramatta Eels,South Sydney Rabbitohs,ok,0.484,0.3876,2.066,0.0965,-0.4,14.0,sportsbet,5.5,Edward Kosi,South Sydney Rabbitohs,WG,tab,0.179,0.5405405405405405,-0.36154054054054047,5.587
 Gold Coast Titans,Canterbury-Bankstown Bulldogs,ok,0.3953,0.4981,2.53,-0.1028,-3.0,14.0,sportsbet,0.5,Kurtis Morrin,Gold Coast Titans,IC,ladbrokes_au,0.4833,0.17857142857142858,0.30472857142857146,2.069
 Gold Coast Titans,Canterbury-Bankstown Bulldogs,ok,0.3953,0.4981,2.53,-0.1028,-3.0,14.0,sportsbet,0.5,Kurtis Morrin,Gold Coast Titans,IC,neds,0.4833,0.17857142857142858,0.30472857142857146,2.069
 Gold Coast Titans,Canterbury-Bankstown Bulldogs,ok,0.3953,0.4981,2.53,-0.1028,-3.0,14.0,sportsbet,0.5,Kurtis Morrin,Gold Coast Titans,IC,pointsbetau,0.4833,0.18181818181818182,0.3014818181818182,2.069

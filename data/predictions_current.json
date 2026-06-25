@@ -4,10 +4,10 @@
     "away_team": "South Sydney Rabbitohs",
     "h2h": {
       "our_home_win_prob": 0.484,
-      "market_home_win_prob": 0.3874,
+      "market_home_win_prob": 0.3876,
       "our_home_fair_odds": 2.066,
       "our_away_fair_odds": 1.938,
-      "edge": 0.0966,
+      "edge": 0.0965,
       "our_predicted_margin": -0.4,
       "margin_mae": 14.0,
       "market_spread_bookmaker": "sportsbet",
