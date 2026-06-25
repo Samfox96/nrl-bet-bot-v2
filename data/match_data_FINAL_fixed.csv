@@ -1,1122 +1,1162 @@
-season,league,round,date,time,home_team,home_score,away_team,away_score,referee,venue,attendance
-2021,nrl,1,2021-03-11,Thu 8:05pm,Melbourne,26,South Sydney,18,G. Atkins,AAMI,11812
-2021,nrl,1,2021-03-12,Fri 6:00pm,Newcastle,32,Canterbury,16,B. Cummins,McD. Jones,19555
-2021,nrl,1,2021-03-12,Fri 8:05pm,Brisbane,16,Parramatta,24,A. Gee,Suncorp,28313
-2021,nrl,1,2021-03-13,Sat 3:00pm,Warriors,19,Gold Coast,6,A. Klein,Central Coast,3771
-2021,nrl,1,2021-03-13,Sat 5:30pm,Sydney,46,Manly,4,C. Sutton,SCG,15097
-2021,nrl,1,2021-03-13,Sat 7:35pm,Penrith,24,North Qld,0,M. Cecchin,BlueBet,14077
-2021,nrl,1,2021-03-14,Sun 4:05pm,Canberra,30,Wests Tigers,12,G. Sutton,GIO,15680
-2021,nrl,1,2021-03-14,Sun 6:15pm,St Geo Illa,18,Cronulla,32,P. Gough,Netstrata,7636
-2021,nrl,2,2021-03-18,Thu 8:05pm,Parramatta,16,Melbourne,12,A. Klein,Bankwest,10416
-2021,nrl,2,2021-03-19,Fri 6:00pm,Warriors,16,Newcastle,20,G. Atkins,Central Coast,4595
-2021,nrl,2,2021-03-19,Fri 8:05pm,Gold Coast,28,Brisbane,16,M. Cecchin,Cbus Super,17822
-2021,nrl,2,2021-03-20,Sat 3:00pm,Canterbury,0,Penrith,28,P. Gough,Bankwest,5062
-2021,nrl,2,2021-03-20,Sat 5:30pm,Manly,12,South Sydney,26,G. Sutton,Lottoland,3218
-2021,nrl,2,2021-03-20,Sat 7:35pm,North Qld,18,St Geo Illa,25,B. Cummins,QLD C. Bank,15120
-2021,nrl,2,2021-03-21,Sun 4:05pm,Wests Tigers,6,Sydney,40,A. Gee,Campbelltown,6107
-2021,nrl,2,2021-03-21,Sun 6:15pm,Cronulla,10,Canberra,12,C. Sutton,Netstrata,3145
-2021,nrl,3,2021-03-25,Thu 8:05pm,Penrith,12,Melbourne,10,G. Atkins,BlueBet,14077
-2021,nrl,3,2021-03-26,Fri 6:00pm,St Geo Illa,38,Manly,12,C. Sutton,WIN,9253
-2021,nrl,3,2021-03-26,Fri 8:05pm,South Sydney,26,Sydney,16,A. Klein,ANZ,22838
-2021,nrl,3,2021-03-27,Sat 3:00pm,Canberra,31,Warriors,34,H. Perenara,GIO,13456
-2021,nrl,3,2021-03-27,Sat 5:30pm,Brisbane,24,Canterbury,0,B. Cummins,Suncorp,22509
-2021,nrl,3,2021-03-27,Sat 7:35pm,Parramatta,28,Cronulla,4,A. Gee,Bankwest,19236
-2021,nrl,3,2021-03-28,Sun 4:05pm,Newcastle,20,Wests Tigers,24,G. Sutton,McD. Jones,20239
-2021,nrl,3,2021-03-28,Sun 6:15pm,North Qld,8,Gold Coast,44,P. Gough,QLD C. Bank,12627
-2021,nrl,4,2021-04-01,Thu 8:05pm,Manly,6,Penrith,46,M. Cecchin,Lottoland,6076
-2021,nrl,4,2021-04-02,Fri 4:05pm,Canterbury,0,South Sydney,38,G. Atkins,ANZ,23240
-2021,nrl,4,2021-04-02,Fri 8:05pm,Melbourne,40,Brisbane,6,G. Sutton,AAMI,14135
-2021,nrl,4,2021-04-03,Sat 5:15pm,Cronulla,48,North Qld,10,C. Sutton,Netstrata,5119
-2021,nrl,4,2021-04-03,Sat 7:45pm,Gold Coast,4,Canberra,20,A. Gee,Netstrata,5117
-2021,nrl,4,2021-04-04,Sun 4:05pm,Newcastle,13,St Geo Illa,22,P. Gough,McD. Jones,21770
-2021,nrl,4,2021-04-04,Sun 6:15pm,Sydney,32,Warriors,12,B. Cummins,SCG,12210
-2021,nrl,4,2021-04-05,Mon 4:00pm,Wests Tigers,22,Parramatta,36,A. Klein,ANZ,29056
-2021,nrl,5,2021-04-08,Thu 7:50pm,South Sydney,35,Brisbane,6,B. Cummins,ANZ,9142
-2021,nrl,5,2021-04-09,Fri 6:00pm,Warriors,12,Manly,13,C. Butler,Central Coast,4982
-2021,nrl,5,2021-04-09,Fri 7:55pm,Penrith,30,Canberra,10,G. Sutton,BlueBet,20890
-2021,nrl,5,2021-04-10,Sat 3:00pm,Gold Coast,42,Newcastle,16,A. Klein,Cbus Super,12492
-2021,nrl,5,2021-04-10,Sat 5:30pm,Canterbury,18,Melbourne,52,C. Sutton,ANZ,5104
-2021,nrl,5,2021-04-10,Sat 7:35pm,Sydney,26,Cronulla,18,A. Gee,SCG,10736
-2021,nrl,5,2021-04-11,Sun 4:05pm,Wests Tigers,30,North Qld,34,M. Cecchin,Leichhardt,9433
-2021,nrl,5,2021-04-11,Sun 6:15pm,Parramatta,12,St Geo Illa,26,G. Atkins,Bankwest,24384
-2021,nrl,6,2021-04-15,Thu 7:50pm,Brisbane,12,Penrith,20,G. Atkins,Suncorp,21224
-2021,nrl,6,2021-04-16,Fri 6:00pm,Newcastle,26,Cronulla,22,M. Cecchin,McD. Jones,17039
-2021,nrl,6,2021-04-16,Fri 7:55pm,Melbourne,20,Sydney,4,A. Gee,AAMI,15087
-2021,nrl,6,2021-04-17,Sat 3:00pm,Manly,36,Gold Coast,0,C. Butler,Glen Willow,6380
-2021,nrl,6,2021-04-17,Sat 5:30pm,South Sydney,18,Wests Tigers,14,G. Sutton,ANZ,16134
-2021,nrl,6,2021-04-17,Sat 7:35pm,Canberra,10,Parramatta,35,B. Cummins,GIO,20089
-2021,nrl,6,2021-04-18,Sun 2:00pm,St Geo Illa,14,Warriors,20,C. Sutton,Netstrata,11222
-2021,nrl,6,2021-04-18,Sun 4:05pm,North Qld,30,Canterbury,18,A. Klein,QLD C. Bank,11965
-2021,nrl,7,2021-04-22,Thu 7:50pm,Penrith,24,Newcastle,6,G. Sutton,BlueBet,16110
-2021,nrl,7,2021-04-23,Fri 6:00pm,Gold Coast,30,South Sydney,40,C. Sutton,Cbus Super,17383
-2021,nrl,7,2021-04-23,Fri 7:55pm,Parramatta,46,Brisbane,6,G. Atkins,TIO,12056
-2021,nrl,7,2021-04-24,Sat 5:30pm,Cronulla,12,Canterbury,18,C. Butler,Netstrata,7420
-2021,nrl,7,2021-04-24,Sat 7:35pm,North Qld,26,Canberra,24,P. Gough,QLD C. Bank,13791
-2021,nrl,7,2021-04-25,Sun 1:45pm,Wests Tigers,6,Manly,40,A. Gee,Bankwest,14095
-2021,nrl,7,2021-04-25,Sun 4:05pm,Sydney,34,St Geo Illa,10,A. Klein,SCG,37620
-2021,nrl,7,2021-04-25,Sun 6:15pm,Melbourne,42,Warriors,20,M. Cecchin,AAMI,20320
-2021,nrl,8,2021-04-29,Thu 7:50pm,Canberra,20,South Sydney,34,B. Cummins,GIO,14260
-2021,nrl,8,2021-04-30,Fri 6:00pm,Melbourne,40,Cronulla,14,G. Sutton,AAMI,10069
-2021,nrl,8,2021-04-30,Fri 7:55pm,Brisbane,36,Gold Coast,28,A. Gee,Suncorp,21322
-2021,nrl,9,2021-05-01,Sat 3:00pm,Penrith,28,Manly,16,A. Klein,Carrington,5798
-2021,nrl,9,2021-05-01,Sat 5:30pm,Canterbury,10,Parramatta,32,P. Gough,ANZ,13273
-2021,nrl,9,2021-05-01,Sat 7:35pm,Newcastle,4,Sydney,38,M. Cecchin,McD. Jones,22172
-2021,nrl,9,2021-05-02,Sun 2:00pm,Warriors,24,North Qld,20,C. Butler,Central Coast,3692
-2021,nrl,9,2021-05-02,Sun 4:05pm,St Geo Illa,8,Wests Tigers,16,C. Sutton,WIN,12323
-2021,nrl,10,2021-05-06,Thu 7:50pm,South Sydney,0,Melbourne,50,G. Atkins,ANZ,7501
-2021,nrl,10,2021-05-07,Fri 6:00pm,Penrith,48,Cronulla,0,C. Butler,BlueBet,16110
-2021,nrl,10,2021-05-07,Fri 7:55pm,Parramatta,31,Sydney,18,M. Cecchin,Bankwest,25711
-2021,nrl,10,2021-05-08,Sat 3:00pm,Canberra,16,Newcastle,24,A. Gee,McDonalds Park,6642
-2021,nrl,10,2021-05-08,Sat 5:30pm,Wests Tigers,28,Gold Coast,36,A. Klein,Campbelltown,8411
-2021,nrl,10,2021-05-08,Sat 7:35pm,North Qld,19,Brisbane,18,C. Sutton,QLD C. Bank,22222
-2021,nrl,10,2021-05-09,Sun 2:00pm,Manly,38,Warriors,32,P. Gough,Lottoland,6726
-2021,nrl,10,2021-05-09,Sun 4:05pm,St Geo Illa,32,Canterbury,12,B. Cummins,Netstrata,7253
-2021,nrl,11,2021-05-14,Fri 6:00pm,Wests Tigers,36,Newcastle,18,G. Atkins,Suncorp,41367
-2021,nrl,11,2021-05-14,Fri 8:05pm,Manly,50,Brisbane,6,G. Sutton,Suncorp,41367
-2021,nrl,11,2021-05-15,Sat 3:00pm,Canterbury,18,Canberra,20,C. Butler,Suncorp,45122
-2021,nrl,11,2021-05-15,Sat 5:30pm,Cronulla,22,South Sydney,32,C. Sutton,Suncorp,45122
-2021,nrl,11,2021-05-15,Sat 7:45pm,Sydney,30,North Qld,16,B. Cummins,Suncorp,45122
-2021,nrl,11,2021-05-16,Sun 1:50pm,Warriors,18,Parramatta,34,A. Klein,Suncorp,43537
-2021,nrl,11,2021-05-16,Sun 4:05pm,Melbourne,44,St Geo Illa,18,P. Gough,Suncorp,43537
-2021,nrl,11,2021-05-16,Sun 6:25pm,Gold Coast,12,Penrith,48,A. Gee,Suncorp,43537
-2021,nrl,12,2021-05-20,Thu 7:50pm,North Qld,36,Newcastle,20,A. Klein,QLD C. Bank,11208
-2021,nrl,12,2021-05-21,Fri 6:00pm,Warriors,30,Wests Tigers,26,M. Noyen,Central Coast,7009
-2021,nrl,12,2021-05-21,Fri 7:55pm,Cronulla,13,St Geo Illa,12,B. Cummins,Netstrata,8947
-2021,nrl,12,2021-05-22,Sat 3:00pm,Gold Coast,30,Canterbury,20,M. Cecchin,Cbus Super,11315
-2021,nrl,12,2021-05-22,Sat 5:30pm,Sydney,16,Brisbane,34,P. Gough,SCG,13186
-2021,nrl,12,2021-05-22,Sat 7:35pm,Canberra,10,Melbourne,34,G. Sutton,GIO,14120
-2021,nrl,12,2021-05-23,Sun 2:00pm,South Sydney,12,Penrith,56,G. Atkins,Apex Oval,10824
-2021,nrl,12,2021-05-23,Sun 4:05pm,Parramatta,6,Manly,28,A. Gee,Bankwest,24411
-2021,nrl,13,2021-05-27,Thu 7:50pm,Brisbane,12,Melbourne,40,A. Klein,Suncorp,23600
-2021,nrl,13,2021-05-28,Fri 6:00pm,North Qld,29,Warriors,28,M. Cecchin,QLD C. Bank,14951
-2021,nrl,13,2021-05-28,Fri 7:55pm,Wests Tigers,34,St Geo Illa,18,A. Gee,Bankwest,9982
-2021,nrl,13,2021-05-29,Sat 3:00pm,Penrith,30,Canterbury,4,M. Noyen,BlueBet,16110
-2021,nrl,13,2021-05-29,Sat 5:30pm,South Sydney,38,Parramatta,20,G. Sutton,ANZ,20743
-2021,nrl,13,2021-05-29,Sat 7:35pm,Sydney,44,Canberra,16,G. Atkins,Central Coast,10113
-2021,nrl,13,2021-05-30,Sun 2:00pm,Cronulla,38,Gold Coast,10,C. Sutton,BCU Stadium,7362
-2021,nrl,13,2021-05-30,Sun 4:05pm,Newcastle,18,Manly,10,B. Cummins,McD. Jones,17348
-2021,nrl,14,2021-06-03,Thu 7:50pm,St Geo Illa,52,Brisbane,24,M. Cecchin,Netstrata,5107
-2021,nrl,14,2021-06-04,Fri 7:55pm,Wests Tigers,26,Penrith,6,G. Atkins,Leichhardt,9127
-2021,nrl,14,2021-06-05,Sat 7:35pm,Melbourne,20,Gold Coast,14,C. Butler,Sunshine Coast,7630
-2021,nrl,14,2021-06-06,Sun 4:05pm,Newcastle,4,Parramatta,40,A. Gee,McD. Jones,23015
-2021,nrl,15,2021-06-11,Fri 6:00pm,Manly,50,North Qld,18,A. Gee,4 Pines,6801
-2021,nrl,15,2021-06-11,Fri 7:55pm,Cronulla,19,Penrith,18,A. Klein,Netstrata,5217
-2021,nrl,15,2021-06-12,Sat 3:00pm,Gold Coast,34,Sydney,35,B. Cummins,Cbus Super,15111
-2021,nrl,15,2021-06-12,Sat 5:30pm,South Sydney,24,Newcastle,10,C. Butler,ANZ,12156
-2021,nrl,15,2021-06-12,Sat 7:35pm,Canberra,38,Brisbane,16,C. Sutton,GIO,9608
-2021,nrl,15,2021-06-13,Sun 2:00pm,Warriors,16,Melbourne,42,M. Cecchin,Central Coast,8105
-2021,nrl,15,2021-06-13,Sun 4:05pm,Parramatta,40,Wests Tigers,12,G. Atkins,Bankwest,23421
-2021,nrl,15,2021-06-14,Mon 4:00pm,Canterbury,28,St Geo Illa,6,G. Sutton,ANZ,17382
-2021,nrl,16,2021-06-17,Thu 7:50pm,Brisbane,0,South Sydney,46,A. Gee,Suncorp,19176
-2021,nrl,16,2021-06-18,Fri 6:00pm,North Qld,24,Cronulla,26,P. Gough,QLD C. Bank,13926
-2021,nrl,16,2021-06-18,Fri 7:55pm,Penrith,38,Sydney,12,A. Klein,BlueBet,14406
-2021,nrl,16,2021-06-19,Sat 3:00pm,Newcastle,10,Warriors,6,C. Butler,McD. Jones,9975
-2021,nrl,16,2021-06-19,Sat 5:30pm,St Geo Illa,22,Canberra,20,C. Sutton,WIN,9239
-2021,nrl,16,2021-06-19,Sat 7:35pm,Melbourne,66,Wests Tigers,16,G. Sutton,Sunshine Coast,5328
-2021,nrl,16,2021-06-20,Sun 2:00pm,Parramatta,36,Canterbury,10,M. Cecchin,Bankwest,17276
-2021,nrl,16,2021-06-20,Sun 4:05pm,Gold Coast,24,Manly,56,G. Atkins,Cbus Super,14408
-2021,nrl,17,2021-07-01,Thu 7:50pm,Sydney,0,Melbourne,46,A. Gee,McD. Jones,4289
-2021,nrl,17,2021-07-02,Fri 6:00pm,Warriors,18,St Geo Illa,19,P. Gough,Central Coast,0
-2021,nrl,17,2021-07-02,Fri 7:55pm,Penrith,13,Parramatta,12,A. Klein,BlueBet,0
-2021,nrl,17,2021-07-03,Sat 3:00pm,Canterbury,0,Manly,66,G. Sutton,Bankwest,0
-2021,nrl,17,2021-07-03,Sat 5:30pm,Canberra,6,Gold Coast,44,M. Cecchin,GIO,7646
-2021,nrl,17,2021-07-03,Sat 7:35pm,Newcastle,38,North Qld,0,C. Sutton,McD. Jones,7610
-2021,nrl,17,2021-07-04,Sun 2:00pm,Brisbane,26,Cronulla,18,B. Cummins,Suncorp,13840
-2021,nrl,17,2021-07-04,Sun 4:05pm,Wests Tigers,22,South Sydney,38,G. Atkins,Leichhardt,0
-2021,nrl,18,2021-07-08,Thu 7:50pm,Manly,16,Canberra,30,A. Gee,4 Pines,0
-2021,nrl,18,2021-07-09,Fri 7:55pm,South Sydney,46,North Qld,18,M. Cecchin,McD. Jones,3127
-2021,nrl,18,2021-07-10,Sat 7:35pm,Canterbury,16,Sydney,22,A. Gee,Bankwest,0
-2021,nrl,18,2021-07-11,Sun 4:05pm,Cronulla,20,Warriors,12,C. Sutton,Netstrata,0
-2021,nrl,19,2021-07-16,Fri 6:00pm,Gold Coast,8,Parramatta,26,M. Cecchin,Cbus Super,15038
-2021,nrl,19,2021-07-16,Fri 7:55pm,Manly,32,St Geo Illa,18,A. Gee,Cbus Super,15038
-2021,nrl,19,2021-07-17,Sat 3:00pm,North Qld,18,Sydney,34,A. Klein,QLD C. Bank,15933
-2021,nrl,19,2021-07-17,Sat 5:30pm,Canberra,34,Cronulla,18,G. Atkins,Cbus Super,3874
-2021,nrl,19,2021-07-17,Sat 7:30pm,Melbourne,48,Newcastle,4,C. Sutton,Cbus Super,3874
-2021,nrl,19,2021-07-18,Sun 2:00pm,Warriors,16,Penrith,30,C. Butler,Suncorp,24894
-2021,nrl,19,2021-07-18,Sun 4:05pm,Brisbane,24,Wests Tigers,42,G. Sutton,Suncorp,24894
-2021,nrl,19,2021-07-18,Sun 6:15pm,South Sydney,32,Canterbury,24,B. Cummins,Cbus Super,2979
-2021,nrl,20,2021-07-22,Thu 7:50pm,Parramatta,10,Canberra,12,A. Gee,Cbus Super,2566
-2021,nrl,20,2021-07-23,Fri 6:00pm,Sydney,28,Newcastle,8,G. Sutton,Sunshine Coast,2868
-2021,nrl,20,2021-07-23,Fri 7:55pm,North Qld,16,Melbourne,20,M. Cecchin,QLD C. Bank,14924
-2021,nrl,20,2021-07-24,Sat 3:00pm,South Sydney,60,Warriors,22,C. Butler,Sunshine Coast,7569
-2021,nrl,20,2021-07-24,Sat 5:30pm,Manly,44,Wests Tigers,24,A. Klein,Suncorp,5761
-2021,nrl,20,2021-07-24,Sat 7:35pm,Penrith,18,Brisbane,12,B. Cummins,Suncorp,8019
-2021,nrl,20,2021-07-25,Sun 2:00pm,St Geo Illa,10,Gold Coast,32,G. Atkins,Cbus Super,4424
-2021,nrl,20,2021-07-25,Sun 4:05pm,Canterbury,24,Cronulla,44,C. Sutton,Cbus Super,4424
-2021,nrl,21,2021-07-29,Thu 7:50pm,Sydney,28,Parramatta,0,G. Atkins,BB Print,4926
-2021,nrl,21,2021-07-30,Fri 6:00pm,Wests Tigers,16,Warriors,18,B. Cummins,Suncorp,12443
-2021,nrl,21,2021-07-30,Fri 8:00pm,Brisbane,37,North Qld,18,C. Sutton,Suncorp,29136
-2021,nrl,22,2021-08-01,Sun 1:50pm,Newcastle,34,Canberra,24,A. Gee,Suncorp,0
-2021,nrl,22,2021-08-01,Sun 4:05pm,Melbourne,37,Penrith,10,A. Klein,Suncorp,0
-2021,nrl,22,2021-08-01,Sun 6:25pm,St Geo Illa,14,South Sydney,50,C. Butler,Suncorp,0
-2021,nrl,22,2021-08-02,Mon 6:00pm,Canterbury,6,Gold Coast,34,M. Cecchin,Cbus Super,0
-2021,nrl,22,2021-08-02,Mon 8:05pm,Cronulla,22,Manly,40,G. Sutton,Suncorp,0
-2021,nrl,23,2021-08-05,Thu 7:50pm,Newcastle,28,Brisbane,20,G. Atkins,Suncorp,0
-2021,nrl,23,2021-08-06,Fri 6:00pm,Canberra,20,St Geo Illa,12,C. Sutton,Cbus Super,0
-2021,nrl,23,2021-08-06,Fri 7:55pm,Parramatta,12,South Sydney,40,A. Klein,Cbus Super,0
-2021,nrl,23,2021-08-07,Sat 3:00pm,Warriors,18,Cronulla,16,M. Cecchin,Cbus Super,0
-2021,nrl,23,2021-08-07,Sat 5:30pm,Sydney,14,Penrith,20,G. Sutton,Suncorp,0
-2021,nrl,23,2021-08-07,Sat 7:35pm,Manly,18,Melbourne,28,A. Gee,Suncorp,0
-2021,nrl,23,2021-08-08,Sun 2:00pm,Canterbury,16,Wests Tigers,28,C. Butler,Cbus Super,0
-2021,nrl,23,2021-08-08,Sun 4:05pm,Gold Coast,36,North Qld,14,B. Cummins,Cbus Super,0
-2021,nrl,24,2021-08-12,Thu 7:50pm,Melbourne,26,Canberra,16,G. Sutton,Sunshine Coast,2523
-2021,nrl,24,2021-08-13,Fri 6:00pm,St Geo Illa,16,Penrith,34,B. Cummins,Suncorp,6653
-2021,nrl,24,2021-08-13,Fri 7:55pm,Brisbane,20,Sydney,21,A. Klein,Suncorp,14314
-2021,nrl,24,2021-08-14,Sat 3:00pm,South Sydney,36,Gold Coast,6,A. Gee,Cbus Super,4117
-2021,nrl,24,2021-08-14,Sat 5:35pm,North Qld,16,Wests Tigers,24,C. Sutton,QLD C. Bank,12663
-2021,nrl,24,2021-08-14,Sat 7:30pm,Manly,56,Parramatta,10,G. Atkins,Sunshine Coast,3613
-2021,nrl,24,2021-08-15,Sun 2:00pm,Warriors,24,Canterbury,10,P. Gough,Moreton Daily,3332
-2021,nrl,24,2021-08-15,Sun 4:05pm,Cronulla,14,Newcastle,16,M. Cecchin,Moreton Daily,3954
-2021,nrl,25,2021-08-19,Thu 7:50pm,Gold Coast,20,Melbourne,34,B. Cummins,Cbus Super,8288
-2021,nrl,25,2021-08-20,Fri 6:00pm,Canberra,18,Manly,19,A. Gee,Suncorp,6181
-2021,nrl,25,2021-08-20,Fri 7:55pm,Penrith,25,South Sydney,12,G. Atkins,Suncorp,8848
-2021,nrl,25,2021-08-21,Sat 3:00pm,Wests Tigers,20,Cronulla,50,G. Sutton,Browne Park,2863
-2021,nrl,25,2021-08-21,Sat 5:30pm,Canterbury,16,Newcastle,22,P. Gough,Cbus Super,2343
-2021,nrl,25,2021-08-21,Sat 7:35pm,Parramatta,32,North Qld,16,A. Klein,Cbus Super,3013
-2021,nrl,25,2021-08-22,Sun 2:00pm,St Geo Illa,22,Sydney,40,C. Sutton,Clive Berghofer,7822
-2021,nrl,25,2021-08-22,Sun 4:05pm,Brisbane,24,Warriors,22,M. Cecchin,Suncorp,18252
-2021,nrl,26,2021-08-26,Thu 7:50pm,Newcastle,15,Gold Coast,14,G. Atkins,Sunshine Coast,2107
-2021,nrl,26,2021-08-27,Fri 6:00pm,Warriors,16,Canberra,28,B. Cummins,BB Print,4079
-2021,nrl,26,2021-08-27,Fri 7:55pm,Sydney,12,South Sydney,54,A. Klein,Suncorp,5136
-2021,nrl,26,2021-08-28,Sat 3:00pm,St Geo Illa,26,North Qld,38,P. Gough,Browne Park,4487
-2021,nrl,26,2021-08-28,Sat 5:30pm,Cronulla,24,Brisbane,16,A. Gee,Suncorp,8618
-2021,nrl,26,2021-08-28,Sat 7:35pm,Melbourne,10,Parramatta,22,G. Sutton,Suncorp,10246
-2021,nrl,26,2021-08-29,Sun 2:00pm,Manly,36,Canterbury,18,C. Sutton,Moreton Daily,4910
-2021,nrl,26,2021-08-29,Sun 4:05pm,Penrith,30,Wests Tigers,16,M. Cecchin,Moreton Daily,5351
-2021,nrl,27,2021-09-02,Thu 7:50pm,Canberra,16,Sydney,40,G. Sutton,BB Print,3473
-2021,nrl,27,2021-09-03,Fri 6:00pm,Cronulla,16,Melbourne,28,G. Atkins,Cbus Super,8580
-2021,nrl,27,2021-09-03,Fri 7:55pm,Parramatta,6,Penrith,40,A. Gee,Cbus Super,8580
-2021,nrl,27,2021-09-04,Sat 3:00pm,Brisbane,35,Newcastle,22,Z. Przeklasa-Adamski,Suncorp,20747
-2021,nrl,27,2021-09-04,Sat 5:30pm,North Qld,18,Manly,46,B. Cummins,QLD C. Bank,14336
-2021,nrl,27,2021-09-04,Sat 7:30pm,South Sydney,20,St Geo Illa,16,M. Cecchin,Sunshine Coast,3295
-2021,nrl,27,2021-09-05,Sun 2:00pm,Gold Coast,44,Warriors,0,A. Klein,Cbus Super,12532
-2021,nrl,27,2021-09-05,Sun 4:05pm,Wests Tigers,0,Canterbury,38,C. Sutton,Moreton Daily,3104
-2021,nrl,28,2021-09-10,Fri 7:50pm,Melbourne,40,Manly,12,G. Atkins,Sunshine Coast,9120
-2021,nrl,28,2021-09-11,Sat 5:40pm,Sydney,25,Gold Coast,24,A. Gee,QLD C. Bank,15237
-2021,nrl,28,2021-09-11,Sat 7:50pm,Penrith,10,South Sydney,16,G. Sutton,QLD C. Bank,18244
-2021,nrl,28,2021-09-12,Sun 4:05pm,Parramatta,28,Newcastle,20,A. Klein,Browne Park,5087
-2021,nrl,29,2021-09-17,Fri 7:50pm,Manly,42,Sydney,6,G. Sutton,BB Print,5824
-2021,nrl,29,2021-09-18,Sat 7:50pm,Penrith,8,Parramatta,6,A. Klein,BB Print,6011
-2021,nrl,30,2021-09-24,Fri 8:00pm,South Sydney,36,Manly,16,A. Klein,Suncorp,26249
-2021,nrl,30,2021-09-25,Sat 4:00pm,Melbourne,6,Penrith,10,G. Sutton,Suncorp,29011
-2021,nrl,31,2021-10-03,Sun 7:30pm,Penrith,14,South Sydney,12,G. Sutton,Suncorp,39322
-2022,nrl,1,2022-03-10,Thu 8:05pm,Penrith,28,Manly,6,A. Gee,BlueBet,16901
-2022,nrl,1,2022-03-11,Fri 6:00pm,Canberra,24,Cronulla,19,B. Cummins,GIO,15224
-2022,nrl,1,2022-03-11,Fri 8:05pm,Brisbane,11,South Sydney,4,A. Klein,Suncorp,32002
-2022,nrl,1,2022-03-12,Sat 3:00pm,Sydney,6,Newcastle,20,G. Sutton,SCG,14710
-2022,nrl,1,2022-03-12,Sat 5:30pm,Warriors,16,St Geo Illa,28,P. Gough,Sunshine Coast,5382
-2022,nrl,1,2022-03-12,Sat 7:35pm,Wests Tigers,16,Melbourne,26,C. Sutton,CommBank,10025
-2022,nrl,1,2022-03-13,Sun 4:05pm,Parramatta,32,Gold Coast,28,G. Atkins,CommBank,18211
-2022,nrl,1,2022-03-13,Sun 6:15pm,North Qld,4,Canterbury,6,B. Cummins,QLD C. Bank,12640
-2022,nrl,2,2022-03-17,Thu 8:05pm,Melbourne,15,South Sydney,14,G. Sutton,AAMI,13269
-2022,nrl,2,2022-03-18,Fri 6:00pm,St Geo Illa,16,Penrith,20,C. Sutton,Netstrata,10057
-2022,nrl,2,2022-03-18,Fri 8:05pm,Sydney,26,Manly,12,A. Klein,SCG,11872
-2022,nrl,2,2022-03-19,Sat 3:00pm,Gold Coast,20,Warriors,18,A. Gee,Cbus Super,13481
-2022,nrl,2,2022-03-19,Sat 5:30pm,Cronulla,18,Parramatta,16,P. Gough,Pointsbet,11459
-2022,nrl,2,2022-03-19,Sat 7:35pm,North Qld,26,Canberra,6,G. Atkins,QLD C. Bank,13864
-2022,nrl,2,2022-03-20,Sun 4:05pm,Newcastle,26,Wests Tigers,4,B. Cummins,McD. Jones,23214
-2022,nrl,2,2022-03-20,Sun 6:15pm,Canterbury,10,Brisbane,16,Z. Przeklasa-Adamski,Accor,13453
-2022,nrl,3,2022-03-24,Thu 8:05pm,St Geo Illa,12,Cronulla,36,G. Sutton,WIN,10122
-2022,nrl,3,2022-03-25,Fri 6:00pm,Wests Tigers,12,Warriors,16,Z. Przeklasa-Adamski,Campbelltown,7182
-2022,nrl,3,2022-03-25,Fri 8:05pm,South Sydney,28,Sydney,16,G. Atkins,Accor,18245
-2022,nrl,3,2022-03-26,Sat 3:00pm,Penrith,38,Newcastle,20,P. Gough,Carrington,11253
-2022,nrl,3,2022-03-26,Sat 5:30pm,Melbourne,24,Parramatta,28,A. Klein,AAMI,15691
-2022,nrl,3,2022-03-26,Sat 7:35pm,Canberra,24,Gold Coast,22,C. Sutton,GIO,11457
-2022,nrl,3,2022-03-27,Sun 4:05pm,Brisbane,12,North Qld,38,A. Gee,Suncorp,37761
-2022,nrl,3,2022-03-27,Sun 6:15pm,Manly,13,Canterbury,12,B. Cummins,4 Pines,13261
-2022,nrl,4,2022-03-31,Thu 8:05pm,Gold Coast,8,Wests Tigers,6,G. Atkins,Cbus Super,8774
-2022,nrl,5,2022-04-01,Fri 6:00pm,Cronulla,18,Newcastle,0,B. Cummins,Pointsbet,8927
-2022,nrl,5,2022-04-01,Fri 8:05pm,Penrith,26,South Sydney,12,A. Klein,BlueBet,20521
-2022,nrl,5,2022-04-02,Sat 3:00pm,Warriors,20,Brisbane,6,C. Sutton,Moreton Daily,9620
-2022,nrl,5,2022-04-02,Sat 5:30pm,Manly,25,Canberra,6,Z. Przeklasa-Adamski,Glen Willow,6972
-2022,nrl,5,2022-04-02,Sat 7:35pm,North Qld,4,Sydney,28,G. Sutton,QLD C. Bank,17929
-2022,nrl,5,2022-04-03,Sun 4:05pm,Melbourne,44,Canterbury,0,A. Gee,AAMI,13437
-2022,nrl,5,2022-04-03,Sun 6:15pm,Parramatta,48,St Geo Illa,14,T. Smith,CommBank,19711
-2022,nrl,6,2022-04-07,Thu 7:50pm,Newcastle,6,Manly,30,A. Klein,McD. Jones,9472
-2022,nrl,6,2022-04-08,Fri 6:00pm,Warriors,25,North Qld,24,T. Smith,Moreton Daily,6254
-2022,nrl,6,2022-04-08,Fri 7:55pm,Brisbane,20,Sydney,24,G. Atkins,Suncorp,23508
-2022,nrl,6,2022-04-09,Sat 3:00pm,Canberra,16,Melbourne,30,G. Sutton,McDonalds Park,8133
-2022,nrl,6,2022-04-09,Sat 5:35pm,South Sydney,24,St Geo Illa,12,B. Cummins,Accor,11332
-2022,nrl,6,2022-04-09,Sat 7:30pm,Gold Coast,20,Parramatta,26,P. Gough,Cbus Super,14478
-2022,nrl,6,2022-04-10,Sun 4:05pm,Cronulla,30,Wests Tigers,4,A. Gee,Pointsbet,11500
-2022,nrl,6,2022-04-10,Sun 6:15pm,Canterbury,12,Penrith,32,C. Butler,CommBank,11157
-2022,nrl,7,2022-04-14,Thu 7:50pm,Canberra,12,North Qld,18,A. Klein,GIO,11854
-2022,nrl,7,2022-04-15,Fri 4:00pm,South Sydney,36,Canterbury,16,G. Sutton,Accor,30194
-2022,nrl,7,2022-04-15,Fri 7:55pm,Penrith,40,Brisbane,12,A. Gee,BlueBet,19406
-2022,nrl,7,2022-04-16,Sat 5:30pm,Manly,26,Gold Coast,18,T. Smith,4 Pines,16220
-2022,nrl,7,2022-04-16,Sat 7:35pm,Melbourne,34,Cronulla,18,G. Atkins,AAMI,16286
-2022,nrl,7,2022-04-17,Sun 2:00pm,Sydney,22,Warriors,14,Z. Przeklasa-Adamski,SCG,11267
-2022,nrl,7,2022-04-17,Sun 4:05pm,St Geo Illa,21,Newcastle,16,B. Cummins,WIN,11113
-2022,nrl,7,2022-04-18,Mon 4:00pm,Parramatta,20,Wests Tigers,21,C. Butler,CommBank,28336
-2022,nrl,8,2022-04-21,Thu 7:50pm,Cronulla,34,Manly,22,G. Sutton,Pointsbet,9611
-2022,nrl,8,2022-04-22,Fri 7:55pm,Brisbane,34,Canterbury,14,P. Gough,Suncorp,23243
-2022,nrl,8,2022-04-23,Sat 5:30pm,North Qld,30,Gold Coast,4,C. Butler,QLD C. Bank,14547
-2022,nrl,8,2022-04-23,Sat 7:35pm,Wests Tigers,23,South Sydney,22,Z. Przeklasa-Adamski,CommBank,14251
-2022,nrl,8,2022-04-24,Sun 2:00pm,Newcastle,2,Parramatta,39,A. Klein,McD. Jones,25169
-2022,nrl,8,2022-04-24,Sun 4:05pm,Penrith,36,Canberra,6,G. Atkins,BlueBet,20612
-2022,nrl,8,2022-04-25,Mon 4:00pm,St Geo Illa,14,Sydney,12,A. Gee,SCG,35273
-2022,nrl,8,2022-04-25,Mon 7:00pm,Melbourne,70,Warriors,10,C. Sutton,AAMI,22696
-2022,nrl,9,2022-04-28,Thu 7:50pm,Brisbane,16,Cronulla,7,A. Klein,Suncorp,16740
-2022,nrl,9,2022-04-29,Fri 6:00pm,Gold Coast,4,Penrith,18,P. Gough,Cbus Super,14102
-2022,nrl,9,2022-04-29,Fri 7:55pm,South Sydney,40,Manly,22,G. Atkins,Central Coast,17284
-2022,nrl,9,2022-04-30,Sat 3:00pm,Warriors,21,Canberra,20,C. Butler,Moreton Daily,6326
-2022,nrl,9,2022-04-30,Sat 5:30pm,Canterbury,16,Sydney,12,B. Cummins,Accor,9544
-2022,nrl,9,2022-04-30,Sat 7:05pm,Parramatta,4,North Qld,35,T. Smith,TIO,10017
-2022,nrl,10,2022-05-01,Sun 2:00pm,Newcastle,2,Melbourne,50,L. Kennedy,McD. Jones,15895
-2022,nrl,10,2022-05-01,Sun 4:05pm,St Geo Illa,12,Wests Tigers,6,G. Sutton,WIN,16110
-2022,nrl,11,2022-05-05,Thu 7:50pm,South Sydney,12,Brisbane,32,G. Atkins,Accor,9242
-2022,nrl,11,2022-05-06,Fri 6:00pm,Canberra,14,Canterbury,4,B. Cummins,GIO,12890
-2022,nrl,11,2022-05-06,Fri 7:55pm,Penrith,20,Parramatta,22,G. Sutton,BlueBet,21548
-2022,nrl,11,2022-05-07,Sat 3:00pm,Manly,36,Wests Tigers,22,A. Gee,4 Pines,17385
-2022,nrl,11,2022-05-07,Sat 5:30pm,Sydney,44,Gold Coast,16,C. Butler,BB Print,5527
-2022,nrl,11,2022-05-07,Sat 7:35pm,North Qld,36,Newcastle,16,L. Kennedy,QLD C. Bank,14463
-2022,nrl,11,2022-05-08,Sun 2:00pm,Melbourne,42,St Geo Illa,6,P. Gough,AAMI,11723
-2022,nrl,11,2022-05-08,Sun 4:05pm,Cronulla,29,Warriors,10,T. Smith,Pointsbet,9915
-2022,nrl,12,2022-05-13,Fri 6:00pm,Canterbury,6,Newcastle,16,P. Gough,Suncorp,30220
-2022,nrl,12,2022-05-13,Fri 8:05pm,Manly,0,Brisbane,38,G. Atkins,Suncorp,40267
-2022,nrl,12,2022-05-14,Sat 3:00pm,Warriors,30,South Sydney,32,B. Cummins,Suncorp,30503
-2022,nrl,12,2022-05-14,Sat 5:30pm,Gold Coast,20,St Geo Illa,16,T. Smith,Suncorp,41593
-2022,nrl,12,2022-05-14,Sat 7:45pm,Melbourne,6,Penrith,32,A. Klein,Suncorp,46454
-2022,nrl,12,2022-05-15,Sun 2:00pm,Cronulla,10,Canberra,30,L. Kennedy,Suncorp,30453
-2022,nrl,12,2022-05-15,Sun 4:05pm,Sydney,31,Parramatta,24,A. Gee,Suncorp,40135
-2022,nrl,12,2022-05-15,Sun 6:25pm,Wests Tigers,12,North Qld,36,G. Sutton,Suncorp,43401
-2022,nrl,13,2022-05-19,Thu 7:50pm,Newcastle,12,Brisbane,36,A. Gee,McD. Jones,13312
-2022,nrl,13,2022-05-20,Fri 6:00pm,Wests Tigers,36,Canterbury,22,Z. Przeklasa-Adamski,Leichhardt,15124
-2022,nrl,13,2022-05-20,Fri 7:55pm,Parramatta,22,Manly,20,B. Cummins,CommBank,18778
-2022,nrl,13,2022-05-21,Sat 3:00pm,St Geo Illa,24,Warriors,18,C. Sutton,Netstrata,7147
-2022,nrl,13,2022-05-21,Sat 5:30pm,North Qld,36,Melbourne,6,G. Atkins,QLD C. Bank,22728
-2022,nrl,13,2022-05-21,Sat 7:35pm,Sydney,12,Penrith,32,G. Sutton,SCG,14482
-2022,nrl,13,2022-05-22,Sun 2:00pm,South Sydney,12,Canberra,32,P. Gough,Apex Oval,11124
-2022,nrl,13,2022-05-22,Sun 4:05pm,Gold Coast,18,Cronulla,25,A. Klein,Cbus Super,9882
-2022,nrl,14,2022-05-26,Thu 7:50pm,Melbourne,28,Manly,8,A. Gee,AAMI,10168
-2022,nrl,14,2022-05-27,Fri 6:00pm,Penrith,22,North Qld,0,A. Klein,BlueBet,17125
-2022,nrl,14,2022-05-27,Fri 7:55pm,Brisbane,35,Gold Coast,24,G. Sutton,Suncorp,32864
-2022,nrl,14,2022-05-28,Sat 3:00pm,Warriors,16,Newcastle,24,P. Gough,Moreton Daily,4265
-2022,nrl,14,2022-05-28,Sat 5:30pm,South Sydney,44,Wests Tigers,18,C. Sutton,Accor,13585
-2022,nrl,14,2022-05-28,Sat 7:35pm,Cronulla,16,Sydney,36,G. Atkins,Pointsbet,11500
-2022,nrl,14,2022-05-29,Sun 2:00pm,Canterbury,24,St Geo Illa,34,B. Cummins,Belmore,16991
-2022,nrl,14,2022-05-29,Sun 4:05pm,Canberra,20,Parramatta,28,T. Smith,GIO,16244
-2022,nrl,15,2022-06-02,Thu 7:50pm,Gold Coast,6,North Qld,32,G. Sutton,Cbus Super,10334
-2022,nrl,15,2022-06-03,Fri 7:55pm,Penrith,30,Canterbury,18,T. Smith,BlueBet,16906
-2022,nrl,15,2022-06-04,Sat 7:35pm,Manly,44,Warriors,12,G. Atkins,4 Pines,9248
-2022,nrl,15,2022-06-05,Sun 4:05pm,Canberra,22,Sydney,16,A. Gee,GIO,6492
-2022,nrl,16,2022-06-10,Fri 7:55pm,North Qld,31,St Geo Illa,12,T. Smith,QLD C. Bank,14683
-2022,nrl,16,2022-06-11,Sat 3:00pm,Gold Coast,16,South Sydney,30,A. Gee,Cbus Super,14290
-2022,nrl,16,2022-06-11,Sat 5:30pm,Sydney,18,Melbourne,26,G. Sutton,SCG,12925
-2022,nrl,16,2022-06-11,Sat 7:35pm,Brisbane,24,Canberra,18,G. Atkins,Suncorp,28142
-2022,nrl,16,2022-06-12,Sun 2:00pm,Wests Tigers,4,Manly,30,P. Gough,Campbelltown,10231
-2022,nrl,16,2022-06-12,Sun 4:05pm,Newcastle,6,Penrith,42,B. Cummins,McD. Jones,21332
-2022,nrl,16,2022-06-12,Sun 6:15pm,Warriors,16,Cronulla,38,C. Sutton,Moreton Daily,3560
-2022,nrl,16,2022-06-13,Mon 4:00pm,Canterbury,34,Parramatta,4,A. Klein,Accor,20184
-2022,nrl,17,2022-06-16,Thu 7:50pm,St Geo Illa,32,South Sydney,12,G. Atkins,WIN,11257
-2022,nrl,17,2022-06-17,Fri 6:00pm,Manly,26,North Qld,28,G. Sutton,4 Pines,9226
-2022,nrl,17,2022-06-17,Fri 7:55pm,Melbourne,32,Brisbane,20,A. Gee,AAMI,18586
-2022,nrl,17,2022-06-18,Sat 3:00pm,Cronulla,18,Gold Coast,10,C. Sutton,C.ex Coffs,9058
-2022,nrl,17,2022-06-18,Sat 5:30pm,Warriors,6,Penrith,40,P. Gough,Moreton Daily,8127
-2022,nrl,17,2022-06-18,Sat 7:35pm,Parramatta,26,Sydney,16,T. Smith,CommBank,21757
-2022,nrl,17,2022-06-19,Sun 2:00pm,Canberra,20,Newcastle,18,A. Klein,GIO,12457
-2022,nrl,17,2022-06-19,Sun 4:05pm,Canterbury,36,Wests Tigers,12,B. Cummins,CommBank,14806
-2022,nrl,18,2022-06-30,Thu 7:50pm,Manly,36,Melbourne,30,G. Atkins,4 Pines,8168
-2022,nrl,19,2022-07-01,Fri 6:00pm,Newcastle,38,Gold Coast,12,C. Butler,McD. Jones,8578
-2022,nrl,19,2022-07-01,Fri 7:55pm,Penrith,26,Sydney,18,G. Sutton,BlueBet,16725
-2022,nrl,19,2022-07-02,Sat 3:00pm,Canterbury,6,Cronulla,18,A. Klein,CommBank,8837
-2022,nrl,19,2022-07-02,Sat 5:30pm,North Qld,40,Brisbane,26,A. Gee,QLD C. Bank,23531
-2022,nrl,19,2022-07-02,Sat 7:35pm,South Sydney,30,Parramatta,12,B. Cummins,Accor,10102
-2022,nrl,19,2022-07-03,Sun 2:00pm,Warriors,22,Wests Tigers,2,C. Sutton,Mt Smart,26009
-2022,nrl,19,2022-07-03,Sun 4:05pm,St Geo Illa,12,Canberra,10,P. Gough,WIN,7069
-2022,nrl,20,2022-07-07,Thu 7:50pm,Cronulla,28,Melbourne,6,A. Gee,Pointsbet,7868
-2022,nrl,20,2022-07-08,Fri 7:55pm,Newcastle,28,South Sydney,40,T. Smith,McD. Jones,18621
-2022,nrl,20,2022-07-09,Sat 7:35pm,Wests Tigers,20,Parramatta,28,C. Butler,Leichhardt,13214
-2022,nrl,20,2022-07-10,Sun 4:05pm,Brisbane,32,St Geo Illa,18,G. Atkins,Suncorp,29234
-2022,nrl,21,2022-07-15,Fri 6:00pm,North Qld,12,Cronulla,26,A. Gee,QLD C. Bank,15982
-2022,nrl,21,2022-07-15,Fri 7:55pm,Parramatta,28,Warriors,18,T. Smith,CommBank,12279
-2022,nrl,21,2022-07-16,Sat 3:00pm,Sydney,54,St Geo Illa,26,G. Atkins,Central Coast,15721
-2022,nrl,21,2022-07-16,Sat 5:30pm,Manly,42,Newcastle,12,G. Sutton,4 Pines,15896
-2022,nrl,21,2022-07-16,Sat 7:35pm,Gold Coast,12,Brisbane,16,C. Sutton,Cbus Super,19245
-2022,nrl,21,2022-07-17,Sun 2:00pm,Wests Tigers,16,Penrith,18,P. Gough,CommBank,11464
-2022,nrl,21,2022-07-17,Sun 4:05pm,Melbourne,16,Canberra,20,A. Klein,AAMI,16106
-2022,nrl,21,2022-07-17,Sun 6:15pm,Canterbury,28,South Sydney,36,C. Butler,Accor,19126
-2022,nrl,22,2022-07-21,Thu 7:50pm,Parramatta,14,Brisbane,36,G. Sutton,CommBank,11017
-2022,nrl,22,2022-07-22,Fri 6:00pm,St Geo Illa,20,Manly,6,A. Gee,Netstrata,7137
-2022,nrl,22,2022-07-22,Fri 7:55pm,Newcastle,12,Sydney,42,P. Gough,McD. Jones,13701
-2022,nrl,22,2022-07-23,Sat 3:00pm,Canberra,26,Warriors,14,C. Sutton,GIO,11915
-2022,nrl,22,2022-07-23,Sat 5:30pm,Penrith,20,Cronulla,10,A. Klein,BlueBet,17426
-2022,nrl,22,2022-07-23,Sat 7:35pm,South Sydney,24,Melbourne,12,T. Smith,Accor,11217
-2022,nrl,22,2022-07-24,Sun 2:00pm,Canterbury,36,Gold Coast,26,B. Cummins,CommBank,11726
-2022,nrl,22,2022-07-24,Sun 4:05pm,North Qld,27,Wests Tigers,26,C. Butler,QLD C. Bank,14910
-2022,nrl,23,2022-07-28,Thu 7:50pm,Manly,10,Sydney,20,G. Atkins,4 Pines,12187
-2022,nrl,23,2022-07-29,Fri 8:00pm,Warriors,12,Melbourne,24,P. Gough,Mt Smart,18395
-2022,nrl,23,2022-07-29,Fri 7:55pm,Parramatta,34,Penrith,10,T. Smith,CommBank,26912
-2022,nrl,23,2022-07-30,Sat 3:00pm,Gold Coast,24,Canberra,36,B. Cummins,Cbus Super,12461
-2022,nrl,23,2022-07-30,Sat 5:30pm,Cronulla,21,South Sydney,20,G. Sutton,Pointsbet,11492
-2022,nrl,23,2022-07-30,Sat 7:35pm,Brisbane,18,Wests Tigers,32,A. Gee,Suncorp,32909
-2022,nrl,23,2022-07-31,Sun 2:00pm,Newcastle,10,Canterbury,24,C. Butler,McD. Jones,19813
-2022,nrl,23,2022-07-31,Sun 4:05pm,St Geo Illa,8,North Qld,34,C. Sutton,Netstrata,9517
-2022,nrl,24,2022-08-04,Thu 7:50pm,Sydney,34,Brisbane,16,T. Smith,SCG,10495
-2022,nrl,24,2022-08-05,Fri 6:00pm,Melbourne,32,Gold Coast,14,P. Gough,AAMI,10869
-2022,nrl,24,2022-08-05,Fri 7:55pm,Manly,20,Parramatta,36,G. Sutton,4 Pines,17134
-2022,nrl,24,2022-08-06,Sat 3:00pm,South Sydney,48,Warriors,10,B. Cummins,Sunshine Coast,8911
-2022,nrl,24,2022-08-06,Sat 5:30pm,Canberra,6,Penrith,26,G. Atkins,GIO,16912
-2022,nrl,24,2022-08-06,Sat 7:35pm,Cronulla,24,St Geo Illa,18,A. Klein,Pointsbet,11427
-2022,nrl,24,2022-08-07,Sun 2:00pm,Canterbury,14,North Qld,28,A. Gee,Salter,8521
-2022,nrl,24,2022-08-07,Sun 4:05pm,Wests Tigers,10,Newcastle,14,C. Sutton,Campbelltown,9621
-2022,nrl,25,2022-08-11,Thu 7:50pm,Penrith,0,Melbourne,16,G. Sutton,BlueBet,15612
-2022,nrl,25,2022-08-12,Fri 6:00pm,Warriors,42,Canterbury,18,C. Butler,Mt Smart,16212
-2022,nrl,25,2022-08-12,Fri 7:55pm,Parramatta,0,South Sydney,26,G. Atkins,CommBank,22958
-2022,nrl,25,2022-08-13,Sat 3:00pm,Sydney,32,North Qld,18,A. Klein,SCG,15219
-2022,nrl,25,2022-08-13,Sat 5:30pm,Wests Tigers,12,Cronulla,36,B. Cummins,Scully,10048
-2022,nrl,25,2022-08-13,Sat 7:35pm,Brisbane,28,Newcastle,10,P. Gough,Suncorp,25742
-2022,nrl,25,2022-08-14,Sun 2:00pm,Canberra,24,St Geo Illa,22,A. Gee,GIO,11216
-2022,nrl,25,2022-08-14,Sun 4:05pm,Gold Coast,44,Manly,24,C. Sutton,Cbus Super,11753
-2022,nrl,26,2022-08-18,Thu 7:50pm,South Sydney,22,Penrith,26,A. Gee,Accor,15208
-2022,nrl,26,2022-08-19,Fri 6:00pm,North Qld,48,Warriors,4,C. Butler,QLD C. Bank,17404
-2022,nrl,26,2022-08-19,Fri 7:55pm,Brisbane,12,Melbourne,60,T. Smith,Suncorp,42612
-2022,nrl,26,2022-08-20,Sat 3:00pm,Parramatta,42,Canterbury,6,A. Klein,CommBank,26451
-2022,nrl,26,2022-08-20,Sat 5:30pm,Manly,6,Cronulla,40,G. Sutton,4 Pines,12243
-2022,nrl,26,2022-08-20,Sat 7:35pm,Sydney,72,Wests Tigers,6,B. Cummins,SCG,14939
-2022,nrl,26,2022-08-21,Sun 2:00pm,St Geo Illa,46,Gold Coast,26,L. Kennedy,WIN,12348
-2022,nrl,26,2022-08-21,Sun 4:05pm,Newcastle,22,Canberra,28,G. Atkins,McD. Jones,16768
-2022,nrl,27,2022-08-25,Thu 7:50pm,Brisbane,6,Parramatta,53,G. Atkins,Suncorp,30371
-2022,nrl,27,2022-08-26,Fri 6:00pm,Penrith,46,Warriors,12,C. Butler,BlueBet,17025
-2022,nrl,27,2022-08-26,Fri 7:55pm,Melbourne,14,Sydney,18,A. Gee,AAMI,25308
-2022,nrl,27,2022-08-27,Sat 3:00pm,Canberra,48,Manly,6,A. Klein,GIO,16647
-2022,nrl,27,2022-08-27,Sat 5:30pm,Cronulla,16,Canterbury,0,T. Smith,Pointsbet,11500
-2022,nrl,27,2022-08-27,Sat 7:35pm,South Sydney,20,North Qld,10,G. Sutton,Accor,15264
-2022,nrl,27,2022-08-28,Sun 2:00pm,Wests Tigers,22,St Geo Illa,24,L. Kennedy,CommBank,9789
-2022,nrl,27,2022-08-28,Sun 4:05pm,Gold Coast,36,Newcastle,26,B. Cummins,Cbus Super,11816
-2022,nrl,28,2022-09-01,Thu 7:50pm,Parramatta,22,Melbourne,14,A. Klein,CommBank,23758
-2022,nrl,28,2022-09-02,Fri 6:00pm,Canterbury,21,Manly,20,P. Gough,Accor,13648
-2022,nrl,28,2022-09-02,Fri 7:55pm,Sydney,26,South Sydney,16,G. Atkins,Allianz,41906
-2022,nrl,28,2022-09-03,Sat 5:00pm,Warriors,26,Gold Coast,27,Z. Przeklasa-Adamski,Mt Smart,20512
-2022,nrl,28,2022-09-03,Sat 5:30pm,St Geo Illa,22,Brisbane,12,B. Cummins,Netstrata,8247
-2022,nrl,28,2022-09-03,Sat 7:35pm,North Qld,38,Penrith,8,T. Smith,QLD C. Bank,23840
-2022,nrl,28,2022-09-04,Sun 2:00pm,Newcastle,16,Cronulla,38,C. Sutton,McD. Jones,16808
-2022,nrl,28,2022-09-04,Sun 4:05pm,Wests Tigers,10,Canberra,56,G. Sutton,Leichhardt,10041
-2022,nrl,29,2022-09-09,Fri 7:50pm,Penrith,27,Parramatta,8,G. Sutton,BlueBet,21863
-2022,nrl,29,2022-09-10,Sat 5:40pm,Melbourne,20,Canberra,28,G. Atkins,AAMI,20838
-2022,nrl,29,2022-09-10,Sat 7:50pm,Cronulla,30,North Qld,32,A. Gee,Pointsbet,12447
-2022,nrl,29,2022-09-11,Sun 4:05pm,Sydney,14,South Sydney,30,A. Klein,Allianz,39498
-2022,nrl,30,2022-09-16,Fri 7:50pm,Parramatta,40,Canberra,4,A. Klein,CommBank,29134
-2022,nrl,30,2022-09-17,Sat 8:00pm,Cronulla,12,South Sydney,38,G. Atkins,Allianz,39733
-2022,nrl,31,2022-09-23,Fri 7:50pm,North Qld,20,Parramatta,24,G. Atkins,QLD C. Bank,25372
-2022,nrl,31,2022-09-24,Sat 7:50pm,Penrith,32,South Sydney,12,A. Klein,Accor,50035
-2022,nrl,32,2022-10-02,Sun 7:30pm,Penrith,28,Parramatta,12,A. Klein,Accor,82415
-2023,nrl,1,2023-03-02,Thu 8:00pm,Parramatta,12,Melbourne,16,A. Klein,CommBank,17301
-2023,nrl,1,2023-03-03,Fri 8:00pm,Warriors,20,Newcastle,12,C. Sutton,Sky Stadium,16676
-2023,nrl,1,2023-03-03,Fri 8:05pm,Penrith,12,Brisbane,13,G. Sutton,BlueBet,17125
-2023,nrl,1,2023-03-04,Sat 3:00pm,Manly,31,Canterbury,6,G. Atkins,4 Pines,17278
-2023,nrl,1,2023-03-04,Sat 4:30pm,North Qld,19,Canberra,18,A. Gee,QLD C. Bank,19855
-2023,nrl,1,2023-03-04,Sat 7:35pm,Cronulla,18,South Sydney,27,T. Smith,Pointsbet,12757
-2023,nrl,1,2023-03-05,Sun 3:05pm,Dolphins,28,Sydney,18,C. Butler,Suncorp,32177
-2023,nrl,1,2023-03-05,Sun 6:15pm,Wests Tigers,10,Gold Coast,22,P. Gough,Leichhardt,14667
-2023,nrl,2,2023-03-09,Thu 8:00pm,Penrith,16,South Sydney,10,G. Atkins,BlueBet,16906
-2023,nrl,2,2023-03-10,Fri 6:00pm,Parramatta,26,Cronulla,30,G. Sutton,CommBank,16663
-2023,nrl,2,2023-03-10,Fri 7:00pm,Brisbane,28,North Qld,16,A. Klein,Suncorp,43162
-2023,nrl,2,2023-03-11,Sat 3:00pm,Sydney,20,Warriors,12,A. Gee,Allianz,16267
-2023,nrl,2,2023-03-11,Sat 4:30pm,Dolphins,20,Canberra,14,T. Smith,Kayo,10023
-2023,nrl,2,2023-03-11,Sat 7:35pm,Melbourne,12,Canterbury,26,C. Butler,AAMI,17248
-2023,nrl,2,2023-03-12,Sun 4:05pm,Wests Tigers,12,Newcastle,14,P. Gough,Leichhardt,13214
-2023,nrl,2,2023-03-12,Sun 6:15pm,St Geo Illa,32,Gold Coast,18,C. Sutton,Netstrata,8538
-2023,nrl,3,2023-03-16,Thu 8:00pm,Manly,34,Parramatta,30,A. Gee,4 Pines,13363
-2023,nrl,3,2023-03-17,Fri 6:00pm,Newcastle,20,Dolphins,36,C. Butler,McD. Jones,20093
-2023,nrl,3,2023-03-17,Fri 8:00pm,Sydney,20,South Sydney,18,G. Sutton,Allianz,36639
-2023,nrl,3,2023-03-18,Sat 2:00pm,Gold Coast,38,Melbourne,34,G. Atkins,Cbus Super,14483
-2023,nrl,3,2023-03-18,Sat 4:30pm,North Qld,12,Warriors,26,C. Sutton,QLD C. Bank,17818
-2023,nrl,3,2023-03-18,Sat 6:35pm,Brisbane,40,St Geo Illa,18,P. Gough,Suncorp,26612
-2023,nrl,3,2023-03-19,Sun 4:05pm,Canterbury,26,Wests Tigers,22,T. Smith,Belmore,16404
-2023,nrl,3,2023-03-19,Sun 6:15pm,Canberra,24,Cronulla,20,A. Klein,GIO,14134
-2023,nrl,4,2023-03-23,Thu 8:00pm,Parramatta,17,Penrith,16,A. Klein,CommBank,16342
-2023,nrl,4,2023-03-24,Fri 6:00pm,Melbourne,24,Wests Tigers,12,B. Cummins,AAMI,11669
-2023,nrl,4,2023-03-24,Fri 7:00pm,Dolphins,12,Brisbane,18,A. Gee,Suncorp,51047
-2023,nrl,4,2023-03-25,Sat 4:30pm,North Qld,24,Gold Coast,12,C. Butler,QLD C. Bank,16426
-2023,nrl,4,2023-03-25,Sat 7:35pm,South Sydney,13,Manly,12,C. Sutton,Accor,18379
-2023,nrl,4,2023-03-26,Sun 4:00pm,Warriors,16,Canterbury,14,P. Gough,Mt Smart,18595
-2023,nrl,4,2023-03-26,Sun 4:05pm,Newcastle,24,Canberra,14,G. Sutton,McD. Jones,15106
-2023,nrl,4,2023-03-26,Sun 6:15pm,St Geo Illa,8,Cronulla,40,T. Smith,Netstrata,15126
-2023,nrl,5,2023-03-30,Thu 8:00pm,Sydney,28,Parramatta,20,G. Atkins,Allianz,20886
-2023,nrl,5,2023-03-31,Fri 6:00pm,Canberra,12,Penrith,53,A. Gee,GIO,15334
-2023,nrl,5,2023-03-31,Fri 8:00pm,South Sydney,10,Melbourne,18,T. Smith,Accor,11239
-2023,nrl,6,2023-04-01,Sat 3:00pm,Manly,32,Newcastle,32,C. Butler,Glen Willow,9024
-2023,nrl,6,2023-04-01,Sat 5:30pm,St Geo Illa,38,Dolphins,12,G. Sutton,WIN,16472
-2023,nrl,6,2023-04-01,Sat 6:35pm,Brisbane,46,Wests Tigers,12,C. Sutton,Suncorp,27553
-2023,nrl,6,2023-04-02,Sun 4:05pm,Cronulla,30,Warriors,32,B. Cummins,Pointsbet,10878
-2023,nrl,6,2023-04-02,Sun 6:15pm,Canterbury,15,North Qld,14,L. Kennedy,Accor,9626
-2023,nrl,7,2023-04-06,Thu 7:50pm,Melbourne,28,Sydney,8,A. Klein,AAMI,16323
-2023,nrl,7,2023-04-07,Fri 4:05pm,Canterbury,16,South Sydney,50,G. Sutton,Accor,35211
-2023,nrl,7,2023-04-07,Fri 8:00pm,North Qld,22,Dolphins,32,A. Gee,QLD C. Bank,22811
-2023,nrl,7,2023-04-08,Sat 5:30pm,Penrith,44,Manly,12,T. Smith,BlueBet,20312
-2023,nrl,7,2023-04-08,Sat 7:35pm,Brisbane,14,Canberra,20,G. Atkins,Suncorp,31962
-2023,nrl,7,2023-04-09,Sun 4:05pm,Gold Coast,20,St Geo Illa,18,P. Gough,Cbus Super,12452
-2023,nrl,7,2023-04-09,Sun 6:15pm,Newcastle,34,Warriors,24,L. Kennedy,McD. Jones,18007
-2023,nrl,7,2023-04-10,Mon 4:00pm,Wests Tigers,22,Parramatta,28,B. Cummins,Accor,28611
-2023,nrl,8,2023-04-13,Thu 7:50pm,Dolphins,14,South Sydney,36,A. Klein,Suncorp,23280
-2023,nrl,8,2023-04-14,Fri 6:00pm,Cronulla,22,Sydney,12,G. Atkins,Pointsbet,11489
-2023,nrl,8,2023-04-14,Fri 8:00pm,Manly,18,Melbourne,8,A. Gee,4 Pines,13573
-2023,nrl,8,2023-04-15,Sat 5:00pm,Warriors,22,North Qld,14,C. Sutton,Mt Smart,23695
-2023,nrl,8,2023-04-15,Sat 5:30pm,Newcastle,15,Penrith,16,P. Gough,McD. Jones,26084
-2023,nrl,8,2023-04-15,Sat 7:35pm,Gold Coast,26,Brisbane,43,T. Smith,Cbus Super,26563
-2023,nrl,8,2023-04-16,Sun 2:00pm,Canberra,20,St Geo Illa,14,G. Sutton,GIO,13817
-2023,nrl,8,2023-04-16,Sun 4:05pm,Parramatta,30,Canterbury,4,C. Butler,CommBank,27655
-2023,nrl,9,2023-04-20,Thu 7:50pm,South Sydney,20,Penrith,18,G. Sutton,Accor,19548
-2023,nrl,9,2023-04-21,Fri 7:30pm,Parramatta,16,Brisbane,26,A. Klein,TIO,11864
-2023,nrl,9,2023-04-22,Sat 5:30pm,Canterbury,20,Cronulla,33,C. Sutton,Accor,12148
-2023,nrl,9,2023-04-22,Sat 7:35pm,North Qld,18,Newcastle,16,B. Cummins,QLD C. Bank,17970
-2023,nrl,9,2023-04-23,Sun 2:00pm,Dolphins,28,Gold Coast,26,C. Butler,Suncorp,22034
-2023,nrl,9,2023-04-23,Sun 4:05pm,Wests Tigers,16,Manly,22,T. Smith,Campbelltown,10033
-2023,nrl,9,2023-04-25,Tue 4:05pm,Sydney,27,St Geo Illa,26,A. Gee,Allianz,40191
-2023,nrl,9,2023-04-25,Tue 7:00pm,Melbourne,30,Warriors,22,G. Atkins,AAMI,23469
-2023,nrl,10,2023-04-27,Thu 7:50pm,Cronulla,44,North Qld,6,G. Sutton,Pointsbet,8148
-2023,nrl,10,2023-04-28,Fri 6:00pm,Parramatta,43,Newcastle,12,C. Sutton,CommBank,15875
-2023,nrl,10,2023-04-28,Fri 8:00pm,Brisbane,6,South Sydney,32,A. Klein,Suncorp,40102
-2023,nrl,10,2023-04-29,Sat 3:00pm,Canberra,31,Dolphins,30,P. Gough,McDonalds Park,10445
-2023,nrl,10,2023-04-29,Sat 5:30pm,Manly,10,Gold Coast,26,B. Cummins,4 Pines,10107
-2023,nrl,10,2023-04-29,Sat 7:35pm,Penrith,8,Wests Tigers,12,A. Gee,Carrington,11055
-2023,nrl,10,2023-04-30,Sun 4:00pm,Warriors,0,Sydney,14,C. Butler,Mt Smart,20395
-2023,nrl,10,2023-04-30,Sun 4:05pm,St Geo Illa,16,Canterbury,18,G. Atkins,WIN,16678
-2023,nrl,11,2023-05-05,Fri 6:00pm,Canterbury,30,Canberra,34,C. Sutton,Suncorp,50077
-2023,nrl,11,2023-05-05,Fri 8:05pm,Manly,6,Brisbane,32,G. Sutton,Suncorp,50077
-2023,nrl,11,2023-05-06,Sat 3:00pm,Warriors,6,Penrith,18,T. Smith,Suncorp,50183
-2023,nrl,11,2023-05-06,Sat 5:30pm,Cronulla,16,Dolphins,36,G. Atkins,Suncorp,50183
-2023,nrl,11,2023-05-06,Sat 7:45pm,Melbourne,12,South Sydney,28,A. Gee,Suncorp,50183
-2023,nrl,11,2023-05-07,Sun 1:50pm,Wests Tigers,18,St Geo Illa,16,P. Gough,Suncorp,46835
-2023,nrl,11,2023-05-07,Sun 4:00pm,Sydney,6,North Qld,20,A. Klein,Suncorp,46835
-2023,nrl,11,2023-05-07,Sun 6:25pm,Gold Coast,26,Parramatta,24,C. Butler,Suncorp,46835
-2023,nrl,12,2023-05-11,Thu 7:50pm,Melbourne,24,Brisbane,16,T. Smith,AAMI,16043
-2023,nrl,12,2023-05-12,Fri 6:00pm,Canterbury,12,Warriors,24,B. Cummins,Accor,14294
-2023,nrl,12,2023-05-12,Fri 8:00pm,Penrith,48,Sydney,4,G. Sutton,BlueBet,20255
-2023,nrl,12,2023-05-13,Sat 3:00pm,South Sydney,20,Wests Tigers,0,L. Kennedy,Accor,21013
-2023,nrl,12,2023-05-13,Sat 5:30pm,North Qld,42,St Geo Illa,22,C. Butler,QLD C. Bank,17852
-2023,nrl,12,2023-05-13,Sat 7:35pm,Canberra,26,Parramatta,18,G. Atkins,GIO,17414
-2023,nrl,12,2023-05-14,Sun 2:00pm,Newcastle,46,Gold Coast,26,P. Gough,McD. Jones,13064
-2023,nrl,12,2023-05-14,Sun 4:05pm,Manly,14,Cronulla,20,A. Klein,4 Pines,10358
-2023,nrl,13,2023-05-18,Thu 7:50pm,Brisbane,4,Penrith,15,A. Gee,Suncorp,33343
-2023,nrl,13,2023-05-19,Fri 6:00pm,St Geo Illa,24,Sydney,22,P. Gough,Netstrata,9007
-2023,nrl,13,2023-05-19,Fri 8:00pm,South Sydney,16,Parramatta,36,A. Klein,Allianz,27432
-2023,nrl,13,2023-05-20,Sat 3:00pm,Cronulla,26,Newcastle,6,L. Kennedy,C.ex Coffs,10156
-2023,nrl,13,2023-05-20,Sat 5:30pm,Wests Tigers,66,North Qld,18,B. Cummins,Leichhardt,12247
-2023,nrl,13,2023-05-20,Sat 7:35pm,Dolphins,16,Melbourne,24,G. Atkins,Suncorp,28325
-2023,nrl,13,2023-05-21,Sun 2:00pm,Canterbury,20,Gold Coast,18,C. Butler,Accor,10815
-2023,nrl,13,2023-05-21,Sun 4:05pm,Canberra,14,Manly,42,G. Sutton,GIO,14730
-2023,nrl,14,2023-05-25,Thu 7:50pm,Dolphins,26,St Geo Illa,12,A. Gee,Kayo,10047
-2023,nrl,14,2023-05-26,Fri 8:00pm,Parramatta,24,North Qld,16,L. Kennedy,CommBank,14810
-2023,nrl,14,2023-05-27,Sat 7:30pm,Warriors,22,Brisbane,26,G. Sutton,McLean Park,16195
-2023,nrl,14,2023-05-27,Sat 7:35pm,South Sydney,26,Canberra,33,G. Atkins,Accor,12382
-2023,nrl,14,2023-05-28,Sun 4:05pm,Newcastle,28,Manly,18,P. Gough,McD. Jones,20661
-2023,nrl,15,2023-06-02,Fri 8:00pm,Wests Tigers,19,Canberra,20,G. Sutton,Campbelltown,11201
-2023,nrl,15,2023-06-03,Sat 5:00pm,Warriors,30,Dolphins,8,G. Atkins,Go Media,23686
-2023,nrl,15,2023-06-03,Sat 5:30pm,Gold Coast,28,South Sydney,46,L. Kennedy,Cbus Super,18736
-2023,nrl,15,2023-06-03,Sat 7:35pm,Cronulla,12,Brisbane,20,T. Smith,Pointsbet,12318
-2023,nrl,15,2023-06-04,Sun 2:00pm,Sydney,25,Canterbury,24,A. Klein,Industree,18338
-2023,nrl,15,2023-06-04,Sun 4:05pm,North Qld,45,Melbourne,20,P. Gough,QLD C. Bank,18867
-2023,nrl,15,2023-06-04,Sun 6:15pm,Penrith,26,St Geo Illa,18,C. Sutton,BlueBet,16912
-2023,nrl,16,2023-06-08,Thu 7:50pm,Gold Coast,28,Wests Tigers,12,T. Smith,Cbus Super,10232
-2023,nrl,16,2023-06-09,Fri 6:00pm,Canberra,14,Warriors,36,G. Atkins,GIO,21082
-2023,nrl,16,2023-06-09,Fri 8:00pm,Manly,58,Dolphins,18,G. Sutton,4 Pines,14598
-2023,nrl,16,2023-06-10,Sat 3:00pm,St Geo Illa,36,South Sydney,30,B. Cummins,Netstrata,17357
-2023,nrl,16,2023-06-10,Sat 5:30pm,Brisbane,24,Newcastle,20,C. Butler,Suncorp,35814
-2023,nrl,16,2023-06-10,Sat 7:35pm,Sydney,6,Penrith,30,A. Gee,Allianz,23610
-2023,nrl,16,2023-06-11,Sun 4:05pm,Melbourne,54,Cronulla,10,A. Klein,AAMI,20253
-2023,nrl,16,2023-06-12,Mon 4:00pm,Canterbury,12,Parramatta,34,L. Kennedy,Accor,33866
-2023,nrl,17,2023-06-16,Fri 8:00pm,North Qld,27,Penrith,23,P. Gough,QLD C. Bank,17277
-2023,nrl,17,2023-06-17,Sat 3:00pm,Newcastle,16,Sydney,18,G. Atkins,McD. Jones,21966
-2023,nrl,17,2023-06-17,Sat 5:30pm,Parramatta,34,Manly,4,C. Butler,CommBank,21296
-2023,nrl,17,2023-06-17,Sat 7:35pm,Wests Tigers,6,Melbourne,28,Z. Przeklasa-Adamski,Campbelltown,8517
-2023,nrl,17,2023-06-18,Sun 4:05pm,Cronulla,48,Canterbury,10,A. Gee,Pointsbet,11901
-2023,nrl,18,2023-06-23,Fri 8:00pm,St Geo Illa,18,Warriors,48,A. Gee,WIN,9275
-2023,nrl,18,2023-06-24,Sat 3:00pm,Dolphins,20,Parramatta,48,P. Gough,Sunshine Coast,8821
-2023,nrl,18,2023-06-24,Sat 5:30pm,Penrith,20,Newcastle,12,B. Cummins,BlueBet,18589
-2023,nrl,18,2023-06-24,Sat 7:35pm,Melbourne,24,Manly,6,T. Smith,AAMI,13198
-2023,nrl,18,2023-06-25,Sun 2:00pm,Brisbane,12,Gold Coast,18,C. Butler,Suncorp,42249
-2023,nrl,18,2023-06-25,Sun 4:05pm,South Sydney,6,North Qld,31,G. Sutton,Accor,11262
-2023,nrl,18,2023-06-25,Sun 6:15pm,Sydney,18,Canberra,20,A. Klein,Allianz,13326
-2023,nrl,19,2023-06-29,Thu 7:50pm,Cronulla,52,St Geo Illa,16,G. Atkins,Pointsbet,10267
-2023,nrl,19,2023-06-30,Fri 8:00pm,Warriors,6,South Sydney,28,A. Klein,Go Media,22612
-2023,nrl,19,2023-06-30,Fri 8:00pm,Melbourne,16,Penrith,34,A. Gee,Marvel Stadium,26829
-2023,nrl,20,2023-07-01,Sat 3:00pm,Canberra,26,Gold Coast,22,T. Smith,GIO,11659
-2023,nrl,20,2023-07-01,Sat 5:30pm,North Qld,74,Wests Tigers,0,L. Kennedy,QLD C. Bank,20535
-2023,nrl,20,2023-07-01,Sat 7:35pm,Brisbane,24,Dolphins,16,P. Gough,The Gabba,30606
-2023,nrl,20,2023-07-02,Sun 2:00pm,Canterbury,0,Newcastle,66,Z. Przeklasa-Adamski,Accor,11004
-2023,nrl,20,2023-07-02,Sun 4:05pm,Manly,18,Sydney,16,B. Cummins,4 Pines,17385
-2023,nrl,21,2023-07-06,Thu 7:50pm,Wests Tigers,12,Cronulla,36,T. Smith,CommBank,9215
-2023,nrl,21,2023-07-07,Fri 8:00pm,St Geo Illa,26,Canberra,36,P. Gough,WIN,9369
-2023,nrl,21,2023-07-08,Sat 5:30pm,Parramatta,10,Warriors,46,A. Gee,CommBank,21696
-2023,nrl,21,2023-07-08,Sat 7:35pm,South Sydney,32,Canterbury,36,L. Kennedy,Accor,16166
-2023,nrl,21,2023-07-09,Sun 4:05pm,Gold Coast,21,Dolphins,23,G. Atkins,Cbus Super,18335
-2023,nrl,22,2023-07-14,Fri 8:00pm,Newcastle,34,Wests Tigers,18,P. Gough,McD. Jones,18470
-2023,nrl,22,2023-07-15,Sat 3:00pm,Canterbury,24,Brisbane,44,Z. Przeklasa-Adamski,Belmore,17103
-2023,nrl,22,2023-07-15,Sat 5:30pm,Manly,8,North Qld,19,A. Gee,4 Pines,13240
-2023,nrl,22,2023-07-15,Sat 7:35pm,Sydney,16,Melbourne,30,G. Atkins,SCG,12021
-2023,nrl,22,2023-07-16,Sun 4:00pm,Warriors,44,Cronulla,12,G. Sutton,Go Media,24012
-2023,nrl,22,2023-07-16,Sun 4:05pm,Dolphins,14,Penrith,24,T. Smith,Kayo,10065
-2023,nrl,22,2023-07-16,Sun 6:15pm,Parramatta,25,Gold Coast,24,C. Butler,CommBank,12599
-2023,nrl,23,2023-07-20,Thu 7:50pm,St Geo Illa,18,Wests Tigers,14,B. Cummins,WIN,7246
-2023,nrl,23,2023-07-21,Fri 8:00pm,Warriors,21,Canberra,20,T. Smith,Go Media,19112
-2023,nrl,23,2023-07-21,Fri 8:00pm,South Sydney,20,Brisbane,36,A. Klein,Sunshine Coast,8931
-2023,nrl,23,2023-07-22,Sat 3:00pm,Gold Coast,18,Sydney,36,A. Gee,Cbus Super,15362
-2023,nrl,23,2023-07-22,Sat 5:30pm,Newcastle,26,Melbourne,18,G. Sutton,McD. Jones,20392
-2023,nrl,23,2023-07-22,Sat 7:35pm,North Qld,24,Parramatta,16,G. Atkins,QLD C. Bank,20710
-2023,nrl,23,2023-07-23,Sun 2:00pm,Penrith,44,Canterbury,18,C. Butler,BlueBet,21525
-2023,nrl,23,2023-07-23,Sun 4:05pm,Cronulla,26,Manly,30,P. Gough,Pointsbet,10634
-2023,nrl,24,2023-07-27,Thu 7:50pm,Brisbane,32,Sydney,10,G. Atkins,The Gabba,21841
-2023,nrl,24,2023-07-28,Fri 6:00pm,Wests Tigers,18,South Sydney,32,Z. Przeklasa-Adamski,Scully,10453
-2023,nrl,24,2023-07-28,Fri 8:00pm,Melbourne,46,Parramatta,16,A. Klein,Marvel Stadium,20429
-2023,nrl,24,2023-07-29,Sat 3:00pm,Canberra,6,Newcastle,28,A. Gee,GIO,15487
-2023,nrl,24,2023-07-29,Sat 5:30pm,St Geo Illa,18,Manly,24,C. Butler,WIN,14872
-2023,nrl,24,2023-07-29,Sat 7:35pm,Penrith,28,Cronulla,0,G. Sutton,BlueBet,20694
-2023,nrl,24,2023-07-30,Sun 2:00pm,Canterbury,23,Dolphins,22,P. Gough,Salter,5130
-2023,nrl,24,2023-07-30,Sun 4:05pm,Gold Coast,22,North Qld,13,T. Smith,Cbus Super,16516
-2023,nrl,25,2023-08-03,Thu 7:50pm,Sydney,26,Manly,16,A. Klein,SCG,12197
-2023,nrl,25,2023-08-04,Fri 6:00pm,Gold Coast,18,Warriors,28,B. Cummins,Cbus Super,20877
-2023,nrl,25,2023-08-04,Fri 8:00pm,Penrith,26,Melbourne,6,A. Gee,BlueBet,19953
-2023,nrl,25,2023-08-05,Sat 3:00pm,North Qld,14,Brisbane,30,G. Sutton,QLD C. Bank,22659
-2023,nrl,25,2023-08-05,Sat 3:30pm,Dolphins,28,Newcastle,30,G. Atkins,Optus Stadium,45814
-2023,nrl,25,2023-08-05,Sat 5:35pm,South Sydney,16,Cronulla,26,T. Smith,Optus Stadium,45814
-2023,nrl,25,2023-08-06,Sun 2:00pm,Parramatta,26,St Geo Illa,20,Z. Przeklasa-Adamski,CommBank,23596
-2023,nrl,25,2023-08-06,Sun 4:05pm,Canberra,22,Wests Tigers,18,P. Gough,GIO,12841
-2023,nrl,26,2023-08-10,Thu 7:50pm,Manly,12,Penrith,24,G. Sutton,4 Pines,10102
-2023,nrl,26,2023-08-11,Fri 6:00pm,Cronulla,36,Gold Coast,6,A. Klein,Pointsbet,9753
-2023,nrl,26,2023-08-11,Fri 8:00pm,Brisbane,54,Parramatta,10,A. Gee,The Gabba,29005
-2023,nrl,26,2023-08-12,Sat 3:00pm,South Sydney,26,St Geo Illa,14,B. Cummins,Barlow Park,8378
-2023,nrl,26,2023-08-12,Sat 7:30pm,Wests Tigers,22,Warriors,30,C. Butler,FMG Stadium,25118
-2023,nrl,26,2023-08-12,Sat 7:35pm,Sydney,30,Dolphins,14,T. Smith,Allianz,13704
-2023,nrl,26,2023-08-13,Sun 2:00pm,Melbourne,48,Canberra,2,G. Atkins,AAMI,17369
-2023,nrl,26,2023-08-13,Sun 4:05pm,Newcastle,42,Canterbury,6,P. Gough,McD. Jones,23464
-2023,nrl,27,2023-08-17,Thu 7:50pm,North Qld,12,Cronulla,32,A. Gee,QLD C. Bank,17318
-2023,nrl,27,2023-08-18,Fri 8:00pm,Warriors,29,Manly,22,T. Smith,Daniel Anderson,24112
-2023,nrl,27,2023-08-18,Fri 8:00pm,Parramatta,12,Sydney,34,A. Klein,CommBank,20076
-2023,nrl,27,2023-08-19,Sat 3:00pm,Wests Tigers,24,Dolphins,23,B. Cummins,CommBank,9245
-2023,nrl,27,2023-08-19,Sat 5:30pm,Gold Coast,14,Penrith,40,C. Butler,Cbus Super,19101
-2023,nrl,27,2023-08-19,Sat 7:35pm,St Geo Illa,28,Melbourne,38,P. Gough,WIN,8326
-2023,nrl,27,2023-08-20,Sun 2:05pm,Newcastle,29,South Sydney,10,G. Atkins,McD. Jones,29018
-2023,nrl,27,2023-08-20,Sun 4:05pm,Canberra,36,Canterbury,24,G. Sutton,GIO,12402
-2023,nrl,28,2023-08-24,Thu 7:50pm,Penrith,18,Parramatta,32,B. Cummins,BlueBet,21525
-2023,nrl,28,2023-08-25,Fri 8:00pm,Warriors,18,St Geo Illa,6,P. Gough,Go Media,25095
-2023,nrl,28,2023-08-25,Fri 8:00pm,Dolphins,10,North Qld,34,G. Sutton,Suncorp,33449
-2023,nrl,28,2023-08-26,Sat 3:00pm,Melbourne,37,Gold Coast,16,C. Butler,AAMI,18072
-2023,nrl,28,2023-08-26,Sat 5:30pm,Sydney,32,Wests Tigers,8,T. Smith,Allianz,22511
-2023,nrl,28,2023-08-26,Sat 7:35pm,Canberra,18,Brisbane,29,A. Gee,GIO,19400
-2023,nrl,28,2023-08-27,Sun 2:00pm,Canterbury,24,Manly,42,L. Kennedy,Accor,13074
-2023,nrl,28,2023-08-27,Sun 4:05pm,Newcastle,32,Cronulla,6,A. Klein,McD. Jones,29423
-2023,nrl,29,2023-08-31,Thu 7:50pm,Brisbane,22,Melbourne,32,A. Klein,Suncorp,43271
-2023,nrl,30,2023-09-01,Fri 6:00pm,Manly,54,Wests Tigers,12,B. Sharpe,4 Pines,16503
-2023,nrl,30,2023-09-01,Fri 8:00pm,South Sydney,12,Sydney,26,A. Gee,Accor,36263
-2023,nrl,30,2023-09-02,Sat 3:00pm,Dolphins,34,Warriors,10,G. Sutton,Suncorp,35438
-2023,nrl,30,2023-09-02,Sat 5:30pm,Penrith,44,North Qld,12,T. Smith,BlueBet,21525
-2023,nrl,30,2023-09-02,Sat 7:35pm,St Geo Illa,12,Newcastle,32,B. Cummins,Netstrata,10137
-2023,nrl,30,2023-09-03,Sun 2:00pm,Gold Coast,34,Canterbury,30,K. Badger,Cbus Super,14942
-2023,nrl,30,2023-09-03,Sun 4:05pm,Cronulla,24,Canberra,6,G. Atkins,Pointsbet,12750
-2023,nrl,31,2023-09-08,Fri 7:50pm,Brisbane,26,Melbourne,0,G. Atkins,Suncorp,50197
-2023,nrl,31,2023-09-09,Sat 4:05pm,Penrith,32,Warriors,6,A. Gee,BlueBet,21525
-2023,nrl,32,2023-09-09,Sat 7:50pm,Cronulla,12,Sydney,13,G. Sutton,Pointsbet,12570
-2023,nrl,32,2023-09-10,Sun 4:05pm,Newcastle,30,Canberra,28,A. Klein,McD. Jones,29548
-2023,nrl,33,2023-09-15,Fri 7:50pm,Melbourne,18,Sydney,13,A. Klein,AAMI,19534
-2023,nrl,33,2023-09-16,Sat 6:05pm,Warriors,40,Newcastle,10,A. Gee,Go Media,26083
-2023,nrl,34,2023-09-22,Fri 7:50pm,Penrith,38,Melbourne,4,A. Gee,Accor,35578
-2023,nrl,34,2023-09-23,Sat 7:50pm,Brisbane,42,Warriors,12,G. Sutton,Suncorp,52273
-2023,nrl,35,2023-10-01,Sun 7:30pm,Penrith,26,Brisbane,24,A. Gee,Accor,81947
-2024,nrl,1,2024-03-02,Sat 6:30pm,Manly,36,South Sydney,24,A. Klein,Allegiant,40746
-2024,nrl,1,2024-03-02,Sat 8:30pm,Sydney,20,Brisbane,10,A. Gee,Allegiant,40746
-2024,nrl,1,2024-03-07,Thu 8:00pm,Newcastle,12,Canberra,28,T. Smith,McD. Jones,22378
-2024,nrl,1,2024-03-08,Fri 8:00pm,Warriors,12,Cronulla,16,P. Gough,Go Media,24076
-2024,nrl,1,2024-03-08,Fri 8:05pm,Melbourne,8,Penrith,0,G. Sutton,AAMI,20169
-2024,nrl,1,2024-03-02,Sat 5:30pm,Parramatta,26,Canterbury,8,G. Atkins,CommBank,29171
-2024,nrl,1,2024-03-02,Sat 6:35pm,Gold Coast,4,St Geo Illa,28,Z. Przeklasa-Adamski,Cbus Super,14537
-2024,nrl,1,2024-03-03,Sun 3:05pm,Dolphins,18,North Qld,43,C. Butler,Suncorp,32477
-2024,nrl,2,2024-03-14,Thu 7:00pm,Brisbane,28,South Sydney,18,G. Sutton,Suncorp,35507
-2024,nrl,2,2024-03-15,Fri 6:00pm,Cronulla,25,Canterbury,6,Z. Przeklasa-Adamski,Sharks,12928
-2024,nrl,2,2024-03-15,Fri 8:00pm,Penrith,26,Parramatta,18,A. Klein,BlueBet,21522
-2024,nrl,2,2024-03-16,Sat 3:00pm,Canberra,32,Wests Tigers,12,P. Gough,GIO,16968
-2024,nrl,2,2024-03-16,Sat 4:30pm,North Qld,21,Newcastle,20,A. Gee,QLD C. Bank,18986
-2024,nrl,2,2024-03-16,Sat 7:35pm,Melbourne,30,Warriors,26,C. Butler,AAMI,21927
-2024,nrl,2,2024-03-17,Sun 4:05pm,Manly,21,Sydney,14,T. Smith,4 Pines,17284
-2024,nrl,2,2024-03-17,Sun 5:15pm,Dolphins,38,St Geo Illa,0,G. Atkins,Kayo,10011
-2024,nrl,3,2024-03-21,Thu 8:00pm,Penrith,34,Brisbane,12,G. Sutton,BlueBet,20089
-2024,nrl,3,2024-03-22,Fri 8:00pm,Warriors,18,Canberra,10,L. Kennedy,Apollo,17249
-2024,nrl,3,2024-03-22,Fri 8:00pm,Sydney,48,South Sydney,6,A. Klein,Allianz,37594
-2024,nrl,3,2024-03-23,Sat 3:00pm,Canterbury,32,Gold Coast,0,T. Smith,Belmore,12037
-2024,nrl,3,2024-03-23,Sat 5:30pm,St Geo Illa,24,North Qld,46,B. Sharpe,Netstrata,9252
-2024,nrl,3,2024-03-23,Sat 7:35pm,Wests Tigers,32,Cronulla,6,C. Butler,Leichhardt,15990
-2024,nrl,3,2024-03-24,Sun 4:05pm,Parramatta,28,Manly,24,P. Gough,CommBank,20354
-2024,nrl,3,2024-03-24,Sun 6:15pm,Newcastle,14,Melbourne,12,G. Atkins,McD. Jones,21889
-2024,nrl,4,2024-03-28,Thu 8:00pm,Sydney,16,Penrith,22,A. Gee,Allianz,25898
-2024,nrl,4,2024-03-29,Fri 4:05pm,South Sydney,20,Canterbury,16,G. Sutton,Accor,35275
-2024,nrl,4,2024-03-29,Fri 7:00pm,Brisbane,38,North Qld,12,G. Atkins,Suncorp,45793
-2024,nrl,4,2024-03-30,Sat 5:30pm,St Geo Illa,20,Manly,12,A. Klein,WIN,16215
-2024,nrl,4,2024-03-30,Sat 6:35pm,Gold Coast,14,Dolphins,30,B. Sharpe,Cbus Super,13898
-2024,nrl,4,2024-03-31,Sun 6:05pm,Warriors,20,Newcastle,12,P. Gough,Go Media,24112
-2024,nrl,4,2024-03-31,Sun 6:15pm,Cronulla,36,Canberra,22,T. Smith,Sharks,12692
-2024,nrl,5,2024-04-01,Mon 4:00pm,Parramatta,16,Wests Tigers,17,L. Kennedy,CommBank,28608
-2024,nrl,6,2024-04-04,Thu 8:00pm,Melbourne,34,Brisbane,32,A. Klein,AAMI,20698
-2024,nrl,6,2024-04-05,Fri 6:00pm,Canterbury,30,Sydney,26,G. Atkins,Accor,7169
-2024,nrl,6,2024-04-05,Fri 8:00pm,Newcastle,30,St Geo Illa,10,B. Sharpe,McD. Jones,9448
-2024,nrl,6,2024-04-06,Sat 3:00pm,South Sydney,4,Warriors,34,L. Kennedy,Accor,13181
-2024,nrl,6,2024-04-06,Sat 5:30pm,Manly,32,Penrith,18,T. Smith,4 Pines,17381
-2024,nrl,6,2024-04-06,Sat 6:35pm,Dolphins,26,Wests Tigers,16,G. Sutton,Suncorp,22051
-2024,nrl,6,2024-04-07,Sun 4:05pm,North Qld,35,Gold Coast,22,C. Butler,QLD C. Bank,18870
-2024,nrl,6,2024-04-07,Sun 6:15pm,Canberra,41,Parramatta,8,A. Gee,GIO,13907
-2024,nrl,7,2024-04-11,Thu 7:50pm,Newcastle,20,Sydney,22,G. Sutton,McD. Jones,21940
-2024,nrl,7,2024-04-12,Fri 6:00pm,Melbourne,16,Canterbury,14,W. Raymond,AAMI,16065
-2024,nrl,7,2024-04-12,Fri 8:00pm,Brisbane,28,Dolphins,14,A. Gee,Suncorp,46224
-2024,nrl,7,2024-04-13,Sat 5:00pm,Warriors,22,Manly,22,C. Butler,Go Media,23076
-2024,nrl,7,2024-04-13,Sat 5:30pm,Parramatta,27,North Qld,20,P. Gough,CommBank,14433
-2024,nrl,7,2024-04-13,Sat 7:35pm,South Sydney,22,Cronulla,34,A. Klein,Accor,12207
-2024,nrl,7,2024-04-14,Sun 4:05pm,Wests Tigers,12,St Geo Illa,24,G. Atkins,Campbelltown,17141
-2024,nrl,7,2024-04-14,Sun 6:15pm,Canberra,21,Gold Coast,20,K. Badger,GIO,11738
-2024,nrl,8,2024-04-18,Thu 7:50pm,Sydney,12,Melbourne,18,A. Klein,Allianz,17714
-2024,nrl,8,2024-04-19,Fri 6:00pm,St Geo Illa,30,Warriors,12,G. Sutton,WIN,13111
-2024,nrl,8,2024-04-19,Fri 7:30pm,Parramatta,16,Dolphins,44,T. Smith,TIO,11094
-2024,nrl,8,2024-04-20,Sat 3:00pm,Penrith,22,Wests Tigers,6,W. Raymond,Carrington,12000
-2024,nrl,8,2024-04-20,Sat 5:30pm,Gold Coast,30,Manly,34,L. Kennedy,Cbus Super,13336
-2024,nrl,8,2024-04-20,Sat 7:35pm,Brisbane,34,Canberra,10,C. Butler,Suncorp,37286
-2024,nrl,8,2024-04-21,Sun 2:00pm,Canterbury,36,Newcastle,12,P. Gough,Accor,17784
-2024,nrl,8,2024-04-21,Sun 4:05pm,Cronulla,42,North Qld,6,A. Gee,Sharks,12415
-2024,nrl,9,2024-04-25,Thu 4:00pm,Warriors,24,Gold Coast,27,W. Raymond,Go Media,23912
-2024,nrl,9,2024-04-25,Thu 4:05pm,St Geo Illa,18,Sydney,60,A. Gee,Allianz,40727
-2024,nrl,9,2024-04-25,Thu 7:50pm,Melbourne,54,South Sydney,20,T. Smith,AAMI,25149
-2024,nrl,9,2024-04-26,Fri 8:00pm,Manly,32,Parramatta,18,G. Sutton,4 Pines,17385
-2024,nrl,9,2024-04-27,Sat 5:30pm,Wests Tigers,10,Brisbane,34,G. Atkins,Campbelltown,17351
-2024,nrl,9,2024-04-27,Sat 7:35pm,North Qld,20,Penrith,26,K. Badger,QLD C. Bank,20960
-2024,nrl,9,2024-04-28,Sun 2:00pm,Dolphins,14,Newcastle,18,L. Kennedy,Suncorp,18033
-2024,nrl,9,2024-04-28,Sun 4:05pm,Canberra,0,Cronulla,40,P. Gough,GIO,15820
-2024,nrl,10,2024-05-02,Thu 7:50pm,South Sydney,12,Penrith,42,A. Gee,Accor,8155
-2024,nrl,10,2024-05-03,Fri 6:00pm,Manly,24,Canberra,26,G. Atkins,4 Pines,10215
-2024,nrl,10,2024-05-03,Fri 8:00pm,Brisbane,18,Sydney,40,A. Klein,Suncorp,40190
-2024,nrl,10,2024-05-04,Sat 3:00pm,Canterbury,22,Wests Tigers,14,K. Badger,Accor,17068
-2024,nrl,10,2024-05-04,Sat 5:30pm,Gold Coast,20,Melbourne,22,B. Sharpe,Cbus Super,13096
-2024,nrl,10,2024-05-04,Sat 7:35pm,North Qld,26,Dolphins,28,P. Gough,QLD C. Bank,20967
-2024,nrl,10,2024-05-05,Sun 2:00pm,Newcastle,14,Warriors,8,C. Butler,McD. Jones,16094
-2024,nrl,10,2024-05-05,Sun 4:05pm,Cronulla,20,St Geo Illa,10,T. Smith,Sharks,9731
-2024,nrl,11,2024-05-09,Thu 7:50pm,Dolphins,30,Manly,24,A. Klein,Suncorp,14059
-2024,nrl,11,2024-05-10,Fri 6:00pm,Penrith,16,Canterbury,10,L. Kennedy,BlueBet,21525
-2024,nrl,11,2024-05-10,Fri 8:00pm,Parramatta,14,Brisbane,30,G. Sutton,CommBank,17393
-2024,nrl,11,2024-05-11,Sat 3:00pm,Wests Tigers,14,Newcastle,20,Z. Przeklasa-Adamski,Scully,10107
-2024,nrl,11,2024-05-11,Sat 5:30pm,St Geo Illa,28,South Sydney,14,B. Sharpe,Netstrata,7517
-2024,nrl,11,2024-05-11,Sat 7:35pm,Melbourne,18,Cronulla,25,G. Atkins,AAMI,18670
-2024,nrl,11,2024-05-12,Sun 2:00pm,Sydney,38,Warriors,18,K. Badger,Allianz,16517
-2024,nrl,11,2024-05-12,Sun 4:05pm,Gold Coast,20,North Qld,18,W. Raymond,Cbus Super,12125
-2024,nrl,12,2024-05-17,Fri 6:00pm,Canberra,24,Canterbury,20,A. Klein,Suncorp,50971
-2024,nrl,12,2024-05-17,Fri 8:05pm,Manly,12,Brisbane,13,T. Smith,Suncorp,50971
-2024,nrl,12,2024-05-18,Sat 3:00pm,Gold Coast,24,Newcastle,28,G. Sutton,Suncorp,50708
-2024,nrl,12,2024-05-18,Sat 5:30pm,Cronulla,38,Sydney,30,A. Gee,Suncorp,50708
-2024,nrl,12,2024-05-18,Sat 7:45pm,South Sydney,22,North Qld,28,P. Gough,Suncorp,50708
-2024,nrl,12,2024-05-19,Sun 1:50pm,Warriors,22,Penrith,20,G. Atkins,Suncorp,47517
-2024,nrl,12,2024-05-19,Sun 4:05pm,Melbourne,48,Parramatta,16,W. Raymond,Suncorp,47517
-2024,nrl,12,2024-05-19,Sun 6:25pm,Wests Tigers,12,Dolphins,24,C. Butler,Suncorp,47517
-2024,nrl,13,2024-05-23,Thu 7:50pm,Canterbury,44,St Geo Illa,12,A. Gee,Accor,15442
-2024,nrl,13,2024-05-24,Fri 6:00pm,North Qld,42,Wests Tigers,28,B. Sharpe,QLD C. Bank,15957
-2024,nrl,13,2024-05-24,Fri 8:00pm,Manly,26,Melbourne,20,A. Klein,4 Pines,17211
-2024,nrl,13,2024-05-25,Sat 3:00pm,Canberra,16,Sydney,44,T. Smith,GIO,18049
-2024,nrl,13,2024-05-25,Sat 5:30pm,Cronulla,0,Penrith,42,G. Sutton,Sharks,13500
-2024,nrl,13,2024-05-25,Sat 7:35pm,South Sydney,42,Parramatta,26,C. Butler,Accor,15202
-2024,nrl,13,2024-05-26,Sun 2:00pm,Brisbane,34,Gold Coast,36,P. Gough,Suncorp,42221
-2024,nrl,13,2024-05-26,Sun 6:05pm,Warriors,24,Dolphins,20,L. Kennedy,Go Media,23116
-2024,nrl,14,2024-05-30,Thu 7:50pm,Parramatta,34,Cronulla,22,A. Klein,CommBank,11665
-2024,nrl,14,2024-05-31,Fri 8:00pm,Newcastle,2,Canterbury,32,G. Atkins,McD. Jones,21204
-2024,nrl,15,2024-06-01,Sat 5:30pm,Penrith,10,St Geo Illa,22,T. Smith,BlueBet,12025
-2024,nrl,15,2024-06-01,Sat 7:35pm,Dolphins,25,Canberra,26,A. Gee,Kayo,10024
-2024,nrl,15,2024-06-02,Sun 4:05pm,Sydney,16,North Qld,18,G. Sutton,Allianz,13811
-2024,nrl,16,2024-06-07,Fri 8:00pm,St Geo Illa,56,Wests Tigers,14,C. Butler,WIN,9969
-2024,nrl,16,2024-06-08,Sat 3:00pm,Gold Coast,12,South Sydney,46,C. Sutton,Cbus Super,14434
-2024,nrl,16,2024-06-08,Sat 5:30pm,North Qld,12,Warriors,42,Z. Przeklasa-Adamski,QLD C. Bank,19623
-2024,nrl,16,2024-06-08,Sat 7:35pm,Brisbane,12,Cronulla,22,G. Atkins,Suncorp,41004
-2024,nrl,16,2024-06-09,Sun 2:00pm,Melbourne,36,Newcastle,28,A. Gee,AAMI,20269
-2024,nrl,16,2024-06-09,Sun 4:05pm,Penrith,32,Manly,22,G. Sutton,BlueBet,20101
-2024,nrl,16,2024-06-10,Mon 4:00pm,Canterbury,22,Parramatta,18,P. Gough,Accor,45496
-2024,nrl,17,2024-06-13,Thu 7:50pm,Cronulla,28,Dolphins,30,T. Smith,Sharks,8035
-2024,nrl,17,2024-06-14,Fri 6:00pm,Canberra,16,North Qld,34,C. Sutton,GIO,9671
-2024,nrl,17,2024-06-14,Fri 8:00pm,South Sydney,22,Brisbane,12,A. Gee,Accor,12207
-2024,nrl,17,2024-06-15,Sat 3:00pm,Wests Tigers,18,Gold Coast,10,A. Klein,Leichhardt,8147
-2024,nrl,17,2024-06-15,Sat 7:30pm,Warriors,24,Melbourne,38,G. Sutton,Go Media,24495
-2024,nrl,17,2024-06-15,Sat 7:35pm,Parramatta,18,Sydney,28,C. Butler,CommBank,20072
-2024,nrl,17,2024-06-16,Sun 2:00pm,Manly,30,St Geo Illa,14,P. Gough,4 Pines,17187
-2024,nrl,17,2024-06-16,Sun 4:05pm,Newcastle,18,Penrith,26,G. Atkins,McD. Jones,27966
-2024,nrl,18,2024-06-21,Fri 8:00pm,Dolphins,24,Melbourne,30,L. Kennedy,Suncorp,25167
-2024,nrl,18,2024-06-22,Sat 3:00pm,Gold Coast,66,Warriors,6,A. Gee,Cbus Super,22702
-2024,nrl,18,2024-06-22,Sat 5:30pm,Sydney,26,Canterbury,8,G. Atkins,Industree,16868
-2024,nrl,18,2024-06-22,Sat 7:35pm,South Sydney,14,Manly,0,C. Butler,Accor,10576
-2024,nrl,18,2024-06-23,Sun 4:05pm,Wests Tigers,48,Canberra,24,T. Smith,Campbelltown,10106
-2024,nrl,19,2024-06-28,Fri 8:00pm,Canterbury,15,Cronulla,14,G. Sutton,Accor,15765
-2024,nrl,19,2024-06-29,Sat 5:00pm,Warriors,32,Brisbane,16,T. Smith,Go Media,22711
-2024,nrl,19,2024-06-29,Sat 5:30pm,Newcastle,34,Parramatta,26,P. Gough,McD. Jones,27424
-2024,nrl,19,2024-06-29,Sat 7:35pm,Melbourne,16,Canberra,6,G. Atkins,AAMI,14127
-2024,nrl,19,2024-06-30,Sun 2:00pm,St Geo Illa,26,Dolphins,6,A. Gee,Netstrata,8052
-2024,nrl,19,2024-06-30,Sun 4:05pm,Penrith,6,North Qld,16,L. Kennedy,BlueBet,15777
-2024,nrl,19,2024-06-30,Sun 6:15pm,Sydney,40,Wests Tigers,6,Z. Przeklasa-Adamski,Allianz,14711
-2024,nrl,20,2024-07-04,Thu 7:50pm,Parramatta,16,South Sydney,32,L. Kennedy,CommBank,13941
-2024,nrl,20,2024-07-05,Fri 6:00pm,Cronulla,16,Gold Coast,20,Z. Przeklasa-Adamski,C.ex Coffs,8673
-2024,nrl,20,2024-07-05,Fri 8:00pm,Brisbane,6,Penrith,14,G. Atkins,Suncorp,42433
-2024,nrl,20,2024-07-06,Sat 3:00pm,Canterbury,13,Warriors,12,C. Butler,Accor,27223
-2024,nrl,20,2024-07-06,Sat 5:30pm,Wests Tigers,28,Melbourne,40,P. Gough,Leichhardt,10311
-2024,nrl,20,2024-07-06,Sat 7:35pm,North Qld,20,Manly,21,T. Smith,QLD C. Bank,18787
-2024,nrl,20,2024-07-07,Sun 2:00pm,Sydney,42,St Geo Illa,12,A. Klein,Allianz,23388
-2024,nrl,20,2024-07-07,Sun 4:05pm,Canberra,12,Newcastle,16,G. Sutton,GIO,12553
-2024,nrl,21,2024-07-11,Thu 7:50pm,Dolphins,36,South Sydney,28,G. Sutton,Kayo,10023
-2024,nrl,21,2024-07-12,Fri 8:00pm,Cronulla,58,Wests Tigers,6,A. Gee,Sharks,10912
-2024,nrl,21,2024-07-13,Sat 5:30pm,Gold Coast,24,Parramatta,16,T. Smith,Cbus Super,16670
-2024,nrl,21,2024-07-13,Sat 7:35pm,Brisbane,26,St Geo Illa,30,L. Kennedy,Suncorp,34224
-2024,nrl,21,2024-07-14,Sun 4:05pm,Manly,44,Newcastle,6,G. Atkins,4 Pines,17298
-2024,nrl,22,2024-07-19,Fri 8:00pm,Canberra,20,Warriors,18,T. Smith,GIO,8509
-2024,nrl,22,2024-07-20,Sat 3:00pm,South Sydney,42,Wests Tigers,28,W. Raymond,Industree,16284
-2024,nrl,22,2024-07-20,Sat 5:30pm,Newcastle,14,Brisbane,30,C. Butler,McD. Jones,26952
-2024,nrl,22,2024-07-20,Sat 7:35pm,Melbourne,24,Sydney,8,G. Atkins,AAMI,17055
-2024,nrl,22,2024-07-21,Sun 2:00pm,Penrith,28,Dolphins,26,A. Gee,BlueBet,20955
-2024,nrl,22,2024-07-21,Sun 4:05pm,Manly,38,Gold Coast,8,L. Kennedy,4 Pines,16050
-2024,nrl,22,2024-07-21,Sun 6:15pm,North Qld,20,Canterbury,18,G. Sutton,QLD C. Bank,16376
-2024,nrl,23,2024-07-26,Fri 8:00pm,Warriors,28,Wests Tigers,16,P. Gough,Go Media,23976
-2024,nrl,23,2024-07-26,Fri 8:00pm,Parramatta,14,Melbourne,32,L. Kennedy,CommBank,11082
-2024,nrl,23,2024-07-27,Sat 3:00pm,Brisbane,16,Canterbury,41,G. Atkins,Suncorp,42213
-2024,nrl,23,2024-07-27,Sat 5:30pm,North Qld,30,Cronulla,22,A. Gee,QLD C. Bank,17907
-2024,nrl,23,2024-07-27,Sat 7:35pm,Sydney,34,Manly,30,A. Klein,Allianz,25155
-2024,nrl,23,2024-07-28,Sun 2:00pm,St Geo Illa,10,Penrith,46,G. Sutton,WIN,18988
-2024,nrl,23,2024-07-28,Sun 4:05pm,Dolphins,14,Gold Coast,21,T. Smith,Suncorp,19533
-2024,nrl,23,2024-07-28,Sun 6:15pm,Canberra,32,South Sydney,12,W. Raymond,GIO,12114
-2024,nrl,24,2024-08-01,Thu 7:50pm,Wests Tigers,30,North Qld,48,C. Butler,Leichhardt,7231
-2024,nrl,24,2024-08-02,Fri 8:00pm,Warriors,20,Parramatta,30,T. Smith,Go Media,23812
-2024,nrl,24,2024-08-02,Fri 6:00pm,Dolphins,34,Sydney,40,G. Sutton,HBF,20027
-2024,nrl,24,2024-08-03,Sat 3:00pm,Gold Coast,46,Brisbane,18,P. Gough,Cbus Super,25278
-2024,nrl,24,2024-08-03,Sat 5:30pm,Melbourne,16,St Geo Illa,18,G. Atkins,AAMI,18103
-2024,nrl,24,2024-08-03,Sat 7:35pm,Cronulla,20,South Sydney,6,L. Kennedy,Sharks,12763
-2024,nrl,24,2024-08-04,Sun 2:00pm,Penrith,22,Newcastle,14,A. Gee,BlueBet,20261
-2024,nrl,24,2024-08-04,Sun 4:05pm,Canterbury,22,Canberra,18,A. Klein,Belmore,18110
-2024,nrl,25,2024-08-08,Thu 7:50pm,South Sydney,16,Melbourne,28,T. Smith,Accor,8973
-2024,nrl,25,2024-08-09,Fri 6:00pm,Gold Coast,0,Cronulla,44,A. Gee,Cbus Super,13287
-2024,nrl,25,2024-08-09,Fri 8:00pm,Parramatta,34,Penrith,36,P. Gough,CommBank,18852
-2024,nrl,25,2024-08-10,Sat 3:00pm,Canberra,24,Manly,46,G. Atkins,GIO,16690
-2024,nrl,25,2024-08-10,Sat 5:30pm,North Qld,18,Brisbane,42,A. Klein,QLD C. Bank,24230
-2024,nrl,25,2024-08-10,Sat 7:35pm,St Geo Illa,10,Canterbury,28,G. Sutton,Netstrata,18416
-2024,nrl,25,2024-08-11,Sun 2:00pm,Dolphins,34,Warriors,32,W. Raymond,Suncorp,28056
-2024,nrl,25,2024-08-11,Sun 4:05pm,Newcastle,34,Wests Tigers,18,B. Sharpe,McD. Jones,22183
-2024,nrl,26,2024-08-15,Thu 7:50pm,Penrith,22,Melbourne,24,A. Klein,BlueBet,20516
-2024,nrl,26,2024-08-16,Fri 6:00pm,Manly,24,Warriors,10,C. Butler,4 Pines,17333
-2024,nrl,26,2024-08-16,Fri 8:00pm,Sydney,38,Parramatta,14,G. Atkins,Allianz,20724
-2024,nrl,26,2024-08-17,Sat 3:00pm,Canterbury,30,Dolphins,10,A. Gee,Salter,6148
-2024,nrl,26,2024-08-17,Sat 5:30pm,North Qld,42,Canberra,4,T. Smith,QLD C. Bank,17920
-2024,nrl,26,2024-08-17,Sat 7:35pm,Wests Tigers,18,South Sydney,16,B. Sharpe,Campbelltown,11420
-2024,nrl,26,2024-08-18,Sun 2:00pm,St Geo Illa,32,Gold Coast,16,W. Raymond,WIN,9240
-2024,nrl,26,2024-08-18,Sun 4:05pm,Cronulla,19,Newcastle,18,G. Sutton,Sharks,11503
-2024,nrl,27,2024-08-22,Thu 7:50pm,Wests Tigers,34,Manly,26,P. Gough,Leichhardt,11520
-2024,nrl,27,2024-08-23,Fri 8:00pm,Warriors,18,Canterbury,34,W. Raymond,Shaun Johnson,24295
-2024,nrl,27,2024-08-23,Fri 8:00pm,Brisbane,30,Parramatta,24,T. Smith,Suncorp,36289
-2024,nrl,27,2024-08-24,Sat 3:00pm,Canberra,22,Penrith,18,G. Atkins,GIO,17523
-2024,nrl,27,2024-08-24,Sat 5:30pm,Melbourne,48,Dolphins,6,G. Sutton,AAMI,26106
-2024,nrl,27,2024-08-24,Sat 7:35pm,South Sydney,16,Newcastle,36,C. Butler,Accor,9659
-2024,nrl,27,2024-08-25,Sun 2:00pm,Gold Coast,22,Sydney,48,A. Gee,Cbus Super,19286
-2024,nrl,27,2024-08-25,Sun 4:05pm,St Geo Illa,10,Cronulla,38,A. Klein,WIN,17754
-2024,nrl,28,2024-08-29,Thu 7:50pm,North Qld,38,Melbourne,30,G. Atkins,QLD C. Bank,20787
-2024,nrl,28,2024-08-30,Fri 6:00pm,Canterbury,22,Manly,34,A. Klein,Accor,35502
-2024,nrl,28,2024-08-30,Fri 8:00pm,Penrith,34,South Sydney,12,P. Gough,BlueBet,20176
-2024,nrl,28,2024-08-31,Sat 3:00pm,Parramatta,44,St Geo Illa,40,W. Raymond,CommBank,21623
-2024,nrl,28,2024-08-31,Sat 5:30pm,Dolphins,40,Brisbane,6,A. Gee,Suncorp,50049
-2024,nrl,28,2024-08-31,Sat 7:35pm,Cronulla,28,Warriors,30,C. Butler,Sharks,12637
-2024,nrl,29,2024-09-01,Sun 2:00pm,Newcastle,36,Gold Coast,14,G. Sutton,McD. Jones,24712
-2024,nrl,29,2024-09-01,Sun 4:05pm,Sydney,12,Canberra,14,T. Smith,Allianz,27239
-2024,nrl,30,2024-09-05,Thu 7:50pm,Brisbane,12,Melbourne,50,T. Smith,Suncorp,35086
-2024,nrl,30,2024-09-06,Fri 6:00pm,Wests Tigers,26,Parramatta,60,P. Gough,Campbelltown,17311
-2024,nrl,30,2024-09-06,Fri 8:00pm,South Sydney,28,Sydney,36,G. Atkins,Accor,19674
-2024,nrl,30,2024-09-07,Sat 3:00pm,St Geo Illa,24,Canberra,26,W. Raymond,Netstrata,11189
-2024,nrl,30,2024-09-07,Sat 5:30pm,Canterbury,6,North Qld,44,G. Sutton,Accor,32437
-2024,nrl,30,2024-09-07,Sat 7:35pm,Penrith,18,Gold Coast,12,C. Butler,BlueBet,21525
-2024,nrl,30,2024-09-08,Sun 2:00pm,Manly,20,Cronulla,40,A. Gee,4 Pines,17384
-2024,nrl,30,2024-09-08,Sun 4:05pm,Newcastle,14,Dolphins,6,A. Klein,McD. Jones,29433
-2024,nrl,31,2024-09-13,Fri 7:50pm,Penrith,30,Sydney,10,A. Klein,BlueBet,21483
-2024,nrl,31,2024-09-14,Sat 4:05pm,Melbourne,37,Cronulla,10,G. Sutton,AAMI,26326
-2024,nrl,32,2024-09-14,Sat 7:50pm,North Qld,28,Newcastle,16,T. Smith,QLD C. Bank,24861
-2024,nrl,32,2024-09-15,Sun 4:05pm,Canterbury,22,Manly,24,G. Atkins,Accor,50714
-2024,nrl,33,2024-09-20,Fri 7:50pm,Cronulla,26,North Qld,18,A. Klein,Allianz,19124
-2024,nrl,33,2024-09-21,Sat 7:50pm,Sydney,40,Manly,16,G. Atkins,Allianz,40818
-2024,nrl,34,2024-09-27,Fri 7:50pm,Melbourne,48,Sydney,18,G. Atkins,AAMI,29213
-2024,nrl,34,2024-09-28,Sat 7:50pm,Penrith,26,Cronulla,6,A. Klein,Accor,33753
-2024,nrl,35,2024-10-06,Sun 7:30pm,Melbourne,6,Penrith,14,A. Klein,Accor,80156
-2025,nrl,1,2025-03-01,Sat 4:00pm,Canberra,30,Warriors,8,G. Atkins,Allegiant,45209
-2025,nrl,1,2025-03-01,Sat 8:30pm,Penrith,28,Cronulla,22,A. Klein,Allegiant,45209
-2025,nrl,1,2025-03-06,Thu 8:00pm,Sydney,14,Brisbane,50,G. Sutton,Allianz,23226
-2025,nrl,1,2025-03-07,Fri 6:00pm,Wests Tigers,8,Newcastle,10,L. Kennedy,Campbelltown,13160
-2025,nrl,1,2025-03-07,Fri 8:00pm,South Sydney,16,Dolphins,14,A. Gee,CommBank,6738
-2025,nrl,1,2025-03-01,Sat 5:30pm,St Geo Illa,20,Canterbury,28,T. Smith,Netstrata,16211
-2025,nrl,1,2025-03-01,Sat 7:35pm,Manly,42,North Qld,12,P. Gough,4 Pines,17335
-2025,nrl,1,2025-03-02,Sun 4:05pm,Melbourne,56,Parramatta,18,W. Raymond,AAMI,23369
-2025,nrl,2,2025-03-13,Thu 8:00pm,Newcastle,26,Dolphins,12,G. Sutton,McD. Jones,18531
-2025,nrl,2,2025-03-14,Fri 8:00pm,Warriors,36,Manly,16,A. Gee,Go Media,21212
-2025,nrl,2,2025-03-14,Fri 8:00pm,Penrith,32,Sydney,38,T. Smith,CommBank,12180
-2025,nrl,2,2025-03-15,Sat 3:00pm,St Geo Illa,24,South Sydney,25,A. Klein,WIN,16111
-2025,nrl,2,2025-03-15,Sat 4:30pm,North Qld,12,Cronulla,36,L. Kennedy,QLD C. Bank,18714
-2025,nrl,2,2025-03-15,Sat 7:35pm,Canberra,32,Brisbane,22,W. Raymond,GIO,18884
-2025,nrl,2,2025-03-16,Sun 4:05pm,Parramatta,6,Wests Tigers,32,G. Atkins,CommBank,18362
-2025,nrl,2,2025-03-16,Sun 6:15pm,Canterbury,40,Gold Coast,24,P. Gough,Belmore,17892
-2025,nrl,3,2025-03-20,Thu 8:00pm,Melbourne,30,Penrith,24,A. Gee,AAMI,17586
-2025,nrl,3,2025-03-21,Fri 8:00pm,Warriors,14,Sydney,6,A. Klein,Go Media,23219
-2025,nrl,3,2025-03-21,Fri 7:00pm,Brisbane,26,North Qld,16,T. Smith,Suncorp,45317
-2025,nrl,3,2025-03-22,Sat 3:00pm,Cronulla,27,South Sydney,12,G. Sutton,Sharks,14320
-2025,nrl,3,2025-03-22,Sat 4:30pm,Dolphins,18,Wests Tigers,30,P. Gough,Kayo,10023
-2025,nrl,3,2025-03-22,Sat 6:35pm,Gold Coast,26,Newcastle,6,L. Kennedy,Cbus Super,14602
-2025,nrl,3,2025-03-23,Sun 4:05pm,Parramatta,8,Canterbury,16,W. Raymond,CommBank,24059
-2025,nrl,3,2025-03-23,Sun 6:15pm,Manly,40,Canberra,12,G. Atkins,4 Pines,16125
-2025,nrl,4,2025-03-27,Thu 8:00pm,South Sydney,28,Penrith,18,A. Klein,Accor,10029
-2025,nrl,4,2025-03-28,Fri 6:00pm,Sydney,12,Gold Coast,30,G. Atkins,Allianz,14101
-2025,nrl,4,2025-03-28,Fri 7:00pm,Dolphins,12,Brisbane,20,G. Sutton,Suncorp,44278
-2025,nrl,4,2025-03-29,Sat 3:00pm,St Geo Illa,14,Melbourne,8,P. Gough,Jubilee,6211
-2025,nrl,4,2025-03-29,Sat 4:30pm,North Qld,30,Canberra,20,A. Gee,QLD C. Bank,15897
-2025,nrl,4,2025-03-29,Sat 7:35pm,Cronulla,6,Canterbury,20,C. Butler,Sharks,11703
-2025,nrl,4,2025-03-30,Sun 4:05pm,Manly,26,Parramatta,12,T. Smith,4 Pines,17286
-2025,nrl,4,2025-03-30,Sun 6:15pm,Wests Tigers,24,Warriors,26,W. Raymond,Campbelltown,12020
-2025,nrl,5,2025-04-03,Thu 8:00pm,Canberra,24,Cronulla,20,T. Smith,GIO,10914
-2025,nrl,5,2025-04-04,Fri 6:00pm,Penrith,18,North Qld,22,P. Gough,CommBank,10320
-2025,nrl,5,2025-04-04,Fri 8:00pm,South Sydney,20,Sydney,14,A. Gee,Accor,22114
-2025,nrl,5,2025-04-05,Sat 3:00pm,Parramatta,23,St Geo Illa,22,G. Sutton,CommBank,19302
-2025,nrl,5,2025-04-05,Sat 4:30pm,Gold Coast,10,Dolphins,36,W. Raymond,Cbus Super,15798
-2025,nrl,5,2025-04-05,Sat 6:35pm,Brisbane,46,Wests Tigers,24,L. Kennedy,Suncorp,41012
-2025,nrl,5,2025-04-06,Sun 4:05pm,Manly,24,Melbourne,48,G. Atkins,4 Pines,17346
-2025,nrl,5,2025-04-06,Sun 6:15pm,Canterbury,20,Newcastle,0,A. Klein,Accor,24113
-2025,nrl,6,2025-04-10,Thu 7:50pm,Dolphins,30,Penrith,12,G. Atkins,Suncorp,19103
-2025,nrl,6,2025-04-11,Fri 6:00pm,St Geo Illa,38,Gold Coast,16,C. Butler,WIN,8510
-2025,nrl,6,2025-04-11,Fri 8:00pm,Brisbane,16,Sydney,26,P. Gough,Suncorp,40814
-2025,nrl,6,2025-04-12,Sat 1:00pm,Cronulla,24,Manly,18,A. Gee,Optus Stadium,31347
-2025,nrl,6,2025-04-12,Sat 3:30pm,South Sydney,16,North Qld,24,T. Smith,Optus Stadium,31347
-2025,nrl,6,2025-04-12,Sat 7:05pm,Parramatta,12,Canberra,50,W. Raymond,TIO,9559
-2025,nrl,6,2025-04-13,Sun 2:00pm,Melbourne,42,Warriors,14,A. Klein,AAMI,26427
-2025,nrl,6,2025-04-13,Sun 4:05pm,Newcastle,4,Wests Tigers,20,G. Sutton,McD. Jones,25960
-2025,nrl,7,2025-04-17,Thu 7:50pm,Manly,18,St Geo Illa,20,P. Gough,4 Pines,17254
-2025,nrl,7,2025-04-18,Fri 4:05pm,Canterbury,32,South Sydney,0,G. Atkins,Accor,65305
-2025,nrl,7,2025-04-18,Fri 8:00pm,Dolphins,42,Melbourne,22,T. Smith,Suncorp,28024
-2025,nrl,7,2025-04-19,Sat 7:30pm,Warriors,20,Brisbane,18,C. Butler,Go Media,22395
-2025,nrl,7,2025-04-19,Sat 7:35pm,Sydney,12,Penrith,40,G. Sutton,Allianz,20373
-2025,nrl,7,2025-04-20,Sun 2:00pm,Gold Coast,20,Canberra,30,A. Gee,Cbus Super,15089
-2025,nrl,7,2025-04-20,Sun 4:05pm,Newcastle,14,Cronulla,34,A. Klein,McD. Jones,24248
-2025,nrl,7,2025-04-21,Mon 4:00pm,Wests Tigers,22,Parramatta,38,L. Kennedy,CommBank,26145
-2025,nrl,8,2025-04-24,Thu 7:50pm,Brisbane,42,Canterbury,18,G. Sutton,Suncorp,40233
-2025,nrl,8,2025-04-25,Fri 4:00pm,Sydney,46,St Geo Illa,18,T. Smith,Allianz,41021
-2025,nrl,8,2025-04-25,Fri 8:05pm,Warriors,26,Newcastle,12,W. Raymond,Apollo,17095
-2025,nrl,8,2025-04-25,Fri 8:10pm,Melbourne,24,South Sydney,16,P. Gough,AAMI,26010
-2025,nrl,8,2025-04-26,Sat 5:30pm,North Qld,50,Gold Coast,18,C. Butler,QLD C. Bank,20489
-2025,nrl,8,2025-04-26,Sat 7:35pm,Penrith,10,Manly,26,B. Sharpe,CommBank,14534
-2025,nrl,8,2025-04-27,Sun 2:00pm,Canberra,40,Dolphins,28,A. Klein,GIO,15686
-2025,nrl,8,2025-04-27,Sun 4:05pm,Wests Tigers,20,Cronulla,18,G. Atkins,Leichhardt,14812
-2025,nrl,9,2025-05-02,Fri 6:00pm,Cronulla,28,Parramatta,18,P. Gough,Suncorp,44613
-2025,nrl,9,2025-05-02,Fri 8:05pm,Sydney,36,Dolphins,26,G. Atkins,Suncorp,48359
-2025,nrl,9,2025-05-03,Sat 3:00pm,South Sydney,4,Newcastle,30,L. Kennedy,Suncorp,39682
-2025,nrl,9,2025-05-03,Sat 5:30pm,Warriors,30,North Qld,26,A. Gee,Suncorp,49512
-2025,nrl,9,2025-05-03,Sat 7:45pm,Wests Tigers,34,St Geo Illa,28,W. Raymond,Suncorp,50658
-2025,nrl,9,2025-05-04,Sun 1:50pm,Gold Coast,18,Canterbury,38,T. Smith,Suncorp,39581
-2025,nrl,9,2025-05-04,Sun 4:05pm,Penrith,32,Brisbane,8,A. Klein,Suncorp,50309
-2025,nrl,9,2025-05-04,Sun 6:25pm,Melbourne,18,Canberra,20,G. Sutton,Suncorp,50309
-2025,nrl,10,2025-05-08,Thu 7:50pm,Parramatta,16,Dolphins,20,W. Raymond,CommBank,11214
-2025,nrl,10,2025-05-09,Fri 6:00pm,Newcastle,20,Gold Coast,24,B. Sharpe,McD. Jones,15193
-2025,nrl,10,2025-05-09,Fri 8:00pm,South Sydney,22,Brisbane,14,P. Gough,Accor,13747
-2025,nrl,10,2025-05-10,Sat 3:00pm,Canberra,20,Canterbury,32,A. Gee,GIO,23827
-2025,nrl,10,2025-05-10,Sat 5:30pm,St Geo Illa,14,Warriors,15,L. Kennedy,WIN,12919
-2025,nrl,10,2025-05-10,Sat 7:35pm,North Qld,30,Penrith,30,T. Smith,QLD C. Bank,19324
-2025,nrl,10,2025-05-11,Sun 2:00pm,Melbourne,64,Wests Tigers,0,G. Atkins,AAMI,17376
-2025,nrl,10,2025-05-11,Sun 4:05pm,Manly,14,Cronulla,30,G. Sutton,4 Pines,15823
-2025,nrl,11,2025-05-16,Fri 6:00pm,Newcastle,6,Parramatta,28,T. Smith,McD. Jones,20125
-2025,nrl,11,2025-05-16,Fri 8:00pm,Canterbury,24,Sydney,20,A. Klein,Accor,30166
-2025,nrl,11,2025-05-17,Sat 3:00pm,Dolphins,12,Warriors,16,P. Gough,Suncorp,32165
-2025,nrl,11,2025-05-17,Sat 5:30pm,North Qld,6,Manly,24,G. Atkins,QLD C. Bank,18965
-2025,nrl,11,2025-05-17,Sat 7:35pm,Cronulla,31,Melbourne,26,A. Gee,Sharks,11570
-2025,nrl,11,2025-05-18,Sun 2:00pm,Brisbane,26,St Geo Illa,30,G. Sutton,Suncorp,38016
-2025,nrl,11,2025-05-18,Sun 4:05pm,Canberra,40,Gold Coast,24,L. Kennedy,GIO,9650
-2025,nrl,11,2025-05-18,Sun 6:15pm,Wests Tigers,12,South Sydney,22,W. Raymond,Campbelltown,11102
-2025,nrl,12,2025-05-22,Thu 7:50pm,Canterbury,8,Dolphins,44,T. Smith,Accor,10412
-2025,nrl,12,2025-05-23,Fri 8:00pm,Parramatta,30,Manly,10,L. Kennedy,CommBank,13425
-2025,nrl,12,2025-05-24,Sat 5:30pm,Penrith,6,Newcastle,25,B. Sharpe,Carrington,12000
-2025,nrl,12,2025-05-24,Sat 7:35pm,Sydney,42,Cronulla,16,G. Atkins,Industree,13399
-2025,nrl,12,2025-05-25,Sun 6:05pm,Warriors,10,Canberra,16,A. Gee,Go Media,26512
-2025,nrl,13,2025-05-30,Fri 8:00pm,St Geo Illa,20,Newcastle,6,G. Atkins,Jubilee,10411
-2025,nrl,13,2025-05-31,Sat 3:00pm,Gold Coast,16,Melbourne,28,Z. Przeklasa-Adamski,Cbus Super,13509
-2025,nrl,13,2025-05-31,Sat 5:30pm,North Qld,32,Wests Tigers,28,G. Sutton,QLD C. Bank,17470
-2025,nrl,13,2025-05-31,Sat 7:35pm,Manly,34,Brisbane,6,A. Gee,4 Pines,17375
-2025,nrl,14,2025-06-01,Sun 2:00pm,South Sydney,30,Warriors,36,W. Raymond,Accor,16237
-2025,nrl,14,2025-06-01,Sun 4:05pm,Penrith,18,Parramatta,10,P. Gough,CommBank,21282
-2025,nrl,14,2025-06-01,Sun 6:15pm,Sydney,24,Canberra,26,A. Klein,Allianz,17223
-2025,nrl,15,2025-06-05,Thu 7:50pm,Newcastle,26,Manly,22,W. Raymond,McD. Jones,16027
-2025,nrl,15,2025-06-06,Fri 6:00pm,Melbourne,38,North Qld,14,G. Atkins,AAMI,19096
-2025,nrl,15,2025-06-06,Fri 8:00pm,Dolphins,56,St Geo Illa,6,A. Gee,Suncorp,19513
-2025,nrl,15,2025-06-07,Sat 5:30pm,Cronulla,10,Warriors,40,P. Gough,Sharks,13727
-2025,nrl,15,2025-06-07,Sat 7:35pm,Brisbane,44,Gold Coast,14,A. Klein,Suncorp,39884
-2025,nrl,15,2025-06-08,Sun 2:00pm,Canberra,36,South Sydney,12,T. Smith,GIO,19438
-2025,nrl,15,2025-06-08,Sun 4:05pm,Wests Tigers,14,Penrith,18,Z. Przeklasa-Adamski,CommBank,17708
-2025,nrl,15,2025-06-09,Mon 4:00pm,Canterbury,30,Parramatta,12,G. Sutton,Accor,59878
-2025,nrl,16,2025-06-12,Thu 7:50pm,Cronulla,30,St Geo Illa,18,G. Atkins,Sharks,8573
-2025,nrl,16,2025-06-13,Fri 8:00pm,Gold Coast,28,Manly,8,P. Gough,Cbus Super,13708
-2025,nrl,16,2025-06-14,Sat 5:30pm,Newcastle,8,Sydney,12,G. Sutton,McD. Jones,24849
-2025,nrl,16,2025-06-14,Sat 7:35pm,North Qld,4,Dolphins,58,T. Smith,QLD C. Bank,18343
-2025,nrl,16,2025-06-15,Sun 4:05pm,South Sydney,18,Canterbury,24,A. Gee,Accor,23871
-2025,nrl,17,2025-06-20,Fri 8:00pm,Wests Tigers,12,Canberra,16,A. Gee,Campbelltown,9328
-2025,nrl,17,2025-06-21,Sat 5:00pm,Warriors,18,Penrith,28,T. Smith,Go Media,25012
-2025,nrl,17,2025-06-21,Sat 3:30pm,Dolphins,20,Newcastle,26,G. Atkins,HBF,10077
-2025,nrl,17,2025-06-21,Sat 7:35pm,South Sydney,24,Melbourne,25,P. Gough,Accor,10093
-2025,nrl,17,2025-06-22,Sun 2:00pm,Brisbane,34,Cronulla,28,W. Raymond,Suncorp,39042
-2025,nrl,17,2025-06-22,Sun 4:05pm,Sydney,42,North Qld,8,A. Klein,Allianz,21143
-2025,nrl,17,2025-06-22,Sun 6:15pm,Parramatta,36,Gold Coast,20,G. Sutton,CommBank,8074
-2025,nrl,18,2025-06-26,Thu 7:50pm,Penrith,8,Canterbury,6,G. Atkins,CommBank,16738
-2025,nrl,18,2025-06-27,Fri 6:00pm,Manly,28,Wests Tigers,10,G. Sutton,4 Pines,17055
-2025,nrl,18,2025-06-27,Fri 8:00pm,Newcastle,18,Canberra,22,P. Gough,McD. Jones,17527
-2025,nrl,18,2025-06-28,Sat 3:00pm,Brisbane,26,Warriors,12,A. Gee,Suncorp,43424
-2025,nrl,18,2025-06-28,Sat 5:30pm,St Geo Illa,34,Parramatta,20,L. Kennedy,WIN,18191
-2025,nrl,18,2025-06-28,Sat 7:50pm,Dolphins,50,South Sydney,28,T. Smith,Suncorp,22041
-2025,nrl,18,2025-06-29,Sun 2:00pm,Melbourne,30,Cronulla,6,A. Klein,AAMI,21399
-2025,nrl,18,2025-06-29,Sun 4:05pm,Gold Coast,24,North Qld,30,W. Raymond,Cbus Super,13882
-2025,nrl,19,2025-07-04,Fri 8:00pm,Canterbury,18,Brisbane,22,T. Smith,Accor,25234
-2025,nrl,19,2025-07-05,Sat 5:30pm,Canberra,28,St Geo Illa,24,G. Sutton,GIO,15932
-2025,nrl,19,2025-07-05,Sat 7:35pm,North Qld,20,Melbourne,26,L. Kennedy,QLD C. Bank,20383
-2025,nrl,19,2025-07-06,Sun 2:00pm,Sydney,28,Wests Tigers,30,P. Gough,Allianz,24311
-2025,nrl,19,2025-07-06,Sun 4:05pm,Manly,30,South Sydney,12,W. Raymond,4 Pines,17298
-2025,nrl,20,2025-07-11,Fri 8:00pm,Cronulla,24,Dolphins,12,A. Gee,Sharks,9658
-2025,nrl,20,2025-07-12,Sat 3:00pm,Newcastle,14,Melbourne,32,T. Smith,McD. Jones,21017
-2025,nrl,20,2025-07-12,Sat 5:30pm,St Geo Illa,24,Sydney,31,G. Atkins,Jubilee,13856
-2025,nrl,20,2025-07-12,Sat 7:35pm,North Qld,8,Canterbury,12,W. Raymond,QLD C. Bank,18778
-2025,nrl,20,2025-07-13,Sun 4:00pm,Warriors,34,Wests Tigers,14,G. Sutton,Go Media,24112
-2025,nrl,20,2025-07-13,Sun 4:05pm,Parramatta,10,Penrith,32,P. Gough,CommBank,22792
-2025,nrl,20,2025-07-13,Sun 6:15pm,Gold Coast,14,Brisbane,26,L. Kennedy,Cbus Super,24553
-2025,nrl,21,2025-07-17,Thu 7:50pm,Dolphins,43,North Qld,24,P. Gough,Suncorp,23172
-2025,nrl,21,2025-07-18,Fri 6:00pm,Cronulla,31,Sydney,18,T. Smith,Sharks,11846
-2025,nrl,21,2025-07-18,Fri 8:00pm,Penrith,30,South Sydney,10,G. Sutton,CommBank,11836
-2025,nrl,21,2025-07-19,Sat 3:00pm,Canberra,40,Parramatta,16,A. Klein,GIO,20751
-2025,nrl,21,2025-07-19,Sat 5:30pm,Canterbury,20,St Geo Illa,18,A. Gee,Accor,30115
-2025,nrl,21,2025-07-19,Sat 7:35pm,Melbourne,16,Manly,18,W. Raymond,AAMI,19011
-2025,nrl,21,2025-07-20,Sun 2:00pm,Wests Tigers,21,Gold Coast,20,B. Sharpe,Leichhardt,16073
-2025,nrl,21,2025-07-20,Sun 4:05pm,Newcastle,15,Warriors,20,G. Atkins,McD. Jones,21117
-2025,nrl,22,2025-07-24,Thu 7:50pm,Sydney,30,Melbourne,34,A. Gee,Allianz,13991
-2025,nrl,22,2025-07-25,Fri 6:00pm,North Qld,38,St Geo Illa,32,G. Atkins,QLD C. Bank,16020
-2025,nrl,22,2025-07-25,Fri 8:00pm,Brisbane,20,Parramatta,22,T. Smith,Suncorp,39057
-2025,nrl,22,2025-07-26,Sat 5:00pm,Warriors,16,Gold Coast,24,G. Sutton,Go Media,24212
-2025,nrl,22,2025-07-26,Sat 5:30pm,Penrith,36,Wests Tigers,2,P. Gough,CommBank,16753
-2025,nrl,22,2025-07-26,Sat 7:35pm,South Sydney,12,Cronulla,14,B. Sharpe,polytec,13896
-2025,nrl,22,2025-07-27,Sun 2:00pm,Canberra,44,Newcastle,18,W. Raymond,GIO,11068
-2025,nrl,22,2025-07-27,Sun 4:05pm,Canterbury,42,Manly,4,A. Klein,Allianz,25801
-2025,nrl,23,2025-07-31,Thu 7:50pm,Parramatta,10,Melbourne,16,G. Sutton,CommBank,9402
-2025,nrl,24,2025-08-01,Fri 8:00pm,Warriors,18,Dolphins,20,A. Klein,Go Media,23012
-2025,nrl,24,2025-08-01,Fri 8:00pm,Brisbane,60,South Sydney,14,P. Gough,Suncorp,38430
-2025,nrl,24,2025-08-02,Sat 3:00pm,Gold Coast,26,Penrith,30,L. Kennedy,Cbus Super,18174
-2025,nrl,24,2025-08-02,Sat 5:30pm,St Geo Illa,18,Canberra,12,T. Smith,WIN,8567
-2025,nrl,24,2025-08-02,Sat 7:35pm,Manly,4,Sydney,20,G. Atkins,4 Pines,12478
-2025,nrl,24,2025-08-03,Sun 2:00pm,Wests Tigers,28,Canterbury,14,W. Raymond,CommBank,17423
-2025,nrl,24,2025-08-03,Sun 4:05pm,Cronulla,32,North Qld,12,A. Gee,Sharks,6321
-2025,nrl,25,2025-08-07,Thu 7:50pm,Melbourne,22,Brisbane,2,G. Atkins,AAMI,21324
-2025,nrl,25,2025-08-08,Fri 6:00pm,Newcastle,12,Penrith,48,W. Raymond,McD. Jones,20197
-2025,nrl,25,2025-08-08,Fri 8:00pm,Canberra,28,Manly,12,P. Gough,GIO,14527
-2025,nrl,25,2025-08-09,Sat 3:00pm,St Geo Illa,22,Cronulla,14,A. Klein,Jubilee,11861
-2025,nrl,25,2025-08-09,Sat 5:30pm,Dolphins,12,Sydney,64,G. Sutton,Suncorp,24117
-2025,nrl,25,2025-08-09,Sat 7:35pm,Canterbury,32,Warriors,14,A. Gee,Accor,25377
-2025,nrl,25,2025-08-10,Sun 2:00pm,Gold Coast,18,South Sydney,20,T. Smith,Cbus Super,14957
-2025,nrl,25,2025-08-10,Sun 4:05pm,Parramatta,19,North Qld,18,L. Kennedy,CommBank,11562
-2025,nrl,26,2025-08-14,Thu 7:50pm,Penrith,18,Melbourne,22,A. Klein,CommBank,12869
-2025,nrl,26,2025-08-15,Fri 8:00pm,Warriors,14,St Geo Illa,10,T. Smith,Go Media,23276
-2025,nrl,26,2025-08-15,Fri 8:00pm,Sydney,32,Canterbury,12,G. Atkins,Allianz,31399
-2025,nrl,26,2025-08-16,Sat 3:00pm,Cronulla,54,Gold Coast,22,P. Gough,Sharks,10112
-2025,nrl,26,2025-08-16,Sat 5:30pm,Brisbane,38,Dolphins,28,W. Raymond,Suncorp,44350
-2025,nrl,26,2025-08-16,Sat 7:35pm,South Sydney,20,Parramatta,16,G. Sutton,Allianz,21395
-2025,nrl,26,2025-08-17,Sun 2:00pm,Wests Tigers,26,Manly,12,A. Gee,Allianz,13105
-2025,nrl,26,2025-08-17,Sun 4:05pm,North Qld,38,Newcastle,4,J. Cole,QLD C. Bank,16640
-2025,nrl,27,2025-08-21,Thu 7:50pm,South Sydney,40,St Geo Illa,0,G. Sutton,Accor,7213
-2025,nrl,27,2025-08-22,Fri 6:00pm,Penrith,16,Canberra,20,G. Atkins,Glen Willow,9925
-2025,nrl,27,2025-08-22,Fri 8:00pm,Melbourne,20,Canterbury,14,A. Gee,AAMI,25693
-2025,nrl,27,2025-08-23,Sat 3:00pm,Manly,58,Dolphins,30,A. Klein,4 Pines,14172
-2025,nrl,27,2025-08-23,Sat 5:30pm,Gold Coast,18,Warriors,32,J. Cole,Cbus Super,23271
-2025,nrl,27,2025-08-23,Sat 7:35pm,Parramatta,30,Sydney,10,W. Raymond,CommBank,19741
-2025,nrl,27,2025-08-24,Sun 2:00pm,Newcastle,12,Brisbane,46,T. Smith,McD. Jones,25813
-2025,nrl,27,2025-08-24,Sun 4:05pm,Wests Tigers,28,North Qld,34,P. Gough,Leichhardt,16055
-2025,nrl,28,2025-08-28,Thu 7:50pm,Canterbury,28,Penrith,4,W. Raymond,Accor,23597
-2025,nrl,28,2025-08-29,Fri 8:00pm,Warriors,22,Parramatta,26,P. Gough,Go Media,25012
-2025,nrl,28,2025-08-29,Fri 8:00pm,Melbourne,10,Sydney,40,T. Smith,AAMI,21155
-2025,nrl,28,2025-08-30,Sat 3:00pm,Canberra,24,Wests Tigers,10,J. Cole,GIO,23746
-2025,nrl,28,2025-08-30,Sat 5:30pm,St Geo Illa,24,Manly,40,A. Gee,Jubilee,9769
-2025,nrl,28,2025-08-30,Sat 7:35pm,North Qld,30,Brisbane,38,A. Klein,QLD C. Bank,22903
-2025,nrl,28,2025-08-31,Sun 2:00pm,Cronulla,40,Newcastle,16,G. Sutton,Sharks,12234
-2025,nrl,28,2025-08-31,Sun 4:05pm,Dolphins,36,Gold Coast,30,G. Atkins,Suncorp,19305
-2025,nrl,29,2025-09-04,Thu 7:50pm,Brisbane,30,Melbourne,14,G. Atkins,Suncorp,44645
-2025,nrl,29,2025-09-05,Fri 6:00pm,Manly,27,Warriors,26,T. Smith,4 Pines,17172
-2025,nrl,29,2025-09-05,Fri 8:00pm,Sydney,36,South Sydney,6,A. Gee,Allianz,41604
-2025,nrl,29,2025-09-06,Sat 3:00pm,St Geo Illa,20,Penrith,40,P. Gough,WIN,17442
-2025,nrl,29,2025-09-06,Sat 5:30pm,Gold Coast,36,Wests Tigers,28,C. Butler,Cbus Super,16093
-2025,nrl,29,2025-09-06,Sat 7:35pm,Canterbury,6,Cronulla,24,A. Klein,Accor,30368
-2025,nrl,29,2025-09-07,Sun 2:00pm,Dolphins,62,Canberra,24,G. Sutton,Kayo,10023
-2025,nrl,29,2025-09-07,Sun 4:05pm,Parramatta,66,Newcastle,10,W. Raymond,CommBank,23359
-2025,nrl,30,2025-09-12,Fri 7:50pm,Melbourne,26,Canterbury,18,A. Gee,AAMI,22117
-2025,nrl,31,2025-09-13,Sat 6:05pm,Warriors,8,Penrith,24,G. Atkins,Go Media,24524
-2025,nrl,31,2025-09-13,Sat 7:50pm,Cronulla,20,Sydney,10,T. Smith,Sharks,12842
-2025,nrl,32,2025-09-14,Sun 4:05pm,Canberra,28,Brisbane,29,A. Klein,GIO,25523
-2025,nrl,33,2025-09-20,Sat 7:50pm,Canberra,12,Cronulla,32,G. Atkins,GIO,24322
-2025,nrl,33,2025-09-21,Sun 4:05pm,Canterbury,26,Penrith,46,A. Klein,Accor,56872
-2025,nrl,34,2025-09-26,Fri 7:50pm,Melbourne,22,Cronulla,14,A. Klein,AAMI,29233
-2025,nrl,34,2025-09-28,Sun 4:05pm,Brisbane,16,Penrith,14,G. Atkins,Suncorp,52491
-2025,nrl,35,2025-10-05,Sun 7:30pm,Melbourne,22,Brisbane,26,G. Atkins,Accor,80223
-2026,nrl,1,2026-02-28,Sat 6:15pm,Newcastle,28,North Qld,18,A. Klein,Allegiant,45719
-2026,nrl,1,2026-02-28,Sat 8:30pm,Canterbury,15,St Geo Illa,14,G. Atkins,Allegiant,45719
-2026,nrl,1,2026-03-05,Thu 8:00pm,Melbourne,52,Parramatta,4,T. Smith,AAMI,18264
-2026,nrl,1,2026-03-06,Fri 8:00pm,Warriors,42,Sydney,18,W. Raymond,Go Media,24112
-2026,nrl,1,2026-03-06,Fri 7:00pm,Brisbane,0,Penrith,26,A. Gee,Suncorp,45566
-2026,nrl,1,2026-03-07,Sat 5:30pm,Cronulla,50,Gold Coast,10,Z. Przeklasa-Adamski,Ocean Protect,11548
-2026,nrl,1,2026-03-07,Sat 7:35pm,Manly,28,Canberra,29,L. Kennedy,4 Pines,17253
-2026,nrl,1,2026-03-08,Sun 3:05pm,Dolphins,30,South Sydney,40,P. Gough,Suncorp,20114
-2026,nrl,2,2026-03-12,Thu 7:00pm,Brisbane,32,Parramatta,40,W. Raymond,Suncorp,39015
-2026,nrl,2,2026-03-13,Fri 8:00pm,Warriors,40,Canberra,6,P. Gough,Go Media,23067
-2026,nrl,2,2026-03-13,Fri 8:00pm,Sydney,26,South Sydney,18,A. Gee,Allianz,41424
-2026,nrl,2,2026-03-14,Sat 3:00pm,Wests Tigers,44,North Qld,16,G. Atkins,Leichhardt,17367
-2026,nrl,2,2026-03-14,Sat 5:30pm,St Geo Illa,20,Melbourne,46,G. Sutton,WIN,11511
-2026,nrl,2,2026-03-14,Sat 7:35pm,Penrith,26,Cronulla,6,A. Klein,Carrington,12000
-2026,nrl,2,2026-03-15,Sun 4:05pm,Manly,16,Newcastle,36,T. Smith,4 Pines,17107
-2026,nrl,2,2026-03-15,Sun 5:15pm,Dolphins,18,Gold Coast,14,L. Kennedy,Suncorp,16073
-2026,nrl,3,2026-03-19,Thu 8:00pm,Canberra,10,Canterbury,14,A. Gee,GIO,13723
-2026,nrl,3,2026-03-20,Fri 6:00pm,Sydney,4,Penrith,40,G. Atkins,Allianz,22128
-2026,nrl,3,2026-03-20,Fri 8:00pm,Melbourne,14,Brisbane,18,T. Smith,AAMI,28245
-2026,nrl,3,2026-03-21,Sat 3:00pm,Newcastle,12,Warriors,38,L. Kennedy,McD. Jones,21682
-2026,nrl,3,2026-03-21,Sat 5:30pm,Cronulla,10,Dolphins,38,G. Sutton,Ocean Protect,11096
-2026,nrl,3,2026-03-21,Sat 7:35pm,South Sydney,20,Wests Tigers,16,W. Raymond,polytec,19940
-2026,nrl,3,2026-03-22,Sun 4:05pm,Parramatta,30,St Geo Illa,20,A. Klein,CommBank,25573
-2026,nrl,3,2026-03-22,Sun 5:15pm,North Qld,30,Gold Coast,16,P. Gough,QLD C. Bank,16999
-2026,nrl,4,2026-03-26,Thu 8:00pm,Manly,16,Sydney,33,W. Raymond,4 Pines,16082
-2026,nrl,4,2026-03-27,Fri 8:00pm,Warriors,14,Wests Tigers,32,A. Gee,Go Media,24246
-2026,nrl,4,2026-03-27,Fri 7:00pm,Brisbane,26,Dolphins,12,A. Klein,Suncorp,45882
-2026,nrl,4,2026-03-28,Sat 3:00pm,Canterbury,16,Newcastle,24,P. Gough,Accor,20572
-2026,nrl,4,2026-03-28,Sat 5:30pm,Penrith,48,Parramatta,20,T. Smith,CommBank,22813
-2026,nrl,4,2026-03-28,Sat 6:35pm,North Qld,28,Melbourne,24,G. Sutton,QLD C. Bank,20931
-2026,nrl,4,2026-03-29,Sun 4:05pm,Canberra,22,Cronulla,34,G. Atkins,GIO,17457
-2026,nrl,4,2026-03-29,Sun 5:15pm,Gold Coast,22,St Geo Illa,14,L. Kennedy,Cbus Super,12241
-2026,nrl,5,2026-04-02,Thu 7:00pm,Dolphins,18,Manly,52,G. Atkins,Kayo,10023
-2026,nrl,5,2026-04-03,Fri 4:05pm,South Sydney,32,Canterbury,24,T. Smith,Accor,49813
-2026,nrl,5,2026-04-03,Fri 8:00pm,Penrith,50,Melbourne,10,A. Klein,CommBank,20207
-2026,nrl,5,2026-04-04,Sat 5:30pm,St Geo Illa,0,North Qld,32,W. Raymond,SGV Jubilee,8491
-2026,nrl,5,2026-04-04,Sat 6:35pm,Gold Coast,12,Brisbane,26,G. Sutton,Cbus Super,26223
-2026,nrl,5,2026-04-05,Sun 2:00pm,Cronulla,36,Warriors,22,Z. Przeklasa-Adamski,Ocean Protect,13112
-2026,nrl,5,2026-04-05,Sun 4:05pm,Newcastle,32,Canberra,12,A. Gee,McD. Jones,23002
-2026,nrl,5,2026-04-06,Mon 4:05pm,Parramatta,20,Wests Tigers,22,P. Gough,CommBank,29397
-2026,nrl,6,2026-04-09,Thu 7:50pm,Canterbury,32,Penrith,16,G. Sutton,Accor,23984
-2026,nrl,6,2026-04-10,Fri 6:00pm,St Geo Illa,18,Manly,28,A. Gee,WIN,11381
-2026,nrl,6,2026-04-10,Fri 8:00pm,Brisbane,31,North Qld,35,A. Klein,Suncorp,45582
-2026,nrl,6,2026-04-11,Sat 1:00pm,South Sydney,34,Canberra,36,L. Kennedy,Optus Stadium,33404
-2026,nrl,6,2026-04-11,Sat 3:30pm,Cronulla,22,Sydney,34,T. Smith,Optus Stadium,33404
-2026,nrl,6,2026-04-11,Sat 7:35pm,Melbourne,14,Warriors,38,G. Atkins,AAMI,26467
-2026,nrl,6,2026-04-12,Sun 2:00pm,Parramatta,10,Gold Coast,52,Z. Przeklasa-Adamski,CommBank,14382
-2026,nrl,6,2026-04-12,Sun 4:05pm,Wests Tigers,42,Newcastle,22,W. Raymond,Campbelltown,15221
-2026,nrl,7,2026-04-16,Thu 7:50pm,North Qld,6,Manly,38,G. Sutton,QLD C. Bank,17476
-2026,nrl,7,2026-04-17,Fri 6:00pm,Canberra,26,Melbourne,22,P. Gough,GIO,17321
-2026,nrl,7,2026-04-17,Fri 7:30pm,Dolphins,22,Penrith,23,A. Gee,TIO,12570
-2026,nrl,7,2026-04-18,Sat 5:00pm,Warriors,28,Gold Coast,20,W. Raymond,Go Media,24112
-2026,nrl,7,2026-04-18,Sat 5:30pm,South Sydney,30,St Geo Illa,12,Z. Przeklasa-Adamski,Accor,15116
-2026,nrl,7,2026-04-18,Sat 7:35pm,Wests Tigers,20,Brisbane,21,T. Smith,Campbelltown,17316
-2026,nrl,7,2026-04-19,Sun 2:00pm,Sydney,38,Newcastle,24,A. Klein,Allianz,22409
-2026,nrl,7,2026-04-19,Sun 4:05pm,Parramatta,38,Canterbury,20,L. Kennedy,CommBank,25938
-2026,nrl,8,2026-04-23,Thu 7:50pm,Wests Tigers,33,Canberra,14,A. Klein,Leichhardt,17153
-2026,nrl,8,2026-04-24,Fri 6:00pm,North Qld,46,Cronulla,34,B. Sharpe,QLD C. Bank,17888
-2026,nrl,8,2026-04-24,Fri 8:00pm,Brisbane,32,Canterbury,12,W. Raymond,Suncorp,42775
-2026,nrl,8,2026-04-25,Sat 4:00pm,St Geo Illa,16,Sydney,62,G. Atkins,Allianz,40381
-2026,nrl,8,2026-04-25,Sat 8:05pm,Warriors,20,Dolphins,18,L. Kennedy,Hnry Stadium,34812
-2026,nrl,8,2026-04-25,Sat 8:10pm,Melbourne,6,South Sydney,48,A. Gee,AAMI,25694
-2026,nrl,8,2026-04-26,Sun 2:00pm,Newcastle,12,Penrith,44,G. Sutton,McD. Jones,23986
-2026,nrl,8,2026-04-26,Sun 4:05pm,Manly,33,Parramatta,18,P. Gough,4 Pines,17923
-2026,nrl,9,2026-05-01,Fri 6:00pm,Canterbury,12,North Qld,28,P. Gough,Accor,15132
-2026,nrl,9,2026-05-01,Fri 8:00pm,Dolphins,28,Melbourne,10,A. Klein,Suncorp,24070
-2026,nrl,9,2026-05-02,Sat 3:00pm,Gold Coast,12,Canberra,28,G. Atkins,Cbus Super,14913
-2026,nrl,9,2026-05-02,Sat 5:30pm,Parramatta,14,Warriors,36,G. Sutton,CommBank,16656
-2026,nrl,9,2026-05-02,Sat 7:35pm,Sydney,38,Brisbane,24,A. Gee,Allianz,25239
-2026,nrl,9,2026-05-03,Sun 2:00pm,Newcastle,42,South Sydney,38,L. Kennedy,McD. Jones,23413
-2026,nrl,9,2026-05-03,Sun 4:05pm,Cronulla,52,Wests Tigers,10,T. Smith,Ocean Protect,14479
-2026,nrl,9,2026-05-03,Sun 6:15pm,Penrith,18,Manly,16,W. Raymond,CommBank,14960
-2026,nrl,10,2026-05-07,Thu 7:50pm,Dolphins,44,Canterbury,12,G. Atkins,Suncorp,16143
-2026,nrl,10,2026-05-08,Fri 6:00pm,Sydney,28,Gold Coast,12,P. Gough,polytec,12226
-2026,nrl,10,2026-05-08,Fri 8:00pm,North Qld,30,Parramatta,33,L. Kennedy,QLD C. Bank,17827
-2026,nrl,10,2026-05-09,Sat 3:00pm,St Geo Illa,10,Newcastle,44,T. Smith,WIN,10916
-2026,nrl,10,2026-05-09,Sat 5:30pm,South Sydney,36,Cronulla,12,J. Cole,Accor,16714
-2026,nrl,10,2026-05-09,Sat 7:35pm,Manly,32,Brisbane,4,G. Sutton,4 Pines,17269
-2026,nrl,10,2026-05-10,Sun 2:00pm,Melbourne,44,Wests Tigers,16,A. Gee,AAMI,15684
-2026,nrl,10,2026-05-10,Sun 4:05pm,Canberra,18,Penrith,30,A. Klein,GIO,18018
+season,league,round,date,time,home_team,home_score,away_team,away_score,referee,venue,attendance,ground_conditions,weather
+2021,nrl,1,2021-03-11,Thu 8:05pm,Melbourne,26,South Sydney,18,G. Atkins,AAMI,11812,,
+2021,nrl,1,2021-03-12,Fri 6:00pm,Newcastle,32,Canterbury,16,B. Cummins,McD. Jones,19555,,
+2021,nrl,1,2021-03-12,Fri 8:05pm,Brisbane,16,Parramatta,24,A. Gee,Suncorp,28313,,
+2021,nrl,1,2021-03-13,Sat 3:00pm,Warriors,19,Gold Coast,6,A. Klein,Central Coast,3771,,
+2021,nrl,1,2021-03-13,Sat 5:30pm,Sydney,46,Manly,4,C. Sutton,SCG,15097,,
+2021,nrl,1,2021-03-13,Sat 7:35pm,Penrith,24,North Qld,0,M. Cecchin,BlueBet,14077,,
+2021,nrl,1,2021-03-14,Sun 4:05pm,Canberra,30,Wests Tigers,12,G. Sutton,GIO,15680,,
+2021,nrl,1,2021-03-14,Sun 6:15pm,St Geo Illa,18,Cronulla,32,P. Gough,Netstrata,7636,,
+2021,nrl,2,2021-03-18,Thu 8:05pm,Parramatta,16,Melbourne,12,A. Klein,Bankwest,10416,,
+2021,nrl,2,2021-03-19,Fri 6:00pm,Warriors,16,Newcastle,20,G. Atkins,Central Coast,4595,,
+2021,nrl,2,2021-03-19,Fri 8:05pm,Gold Coast,28,Brisbane,16,M. Cecchin,Cbus Super,17822,,
+2021,nrl,2,2021-03-20,Sat 3:00pm,Canterbury,0,Penrith,28,P. Gough,Bankwest,5062,,
+2021,nrl,2,2021-03-20,Sat 5:30pm,Manly,12,South Sydney,26,G. Sutton,Lottoland,3218,,
+2021,nrl,2,2021-03-20,Sat 7:35pm,North Qld,18,St Geo Illa,25,B. Cummins,QLD C. Bank,15120,,
+2021,nrl,2,2021-03-21,Sun 4:05pm,Wests Tigers,6,Sydney,40,A. Gee,Campbelltown,6107,,
+2021,nrl,2,2021-03-21,Sun 6:15pm,Cronulla,10,Canberra,12,C. Sutton,Netstrata,3145,,
+2021,nrl,3,2021-03-25,Thu 8:05pm,Penrith,12,Melbourne,10,G. Atkins,BlueBet,14077,,
+2021,nrl,3,2021-03-26,Fri 6:00pm,St Geo Illa,38,Manly,12,C. Sutton,WIN,9253,,
+2021,nrl,3,2021-03-26,Fri 8:05pm,South Sydney,26,Sydney,16,A. Klein,ANZ,22838,,
+2021,nrl,3,2021-03-27,Sat 3:00pm,Canberra,31,Warriors,34,H. Perenara,GIO,13456,,
+2021,nrl,3,2021-03-27,Sat 5:30pm,Brisbane,24,Canterbury,0,B. Cummins,Suncorp,22509,,
+2021,nrl,3,2021-03-27,Sat 7:35pm,Parramatta,28,Cronulla,4,A. Gee,Bankwest,19236,,
+2021,nrl,3,2021-03-28,Sun 4:05pm,Newcastle,20,Wests Tigers,24,G. Sutton,McD. Jones,20239,,
+2021,nrl,3,2021-03-28,Sun 6:15pm,North Qld,8,Gold Coast,44,P. Gough,QLD C. Bank,12627,,
+2021,nrl,4,2021-04-01,Thu 8:05pm,Manly,6,Penrith,46,M. Cecchin,Lottoland,6076,,
+2021,nrl,4,2021-04-02,Fri 4:05pm,Canterbury,0,South Sydney,38,G. Atkins,ANZ,23240,,
+2021,nrl,4,2021-04-02,Fri 8:05pm,Melbourne,40,Brisbane,6,G. Sutton,AAMI,14135,,
+2021,nrl,4,2021-04-03,Sat 5:15pm,Cronulla,48,North Qld,10,C. Sutton,Netstrata,5119,,
+2021,nrl,4,2021-04-03,Sat 7:45pm,Gold Coast,4,Canberra,20,A. Gee,Netstrata,5117,,
+2021,nrl,4,2021-04-04,Sun 4:05pm,Newcastle,13,St Geo Illa,22,P. Gough,McD. Jones,21770,,
+2021,nrl,4,2021-04-04,Sun 6:15pm,Sydney,32,Warriors,12,B. Cummins,SCG,12210,,
+2021,nrl,4,2021-04-05,Mon 4:00pm,Wests Tigers,22,Parramatta,36,A. Klein,ANZ,29056,,
+2021,nrl,5,2021-04-08,Thu 7:50pm,South Sydney,35,Brisbane,6,B. Cummins,ANZ,9142,,
+2021,nrl,5,2021-04-09,Fri 6:00pm,Warriors,12,Manly,13,C. Butler,Central Coast,4982,,
+2021,nrl,5,2021-04-09,Fri 7:55pm,Penrith,30,Canberra,10,G. Sutton,BlueBet,20890,,
+2021,nrl,5,2021-04-10,Sat 3:00pm,Gold Coast,42,Newcastle,16,A. Klein,Cbus Super,12492,,
+2021,nrl,5,2021-04-10,Sat 5:30pm,Canterbury,18,Melbourne,52,C. Sutton,ANZ,5104,,
+2021,nrl,5,2021-04-10,Sat 7:35pm,Sydney,26,Cronulla,18,A. Gee,SCG,10736,,
+2021,nrl,5,2021-04-11,Sun 4:05pm,Wests Tigers,30,North Qld,34,M. Cecchin,Leichhardt,9433,,
+2021,nrl,5,2021-04-11,Sun 6:15pm,Parramatta,12,St Geo Illa,26,G. Atkins,Bankwest,24384,,
+2021,nrl,6,2021-04-15,Thu 7:50pm,Brisbane,12,Penrith,20,G. Atkins,Suncorp,21224,,
+2021,nrl,6,2021-04-16,Fri 6:00pm,Newcastle,26,Cronulla,22,M. Cecchin,McD. Jones,17039,,
+2021,nrl,6,2021-04-16,Fri 7:55pm,Melbourne,20,Sydney,4,A. Gee,AAMI,15087,,
+2021,nrl,6,2021-04-17,Sat 3:00pm,Manly,36,Gold Coast,0,C. Butler,Glen Willow,6380,,
+2021,nrl,6,2021-04-17,Sat 5:30pm,South Sydney,18,Wests Tigers,14,G. Sutton,ANZ,16134,,
+2021,nrl,6,2021-04-17,Sat 7:35pm,Canberra,10,Parramatta,35,B. Cummins,GIO,20089,,
+2021,nrl,6,2021-04-18,Sun 2:00pm,St Geo Illa,14,Warriors,20,C. Sutton,Netstrata,11222,,
+2021,nrl,6,2021-04-18,Sun 4:05pm,North Qld,30,Canterbury,18,A. Klein,QLD C. Bank,11965,,
+2021,nrl,7,2021-04-22,Thu 7:50pm,Penrith,24,Newcastle,6,G. Sutton,BlueBet,16110,,
+2021,nrl,7,2021-04-23,Fri 6:00pm,Gold Coast,30,South Sydney,40,C. Sutton,Cbus Super,17383,,
+2021,nrl,7,2021-04-23,Fri 7:55pm,Parramatta,46,Brisbane,6,G. Atkins,TIO,12056,,
+2021,nrl,7,2021-04-24,Sat 5:30pm,Cronulla,12,Canterbury,18,C. Butler,Netstrata,7420,,
+2021,nrl,7,2021-04-24,Sat 7:35pm,North Qld,26,Canberra,24,P. Gough,QLD C. Bank,13791,,
+2021,nrl,7,2021-04-25,Sun 1:45pm,Wests Tigers,6,Manly,40,A. Gee,Bankwest,14095,,
+2021,nrl,7,2021-04-25,Sun 4:05pm,Sydney,34,St Geo Illa,10,A. Klein,SCG,37620,,
+2021,nrl,7,2021-04-25,Sun 6:15pm,Melbourne,42,Warriors,20,M. Cecchin,AAMI,20320,,
+2021,nrl,8,2021-04-29,Thu 7:50pm,Canberra,20,South Sydney,34,B. Cummins,GIO,14260,,
+2021,nrl,8,2021-04-30,Fri 6:00pm,Melbourne,40,Cronulla,14,G. Sutton,AAMI,10069,,
+2021,nrl,8,2021-04-30,Fri 7:55pm,Brisbane,36,Gold Coast,28,A. Gee,Suncorp,21322,,
+2021,nrl,9,2021-05-01,Sat 3:00pm,Penrith,28,Manly,16,A. Klein,Carrington,5798,,
+2021,nrl,9,2021-05-01,Sat 5:30pm,Canterbury,10,Parramatta,32,P. Gough,ANZ,13273,,
+2021,nrl,9,2021-05-01,Sat 7:35pm,Newcastle,4,Sydney,38,M. Cecchin,McD. Jones,22172,,
+2021,nrl,9,2021-05-02,Sun 2:00pm,Warriors,24,North Qld,20,C. Butler,Central Coast,3692,,
+2021,nrl,9,2021-05-02,Sun 4:05pm,St Geo Illa,8,Wests Tigers,16,C. Sutton,WIN,12323,,
+2021,nrl,10,2021-05-06,Thu 7:50pm,South Sydney,0,Melbourne,50,G. Atkins,ANZ,7501,,
+2021,nrl,10,2021-05-07,Fri 6:00pm,Penrith,48,Cronulla,0,C. Butler,BlueBet,16110,,
+2021,nrl,10,2021-05-07,Fri 7:55pm,Parramatta,31,Sydney,18,M. Cecchin,Bankwest,25711,,
+2021,nrl,10,2021-05-08,Sat 3:00pm,Canberra,16,Newcastle,24,A. Gee,McDonalds Park,6642,,
+2021,nrl,10,2021-05-08,Sat 5:30pm,Wests Tigers,28,Gold Coast,36,A. Klein,Campbelltown,8411,,
+2021,nrl,10,2021-05-08,Sat 7:35pm,North Qld,19,Brisbane,18,C. Sutton,QLD C. Bank,22222,,
+2021,nrl,10,2021-05-09,Sun 2:00pm,Manly,38,Warriors,32,P. Gough,Lottoland,6726,,
+2021,nrl,10,2021-05-09,Sun 4:05pm,St Geo Illa,32,Canterbury,12,B. Cummins,Netstrata,7253,,
+2021,nrl,11,2021-05-14,Fri 6:00pm,Wests Tigers,36,Newcastle,18,G. Atkins,Suncorp,41367,,
+2021,nrl,11,2021-05-14,Fri 8:05pm,Manly,50,Brisbane,6,G. Sutton,Suncorp,41367,,
+2021,nrl,11,2021-05-15,Sat 3:00pm,Canterbury,18,Canberra,20,C. Butler,Suncorp,45122,,
+2021,nrl,11,2021-05-15,Sat 5:30pm,Cronulla,22,South Sydney,32,C. Sutton,Suncorp,45122,,
+2021,nrl,11,2021-05-15,Sat 7:45pm,Sydney,30,North Qld,16,B. Cummins,Suncorp,45122,,
+2021,nrl,11,2021-05-16,Sun 1:50pm,Warriors,18,Parramatta,34,A. Klein,Suncorp,43537,,
+2021,nrl,11,2021-05-16,Sun 4:05pm,Melbourne,44,St Geo Illa,18,P. Gough,Suncorp,43537,,
+2021,nrl,11,2021-05-16,Sun 6:25pm,Gold Coast,12,Penrith,48,A. Gee,Suncorp,43537,,
+2021,nrl,12,2021-05-20,Thu 7:50pm,North Qld,36,Newcastle,20,A. Klein,QLD C. Bank,11208,,
+2021,nrl,12,2021-05-21,Fri 6:00pm,Warriors,30,Wests Tigers,26,M. Noyen,Central Coast,7009,,
+2021,nrl,12,2021-05-21,Fri 7:55pm,Cronulla,13,St Geo Illa,12,B. Cummins,Netstrata,8947,,
+2021,nrl,12,2021-05-22,Sat 3:00pm,Gold Coast,30,Canterbury,20,M. Cecchin,Cbus Super,11315,,
+2021,nrl,12,2021-05-22,Sat 5:30pm,Sydney,16,Brisbane,34,P. Gough,SCG,13186,,
+2021,nrl,12,2021-05-22,Sat 7:35pm,Canberra,10,Melbourne,34,G. Sutton,GIO,14120,,
+2021,nrl,12,2021-05-23,Sun 2:00pm,South Sydney,12,Penrith,56,G. Atkins,Apex Oval,10824,,
+2021,nrl,12,2021-05-23,Sun 4:05pm,Parramatta,6,Manly,28,A. Gee,Bankwest,24411,,
+2021,nrl,13,2021-05-27,Thu 7:50pm,Brisbane,12,Melbourne,40,A. Klein,Suncorp,23600,,
+2021,nrl,13,2021-05-28,Fri 6:00pm,North Qld,29,Warriors,28,M. Cecchin,QLD C. Bank,14951,,
+2021,nrl,13,2021-05-28,Fri 7:55pm,Wests Tigers,34,St Geo Illa,18,A. Gee,Bankwest,9982,,
+2021,nrl,13,2021-05-29,Sat 3:00pm,Penrith,30,Canterbury,4,M. Noyen,BlueBet,16110,,
+2021,nrl,13,2021-05-29,Sat 5:30pm,South Sydney,38,Parramatta,20,G. Sutton,ANZ,20743,,
+2021,nrl,13,2021-05-29,Sat 7:35pm,Sydney,44,Canberra,16,G. Atkins,Central Coast,10113,,
+2021,nrl,13,2021-05-30,Sun 2:00pm,Cronulla,38,Gold Coast,10,C. Sutton,BCU Stadium,7362,,
+2021,nrl,13,2021-05-30,Sun 4:05pm,Newcastle,18,Manly,10,B. Cummins,McD. Jones,17348,,
+2021,nrl,14,2021-06-03,Thu 7:50pm,St Geo Illa,52,Brisbane,24,M. Cecchin,Netstrata,5107,,
+2021,nrl,14,2021-06-04,Fri 7:55pm,Wests Tigers,26,Penrith,6,G. Atkins,Leichhardt,9127,,
+2021,nrl,14,2021-06-05,Sat 7:35pm,Melbourne,20,Gold Coast,14,C. Butler,Sunshine Coast,7630,,
+2021,nrl,14,2021-06-06,Sun 4:05pm,Newcastle,4,Parramatta,40,A. Gee,McD. Jones,23015,,
+2021,nrl,15,2021-06-11,Fri 6:00pm,Manly,50,North Qld,18,A. Gee,4 Pines,6801,,
+2021,nrl,15,2021-06-11,Fri 7:55pm,Cronulla,19,Penrith,18,A. Klein,Netstrata,5217,,
+2021,nrl,15,2021-06-12,Sat 3:00pm,Gold Coast,34,Sydney,35,B. Cummins,Cbus Super,15111,,
+2021,nrl,15,2021-06-12,Sat 5:30pm,South Sydney,24,Newcastle,10,C. Butler,ANZ,12156,,
+2021,nrl,15,2021-06-12,Sat 7:35pm,Canberra,38,Brisbane,16,C. Sutton,GIO,9608,,
+2021,nrl,15,2021-06-13,Sun 2:00pm,Warriors,16,Melbourne,42,M. Cecchin,Central Coast,8105,,
+2021,nrl,15,2021-06-13,Sun 4:05pm,Parramatta,40,Wests Tigers,12,G. Atkins,Bankwest,23421,,
+2021,nrl,15,2021-06-14,Mon 4:00pm,Canterbury,28,St Geo Illa,6,G. Sutton,ANZ,17382,,
+2021,nrl,16,2021-06-17,Thu 7:50pm,Brisbane,0,South Sydney,46,A. Gee,Suncorp,19176,,
+2021,nrl,16,2021-06-18,Fri 6:00pm,North Qld,24,Cronulla,26,P. Gough,QLD C. Bank,13926,,
+2021,nrl,16,2021-06-18,Fri 7:55pm,Penrith,38,Sydney,12,A. Klein,BlueBet,14406,,
+2021,nrl,16,2021-06-19,Sat 3:00pm,Newcastle,10,Warriors,6,C. Butler,McD. Jones,9975,,
+2021,nrl,16,2021-06-19,Sat 5:30pm,St Geo Illa,22,Canberra,20,C. Sutton,WIN,9239,,
+2021,nrl,16,2021-06-19,Sat 7:35pm,Melbourne,66,Wests Tigers,16,G. Sutton,Sunshine Coast,5328,,
+2021,nrl,16,2021-06-20,Sun 2:00pm,Parramatta,36,Canterbury,10,M. Cecchin,Bankwest,17276,,
+2021,nrl,16,2021-06-20,Sun 4:05pm,Gold Coast,24,Manly,56,G. Atkins,Cbus Super,14408,,
+2021,nrl,17,2021-07-01,Thu 7:50pm,Sydney,0,Melbourne,46,A. Gee,McD. Jones,4289,,
+2021,nrl,17,2021-07-02,Fri 6:00pm,Warriors,18,St Geo Illa,19,P. Gough,Central Coast,0,,
+2021,nrl,17,2021-07-02,Fri 7:55pm,Penrith,13,Parramatta,12,A. Klein,BlueBet,0,,
+2021,nrl,17,2021-07-03,Sat 3:00pm,Canterbury,0,Manly,66,G. Sutton,Bankwest,0,,
+2021,nrl,17,2021-07-03,Sat 5:30pm,Canberra,6,Gold Coast,44,M. Cecchin,GIO,7646,,
+2021,nrl,17,2021-07-03,Sat 7:35pm,Newcastle,38,North Qld,0,C. Sutton,McD. Jones,7610,,
+2021,nrl,17,2021-07-04,Sun 2:00pm,Brisbane,26,Cronulla,18,B. Cummins,Suncorp,13840,,
+2021,nrl,17,2021-07-04,Sun 4:05pm,Wests Tigers,22,South Sydney,38,G. Atkins,Leichhardt,0,,
+2021,nrl,18,2021-07-08,Thu 7:50pm,Manly,16,Canberra,30,A. Gee,4 Pines,0,,
+2021,nrl,18,2021-07-09,Fri 7:55pm,South Sydney,46,North Qld,18,M. Cecchin,McD. Jones,3127,,
+2021,nrl,18,2021-07-10,Sat 7:35pm,Canterbury,16,Sydney,22,A. Gee,Bankwest,0,,
+2021,nrl,18,2021-07-11,Sun 4:05pm,Cronulla,20,Warriors,12,C. Sutton,Netstrata,0,,
+2021,nrl,19,2021-07-16,Fri 6:00pm,Gold Coast,8,Parramatta,26,M. Cecchin,Cbus Super,15038,,
+2021,nrl,19,2021-07-16,Fri 7:55pm,Manly,32,St Geo Illa,18,A. Gee,Cbus Super,15038,,
+2021,nrl,19,2021-07-17,Sat 3:00pm,North Qld,18,Sydney,34,A. Klein,QLD C. Bank,15933,,
+2021,nrl,19,2021-07-17,Sat 5:30pm,Canberra,34,Cronulla,18,G. Atkins,Cbus Super,3874,,
+2021,nrl,19,2021-07-17,Sat 7:30pm,Melbourne,48,Newcastle,4,C. Sutton,Cbus Super,3874,,
+2021,nrl,19,2021-07-18,Sun 2:00pm,Warriors,16,Penrith,30,C. Butler,Suncorp,24894,,
+2021,nrl,19,2021-07-18,Sun 4:05pm,Brisbane,24,Wests Tigers,42,G. Sutton,Suncorp,24894,,
+2021,nrl,19,2021-07-18,Sun 6:15pm,South Sydney,32,Canterbury,24,B. Cummins,Cbus Super,2979,,
+2021,nrl,20,2021-07-22,Thu 7:50pm,Parramatta,10,Canberra,12,A. Gee,Cbus Super,2566,,
+2021,nrl,20,2021-07-23,Fri 6:00pm,Sydney,28,Newcastle,8,G. Sutton,Sunshine Coast,2868,,
+2021,nrl,20,2021-07-23,Fri 7:55pm,North Qld,16,Melbourne,20,M. Cecchin,QLD C. Bank,14924,,
+2021,nrl,20,2021-07-24,Sat 3:00pm,South Sydney,60,Warriors,22,C. Butler,Sunshine Coast,7569,,
+2021,nrl,20,2021-07-24,Sat 5:30pm,Manly,44,Wests Tigers,24,A. Klein,Suncorp,5761,,
+2021,nrl,20,2021-07-24,Sat 7:35pm,Penrith,18,Brisbane,12,B. Cummins,Suncorp,8019,,
+2021,nrl,20,2021-07-25,Sun 2:00pm,St Geo Illa,10,Gold Coast,32,G. Atkins,Cbus Super,4424,,
+2021,nrl,20,2021-07-25,Sun 4:05pm,Canterbury,24,Cronulla,44,C. Sutton,Cbus Super,4424,,
+2021,nrl,21,2021-07-29,Thu 7:50pm,Sydney,28,Parramatta,0,G. Atkins,BB Print,4926,,
+2021,nrl,21,2021-07-30,Fri 6:00pm,Wests Tigers,16,Warriors,18,B. Cummins,Suncorp,12443,,
+2021,nrl,21,2021-07-30,Fri 8:00pm,Brisbane,37,North Qld,18,C. Sutton,Suncorp,29136,,
+2021,nrl,22,2021-08-01,Sun 1:50pm,Newcastle,34,Canberra,24,A. Gee,Suncorp,0,,
+2021,nrl,22,2021-08-01,Sun 4:05pm,Melbourne,37,Penrith,10,A. Klein,Suncorp,0,,
+2021,nrl,22,2021-08-01,Sun 6:25pm,St Geo Illa,14,South Sydney,50,C. Butler,Suncorp,0,,
+2021,nrl,22,2021-08-02,Mon 6:00pm,Canterbury,6,Gold Coast,34,M. Cecchin,Cbus Super,0,,
+2021,nrl,22,2021-08-02,Mon 8:05pm,Cronulla,22,Manly,40,G. Sutton,Suncorp,0,,
+2021,nrl,23,2021-08-05,Thu 7:50pm,Newcastle,28,Brisbane,20,G. Atkins,Suncorp,0,,
+2021,nrl,23,2021-08-06,Fri 6:00pm,Canberra,20,St Geo Illa,12,C. Sutton,Cbus Super,0,,
+2021,nrl,23,2021-08-06,Fri 7:55pm,Parramatta,12,South Sydney,40,A. Klein,Cbus Super,0,,
+2021,nrl,23,2021-08-07,Sat 3:00pm,Warriors,18,Cronulla,16,M. Cecchin,Cbus Super,0,,
+2021,nrl,23,2021-08-07,Sat 5:30pm,Sydney,14,Penrith,20,G. Sutton,Suncorp,0,,
+2021,nrl,23,2021-08-07,Sat 7:35pm,Manly,18,Melbourne,28,A. Gee,Suncorp,0,,
+2021,nrl,23,2021-08-08,Sun 2:00pm,Canterbury,16,Wests Tigers,28,C. Butler,Cbus Super,0,,
+2021,nrl,23,2021-08-08,Sun 4:05pm,Gold Coast,36,North Qld,14,B. Cummins,Cbus Super,0,,
+2021,nrl,24,2021-08-12,Thu 7:50pm,Melbourne,26,Canberra,16,G. Sutton,Sunshine Coast,2523,,
+2021,nrl,24,2021-08-13,Fri 6:00pm,St Geo Illa,16,Penrith,34,B. Cummins,Suncorp,6653,,
+2021,nrl,24,2021-08-13,Fri 7:55pm,Brisbane,20,Sydney,21,A. Klein,Suncorp,14314,,
+2021,nrl,24,2021-08-14,Sat 3:00pm,South Sydney,36,Gold Coast,6,A. Gee,Cbus Super,4117,,
+2021,nrl,24,2021-08-14,Sat 5:35pm,North Qld,16,Wests Tigers,24,C. Sutton,QLD C. Bank,12663,,
+2021,nrl,24,2021-08-14,Sat 7:30pm,Manly,56,Parramatta,10,G. Atkins,Sunshine Coast,3613,,
+2021,nrl,24,2021-08-15,Sun 2:00pm,Warriors,24,Canterbury,10,P. Gough,Moreton Daily,3332,,
+2021,nrl,24,2021-08-15,Sun 4:05pm,Cronulla,14,Newcastle,16,M. Cecchin,Moreton Daily,3954,,
+2021,nrl,25,2021-08-19,Thu 7:50pm,Gold Coast,20,Melbourne,34,B. Cummins,Cbus Super,8288,,
+2021,nrl,25,2021-08-20,Fri 6:00pm,Canberra,18,Manly,19,A. Gee,Suncorp,6181,,
+2021,nrl,25,2021-08-20,Fri 7:55pm,Penrith,25,South Sydney,12,G. Atkins,Suncorp,8848,,
+2021,nrl,25,2021-08-21,Sat 3:00pm,Wests Tigers,20,Cronulla,50,G. Sutton,Browne Park,2863,,
+2021,nrl,25,2021-08-21,Sat 5:30pm,Canterbury,16,Newcastle,22,P. Gough,Cbus Super,2343,,
+2021,nrl,25,2021-08-21,Sat 7:35pm,Parramatta,32,North Qld,16,A. Klein,Cbus Super,3013,,
+2021,nrl,25,2021-08-22,Sun 2:00pm,St Geo Illa,22,Sydney,40,C. Sutton,Clive Berghofer,7822,,
+2021,nrl,25,2021-08-22,Sun 4:05pm,Brisbane,24,Warriors,22,M. Cecchin,Suncorp,18252,,
+2021,nrl,26,2021-08-26,Thu 7:50pm,Newcastle,15,Gold Coast,14,G. Atkins,Sunshine Coast,2107,,
+2021,nrl,26,2021-08-27,Fri 6:00pm,Warriors,16,Canberra,28,B. Cummins,BB Print,4079,,
+2021,nrl,26,2021-08-27,Fri 7:55pm,Sydney,12,South Sydney,54,A. Klein,Suncorp,5136,,
+2021,nrl,26,2021-08-28,Sat 3:00pm,St Geo Illa,26,North Qld,38,P. Gough,Browne Park,4487,,
+2021,nrl,26,2021-08-28,Sat 5:30pm,Cronulla,24,Brisbane,16,A. Gee,Suncorp,8618,,
+2021,nrl,26,2021-08-28,Sat 7:35pm,Melbourne,10,Parramatta,22,G. Sutton,Suncorp,10246,,
+2021,nrl,26,2021-08-29,Sun 2:00pm,Manly,36,Canterbury,18,C. Sutton,Moreton Daily,4910,,
+2021,nrl,26,2021-08-29,Sun 4:05pm,Penrith,30,Wests Tigers,16,M. Cecchin,Moreton Daily,5351,,
+2021,nrl,27,2021-09-02,Thu 7:50pm,Canberra,16,Sydney,40,G. Sutton,BB Print,3473,,
+2021,nrl,27,2021-09-03,Fri 6:00pm,Cronulla,16,Melbourne,28,G. Atkins,Cbus Super,8580,,
+2021,nrl,27,2021-09-03,Fri 7:55pm,Parramatta,6,Penrith,40,A. Gee,Cbus Super,8580,,
+2021,nrl,27,2021-09-04,Sat 3:00pm,Brisbane,35,Newcastle,22,Z. Przeklasa-Adamski,Suncorp,20747,,
+2021,nrl,27,2021-09-04,Sat 5:30pm,North Qld,18,Manly,46,B. Cummins,QLD C. Bank,14336,,
+2021,nrl,27,2021-09-04,Sat 7:30pm,South Sydney,20,St Geo Illa,16,M. Cecchin,Sunshine Coast,3295,,
+2021,nrl,27,2021-09-05,Sun 2:00pm,Gold Coast,44,Warriors,0,A. Klein,Cbus Super,12532,,
+2021,nrl,27,2021-09-05,Sun 4:05pm,Wests Tigers,0,Canterbury,38,C. Sutton,Moreton Daily,3104,,
+2021,nrl,28,2021-09-10,Fri 7:50pm,Melbourne,40,Manly,12,G. Atkins,Sunshine Coast,9120,,
+2021,nrl,28,2021-09-11,Sat 5:40pm,Sydney,25,Gold Coast,24,A. Gee,QLD C. Bank,15237,,
+2021,nrl,28,2021-09-11,Sat 7:50pm,Penrith,10,South Sydney,16,G. Sutton,QLD C. Bank,18244,,
+2021,nrl,28,2021-09-12,Sun 4:05pm,Parramatta,28,Newcastle,20,A. Klein,Browne Park,5087,,
+2021,nrl,29,2021-09-17,Fri 7:50pm,Manly,42,Sydney,6,G. Sutton,BB Print,5824,,
+2021,nrl,29,2021-09-18,Sat 7:50pm,Penrith,8,Parramatta,6,A. Klein,BB Print,6011,,
+2021,nrl,30,2021-09-24,Fri 8:00pm,South Sydney,36,Manly,16,A. Klein,Suncorp,26249,,
+2021,nrl,30,2021-09-25,Sat 4:00pm,Melbourne,6,Penrith,10,G. Sutton,Suncorp,29011,,
+2021,nrl,31,2021-10-03,Sun 7:30pm,Penrith,14,South Sydney,12,G. Sutton,Suncorp,39322,,
+2022,nrl,1,2022-03-10,Thu 8:05pm,Penrith,28,Manly,6,A. Gee,BlueBet,16901,,
+2022,nrl,1,2022-03-11,Fri 6:00pm,Canberra,24,Cronulla,19,B. Cummins,GIO,15224,,
+2022,nrl,1,2022-03-11,Fri 8:05pm,Brisbane,11,South Sydney,4,A. Klein,Suncorp,32002,,
+2022,nrl,1,2022-03-12,Sat 3:00pm,Sydney,6,Newcastle,20,G. Sutton,SCG,14710,,
+2022,nrl,1,2022-03-12,Sat 5:30pm,Warriors,16,St Geo Illa,28,P. Gough,Sunshine Coast,5382,,
+2022,nrl,1,2022-03-12,Sat 7:35pm,Wests Tigers,16,Melbourne,26,C. Sutton,CommBank,10025,,
+2022,nrl,1,2022-03-13,Sun 4:05pm,Parramatta,32,Gold Coast,28,G. Atkins,CommBank,18211,,
+2022,nrl,1,2022-03-13,Sun 6:15pm,North Qld,4,Canterbury,6,B. Cummins,QLD C. Bank,12640,,
+2022,nrl,2,2022-03-17,Thu 8:05pm,Melbourne,15,South Sydney,14,G. Sutton,AAMI,13269,,
+2022,nrl,2,2022-03-18,Fri 6:00pm,St Geo Illa,16,Penrith,20,C. Sutton,Netstrata,10057,,
+2022,nrl,2,2022-03-18,Fri 8:05pm,Sydney,26,Manly,12,A. Klein,SCG,11872,,
+2022,nrl,2,2022-03-19,Sat 3:00pm,Gold Coast,20,Warriors,18,A. Gee,Cbus Super,13481,,
+2022,nrl,2,2022-03-19,Sat 5:30pm,Cronulla,18,Parramatta,16,P. Gough,Pointsbet,11459,,
+2022,nrl,2,2022-03-19,Sat 7:35pm,North Qld,26,Canberra,6,G. Atkins,QLD C. Bank,13864,,
+2022,nrl,2,2022-03-20,Sun 4:05pm,Newcastle,26,Wests Tigers,4,B. Cummins,McD. Jones,23214,,
+2022,nrl,2,2022-03-20,Sun 6:15pm,Canterbury,10,Brisbane,16,Z. Przeklasa-Adamski,Accor,13453,,
+2022,nrl,3,2022-03-24,Thu 8:05pm,St Geo Illa,12,Cronulla,36,G. Sutton,WIN,10122,,
+2022,nrl,3,2022-03-25,Fri 6:00pm,Wests Tigers,12,Warriors,16,Z. Przeklasa-Adamski,Campbelltown,7182,,
+2022,nrl,3,2022-03-25,Fri 8:05pm,South Sydney,28,Sydney,16,G. Atkins,Accor,18245,,
+2022,nrl,3,2022-03-26,Sat 3:00pm,Penrith,38,Newcastle,20,P. Gough,Carrington,11253,,
+2022,nrl,3,2022-03-26,Sat 5:30pm,Melbourne,24,Parramatta,28,A. Klein,AAMI,15691,,
+2022,nrl,3,2022-03-26,Sat 7:35pm,Canberra,24,Gold Coast,22,C. Sutton,GIO,11457,,
+2022,nrl,3,2022-03-27,Sun 4:05pm,Brisbane,12,North Qld,38,A. Gee,Suncorp,37761,,
+2022,nrl,3,2022-03-27,Sun 6:15pm,Manly,13,Canterbury,12,B. Cummins,4 Pines,13261,,
+2022,nrl,4,2022-03-31,Thu 8:05pm,Gold Coast,8,Wests Tigers,6,G. Atkins,Cbus Super,8774,,
+2022,nrl,5,2022-04-01,Fri 6:00pm,Cronulla,18,Newcastle,0,B. Cummins,Pointsbet,8927,,
+2022,nrl,5,2022-04-01,Fri 8:05pm,Penrith,26,South Sydney,12,A. Klein,BlueBet,20521,,
+2022,nrl,5,2022-04-02,Sat 3:00pm,Warriors,20,Brisbane,6,C. Sutton,Moreton Daily,9620,,
+2022,nrl,5,2022-04-02,Sat 5:30pm,Manly,25,Canberra,6,Z. Przeklasa-Adamski,Glen Willow,6972,,
+2022,nrl,5,2022-04-02,Sat 7:35pm,North Qld,4,Sydney,28,G. Sutton,QLD C. Bank,17929,,
+2022,nrl,5,2022-04-03,Sun 4:05pm,Melbourne,44,Canterbury,0,A. Gee,AAMI,13437,,
+2022,nrl,5,2022-04-03,Sun 6:15pm,Parramatta,48,St Geo Illa,14,T. Smith,CommBank,19711,,
+2022,nrl,6,2022-04-07,Thu 7:50pm,Newcastle,6,Manly,30,A. Klein,McD. Jones,9472,,
+2022,nrl,6,2022-04-08,Fri 6:00pm,Warriors,25,North Qld,24,T. Smith,Moreton Daily,6254,,
+2022,nrl,6,2022-04-08,Fri 7:55pm,Brisbane,20,Sydney,24,G. Atkins,Suncorp,23508,,
+2022,nrl,6,2022-04-09,Sat 3:00pm,Canberra,16,Melbourne,30,G. Sutton,McDonalds Park,8133,,
+2022,nrl,6,2022-04-09,Sat 5:35pm,South Sydney,24,St Geo Illa,12,B. Cummins,Accor,11332,,
+2022,nrl,6,2022-04-09,Sat 7:30pm,Gold Coast,20,Parramatta,26,P. Gough,Cbus Super,14478,,
+2022,nrl,6,2022-04-10,Sun 4:05pm,Cronulla,30,Wests Tigers,4,A. Gee,Pointsbet,11500,,
+2022,nrl,6,2022-04-10,Sun 6:15pm,Canterbury,12,Penrith,32,C. Butler,CommBank,11157,,
+2022,nrl,7,2022-04-14,Thu 7:50pm,Canberra,12,North Qld,18,A. Klein,GIO,11854,,
+2022,nrl,7,2022-04-15,Fri 4:00pm,South Sydney,36,Canterbury,16,G. Sutton,Accor,30194,,
+2022,nrl,7,2022-04-15,Fri 7:55pm,Penrith,40,Brisbane,12,A. Gee,BlueBet,19406,,
+2022,nrl,7,2022-04-16,Sat 5:30pm,Manly,26,Gold Coast,18,T. Smith,4 Pines,16220,,
+2022,nrl,7,2022-04-16,Sat 7:35pm,Melbourne,34,Cronulla,18,G. Atkins,AAMI,16286,,
+2022,nrl,7,2022-04-17,Sun 2:00pm,Sydney,22,Warriors,14,Z. Przeklasa-Adamski,SCG,11267,,
+2022,nrl,7,2022-04-17,Sun 4:05pm,St Geo Illa,21,Newcastle,16,B. Cummins,WIN,11113,,
+2022,nrl,7,2022-04-18,Mon 4:00pm,Parramatta,20,Wests Tigers,21,C. Butler,CommBank,28336,,
+2022,nrl,8,2022-04-21,Thu 7:50pm,Cronulla,34,Manly,22,G. Sutton,Pointsbet,9611,,
+2022,nrl,8,2022-04-22,Fri 7:55pm,Brisbane,34,Canterbury,14,P. Gough,Suncorp,23243,,
+2022,nrl,8,2022-04-23,Sat 5:30pm,North Qld,30,Gold Coast,4,C. Butler,QLD C. Bank,14547,,
+2022,nrl,8,2022-04-23,Sat 7:35pm,Wests Tigers,23,South Sydney,22,Z. Przeklasa-Adamski,CommBank,14251,,
+2022,nrl,8,2022-04-24,Sun 2:00pm,Newcastle,2,Parramatta,39,A. Klein,McD. Jones,25169,,
+2022,nrl,8,2022-04-24,Sun 4:05pm,Penrith,36,Canberra,6,G. Atkins,BlueBet,20612,,
+2022,nrl,8,2022-04-25,Mon 4:00pm,St Geo Illa,14,Sydney,12,A. Gee,SCG,35273,,
+2022,nrl,8,2022-04-25,Mon 7:00pm,Melbourne,70,Warriors,10,C. Sutton,AAMI,22696,,
+2022,nrl,9,2022-04-28,Thu 7:50pm,Brisbane,16,Cronulla,7,A. Klein,Suncorp,16740,,
+2022,nrl,9,2022-04-29,Fri 6:00pm,Gold Coast,4,Penrith,18,P. Gough,Cbus Super,14102,,
+2022,nrl,9,2022-04-29,Fri 7:55pm,South Sydney,40,Manly,22,G. Atkins,Central Coast,17284,,
+2022,nrl,9,2022-04-30,Sat 3:00pm,Warriors,21,Canberra,20,C. Butler,Moreton Daily,6326,,
+2022,nrl,9,2022-04-30,Sat 5:30pm,Canterbury,16,Sydney,12,B. Cummins,Accor,9544,,
+2022,nrl,9,2022-04-30,Sat 7:05pm,Parramatta,4,North Qld,35,T. Smith,TIO,10017,,
+2022,nrl,10,2022-05-01,Sun 2:00pm,Newcastle,2,Melbourne,50,L. Kennedy,McD. Jones,15895,,
+2022,nrl,10,2022-05-01,Sun 4:05pm,St Geo Illa,12,Wests Tigers,6,G. Sutton,WIN,16110,,
+2022,nrl,11,2022-05-05,Thu 7:50pm,South Sydney,12,Brisbane,32,G. Atkins,Accor,9242,,
+2022,nrl,11,2022-05-06,Fri 6:00pm,Canberra,14,Canterbury,4,B. Cummins,GIO,12890,,
+2022,nrl,11,2022-05-06,Fri 7:55pm,Penrith,20,Parramatta,22,G. Sutton,BlueBet,21548,,
+2022,nrl,11,2022-05-07,Sat 3:00pm,Manly,36,Wests Tigers,22,A. Gee,4 Pines,17385,,
+2022,nrl,11,2022-05-07,Sat 5:30pm,Sydney,44,Gold Coast,16,C. Butler,BB Print,5527,,
+2022,nrl,11,2022-05-07,Sat 7:35pm,North Qld,36,Newcastle,16,L. Kennedy,QLD C. Bank,14463,,
+2022,nrl,11,2022-05-08,Sun 2:00pm,Melbourne,42,St Geo Illa,6,P. Gough,AAMI,11723,,
+2022,nrl,11,2022-05-08,Sun 4:05pm,Cronulla,29,Warriors,10,T. Smith,Pointsbet,9915,,
+2022,nrl,12,2022-05-13,Fri 6:00pm,Canterbury,6,Newcastle,16,P. Gough,Suncorp,30220,,
+2022,nrl,12,2022-05-13,Fri 8:05pm,Manly,0,Brisbane,38,G. Atkins,Suncorp,40267,,
+2022,nrl,12,2022-05-14,Sat 3:00pm,Warriors,30,South Sydney,32,B. Cummins,Suncorp,30503,,
+2022,nrl,12,2022-05-14,Sat 5:30pm,Gold Coast,20,St Geo Illa,16,T. Smith,Suncorp,41593,,
+2022,nrl,12,2022-05-14,Sat 7:45pm,Melbourne,6,Penrith,32,A. Klein,Suncorp,46454,,
+2022,nrl,12,2022-05-15,Sun 2:00pm,Cronulla,10,Canberra,30,L. Kennedy,Suncorp,30453,,
+2022,nrl,12,2022-05-15,Sun 4:05pm,Sydney,31,Parramatta,24,A. Gee,Suncorp,40135,,
+2022,nrl,12,2022-05-15,Sun 6:25pm,Wests Tigers,12,North Qld,36,G. Sutton,Suncorp,43401,,
+2022,nrl,13,2022-05-19,Thu 7:50pm,Newcastle,12,Brisbane,36,A. Gee,McD. Jones,13312,,
+2022,nrl,13,2022-05-20,Fri 6:00pm,Wests Tigers,36,Canterbury,22,Z. Przeklasa-Adamski,Leichhardt,15124,,
+2022,nrl,13,2022-05-20,Fri 7:55pm,Parramatta,22,Manly,20,B. Cummins,CommBank,18778,,
+2022,nrl,13,2022-05-21,Sat 3:00pm,St Geo Illa,24,Warriors,18,C. Sutton,Netstrata,7147,,
+2022,nrl,13,2022-05-21,Sat 5:30pm,North Qld,36,Melbourne,6,G. Atkins,QLD C. Bank,22728,,
+2022,nrl,13,2022-05-21,Sat 7:35pm,Sydney,12,Penrith,32,G. Sutton,SCG,14482,,
+2022,nrl,13,2022-05-22,Sun 2:00pm,South Sydney,12,Canberra,32,P. Gough,Apex Oval,11124,,
+2022,nrl,13,2022-05-22,Sun 4:05pm,Gold Coast,18,Cronulla,25,A. Klein,Cbus Super,9882,,
+2022,nrl,14,2022-05-26,Thu 7:50pm,Melbourne,28,Manly,8,A. Gee,AAMI,10168,,
+2022,nrl,14,2022-05-27,Fri 6:00pm,Penrith,22,North Qld,0,A. Klein,BlueBet,17125,,
+2022,nrl,14,2022-05-27,Fri 7:55pm,Brisbane,35,Gold Coast,24,G. Sutton,Suncorp,32864,,
+2022,nrl,14,2022-05-28,Sat 3:00pm,Warriors,16,Newcastle,24,P. Gough,Moreton Daily,4265,,
+2022,nrl,14,2022-05-28,Sat 5:30pm,South Sydney,44,Wests Tigers,18,C. Sutton,Accor,13585,,
+2022,nrl,14,2022-05-28,Sat 7:35pm,Cronulla,16,Sydney,36,G. Atkins,Pointsbet,11500,,
+2022,nrl,14,2022-05-29,Sun 2:00pm,Canterbury,24,St Geo Illa,34,B. Cummins,Belmore,16991,,
+2022,nrl,14,2022-05-29,Sun 4:05pm,Canberra,20,Parramatta,28,T. Smith,GIO,16244,,
+2022,nrl,15,2022-06-02,Thu 7:50pm,Gold Coast,6,North Qld,32,G. Sutton,Cbus Super,10334,,
+2022,nrl,15,2022-06-03,Fri 7:55pm,Penrith,30,Canterbury,18,T. Smith,BlueBet,16906,,
+2022,nrl,15,2022-06-04,Sat 7:35pm,Manly,44,Warriors,12,G. Atkins,4 Pines,9248,,
+2022,nrl,15,2022-06-05,Sun 4:05pm,Canberra,22,Sydney,16,A. Gee,GIO,6492,,
+2022,nrl,16,2022-06-10,Fri 7:55pm,North Qld,31,St Geo Illa,12,T. Smith,QLD C. Bank,14683,,
+2022,nrl,16,2022-06-11,Sat 3:00pm,Gold Coast,16,South Sydney,30,A. Gee,Cbus Super,14290,,
+2022,nrl,16,2022-06-11,Sat 5:30pm,Sydney,18,Melbourne,26,G. Sutton,SCG,12925,,
+2022,nrl,16,2022-06-11,Sat 7:35pm,Brisbane,24,Canberra,18,G. Atkins,Suncorp,28142,,
+2022,nrl,16,2022-06-12,Sun 2:00pm,Wests Tigers,4,Manly,30,P. Gough,Campbelltown,10231,,
+2022,nrl,16,2022-06-12,Sun 4:05pm,Newcastle,6,Penrith,42,B. Cummins,McD. Jones,21332,,
+2022,nrl,16,2022-06-12,Sun 6:15pm,Warriors,16,Cronulla,38,C. Sutton,Moreton Daily,3560,,
+2022,nrl,16,2022-06-13,Mon 4:00pm,Canterbury,34,Parramatta,4,A. Klein,Accor,20184,,
+2022,nrl,17,2022-06-16,Thu 7:50pm,St Geo Illa,32,South Sydney,12,G. Atkins,WIN,11257,,
+2022,nrl,17,2022-06-17,Fri 6:00pm,Manly,26,North Qld,28,G. Sutton,4 Pines,9226,,
+2022,nrl,17,2022-06-17,Fri 7:55pm,Melbourne,32,Brisbane,20,A. Gee,AAMI,18586,,
+2022,nrl,17,2022-06-18,Sat 3:00pm,Cronulla,18,Gold Coast,10,C. Sutton,C.ex Coffs,9058,,
+2022,nrl,17,2022-06-18,Sat 5:30pm,Warriors,6,Penrith,40,P. Gough,Moreton Daily,8127,,
+2022,nrl,17,2022-06-18,Sat 7:35pm,Parramatta,26,Sydney,16,T. Smith,CommBank,21757,,
+2022,nrl,17,2022-06-19,Sun 2:00pm,Canberra,20,Newcastle,18,A. Klein,GIO,12457,,
+2022,nrl,17,2022-06-19,Sun 4:05pm,Canterbury,36,Wests Tigers,12,B. Cummins,CommBank,14806,,
+2022,nrl,18,2022-06-30,Thu 7:50pm,Manly,36,Melbourne,30,G. Atkins,4 Pines,8168,,
+2022,nrl,19,2022-07-01,Fri 6:00pm,Newcastle,38,Gold Coast,12,C. Butler,McD. Jones,8578,,
+2022,nrl,19,2022-07-01,Fri 7:55pm,Penrith,26,Sydney,18,G. Sutton,BlueBet,16725,,
+2022,nrl,19,2022-07-02,Sat 3:00pm,Canterbury,6,Cronulla,18,A. Klein,CommBank,8837,,
+2022,nrl,19,2022-07-02,Sat 5:30pm,North Qld,40,Brisbane,26,A. Gee,QLD C. Bank,23531,,
+2022,nrl,19,2022-07-02,Sat 7:35pm,South Sydney,30,Parramatta,12,B. Cummins,Accor,10102,,
+2022,nrl,19,2022-07-03,Sun 2:00pm,Warriors,22,Wests Tigers,2,C. Sutton,Mt Smart,26009,,
+2022,nrl,19,2022-07-03,Sun 4:05pm,St Geo Illa,12,Canberra,10,P. Gough,WIN,7069,,
+2022,nrl,20,2022-07-07,Thu 7:50pm,Cronulla,28,Melbourne,6,A. Gee,Pointsbet,7868,,
+2022,nrl,20,2022-07-08,Fri 7:55pm,Newcastle,28,South Sydney,40,T. Smith,McD. Jones,18621,,
+2022,nrl,20,2022-07-09,Sat 7:35pm,Wests Tigers,20,Parramatta,28,C. Butler,Leichhardt,13214,,
+2022,nrl,20,2022-07-10,Sun 4:05pm,Brisbane,32,St Geo Illa,18,G. Atkins,Suncorp,29234,,
+2022,nrl,21,2022-07-15,Fri 6:00pm,North Qld,12,Cronulla,26,A. Gee,QLD C. Bank,15982,,
+2022,nrl,21,2022-07-15,Fri 7:55pm,Parramatta,28,Warriors,18,T. Smith,CommBank,12279,,
+2022,nrl,21,2022-07-16,Sat 3:00pm,Sydney,54,St Geo Illa,26,G. Atkins,Central Coast,15721,,
+2022,nrl,21,2022-07-16,Sat 5:30pm,Manly,42,Newcastle,12,G. Sutton,4 Pines,15896,,
+2022,nrl,21,2022-07-16,Sat 7:35pm,Gold Coast,12,Brisbane,16,C. Sutton,Cbus Super,19245,,
+2022,nrl,21,2022-07-17,Sun 2:00pm,Wests Tigers,16,Penrith,18,P. Gough,CommBank,11464,,
+2022,nrl,21,2022-07-17,Sun 4:05pm,Melbourne,16,Canberra,20,A. Klein,AAMI,16106,,
+2022,nrl,21,2022-07-17,Sun 6:15pm,Canterbury,28,South Sydney,36,C. Butler,Accor,19126,,
+2022,nrl,22,2022-07-21,Thu 7:50pm,Parramatta,14,Brisbane,36,G. Sutton,CommBank,11017,,
+2022,nrl,22,2022-07-22,Fri 6:00pm,St Geo Illa,20,Manly,6,A. Gee,Netstrata,7137,,
+2022,nrl,22,2022-07-22,Fri 7:55pm,Newcastle,12,Sydney,42,P. Gough,McD. Jones,13701,,
+2022,nrl,22,2022-07-23,Sat 3:00pm,Canberra,26,Warriors,14,C. Sutton,GIO,11915,,
+2022,nrl,22,2022-07-23,Sat 5:30pm,Penrith,20,Cronulla,10,A. Klein,BlueBet,17426,,
+2022,nrl,22,2022-07-23,Sat 7:35pm,South Sydney,24,Melbourne,12,T. Smith,Accor,11217,,
+2022,nrl,22,2022-07-24,Sun 2:00pm,Canterbury,36,Gold Coast,26,B. Cummins,CommBank,11726,,
+2022,nrl,22,2022-07-24,Sun 4:05pm,North Qld,27,Wests Tigers,26,C. Butler,QLD C. Bank,14910,,
+2022,nrl,23,2022-07-28,Thu 7:50pm,Manly,10,Sydney,20,G. Atkins,4 Pines,12187,,
+2022,nrl,23,2022-07-29,Fri 8:00pm,Warriors,12,Melbourne,24,P. Gough,Mt Smart,18395,,
+2022,nrl,23,2022-07-29,Fri 7:55pm,Parramatta,34,Penrith,10,T. Smith,CommBank,26912,,
+2022,nrl,23,2022-07-30,Sat 3:00pm,Gold Coast,24,Canberra,36,B. Cummins,Cbus Super,12461,,
+2022,nrl,23,2022-07-30,Sat 5:30pm,Cronulla,21,South Sydney,20,G. Sutton,Pointsbet,11492,,
+2022,nrl,23,2022-07-30,Sat 7:35pm,Brisbane,18,Wests Tigers,32,A. Gee,Suncorp,32909,,
+2022,nrl,23,2022-07-31,Sun 2:00pm,Newcastle,10,Canterbury,24,C. Butler,McD. Jones,19813,,
+2022,nrl,23,2022-07-31,Sun 4:05pm,St Geo Illa,8,North Qld,34,C. Sutton,Netstrata,9517,,
+2022,nrl,24,2022-08-04,Thu 7:50pm,Sydney,34,Brisbane,16,T. Smith,SCG,10495,,
+2022,nrl,24,2022-08-05,Fri 6:00pm,Melbourne,32,Gold Coast,14,P. Gough,AAMI,10869,,
+2022,nrl,24,2022-08-05,Fri 7:55pm,Manly,20,Parramatta,36,G. Sutton,4 Pines,17134,,
+2022,nrl,24,2022-08-06,Sat 3:00pm,South Sydney,48,Warriors,10,B. Cummins,Sunshine Coast,8911,,
+2022,nrl,24,2022-08-06,Sat 5:30pm,Canberra,6,Penrith,26,G. Atkins,GIO,16912,,
+2022,nrl,24,2022-08-06,Sat 7:35pm,Cronulla,24,St Geo Illa,18,A. Klein,Pointsbet,11427,,
+2022,nrl,24,2022-08-07,Sun 2:00pm,Canterbury,14,North Qld,28,A. Gee,Salter,8521,,
+2022,nrl,24,2022-08-07,Sun 4:05pm,Wests Tigers,10,Newcastle,14,C. Sutton,Campbelltown,9621,,
+2022,nrl,25,2022-08-11,Thu 7:50pm,Penrith,0,Melbourne,16,G. Sutton,BlueBet,15612,,
+2022,nrl,25,2022-08-12,Fri 6:00pm,Warriors,42,Canterbury,18,C. Butler,Mt Smart,16212,,
+2022,nrl,25,2022-08-12,Fri 7:55pm,Parramatta,0,South Sydney,26,G. Atkins,CommBank,22958,,
+2022,nrl,25,2022-08-13,Sat 3:00pm,Sydney,32,North Qld,18,A. Klein,SCG,15219,,
+2022,nrl,25,2022-08-13,Sat 5:30pm,Wests Tigers,12,Cronulla,36,B. Cummins,Scully,10048,,
+2022,nrl,25,2022-08-13,Sat 7:35pm,Brisbane,28,Newcastle,10,P. Gough,Suncorp,25742,,
+2022,nrl,25,2022-08-14,Sun 2:00pm,Canberra,24,St Geo Illa,22,A. Gee,GIO,11216,,
+2022,nrl,25,2022-08-14,Sun 4:05pm,Gold Coast,44,Manly,24,C. Sutton,Cbus Super,11753,,
+2022,nrl,26,2022-08-18,Thu 7:50pm,South Sydney,22,Penrith,26,A. Gee,Accor,15208,,
+2022,nrl,26,2022-08-19,Fri 6:00pm,North Qld,48,Warriors,4,C. Butler,QLD C. Bank,17404,,
+2022,nrl,26,2022-08-19,Fri 7:55pm,Brisbane,12,Melbourne,60,T. Smith,Suncorp,42612,,
+2022,nrl,26,2022-08-20,Sat 3:00pm,Parramatta,42,Canterbury,6,A. Klein,CommBank,26451,,
+2022,nrl,26,2022-08-20,Sat 5:30pm,Manly,6,Cronulla,40,G. Sutton,4 Pines,12243,,
+2022,nrl,26,2022-08-20,Sat 7:35pm,Sydney,72,Wests Tigers,6,B. Cummins,SCG,14939,,
+2022,nrl,26,2022-08-21,Sun 2:00pm,St Geo Illa,46,Gold Coast,26,L. Kennedy,WIN,12348,,
+2022,nrl,26,2022-08-21,Sun 4:05pm,Newcastle,22,Canberra,28,G. Atkins,McD. Jones,16768,,
+2022,nrl,27,2022-08-25,Thu 7:50pm,Brisbane,6,Parramatta,53,G. Atkins,Suncorp,30371,,
+2022,nrl,27,2022-08-26,Fri 6:00pm,Penrith,46,Warriors,12,C. Butler,BlueBet,17025,,
+2022,nrl,27,2022-08-26,Fri 7:55pm,Melbourne,14,Sydney,18,A. Gee,AAMI,25308,,
+2022,nrl,27,2022-08-27,Sat 3:00pm,Canberra,48,Manly,6,A. Klein,GIO,16647,,
+2022,nrl,27,2022-08-27,Sat 5:30pm,Cronulla,16,Canterbury,0,T. Smith,Pointsbet,11500,,
+2022,nrl,27,2022-08-27,Sat 7:35pm,South Sydney,20,North Qld,10,G. Sutton,Accor,15264,,
+2022,nrl,27,2022-08-28,Sun 2:00pm,Wests Tigers,22,St Geo Illa,24,L. Kennedy,CommBank,9789,,
+2022,nrl,27,2022-08-28,Sun 4:05pm,Gold Coast,36,Newcastle,26,B. Cummins,Cbus Super,11816,,
+2022,nrl,28,2022-09-01,Thu 7:50pm,Parramatta,22,Melbourne,14,A. Klein,CommBank,23758,,
+2022,nrl,28,2022-09-02,Fri 6:00pm,Canterbury,21,Manly,20,P. Gough,Accor,13648,,
+2022,nrl,28,2022-09-02,Fri 7:55pm,Sydney,26,South Sydney,16,G. Atkins,Allianz,41906,,
+2022,nrl,28,2022-09-03,Sat 5:00pm,Warriors,26,Gold Coast,27,Z. Przeklasa-Adamski,Mt Smart,20512,,
+2022,nrl,28,2022-09-03,Sat 5:30pm,St Geo Illa,22,Brisbane,12,B. Cummins,Netstrata,8247,,
+2022,nrl,28,2022-09-03,Sat 7:35pm,North Qld,38,Penrith,8,T. Smith,QLD C. Bank,23840,,
+2022,nrl,28,2022-09-04,Sun 2:00pm,Newcastle,16,Cronulla,38,C. Sutton,McD. Jones,16808,,
+2022,nrl,28,2022-09-04,Sun 4:05pm,Wests Tigers,10,Canberra,56,G. Sutton,Leichhardt,10041,,
+2022,nrl,29,2022-09-09,Fri 7:50pm,Penrith,27,Parramatta,8,G. Sutton,BlueBet,21863,,
+2022,nrl,29,2022-09-10,Sat 5:40pm,Melbourne,20,Canberra,28,G. Atkins,AAMI,20838,,
+2022,nrl,29,2022-09-10,Sat 7:50pm,Cronulla,30,North Qld,32,A. Gee,Pointsbet,12447,,
+2022,nrl,29,2022-09-11,Sun 4:05pm,Sydney,14,South Sydney,30,A. Klein,Allianz,39498,,
+2022,nrl,30,2022-09-16,Fri 7:50pm,Parramatta,40,Canberra,4,A. Klein,CommBank,29134,,
+2022,nrl,30,2022-09-17,Sat 8:00pm,Cronulla,12,South Sydney,38,G. Atkins,Allianz,39733,,
+2022,nrl,31,2022-09-23,Fri 7:50pm,North Qld,20,Parramatta,24,G. Atkins,QLD C. Bank,25372,,
+2022,nrl,31,2022-09-24,Sat 7:50pm,Penrith,32,South Sydney,12,A. Klein,Accor,50035,,
+2022,nrl,32,2022-10-02,Sun 7:30pm,Penrith,28,Parramatta,12,A. Klein,Accor,82415,,
+2023,nrl,1,2023-03-02,Thu 8:00pm,Parramatta,12,Melbourne,16,A. Klein,CommBank,17301,,
+2023,nrl,1,2023-03-03,Fri 8:00pm,Warriors,20,Newcastle,12,C. Sutton,Sky Stadium,16676,,
+2023,nrl,1,2023-03-03,Fri 8:05pm,Penrith,12,Brisbane,13,G. Sutton,BlueBet,17125,,
+2023,nrl,1,2023-03-04,Sat 3:00pm,Manly,31,Canterbury,6,G. Atkins,4 Pines,17278,,
+2023,nrl,1,2023-03-04,Sat 4:30pm,North Qld,19,Canberra,18,A. Gee,QLD C. Bank,19855,,
+2023,nrl,1,2023-03-04,Sat 7:35pm,Cronulla,18,South Sydney,27,T. Smith,Pointsbet,12757,,
+2023,nrl,1,2023-03-05,Sun 3:05pm,Dolphins,28,Sydney,18,C. Butler,Suncorp,32177,,
+2023,nrl,1,2023-03-05,Sun 6:15pm,Wests Tigers,10,Gold Coast,22,P. Gough,Leichhardt,14667,,
+2023,nrl,2,2023-03-09,Thu 8:00pm,Penrith,16,South Sydney,10,G. Atkins,BlueBet,16906,,
+2023,nrl,2,2023-03-10,Fri 6:00pm,Parramatta,26,Cronulla,30,G. Sutton,CommBank,16663,,
+2023,nrl,2,2023-03-10,Fri 7:00pm,Brisbane,28,North Qld,16,A. Klein,Suncorp,43162,,
+2023,nrl,2,2023-03-11,Sat 3:00pm,Sydney,20,Warriors,12,A. Gee,Allianz,16267,,
+2023,nrl,2,2023-03-11,Sat 4:30pm,Dolphins,20,Canberra,14,T. Smith,Kayo,10023,,
+2023,nrl,2,2023-03-11,Sat 7:35pm,Melbourne,12,Canterbury,26,C. Butler,AAMI,17248,,
+2023,nrl,2,2023-03-12,Sun 4:05pm,Wests Tigers,12,Newcastle,14,P. Gough,Leichhardt,13214,,
+2023,nrl,2,2023-03-12,Sun 6:15pm,St Geo Illa,32,Gold Coast,18,C. Sutton,Netstrata,8538,,
+2023,nrl,3,2023-03-16,Thu 8:00pm,Manly,34,Parramatta,30,A. Gee,4 Pines,13363,,
+2023,nrl,3,2023-03-17,Fri 6:00pm,Newcastle,20,Dolphins,36,C. Butler,McD. Jones,20093,,
+2023,nrl,3,2023-03-17,Fri 8:00pm,Sydney,20,South Sydney,18,G. Sutton,Allianz,36639,,
+2023,nrl,3,2023-03-18,Sat 2:00pm,Gold Coast,38,Melbourne,34,G. Atkins,Cbus Super,14483,,
+2023,nrl,3,2023-03-18,Sat 4:30pm,North Qld,12,Warriors,26,C. Sutton,QLD C. Bank,17818,,
+2023,nrl,3,2023-03-18,Sat 6:35pm,Brisbane,40,St Geo Illa,18,P. Gough,Suncorp,26612,,
+2023,nrl,3,2023-03-19,Sun 4:05pm,Canterbury,26,Wests Tigers,22,T. Smith,Belmore,16404,,
+2023,nrl,3,2023-03-19,Sun 6:15pm,Canberra,24,Cronulla,20,A. Klein,GIO,14134,,
+2023,nrl,4,2023-03-23,Thu 8:00pm,Parramatta,17,Penrith,16,A. Klein,CommBank,16342,,
+2023,nrl,4,2023-03-24,Fri 6:00pm,Melbourne,24,Wests Tigers,12,B. Cummins,AAMI,11669,,
+2023,nrl,4,2023-03-24,Fri 7:00pm,Dolphins,12,Brisbane,18,A. Gee,Suncorp,51047,,
+2023,nrl,4,2023-03-25,Sat 4:30pm,North Qld,24,Gold Coast,12,C. Butler,QLD C. Bank,16426,,
+2023,nrl,4,2023-03-25,Sat 7:35pm,South Sydney,13,Manly,12,C. Sutton,Accor,18379,,
+2023,nrl,4,2023-03-26,Sun 4:00pm,Warriors,16,Canterbury,14,P. Gough,Mt Smart,18595,,
+2023,nrl,4,2023-03-26,Sun 4:05pm,Newcastle,24,Canberra,14,G. Sutton,McD. Jones,15106,,
+2023,nrl,4,2023-03-26,Sun 6:15pm,St Geo Illa,8,Cronulla,40,T. Smith,Netstrata,15126,,
+2023,nrl,5,2023-03-30,Thu 8:00pm,Sydney,28,Parramatta,20,G. Atkins,Allianz,20886,,
+2023,nrl,5,2023-03-31,Fri 6:00pm,Canberra,12,Penrith,53,A. Gee,GIO,15334,,
+2023,nrl,5,2023-03-31,Fri 8:00pm,South Sydney,10,Melbourne,18,T. Smith,Accor,11239,,
+2023,nrl,6,2023-04-01,Sat 3:00pm,Manly,32,Newcastle,32,C. Butler,Glen Willow,9024,,
+2023,nrl,6,2023-04-01,Sat 5:30pm,St Geo Illa,38,Dolphins,12,G. Sutton,WIN,16472,,
+2023,nrl,6,2023-04-01,Sat 6:35pm,Brisbane,46,Wests Tigers,12,C. Sutton,Suncorp,27553,,
+2023,nrl,6,2023-04-02,Sun 4:05pm,Cronulla,30,Warriors,32,B. Cummins,Pointsbet,10878,,
+2023,nrl,6,2023-04-02,Sun 6:15pm,Canterbury,15,North Qld,14,L. Kennedy,Accor,9626,,
+2023,nrl,7,2023-04-06,Thu 7:50pm,Melbourne,28,Sydney,8,A. Klein,AAMI,16323,,
+2023,nrl,7,2023-04-07,Fri 4:05pm,Canterbury,16,South Sydney,50,G. Sutton,Accor,35211,,
+2023,nrl,7,2023-04-07,Fri 8:00pm,North Qld,22,Dolphins,32,A. Gee,QLD C. Bank,22811,,
+2023,nrl,7,2023-04-08,Sat 5:30pm,Penrith,44,Manly,12,T. Smith,BlueBet,20312,,
+2023,nrl,7,2023-04-08,Sat 7:35pm,Brisbane,14,Canberra,20,G. Atkins,Suncorp,31962,,
+2023,nrl,7,2023-04-09,Sun 4:05pm,Gold Coast,20,St Geo Illa,18,P. Gough,Cbus Super,12452,,
+2023,nrl,7,2023-04-09,Sun 6:15pm,Newcastle,34,Warriors,24,L. Kennedy,McD. Jones,18007,,
+2023,nrl,7,2023-04-10,Mon 4:00pm,Wests Tigers,22,Parramatta,28,B. Cummins,Accor,28611,,
+2023,nrl,8,2023-04-13,Thu 7:50pm,Dolphins,14,South Sydney,36,A. Klein,Suncorp,23280,,
+2023,nrl,8,2023-04-14,Fri 6:00pm,Cronulla,22,Sydney,12,G. Atkins,Pointsbet,11489,,
+2023,nrl,8,2023-04-14,Fri 8:00pm,Manly,18,Melbourne,8,A. Gee,4 Pines,13573,,
+2023,nrl,8,2023-04-15,Sat 5:00pm,Warriors,22,North Qld,14,C. Sutton,Mt Smart,23695,,
+2023,nrl,8,2023-04-15,Sat 5:30pm,Newcastle,15,Penrith,16,P. Gough,McD. Jones,26084,,
+2023,nrl,8,2023-04-15,Sat 7:35pm,Gold Coast,26,Brisbane,43,T. Smith,Cbus Super,26563,,
+2023,nrl,8,2023-04-16,Sun 2:00pm,Canberra,20,St Geo Illa,14,G. Sutton,GIO,13817,,
+2023,nrl,8,2023-04-16,Sun 4:05pm,Parramatta,30,Canterbury,4,C. Butler,CommBank,27655,,
+2023,nrl,9,2023-04-20,Thu 7:50pm,South Sydney,20,Penrith,18,G. Sutton,Accor,19548,,
+2023,nrl,9,2023-04-21,Fri 7:30pm,Parramatta,16,Brisbane,26,A. Klein,TIO,11864,,
+2023,nrl,9,2023-04-22,Sat 5:30pm,Canterbury,20,Cronulla,33,C. Sutton,Accor,12148,,
+2023,nrl,9,2023-04-22,Sat 7:35pm,North Qld,18,Newcastle,16,B. Cummins,QLD C. Bank,17970,,
+2023,nrl,9,2023-04-23,Sun 2:00pm,Dolphins,28,Gold Coast,26,C. Butler,Suncorp,22034,,
+2023,nrl,9,2023-04-23,Sun 4:05pm,Wests Tigers,16,Manly,22,T. Smith,Campbelltown,10033,,
+2023,nrl,9,2023-04-25,Tue 4:05pm,Sydney,27,St Geo Illa,26,A. Gee,Allianz,40191,,
+2023,nrl,9,2023-04-25,Tue 7:00pm,Melbourne,30,Warriors,22,G. Atkins,AAMI,23469,,
+2023,nrl,10,2023-04-27,Thu 7:50pm,Cronulla,44,North Qld,6,G. Sutton,Pointsbet,8148,,
+2023,nrl,10,2023-04-28,Fri 6:00pm,Parramatta,43,Newcastle,12,C. Sutton,CommBank,15875,,
+2023,nrl,10,2023-04-28,Fri 8:00pm,Brisbane,6,South Sydney,32,A. Klein,Suncorp,40102,,
+2023,nrl,10,2023-04-29,Sat 3:00pm,Canberra,31,Dolphins,30,P. Gough,McDonalds Park,10445,,
+2023,nrl,10,2023-04-29,Sat 5:30pm,Manly,10,Gold Coast,26,B. Cummins,4 Pines,10107,,
+2023,nrl,10,2023-04-29,Sat 7:35pm,Penrith,8,Wests Tigers,12,A. Gee,Carrington,11055,,
+2023,nrl,10,2023-04-30,Sun 4:00pm,Warriors,0,Sydney,14,C. Butler,Mt Smart,20395,,
+2023,nrl,10,2023-04-30,Sun 4:05pm,St Geo Illa,16,Canterbury,18,G. Atkins,WIN,16678,,
+2023,nrl,11,2023-05-05,Fri 6:00pm,Canterbury,30,Canberra,34,C. Sutton,Suncorp,50077,,
+2023,nrl,11,2023-05-05,Fri 8:05pm,Manly,6,Brisbane,32,G. Sutton,Suncorp,50077,,
+2023,nrl,11,2023-05-06,Sat 3:00pm,Warriors,6,Penrith,18,T. Smith,Suncorp,50183,,
+2023,nrl,11,2023-05-06,Sat 5:30pm,Cronulla,16,Dolphins,36,G. Atkins,Suncorp,50183,,
+2023,nrl,11,2023-05-06,Sat 7:45pm,Melbourne,12,South Sydney,28,A. Gee,Suncorp,50183,,
+2023,nrl,11,2023-05-07,Sun 1:50pm,Wests Tigers,18,St Geo Illa,16,P. Gough,Suncorp,46835,,
+2023,nrl,11,2023-05-07,Sun 4:00pm,Sydney,6,North Qld,20,A. Klein,Suncorp,46835,,
+2023,nrl,11,2023-05-07,Sun 6:25pm,Gold Coast,26,Parramatta,24,C. Butler,Suncorp,46835,,
+2023,nrl,12,2023-05-11,Thu 7:50pm,Melbourne,24,Brisbane,16,T. Smith,AAMI,16043,,
+2023,nrl,12,2023-05-12,Fri 6:00pm,Canterbury,12,Warriors,24,B. Cummins,Accor,14294,,
+2023,nrl,12,2023-05-12,Fri 8:00pm,Penrith,48,Sydney,4,G. Sutton,BlueBet,20255,,
+2023,nrl,12,2023-05-13,Sat 3:00pm,South Sydney,20,Wests Tigers,0,L. Kennedy,Accor,21013,,
+2023,nrl,12,2023-05-13,Sat 5:30pm,North Qld,42,St Geo Illa,22,C. Butler,QLD C. Bank,17852,,
+2023,nrl,12,2023-05-13,Sat 7:35pm,Canberra,26,Parramatta,18,G. Atkins,GIO,17414,,
+2023,nrl,12,2023-05-14,Sun 2:00pm,Newcastle,46,Gold Coast,26,P. Gough,McD. Jones,13064,,
+2023,nrl,12,2023-05-14,Sun 4:05pm,Manly,14,Cronulla,20,A. Klein,4 Pines,10358,,
+2023,nrl,13,2023-05-18,Thu 7:50pm,Brisbane,4,Penrith,15,A. Gee,Suncorp,33343,,
+2023,nrl,13,2023-05-19,Fri 6:00pm,St Geo Illa,24,Sydney,22,P. Gough,Netstrata,9007,,
+2023,nrl,13,2023-05-19,Fri 8:00pm,South Sydney,16,Parramatta,36,A. Klein,Allianz,27432,,
+2023,nrl,13,2023-05-20,Sat 3:00pm,Cronulla,26,Newcastle,6,L. Kennedy,C.ex Coffs,10156,,
+2023,nrl,13,2023-05-20,Sat 5:30pm,Wests Tigers,66,North Qld,18,B. Cummins,Leichhardt,12247,,
+2023,nrl,13,2023-05-20,Sat 7:35pm,Dolphins,16,Melbourne,24,G. Atkins,Suncorp,28325,,
+2023,nrl,13,2023-05-21,Sun 2:00pm,Canterbury,20,Gold Coast,18,C. Butler,Accor,10815,,
+2023,nrl,13,2023-05-21,Sun 4:05pm,Canberra,14,Manly,42,G. Sutton,GIO,14730,,
+2023,nrl,14,2023-05-25,Thu 7:50pm,Dolphins,26,St Geo Illa,12,A. Gee,Kayo,10047,,
+2023,nrl,14,2023-05-26,Fri 8:00pm,Parramatta,24,North Qld,16,L. Kennedy,CommBank,14810,,
+2023,nrl,14,2023-05-27,Sat 7:30pm,Warriors,22,Brisbane,26,G. Sutton,McLean Park,16195,,
+2023,nrl,14,2023-05-27,Sat 7:35pm,South Sydney,26,Canberra,33,G. Atkins,Accor,12382,,
+2023,nrl,14,2023-05-28,Sun 4:05pm,Newcastle,28,Manly,18,P. Gough,McD. Jones,20661,,
+2023,nrl,15,2023-06-02,Fri 8:00pm,Wests Tigers,19,Canberra,20,G. Sutton,Campbelltown,11201,,
+2023,nrl,15,2023-06-03,Sat 5:00pm,Warriors,30,Dolphins,8,G. Atkins,Go Media,23686,,
+2023,nrl,15,2023-06-03,Sat 5:30pm,Gold Coast,28,South Sydney,46,L. Kennedy,Cbus Super,18736,,
+2023,nrl,15,2023-06-03,Sat 7:35pm,Cronulla,12,Brisbane,20,T. Smith,Pointsbet,12318,,
+2023,nrl,15,2023-06-04,Sun 2:00pm,Sydney,25,Canterbury,24,A. Klein,Industree,18338,,
+2023,nrl,15,2023-06-04,Sun 4:05pm,North Qld,45,Melbourne,20,P. Gough,QLD C. Bank,18867,,
+2023,nrl,15,2023-06-04,Sun 6:15pm,Penrith,26,St Geo Illa,18,C. Sutton,BlueBet,16912,,
+2023,nrl,16,2023-06-08,Thu 7:50pm,Gold Coast,28,Wests Tigers,12,T. Smith,Cbus Super,10232,,
+2023,nrl,16,2023-06-09,Fri 6:00pm,Canberra,14,Warriors,36,G. Atkins,GIO,21082,,
+2023,nrl,16,2023-06-09,Fri 8:00pm,Manly,58,Dolphins,18,G. Sutton,4 Pines,14598,,
+2023,nrl,16,2023-06-10,Sat 3:00pm,St Geo Illa,36,South Sydney,30,B. Cummins,Netstrata,17357,,
+2023,nrl,16,2023-06-10,Sat 5:30pm,Brisbane,24,Newcastle,20,C. Butler,Suncorp,35814,,
+2023,nrl,16,2023-06-10,Sat 7:35pm,Sydney,6,Penrith,30,A. Gee,Allianz,23610,,
+2023,nrl,16,2023-06-11,Sun 4:05pm,Melbourne,54,Cronulla,10,A. Klein,AAMI,20253,,
+2023,nrl,16,2023-06-12,Mon 4:00pm,Canterbury,12,Parramatta,34,L. Kennedy,Accor,33866,,
+2023,nrl,17,2023-06-16,Fri 8:00pm,North Qld,27,Penrith,23,P. Gough,QLD C. Bank,17277,,
+2023,nrl,17,2023-06-17,Sat 3:00pm,Newcastle,16,Sydney,18,G. Atkins,McD. Jones,21966,,
+2023,nrl,17,2023-06-17,Sat 5:30pm,Parramatta,34,Manly,4,C. Butler,CommBank,21296,,
+2023,nrl,17,2023-06-17,Sat 7:35pm,Wests Tigers,6,Melbourne,28,Z. Przeklasa-Adamski,Campbelltown,8517,,
+2023,nrl,17,2023-06-18,Sun 4:05pm,Cronulla,48,Canterbury,10,A. Gee,Pointsbet,11901,,
+2023,nrl,18,2023-06-23,Fri 8:00pm,St Geo Illa,18,Warriors,48,A. Gee,WIN,9275,,
+2023,nrl,18,2023-06-24,Sat 3:00pm,Dolphins,20,Parramatta,48,P. Gough,Sunshine Coast,8821,,
+2023,nrl,18,2023-06-24,Sat 5:30pm,Penrith,20,Newcastle,12,B. Cummins,BlueBet,18589,,
+2023,nrl,18,2023-06-24,Sat 7:35pm,Melbourne,24,Manly,6,T. Smith,AAMI,13198,,
+2023,nrl,18,2023-06-25,Sun 2:00pm,Brisbane,12,Gold Coast,18,C. Butler,Suncorp,42249,,
+2023,nrl,18,2023-06-25,Sun 4:05pm,South Sydney,6,North Qld,31,G. Sutton,Accor,11262,,
+2023,nrl,18,2023-06-25,Sun 6:15pm,Sydney,18,Canberra,20,A. Klein,Allianz,13326,,
+2023,nrl,19,2023-06-29,Thu 7:50pm,Cronulla,52,St Geo Illa,16,G. Atkins,Pointsbet,10267,,
+2023,nrl,19,2023-06-30,Fri 8:00pm,Warriors,6,South Sydney,28,A. Klein,Go Media,22612,,
+2023,nrl,19,2023-06-30,Fri 8:00pm,Melbourne,16,Penrith,34,A. Gee,Marvel Stadium,26829,,
+2023,nrl,20,2023-07-01,Sat 3:00pm,Canberra,26,Gold Coast,22,T. Smith,GIO,11659,,
+2023,nrl,20,2023-07-01,Sat 5:30pm,North Qld,74,Wests Tigers,0,L. Kennedy,QLD C. Bank,20535,,
+2023,nrl,20,2023-07-01,Sat 7:35pm,Brisbane,24,Dolphins,16,P. Gough,The Gabba,30606,,
+2023,nrl,20,2023-07-02,Sun 2:00pm,Canterbury,0,Newcastle,66,Z. Przeklasa-Adamski,Accor,11004,,
+2023,nrl,20,2023-07-02,Sun 4:05pm,Manly,18,Sydney,16,B. Cummins,4 Pines,17385,,
+2023,nrl,21,2023-07-06,Thu 7:50pm,Wests Tigers,12,Cronulla,36,T. Smith,CommBank,9215,,
+2023,nrl,21,2023-07-07,Fri 8:00pm,St Geo Illa,26,Canberra,36,P. Gough,WIN,9369,,
+2023,nrl,21,2023-07-08,Sat 5:30pm,Parramatta,10,Warriors,46,A. Gee,CommBank,21696,,
+2023,nrl,21,2023-07-08,Sat 7:35pm,South Sydney,32,Canterbury,36,L. Kennedy,Accor,16166,,
+2023,nrl,21,2023-07-09,Sun 4:05pm,Gold Coast,21,Dolphins,23,G. Atkins,Cbus Super,18335,,
+2023,nrl,22,2023-07-14,Fri 8:00pm,Newcastle,34,Wests Tigers,18,P. Gough,McD. Jones,18470,,
+2023,nrl,22,2023-07-15,Sat 3:00pm,Canterbury,24,Brisbane,44,Z. Przeklasa-Adamski,Belmore,17103,,
+2023,nrl,22,2023-07-15,Sat 5:30pm,Manly,8,North Qld,19,A. Gee,4 Pines,13240,,
+2023,nrl,22,2023-07-15,Sat 7:35pm,Sydney,16,Melbourne,30,G. Atkins,SCG,12021,,
+2023,nrl,22,2023-07-16,Sun 4:00pm,Warriors,44,Cronulla,12,G. Sutton,Go Media,24012,,
+2023,nrl,22,2023-07-16,Sun 4:05pm,Dolphins,14,Penrith,24,T. Smith,Kayo,10065,,
+2023,nrl,22,2023-07-16,Sun 6:15pm,Parramatta,25,Gold Coast,24,C. Butler,CommBank,12599,,
+2023,nrl,23,2023-07-20,Thu 7:50pm,St Geo Illa,18,Wests Tigers,14,B. Cummins,WIN,7246,,
+2023,nrl,23,2023-07-21,Fri 8:00pm,Warriors,21,Canberra,20,T. Smith,Go Media,19112,,
+2023,nrl,23,2023-07-21,Fri 8:00pm,South Sydney,20,Brisbane,36,A. Klein,Sunshine Coast,8931,,
+2023,nrl,23,2023-07-22,Sat 3:00pm,Gold Coast,18,Sydney,36,A. Gee,Cbus Super,15362,,
+2023,nrl,23,2023-07-22,Sat 5:30pm,Newcastle,26,Melbourne,18,G. Sutton,McD. Jones,20392,,
+2023,nrl,23,2023-07-22,Sat 7:35pm,North Qld,24,Parramatta,16,G. Atkins,QLD C. Bank,20710,,
+2023,nrl,23,2023-07-23,Sun 2:00pm,Penrith,44,Canterbury,18,C. Butler,BlueBet,21525,,
+2023,nrl,23,2023-07-23,Sun 4:05pm,Cronulla,26,Manly,30,P. Gough,Pointsbet,10634,,
+2023,nrl,24,2023-07-27,Thu 7:50pm,Brisbane,32,Sydney,10,G. Atkins,The Gabba,21841,,
+2023,nrl,24,2023-07-28,Fri 6:00pm,Wests Tigers,18,South Sydney,32,Z. Przeklasa-Adamski,Scully,10453,,
+2023,nrl,24,2023-07-28,Fri 8:00pm,Melbourne,46,Parramatta,16,A. Klein,Marvel Stadium,20429,,
+2023,nrl,24,2023-07-29,Sat 3:00pm,Canberra,6,Newcastle,28,A. Gee,GIO,15487,,
+2023,nrl,24,2023-07-29,Sat 5:30pm,St Geo Illa,18,Manly,24,C. Butler,WIN,14872,,
+2023,nrl,24,2023-07-29,Sat 7:35pm,Penrith,28,Cronulla,0,G. Sutton,BlueBet,20694,,
+2023,nrl,24,2023-07-30,Sun 2:00pm,Canterbury,23,Dolphins,22,P. Gough,Salter,5130,,
+2023,nrl,24,2023-07-30,Sun 4:05pm,Gold Coast,22,North Qld,13,T. Smith,Cbus Super,16516,,
+2023,nrl,25,2023-08-03,Thu 7:50pm,Sydney,26,Manly,16,A. Klein,SCG,12197,,
+2023,nrl,25,2023-08-04,Fri 6:00pm,Gold Coast,18,Warriors,28,B. Cummins,Cbus Super,20877,,
+2023,nrl,25,2023-08-04,Fri 8:00pm,Penrith,26,Melbourne,6,A. Gee,BlueBet,19953,,
+2023,nrl,25,2023-08-05,Sat 3:00pm,North Qld,14,Brisbane,30,G. Sutton,QLD C. Bank,22659,,
+2023,nrl,25,2023-08-05,Sat 3:30pm,Dolphins,28,Newcastle,30,G. Atkins,Optus Stadium,45814,,
+2023,nrl,25,2023-08-05,Sat 5:35pm,South Sydney,16,Cronulla,26,T. Smith,Optus Stadium,45814,,
+2023,nrl,25,2023-08-06,Sun 2:00pm,Parramatta,26,St Geo Illa,20,Z. Przeklasa-Adamski,CommBank,23596,,
+2023,nrl,25,2023-08-06,Sun 4:05pm,Canberra,22,Wests Tigers,18,P. Gough,GIO,12841,,
+2023,nrl,26,2023-08-10,Thu 7:50pm,Manly,12,Penrith,24,G. Sutton,4 Pines,10102,,
+2023,nrl,26,2023-08-11,Fri 6:00pm,Cronulla,36,Gold Coast,6,A. Klein,Pointsbet,9753,,
+2023,nrl,26,2023-08-11,Fri 8:00pm,Brisbane,54,Parramatta,10,A. Gee,The Gabba,29005,,
+2023,nrl,26,2023-08-12,Sat 3:00pm,South Sydney,26,St Geo Illa,14,B. Cummins,Barlow Park,8378,,
+2023,nrl,26,2023-08-12,Sat 7:30pm,Wests Tigers,22,Warriors,30,C. Butler,FMG Stadium,25118,,
+2023,nrl,26,2023-08-12,Sat 7:35pm,Sydney,30,Dolphins,14,T. Smith,Allianz,13704,,
+2023,nrl,26,2023-08-13,Sun 2:00pm,Melbourne,48,Canberra,2,G. Atkins,AAMI,17369,,
+2023,nrl,26,2023-08-13,Sun 4:05pm,Newcastle,42,Canterbury,6,P. Gough,McD. Jones,23464,,
+2023,nrl,27,2023-08-17,Thu 7:50pm,North Qld,12,Cronulla,32,A. Gee,QLD C. Bank,17318,,
+2023,nrl,27,2023-08-18,Fri 8:00pm,Warriors,29,Manly,22,T. Smith,Daniel Anderson,24112,,
+2023,nrl,27,2023-08-18,Fri 8:00pm,Parramatta,12,Sydney,34,A. Klein,CommBank,20076,,
+2023,nrl,27,2023-08-19,Sat 3:00pm,Wests Tigers,24,Dolphins,23,B. Cummins,CommBank,9245,,
+2023,nrl,27,2023-08-19,Sat 5:30pm,Gold Coast,14,Penrith,40,C. Butler,Cbus Super,19101,,
+2023,nrl,27,2023-08-19,Sat 7:35pm,St Geo Illa,28,Melbourne,38,P. Gough,WIN,8326,,
+2023,nrl,27,2023-08-20,Sun 2:05pm,Newcastle,29,South Sydney,10,G. Atkins,McD. Jones,29018,,
+2023,nrl,27,2023-08-20,Sun 4:05pm,Canberra,36,Canterbury,24,G. Sutton,GIO,12402,,
+2023,nrl,28,2023-08-24,Thu 7:50pm,Penrith,18,Parramatta,32,B. Cummins,BlueBet,21525,,
+2023,nrl,28,2023-08-25,Fri 8:00pm,Warriors,18,St Geo Illa,6,P. Gough,Go Media,25095,,
+2023,nrl,28,2023-08-25,Fri 8:00pm,Dolphins,10,North Qld,34,G. Sutton,Suncorp,33449,,
+2023,nrl,28,2023-08-26,Sat 3:00pm,Melbourne,37,Gold Coast,16,C. Butler,AAMI,18072,,
+2023,nrl,28,2023-08-26,Sat 5:30pm,Sydney,32,Wests Tigers,8,T. Smith,Allianz,22511,,
+2023,nrl,28,2023-08-26,Sat 7:35pm,Canberra,18,Brisbane,29,A. Gee,GIO,19400,,
+2023,nrl,28,2023-08-27,Sun 2:00pm,Canterbury,24,Manly,42,L. Kennedy,Accor,13074,,
+2023,nrl,28,2023-08-27,Sun 4:05pm,Newcastle,32,Cronulla,6,A. Klein,McD. Jones,29423,,
+2023,nrl,29,2023-08-31,Thu 7:50pm,Brisbane,22,Melbourne,32,A. Klein,Suncorp,43271,,
+2023,nrl,30,2023-09-01,Fri 6:00pm,Manly,54,Wests Tigers,12,B. Sharpe,4 Pines,16503,,
+2023,nrl,30,2023-09-01,Fri 8:00pm,South Sydney,12,Sydney,26,A. Gee,Accor,36263,,
+2023,nrl,30,2023-09-02,Sat 3:00pm,Dolphins,34,Warriors,10,G. Sutton,Suncorp,35438,,
+2023,nrl,30,2023-09-02,Sat 5:30pm,Penrith,44,North Qld,12,T. Smith,BlueBet,21525,,
+2023,nrl,30,2023-09-02,Sat 7:35pm,St Geo Illa,12,Newcastle,32,B. Cummins,Netstrata,10137,,
+2023,nrl,30,2023-09-03,Sun 2:00pm,Gold Coast,34,Canterbury,30,K. Badger,Cbus Super,14942,,
+2023,nrl,30,2023-09-03,Sun 4:05pm,Cronulla,24,Canberra,6,G. Atkins,Pointsbet,12750,,
+2023,nrl,31,2023-09-08,Fri 7:50pm,Brisbane,26,Melbourne,0,G. Atkins,Suncorp,50197,,
+2023,nrl,31,2023-09-09,Sat 4:05pm,Penrith,32,Warriors,6,A. Gee,BlueBet,21525,,
+2023,nrl,32,2023-09-09,Sat 7:50pm,Cronulla,12,Sydney,13,G. Sutton,Pointsbet,12570,,
+2023,nrl,32,2023-09-10,Sun 4:05pm,Newcastle,30,Canberra,28,A. Klein,McD. Jones,29548,,
+2023,nrl,33,2023-09-15,Fri 7:50pm,Melbourne,18,Sydney,13,A. Klein,AAMI,19534,,
+2023,nrl,33,2023-09-16,Sat 6:05pm,Warriors,40,Newcastle,10,A. Gee,Go Media,26083,,
+2023,nrl,34,2023-09-22,Fri 7:50pm,Penrith,38,Melbourne,4,A. Gee,Accor,35578,,
+2023,nrl,34,2023-09-23,Sat 7:50pm,Brisbane,42,Warriors,12,G. Sutton,Suncorp,52273,,
+2023,nrl,35,2023-10-01,Sun 7:30pm,Penrith,26,Brisbane,24,A. Gee,Accor,81947,,
+2024,nrl,1,2024-03-02,Sat 6:30pm,Manly,36,South Sydney,24,A. Klein,Allegiant,40746,,
+2024,nrl,1,2024-03-02,Sat 8:30pm,Sydney,20,Brisbane,10,A. Gee,Allegiant,40746,,
+2024,nrl,1,2024-03-07,Thu 8:00pm,Newcastle,12,Canberra,28,T. Smith,McD. Jones,22378,,
+2024,nrl,1,2024-03-08,Fri 8:00pm,Warriors,12,Cronulla,16,P. Gough,Go Media,24076,,
+2024,nrl,1,2024-03-08,Fri 8:05pm,Melbourne,8,Penrith,0,G. Sutton,AAMI,20169,,
+2024,nrl,1,2024-03-02,Sat 5:30pm,Parramatta,26,Canterbury,8,G. Atkins,CommBank,29171,,
+2024,nrl,1,2024-03-02,Sat 6:35pm,Gold Coast,4,St Geo Illa,28,Z. Przeklasa-Adamski,Cbus Super,14537,,
+2024,nrl,1,2024-03-03,Sun 3:05pm,Dolphins,18,North Qld,43,C. Butler,Suncorp,32477,,
+2024,nrl,2,2024-03-14,Thu 7:00pm,Brisbane,28,South Sydney,18,G. Sutton,Suncorp,35507,,
+2024,nrl,2,2024-03-15,Fri 6:00pm,Cronulla,25,Canterbury,6,Z. Przeklasa-Adamski,Sharks,12928,,
+2024,nrl,2,2024-03-15,Fri 8:00pm,Penrith,26,Parramatta,18,A. Klein,BlueBet,21522,,
+2024,nrl,2,2024-03-16,Sat 3:00pm,Canberra,32,Wests Tigers,12,P. Gough,GIO,16968,,
+2024,nrl,2,2024-03-16,Sat 4:30pm,North Qld,21,Newcastle,20,A. Gee,QLD C. Bank,18986,,
+2024,nrl,2,2024-03-16,Sat 7:35pm,Melbourne,30,Warriors,26,C. Butler,AAMI,21927,,
+2024,nrl,2,2024-03-17,Sun 4:05pm,Manly,21,Sydney,14,T. Smith,4 Pines,17284,,
+2024,nrl,2,2024-03-17,Sun 5:15pm,Dolphins,38,St Geo Illa,0,G. Atkins,Kayo,10011,,
+2024,nrl,3,2024-03-21,Thu 8:00pm,Penrith,34,Brisbane,12,G. Sutton,BlueBet,20089,,
+2024,nrl,3,2024-03-22,Fri 8:00pm,Warriors,18,Canberra,10,L. Kennedy,Apollo,17249,,
+2024,nrl,3,2024-03-22,Fri 8:00pm,Sydney,48,South Sydney,6,A. Klein,Allianz,37594,,
+2024,nrl,3,2024-03-23,Sat 3:00pm,Canterbury,32,Gold Coast,0,T. Smith,Belmore,12037,,
+2024,nrl,3,2024-03-23,Sat 5:30pm,St Geo Illa,24,North Qld,46,B. Sharpe,Netstrata,9252,,
+2024,nrl,3,2024-03-23,Sat 7:35pm,Wests Tigers,32,Cronulla,6,C. Butler,Leichhardt,15990,,
+2024,nrl,3,2024-03-24,Sun 4:05pm,Parramatta,28,Manly,24,P. Gough,CommBank,20354,,
+2024,nrl,3,2024-03-24,Sun 6:15pm,Newcastle,14,Melbourne,12,G. Atkins,McD. Jones,21889,,
+2024,nrl,4,2024-03-28,Thu 8:00pm,Sydney,16,Penrith,22,A. Gee,Allianz,25898,,
+2024,nrl,4,2024-03-29,Fri 4:05pm,South Sydney,20,Canterbury,16,G. Sutton,Accor,35275,,
+2024,nrl,4,2024-03-29,Fri 7:00pm,Brisbane,38,North Qld,12,G. Atkins,Suncorp,45793,,
+2024,nrl,4,2024-03-30,Sat 5:30pm,St Geo Illa,20,Manly,12,A. Klein,WIN,16215,,
+2024,nrl,4,2024-03-30,Sat 6:35pm,Gold Coast,14,Dolphins,30,B. Sharpe,Cbus Super,13898,,
+2024,nrl,4,2024-03-31,Sun 6:05pm,Warriors,20,Newcastle,12,P. Gough,Go Media,24112,,
+2024,nrl,4,2024-03-31,Sun 6:15pm,Cronulla,36,Canberra,22,T. Smith,Sharks,12692,,
+2024,nrl,5,2024-04-01,Mon 4:00pm,Parramatta,16,Wests Tigers,17,L. Kennedy,CommBank,28608,,
+2024,nrl,6,2024-04-04,Thu 8:00pm,Melbourne,34,Brisbane,32,A. Klein,AAMI,20698,,
+2024,nrl,6,2024-04-05,Fri 6:00pm,Canterbury,30,Sydney,26,G. Atkins,Accor,7169,,
+2024,nrl,6,2024-04-05,Fri 8:00pm,Newcastle,30,St Geo Illa,10,B. Sharpe,McD. Jones,9448,,
+2024,nrl,6,2024-04-06,Sat 3:00pm,South Sydney,4,Warriors,34,L. Kennedy,Accor,13181,,
+2024,nrl,6,2024-04-06,Sat 5:30pm,Manly,32,Penrith,18,T. Smith,4 Pines,17381,,
+2024,nrl,6,2024-04-06,Sat 6:35pm,Dolphins,26,Wests Tigers,16,G. Sutton,Suncorp,22051,,
+2024,nrl,6,2024-04-07,Sun 4:05pm,North Qld,35,Gold Coast,22,C. Butler,QLD C. Bank,18870,,
+2024,nrl,6,2024-04-07,Sun 6:15pm,Canberra,41,Parramatta,8,A. Gee,GIO,13907,,
+2024,nrl,7,2024-04-11,Thu 7:50pm,Newcastle,20,Sydney,22,G. Sutton,McD. Jones,21940,,
+2024,nrl,7,2024-04-12,Fri 6:00pm,Melbourne,16,Canterbury,14,W. Raymond,AAMI,16065,,
+2024,nrl,7,2024-04-12,Fri 8:00pm,Brisbane,28,Dolphins,14,A. Gee,Suncorp,46224,,
+2024,nrl,7,2024-04-13,Sat 5:00pm,Warriors,22,Manly,22,C. Butler,Go Media,23076,,
+2024,nrl,7,2024-04-13,Sat 5:30pm,Parramatta,27,North Qld,20,P. Gough,CommBank,14433,,
+2024,nrl,7,2024-04-13,Sat 7:35pm,South Sydney,22,Cronulla,34,A. Klein,Accor,12207,,
+2024,nrl,7,2024-04-14,Sun 4:05pm,Wests Tigers,12,St Geo Illa,24,G. Atkins,Campbelltown,17141,,
+2024,nrl,7,2024-04-14,Sun 6:15pm,Canberra,21,Gold Coast,20,K. Badger,GIO,11738,,
+2024,nrl,8,2024-04-18,Thu 7:50pm,Sydney,12,Melbourne,18,A. Klein,Allianz,17714,,
+2024,nrl,8,2024-04-19,Fri 6:00pm,St Geo Illa,30,Warriors,12,G. Sutton,WIN,13111,,
+2024,nrl,8,2024-04-19,Fri 7:30pm,Parramatta,16,Dolphins,44,T. Smith,TIO,11094,,
+2024,nrl,8,2024-04-20,Sat 3:00pm,Penrith,22,Wests Tigers,6,W. Raymond,Carrington,12000,,
+2024,nrl,8,2024-04-20,Sat 5:30pm,Gold Coast,30,Manly,34,L. Kennedy,Cbus Super,13336,,
+2024,nrl,8,2024-04-20,Sat 7:35pm,Brisbane,34,Canberra,10,C. Butler,Suncorp,37286,,
+2024,nrl,8,2024-04-21,Sun 2:00pm,Canterbury,36,Newcastle,12,P. Gough,Accor,17784,,
+2024,nrl,8,2024-04-21,Sun 4:05pm,Cronulla,42,North Qld,6,A. Gee,Sharks,12415,,
+2024,nrl,9,2024-04-25,Thu 4:00pm,Warriors,24,Gold Coast,27,W. Raymond,Go Media,23912,,
+2024,nrl,9,2024-04-25,Thu 4:05pm,St Geo Illa,18,Sydney,60,A. Gee,Allianz,40727,,
+2024,nrl,9,2024-04-25,Thu 7:50pm,Melbourne,54,South Sydney,20,T. Smith,AAMI,25149,,
+2024,nrl,9,2024-04-26,Fri 8:00pm,Manly,32,Parramatta,18,G. Sutton,4 Pines,17385,,
+2024,nrl,9,2024-04-27,Sat 5:30pm,Wests Tigers,10,Brisbane,34,G. Atkins,Campbelltown,17351,,
+2024,nrl,9,2024-04-27,Sat 7:35pm,North Qld,20,Penrith,26,K. Badger,QLD C. Bank,20960,,
+2024,nrl,9,2024-04-28,Sun 2:00pm,Dolphins,14,Newcastle,18,L. Kennedy,Suncorp,18033,,
+2024,nrl,9,2024-04-28,Sun 4:05pm,Canberra,0,Cronulla,40,P. Gough,GIO,15820,,
+2024,nrl,10,2024-05-02,Thu 7:50pm,South Sydney,12,Penrith,42,A. Gee,Accor,8155,,
+2024,nrl,10,2024-05-03,Fri 6:00pm,Manly,24,Canberra,26,G. Atkins,4 Pines,10215,,
+2024,nrl,10,2024-05-03,Fri 8:00pm,Brisbane,18,Sydney,40,A. Klein,Suncorp,40190,,
+2024,nrl,10,2024-05-04,Sat 3:00pm,Canterbury,22,Wests Tigers,14,K. Badger,Accor,17068,,
+2024,nrl,10,2024-05-04,Sat 5:30pm,Gold Coast,20,Melbourne,22,B. Sharpe,Cbus Super,13096,,
+2024,nrl,10,2024-05-04,Sat 7:35pm,North Qld,26,Dolphins,28,P. Gough,QLD C. Bank,20967,,
+2024,nrl,10,2024-05-05,Sun 2:00pm,Newcastle,14,Warriors,8,C. Butler,McD. Jones,16094,,
+2024,nrl,10,2024-05-05,Sun 4:05pm,Cronulla,20,St Geo Illa,10,T. Smith,Sharks,9731,,
+2024,nrl,11,2024-05-09,Thu 7:50pm,Dolphins,30,Manly,24,A. Klein,Suncorp,14059,,
+2024,nrl,11,2024-05-10,Fri 6:00pm,Penrith,16,Canterbury,10,L. Kennedy,BlueBet,21525,,
+2024,nrl,11,2024-05-10,Fri 8:00pm,Parramatta,14,Brisbane,30,G. Sutton,CommBank,17393,,
+2024,nrl,11,2024-05-11,Sat 3:00pm,Wests Tigers,14,Newcastle,20,Z. Przeklasa-Adamski,Scully,10107,,
+2024,nrl,11,2024-05-11,Sat 5:30pm,St Geo Illa,28,South Sydney,14,B. Sharpe,Netstrata,7517,,
+2024,nrl,11,2024-05-11,Sat 7:35pm,Melbourne,18,Cronulla,25,G. Atkins,AAMI,18670,,
+2024,nrl,11,2024-05-12,Sun 2:00pm,Sydney,38,Warriors,18,K. Badger,Allianz,16517,,
+2024,nrl,11,2024-05-12,Sun 4:05pm,Gold Coast,20,North Qld,18,W. Raymond,Cbus Super,12125,,
+2024,nrl,12,2024-05-17,Fri 6:00pm,Canberra,24,Canterbury,20,A. Klein,Suncorp,50971,,
+2024,nrl,12,2024-05-17,Fri 8:05pm,Manly,12,Brisbane,13,T. Smith,Suncorp,50971,,
+2024,nrl,12,2024-05-18,Sat 3:00pm,Gold Coast,24,Newcastle,28,G. Sutton,Suncorp,50708,,
+2024,nrl,12,2024-05-18,Sat 5:30pm,Cronulla,38,Sydney,30,A. Gee,Suncorp,50708,,
+2024,nrl,12,2024-05-18,Sat 7:45pm,South Sydney,22,North Qld,28,P. Gough,Suncorp,50708,,
+2024,nrl,12,2024-05-19,Sun 1:50pm,Warriors,22,Penrith,20,G. Atkins,Suncorp,47517,,
+2024,nrl,12,2024-05-19,Sun 4:05pm,Melbourne,48,Parramatta,16,W. Raymond,Suncorp,47517,,
+2024,nrl,12,2024-05-19,Sun 6:25pm,Wests Tigers,12,Dolphins,24,C. Butler,Suncorp,47517,,
+2024,nrl,13,2024-05-23,Thu 7:50pm,Canterbury,44,St Geo Illa,12,A. Gee,Accor,15442,,
+2024,nrl,13,2024-05-24,Fri 6:00pm,North Qld,42,Wests Tigers,28,B. Sharpe,QLD C. Bank,15957,,
+2024,nrl,13,2024-05-24,Fri 8:00pm,Manly,26,Melbourne,20,A. Klein,4 Pines,17211,,
+2024,nrl,13,2024-05-25,Sat 3:00pm,Canberra,16,Sydney,44,T. Smith,GIO,18049,,
+2024,nrl,13,2024-05-25,Sat 5:30pm,Cronulla,0,Penrith,42,G. Sutton,Sharks,13500,,
+2024,nrl,13,2024-05-25,Sat 7:35pm,South Sydney,42,Parramatta,26,C. Butler,Accor,15202,,
+2024,nrl,13,2024-05-26,Sun 2:00pm,Brisbane,34,Gold Coast,36,P. Gough,Suncorp,42221,,
+2024,nrl,13,2024-05-26,Sun 6:05pm,Warriors,24,Dolphins,20,L. Kennedy,Go Media,23116,,
+2024,nrl,14,2024-05-30,Thu 7:50pm,Parramatta,34,Cronulla,22,A. Klein,CommBank,11665,,
+2024,nrl,14,2024-05-31,Fri 8:00pm,Newcastle,2,Canterbury,32,G. Atkins,McD. Jones,21204,,
+2024,nrl,15,2024-06-01,Sat 5:30pm,Penrith,10,St Geo Illa,22,T. Smith,BlueBet,12025,,
+2024,nrl,15,2024-06-01,Sat 7:35pm,Dolphins,25,Canberra,26,A. Gee,Kayo,10024,,
+2024,nrl,15,2024-06-02,Sun 4:05pm,Sydney,16,North Qld,18,G. Sutton,Allianz,13811,,
+2024,nrl,16,2024-06-07,Fri 8:00pm,St Geo Illa,56,Wests Tigers,14,C. Butler,WIN,9969,,
+2024,nrl,16,2024-06-08,Sat 3:00pm,Gold Coast,12,South Sydney,46,C. Sutton,Cbus Super,14434,,
+2024,nrl,16,2024-06-08,Sat 5:30pm,North Qld,12,Warriors,42,Z. Przeklasa-Adamski,QLD C. Bank,19623,,
+2024,nrl,16,2024-06-08,Sat 7:35pm,Brisbane,12,Cronulla,22,G. Atkins,Suncorp,41004,,
+2024,nrl,16,2024-06-09,Sun 2:00pm,Melbourne,36,Newcastle,28,A. Gee,AAMI,20269,,
+2024,nrl,16,2024-06-09,Sun 4:05pm,Penrith,32,Manly,22,G. Sutton,BlueBet,20101,,
+2024,nrl,16,2024-06-10,Mon 4:00pm,Canterbury,22,Parramatta,18,P. Gough,Accor,45496,,
+2024,nrl,17,2024-06-13,Thu 7:50pm,Cronulla,28,Dolphins,30,T. Smith,Sharks,8035,,
+2024,nrl,17,2024-06-14,Fri 6:00pm,Canberra,16,North Qld,34,C. Sutton,GIO,9671,,
+2024,nrl,17,2024-06-14,Fri 8:00pm,South Sydney,22,Brisbane,12,A. Gee,Accor,12207,,
+2024,nrl,17,2024-06-15,Sat 3:00pm,Wests Tigers,18,Gold Coast,10,A. Klein,Leichhardt,8147,,
+2024,nrl,17,2024-06-15,Sat 7:30pm,Warriors,24,Melbourne,38,G. Sutton,Go Media,24495,,
+2024,nrl,17,2024-06-15,Sat 7:35pm,Parramatta,18,Sydney,28,C. Butler,CommBank,20072,,
+2024,nrl,17,2024-06-16,Sun 2:00pm,Manly,30,St Geo Illa,14,P. Gough,4 Pines,17187,,
+2024,nrl,17,2024-06-16,Sun 4:05pm,Newcastle,18,Penrith,26,G. Atkins,McD. Jones,27966,,
+2024,nrl,18,2024-06-21,Fri 8:00pm,Dolphins,24,Melbourne,30,L. Kennedy,Suncorp,25167,,
+2024,nrl,18,2024-06-22,Sat 3:00pm,Gold Coast,66,Warriors,6,A. Gee,Cbus Super,22702,,
+2024,nrl,18,2024-06-22,Sat 5:30pm,Sydney,26,Canterbury,8,G. Atkins,Industree,16868,,
+2024,nrl,18,2024-06-22,Sat 7:35pm,South Sydney,14,Manly,0,C. Butler,Accor,10576,,
+2024,nrl,18,2024-06-23,Sun 4:05pm,Wests Tigers,48,Canberra,24,T. Smith,Campbelltown,10106,,
+2024,nrl,19,2024-06-28,Fri 8:00pm,Canterbury,15,Cronulla,14,G. Sutton,Accor,15765,,
+2024,nrl,19,2024-06-29,Sat 5:00pm,Warriors,32,Brisbane,16,T. Smith,Go Media,22711,,
+2024,nrl,19,2024-06-29,Sat 5:30pm,Newcastle,34,Parramatta,26,P. Gough,McD. Jones,27424,,
+2024,nrl,19,2024-06-29,Sat 7:35pm,Melbourne,16,Canberra,6,G. Atkins,AAMI,14127,,
+2024,nrl,19,2024-06-30,Sun 2:00pm,St Geo Illa,26,Dolphins,6,A. Gee,Netstrata,8052,,
+2024,nrl,19,2024-06-30,Sun 4:05pm,Penrith,6,North Qld,16,L. Kennedy,BlueBet,15777,,
+2024,nrl,19,2024-06-30,Sun 6:15pm,Sydney,40,Wests Tigers,6,Z. Przeklasa-Adamski,Allianz,14711,,
+2024,nrl,20,2024-07-04,Thu 7:50pm,Parramatta,16,South Sydney,32,L. Kennedy,CommBank,13941,,
+2024,nrl,20,2024-07-05,Fri 6:00pm,Cronulla,16,Gold Coast,20,Z. Przeklasa-Adamski,C.ex Coffs,8673,,
+2024,nrl,20,2024-07-05,Fri 8:00pm,Brisbane,6,Penrith,14,G. Atkins,Suncorp,42433,,
+2024,nrl,20,2024-07-06,Sat 3:00pm,Canterbury,13,Warriors,12,C. Butler,Accor,27223,,
+2024,nrl,20,2024-07-06,Sat 5:30pm,Wests Tigers,28,Melbourne,40,P. Gough,Leichhardt,10311,,
+2024,nrl,20,2024-07-06,Sat 7:35pm,North Qld,20,Manly,21,T. Smith,QLD C. Bank,18787,,
+2024,nrl,20,2024-07-07,Sun 2:00pm,Sydney,42,St Geo Illa,12,A. Klein,Allianz,23388,,
+2024,nrl,20,2024-07-07,Sun 4:05pm,Canberra,12,Newcastle,16,G. Sutton,GIO,12553,,
+2024,nrl,21,2024-07-11,Thu 7:50pm,Dolphins,36,South Sydney,28,G. Sutton,Kayo,10023,,
+2024,nrl,21,2024-07-12,Fri 8:00pm,Cronulla,58,Wests Tigers,6,A. Gee,Sharks,10912,,
+2024,nrl,21,2024-07-13,Sat 5:30pm,Gold Coast,24,Parramatta,16,T. Smith,Cbus Super,16670,,
+2024,nrl,21,2024-07-13,Sat 7:35pm,Brisbane,26,St Geo Illa,30,L. Kennedy,Suncorp,34224,,
+2024,nrl,21,2024-07-14,Sun 4:05pm,Manly,44,Newcastle,6,G. Atkins,4 Pines,17298,,
+2024,nrl,22,2024-07-19,Fri 8:00pm,Canberra,20,Warriors,18,T. Smith,GIO,8509,,
+2024,nrl,22,2024-07-20,Sat 3:00pm,South Sydney,42,Wests Tigers,28,W. Raymond,Industree,16284,,
+2024,nrl,22,2024-07-20,Sat 5:30pm,Newcastle,14,Brisbane,30,C. Butler,McD. Jones,26952,,
+2024,nrl,22,2024-07-20,Sat 7:35pm,Melbourne,24,Sydney,8,G. Atkins,AAMI,17055,,
+2024,nrl,22,2024-07-21,Sun 2:00pm,Penrith,28,Dolphins,26,A. Gee,BlueBet,20955,,
+2024,nrl,22,2024-07-21,Sun 4:05pm,Manly,38,Gold Coast,8,L. Kennedy,4 Pines,16050,,
+2024,nrl,22,2024-07-21,Sun 6:15pm,North Qld,20,Canterbury,18,G. Sutton,QLD C. Bank,16376,,
+2024,nrl,23,2024-07-26,Fri 8:00pm,Warriors,28,Wests Tigers,16,P. Gough,Go Media,23976,,
+2024,nrl,23,2024-07-26,Fri 8:00pm,Parramatta,14,Melbourne,32,L. Kennedy,CommBank,11082,,
+2024,nrl,23,2024-07-27,Sat 3:00pm,Brisbane,16,Canterbury,41,G. Atkins,Suncorp,42213,,
+2024,nrl,23,2024-07-27,Sat 5:30pm,North Qld,30,Cronulla,22,A. Gee,QLD C. Bank,17907,,
+2024,nrl,23,2024-07-27,Sat 7:35pm,Sydney,34,Manly,30,A. Klein,Allianz,25155,,
+2024,nrl,23,2024-07-28,Sun 2:00pm,St Geo Illa,10,Penrith,46,G. Sutton,WIN,18988,,
+2024,nrl,23,2024-07-28,Sun 4:05pm,Dolphins,14,Gold Coast,21,T. Smith,Suncorp,19533,,
+2024,nrl,23,2024-07-28,Sun 6:15pm,Canberra,32,South Sydney,12,W. Raymond,GIO,12114,,
+2024,nrl,24,2024-08-01,Thu 7:50pm,Wests Tigers,30,North Qld,48,C. Butler,Leichhardt,7231,,
+2024,nrl,24,2024-08-02,Fri 8:00pm,Warriors,20,Parramatta,30,T. Smith,Go Media,23812,,
+2024,nrl,24,2024-08-02,Fri 6:00pm,Dolphins,34,Sydney,40,G. Sutton,HBF,20027,,
+2024,nrl,24,2024-08-03,Sat 3:00pm,Gold Coast,46,Brisbane,18,P. Gough,Cbus Super,25278,,
+2024,nrl,24,2024-08-03,Sat 5:30pm,Melbourne,16,St Geo Illa,18,G. Atkins,AAMI,18103,,
+2024,nrl,24,2024-08-03,Sat 7:35pm,Cronulla,20,South Sydney,6,L. Kennedy,Sharks,12763,,
+2024,nrl,24,2024-08-04,Sun 2:00pm,Penrith,22,Newcastle,14,A. Gee,BlueBet,20261,,
+2024,nrl,24,2024-08-04,Sun 4:05pm,Canterbury,22,Canberra,18,A. Klein,Belmore,18110,,
+2024,nrl,25,2024-08-08,Thu 7:50pm,South Sydney,16,Melbourne,28,T. Smith,Accor,8973,,
+2024,nrl,25,2024-08-09,Fri 6:00pm,Gold Coast,0,Cronulla,44,A. Gee,Cbus Super,13287,,
+2024,nrl,25,2024-08-09,Fri 8:00pm,Parramatta,34,Penrith,36,P. Gough,CommBank,18852,,
+2024,nrl,25,2024-08-10,Sat 3:00pm,Canberra,24,Manly,46,G. Atkins,GIO,16690,,
+2024,nrl,25,2024-08-10,Sat 5:30pm,North Qld,18,Brisbane,42,A. Klein,QLD C. Bank,24230,,
+2024,nrl,25,2024-08-10,Sat 7:35pm,St Geo Illa,10,Canterbury,28,G. Sutton,Netstrata,18416,,
+2024,nrl,25,2024-08-11,Sun 2:00pm,Dolphins,34,Warriors,32,W. Raymond,Suncorp,28056,,
+2024,nrl,25,2024-08-11,Sun 4:05pm,Newcastle,34,Wests Tigers,18,B. Sharpe,McD. Jones,22183,,
+2024,nrl,26,2024-08-15,Thu 7:50pm,Penrith,22,Melbourne,24,A. Klein,BlueBet,20516,,
+2024,nrl,26,2024-08-16,Fri 6:00pm,Manly,24,Warriors,10,C. Butler,4 Pines,17333,,
+2024,nrl,26,2024-08-16,Fri 8:00pm,Sydney,38,Parramatta,14,G. Atkins,Allianz,20724,,
+2024,nrl,26,2024-08-17,Sat 3:00pm,Canterbury,30,Dolphins,10,A. Gee,Salter,6148,,
+2024,nrl,26,2024-08-17,Sat 5:30pm,North Qld,42,Canberra,4,T. Smith,QLD C. Bank,17920,,
+2024,nrl,26,2024-08-17,Sat 7:35pm,Wests Tigers,18,South Sydney,16,B. Sharpe,Campbelltown,11420,,
+2024,nrl,26,2024-08-18,Sun 2:00pm,St Geo Illa,32,Gold Coast,16,W. Raymond,WIN,9240,,
+2024,nrl,26,2024-08-18,Sun 4:05pm,Cronulla,19,Newcastle,18,G. Sutton,Sharks,11503,,
+2024,nrl,27,2024-08-22,Thu 7:50pm,Wests Tigers,34,Manly,26,P. Gough,Leichhardt,11520,,
+2024,nrl,27,2024-08-23,Fri 8:00pm,Warriors,18,Canterbury,34,W. Raymond,Shaun Johnson,24295,,
+2024,nrl,27,2024-08-23,Fri 8:00pm,Brisbane,30,Parramatta,24,T. Smith,Suncorp,36289,,
+2024,nrl,27,2024-08-24,Sat 3:00pm,Canberra,22,Penrith,18,G. Atkins,GIO,17523,,
+2024,nrl,27,2024-08-24,Sat 5:30pm,Melbourne,48,Dolphins,6,G. Sutton,AAMI,26106,,
+2024,nrl,27,2024-08-24,Sat 7:35pm,South Sydney,16,Newcastle,36,C. Butler,Accor,9659,,
+2024,nrl,27,2024-08-25,Sun 2:00pm,Gold Coast,22,Sydney,48,A. Gee,Cbus Super,19286,,
+2024,nrl,27,2024-08-25,Sun 4:05pm,St Geo Illa,10,Cronulla,38,A. Klein,WIN,17754,,
+2024,nrl,28,2024-08-29,Thu 7:50pm,North Qld,38,Melbourne,30,G. Atkins,QLD C. Bank,20787,,
+2024,nrl,28,2024-08-30,Fri 6:00pm,Canterbury,22,Manly,34,A. Klein,Accor,35502,,
+2024,nrl,28,2024-08-30,Fri 8:00pm,Penrith,34,South Sydney,12,P. Gough,BlueBet,20176,,
+2024,nrl,28,2024-08-31,Sat 3:00pm,Parramatta,44,St Geo Illa,40,W. Raymond,CommBank,21623,,
+2024,nrl,28,2024-08-31,Sat 5:30pm,Dolphins,40,Brisbane,6,A. Gee,Suncorp,50049,,
+2024,nrl,28,2024-08-31,Sat 7:35pm,Cronulla,28,Warriors,30,C. Butler,Sharks,12637,,
+2024,nrl,29,2024-09-01,Sun 2:00pm,Newcastle,36,Gold Coast,14,G. Sutton,McD. Jones,24712,,
+2024,nrl,29,2024-09-01,Sun 4:05pm,Sydney,12,Canberra,14,T. Smith,Allianz,27239,,
+2024,nrl,30,2024-09-05,Thu 7:50pm,Brisbane,12,Melbourne,50,T. Smith,Suncorp,35086,,
+2024,nrl,30,2024-09-06,Fri 6:00pm,Wests Tigers,26,Parramatta,60,P. Gough,Campbelltown,17311,,
+2024,nrl,30,2024-09-06,Fri 8:00pm,South Sydney,28,Sydney,36,G. Atkins,Accor,19674,,
+2024,nrl,30,2024-09-07,Sat 3:00pm,St Geo Illa,24,Canberra,26,W. Raymond,Netstrata,11189,,
+2024,nrl,30,2024-09-07,Sat 5:30pm,Canterbury,6,North Qld,44,G. Sutton,Accor,32437,,
+2024,nrl,30,2024-09-07,Sat 7:35pm,Penrith,18,Gold Coast,12,C. Butler,BlueBet,21525,,
+2024,nrl,30,2024-09-08,Sun 2:00pm,Manly,20,Cronulla,40,A. Gee,4 Pines,17384,,
+2024,nrl,30,2024-09-08,Sun 4:05pm,Newcastle,14,Dolphins,6,A. Klein,McD. Jones,29433,,
+2024,nrl,31,2024-09-13,Fri 7:50pm,Penrith,30,Sydney,10,A. Klein,BlueBet,21483,,
+2024,nrl,31,2024-09-14,Sat 4:05pm,Melbourne,37,Cronulla,10,G. Sutton,AAMI,26326,,
+2024,nrl,32,2024-09-14,Sat 7:50pm,North Qld,28,Newcastle,16,T. Smith,QLD C. Bank,24861,,
+2024,nrl,32,2024-09-15,Sun 4:05pm,Canterbury,22,Manly,24,G. Atkins,Accor,50714,,
+2024,nrl,33,2024-09-20,Fri 7:50pm,Cronulla,26,North Qld,18,A. Klein,Allianz,19124,,
+2024,nrl,33,2024-09-21,Sat 7:50pm,Sydney,40,Manly,16,G. Atkins,Allianz,40818,,
+2024,nrl,34,2024-09-27,Fri 7:50pm,Melbourne,48,Sydney,18,G. Atkins,AAMI,29213,,
+2024,nrl,34,2024-09-28,Sat 7:50pm,Penrith,26,Cronulla,6,A. Klein,Accor,33753,,
+2024,nrl,35,2024-10-06,Sun 7:30pm,Melbourne,6,Penrith,14,A. Klein,Accor,80156,,
+2025,nrl,1,2025-03-01,Sat 4:00pm,Canberra,30,Warriors,8,G. Atkins,Allegiant,45209,,
+2025,nrl,1,2025-03-01,Sat 8:30pm,Penrith,28,Cronulla,22,A. Klein,Allegiant,45209,,
+2025,nrl,1,2025-03-06,Thu 8:00pm,Sydney,14,Brisbane,50,G. Sutton,Allianz,23226,,
+2025,nrl,1,2025-03-07,Fri 6:00pm,Wests Tigers,8,Newcastle,10,L. Kennedy,Campbelltown,13160,,
+2025,nrl,1,2025-03-07,Fri 8:00pm,South Sydney,16,Dolphins,14,A. Gee,CommBank,6738,,
+2025,nrl,1,2025-03-01,Sat 5:30pm,St Geo Illa,20,Canterbury,28,T. Smith,Netstrata,16211,,
+2025,nrl,1,2025-03-01,Sat 7:35pm,Manly,42,North Qld,12,P. Gough,4 Pines,17335,,
+2025,nrl,1,2025-03-02,Sun 4:05pm,Melbourne,56,Parramatta,18,W. Raymond,AAMI,23369,,
+2025,nrl,2,2025-03-13,Thu 8:00pm,Newcastle,26,Dolphins,12,G. Sutton,McD. Jones,18531,,
+2025,nrl,2,2025-03-14,Fri 8:00pm,Warriors,36,Manly,16,A. Gee,Go Media,21212,,
+2025,nrl,2,2025-03-14,Fri 8:00pm,Penrith,32,Sydney,38,T. Smith,CommBank,12180,,
+2025,nrl,2,2025-03-15,Sat 3:00pm,St Geo Illa,24,South Sydney,25,A. Klein,WIN,16111,,
+2025,nrl,2,2025-03-15,Sat 4:30pm,North Qld,12,Cronulla,36,L. Kennedy,QLD C. Bank,18714,,
+2025,nrl,2,2025-03-15,Sat 7:35pm,Canberra,32,Brisbane,22,W. Raymond,GIO,18884,,
+2025,nrl,2,2025-03-16,Sun 4:05pm,Parramatta,6,Wests Tigers,32,G. Atkins,CommBank,18362,,
+2025,nrl,2,2025-03-16,Sun 6:15pm,Canterbury,40,Gold Coast,24,P. Gough,Belmore,17892,,
+2025,nrl,3,2025-03-20,Thu 8:00pm,Melbourne,30,Penrith,24,A. Gee,AAMI,17586,,
+2025,nrl,3,2025-03-21,Fri 8:00pm,Warriors,14,Sydney,6,A. Klein,Go Media,23219,,
+2025,nrl,3,2025-03-21,Fri 7:00pm,Brisbane,26,North Qld,16,T. Smith,Suncorp,45317,,
+2025,nrl,3,2025-03-22,Sat 3:00pm,Cronulla,27,South Sydney,12,G. Sutton,Sharks,14320,,
+2025,nrl,3,2025-03-22,Sat 4:30pm,Dolphins,18,Wests Tigers,30,P. Gough,Kayo,10023,,
+2025,nrl,3,2025-03-22,Sat 6:35pm,Gold Coast,26,Newcastle,6,L. Kennedy,Cbus Super,14602,,
+2025,nrl,3,2025-03-23,Sun 4:05pm,Parramatta,8,Canterbury,16,W. Raymond,CommBank,24059,,
+2025,nrl,3,2025-03-23,Sun 6:15pm,Manly,40,Canberra,12,G. Atkins,4 Pines,16125,,
+2025,nrl,4,2025-03-27,Thu 8:00pm,South Sydney,28,Penrith,18,A. Klein,Accor,10029,,
+2025,nrl,4,2025-03-28,Fri 6:00pm,Sydney,12,Gold Coast,30,G. Atkins,Allianz,14101,,
+2025,nrl,4,2025-03-28,Fri 7:00pm,Dolphins,12,Brisbane,20,G. Sutton,Suncorp,44278,,
+2025,nrl,4,2025-03-29,Sat 3:00pm,St Geo Illa,14,Melbourne,8,P. Gough,Jubilee,6211,,
+2025,nrl,4,2025-03-29,Sat 4:30pm,North Qld,30,Canberra,20,A. Gee,QLD C. Bank,15897,,
+2025,nrl,4,2025-03-29,Sat 7:35pm,Cronulla,6,Canterbury,20,C. Butler,Sharks,11703,,
+2025,nrl,4,2025-03-30,Sun 4:05pm,Manly,26,Parramatta,12,T. Smith,4 Pines,17286,,
+2025,nrl,4,2025-03-30,Sun 6:15pm,Wests Tigers,24,Warriors,26,W. Raymond,Campbelltown,12020,,
+2025,nrl,5,2025-04-03,Thu 8:00pm,Canberra,24,Cronulla,20,T. Smith,GIO,10914,,
+2025,nrl,5,2025-04-04,Fri 6:00pm,Penrith,18,North Qld,22,P. Gough,CommBank,10320,,
+2025,nrl,5,2025-04-04,Fri 8:00pm,South Sydney,20,Sydney,14,A. Gee,Accor,22114,,
+2025,nrl,5,2025-04-05,Sat 3:00pm,Parramatta,23,St Geo Illa,22,G. Sutton,CommBank,19302,,
+2025,nrl,5,2025-04-05,Sat 4:30pm,Gold Coast,10,Dolphins,36,W. Raymond,Cbus Super,15798,,
+2025,nrl,5,2025-04-05,Sat 6:35pm,Brisbane,46,Wests Tigers,24,L. Kennedy,Suncorp,41012,,
+2025,nrl,5,2025-04-06,Sun 4:05pm,Manly,24,Melbourne,48,G. Atkins,4 Pines,17346,,
+2025,nrl,5,2025-04-06,Sun 6:15pm,Canterbury,20,Newcastle,0,A. Klein,Accor,24113,,
+2025,nrl,6,2025-04-10,Thu 7:50pm,Dolphins,30,Penrith,12,G. Atkins,Suncorp,19103,,
+2025,nrl,6,2025-04-11,Fri 6:00pm,St Geo Illa,38,Gold Coast,16,C. Butler,WIN,8510,,
+2025,nrl,6,2025-04-11,Fri 8:00pm,Brisbane,16,Sydney,26,P. Gough,Suncorp,40814,,
+2025,nrl,6,2025-04-12,Sat 1:00pm,Cronulla,24,Manly,18,A. Gee,Optus Stadium,31347,,
+2025,nrl,6,2025-04-12,Sat 3:30pm,South Sydney,16,North Qld,24,T. Smith,Optus Stadium,31347,,
+2025,nrl,6,2025-04-12,Sat 7:05pm,Parramatta,12,Canberra,50,W. Raymond,TIO,9559,,
+2025,nrl,6,2025-04-13,Sun 2:00pm,Melbourne,42,Warriors,14,A. Klein,AAMI,26427,,
+2025,nrl,6,2025-04-13,Sun 4:05pm,Newcastle,4,Wests Tigers,20,G. Sutton,McD. Jones,25960,,
+2025,nrl,7,2025-04-17,Thu 7:50pm,Manly,18,St Geo Illa,20,P. Gough,4 Pines,17254,,
+2025,nrl,7,2025-04-18,Fri 4:05pm,Canterbury,32,South Sydney,0,G. Atkins,Accor,65305,,
+2025,nrl,7,2025-04-18,Fri 8:00pm,Dolphins,42,Melbourne,22,T. Smith,Suncorp,28024,,
+2025,nrl,7,2025-04-19,Sat 7:30pm,Warriors,20,Brisbane,18,C. Butler,Go Media,22395,,
+2025,nrl,7,2025-04-19,Sat 7:35pm,Sydney,12,Penrith,40,G. Sutton,Allianz,20373,,
+2025,nrl,7,2025-04-20,Sun 2:00pm,Gold Coast,20,Canberra,30,A. Gee,Cbus Super,15089,,
+2025,nrl,7,2025-04-20,Sun 4:05pm,Newcastle,14,Cronulla,34,A. Klein,McD. Jones,24248,,
+2025,nrl,7,2025-04-21,Mon 4:00pm,Wests Tigers,22,Parramatta,38,L. Kennedy,CommBank,26145,,
+2025,nrl,8,2025-04-24,Thu 7:50pm,Brisbane,42,Canterbury,18,G. Sutton,Suncorp,40233,,
+2025,nrl,8,2025-04-25,Fri 4:00pm,Sydney,46,St Geo Illa,18,T. Smith,Allianz,41021,,
+2025,nrl,8,2025-04-25,Fri 8:05pm,Warriors,26,Newcastle,12,W. Raymond,Apollo,17095,,
+2025,nrl,8,2025-04-25,Fri 8:10pm,Melbourne,24,South Sydney,16,P. Gough,AAMI,26010,,
+2025,nrl,8,2025-04-26,Sat 5:30pm,North Qld,50,Gold Coast,18,C. Butler,QLD C. Bank,20489,,
+2025,nrl,8,2025-04-26,Sat 7:35pm,Penrith,10,Manly,26,B. Sharpe,CommBank,14534,,
+2025,nrl,8,2025-04-27,Sun 2:00pm,Canberra,40,Dolphins,28,A. Klein,GIO,15686,,
+2025,nrl,8,2025-04-27,Sun 4:05pm,Wests Tigers,20,Cronulla,18,G. Atkins,Leichhardt,14812,,
+2025,nrl,9,2025-05-02,Fri 6:00pm,Cronulla,28,Parramatta,18,P. Gough,Suncorp,44613,,
+2025,nrl,9,2025-05-02,Fri 8:05pm,Sydney,36,Dolphins,26,G. Atkins,Suncorp,48359,,
+2025,nrl,9,2025-05-03,Sat 3:00pm,South Sydney,4,Newcastle,30,L. Kennedy,Suncorp,39682,,
+2025,nrl,9,2025-05-03,Sat 5:30pm,Warriors,30,North Qld,26,A. Gee,Suncorp,49512,,
+2025,nrl,9,2025-05-03,Sat 7:45pm,Wests Tigers,34,St Geo Illa,28,W. Raymond,Suncorp,50658,,
+2025,nrl,9,2025-05-04,Sun 1:50pm,Gold Coast,18,Canterbury,38,T. Smith,Suncorp,39581,,
+2025,nrl,9,2025-05-04,Sun 4:05pm,Penrith,32,Brisbane,8,A. Klein,Suncorp,50309,,
+2025,nrl,9,2025-05-04,Sun 6:25pm,Melbourne,18,Canberra,20,G. Sutton,Suncorp,50309,,
+2025,nrl,10,2025-05-08,Thu 7:50pm,Parramatta,16,Dolphins,20,W. Raymond,CommBank,11214,,
+2025,nrl,10,2025-05-09,Fri 6:00pm,Newcastle,20,Gold Coast,24,B. Sharpe,McD. Jones,15193,,
+2025,nrl,10,2025-05-09,Fri 8:00pm,South Sydney,22,Brisbane,14,P. Gough,Accor,13747,,
+2025,nrl,10,2025-05-10,Sat 3:00pm,Canberra,20,Canterbury,32,A. Gee,GIO,23827,,
+2025,nrl,10,2025-05-10,Sat 5:30pm,St Geo Illa,14,Warriors,15,L. Kennedy,WIN,12919,,
+2025,nrl,10,2025-05-10,Sat 7:35pm,North Qld,30,Penrith,30,T. Smith,QLD C. Bank,19324,,
+2025,nrl,10,2025-05-11,Sun 2:00pm,Melbourne,64,Wests Tigers,0,G. Atkins,AAMI,17376,,
+2025,nrl,10,2025-05-11,Sun 4:05pm,Manly,14,Cronulla,30,G. Sutton,4 Pines,15823,,
+2025,nrl,11,2025-05-16,Fri 6:00pm,Newcastle,6,Parramatta,28,T. Smith,McD. Jones,20125,,
+2025,nrl,11,2025-05-16,Fri 8:00pm,Canterbury,24,Sydney,20,A. Klein,Accor,30166,,
+2025,nrl,11,2025-05-17,Sat 3:00pm,Dolphins,12,Warriors,16,P. Gough,Suncorp,32165,,
+2025,nrl,11,2025-05-17,Sat 5:30pm,North Qld,6,Manly,24,G. Atkins,QLD C. Bank,18965,,
+2025,nrl,11,2025-05-17,Sat 7:35pm,Cronulla,31,Melbourne,26,A. Gee,Sharks,11570,,
+2025,nrl,11,2025-05-18,Sun 2:00pm,Brisbane,26,St Geo Illa,30,G. Sutton,Suncorp,38016,,
+2025,nrl,11,2025-05-18,Sun 4:05pm,Canberra,40,Gold Coast,24,L. Kennedy,GIO,9650,,
+2025,nrl,11,2025-05-18,Sun 6:15pm,Wests Tigers,12,South Sydney,22,W. Raymond,Campbelltown,11102,,
+2025,nrl,12,2025-05-22,Thu 7:50pm,Canterbury,8,Dolphins,44,T. Smith,Accor,10412,,
+2025,nrl,12,2025-05-23,Fri 8:00pm,Parramatta,30,Manly,10,L. Kennedy,CommBank,13425,,
+2025,nrl,12,2025-05-24,Sat 5:30pm,Penrith,6,Newcastle,25,B. Sharpe,Carrington,12000,,
+2025,nrl,12,2025-05-24,Sat 7:35pm,Sydney,42,Cronulla,16,G. Atkins,Industree,13399,,
+2025,nrl,12,2025-05-25,Sun 6:05pm,Warriors,10,Canberra,16,A. Gee,Go Media,26512,,
+2025,nrl,13,2025-05-30,Fri 8:00pm,St Geo Illa,20,Newcastle,6,G. Atkins,Jubilee,10411,,
+2025,nrl,13,2025-05-31,Sat 3:00pm,Gold Coast,16,Melbourne,28,Z. Przeklasa-Adamski,Cbus Super,13509,,
+2025,nrl,13,2025-05-31,Sat 5:30pm,North Qld,32,Wests Tigers,28,G. Sutton,QLD C. Bank,17470,,
+2025,nrl,13,2025-05-31,Sat 7:35pm,Manly,34,Brisbane,6,A. Gee,4 Pines,17375,,
+2025,nrl,14,2025-06-01,Sun 2:00pm,South Sydney,30,Warriors,36,W. Raymond,Accor,16237,,
+2025,nrl,14,2025-06-01,Sun 4:05pm,Penrith,18,Parramatta,10,P. Gough,CommBank,21282,,
+2025,nrl,14,2025-06-01,Sun 6:15pm,Sydney,24,Canberra,26,A. Klein,Allianz,17223,,
+2025,nrl,15,2025-06-05,Thu 7:50pm,Newcastle,26,Manly,22,W. Raymond,McD. Jones,16027,,
+2025,nrl,15,2025-06-06,Fri 6:00pm,Melbourne,38,North Qld,14,G. Atkins,AAMI,19096,,
+2025,nrl,15,2025-06-06,Fri 8:00pm,Dolphins,56,St Geo Illa,6,A. Gee,Suncorp,19513,,
+2025,nrl,15,2025-06-07,Sat 5:30pm,Cronulla,10,Warriors,40,P. Gough,Sharks,13727,,
+2025,nrl,15,2025-06-07,Sat 7:35pm,Brisbane,44,Gold Coast,14,A. Klein,Suncorp,39884,,
+2025,nrl,15,2025-06-08,Sun 2:00pm,Canberra,36,South Sydney,12,T. Smith,GIO,19438,,
+2025,nrl,15,2025-06-08,Sun 4:05pm,Wests Tigers,14,Penrith,18,Z. Przeklasa-Adamski,CommBank,17708,,
+2025,nrl,15,2025-06-09,Mon 4:00pm,Canterbury,30,Parramatta,12,G. Sutton,Accor,59878,,
+2025,nrl,16,2025-06-12,Thu 7:50pm,Cronulla,30,St Geo Illa,18,G. Atkins,Sharks,8573,,
+2025,nrl,16,2025-06-13,Fri 8:00pm,Gold Coast,28,Manly,8,P. Gough,Cbus Super,13708,,
+2025,nrl,16,2025-06-14,Sat 5:30pm,Newcastle,8,Sydney,12,G. Sutton,McD. Jones,24849,,
+2025,nrl,16,2025-06-14,Sat 7:35pm,North Qld,4,Dolphins,58,T. Smith,QLD C. Bank,18343,,
+2025,nrl,16,2025-06-15,Sun 4:05pm,South Sydney,18,Canterbury,24,A. Gee,Accor,23871,,
+2025,nrl,17,2025-06-20,Fri 8:00pm,Wests Tigers,12,Canberra,16,A. Gee,Campbelltown,9328,,
+2025,nrl,17,2025-06-21,Sat 5:00pm,Warriors,18,Penrith,28,T. Smith,Go Media,25012,,
+2025,nrl,17,2025-06-21,Sat 3:30pm,Dolphins,20,Newcastle,26,G. Atkins,HBF,10077,,
+2025,nrl,17,2025-06-21,Sat 7:35pm,South Sydney,24,Melbourne,25,P. Gough,Accor,10093,,
+2025,nrl,17,2025-06-22,Sun 2:00pm,Brisbane,34,Cronulla,28,W. Raymond,Suncorp,39042,,
+2025,nrl,17,2025-06-22,Sun 4:05pm,Sydney,42,North Qld,8,A. Klein,Allianz,21143,,
+2025,nrl,17,2025-06-22,Sun 6:15pm,Parramatta,36,Gold Coast,20,G. Sutton,CommBank,8074,,
+2025,nrl,18,2025-06-26,Thu 7:50pm,Penrith,8,Canterbury,6,G. Atkins,CommBank,16738,,
+2025,nrl,18,2025-06-27,Fri 6:00pm,Manly,28,Wests Tigers,10,G. Sutton,4 Pines,17055,,
+2025,nrl,18,2025-06-27,Fri 8:00pm,Newcastle,18,Canberra,22,P. Gough,McD. Jones,17527,,
+2025,nrl,18,2025-06-28,Sat 3:00pm,Brisbane,26,Warriors,12,A. Gee,Suncorp,43424,,
+2025,nrl,18,2025-06-28,Sat 5:30pm,St Geo Illa,34,Parramatta,20,L. Kennedy,WIN,18191,,
+2025,nrl,18,2025-06-28,Sat 7:50pm,Dolphins,50,South Sydney,28,T. Smith,Suncorp,22041,,
+2025,nrl,18,2025-06-29,Sun 2:00pm,Melbourne,30,Cronulla,6,A. Klein,AAMI,21399,,
+2025,nrl,18,2025-06-29,Sun 4:05pm,Gold Coast,24,North Qld,30,W. Raymond,Cbus Super,13882,,
+2025,nrl,19,2025-07-04,Fri 8:00pm,Canterbury,18,Brisbane,22,T. Smith,Accor,25234,,
+2025,nrl,19,2025-07-05,Sat 5:30pm,Canberra,28,St Geo Illa,24,G. Sutton,GIO,15932,,
+2025,nrl,19,2025-07-05,Sat 7:35pm,North Qld,20,Melbourne,26,L. Kennedy,QLD C. Bank,20383,,
+2025,nrl,19,2025-07-06,Sun 2:00pm,Sydney,28,Wests Tigers,30,P. Gough,Allianz,24311,,
+2025,nrl,19,2025-07-06,Sun 4:05pm,Manly,30,South Sydney,12,W. Raymond,4 Pines,17298,,
+2025,nrl,20,2025-07-11,Fri 8:00pm,Cronulla,24,Dolphins,12,A. Gee,Sharks,9658,,
+2025,nrl,20,2025-07-12,Sat 3:00pm,Newcastle,14,Melbourne,32,T. Smith,McD. Jones,21017,,
+2025,nrl,20,2025-07-12,Sat 5:30pm,St Geo Illa,24,Sydney,31,G. Atkins,Jubilee,13856,,
+2025,nrl,20,2025-07-12,Sat 7:35pm,North Qld,8,Canterbury,12,W. Raymond,QLD C. Bank,18778,,
+2025,nrl,20,2025-07-13,Sun 4:00pm,Warriors,34,Wests Tigers,14,G. Sutton,Go Media,24112,,
+2025,nrl,20,2025-07-13,Sun 4:05pm,Parramatta,10,Penrith,32,P. Gough,CommBank,22792,,
+2025,nrl,20,2025-07-13,Sun 6:15pm,Gold Coast,14,Brisbane,26,L. Kennedy,Cbus Super,24553,,
+2025,nrl,21,2025-07-17,Thu 7:50pm,Dolphins,43,North Qld,24,P. Gough,Suncorp,23172,,
+2025,nrl,21,2025-07-18,Fri 6:00pm,Cronulla,31,Sydney,18,T. Smith,Sharks,11846,,
+2025,nrl,21,2025-07-18,Fri 8:00pm,Penrith,30,South Sydney,10,G. Sutton,CommBank,11836,,
+2025,nrl,21,2025-07-19,Sat 3:00pm,Canberra,40,Parramatta,16,A. Klein,GIO,20751,,
+2025,nrl,21,2025-07-19,Sat 5:30pm,Canterbury,20,St Geo Illa,18,A. Gee,Accor,30115,,
+2025,nrl,21,2025-07-19,Sat 7:35pm,Melbourne,16,Manly,18,W. Raymond,AAMI,19011,,
+2025,nrl,21,2025-07-20,Sun 2:00pm,Wests Tigers,21,Gold Coast,20,B. Sharpe,Leichhardt,16073,,
+2025,nrl,21,2025-07-20,Sun 4:05pm,Newcastle,15,Warriors,20,G. Atkins,McD. Jones,21117,,
+2025,nrl,22,2025-07-24,Thu 7:50pm,Sydney,30,Melbourne,34,A. Gee,Allianz,13991,,
+2025,nrl,22,2025-07-25,Fri 6:00pm,North Qld,38,St Geo Illa,32,G. Atkins,QLD C. Bank,16020,,
+2025,nrl,22,2025-07-25,Fri 8:00pm,Brisbane,20,Parramatta,22,T. Smith,Suncorp,39057,,
+2025,nrl,22,2025-07-26,Sat 5:00pm,Warriors,16,Gold Coast,24,G. Sutton,Go Media,24212,,
+2025,nrl,22,2025-07-26,Sat 5:30pm,Penrith,36,Wests Tigers,2,P. Gough,CommBank,16753,,
+2025,nrl,22,2025-07-26,Sat 7:35pm,South Sydney,12,Cronulla,14,B. Sharpe,polytec,13896,,
+2025,nrl,22,2025-07-27,Sun 2:00pm,Canberra,44,Newcastle,18,W. Raymond,GIO,11068,,
+2025,nrl,22,2025-07-27,Sun 4:05pm,Canterbury,42,Manly,4,A. Klein,Allianz,25801,,
+2025,nrl,23,2025-07-31,Thu 7:50pm,Parramatta,10,Melbourne,16,G. Sutton,CommBank,9402,,
+2025,nrl,24,2025-08-01,Fri 8:00pm,Warriors,18,Dolphins,20,A. Klein,Go Media,23012,,
+2025,nrl,24,2025-08-01,Fri 8:00pm,Brisbane,60,South Sydney,14,P. Gough,Suncorp,38430,,
+2025,nrl,24,2025-08-02,Sat 3:00pm,Gold Coast,26,Penrith,30,L. Kennedy,Cbus Super,18174,,
+2025,nrl,24,2025-08-02,Sat 5:30pm,St Geo Illa,18,Canberra,12,T. Smith,WIN,8567,,
+2025,nrl,24,2025-08-02,Sat 7:35pm,Manly,4,Sydney,20,G. Atkins,4 Pines,12478,,
+2025,nrl,24,2025-08-03,Sun 2:00pm,Wests Tigers,28,Canterbury,14,W. Raymond,CommBank,17423,,
+2025,nrl,24,2025-08-03,Sun 4:05pm,Cronulla,32,North Qld,12,A. Gee,Sharks,6321,,
+2025,nrl,25,2025-08-07,Thu 7:50pm,Melbourne,22,Brisbane,2,G. Atkins,AAMI,21324,,
+2025,nrl,25,2025-08-08,Fri 6:00pm,Newcastle,12,Penrith,48,W. Raymond,McD. Jones,20197,,
+2025,nrl,25,2025-08-08,Fri 8:00pm,Canberra,28,Manly,12,P. Gough,GIO,14527,,
+2025,nrl,25,2025-08-09,Sat 3:00pm,St Geo Illa,22,Cronulla,14,A. Klein,Jubilee,11861,,
+2025,nrl,25,2025-08-09,Sat 5:30pm,Dolphins,12,Sydney,64,G. Sutton,Suncorp,24117,,
+2025,nrl,25,2025-08-09,Sat 7:35pm,Canterbury,32,Warriors,14,A. Gee,Accor,25377,,
+2025,nrl,25,2025-08-10,Sun 2:00pm,Gold Coast,18,South Sydney,20,T. Smith,Cbus Super,14957,,
+2025,nrl,25,2025-08-10,Sun 4:05pm,Parramatta,19,North Qld,18,L. Kennedy,CommBank,11562,,
+2025,nrl,26,2025-08-14,Thu 7:50pm,Penrith,18,Melbourne,22,A. Klein,CommBank,12869,,
+2025,nrl,26,2025-08-15,Fri 8:00pm,Warriors,14,St Geo Illa,10,T. Smith,Go Media,23276,,
+2025,nrl,26,2025-08-15,Fri 8:00pm,Sydney,32,Canterbury,12,G. Atkins,Allianz,31399,,
+2025,nrl,26,2025-08-16,Sat 3:00pm,Cronulla,54,Gold Coast,22,P. Gough,Sharks,10112,,
+2025,nrl,26,2025-08-16,Sat 5:30pm,Brisbane,38,Dolphins,28,W. Raymond,Suncorp,44350,,
+2025,nrl,26,2025-08-16,Sat 7:35pm,South Sydney,20,Parramatta,16,G. Sutton,Allianz,21395,,
+2025,nrl,26,2025-08-17,Sun 2:00pm,Wests Tigers,26,Manly,12,A. Gee,Allianz,13105,,
+2025,nrl,26,2025-08-17,Sun 4:05pm,North Qld,38,Newcastle,4,J. Cole,QLD C. Bank,16640,,
+2025,nrl,27,2025-08-21,Thu 7:50pm,South Sydney,40,St Geo Illa,0,G. Sutton,Accor,7213,,
+2025,nrl,27,2025-08-22,Fri 6:00pm,Penrith,16,Canberra,20,G. Atkins,Glen Willow,9925,,
+2025,nrl,27,2025-08-22,Fri 8:00pm,Melbourne,20,Canterbury,14,A. Gee,AAMI,25693,,
+2025,nrl,27,2025-08-23,Sat 3:00pm,Manly,58,Dolphins,30,A. Klein,4 Pines,14172,,
+2025,nrl,27,2025-08-23,Sat 5:30pm,Gold Coast,18,Warriors,32,J. Cole,Cbus Super,23271,,
+2025,nrl,27,2025-08-23,Sat 7:35pm,Parramatta,30,Sydney,10,W. Raymond,CommBank,19741,,
+2025,nrl,27,2025-08-24,Sun 2:00pm,Newcastle,12,Brisbane,46,T. Smith,McD. Jones,25813,,
+2025,nrl,27,2025-08-24,Sun 4:05pm,Wests Tigers,28,North Qld,34,P. Gough,Leichhardt,16055,,
+2025,nrl,28,2025-08-28,Thu 7:50pm,Canterbury,28,Penrith,4,W. Raymond,Accor,23597,,
+2025,nrl,28,2025-08-29,Fri 8:00pm,Warriors,22,Parramatta,26,P. Gough,Go Media,25012,,
+2025,nrl,28,2025-08-29,Fri 8:00pm,Melbourne,10,Sydney,40,T. Smith,AAMI,21155,,
+2025,nrl,28,2025-08-30,Sat 3:00pm,Canberra,24,Wests Tigers,10,J. Cole,GIO,23746,,
+2025,nrl,28,2025-08-30,Sat 5:30pm,St Geo Illa,24,Manly,40,A. Gee,Jubilee,9769,,
+2025,nrl,28,2025-08-30,Sat 7:35pm,North Qld,30,Brisbane,38,A. Klein,QLD C. Bank,22903,,
+2025,nrl,28,2025-08-31,Sun 2:00pm,Cronulla,40,Newcastle,16,G. Sutton,Sharks,12234,,
+2025,nrl,28,2025-08-31,Sun 4:05pm,Dolphins,36,Gold Coast,30,G. Atkins,Suncorp,19305,,
+2025,nrl,29,2025-09-04,Thu 7:50pm,Brisbane,30,Melbourne,14,G. Atkins,Suncorp,44645,,
+2025,nrl,29,2025-09-05,Fri 6:00pm,Manly,27,Warriors,26,T. Smith,4 Pines,17172,,
+2025,nrl,29,2025-09-05,Fri 8:00pm,Sydney,36,South Sydney,6,A. Gee,Allianz,41604,,
+2025,nrl,29,2025-09-06,Sat 3:00pm,St Geo Illa,20,Penrith,40,P. Gough,WIN,17442,,
+2025,nrl,29,2025-09-06,Sat 5:30pm,Gold Coast,36,Wests Tigers,28,C. Butler,Cbus Super,16093,,
+2025,nrl,29,2025-09-06,Sat 7:35pm,Canterbury,6,Cronulla,24,A. Klein,Accor,30368,,
+2025,nrl,29,2025-09-07,Sun 2:00pm,Dolphins,62,Canberra,24,G. Sutton,Kayo,10023,,
+2025,nrl,29,2025-09-07,Sun 4:05pm,Parramatta,66,Newcastle,10,W. Raymond,CommBank,23359,,
+2025,nrl,30,2025-09-12,Fri 7:50pm,Melbourne,26,Canterbury,18,A. Gee,AAMI,22117,,
+2025,nrl,31,2025-09-13,Sat 6:05pm,Warriors,8,Penrith,24,G. Atkins,Go Media,24524,,
+2025,nrl,31,2025-09-13,Sat 7:50pm,Cronulla,20,Sydney,10,T. Smith,Sharks,12842,,
+2025,nrl,32,2025-09-14,Sun 4:05pm,Canberra,28,Brisbane,29,A. Klein,GIO,25523,,
+2025,nrl,33,2025-09-20,Sat 7:50pm,Canberra,12,Cronulla,32,G. Atkins,GIO,24322,,
+2025,nrl,33,2025-09-21,Sun 4:05pm,Canterbury,26,Penrith,46,A. Klein,Accor,56872,,
+2025,nrl,34,2025-09-26,Fri 7:50pm,Melbourne,22,Cronulla,14,A. Klein,AAMI,29233,,
+2025,nrl,34,2025-09-28,Sun 4:05pm,Brisbane,16,Penrith,14,G. Atkins,Suncorp,52491,,
+2025,nrl,35,2025-10-05,Sun 7:30pm,Melbourne,22,Brisbane,26,G. Atkins,Accor,80223,,
+2026,nrl,1,2026-02-28,Sat 6:15pm,Newcastle,28,North Qld,18,A. Klein,Allegiant,45719,,
+2026,nrl,1,2026-02-28,Sat 8:30pm,Canterbury,15,St Geo Illa,14,G. Atkins,Allegiant,45719,,
+2026,nrl,1,2026-03-05,Thu 8:00pm,Melbourne,52,Parramatta,4,T. Smith,AAMI,18264,,
+2026,nrl,1,2026-03-06,Fri 8:00pm,Warriors,42,Sydney,18,W. Raymond,Go Media,24112,,
+2026,nrl,1,2026-03-06,Fri 7:00pm,Brisbane,0,Penrith,26,A. Gee,Suncorp,45566,,
+2026,nrl,1,2026-03-07,Sat 5:30pm,Cronulla,50,Gold Coast,10,Z. Przeklasa-Adamski,Ocean Protect,11548,,
+2026,nrl,1,2026-03-07,Sat 7:35pm,Manly,28,Canberra,29,L. Kennedy,4 Pines,17253,,
+2026,nrl,1,2026-03-08,Sun 3:05pm,Dolphins,30,South Sydney,40,P. Gough,Suncorp,20114,,
+2026,nrl,2,2026-03-12,Thu 7:00pm,Brisbane,32,Parramatta,40,W. Raymond,Suncorp,39015,,
+2026,nrl,2,2026-03-13,Fri 8:00pm,Warriors,40,Canberra,6,P. Gough,Go Media,23067,,
+2026,nrl,2,2026-03-13,Fri 8:00pm,Sydney,26,South Sydney,18,A. Gee,Allianz,41424,,
+2026,nrl,2,2026-03-14,Sat 3:00pm,Wests Tigers,44,North Qld,16,G. Atkins,Leichhardt,17367,,
+2026,nrl,2,2026-03-14,Sat 5:30pm,St Geo Illa,20,Melbourne,46,G. Sutton,WIN,11511,,
+2026,nrl,2,2026-03-14,Sat 7:35pm,Penrith,26,Cronulla,6,A. Klein,Carrington,12000,,
+2026,nrl,2,2026-03-15,Sun 4:05pm,Manly,16,Newcastle,36,T. Smith,4 Pines,17107,,
+2026,nrl,2,2026-03-15,Sun 5:15pm,Dolphins,18,Gold Coast,14,L. Kennedy,Suncorp,16073,,
+2026,nrl,3,2026-03-19,Thu 8:00pm,Canberra,10,Canterbury,14,A. Gee,GIO,13723,,
+2026,nrl,3,2026-03-20,Fri 6:00pm,Sydney,4,Penrith,40,G. Atkins,Allianz,22128,,
+2026,nrl,3,2026-03-20,Fri 8:00pm,Melbourne,14,Brisbane,18,T. Smith,AAMI,28245,,
+2026,nrl,3,2026-03-21,Sat 3:00pm,Newcastle,12,Warriors,38,L. Kennedy,McD. Jones,21682,,
+2026,nrl,3,2026-03-21,Sat 5:30pm,Cronulla,10,Dolphins,38,G. Sutton,Ocean Protect,11096,,
+2026,nrl,3,2026-03-21,Sat 7:35pm,South Sydney,20,Wests Tigers,16,W. Raymond,polytec,19940,,
+2026,nrl,3,2026-03-22,Sun 4:05pm,Parramatta,30,St Geo Illa,20,A. Klein,CommBank,25573,,
+2026,nrl,3,2026-03-22,Sun 5:15pm,North Qld,30,Gold Coast,16,P. Gough,QLD C. Bank,16999,,
+2026,nrl,4,2026-03-26,Thu 8:00pm,Manly,16,Sydney,33,W. Raymond,4 Pines,16082,,
+2026,nrl,4,2026-03-27,Fri 8:00pm,Warriors,14,Wests Tigers,32,A. Gee,Go Media,24246,,
+2026,nrl,4,2026-03-27,Fri 7:00pm,Brisbane,26,Dolphins,12,A. Klein,Suncorp,45882,,
+2026,nrl,4,2026-03-28,Sat 3:00pm,Canterbury,16,Newcastle,24,P. Gough,Accor,20572,,
+2026,nrl,4,2026-03-28,Sat 5:30pm,Penrith,48,Parramatta,20,T. Smith,CommBank,22813,,
+2026,nrl,4,2026-03-28,Sat 6:35pm,North Qld,28,Melbourne,24,G. Sutton,QLD C. Bank,20931,,
+2026,nrl,4,2026-03-29,Sun 4:05pm,Canberra,22,Cronulla,34,G. Atkins,GIO,17457,,
+2026,nrl,4,2026-03-29,Sun 5:15pm,Gold Coast,22,St Geo Illa,14,L. Kennedy,Cbus Super,12241,,
+2026,nrl,5,2026-04-02,Thu 7:00pm,Dolphins,18,Manly,52,G. Atkins,Kayo,10023,,
+2026,nrl,5,2026-04-03,Fri 4:05pm,South Sydney,32,Canterbury,24,T. Smith,Accor,49813,,
+2026,nrl,5,2026-04-03,Fri 8:00pm,Penrith,50,Melbourne,10,A. Klein,CommBank,20207,,
+2026,nrl,5,2026-04-04,Sat 5:30pm,St Geo Illa,0,North Qld,32,W. Raymond,SGV Jubilee,8491,,
+2026,nrl,5,2026-04-04,Sat 6:35pm,Gold Coast,12,Brisbane,26,G. Sutton,Cbus Super,26223,,
+2026,nrl,5,2026-04-05,Sun 2:00pm,Cronulla,36,Warriors,22,Z. Przeklasa-Adamski,Ocean Protect,13112,,
+2026,nrl,5,2026-04-05,Sun 4:05pm,Newcastle,32,Canberra,12,A. Gee,McD. Jones,23002,,
+2026,nrl,5,2026-04-06,Mon 4:05pm,Parramatta,20,Wests Tigers,22,P. Gough,CommBank,29397,,
+2026,nrl,6,2026-04-09,Thu 7:50pm,Canterbury,32,Penrith,16,G. Sutton,Accor,23984,,
+2026,nrl,6,2026-04-10,Fri 6:00pm,St Geo Illa,18,Manly,28,A. Gee,WIN,11381,,
+2026,nrl,6,2026-04-10,Fri 8:00pm,Brisbane,31,North Qld,35,A. Klein,Suncorp,45582,,
+2026,nrl,6,2026-04-11,Sat 1:00pm,South Sydney,34,Canberra,36,L. Kennedy,Optus Stadium,33404,,
+2026,nrl,6,2026-04-11,Sat 3:30pm,Cronulla,22,Sydney,34,T. Smith,Optus Stadium,33404,,
+2026,nrl,6,2026-04-11,Sat 7:35pm,Melbourne,14,Warriors,38,G. Atkins,AAMI,26467,,
+2026,nrl,6,2026-04-12,Sun 2:00pm,Parramatta,10,Gold Coast,52,Z. Przeklasa-Adamski,CommBank,14382,,
+2026,nrl,6,2026-04-12,Sun 4:05pm,Wests Tigers,42,Newcastle,22,W. Raymond,Campbelltown,15221,,
+2026,nrl,7,2026-04-16,Thu 7:50pm,North Qld,6,Manly,38,G. Sutton,QLD C. Bank,17476,,
+2026,nrl,7,2026-04-17,Fri 6:00pm,Canberra,26,Melbourne,22,P. Gough,GIO,17321,,
+2026,nrl,7,2026-04-17,Fri 7:30pm,Dolphins,22,Penrith,23,A. Gee,TIO,12570,,
+2026,nrl,7,2026-04-18,Sat 5:00pm,Warriors,28,Gold Coast,20,W. Raymond,Go Media,24112,,
+2026,nrl,7,2026-04-18,Sat 5:30pm,South Sydney,30,St Geo Illa,12,Z. Przeklasa-Adamski,Accor,15116,,
+2026,nrl,7,2026-04-18,Sat 7:35pm,Wests Tigers,20,Brisbane,21,T. Smith,Campbelltown,17316,,
+2026,nrl,7,2026-04-19,Sun 2:00pm,Sydney,38,Newcastle,24,A. Klein,Allianz,22409,,
+2026,nrl,7,2026-04-19,Sun 4:05pm,Parramatta,38,Canterbury,20,L. Kennedy,CommBank,25938,,
+2026,nrl,8,2026-04-23,Thu 7:50pm,Wests Tigers,33,Canberra,14,A. Klein,Leichhardt,17153,,
+2026,nrl,8,2026-04-24,Fri 6:00pm,North Qld,46,Cronulla,34,B. Sharpe,QLD C. Bank,17888,,
+2026,nrl,8,2026-04-24,Fri 8:00pm,Brisbane,32,Canterbury,12,W. Raymond,Suncorp,42775,,
+2026,nrl,8,2026-04-25,Sat 4:00pm,St Geo Illa,16,Sydney,62,G. Atkins,Allianz,40381,,
+2026,nrl,8,2026-04-25,Sat 8:05pm,Warriors,20,Dolphins,18,L. Kennedy,Hnry Stadium,34812,,
+2026,nrl,8,2026-04-25,Sat 8:10pm,Melbourne,6,South Sydney,48,A. Gee,AAMI,25694,,
+2026,nrl,8,2026-04-26,Sun 2:00pm,Newcastle,12,Penrith,44,G. Sutton,McD. Jones,23986,,
+2026,nrl,8,2026-04-26,Sun 4:05pm,Manly,33,Parramatta,18,P. Gough,4 Pines,17923,,
+2026,nrl,9,2026-05-01,Fri 6:00pm,Canterbury,12,North Qld,28,P. Gough,Accor,15132,,
+2026,nrl,9,2026-05-01,Fri 8:00pm,Dolphins,28,Melbourne,10,A. Klein,Suncorp,24070,,
+2026,nrl,9,2026-05-02,Sat 3:00pm,Gold Coast,12,Canberra,28,G. Atkins,Cbus Super,14913,,
+2026,nrl,9,2026-05-02,Sat 5:30pm,Parramatta,14,Warriors,36,G. Sutton,CommBank,16656,,
+2026,nrl,9,2026-05-02,Sat 7:35pm,Sydney,38,Brisbane,24,A. Gee,Allianz,25239,,
+2026,nrl,9,2026-05-03,Sun 2:00pm,Newcastle,42,South Sydney,38,L. Kennedy,McD. Jones,23413,,
+2026,nrl,9,2026-05-03,Sun 4:05pm,Cronulla,52,Wests Tigers,10,T. Smith,Ocean Protect,14479,,
+2026,nrl,9,2026-05-03,Sun 6:15pm,Penrith,18,Manly,16,W. Raymond,CommBank,14960,,
+2026,nrl,10,2026-05-07,Thu 7:50pm,Dolphins,44,Canterbury,12,G. Atkins,Suncorp,16143,,
+2026,nrl,10,2026-05-08,Fri 6:00pm,Sydney,28,Gold Coast,12,P. Gough,polytec,12226,,
+2026,nrl,10,2026-05-08,Fri 8:00pm,North Qld,30,Parramatta,33,L. Kennedy,QLD C. Bank,17827,,
+2026,nrl,10,2026-05-09,Sat 3:00pm,St Geo Illa,10,Newcastle,44,T. Smith,WIN,10916,,
+2026,nrl,10,2026-05-09,Sat 5:30pm,South Sydney,36,Cronulla,12,J. Cole,Accor,16714,,
+2026,nrl,10,2026-05-09,Sat 7:35pm,Manly,32,Brisbane,4,G. Sutton,4 Pines,17269,,
+2026,nrl,10,2026-05-10,Sun 2:00pm,Melbourne,44,Wests Tigers,16,A. Gee,AAMI,15684,,
+2026,nrl,10,2026-05-10,Sun 4:05pm,Canberra,18,Penrith,30,A. Klein,GIO,18018,,
+2026,nrl,11,15TH MAY,,Sharks,38,Bulldogs,16,,"Suncorp Stadium, Brisbane","45,236",Good,Fine
+2026,nrl,11,15TH MAY,,Rabbitohs,10,Dolphins,32,,"Suncorp Stadium, Brisbane","48,673",Good,Rain
+2026,nrl,11,16TH MAY,,Wests Tigers,18,Sea Eagles,46,,"Suncorp Stadium, Brisbane","41,396",Good,Fine
+2026,nrl,11,16TH MAY,,Roosters,12,Cowboys,18,,"Suncorp Stadium, Brisbane","49,601",Good,Fine
+2026,nrl,11,16TH MAY,,Eels,8,Storm,34,,"Suncorp Stadium, Brisbane","48,692",Good,Fine
+2026,nrl,11,17TH MAY,,Titans,12,Knights,36,,"Suncorp Stadium, Brisbane","42,098",Good,Fine
+2026,nrl,11,17TH MAY,,Warriors,42,Broncos,12,,"Suncorp Stadium, Brisbane","50,386",Good,Fine
+2026,nrl,11,17TH MAY,,Panthers,28,Dragons,6,,"Suncorp Stadium, Brisbane","46,752",Good,Rain
+2026,nrl,12,21ST MAY,,Raiders,22,Dolphins,30,,"GIO Stadium, Canberra","9,543",Slippery,Fine
+2026,nrl,12,22ND MAY,,Bulldogs,30,Storm,20,,"Accor Stadium, Sydney","14,372",Good,Rain
+2026,nrl,12,23RD MAY,,Dragons,12,Warriors,30,,"St George Venues Jubilee Stadium, Kogarah","8,741",Good,Rain
+2026,nrl,12,23RD MAY,,Sea Eagles,12,Titans,10,,"4 Pines Park, Sydney","13,173",Slippery,Light Rain
+2026,nrl,12,24TH MAY,,Cowboys,30,Rabbitohs,18,,"Queensland Country Bank Stadium, Townsville","18,888",Good,Fine
+2026,nrl,13,29TH MAY,,Sharks,28,Sea Eagles,22,,"Ocean Protect Stadium, Sydney","10,793",Good,Fine
+2026,nrl,13,30TH MAY,,Knights,28,Eels,22,,"McDonald Jones Stadium, Newcastle","23,001",Good,Fine
+2026,nrl,13,30TH MAY,,Wests Tigers,22,Bulldogs,16,,"CommBank Stadium, Sydney","17,505",Good,Fine
+2026,nrl,13,30TH MAY,,Storm,18,Roosters,4,,"AAMI Park, Melbourne","16,268",Good,Rain
+2026,nrl,13,31ST MAY,,Broncos,26,Dragons,30,,"Suncorp Stadium, Brisbane","42,275",Good,Fine
+2026,nrl,13,31ST MAY,,Raiders,26,Cowboys,12,,"GIO Stadium, Canberra","12,258",Good,Fine
+2026,nrl,13,31ST MAY,,Panthers,20,Warriors,18,,"CommBank Stadium, Sydney","17,640",Good,Fine
+2026,nrl,14,4TH JUNE,,Sea Eagles,28,Rabbitohs,14,,"4 Pines Park, Sydney","15,451",Good,Fine
+2026,nrl,14,5TH JUNE,,Storm,32,Knights,30,,"AAMI Park, Melbourne","14,268",Good,Fine
+2026,nrl,14,5TH JUNE,,Raiders,0,Roosters,26,,"GIO Stadium, Canberra","13,836",Good,Fine
+2026,nrl,14,6TH JUNE,,Cowboys,14,Dolphins,40,,"Queensland Country Bank Stadium, Townsville","21,911",Good,Fine
+2026,nrl,14,6TH JUNE,,Broncos,23,Titans,28,,"Suncorp Stadium, Brisbane","41,087",Good,Fine
+2026,nrl,14,7TH JUNE,,Wests Tigers,0,Panthers,68,,"CommBank Stadium, Sydney","21,803",Good,Fine
+2026,nrl,14,7TH JUNE,,Sharks,34,Dragons,12,,"Ocean Protect Stadium, Sydney","14,989",Good,Fine
+2026,nrl,14,8TH JUNE,,Bulldogs,14,Eels,12,,"Accor Stadium, Sydney","37,638",Good,Fine
+2026,nrl,15,11TH JUNE,,Rabbitohs,48,Broncos,6,,"Accor Stadium, Sydney","12,784",Good,Fine
+2026,nrl,15,12TH JUNE,,Dolphins,48,Roosters,10,,"Suncorp Stadium, Brisbane","20,687",Good,Rain
+2026,nrl,15,13TH JUNE,,Warriors,8,Sharks,10,,"Go Media Stadium, Auckland","24,938",Good,Fine
+2026,nrl,15,13TH JUNE,,Eels,15,Raiders,12,,"CommBank Stadium, Sydney","16,657",Good,Fine
+2026,nrl,15,14TH JUNE,,Wests Tigers,36,Titans,28,,"Leichhardt Oval, Sydney","17,773",Good,Showers
+2026,nrl,16,19TH JUNE,,Knights,22,Dragons,20,,"McDonald Jones Stadium, Newcastle","19,092",Good,Fine
+2026,nrl,16,20TH JUNE,,Wests Tigers,22,Dolphins,36,,"Campbelltown Sports Stadium, Sydney","12,281",Good,Fine
+2026,nrl,16,20TH JUNE,,Titans,19,Panthers,18,,"Cbus Super Stadium, Gold Coast","20,049",Good,Fine
+2026,nrl,16,20TH JUNE,,Bulldogs,13,Sea Eagles,12,,"Accor Stadium, Sydney","18,243",Good,Fine
+2026,nrl,16,21ST JUNE,,Warriors,38,Cowboys,20,,"One NZ Stadium, Christchurch","24,365",Good,Indoor
+2026,nrl,16,21ST JUNE,,Storm,42,Raiders,20,,"AAMI Park, Melbourne","19,326",Good,Fine
+2026,nrl,16,21ST JUNE,,Roosters,27,Sharks,8,,"Allianz Stadium, Sydney","20,021",Good,Fine
