@@ -142,7 +142,7 @@ jobs:
           python3 -c "
           import sys
           sys.path.insert(0, 'scripts')
-          from send_predictions_digest import build_predictions_digest, send_predictions_email
+          from send_predictions_digest import build_predictions_digest, send_predictions_email, validate_digest_before_send
 
           round_num = ${{ steps.round.outputs.round }}
           digest = build_predictions_digest(
@@ -150,6 +150,20 @@ jobs:
               round_num=round_num,
               position_tpg_baseline_path='data/historical_position_tpg_baseline.csv',
           )
+          # Real, content-based sanity check added 2026-06-25, per Sam's
+          # explicit request: every checkpoint before this was exception-
+          # based ('did the code crash'), not content-based ('does the
+          # real output actually look right'). This is the real check --
+          # see validate_digest_before_send()'s own docstring for the
+          # real failure patterns it's built from. A failed check raises
+          # here, which this step's continue-on-error + the existing
+          # 'Open issue on failure (email)' step below turns into a real
+          # GitHub Issue rather than a silently-sent, possibly-wrong email.
+          is_valid, problems = validate_digest_before_send(digest)
+          if not is_valid:
+              for p in problems:
+                  print(f'SANITY CHECK FAILED: {p}')
+              raise RuntimeError(f'Pre-send sanity check found {len(problems)} real problem(s) -- email NOT sent. See log above for details.')
           to_email = '${{ secrets.DIGEST_TO_EMAIL }}'.strip()
           if not to_email:
               raise RuntimeError('DIGEST_TO_EMAIL secret is not set')
