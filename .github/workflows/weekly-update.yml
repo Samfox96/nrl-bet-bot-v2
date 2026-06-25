@@ -131,6 +131,102 @@ jobs:
           git commit -m "Auto-merge round ${{ steps.next_round.outputs.round }} (validated)" || echo "Nothing to commit"
           git push
 
+      # ============================================================
+      # REAL MATCH-RESULTS SCRAPE/VALIDATE/MERGE -- added 2026-06-25
+      # ============================================================
+      # Added after discovering data/match_data_FINAL_fixed.csv had
+      # been silently stuck at Round 10 since a one-time June 21
+      # upload (confirmed via real git history: exactly one commit,
+      # ever) while nrl_master.csv (the player-stats file, scraped by
+      # the steps above) was correctly refreshed every week. This
+      # silently fed every Elo rating, win probability, predicted
+      # margin, h2h history, and form-streak calculation in the real
+      # predictions pipeline from stale data for 6+ real rounds --
+      # confirmed via a real, direct symptom Sam caught manually (a
+      # real predictions email claiming "Roosters red-hot, 5 wins from
+      # 5" while the real live ladder showed their actual recent form
+      # was 2-2). Backfilled manually for rounds 11-16 (2026-06-25);
+      # these new steps exist so the SAME gap can never silently recur
+      # -- this scrapes and merges the SAME round nrl_update_single_round.py
+      # already determined above (steps.next_round.outputs.round),
+      # using a real, separate scraper (scrape_match_results.py) since
+      # match results live on a structurally different real nrl.com
+      # page (the round-level draw/results page, not the per-match
+      # player-stats page) -- see that script's own real docstring for
+      # the full confirmed-selector story.
+      #
+      # Mirrors the EXACT same real continue-on-error + conditional-
+      # commit pattern as the player-stats steps above, deliberately --
+      # a real failure here should open a real GitHub Issue (see below)
+      # and leave match_data_FINAL_fixed.csv untouched, never silently
+      # merge something unvalidated.
+      - name: Run match-results scraper for next round
+        id: scrape_match_results
+        if: env.RESEND_ROUND == ''
+        continue-on-error: true
+        run: |
+          mkdir -p data/pending_match_results
+          python3 scripts/scrape_match_results.py \
+            --round "${{ steps.next_round.outputs.round }}" \
+            --season 2026 \
+            --output "data/pending_match_results/match_results_round_${{ steps.next_round.outputs.round }}_backfill.csv"
+        # Real output filename deliberately matches
+        # merge_match_results_backfill.py's own real glob pattern
+        # (match_results_round_*_backfill.csv) -- confirmed by reading
+        # that script's own source -- so the exact same real,
+        # already-validated merge script can be reused here for a
+        # single round, with zero modification needed.
+
+      - name: Validate and merge match results
+        id: validate_merge_match_results
+        if: env.RESEND_ROUND == '' && steps.scrape_match_results.outcome == 'success'
+        continue-on-error: true
+        run: |
+          python3 scripts/merge_match_results_backfill.py \
+            --backfill-dir data/pending_match_results \
+            --master data/match_data_FINAL_fixed.csv \
+            --team-aliases data/team_aliases.json
+
+      - name: Commit match results (only runs if merge succeeded)
+        if: env.RESEND_ROUND == '' && steps.validate_merge_match_results.outcome == 'success'
+        run: |
+          git config user.name "nrl-bot-automation"
+          git config user.email "actions@github.com"
+          git add data/match_data_FINAL_fixed.csv
+          git commit -m "Auto-merge match results for round ${{ steps.next_round.outputs.round }} (validated)" || echo "Nothing to commit"
+          git push
+          rm -rf data/pending_match_results
+
+      - name: Open issue on failure (match results)
+        if: env.RESEND_ROUND == '' && (steps.scrape_match_results.outcome == 'failure' || steps.validate_merge_match_results.outcome == 'failure')
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `Match results scrape/merge failed for round ${{ steps.next_round.outputs.round }}`,
+              body: [
+                `The automated match-results scrape or merge for round ${{ steps.next_round.outputs.round }} failed.`,
+                ``,
+                `**data/match_data_FINAL_fixed.csv has NOT been changed.** Any real scraped `,
+                `file (if the scrape itself succeeded) is left in data/pending_match_results/ `,
+                `for manual review.`,
+                ``,
+                `Check the workflow run log for the real error:`,
+                `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+                ``,
+                `Common causes: nrl.com page structure change (the round-level draw page's `,
+                `real .match--highlighted/.match-venue selectors may have changed), a real `,
+                `team-name variant not yet in team_aliases.json, or a real round/bye-count `,
+                `mismatch against the known schedule in merge_match_results_backfill.py's `,
+                `EXPECTED_BYES dict (which covers rounds 11-17 currently -- extend it `,
+                `for later rounds, same as season_draw_2026.json needs extending via `,
+                `extend_season_draw.py).`
+              ].join('\n'),
+              labels: ['needs-review', 'automation']
+            })
+
 
     # ============================================================
 # Phase 5 addition to .github/workflows/weekly-update.yml
