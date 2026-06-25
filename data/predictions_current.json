@@ -3,18 +3,18 @@
     "home_team": "Parramatta Eels",
     "away_team": "South Sydney Rabbitohs",
     "h2h": {
-      "our_home_win_prob": 0.484,
-      "market_home_win_prob": 0.3871,
-      "our_home_fair_odds": 2.066,
-      "our_away_fair_odds": 1.938,
-      "edge": 0.0969,
-      "our_predicted_margin": -0.4,
+      "our_home_win_prob": 0.4817,
+      "market_home_win_prob": 0.3867,
+      "our_home_fair_odds": 2.076,
+      "our_away_fair_odds": 1.93,
+      "edge": 0.0951,
+      "our_predicted_margin": -0.5,
       "margin_mae": 14.0,
       "market_spread_bookmaker": "sportsbet",
       "market_spread_point": 5.5,
-      "market_spread_price": 1.93,
-      "rating_home": 1431.4,
-      "rating_away": 1488.7,
+      "market_spread_price": 1.92,
+      "rating_home": 1415.7,
+      "rating_away": 1474.5,
       "real_h2h_history": {
         "games_found": 5,
         "team_a_wins": 1,
@@ -28,13 +28,13 @@
         }
       },
       "real_home_form": {
-        "results": "LWLLW",
+        "results": "WLLLW",
         "wins": 2,
         "games": 5
       },
       "real_away_form": {
-        "results": "LWWLW",
-        "wins": 3,
+        "results": "WLLLW",
+        "wins": 2,
         "games": 5
       },
       "status": "ok"
@@ -136,10 +136,21 @@
         "position_code": "2RF",
         "bookmaker": "sportsbet",
         "our_probability": 0.2227,
-        "market_probability": 0.17857142857142858,
-        "edge": 0.044128571428571434,
+        "market_probability": 0.18181818181818182,
+        "edge": 0.040881818181818186,
         "fair_odds_implied_by_our_model": 4.49,
         "raw_season_tpg": 0.2308
+      },
+      {
+        "player_name": "Kitione Kautoga",
+        "team": "Parramatta Eels",
+        "position_code": "2RF",
+        "bookmaker": "sportsbet",
+        "our_probability": 0.2167,
+        "market_probability": 0.18518518518518517,
+        "edge": 0.03151481481481483,
+        "fair_odds_implied_by_our_model": 4.615,
+        "raw_season_tpg": 0.2222
       },
       {
         "player_name": "Kelma Tuilagi",
@@ -162,17 +173,6 @@
         "edge": 0.03039230769230772,
         "fair_odds_implied_by_our_model": 4.49,
         "raw_season_tpg": 0.2308
-      },
-      {
-        "player_name": "Kitione Kautoga",
-        "team": "Parramatta Eels",
-        "position_code": "2RF",
-        "bookmaker": "sportsbet",
-        "our_probability": 0.2167,
-        "market_probability": 0.19047619047619047,
-        "edge": 0.026223809523809538,
-        "fair_odds_implied_by_our_model": 4.615,
-        "raw_season_tpg": 0.2222
       },
       {
         "player_name": "Kelma Tuilagi",
@@ -206,17 +206,6 @@
         "edge": 0.022699999999999998,
         "fair_odds_implied_by_our_model": 4.49,
         "raw_season_tpg": 0.2308
-      },
-      {
-        "player_name": "Alex Johnston",
-        "team": "South Sydney Rabbitohs",
-        "position_code": "WG",
-        "bookmaker": "sportsbet",
-        "our_probability": 0.65,
-        "market_probability": 0.6289308176100629,
-        "edge": 0.021069182389937158,
-        "fair_odds_implied_by_our_model": 1.538,
-        "raw_season_tpg": 1.5833
       },
       {
         "player_name": "Dylan Walker",
@@ -233,6 +222,17 @@
         "player_name": "Alex Johnston",
         "team": "South Sydney Rabbitohs",
         "position_code": "WG",
+        "bookmaker": "sportsbet",
+        "our_probability": 0.65,
+        "market_probability": 0.6329113924050632,
+        "edge": 0.0170886075949368,
+        "fair_odds_implied_by_our_model": 1.538,
+        "raw_season_tpg": 1.5833
+      },
+      {
+        "player_name": "Alex Johnston",
+        "team": "South Sydney Rabbitohs",
+        "position_code": "WG",
         "bookmaker": "neds",
         "our_probability": 0.65,
         "market_probability": 0.6329113924050632,
@@ -329,17 +329,6 @@
         "raw_season_tpg": 0.2222
       },
       {
-        "player_name": "Jamie Humphreys",
-        "team": "South Sydney Rabbitohs",
-        "position_code": "HB",
-        "bookmaker": "sportsbet",
-        "our_probability": 0.1579,
-        "market_probability": 0.14814814814814814,
-        "edge": 0.009751851851851873,
-        "fair_odds_implied_by_our_model": 6.333,
-        "raw_season_tpg": 0.2222
-      },
-      {
         "player_name": "Dylan Walker",
         "team": "Parramatta Eels",
         "position_code": "IC",
@@ -360,6 +349,17 @@
         "edge": 0.0046142857142857235,
         "fair_odds_implied_by_our_model": 8.41,
         "raw_season_tpg": 0.2143
+      },
+      {
+        "player_name": "Jamie Humphreys",
+        "team": "South Sydney Rabbitohs",
+        "position_code": "HB",
+        "bookmaker": "sportsbet",
+        "our_probability": 0.1579,
+        "market_probability": 0.16,
+        "edge": -0.0020999999999999908,
+        "fair_odds_implied_by_our_model": 6.333,
+        "raw_season_tpg": 0.2222
       },
       {
         "player_name": "Kelma Tuilagi",
@@ -596,6 +596,17 @@
         "player_name": "Jordan Samrani",
         "team": "Parramatta Eels",
         "position_code": "CE",
+        "bookmaker": "sportsbet",
+        "our_probability": 0.2788,
+        "market_probability": 0.31746031746031744,
+        "edge": -0.03866031746031745,
+        "fair_odds_implied_by_our_model": 3.587,
+        "raw_season_tpg": 0.4286
+      },
+      {
+        "player_name": "Jordan Samrani",
+        "team": "Parramatta Eels",
+        "position_code": "CE",
         "bookmaker": "neds",
         "our_probability": 0.2788,
         "market_probability": 0.31746031746031744,
@@ -624,17 +635,6 @@
         "edge": -0.04776666666666665,
         "fair_odds_implied_by_our_model": 8.41,
         "raw_season_tpg": 0.2143
-      },
-      {
-        "player_name": "Jordan Samrani",
-        "team": "Parramatta Eels",
-        "position_code": "CE",
-        "bookmaker": "sportsbet",
-        "our_probability": 0.2788,
-        "market_probability": 0.3278688524590164,
-        "edge": -0.04906885245901643,
-        "fair_odds_implied_by_our_model": 3.587,
-        "raw_season_tpg": 0.4286
       },
       {
         "player_name": "Cameron Murray",
@@ -780,6 +780,17 @@
         "raw_season_tpg": 0.0909
       },
       {
+        "player_name": "Keaon Koloamatangi",
+        "team": "South Sydney Rabbitohs",
+        "position_code": "PR",
+        "bookmaker": "sportsbet",
+        "our_probability": 0.079,
+        "market_probability": 0.14814814814814814,
+        "edge": -0.06914814814814814,
+        "fair_odds_implied_by_our_model": 12.658,
+        "raw_season_tpg": 0.0769
+      },
+      {
         "player_name": "Teancum Brown",
         "team": "Parramatta Eels",
         "position_code": "IC",
@@ -921,17 +932,6 @@
         "edge": -0.0746,
         "fair_odds_implied_by_our_model": 7.974,
         "raw_season_tpg": 0.3333
-      },
-      {
-        "player_name": "Keaon Koloamatangi",
-        "team": "South Sydney Rabbitohs",
-        "position_code": "PR",
-        "bookmaker": "sportsbet",
-        "our_probability": 0.079,
-        "market_probability": 0.15384615384615385,
-        "edge": -0.07484615384615385,
-        "fair_odds_implied_by_our_model": 12.658,
-        "raw_season_tpg": 0.0769
       },
       {
         "player_name": "Keaon Koloamatangi",
@@ -1176,6 +1176,17 @@
         "raw_season_tpg": 0.0769
       },
       {
+        "player_name": "Lachlan Hubner",
+        "team": "South Sydney Rabbitohs",
+        "position_code": "IC",
+        "bookmaker": "sportsbet",
+        "our_probability": 0.0123,
+        "market_probability": 0.1,
+        "edge": -0.0877,
+        "fair_odds_implied_by_our_model": 81.301,
+        "raw_season_tpg": 0.0833
+      },
+      {
         "player_name": "Sam Tuivaiti",
         "team": "Parramatta Eels",
         "position_code": "IC",
@@ -1198,17 +1209,6 @@
         "raw_season_tpg": 0.0
       },
       {
-        "player_name": "Luca Moretti",
-        "team": "Parramatta Eels",
-        "position_code": "PR",
-        "bookmaker": "sportsbet",
-        "our_probability": 0.0191,
-        "market_probability": 0.10810810810810811,
-        "edge": -0.08900810810810811,
-        "fair_odds_implied_by_our_model": 52.356,
-        "raw_season_tpg": 0.0909
-      },
-      {
         "player_name": "Cameron Murray",
         "team": "South Sydney Rabbitohs",
         "position_code": "LK",
@@ -1218,17 +1218,6 @@
         "edge": -0.0898,
         "fair_odds_implied_by_our_model": 9.074,
         "raw_season_tpg": 0.1818
-      },
-      {
-        "player_name": "Lachlan Hubner",
-        "team": "South Sydney Rabbitohs",
-        "position_code": "IC",
-        "bookmaker": "sportsbet",
-        "our_probability": 0.0123,
-        "market_probability": 0.10256410256410256,
-        "edge": -0.09026410256410256,
-        "fair_odds_implied_by_our_model": 81.301,
-        "raw_season_tpg": 0.0833
       },
       {
         "player_name": "Jack De Belin",
@@ -1317,6 +1306,28 @@
         "edge": -0.0907923076923077,
         "fair_odds_implied_by_our_model": 4.61,
         "raw_season_tpg": 0.3333
+      },
+      {
+        "player_name": "Luca Moretti",
+        "team": "Parramatta Eels",
+        "position_code": "PR",
+        "bookmaker": "sportsbet",
+        "our_probability": 0.0191,
+        "market_probability": 0.1111111111111111,
+        "edge": -0.0920111111111111,
+        "fair_odds_implied_by_our_model": 52.356,
+        "raw_season_tpg": 0.0909
+      },
+      {
+        "player_name": "Sam Tuivaiti",
+        "team": "Parramatta Eels",
+        "position_code": "IC",
+        "bookmaker": "sportsbet",
+        "our_probability": 0.0072,
+        "market_probability": 0.1,
+        "edge": -0.09280000000000001,
+        "fair_odds_implied_by_our_model": 138.889,
+        "raw_season_tpg": 0.0
       },
       {
         "player_name": "Lachlan Hubner",
@@ -1385,21 +1396,10 @@
         "raw_season_tpg": 0.0
       },
       {
-        "player_name": "Sam Tuivaiti",
-        "team": "Parramatta Eels",
-        "position_code": "IC",
-        "bookmaker": "sportsbet",
-        "our_probability": 0.0072,
-        "market_probability": 0.10256410256410256,
-        "edge": -0.09536410256410256,
-        "fair_odds_implied_by_our_model": 138.889,
-        "raw_season_tpg": 0.0
-      },
-      {
         "player_name": "Jack De Belin",
         "team": "Parramatta Eels",
         "position_code": "LK",
-        "bookmaker": "sportsbet",
+        "bookmaker": "pointsbetau",
         "our_probability": 0.0096,
         "market_probability": 0.10526315789473684,
         "edge": -0.09566315789473684,
@@ -1410,10 +1410,10 @@
         "player_name": "Jack De Belin",
         "team": "Parramatta Eels",
         "position_code": "LK",
-        "bookmaker": "pointsbetau",
+        "bookmaker": "sportsbet",
         "our_probability": 0.0096,
-        "market_probability": 0.10526315789473684,
-        "edge": -0.09566315789473684,
+        "market_probability": 0.10810810810810811,
+        "edge": -0.09850810810810812,
         "fair_odds_implied_by_our_model": 104.167,
         "raw_season_tpg": 0.0
       },
@@ -1861,6 +1861,17 @@
         "player_name": "Isaiah Iongi",
         "team": "Parramatta Eels",
         "position_code": "FB",
+        "bookmaker": "sportsbet",
+        "our_probability": 0.2281,
+        "market_probability": 0.3508771929824561,
+        "edge": -0.12277719298245612,
+        "fair_odds_implied_by_our_model": 4.384,
+        "raw_season_tpg": 0.4286
+      },
+      {
+        "player_name": "Isaiah Iongi",
+        "team": "Parramatta Eels",
+        "position_code": "FB",
         "bookmaker": "neds",
         "our_probability": 0.2281,
         "market_probability": 0.35714285714285715,
@@ -1900,17 +1911,6 @@
         "edge": -0.12943333333333332,
         "fair_odds_implied_by_our_model": 4.904,
         "raw_season_tpg": 0.2857
-      },
-      {
-        "player_name": "Isaiah Iongi",
-        "team": "Parramatta Eels",
-        "position_code": "FB",
-        "bookmaker": "sportsbet",
-        "our_probability": 0.2281,
-        "market_probability": 0.36363636363636365,
-        "edge": -0.13553636363636365,
-        "fair_odds_implied_by_our_model": 4.384,
-        "raw_season_tpg": 0.4286
       },
       {
         "player_name": "Isaiah Iongi",
@@ -1968,6 +1968,17 @@
         "raw_season_tpg": 0.3333
       },
       {
+        "player_name": "David Fifita",
+        "team": "South Sydney Rabbitohs",
+        "position_code": "2RF",
+        "bookmaker": "sportsbet",
+        "our_probability": 0.1706,
+        "market_probability": 0.3125,
+        "edge": -0.1419,
+        "fair_odds_implied_by_our_model": 5.862,
+        "raw_season_tpg": 0.2857
+      },
+      {
         "player_name": "Bronson Garlick",
         "team": "South Sydney Rabbitohs",
         "position_code": "HK",
@@ -1999,17 +2010,6 @@
         "edge": -0.14673636363636364,
         "fair_odds_implied_by_our_model": 4.61,
         "raw_season_tpg": 0.3333
-      },
-      {
-        "player_name": "David Fifita",
-        "team": "South Sydney Rabbitohs",
-        "position_code": "2RF",
-        "bookmaker": "sportsbet",
-        "our_probability": 0.1706,
-        "market_probability": 0.31746031746031744,
-        "edge": -0.14686031746031744,
-        "fair_odds_implied_by_our_model": 5.862,
-        "raw_season_tpg": 0.2857
       },
       {
         "player_name": "Jack Williams",
@@ -2067,6 +2067,28 @@
         "raw_season_tpg": 0.2857
       },
       {
+        "player_name": "Brandon Smith",
+        "team": "South Sydney Rabbitohs",
+        "position_code": "HK",
+        "bookmaker": "sportsbet",
+        "our_probability": 0.0195,
+        "market_probability": 0.17391304347826086,
+        "edge": -0.15441304347826088,
+        "fair_odds_implied_by_our_model": 51.282,
+        "raw_season_tpg": 0.0
+      },
+      {
+        "player_name": "Mitchell Moses",
+        "team": "Parramatta Eels",
+        "position_code": "HB",
+        "bookmaker": "sportsbet",
+        "our_probability": 0.0559,
+        "market_probability": 0.21052631578947367,
+        "edge": -0.15462631578947367,
+        "fair_odds_implied_by_our_model": 17.889,
+        "raw_season_tpg": 0.0909
+      },
+      {
         "player_name": "Mitchell Moses",
         "team": "Parramatta Eels",
         "position_code": "HB",
@@ -2078,26 +2100,15 @@
         "raw_season_tpg": 0.0909
       },
       {
-        "player_name": "Mitchell Moses",
+        "player_name": "Brian Kelly",
         "team": "Parramatta Eels",
-        "position_code": "HB",
+        "position_code": "WG",
         "bookmaker": "sportsbet",
-        "our_probability": 0.0559,
-        "market_probability": 0.2127659574468085,
-        "edge": -0.1568659574468085,
-        "fair_odds_implied_by_our_model": 17.889,
-        "raw_season_tpg": 0.0909
-      },
-      {
-        "player_name": "Brandon Smith",
-        "team": "South Sydney Rabbitohs",
-        "position_code": "HK",
-        "bookmaker": "sportsbet",
-        "our_probability": 0.0195,
-        "market_probability": 0.17857142857142858,
-        "edge": -0.15907142857142859,
-        "fair_odds_implied_by_our_model": 51.282,
-        "raw_season_tpg": 0.0
+        "our_probability": 0.2801,
+        "market_probability": 0.4347826086956522,
+        "edge": -0.1546826086956522,
+        "fair_odds_implied_by_our_model": 3.57,
+        "raw_season_tpg": 0.25
       },
       {
         "player_name": "Ashton Ward",
@@ -2105,8 +2116,8 @@
         "position_code": "HB",
         "bookmaker": "sportsbet",
         "our_probability": 0.016,
-        "market_probability": 0.17543859649122806,
-        "edge": -0.15943859649122805,
+        "market_probability": 0.17391304347826086,
+        "edge": -0.15791304347826085,
         "fair_odds_implied_by_our_model": 62.5,
         "raw_season_tpg": 0.0
       },
@@ -2219,17 +2230,6 @@
         "edge": -0.1627333333333333,
         "fair_odds_implied_by_our_model": 5.862,
         "raw_season_tpg": 0.2857
-      },
-      {
-        "player_name": "Brian Kelly",
-        "team": "Parramatta Eels",
-        "position_code": "WG",
-        "bookmaker": "sportsbet",
-        "our_probability": 0.2801,
-        "market_probability": 0.4444444444444444,
-        "edge": -0.1643444444444444,
-        "fair_odds_implied_by_our_model": 3.57,
-        "raw_season_tpg": 0.25
       },
       {
         "player_name": "Brian Kelly",
@@ -2952,8 +2952,8 @@
         "position_code": "WG",
         "bookmaker": "sportsbet",
         "our_probability": 0.2615,
-        "market_probability": 0.5434782608695652,
-        "edge": -0.2819782608695652,
+        "market_probability": 0.5494505494505494,
+        "edge": -0.2879505494505494,
         "fair_odds_implied_by_our_model": 3.824,
         "raw_season_tpg": 0.4615
       },
@@ -2967,6 +2967,17 @@
         "edge": -0.28983636363636367,
         "fair_odds_implied_by_our_model": 13.55,
         "raw_season_tpg": 0.3333
+      },
+      {
+        "player_name": "Jye Gray",
+        "team": "South Sydney Rabbitohs",
+        "position_code": "FB",
+        "bookmaker": "sportsbet",
+        "our_probability": 0.0772,
+        "market_probability": 0.37037037037037035,
+        "edge": -0.29317037037037036,
+        "fair_odds_implied_by_our_model": 12.953,
+        "raw_season_tpg": 0.2
       },
       {
         "player_name": "Josh Addo-Carr",
@@ -3016,23 +3027,23 @@
         "player_name": "Jye Gray",
         "team": "South Sydney Rabbitohs",
         "position_code": "FB",
-        "bookmaker": "sportsbet",
-        "our_probability": 0.0772,
-        "market_probability": 0.37735849056603776,
-        "edge": -0.30015849056603777,
-        "fair_odds_implied_by_our_model": 12.953,
-        "raw_season_tpg": 0.2
-      },
-      {
-        "player_name": "Jye Gray",
-        "team": "South Sydney Rabbitohs",
-        "position_code": "FB",
         "bookmaker": "tab",
         "our_probability": 0.0772,
         "market_probability": 0.3846153846153846,
         "edge": -0.3074153846153846,
         "fair_odds_implied_by_our_model": 12.953,
         "raw_season_tpg": 0.2
+      },
+      {
+        "player_name": "Edward Kosi",
+        "team": "South Sydney Rabbitohs",
+        "position_code": "WG",
+        "bookmaker": "sportsbet",
+        "our_probability": 0.179,
+        "market_probability": 0.48780487804878053,
+        "edge": -0.30880487804878054,
+        "fair_odds_implied_by_our_model": 5.587,
+        "raw_season_tpg": 0.125
       },
       {
         "player_name": "Latrell Siegwalt",
@@ -3066,17 +3077,6 @@
         "edge": -0.3149568627450981,
         "fair_odds_implied_by_our_model": 12.953,
         "raw_season_tpg": 0.2
-      },
-      {
-        "player_name": "Edward Kosi",
-        "team": "South Sydney Rabbitohs",
-        "position_code": "WG",
-        "bookmaker": "sportsbet",
-        "our_probability": 0.179,
-        "market_probability": 0.49504950495049505,
-        "edge": -0.31604950495049505,
-        "fair_odds_implied_by_our_model": 5.587,
-        "raw_season_tpg": 0.125
       },
       {
         "player_name": "Edward Kosi",
@@ -3159,17 +3159,6 @@
         "player_name": "Latrell Siegwalt",
         "team": "South Sydney Rabbitohs",
         "position_code": "CE",
-        "bookmaker": "sportsbet",
-        "our_probability": 0.0308,
-        "market_probability": 0.36363636363636365,
-        "edge": -0.33283636363636365,
-        "fair_odds_implied_by_our_model": 32.468,
-        "raw_season_tpg": 0.0
-      },
-      {
-        "player_name": "Latrell Siegwalt",
-        "team": "South Sydney Rabbitohs",
-        "position_code": "CE",
         "bookmaker": "tabtouch",
         "our_probability": 0.0308,
         "market_probability": 0.36363636363636365,
@@ -3220,6 +3209,17 @@
         "edge": -0.3394666666666667,
         "fair_odds_implied_by_our_model": 12.953,
         "raw_season_tpg": 0.2
+      },
+      {
+        "player_name": "Latrell Siegwalt",
+        "team": "South Sydney Rabbitohs",
+        "position_code": "CE",
+        "bookmaker": "sportsbet",
+        "our_probability": 0.0308,
+        "market_probability": 0.37037037037037035,
+        "edge": -0.33957037037037036,
+        "fair_odds_implied_by_our_model": 32.468,
+        "raw_season_tpg": 0.0
       },
       {
         "player_name": "Latrell Siegwalt",
@@ -3297,18 +3297,18 @@
     "home_team": "Gold Coast Titans",
     "away_team": "Canterbury-Bankstown Bulldogs",
     "h2h": {
-      "our_home_win_prob": 0.3953,
+      "our_home_win_prob": 0.3902,
       "market_home_win_prob": 0.4981,
-      "our_home_fair_odds": 2.53,
-      "our_away_fair_odds": 1.654,
-      "edge": -0.1028,
-      "our_predicted_margin": -3.0,
+      "our_home_fair_odds": 2.563,
+      "our_away_fair_odds": 1.64,
+      "edge": -0.1078,
+      "our_predicted_margin": -3.1,
       "margin_mae": 14.0,
       "market_spread_bookmaker": "sportsbet",
       "market_spread_point": 0.5,
       "market_spread_price": 1.91,
-      "rating_home": 1341.8,
-      "rating_away": 1461.8,
+      "rating_home": 1342.1,
+      "rating_away": 1465.7,
       "real_h2h_history": {
         "games_found": 5,
         "team_a_wins": 1,
@@ -3322,13 +3322,13 @@
         }
       },
       "real_home_form": {
-        "results": "LWLLL",
-        "wins": 1,
+        "results": "LLWLW",
+        "wins": 2,
         "games": 5
       },
       "real_away_form": {
-        "results": "WLLLL",
-        "wins": 1,
+        "results": "LWLWW",
+        "wins": 3,
         "games": 5
       },
       "status": "ok"
@@ -3755,17 +3755,6 @@
         "raw_season_tpg": 0.5714
       },
       {
-        "player_name": "Stephen Crichton",
-        "team": "Canterbury-Bankstown Bulldogs",
-        "position_code": "CE",
-        "bookmaker": "tab",
-        "our_probability": 0.3988,
-        "market_probability": 0.3076923076923077,
-        "edge": 0.09110769230769228,
-        "fair_odds_implied_by_our_model": 2.508,
-        "raw_season_tpg": 0.3636
-      },
-      {
         "player_name": "Phillip Sami",
         "team": "Gold Coast Titans",
         "position_code": "WG",
@@ -3872,6 +3861,17 @@
         "our_probability": 0.3988,
         "market_probability": 0.35714285714285715,
         "edge": 0.04165714285714284,
+        "fair_odds_implied_by_our_model": 2.508,
+        "raw_season_tpg": 0.3636
+      },
+      {
+        "player_name": "Stephen Crichton",
+        "team": "Canterbury-Bankstown Bulldogs",
+        "position_code": "CE",
+        "bookmaker": "tab",
+        "our_probability": 0.3988,
+        "market_probability": 0.36363636363636365,
+        "edge": 0.03516363636363634,
         "fair_odds_implied_by_our_model": 2.508,
         "raw_season_tpg": 0.3636
       },
@@ -6812,18 +6812,18 @@
     "home_team": "Brisbane Broncos",
     "away_team": "Sydney Roosters",
     "h2h": {
-      "our_home_win_prob": 0.4746,
-      "market_home_win_prob": 0.3518,
-      "our_home_fair_odds": 2.107,
-      "our_away_fair_odds": 1.903,
-      "edge": 0.1227,
-      "our_predicted_margin": -0.7,
+      "our_home_win_prob": 0.4103,
+      "market_home_win_prob": 0.3517,
+      "our_home_fair_odds": 2.437,
+      "our_away_fair_odds": 1.696,
+      "edge": 0.0586,
+      "our_predicted_margin": -2.5,
       "margin_mae": 14.0,
       "market_spread_bookmaker": "sportsbet",
       "market_spread_point": 7.5,
       "market_spread_price": 1.91,
-      "rating_home": 1569.6,
-      "rating_away": 1633.5,
+      "rating_home": 1501.2,
+      "rating_away": 1610.4,
       "real_h2h_history": {
         "games_found": 5,
         "team_a_wins": 1,
@@ -6837,13 +6837,13 @@
         }
       },
       "real_home_form": {
-        "results": "LWWLL",
-        "wins": 2,
+        "results": "LLLLL",
+        "wins": 0,
         "games": 5
       },
       "real_away_form": {
-        "results": "WWWWW",
-        "wins": 5,
+        "results": "LLWLW",
+        "wins": 2,
         "games": 5
       },
       "status": "ok"
@@ -8590,17 +8590,6 @@
         "raw_season_tpg": 0.0
       },
       {
-        "player_name": "Hugo Savala",
-        "team": "Sydney Roosters",
-        "position_code": "CE",
-        "bookmaker": "tab",
-        "our_probability": 0.3505,
-        "market_probability": 0.45454545454545453,
-        "edge": -0.10404545454545455,
-        "fair_odds_implied_by_our_model": 2.853,
-        "raw_season_tpg": 0.6
-      },
-      {
         "player_name": "Connor Watson",
         "team": "Sydney Roosters",
         "position_code": "IC",
@@ -9127,6 +9116,17 @@
         "edge": -0.1495,
         "fair_odds_implied_by_our_model": 9.95,
         "raw_season_tpg": 0.25
+      },
+      {
+        "player_name": "Hugo Savala",
+        "team": "Sydney Roosters",
+        "position_code": "CE",
+        "bookmaker": "tab",
+        "our_probability": 0.3505,
+        "market_probability": 0.5,
+        "edge": -0.14950000000000002,
+        "fair_odds_implied_by_our_model": 2.853,
+        "raw_season_tpg": 0.6
       },
       {
         "player_name": "Sam Walker",
@@ -10152,18 +10152,18 @@
     "home_team": "Dolphins",
     "away_team": "New Zealand Warriors",
     "h2h": {
-      "our_home_win_prob": 0.5222,
+      "our_home_win_prob": 0.5914,
       "market_home_win_prob": 0.6542,
-      "our_home_fair_odds": 1.915,
-      "our_away_fair_odds": 2.093,
-      "edge": -0.132,
-      "our_predicted_margin": 0.6,
+      "our_home_fair_odds": 1.691,
+      "our_away_fair_odds": 2.448,
+      "edge": -0.0628,
+      "our_predicted_margin": 2.6,
       "margin_mae": 14.0,
       "market_spread_bookmaker": "sportsbet",
       "market_spread_point": -6.5,
       "market_spread_price": 1.91,
-      "rating_home": 1514.6,
-      "rating_away": 1545.4,
+      "rating_home": 1586.8,
+      "rating_away": 1568.6,
       "real_h2h_history": {
         "games_found": 5,
         "team_a_wins": 2,
@@ -10177,13 +10177,13 @@
         }
       },
       "real_home_form": {
-        "results": "LLLWW",
-        "wins": 2,
+        "results": "WWWWW",
+        "wins": 5,
         "games": 5
       },
       "real_away_form": {
-        "results": "LWWWW",
-        "wins": 4,
+        "results": "WWLLW",
+        "wins": 3,
         "games": 5
       },
       "status": "ok"
@@ -13603,18 +13603,18 @@
     "home_team": "North Queensland Cowboys",
     "away_team": "Penrith Panthers",
     "h2h": {
-      "our_home_win_prob": 0.2705,
-      "market_home_win_prob": 0.2428,
-      "our_home_fair_odds": 3.696,
-      "our_away_fair_odds": 1.371,
-      "edge": 0.0277,
-      "our_predicted_margin": -6.9,
+      "our_home_win_prob": 0.25,
+      "market_home_win_prob": 0.2425,
+      "our_home_fair_odds": 4.0,
+      "our_away_fair_odds": 1.333,
+      "edge": 0.0075,
+      "our_predicted_margin": -7.6,
       "margin_mae": 14.0,
       "market_spread_bookmaker": "sportsbet",
       "market_spread_point": 13.5,
       "market_spread_price": 1.97,
-      "rating_home": 1495.5,
-      "rating_away": 1714.0,
+      "rating_home": 1480.6,
+      "rating_away": 1717.6,
       "real_h2h_history": {
         "games_found": 5,
         "team_a_wins": 2,
@@ -13628,12 +13628,12 @@
         }
       },
       "real_home_form": {
-        "results": "WLWWL",
-        "wins": 3,
+        "results": "WWLLL",
+        "wins": 2,
         "games": 5
       },
       "real_away_form": {
-        "results": "LWWWW",
+        "results": "WWWWL",
         "wins": 4,
         "games": 5
       },
@@ -17176,18 +17176,18 @@
     "home_team": "Manly-Warringah Sea Eagles",
     "away_team": "Melbourne Storm",
     "h2h": {
-      "our_home_win_prob": 0.5214,
-      "market_home_win_prob": 0.6347,
-      "our_home_fair_odds": 1.918,
-      "our_away_fair_odds": 2.089,
-      "edge": -0.1133,
-      "our_predicted_margin": 0.6,
+      "our_home_win_prob": 0.5062,
+      "market_home_win_prob": 0.635,
+      "our_home_fair_odds": 1.975,
+      "our_away_fair_odds": 2.025,
+      "edge": -0.1288,
+      "our_predicted_margin": 0.2,
       "margin_mae": 14.0,
       "market_spread_bookmaker": "sportsbet",
       "market_spread_point": -6.5,
       "market_spread_price": 1.91,
-      "rating_home": 1541.2,
-      "rating_away": 1572.4,
+      "rating_home": 1551.3,
+      "rating_away": 1593.1,
       "real_h2h_history": {
         "games_found": 5,
         "team_a_wins": 3,
@@ -17201,13 +17201,13 @@
         }
       },
       "real_home_form": {
-        "results": "WWWLW",
-        "wins": 4,
+        "results": "WWLWL",
+        "wins": 3,
         "games": 5
       },
       "real_away_form": {
-        "results": "LLLLW",
-        "wins": 1,
+        "results": "WLWWW",
+        "wins": 4,
         "games": 5
       },
       "status": "ok"
@@ -20692,18 +20692,18 @@
     "home_team": "Canberra Raiders",
     "away_team": "St George Illawarra Dragons",
     "h2h": {
-      "our_home_win_prob": 0.7845,
+      "our_home_win_prob": 0.7566,
       "market_home_win_prob": 0.7137,
-      "our_home_fair_odds": 1.275,
-      "our_away_fair_odds": 4.64,
-      "edge": 0.0708,
-      "our_predicted_margin": 9.0,
+      "our_home_fair_odds": 1.322,
+      "our_away_fair_odds": 4.109,
+      "edge": 0.0429,
+      "our_predicted_margin": 7.9,
       "margin_mae": 14.0,
       "market_spread_bookmaker": "sportsbet",
       "market_spread_point": -10.5,
       "market_spread_price": 1.98,
-      "rating_home": 1487.8,
-      "rating_away": 1309.5,
+      "rating_home": 1461.5,
+      "rating_away": 1310.6,
       "real_h2h_history": {
         "games_found": 5,
         "team_a_wins": 4,
@@ -20717,13 +20717,13 @@
         }
       },
       "real_home_form": {
-        "results": "WWLWL",
-        "wins": 3,
+        "results": "LWLLL",
+        "wins": 1,
         "games": 5
       },
       "real_away_form": {
-        "results": "LLLLL",
-        "wins": 0,
+        "results": "LLWLL",
+        "wins": 1,
         "games": 5
       },
       "status": "ok"
@@ -23879,18 +23879,18 @@
     "home_team": "Newcastle Knights",
     "away_team": "Wests Tigers",
     "h2h": {
-      "our_home_win_prob": 0.5957,
+      "our_home_win_prob": 0.637,
       "market_home_win_prob": 0.6604,
-      "our_home_fair_odds": 1.679,
-      "our_away_fair_odds": 2.473,
-      "edge": -0.0647,
-      "our_predicted_margin": 2.7,
+      "our_home_fair_odds": 1.57,
+      "our_away_fair_odds": 2.755,
+      "edge": -0.0234,
+      "our_predicted_margin": 3.9,
       "margin_mae": 14.0,
       "market_spread_bookmaker": "sportsbet",
       "market_spread_point": -6.5,
       "market_spread_price": 1.9,
-      "rating_home": 1423.8,
-      "rating_away": 1402.6,
+      "rating_home": 1445.9,
+      "rating_away": 1394.3,
       "real_h2h_history": {
         "games_found": 5,
         "team_a_wins": 3,
@@ -23904,12 +23904,12 @@
         }
       },
       "real_home_form": {
-        "results": "LLLWW",
-        "wins": 2,
+        "results": "WWWLW",
+        "wins": 4,
         "games": 5
       },
       "real_away_form": {
-        "results": "WLWLL",
+        "results": "LWLWL",
         "wins": 2,
         "games": 5
       },
