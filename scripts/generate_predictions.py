@@ -487,7 +487,7 @@ def get_real_team_list(team_list_csv_path, round_num, season=2026):
 
 
 
-def resolve_squad_positions(historical_squad, team_short, real_team_list):
+def resolve_squad_positions(historical_squad, team_short, real_team_list, position_aliases):
     """
     Combines get_squad()'s real historical-frequency baseline with the
     real, confirmed team-list position for the upcoming match, per
@@ -507,13 +507,40 @@ def resolve_squad_positions(historical_squad, team_short, real_team_list):
     pipeline had a problem this week" in the same reader-facing section
     was confusing and not what a fan-facing email should carry.
 
+    REAL BUG FOUND AND FIXED 2026-06-25 (per Sam's real feedback against
+    a real live email): get_squad()'s historical baseline stores
+    POSITION CODES (e.g. 'FB', 'WG', 'PR'), but real_team_list (from
+    parse_team_list.py) stores full LABELS (e.g. 'Fullback', 'Winger',
+    'Prop') -- comparing these as raw strings meant almost every real
+    player flagged as a "change" even when nothing real changed, just
+    because the two real sources spell the same position differently.
+    Confirmed real case: an entire team's real, unchanged roster
+    (Dolphins v New Zealand Warriors) produced 22 false "position
+    changed" entries. Fixed: both real values are now resolved through
+    position_aliases.json (the SAME canonical alias map every other
+    real position comparison in this project already uses) before
+    comparing -- a genuine change is now only reported when the
+    resolved CODES actually differ, e.g. a real Five-Eighth becoming a
+    real Fullback, not 'FB' vs 'Fullback' meaning the same thing.
+
+    Also REMOVED (per Sam's explicit 2026-06-25 request): the "new to
+    this week's real confirmed team list, no historical row found"
+    block. These players' real resolved positions are still used for
+    modelling (that part was never wrong) -- they're just no longer
+    reported as a "change" in the email, since there's no real
+    historical position to have changed FROM, and Sam doesn't want
+    this case surfaced at all.
+
     Returns (resolved_squad, position_changes, infra_warning) where:
-      - resolved_squad: dict player_name -> position (the one to
-        actually MODEL with)
+      - resolved_squad: dict player_name -> position LABEL (the one to
+        actually MODEL with -- kept as the real team-list label, not
+        converted to a code, since build_raw_scores() downstream
+        already calls normalise_position() on whatever it receives).
       - position_changes: list of real, human-readable strings, ONLY
-        for genuine team-list-vs-historical swaps -- this is the real,
-        email-worthy signal per Sam's explicit requirement that major
-        changes should alert him.
+        for genuine team-list-vs-historical swaps where the resolved
+        CODE actually differs -- this is the real, email-worthy signal
+        per Sam's explicit requirement that major changes should alert
+        him.
       - infra_warning: a single string if real_team_list was
         unavailable (BOTH real sources failed), else None -- intended
         for logging only, NOT for inclusion in the email digest.
@@ -544,7 +571,12 @@ def resolve_squad_positions(historical_squad, team_short, real_team_list):
             # exists when it doesn't.
             continue
         real_position = real_entry["position"]
-        if real_position != historical_position:
+        historical_code = normalise_position(historical_position, position_aliases)
+        real_code = normalise_position(real_position, position_aliases)
+        if real_code != historical_code:
+            # Only a genuine real change -- both labels resolved to
+            # canonical codes first, so 'FB' vs 'Fullback' (same real
+            # position, different spelling) never fires here.
             position_changes.append(
                 f"{player_name} ({team_short}): historical position "
                 f"'{historical_position}' -> real confirmed team-list "
@@ -554,16 +586,13 @@ def resolve_squad_positions(historical_squad, team_short, real_team_list):
 
     # Real players who ARE in this week's confirmed team list but have
     # NO historical row at all this season (e.g. a real debut, or a
-    # real call-up from reserve grade) -- add them too, rather than
-    # only ever correcting players already known from history.
+    # real call-up from reserve grade) -- their real position is still
+    # used for modelling, but per Sam's explicit 2026-06-25 request
+    # this is NOT reported as a "change" in position_changes (no real
+    # historical position exists to have changed FROM).
     for (list_team, player_name), entry in real_team_list.items():
         if list_team == team_short and player_name not in resolved:
             resolved[player_name] = entry["position"]
-            position_changes.append(
-                f"{player_name} ({team_short}): new to this week's real "
-                f"confirmed team list, no historical 2026 row found -- "
-                f"position '{entry['position']}' (jersey #{entry.get('jersey_number')})"
-            )
 
     return resolved, position_changes, None
 
@@ -820,10 +849,10 @@ def generate_round_predictions(season, up_to_round, the_odds_api_key, data_dir="
             away_squad_historical = get_squad(master_rows, away_short, season, up_to_round)
 
             home_squad, home_position_changes, home_infra_warning = resolve_squad_positions(
-                home_squad_historical, home_short, real_team_list
+                home_squad_historical, home_short, real_team_list, baselines["position_aliases"]
             )
             away_squad, away_position_changes, away_infra_warning = resolve_squad_positions(
-                away_squad_historical, away_short, real_team_list
+                away_squad_historical, away_short, real_team_list, baselines["position_aliases"]
             )
             # Real, ONLY-genuine-swaps record (per Sam's explicit
             # 2026-06-24 design: the email shows real positional
