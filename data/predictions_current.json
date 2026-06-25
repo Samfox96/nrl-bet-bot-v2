@@ -10267,28 +10267,8 @@
       ]
     },
     "position_changes": [
-      "Hamiso Tabuai-Fidow (Dolphins): historical position 'FB' -> real confirmed team-list position 'Fullback' (jersey #1)",
-      "Jamayne Isaako (Dolphins): historical position 'WG' -> real confirmed team-list position 'Winger' (jersey #2)",
-      "Herbie Farnworth (Dolphins): historical position 'CE' -> real confirmed team-list position 'Centre' (jersey #4)",
-      "Selwyn Cobbo (Dolphins): historical position 'WG' -> real confirmed team-list position 'Winger' (jersey #5)",
-      "Kodi Nikorima (Dolphins): historical position 'FE' -> real confirmed team-list position 'Five-Eighth' (jersey #6)",
-      "Isaiya Katoa (Dolphins): historical position 'HB' -> real confirmed team-list position 'Halfback' (jersey #7)",
-      "Thomas Flegler (Dolphins): historical position 'PR' -> real confirmed team-list position 'Prop' (jersey #8)",
-      "Connelly Lemuelu (Dolphins): historical position '2RF' -> real confirmed team-list position '2nd Row' (jersey #11)",
-      "Kulikefu Finefeuiaki (Dolphins): historical position '2RF' -> real confirmed team-list position '2nd Row' (jersey #12)",
-      "Morgan Knowles (Dolphins): historical position 'LK' -> real confirmed team-list position 'Lock' (jersey #13)",
-      "Bradley Schneider (Dolphins): historical position 'IC' -> real confirmed team-list position 'Interchange' (jersey #18)",
-      "Oryn Keeley (Dolphins): historical position 'IC' -> real confirmed team-list position 'Interchange' (jersey #19)",
       "Felise Kaufusi (Dolphins): historical position 'PR' -> real confirmed team-list position 'Interchange' (jersey #17)",
-      "Trai Fuller (Dolphins): historical position 'IC' -> real confirmed team-list position 'Reserve' (jersey #22)",
-      "Max Plath (Dolphins): historical position 'HK' -> real confirmed team-list position 'Interchange' (jersey #14)",
-      "Ray Stone (Dolphins): historical position 'IC' -> real confirmed team-list position 'Interchange' (jersey #16)",
-      "Brian Pouniu (Dolphins): historical position 'IC' -> real confirmed team-list position 'Reserve' (jersey #21)",
-      "Francis Molo (Dolphins): historical position 'PR' -> real confirmed team-list position 'Prop' (jersey #10)",
-      "Kurt Donoghoe (Dolphins): historical position 'IC' -> real confirmed team-list position 'Interchange' (jersey #15)",
-      "Tevita Naufahu (Dolphins): historical position 'IC' -> real confirmed team-list position 'Reserve' (jersey #20)",
-      "Jack Bostock (Dolphins): historical position 'CE' -> real confirmed team-list position 'Centre' (jersey #3)",
-      "Jeremy Marshall-King (Dolphins): historical position 'HK' -> real confirmed team-list position 'Hooker' (jersey #9)"
+      "Max Plath (Dolphins): historical position 'HK' -> real confirmed team-list position 'Interchange' (jersey #14)"
     ],
     "try_scorer_edges": [
       {
@@ -24017,28 +23997,11 @@
       ]
     },
     "position_changes": [
-      "Jahream Bula (Wests Tigers): historical position 'FB' -> real confirmed team-list position 'Fullback' (jersey #1)",
-      "Sunia Turuva (Wests Tigers): historical position 'WG' -> real confirmed team-list position 'Winger' (jersey #2)",
-      "Taylan May (Wests Tigers): historical position 'CE' -> real confirmed team-list position 'Centre' (jersey #3)",
       "Heamasi Makasini (Wests Tigers): historical position 'CE' -> real confirmed team-list position 'Interchange' (jersey #18)",
-      "Jarome Luai (Wests Tigers): historical position 'FE' -> real confirmed team-list position 'Five-Eighth' (jersey #6)",
-      "Adam Doueihi (Wests Tigers): historical position 'HB' -> real confirmed team-list position 'Halfback' (jersey #7)",
-      "Terrell May (Wests Tigers): historical position 'PR' -> real confirmed team-list position 'Prop' (jersey #8)",
-      "Apisai Koroisau (Wests Tigers): historical position 'HK' -> real confirmed team-list position 'Hooker' (jersey #9)",
-      "Fonua Pole (Wests Tigers): historical position 'PR' -> real confirmed team-list position 'Prop' (jersey #10)",
-      "Alex Twal (Wests Tigers): historical position 'LK' -> real confirmed team-list position 'Lock' (jersey #13)",
       "Sione Fainu (Wests Tigers): historical position 'IC' -> real confirmed team-list position '2nd Row' (jersey #12)",
-      "Alex Seyfarth (Wests Tigers): historical position 'IC' -> real confirmed team-list position 'Interchange' (jersey #16)",
       "Jeral Skelton (Wests Tigers): historical position 'IC' -> real confirmed team-list position 'Winger' (jersey #5)",
       "Faaletino Tavana (Wests Tigers): historical position 'WG' -> real confirmed team-list position 'Reserve' (jersey #22)",
-      "Latu Fainu (Wests Tigers): historical position 'IC' -> real confirmed team-list position 'Interchange' (jersey #17)",
-      "Tony Sukkar (Wests Tigers): historical position '2RF' -> real confirmed team-list position '2nd Row' (jersey #11)",
-      "Starford To'a (Wests Tigers): historical position 'CE' -> real confirmed team-list position 'Centre' (jersey #4)",
-      "Bunty Afoa (Wests Tigers): historical position 'PR' -> real confirmed team-list position 'Interchange' (jersey #15)",
-      "Mavrik Geyer (Wests Tigers): historical position 'IC' -> real confirmed team-list position 'Interchange' (jersey #19)",
-      "Josese Lanyon (Wests Tigers): historical position 'IC' -> real confirmed team-list position 'Interchange' (jersey #14)",
-      "Javon Andrews (Wests Tigers): new to this week's real confirmed team list, no historical 2026 row found -- position 'Reserve' (jersey #20)",
-      "Peter Taateo (Wests Tigers): new to this week's real confirmed team list, no historical 2026 row found -- position 'Reserve' (jersey #21)"
+      "Bunty Afoa (Wests Tigers): historical position 'PR' -> real confirmed team-list position 'Interchange' (jersey #15)"
     ],
     "try_scorer_edges": [
       {
