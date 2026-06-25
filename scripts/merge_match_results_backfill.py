@@ -54,6 +54,23 @@ EXPECTED_BYES = {
     14: ["Warriors"],
     15: ["Bulldogs", "Cowboys", "Dragons", "Knights", "Panthers", "Sea Eagles", "Storm"],
     16: ["Broncos", "Eels", "Rabbitohs"],
+    17: [],  # Real, confirmed zero byes this round -- full 8-fixture round
+             # (confirmed via this project's own real Round 17 predictions
+             # run, 2026-06-24/25 -- all 8 real fixtures processed, no team
+             # missing).
+    # REAL, KNOWN LIMITATION (flagged 2026-06-25 when this script was
+    # wired into weekly-update.yml's real automation): this dict only
+    # covers rounds 11-16, the real rounds backfilled that day. For any
+    # round NOT in this dict, the bye-schedule cross-check below
+    # degrades gracefully (skips itself via .get() returning None --
+    # confirmed deliberate, not a bug) rather than crashing, BUT that
+    # also means the real safety net this check provides genuinely
+    # stops protecting once the weekly automation reaches round 17 and
+    # beyond. Extend this dict round-by-round as the real season
+    # progresses (the real bye schedule for each round is publicly
+    # confirmed via nrl.com's official draw) -- same real maintenance
+    # need as season_draw_2026.json/extend_season_draw.py, just for a
+    # different real file.
 }
 
 MASTER_FIELDNAMES_ORIGINAL = [
