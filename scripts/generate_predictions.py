@@ -537,10 +537,13 @@ def resolve_squad_positions(historical_squad, team_short, real_team_list, positi
         converted to a code, since build_raw_scores() downstream
         already calls normalise_position() on whatever it receives).
       - position_changes: list of real, human-readable strings, ONLY
-        for genuine team-list-vs-historical swaps where the resolved
-        CODE actually differs -- this is the real, email-worthy signal
-        per Sam's explicit requirement that major changes should alert
-        him.
+        for genuine STARTING-XV team-list-vs-historical swaps where
+        the resolved CODE actually differs AND neither side is IC
+        (Interchange/Reserve) -- per Sam's explicit 2026-06-25
+        decision, real bench-rotation moves are deliberately excluded
+        even though they're real, non-buggy changes -- only a real
+        on-field positional swap (e.g. Prop -> Hooker) is the
+        email-worthy signal he wants alerted on.
       - infra_warning: a single string if real_team_list was
         unavailable (BOTH real sources failed), else None -- intended
         for logging only, NOT for inclusion in the email digest.
@@ -573,10 +576,27 @@ def resolve_squad_positions(historical_squad, team_short, real_team_list, positi
         real_position = real_entry["position"]
         historical_code = normalise_position(historical_position, position_aliases)
         real_code = normalise_position(real_position, position_aliases)
-        if real_code != historical_code:
-            # Only a genuine real change -- both labels resolved to
-            # canonical codes first, so 'FB' vs 'Fullback' (same real
-            # position, different spelling) never fires here.
+        # REAL FILTER ADDED 2026-06-25 per Sam's explicit request: only
+        # report a genuine STARTING-XV positional swap (e.g. a real
+        # Prop moving to a real Hooker role) -- not a bench-rotation
+        # move (e.g. a Prop now listed as Interchange, or an
+        # Interchange now starting at Winger). Confirmed real basis:
+        # position_aliases.json's own canonical_positions shows every
+        # code except IC covers jerseys 1-13 (the real starting XV);
+        # IC alone covers jerseys 14-17 plus the real 'Reserve' label
+        # (extended bench). A swap involving IC on EITHER side is a
+        # bench/rotation change, not a real on-field positional swap --
+        # confirmed against 7 real examples from a live email (all 7
+        # involved IC on one side, none were genuine starting-XV swaps,
+        # and Sam explicitly asked to drop exactly this category after
+        # seeing them were real but not the kind of change he wants
+        # surfaced).
+        is_bench_only_change = historical_code == "IC" or real_code == "IC"
+        if real_code != historical_code and not is_bench_only_change:
+            # Only a genuine real STARTING-XV change -- both labels
+            # resolved to canonical codes first, so 'FB' vs 'Fullback'
+            # (same real position, different spelling) never fires
+            # here, and neither does a real bench/Interchange move.
             position_changes.append(
                 f"{player_name} ({team_short}): historical position "
                 f"'{historical_position}' -> real confirmed team-list "
