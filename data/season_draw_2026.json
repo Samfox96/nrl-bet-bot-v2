@@ -72,6 +72,38 @@
         "Gold Coast Titans",
         "New Zealand Warriors"
       ]
+    },
+    "19": {
+      "fixtures": [
+        [
+          "Wests Tigers",
+          "New Zealand Warriors"
+        ],
+        [
+          "Dolphins",
+          "Cronulla-Sutherland Sharks"
+        ],
+        [
+          "Canterbury-Bankstown Bulldogs",
+          "Canberra Raiders"
+        ],
+        [
+          "Sydney Roosters",
+          "Parramatta Eels"
+        ],
+        [
+          "South Sydney Rabbitohs",
+          "Newcastle Knights"
+        ],
+        [
+          "Manly-Warringah Sea Eagles",
+          "North Queensland Cowboys"
+        ],
+        [
+          "Melbourne Storm",
+          "Gold Coast Titans"
+        ]
+      ]
     }
   }
 }
