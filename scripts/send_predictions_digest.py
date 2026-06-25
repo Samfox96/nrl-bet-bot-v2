@@ -583,16 +583,34 @@ def _build_fixture_analysis(h2h_summary, most_likely, due, biggest_margin, golde
             ]))
 
     # --- Real reason #1c: recent form streak, another new real angle ---
+    # REAL CLARIFICATION 2026-06-25, per Sam's real feedback: a real,
+    # confirmed case (Dolphins: this function correctly found 5
+    # straight real game wins, R11/R12/R14/R15/R16, all genuinely won
+    # -- the underlying real data and the real math are both correct,
+    # confirmed by cross-checking against nrl_master.csv's own real
+    # Played/Wins/Lost totals) read as a contradiction against the
+    # real NRL.com ladder's own "Form" column, which showed 4-0 instead
+    # of 5-0. Root real cause: the ladder's Form column counts by
+    # ROUND NUMBER (a bye round creates a real gap, shrinking the
+    # window), while this function deliberately counts by GAMES
+    # ACTUALLY PLAYED (a bye contributes nothing either way, so it's
+    # skipped rather than counted as a blank). Sam's explicit real
+    # choice (2026-06-25): keep counting by games played -- it's the
+    # more meaningful real signal for prediction purposes, not an
+    # error -- but the narrative wording is now explicit about "games"
+    # specifically, so it never again reads as contradicting whatever
+    # a reader sees on the real public ladder, which uses the other
+    # real convention.
     if winner_form and winner_form["games"] >= 3:
         if winner_form["wins"] >= winner_form["games"] - 1:
             parts.append(pick([
-                f"{winner} are flying right now, having won {winner_form['wins']} of their last {winner_form['games']}.",
-                f"{winner} are red-hot coming into this -- {winner_form['wins']} wins from their last {winner_form['games']}.",
+                f"{winner} are flying right now, having won {winner_form['wins']} of their last {winner_form['games']} games played.",
+                f"{winner} are red-hot coming into this -- {winner_form['wins']} wins from their last {winner_form['games']} games played.",
             ]))
     if loser_form and loser_form["games"] >= 3 and loser_form["wins"] <= 1:
         parts.append(pick([
-            f"{loser} have really struggled lately, with just {loser_form['wins']} win from their last {loser_form['games']}.",
-            f"It's been a rough stretch for {loser} -- only {loser_form['wins']} win in their last {loser_form['games']}.",
+            f"{loser} have really struggled lately, with just {loser_form['wins']} win from their last {loser_form['games']} games played.",
+            f"It's been a rough stretch for {loser} -- only {loser_form['wins']} win in their last {loser_form['games']} games played.",
         ]))
 
     # --- Real reason #2: the standout player driving the upset/edge ---
