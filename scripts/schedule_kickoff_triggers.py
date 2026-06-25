@@ -193,6 +193,35 @@ def create_cronjob_trigger(api_key, github_token, round_num, match, trigger_dt):
         return None
 
 
+def list_existing_job_titles(api_key):
+    """
+    Real idempotency check, added 2026-06-25 after a confirmed real bug:
+    schedule-kickoffs.yml runs this script on BOTH Tuesday and Wednesday
+    (the Wednesday run is a deliberate "second chance in case Tuesday's
+    list isn't out yet") -- but with no check for already-existing jobs,
+    a successful Tuesday run was blindly duplicated by Wednesday's run
+    every single week, confirmed via a real cron-job.org screenshot
+    showing all 8 Round 17 triggers present TWICE (16 real jobs, exact
+    duplicate titles/times). This would keep compounding indefinitely --
+    Round 18 would add its own duplicate pair on top, etc.
+
+    Real, confirmed-via-cron-job.org's-own-docs endpoint: GET /jobs,
+    rate limit 5/sec (no special handling needed for one call). Returns
+    a real set of every existing job's exact title string, since this
+    script's own job titles are fully deterministic (round + matchup +
+    day/time, no random component) -- an exact title match means "this
+    exact trigger already exists," safe to skip recreating.
+    """
+    resp = requests.get(
+        f"{CRONJOB_API_BASE}/jobs",
+        headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"},
+        timeout=30,
+    )
+    resp.raise_for_status()
+    data = resp.json()
+    return {job["title"] for job in data.get("jobs", [])}
+
+
 def main():
     parser = argparse.ArgumentParser(
         description="Schedule precise per-match kickoff triggers via cron-job.org."
@@ -209,8 +238,22 @@ def main():
         print("No kickoffs found -- nothing to schedule this run.")
         sys.exit(0)
 
+    # Real idempotency check -- fetched ONCE before the loop, not
+    # per-match, since the real job list doesn't change mid-run and
+    # re-fetching per match would multiply real API calls for no benefit.
+    existing_titles = set()
+    if not args.dry_run:
+        try:
+            existing_titles = list_existing_job_titles(cronjob_api_key)
+            print(f"Real existing cron-job.org jobs found: {len(existing_titles)}")
+        except Exception as e:
+            print(f"WARNING: could not fetch real existing job list ({e}) -- "
+                  f"proceeding WITHOUT duplicate protection this run. "
+                  f"Check cron-job.org manually afterward for real duplicates.")
+
     now = datetime.now()
     created_count = 0
+    skipped_duplicate_count = 0
 
     for match in kickoffs:
         trigger_dt = match["kickoff_aest"] - timedelta(hours=HOURS_BEFORE_KICKOFF)
@@ -218,6 +261,16 @@ def main():
         if trigger_dt < now:
             print(f"Skipping {match['home_team']} v {match['away_team']}: "
                   f"trigger time {trigger_dt} is already in the past.")
+            continue
+
+        job_title = (
+            f"R{round_num} kickoff trigger: "
+            f"{match['home_team']} v {match['away_team']} ({trigger_dt.strftime('%a %H:%M')})"
+        )[:128]
+
+        if job_title in existing_titles:
+            print(f"Real SKIP (already exists): {job_title}")
+            skipped_duplicate_count += 1
             continue
 
         if args.dry_run:
@@ -246,7 +299,8 @@ def main():
         time.sleep(13)
 
     print(f"\nDone. {created_count}/{len(kickoffs)} triggers "
-          f"{'would be ' if args.dry_run else ''}created for round {round_num}.")
+          f"{'would be ' if args.dry_run else ''}created for round {round_num} "
+          f"({skipped_duplicate_count} real duplicate(s) skipped).")
 
 
 if __name__ == "__main__":
