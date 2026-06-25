@@ -83,11 +83,16 @@ jobs:
         id: next_round
         if: env.RESEND_ROUND == ''
         run: |
-          NEXT_ROUND=$(python3 -c "
-          import pandas as pd
-          df = pd.read_csv('data/nrl_master.csv')
-          print(int(df['round'].max()) + 1)
-          ")
+          # Same real fix as generate-predictions.yml (2026-06-25) --
+          # collapsed to a single-line, semicolon-separated python3 -c
+          # to avoid the real, confirmed three-way indentation conflict
+          # between YAML's block scalar, bash heredocs, and Python's
+          # own indentation rules (a heredoc-based fix was tried first
+          # and hit a genuine YAML parse error -- see
+          # generate-predictions.yml's own comment here for the full
+          # real story). Tested directly against real nrl_master.csv
+          # under bash before trusting it.
+          NEXT_ROUND=$(python3 -c "import pandas as pd; df = pd.read_csv('data/nrl_master.csv'); print(int(df['round'].max()) + 1)")
           echo "round=$NEXT_ROUND" >> "$GITHUB_OUTPUT"
           echo "Next round to scrape: $NEXT_ROUND"
 
