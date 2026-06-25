@@ -1,160 +1,493 @@
-NRL Bet Bot — Round 17 Predictions
-8 fixtures processed, 0 skipped.
+name: Weekly NRL Round Update
 
-Match Win Probability
-Parramatta Eels v South Sydney Rabbitohs: we favour South Sydney Rabbitohs (52%), market favours South Sydney Rabbitohs (61%) (our odds $1.938) (market odds $1.632). We predict South Sydney Rabbitohs by 0.4pts (real avg error +/-14pts), sportsbet has South Sydney Rabbitohs by 5.5pts at $1.93
-Gold Coast Titans v Canterbury-Bankstown Bulldogs: we favour Canterbury-Bankstown Bulldogs (60%), market favours Canterbury-Bankstown Bulldogs (50%) (our odds $1.654) (market odds $1.992). We predict Canterbury-Bankstown Bulldogs by 3.0pts (real avg error +/-14pts), sportsbet has Canterbury-Bankstown Bulldogs by 0.5pts at $1.91
-Brisbane Broncos v Sydney Roosters: we favour Sydney Roosters (53%), market favours Sydney Roosters (65%) (our odds $1.903) (market odds $1.543). We predict Sydney Roosters by 0.7pts (real avg error +/-14pts), sportsbet has Sydney Roosters by 7.5pts at $1.91
-Dolphins v New Zealand Warriors: we favour Dolphins (52%), market favours Dolphins (65%) (our odds $1.915) (market odds $1.529). We predict Dolphins by 0.6pts (real avg error +/-14pts), sportsbet has Dolphins by 6.5pts at $1.91
-North Queensland Cowboys v Penrith Panthers: we favour Penrith Panthers (73%), market favours Penrith Panthers (76%) (our odds $1.371) (market odds $1.321). We predict Penrith Panthers by 6.9pts (real avg error +/-14pts), sportsbet has Penrith Panthers by 13.5pts at $1.97
-Manly-Warringah Sea Eagles v Melbourne Storm: we favour Manly-Warringah Sea Eagles (52%), market favours Manly-Warringah Sea Eagles (63%) (our odds $1.918) (market odds $1.576). We predict Manly-Warringah Sea Eagles by 0.6pts (real avg error +/-14pts), sportsbet has Manly-Warringah Sea Eagles by 6.5pts at $1.91
-Canberra Raiders v St George Illawarra Dragons: we favour Canberra Raiders (78%), market favours Canberra Raiders (71%) (our odds $1.275) (market odds $1.401). We predict Canberra Raiders by 9.0pts (real avg error +/-14pts), sportsbet has Canberra Raiders by 10.5pts at $1.98
-Newcastle Knights v Wests Tigers: we favour Newcastle Knights (60%), market favours Newcastle Knights (66%) (our odds $1.679) (market odds $1.514). We predict Newcastle Knights by 2.7pts (real avg error +/-14pts), sportsbet has Newcastle Knights by 6.5pts at $1.9
-Per-Game Breakdown
-Parramatta Eels v South Sydney Rabbitohs (odds via sportsbet)
+# Runs every Thursday at 6:00 AM AEST (20:00 UTC Wednesday).
+# Can also be triggered manually from the Actions tab for testing or catch-up.
+#
+# FAIL-SAFE FOR THE DIGEST STEP (added 2026-06-24, after a real failure:
+# the digest step failed on a real run due to a missing data/ path
+# prefix -- since fixed, see generate_round_digest.py's own docstring --
+# but the underlying need for an easy manual recovery path is real and
+# independent of any one specific bug). A bare workflow_dispatch re-run
+# is NOT sufficient to recover from a failed digest: "Determine next
+# round to scrape" always computes nrl_master.csv's max round + 1, so
+# re-running the whole job after a successful merge would try to
+# scrape/merge the round AFTER the one whose digest failed, never
+# actually resending the digest that's actually missing.
+#
+# Real fix: a `resend_digest_for_round` input. If set, this run SKIPS
+# scraping/merging entirely and only re-runs the digest generation +
+# send for the round number given -- safe to use any time a round's
+# real merge already succeeded but its digest email didn't arrive
+# (check the Actions log for the round number; it's also visible as
+# the commit message on the most recent "Auto-merge round N" commit).
+#
+# TO USE: Actions tab -> "Weekly NRL Round Update" -> "Run workflow" ->
+# enter the round number (e.g. "16") in resend_digest_for_round -> Run.
+# Leave it blank for a normal scheduled-style run (scrape + merge +
+# digest for whatever the next real round is).
+#
+# IMPLEMENTATION NOTE: every "if" condition below checks
+# `github.event_name == 'workflow_dispatch' && github.event.inputs...`
+# rather than relying on the input alone. Confirmed via real, multiple
+# independent sources (2026-06-24) that `github.event.inputs.X` on a
+# schedule trigger SHOULD correctly evaluate to empty string, but other
+# real GitHub Actions users have hit type-coercion errors trusting
+# `github.event.inputs.X` alone in conditions evaluated across multiple
+# trigger types (e.g. "Unexpected type of value '', expected type:
+# String" in a concurrency block). Explicitly gating on event_name
+# first removes any ambiguity for the one trigger type (the real
+# Wednesday schedule) that must never be accidentally skipped.
+on:
+  schedule:
+    - cron: '0 20 * * 3'
+  workflow_dispatch:
+    inputs:
+      resend_digest_for_round:
+        description: 'Round number to RESEND THE DIGEST ONLY for (skips scrape/merge entirely -- use this to recover from a digest-send failure on an already-merged round). Leave blank for a normal full run.'
+        required: false
+        type: string
 
-Tight one to call, but we're leaning South Sydney Rabbitohs over Parramatta Eels. South Sydney Rabbitohs have had the wood on most teams lately, and Parramatta Eels haven't been at that level. South Sydney Rabbitohs have had the better of this rivalry lately too, winning 4 of the last 5. Kelma Tuilagi looks like real value to us this week -- the market hasn't quite caught up. Worth tracking too: Tallis Duncan and Campbell Graham. Tallis Duncan: he's been a bit quiet in front of the posts lately, despite a real track record of scoring. Campbell Graham: this week's opponent has been leaky in defence right where he plays.
+jobs:
+  scrape-validate-merge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      # Real, single source of truth for "are we in digest-resend mode"
+      # -- computed ONCE here rather than repeating the same compound
+      # github.event_name/inputs check in every single step's `if:`.
+      # On a schedule trigger, github.event.inputs is not populated at
+      # all, so this correctly evaluates to empty string (confirmed via
+      # multiple real sources 2026-06-24) -- the && short-circuits
+      # before ever touching .inputs on a non-dispatch trigger.
+      RESEND_ROUND: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.resend_digest_for_round || '' }}
 
-Most likely to score:
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
 
-Alex Johnston (South Sydney Rabbitohs): our 65.0% (our odds $1.538, market odds $1.59)
-Brian Kelly (Parramatta Eels): our 28.0% (our odds $3.57, market odds $2.25)
-Due to score:
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
 
-Tallis Duncan (South Sydney Rabbitohs): DUE score +0.50 — cold lately (0.00 TPG recent vs 0.39 season); a favourable matchup vs Parramatta Eels this week
-Campbell Graham (South Sydney Rabbitohs): DUE score +0.44 — a favourable matchup vs Parramatta Eels this week; cold lately (0.25 TPG recent vs 0.60 season)
-Biggest margin (our model vs market):
+      - name: Install dependencies
+        if: env.RESEND_ROUND == ''
+        run: |
+          pip install pandas selenium webdriver-manager
 
-Kelma Tuilagi (Parramatta Eels): our 22.3% vs market 17.9% (edge +4.4pp, our odds $4.49)
-Kitione Kautoga (Parramatta Eels): our 21.7% vs market 19.0% (edge +2.6pp, our odds $4.615)
-Alex Johnston (South Sydney Rabbitohs): our 65.0% vs market 62.9% (edge +2.1pp, our odds $1.538)
-Gold Coast Titans v Canterbury-Bankstown Bulldogs (odds via sportsbet)
+      - name: Install Chrome
+        if: env.RESEND_ROUND == ''
+        uses: browser-actions/setup-chrome@v1
 
-We've got Canterbury-Bankstown Bulldogs getting the job done against Gold Coast Titans in a real arm-wrestle. Canterbury-Bankstown Bulldogs have just been the better side all year, and it shows here. The catch: Canterbury-Bankstown Bulldogs are on the road for this one, which is enough to keep Gold Coast Titans in the contest even though they're the clearly weaker side. Canterbury-Bankstown Bulldogs have had the better of this rivalry lately too, winning 4 of the last 5. Gold Coast Titans have really struggled lately, with just 1 win from their last 5. Keep an eye on Kurtis Morrin -- the market's underrating him, and he could be the difference if he gets on the scoresheet early. These are the players to watch: Jojo Fifita and Matt Burton. Jojo Fifita: he's been a bit quiet in front of the posts lately, despite a real track record of scoring. Matt Burton: he's getting more of the ball lately.
+      - name: Determine next round to scrape
+        id: next_round
+        if: env.RESEND_ROUND == ''
+        run: |
+          # Same real fix as generate-predictions.yml (2026-06-25) --
+          # collapsed to a single-line, semicolon-separated python3 -c
+          # to avoid the real, confirmed three-way indentation conflict
+          # between YAML's block scalar, bash heredocs, and Python's
+          # own indentation rules (a heredoc-based fix was tried first
+          # and hit a genuine YAML parse error -- see
+          # generate-predictions.yml's own comment here for the full
+          # real story). Tested directly against real nrl_master.csv
+          # under bash before trusting it.
+          NEXT_ROUND=$(python3 -c "import pandas as pd; df = pd.read_csv('data/nrl_master.csv'); print(int(df['round'].max()) + 1)")
+          echo "round=$NEXT_ROUND" >> "$GITHUB_OUTPUT"
+          echo "Next round to scrape: $NEXT_ROUND"
 
-Most likely to score:
+      - name: Run scraper for next round
+        id: scrape
+        if: env.RESEND_ROUND == ''
+        continue-on-error: true
+        run: |
+          mkdir -p data/pending
+          python3 scripts/nrl_update_single_round.py \
+            --round "${{ steps.next_round.outputs.round }}" \
+            --output "data/pending/nrl_round_${{ steps.next_round.outputs.round }}_new.csv"
 
-Phillip Sami (Gold Coast Titans): our 64.6% (our odds $1.548, market odds $1.95)
-Jacob Kiraz (Canterbury-Bankstown Bulldogs): our 56.7% (our odds $1.764, market odds $1.79)
-Due to score:
+      - name: Upload debug screenshots (only if scraper had trouble)
+        if: always() && env.RESEND_ROUND == ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: debug-screenshots-round-${{ steps.next_round.outputs.round }}
+          path: debug_screenshots/
+          if-no-files-found: ignore
+          retention-days: 14
 
-Jojo Fifita (Gold Coast Titans): DUE score +0.43 — cold lately (0.00 TPG recent vs 0.42 season); rising involvement lately
-Matt Burton (Canterbury-Bankstown Bulldogs): DUE score +0.25 — rising involvement lately; cold lately (0.00 TPG recent vs 0.23 season)
-Biggest margin (our model vs market):
+      - name: Validate and merge
+        id: validate_merge
+        if: env.RESEND_ROUND == ''
+        continue-on-error: true
+        run: |
+          python3 scripts/merge_round.py
 
-Kurtis Morrin (Gold Coast Titans): our 48.3% vs market 18.5% (edge +29.8pp, our odds $2.069)
-Lachlan Galvin (Canterbury-Bankstown Bulldogs): our 51.1% vs market 33.9% (edge +17.2pp, our odds $1.957)
-Arama Hau (Gold Coast Titans): our 38.8% vs market 23.8% (edge +15.0pp, our odds $2.58)
-Brisbane Broncos v Sydney Roosters (odds via sportsbet)
+      - name: Commit changes (only runs if merge succeeded)
+        if: env.RESEND_ROUND == '' && steps.validate_merge.outcome == 'success'
+        run: |
+          git config user.name "nrl-bot-automation"
+          git config user.email "actions@github.com"
+          git add data/nrl_master.csv STATUS.md
+          git commit -m "Auto-merge round ${{ steps.next_round.outputs.round }} (validated)" || echo "Nothing to commit"
+          git push
 
-Tight one to call, but we're leaning Sydney Roosters over Brisbane Broncos. Sydney Roosters go in as the form side here, a level above where Brisbane Broncos have been sitting. History's on Sydney Roosters's side here as well -- they've taken 4 of the last 5 between these two. Sydney Roosters are red-hot coming into this -- 5 wins from their last 5. Xavier Willison looks like real value to us this week -- the market hasn't quite caught up. Worth tracking too: Reece Walsh and Robert Toia. Reece Walsh: he's been a bit quiet in front of the posts lately, despite a real track record of scoring. Robert Toia: his team's attack has been clicking lately.
+      # ============================================================
+      # REAL MATCH-RESULTS SCRAPE/VALIDATE/MERGE -- added 2026-06-25
+      # ============================================================
+      # Added after discovering data/match_data_FINAL_fixed.csv had
+      # been silently stuck at Round 10 since a one-time June 21
+      # upload (confirmed via real git history: exactly one commit,
+      # ever) while nrl_master.csv (the player-stats file, scraped by
+      # the steps above) was correctly refreshed every week. This
+      # silently fed every Elo rating, win probability, predicted
+      # margin, h2h history, and form-streak calculation in the real
+      # predictions pipeline from stale data for 6+ real rounds --
+      # confirmed via a real, direct symptom Sam caught manually (a
+      # real predictions email claiming "Roosters red-hot, 5 wins from
+      # 5" while the real live ladder showed their actual recent form
+      # was 2-2). Backfilled manually for rounds 11-16 (2026-06-25);
+      # these new steps exist so the SAME gap can never silently recur
+      # -- this scrapes and merges the SAME round nrl_update_single_round.py
+      # already determined above (steps.next_round.outputs.round),
+      # using a real, separate scraper (scrape_match_results.py) since
+      # match results live on a structurally different real nrl.com
+      # page (the round-level draw/results page, not the per-match
+      # player-stats page) -- see that script's own real docstring for
+      # the full confirmed-selector story.
+      #
+      # Mirrors the EXACT same real continue-on-error + conditional-
+      # commit pattern as the player-stats steps above, deliberately --
+      # a real failure here should open a real GitHub Issue (see below)
+      # and leave match_data_FINAL_fixed.csv untouched, never silently
+      # merge something unvalidated.
+      - name: Run match-results scraper for next round
+        id: scrape_match_results
+        if: env.RESEND_ROUND == ''
+        continue-on-error: true
+        run: |
+          mkdir -p data/pending_match_results
+          python3 scripts/scrape_match_results.py \
+            --round "${{ steps.next_round.outputs.round }}" \
+            --season 2026 \
+            --output "data/pending_match_results/match_results_round_${{ steps.next_round.outputs.round }}_backfill.csv"
+        # Real output filename deliberately matches
+        # merge_match_results_backfill.py's own real glob pattern
+        # (match_results_round_*_backfill.csv) -- confirmed by reading
+        # that script's own source -- so the exact same real,
+        # already-validated merge script can be reused here for a
+        # single round, with zero modification needed.
 
-Most likely to score:
+      - name: Validate and merge match results
+        id: validate_merge_match_results
+        if: env.RESEND_ROUND == '' && steps.scrape_match_results.outcome == 'success'
+        continue-on-error: true
+        run: |
+          python3 scripts/merge_match_results_backfill.py \
+            --backfill-dir data/pending_match_results \
+            --master data/match_data_FINAL_fixed.csv \
+            --team-aliases data/team_aliases.json
 
-Mark Nawaqanitawase (Sydney Roosters): our 65.0% (our odds $1.538, market odds $1.44)
-Jesse Arthars (Brisbane Broncos): our 51.8% (our odds $1.931, market odds $2.05)
-Due to score:
+      - name: Commit match results (only runs if merge succeeded)
+        if: env.RESEND_ROUND == '' && steps.validate_merge_match_results.outcome == 'success'
+        run: |
+          git config user.name "nrl-bot-automation"
+          git config user.email "actions@github.com"
+          git add data/match_data_FINAL_fixed.csv
+          git commit -m "Auto-merge match results for round ${{ steps.next_round.outputs.round }} (validated)" || echo "Nothing to commit"
+          git push
+          rm -rf data/pending_match_results
 
-Reece Walsh (Brisbane Broncos): DUE score +0.33 — cold lately (0.00 TPG recent vs 0.50 season); Brisbane Broncos attack trending down
-Robert Toia (Sydney Roosters): DUE score +0.30 — Sydney Roosters attack trending down; cold lately (0.25 TPG recent vs 0.58 season)
-Biggest margin (our model vs market):
+      - name: Open issue on failure (match results)
+        if: env.RESEND_ROUND == '' && (steps.scrape_match_results.outcome == 'failure' || steps.validate_merge_match_results.outcome == 'failure')
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `Match results scrape/merge failed for round ${{ steps.next_round.outputs.round }}`,
+              body: [
+                `The automated match-results scrape or merge for round ${{ steps.next_round.outputs.round }} failed.`,
+                ``,
+                `**data/match_data_FINAL_fixed.csv has NOT been changed.** Any real scraped `,
+                `file (if the scrape itself succeeded) is left in data/pending_match_results/ `,
+                `for manual review.`,
+                ``,
+                `Check the workflow run log for the real error:`,
+                `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+                ``,
+                `Common causes: nrl.com page structure change (the round-level draw page's `,
+                `real .match--highlighted/.match-venue selectors may have changed), a real `,
+                `team-name variant not yet in team_aliases.json, or a real round/bye-count `,
+                `mismatch against the known schedule in merge_match_results_backfill.py's `,
+                `EXPECTED_BYES dict (which covers rounds 11-17 currently -- extend it `,
+                `for later rounds, same as season_draw_2026.json needs extending via `,
+                `extend_season_draw.py).`
+              ].join('\n'),
+              labels: ['needs-review', 'automation']
+            })
 
-Xavier Willison (Brisbane Broncos): our 22.8% vs market 17.9% (edge +4.9pp, our odds $4.39)
-Jesse Arthars (Brisbane Broncos): our 51.8% vs market 48.8% (edge +3.0pp, our odds $1.931)
-Kotoni Staggs (Brisbane Broncos): our 43.7% vs market 40.8% (edge +2.9pp, our odds $2.288)
-Dolphins v New Zealand Warriors (odds via sportsbet)
+      # ============================================================
+      # REAL SEASON-DRAW AUTO-EXTENSION -- added 2026-06-25
+      # ============================================================
+      # Added after confirming a SECOND real automation gap, structurally
+      # identical to match_data_FINAL_fixed.csv's: season_draw_2026.json
+      # is read-only everywhere in the codebase (due_flags_v2.py,
+      # generate_predictions.py both raise a real, loud error if the
+      # round they need isn't in this file's real "rounds" dict) but
+      # nothing automatically extends it. Manually extended to round 19
+      # on 2026-06-25; this step exists so it never needs a manual
+      # extension again.
+      #
+      # Real design: keeps the file covering "this week's round + 2"
+      # (a real 2-round BUFFER, not just exactly enough) -- deliberately
+      # ahead of generate-predictions.yml's real, immediate need, so a
+      # single missed/failed run of THIS step doesn't immediately break
+      # next week's predictions too. Runs in weekly-update.yml (NOT
+      # generate-predictions.yml) because this job runs 3 real hours
+      # BEFORE generate-predictions.yml each Wednesday (confirmed via
+      # generate-predictions.yml's own real comment) -- the draw file
+      # must already be extended before predictions generation needs it,
+      # not after.
+      #
+      # extend_season_draw.py only takes ONE round per real call (no
+      # range mode, unlike scrape_match_results.py) -- this step loops
+      # over whichever real rounds are genuinely missing rather than
+      # modifying that already-tested script.
+      - name: Extend season draw (real 2-round buffer ahead)
+        id: extend_draw
+        if: env.RESEND_ROUND == ''
+        continue-on-error: true
+        run: |
+          TARGET_ROUND=$(( ${{ steps.next_round.outputs.round }} + 2 ))
+          echo "Real target: season_draw_2026.json should cover through round $TARGET_ROUND"
+          CURRENT_MAX=$(python3 -c "import json; d = json.load(open('data/season_draw_2026.json')); rounds = [int(r) for r in d['rounds'].keys()]; print(max(rounds) if rounds else 0)")
+          echo "Real current max round covered: $CURRENT_MAX"
+          if [ "$CURRENT_MAX" -ge "$TARGET_ROUND" ]; then
+            echo "Real season_draw_2026.json already covers far enough ahead -- nothing to do."
+            exit 0
+          fi
+          # REAL BUG FOUND AND FIXED 2026-06-25, caught by directly
+          # testing this loop with a simulated mid-loop failure before
+          # ever shipping it: bash's `while` loop does NOT propagate a
+          # single iteration's non-zero exit code out of the loop --
+          # the script would silently continue past a real failed
+          # round and exit 0 (success) anyway, since only the LAST
+          # command's exit code matters by default. That would have
+          # caused a real partial extension to be committed and
+          # reported as a clean success, masking a genuine failure.
+          # Fixed: track failures explicitly in ANY_FAILED, still
+          # attempt every real round (so one bad round doesn't block
+          # later ones that might genuinely succeed), but exit non-zero
+          # at the end if anything failed.
+          ANY_FAILED=0
+          NEXT_TO_ADD=$((CURRENT_MAX + 1))
+          while [ "$NEXT_TO_ADD" -le "$TARGET_ROUND" ]; do
+            echo "Real extending season_draw_2026.json: round $NEXT_TO_ADD"
+            if ! python3 scripts/extend_season_draw.py \
+              --round "$NEXT_TO_ADD" \
+              --season 2026 \
+              --season-draw data/season_draw_2026.json \
+              --team-aliases data/team_aliases.json; then
+              echo "WARNING: real extension FAILED for round $NEXT_TO_ADD -- continuing to attempt later rounds, but this run will be reported as a real failure."
+              ANY_FAILED=1
+            fi
+            NEXT_TO_ADD=$((NEXT_TO_ADD + 1))
+          done
+          if [ "$ANY_FAILED" -eq 1 ]; then
+            echo "Real failure occurred during this run -- exiting non-zero so the failure issue step fires."
+            exit 1
+          fi
 
-Tight one to call, but we're leaning Dolphins over New Zealand Warriors. New Zealand Warriors have actually had the better season on paper, but Dolphins get the nod here thanks to home advantage and a few real factors in their favour this week. Worth noting New Zealand Warriors got the better of Dolphins last time these two met (20-18), so there's a bit of real history to settle here. Te Maire Martin looks like real value to us this week -- the market hasn't quite caught up. Worth tracking too: Ali Leiataua and Dallin Watene-Zelezniak. Ali Leiataua: he's becoming a bigger part of how his team attacks. Dallin Watene-Zelezniak: he's getting more of the ball lately.
+      - name: Commit season draw extension (only runs if extension succeeded)
+        if: env.RESEND_ROUND == '' && steps.extend_draw.outcome == 'success'
+        run: |
+          git config user.name "nrl-bot-automation"
+          git config user.email "actions@github.com"
+          git add data/season_draw_2026.json
+          git commit -m "Auto-extend season_draw_2026.json (buffer ahead of round ${{ steps.next_round.outputs.round }})" || echo "Nothing to commit"
+          git push
 
-Most likely to score:
+      - name: Open issue on failure (season draw extension)
+        if: env.RESEND_ROUND == '' && steps.extend_draw.outcome == 'failure'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `Season draw extension failed (round ${{ steps.next_round.outputs.round }} + buffer)`,
+              body: [
+                `The automated season_draw_2026.json extension failed this week.`,
+                ``,
+                `**This is a real, genuine risk for NEXT week's predictions run** -- `,
+                `if the real buffer runs out before this is fixed, generate-predictions.yml `,
+                `will fail outright (due_flags_v2.py and generate_predictions.py both raise `,
+                `a real, loud error if the round they need isn't in season_draw_2026.json).`,
+                ``,
+                `Check the workflow run log for the real error:`,
+                `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+                ``,
+                `Common causes: nrl.com page structure change (the round-level draw page's `,
+                `real .match.o-rounded-box selector may have changed), or a real team-name `,
+                `variant not yet in team_aliases.json. As a real, manual stopgap: run `,
+                `scripts/extend_season_draw.py locally for the missing round(s) and commit `,
+                `the result directly.`
+              ].join('\n'),
+              labels: ['needs-review', 'automation']
+            })
 
-Selwyn Cobbo (Dolphins): our 57.5% (our odds $1.739, market odds $1.56)
-Dallin Watene-Zelezniak (New Zealand Warriors): our 51.3% (our odds $1.949, market odds $1.82)
-Due to score:
 
-Ali Leiataua (New Zealand Warriors): DUE score +0.46 — growing share of team's ball (approx.); rising involvement lately
-Dallin Watene-Zelezniak (New Zealand Warriors): DUE score +0.39 — rising involvement lately; cold lately (0.75 TPG recent vs 1.07 season)
-Biggest margin (our model vs market):
+    # ============================================================
+# Phase 5 addition to .github/workflows/weekly-update.yml
+# ============================================================
+# Insert this step immediately AFTER the existing
+# "Commit changes (only runs if merge succeeded)" step, and BEFORE
+# the "Commit pending file for review" step. It deliberately uses the
+# same `if: steps.validate_merge.outcome == 'success'` condition as the
+# commit step above it, so the digest email only fires on a genuine
+# clean merge -- never on a validation failure (those already get a
+# GitHub Issue via the existing "Open issue on failure" step, and
+# should NOT also receive a "good news" digest).
+#
+# Requires one new repository secret: RESEND_API_KEY
+# (Settings -> Secrets and variables -> Actions -> New repository secret)
+# Get a free API key at https://resend.com -- free tier is 3,000
+# emails/month, 100/day, comfortably covers one email per week.
+#
+# Also requires DIGEST_TO_EMAIL as a repository secret (or variable) --
+# the inbox the digest should land in. Stored as a secret rather than
+# hardcoded so the email address itself isn't sitting in plain text in
+# a public repo (the repo is public as of 2026-06-23).
 
-Te Maire Martin (New Zealand Warriors): our 38.6% vs market 29.9% (edge +8.7pp, our odds $2.593)
-Isaiya Katoa (Dolphins): our 20.5% vs market 16.7% (edge +3.9pp, our odds $4.869)
-Thomas Flegler (Dolphins): our 11.3% vs market 12.9% (edge -1.6pp, our odds $8.826)
-North Queensland Cowboys v Penrith Panthers (odds via sportsbet)
+      - name: Install digest dependencies
+        if: env.RESEND_ROUND == '' && steps.validate_merge.outcome == 'success'
+        run: |
+          pip install pandas
 
-We've got Penrith Panthers getting the job done against North Queensland Cowboys in a real arm-wrestle. Penrith Panthers have just been the better side all year, and it shows here. The catch: Penrith Panthers are on the road for this one, which is enough to keep North Queensland Cowboys in the contest even though they're the clearly weaker side. Penrith Panthers are flying right now, having won 4 of their last 5. Keep an eye on Lindsay Smith -- the market's underrating him, and he could be the difference if he gets on the scoresheet early. These are the players to watch: Dylan Edwards and Thomas Jenkins. Dylan Edwards: he's been a bit quiet in front of the posts lately, despite a real track record of scoring. Thomas Jenkins: he's been a bit quiet in front of the posts lately, despite a real track record of scoring.
+      - name: Generate and send round digest
+        if: env.RESEND_ROUND == '' && steps.validate_merge.outcome == 'success'
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          DIGEST_TO_EMAIL: ${{ secrets.DIGEST_TO_EMAIL }}
+        run: |
+          python3 -c "
+          import sys
+          sys.path.insert(0, 'scripts')
+          from generate_round_digest import build_digest
+          from send_round_digest import send_digest_email, write_due_flags_snapshot
 
-Most likely to score:
+          round_num = ${{ steps.next_round.outputs.round }}
+          digest = build_digest(
+              'data/nrl_master.csv',
+              round_num=round_num,
+              season=2026,
+              team_aliases_path='data/team_aliases.json',
+              position_aliases_path='data/position_aliases.json',
+              zcr_baseline_path='data/historical_zcr_baseline.csv',
+              position_tpg_baseline_path='data/historical_position_tpg_baseline.csv',
+              season_draw_path='data/season_draw_2026.json',
+              historical_player_match_rows_path='data/historical_player_match_rows.csv',
+          )
+          to_email = '${{ secrets.DIGEST_TO_EMAIL }}'.strip()
+          if not to_email:
+              raise RuntimeError('DIGEST_TO_EMAIL secret is not set -- add it under Settings > Secrets and variables > Actions')
+          send_digest_email(digest, to_email=to_email)
+          write_due_flags_snapshot(digest, path='data/due_flags_last_run.json')
+          print(f'Digest sent for round {round_num}')
+          "
 
-Braidon Burns (North Queensland Cowboys): our 65.0% (our odds $1.538, market odds $2.1)
-Thomas Jenkins (Penrith Panthers): our 56.9% (our odds $1.758, market odds $1.6)
-Due to score:
+      - name: Commit digest snapshot
+        if: env.RESEND_ROUND == '' && steps.validate_merge.outcome == 'success'
+        run: |
+          git config user.name "nrl-bot-automation"
+          git config user.email "actions@github.com"
+          git add data/due_flags_last_run.json
+          git commit -m "Save DUE flags snapshot for round ${{ steps.next_round.outputs.round }}" || echo "Nothing to commit"
+          git push
 
-Dylan Edwards (Penrith Panthers): DUE score +0.42 — cold lately (0.00 TPG recent vs 0.64 season); a tough matchup vs North Queensland Cowboys this week
-Thomas Jenkins (Penrith Panthers): DUE score +0.39 — cold lately (1.00 TPG recent vs 1.43 season); Penrith Panthers attack trending up
-Biggest margin (our model vs market):
+      - name: Commit pending file for review (only runs if validation failed)
+        if: env.RESEND_ROUND == '' && (steps.validate_merge.outcome == 'failure' || steps.scrape.outcome == 'failure')
+        run: |
+          git config user.name "nrl-bot-automation"
+          git config user.email "actions@github.com"
+          git add data/pending/
+          git commit -m "Round ${{ steps.next_round.outputs.round }}: scrape/validation needs review" || echo "Nothing to commit"
+          git push
 
-Lindsay Smith (Penrith Panthers): our 36.5% vs market 15.4% (edge +21.1pp, our odds $2.737)
-Braidon Burns (North Queensland Cowboys): our 65.0% vs market 47.6% (edge +17.4pp, our odds $1.538)
-Murray Taulagi (North Queensland Cowboys): our 54.6% vs market 45.5% (edge +9.2pp, our odds $1.83)
-Manly-Warringah Sea Eagles v Melbourne Storm (odds via sportsbet)
+      - name: Open issue on failure
+        if: env.RESEND_ROUND == '' && (steps.validate_merge.outcome == 'failure' || steps.scrape.outcome == 'failure')
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `Round ${{ steps.next_round.outputs.round }} needs manual review`,
+              body: [
+                `The automated weekly scrape for round ${{ steps.next_round.outputs.round }} did not pass validation, or the scrape itself failed.`,
+                ``,
+                `**nrl_master.csv has NOT been changed.** The raw scrape (if any) is committed at \`data/pending/nrl_round_${{ steps.next_round.outputs.round }}_new.csv\` for review.`,
+                ``,
+                `Check the workflow run log for the full validation report:`,
+                `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+                ``,
+                `Common causes: nrl.com blocking the cloud IP (different from a home connection), a page structure change, or a genuine data anomaly (e.g. unscheduled bye, postponed match).`
+              ].join('\n'),
+              labels: ['needs-review', 'automation']
+            })
 
-This one's a real coin-flip, but we're tipping Manly-Warringah Sea Eagles to edge out Melbourne Storm. On paper Melbourne Storm are the better side this year, but we like Manly-Warringah Sea Eagles to cause an upset here. Manly-Warringah Sea Eagles are red-hot coming into this -- 4 wins from their last 5. It's been a rough stretch for Melbourne Storm -- only 1 win in their last 5. Keep an eye on Will Warbrick -- the market's underrating him, and he could be the difference if he gets on the scoresheet early. These are the players to watch: Sualauvi Faalogo and Reuben Garrick. Sualauvi Faalogo: he's been a bit quiet in front of the posts lately, despite a real track record of scoring. Reuben Garrick: his team's attack has been clicking lately.
+      # ============================================================
+      # DIGEST-ONLY RESEND PATH (added 2026-06-24) -- runs ONLY when
+      # RESEND_ROUND is set, and does NOT depend on any of the
+      # scrape/merge steps above (which all skipped themselves in this
+      # mode) -- this step alone reads nrl_master.csv (already real and
+      # current from whatever round previously merged) and resends the
+      # digest for the EXACT round number given, rather than
+      # recomputing "next round" the way a normal run does.
+      # ============================================================
+      - name: Install digest dependencies (resend-only mode)
+        if: env.RESEND_ROUND != ''
+        run: |
+          pip install pandas
 
-Most likely to score:
+      - name: Resend digest for a specific already-merged round
+        if: env.RESEND_ROUND != ''
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          DIGEST_TO_EMAIL: ${{ secrets.DIGEST_TO_EMAIL }}
+        run: |
+          python3 -c "
+          import sys
+          sys.path.insert(0, 'scripts')
+          from generate_round_digest import build_digest
+          from send_round_digest import send_digest_email, write_due_flags_snapshot
 
-Will Warbrick (Melbourne Storm): our 65.0% (our odds $1.538, market odds $1.84)
-Lehi Hopoate (Manly-Warringah Sea Eagles): our 64.6% (our odds $1.548, market odds $1.68)
-Due to score:
+          round_num = ${{ env.RESEND_ROUND }}
+          digest = build_digest(
+              'data/nrl_master.csv',
+              round_num=round_num,
+              season=2026,
+              team_aliases_path='data/team_aliases.json',
+              position_aliases_path='data/position_aliases.json',
+              zcr_baseline_path='data/historical_zcr_baseline.csv',
+              position_tpg_baseline_path='data/historical_position_tpg_baseline.csv',
+              season_draw_path='data/season_draw_2026.json',
+              historical_player_match_rows_path='data/historical_player_match_rows.csv',
+          )
+          to_email = '${{ secrets.DIGEST_TO_EMAIL }}'.strip()
+          if not to_email:
+              raise RuntimeError('DIGEST_TO_EMAIL secret is not set -- add it under Settings > Secrets and variables > Actions')
+          send_digest_email(digest, to_email=to_email)
+          write_due_flags_snapshot(digest, path='data/due_flags_last_run.json')
+          print(f'RESEND: digest sent for round {round_num}')
+          "
 
-Sualauvi Faalogo (Melbourne Storm): DUE score +0.61 — cold lately (0.25 TPG recent vs 0.87 season); a favourable matchup vs Manly-Warringah Sea Eagles this week
-Reuben Garrick (Manly-Warringah Sea Eagles): DUE score +0.17 — Manly-Warringah Sea Eagles attack trending down; rising involvement lately
-Biggest margin (our model vs market):
-
-Will Warbrick (Melbourne Storm): our 65.0% vs market 54.3% (edge +10.7pp, our odds $1.538)
-Moses Leo (Melbourne Storm): our 52.5% vs market 45.5% (edge +7.1pp, our odds $1.904)
-Lehi Hopoate (Manly-Warringah Sea Eagles): our 64.6% vs market 59.5% (edge +5.1pp, our odds $1.548)
-Canberra Raiders v St George Illawarra Dragons (odds via sportsbet)
-
-We're backing Canberra Raiders here, though St George Illawarra Dragons should make a real fight of it. Canberra Raiders have been one of the genuine form sides of the competition, and St George Illawarra Dragons simply haven't been at that level. History's on Canberra Raiders's side here as well -- they've taken 4 of the last 5 between these two. It's been a rough stretch for St George Illawarra Dragons -- only 0 win in their last 5. If you're after one name, Valentine Holmes stands out as the bookies' price looks generous to us. A couple of other names worth knowing: Hudson Young and Ethan Strange. Hudson Young: this week's opponent has been leaky in defence right where he plays. Ethan Strange: this week's opponent has been leaky in defence right where he plays.
-
-Most likely to score:
-
-Valentine Holmes (St George Illawarra Dragons): our 65.0% (our odds $1.538, market odds $2.25)
-Setu Tu (St George Illawarra Dragons): our 47.4% (our odds $2.111, market odds $2.0)
-Due to score:
-
-Hudson Young (Canberra Raiders): DUE score +0.39 — a favourable matchup vs St George Illawarra Dragons this week; cold lately (0.00 TPG recent vs 0.27 season)
-Ethan Strange (Canberra Raiders): DUE score +0.35 — a favourable matchup vs St George Illawarra Dragons this week; rising involvement lately
-Biggest margin (our model vs market):
-
-Valentine Holmes (St George Illawarra Dragons): our 65.0% vs market 44.4% (edge +20.6pp, our odds $1.538)
-Owen Pattie (Canberra Raiders): our 27.6% vs market 20.0% (edge +7.6pp, our odds $3.63)
-Mathew Feagai (St George Illawarra Dragons): our 32.5% vs market 30.8% (edge +1.7pp, our odds $3.076)
-Newcastle Knights v Wests Tigers (odds via sportsbet)
-
-Tight one to call, but we're leaning Newcastle Knights over Wests Tigers. On raw ability there's not much between these two -- this is more about who turns up on the day, and a few key real match-ups. Worth noting Wests Tigers got the better of Newcastle Knights last time these two met (42-22), so there's a bit of real history to settle here. Adam Doueihi looks like real value to us this week -- the market hasn't quite caught up. Fletcher Sharpe is in the mix to score too, which is a bit unusual for his spot on the field, but he's been in real form lately. Worth tracking too: Greg Marzhew and Trey Mooney. Greg Marzhew: he's been a bit quiet in front of the posts lately, despite a real track record of scoring. Trey Mooney: this week's opponent has been leaky in defence right where he plays.
-
-Most likely to score:
-
-Fletcher Sharpe (Newcastle Knights): our 55.2% (our odds $1.811, market odds $2.07) (rare for a FE -- scoring at 2.3x the normal rate for the position)
-Dylan Lucas (Newcastle Knights): our 53.0% (our odds $1.885, market odds $2.3) (rare for a 2RF -- scoring at 2.9x the normal rate for the position)
-Due to score:
-
-Greg Marzhew (Newcastle Knights): DUE score +0.61 — cold lately (0.50 TPG recent vs 1.15 season); a favourable matchup vs Wests Tigers this week
-Trey Mooney (Newcastle Knights): DUE score +0.52 — a favourable matchup vs Wests Tigers this week; cold lately (0.00 TPG recent vs 0.39 season)
-Biggest margin (our model vs market):
-
-Adam Doueihi (Wests Tigers): our 49.1% vs market 31.2% (edge +17.8pp, our odds $2.037)
-Jarome Luai (Wests Tigers): our 35.2% vs market 25.0% (edge +10.2pp, our odds $2.837)
-Dylan Lucas (Newcastle Knights): our 53.0% vs market 43.5% (edge +9.6pp, our odds $1.885)
-Best Bets Overall
-Valentine Holmes (St George Illawarra Dragons, Canberra Raiders v St George Illawarra Dragons) via tab: our 65.0% vs market 34.5% (edge +30.5pp, our odds $1.538)
-Kurtis Morrin (Gold Coast Titans, Gold Coast Titans v Canterbury-Bankstown Bulldogs) via ladbrokes_au: our 48.3% vs market 17.9% (edge +30.5pp, our odds $2.069)
-Adam Doueihi (Wests Tigers, Newcastle Knights v Wests Tigers) via tab: our 49.1% vs market 25.0% (edge +24.1pp, our odds $2.037)
-Braidon Burns (North Queensland Cowboys, North Queensland Cowboys v Penrith Panthers) via pointsbetau: our 65.0% vs market 43.5% (edge +21.5pp, our odds $1.538)
-Lindsay Smith (Penrith Panthers, North Queensland Cowboys v Penrith Panthers) via sportsbet: our 36.5% vs market 15.4% (edge +21.1pp, our odds $2.737)
-Lachlan Galvin (Canterbury-Bankstown Bulldogs, Gold Coast Titans v Canterbury-Bankstown Bulldogs) via betright: our 51.1% vs market 33.3% (edge +17.8pp, our odds $1.957)
-Alex Seyfarth (Wests Tigers, Newcastle Knights v Wests Tigers) via betright: our 24.0% vs market 7.7% (edge +16.3pp, our odds $4.165)
-Liam Sutton (North Queensland Cowboys, North Queensland Cowboys v Penrith Panthers) via betright: our 23.4% vs market 7.7% (edge +15.7pp, our odds $4.281)
-Will Warbrick (Melbourne Storm, Manly-Warringah Sea Eagles v Melbourne Storm) via pointsbetau: our 65.0% vs market 50.0% (edge +15.0pp, our odds $1.538)
-Arama Hau (Gold Coast Titans, Gold Coast Titans v Canterbury-Bankstown Bulldogs) via sportsbet: our 38.8% vs market 23.8% (edge +15.0pp, our odds $2.58)
+      - name: Commit digest snapshot (resend-only mode)
+        if: env.RESEND_ROUND != ''
+        run: |
+          git config user.name "nrl-bot-automation"
+          git config user.email "actions@github.com"
+          git add data/due_flags_last_run.json
+          git commit -m "Resend digest snapshot for round ${{ env.RESEND_ROUND }}" || echo "Nothing to commit"
+          git push
