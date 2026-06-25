@@ -43,7 +43,17 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install pandas
+          pip install pandas beautifulsoup4
+          # beautifulsoup4 added 2026-06-24 -- REAL BUG FOUND: the live
+          # team-list fallback (generate_predictions.py's
+          # fetch_real_team_list_live(), via parse_team_list.py) failed
+          # on its real first live run with "No module named 'bs4'".
+          # This wasn't a network/bot-blocking issue as initially
+          # suspected -- the real Actions log showed the exact, simple
+          # cause: this step never installed parse_team_list.py's real
+          # hard dependency. Caught via Sam pasting the real log line
+          # rather than guessed at -- confirmed real root cause before
+          # this fix, not a speculative one.
 
       - name: Determine round to predict
         id: round
