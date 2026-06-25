@@ -236,6 +236,9 @@ def build_predictions_digest(predictions_json_path, round_num, top_n_overall=10,
                 "spread_point": h2h.get("market_spread_point"),
                 "spread_price": h2h.get("market_spread_price"),
                 "rating_gap_for_favourite": rating_gap_for_favourite,
+                "real_h2h_history": h2h.get("real_h2h_history"),
+                "real_home_form": h2h.get("real_home_form"),
+                "real_away_form": h2h.get("real_away_form"),
                 # Positive = our_favourite has been the genuinely
                 # stronger real team by Elo rating this season; small
                 # or negative = our_favourite is winning on raw
@@ -440,28 +443,63 @@ def _build_fixture_analysis(h2h_summary, most_likely, due, biggest_margin, golde
     the h2h section -- this function's only job is the narrative
     paragraph, not a replacement for the data itself).
 
-    Still deterministic and templated (NOT generative -- see this
-    project's earlier, explicit choice to avoid an LLM call here) --
-    every claim below is a direct translation of a real number already
-    computed elsewhere (the real Elo rating gap, the real predicted
-    margin, the real standout player from the biggest-margin list),
-    just expressed as a fan would say it rather than as a stats sheet
-    would.
+    REVISED AGAIN 2026-06-24 after real feedback that the narrative was
+    "a bit basic" and "repeats itself" -- two real changes:
 
-    Real branching logic, grounded in real thresholds checked against
-    this project's own real Elo rating spread (2026-06-24: full real
-    range across all 17 teams is ~400 points, so gaps under ~30 are
-    genuinely tight, 30-100 is a real but modest gap, over 100 is a
-    clear real gulf in class) -- not arbitrary numbers.
+    1. TWO GENUINELY NEW REAL ANALYTICAL ANGLES, not just reworded
+       versions of what was already there:
+       - Real head-to-head history (get_real_head_to_head() in
+         generate_predictions.py) -- "how have these two specific
+         teams fared against EACH OTHER", independent of how either
+         has played against everyone else (a different real question
+         from the Elo rating gap).
+       - Real recent form streak (get_real_form_streak()) -- "how has
+         each team performed, period, lately" (raw win/loss, not
+         adjusted for opponent strength the way Elo is) -- a real,
+         different signal again.
+       Both are real, checkable against match_data_FINAL_fixed.csv,
+       not invented flavour.
+
+    2. GENUINE PHRASING VARIETY: the same real branch (e.g. "close
+       rating gap") previously always produced byte-identical prose
+       across every fixture in a round -- confirmed real, repetitive
+       result Sam flagged directly. Each branch below now has multiple
+       real phrasings, chosen via a deterministic hash of the fixture
+       name (NOT random -- the same round re-run produces the same
+       real output, important for reproducibility/debugging, but
+       different fixtures in the same round get different real
+       wording). This is still fully templated/deterministic, not
+       generative -- variety comes from picking among pre-written real
+       sentences, not from an LLM call.
+
+    Still deterministic and templated -- every claim is a direct
+    translation of a real number already computed elsewhere.
     """
     if not h2h_summary:
         return f"No real prediction available for {home} v {away} this week."
+
+    # Real, deterministic per-fixture variety seed -- same round
+    # re-run gives identical real output (important for debugging/
+    # reproducibility), but different fixtures in the same round
+    # genuinely vary in phrasing. Not used for anything that changes
+    # the actual real claims, only which pre-written real sentence
+    # expresses an already-real fact.
+    import hashlib
+    seed = int(hashlib.md5(f"{home}{away}".encode()).hexdigest(), 16)
+
+    def pick(options):
+        return options[seed % len(options)]
 
     winner = h2h_summary["our_favourite"]
     loser = away if winner == home else home
     margin = h2h_summary.get("our_margin")
     rating_gap = h2h_summary.get("rating_gap_for_favourite")
     agree = h2h_summary["agree"]
+    h2h_history = h2h_summary.get("real_h2h_history")
+    home_form = h2h_summary.get("real_home_form")
+    away_form = h2h_summary.get("real_away_form")
+    winner_form = home_form if winner == home else away_form
+    loser_form = away_form if winner == home else home_form
 
     parts = []
 
@@ -469,82 +507,131 @@ def _build_fixture_analysis(h2h_summary, most_likely, due, biggest_margin, golde
     if margin is not None:
         abs_margin = abs(margin)
         if abs_margin < 3:
-            parts.append(f"This one's a real coin-flip, but we're tipping {winner} to edge out {loser}.")
+            parts.append(pick([
+                f"This one's a real coin-flip, but we're tipping {winner} to edge out {loser}.",
+                f"Tight one to call, but we're leaning {winner} over {loser}.",
+                f"Could go either way, honestly -- we'll take {winner} by the barest of margins over {loser}.",
+            ]))
         elif abs_margin < 10:
-            parts.append(f"We've got {winner} getting the job done against {loser} in a real arm-wrestle.")
+            parts.append(pick([
+                f"We've got {winner} getting the job done against {loser} in a real arm-wrestle.",
+                f"{winner} should get there against {loser}, but don't expect it to be comfortable.",
+                f"We're backing {winner} here, though {loser} should make a real fight of it.",
+            ]))
         else:
-            parts.append(f"{winner} should have the measure of {loser} this week.")
+            parts.append(pick([
+                f"{winner} should have the measure of {loser} this week.",
+                f"This one looks like a real statement game for {winner} against {loser}.",
+                f"We don't see much in {loser}'s favour here -- {winner} should control this from the start.",
+            ]))
     else:
         parts.append(f"We're tipping {winner} to beat {loser}.")
 
     # --- Real reason #1: team strength, in plain language ---
     if rating_gap is not None:
         if rating_gap > 100:
-            parts.append(f"{winner} have just been the better side all year, and it shows here.")
-            # Real check: does the actual margin look smaller than a gap
-            # this size would normally suggest? If so, explain WHY using
-            # a real, available reason (the favourite playing away)
-            # rather than leaving two true-but-seemingly-clashing facts
-            # sitting side by side with no connection -- added 2026-06-24
-            # after finding a real case (Titans v Bulldogs: a genuine
-            # 120-point gap implies only a real ~3pt margin once home
-            # advantage is correctly factored in, NOT a contradiction,
-            # just two different real quantities -- raw team strength
-            # vs match-day margin -- that a fan reading both lines
-            # deserves to have connected, not left to wonder about).
+            parts.append(pick([
+                f"{winner} have just been the better side all year, and it shows here.",
+                f"There's a real gulf in class here -- {winner} have been operating on another level all season.",
+                f"{winner} have been one of the genuine form sides of the competition, and {loser} simply haven't been at that level.",
+            ]))
             if margin is not None and abs(margin) < 10 and winner == away:
-                parts.append(
+                parts.append(pick([
                     f"The catch: {winner} are on the road for this one, which is enough to "
-                    f"keep {loser} in the contest even though they're the clearly weaker side."
-                )
+                    f"keep {loser} in the contest even though they're the clearly weaker side.",
+                    f"That said, {winner} have to travel for this one, which closes the gap more than "
+                    f"you'd expect given how one-sided this looks on paper.",
+                ]))
         elif rating_gap > 30:
-            parts.append(f"{winner} have had the wood on most teams lately, and {loser} haven't been at that level.")
+            parts.append(pick([
+                f"{winner} have had the wood on most teams lately, and {loser} haven't been at that level.",
+                f"{winner} go in as the form side here, a level above where {loser} have been sitting.",
+            ]))
         elif rating_gap > -30:
-            parts.append(
+            parts.append(pick([
                 f"On raw ability there's not much between these two -- this is more about who turns "
-                f"up on the day, and a few key real match-ups."
-            )
+                f"up on the day, and a few key real match-ups.",
+                f"These two are genuinely evenly matched on the season's evidence -- this could come "
+                f"down to who wants it more on the day.",
+            ]))
         else:
-            # Real, honest case: our favourite is winning the match
-            # prediction despite NOT being the higher-rated real team
-            # this season (e.g. a real home-ground edge, or a real
-            # opponent missing key players) -- worth naming plainly
-            # rather than implying a team strength edge that isn't there.
-            parts.append(
+            parts.append(pick([
                 f"{loser} have actually had the better season on paper, but {winner} get the nod here "
-                f"thanks to home advantage and a few real factors in their favour this week."
-            )
+                f"thanks to home advantage and a few real factors in their favour this week.",
+                f"On paper {loser} are the better side this year, but we like {winner} to cause an upset here.",
+            ]))
+
+    # --- Real reason #1b: head-to-head history, a genuinely new angle ---
+    if h2h_history and h2h_history["games_found"] >= 2:
+        a_wins, b_wins = h2h_history["team_a_wins"], h2h_history["team_b_wins"]
+        n = h2h_history["games_found"]
+        recent = h2h_history["most_recent"]
+        winner_h2h_wins = a_wins if home == winner else b_wins
+        # team_a is always `home` in get_real_head_to_head's real
+        # return shape -- confirmed via that function's own docstring.
+        if h2h_history["team_a_wins" if winner == home else "team_b_wins"] >= n / 2 + 1:
+            parts.append(pick([
+                f"{winner} have had the better of this rivalry lately too, winning {winner_h2h_wins} of the last {n}.",
+                f"History's on {winner}'s side here as well -- they've taken {winner_h2h_wins} of the last {n} between these two.",
+            ]))
+        elif recent and recent["winner"] == loser:
+            parts.append(pick([
+                f"Worth noting {loser} got the better of {winner} last time these two met ({recent['score']}), "
+                f"so there's a bit of real history to settle here.",
+                f"{loser} actually won the last meeting between these two ({recent['score']}) -- "
+                f"{winner} will want to put that right.",
+            ]))
+
+    # --- Real reason #1c: recent form streak, another new real angle ---
+    if winner_form and winner_form["games"] >= 3:
+        if winner_form["wins"] >= winner_form["games"] - 1:
+            parts.append(pick([
+                f"{winner} are flying right now, having won {winner_form['wins']} of their last {winner_form['games']}.",
+                f"{winner} are red-hot coming into this -- {winner_form['wins']} wins from their last {winner_form['games']}.",
+            ]))
+    if loser_form and loser_form["games"] >= 3 and loser_form["wins"] <= 1:
+        parts.append(pick([
+            f"{loser} have really struggled lately, with just {loser_form['wins']} win from their last {loser_form['games']}.",
+            f"It's been a rough stretch for {loser} -- only {loser_form['wins']} win in their last {loser_form['games']}.",
+        ]))
 
     # --- Real reason #2: the standout player driving the upset/edge ---
     if biggest_margin:
         top = biggest_margin[0]
-        parts.append(
+        parts.append(pick([
             f"Keep an eye on {top['player_name']} -- the market's underrating him, and he could be "
-            f"the difference if he gets on the scoresheet early."
-        )
+            f"the difference if he gets on the scoresheet early.",
+            f"{top['player_name']} looks like real value to us this week -- the market hasn't quite caught up.",
+            f"If you're after one name, {top['player_name']} stands out as the bookies' price looks generous to us.",
+        ]))
 
     # --- Real reason #3: a real outlier worth a fan's attention ---
     unusual = [e for e in most_likely if e.get("is_positionally_unusual")]
     if unusual:
         u = unusual[0]
-        parts.append(
+        parts.append(pick([
             f"{u['player_name']} is in the mix to score too, which is a bit unusual for "
-            f"his spot on the field, but he's been in real form lately."
-        )
+            f"his spot on the field, but he's been in real form lately.",
+            f"Don't be surprised if {u['player_name']} gets among the tries either -- not the type of "
+            f"player you'd expect to see scoring, but he's earned the right to be considered this week.",
+        ]))
 
     # --- Real reason #4: market agreement/disagreement, in fan terms ---
     if not agree:
-        parts.append(f"The bookies actually see this one going the other way, so there's real value in backing {winner}.")
+        parts.append(pick([
+            f"The bookies actually see this one going the other way, so there's real value in backing {winner}.",
+            f"We're going against the market here -- the bookies favour the other side, but we like {winner}.",
+        ]))
 
     # --- Real reason #5: the due players, named plainly, no jargon ---
     if due_entries_with_factors:
         for d in due_entries_with_factors:
             plain_reason = _plain_language_due_reason(d)
-            parts.append(f"{d['player_name']} could be the one to watch -- {plain_reason}.")
+            parts.append(pick([
+                f"{d['player_name']} could be the one to watch -- {plain_reason}.",
+                f"Don't overlook {d['player_name']} either -- {plain_reason}.",
+            ]))
     elif due:
-        # Real fallback if the richer factor data wasn't supplied (e.g.
-        # a caller using an older/different call shape) -- still real,
-        # just less specific than the factor-aware version above.
         for d in due:
             parts.append(f"{d['player_name']} could be the one to watch -- the numbers like him this week.")
 
@@ -600,12 +687,6 @@ def format_plain_text(digest):
     lines.append(f"({len(digest['fixtures_ok'])} fixtures processed, "
                  f"{len(digest['fixtures_skipped'])} skipped)")
     lines.append("")
-
-    if digest.get("position_changes"):
-        lines.append("⚠ POSITION CHANGES THIS WEEK (real team-list updates vs historical baseline)")
-        for c in digest["position_changes"]:
-            lines.append(f"  - [{c['home_team']} v {c['away_team']}] {c['change']}")
-        lines.append("")
 
     if digest["h2h_summaries"]:
         lines.append("MATCH WIN PROBABILITY")
@@ -685,6 +766,18 @@ def format_plain_text(digest):
             lines.append(f"  - {f['home_team']} v {f['away_team']}: {f['reason']}")
         lines.append("")
 
+    # Moved to the very bottom per Sam's explicit request (2026-06-24).
+    # Only ever shown if there's a genuine real positional swap to
+    # report -- the "no real team list at all" infrastructure case is
+    # now log-only (see resolve_squad_positions()'s docstring), never
+    # surfaced here, so this section produces NOTHING at all (not even
+    # a header) in the normal case where nothing real changed.
+    if digest.get("position_changes"):
+        lines.append("⚠ POSITION CHANGES THIS WEEK (real team-list updates vs historical baseline)")
+        for c in digest["position_changes"]:
+            lines.append(f"  - [{c['home_team']} v {c['away_team']}] {c['change']}")
+        lines.append("")
+
     if not digest["h2h_summaries"] and not digest["best_overall_edges"]:
         lines.append("No real edges surfaced this round.")
 
@@ -701,15 +794,6 @@ def format_html(digest):
     body = f"<h2>NRL Bet Bot — Round {digest['round']} Predictions</h2>"
     body += (f"<p>{len(digest['fixtures_ok'])} fixtures processed, "
              f"{len(digest['fixtures_skipped'])} skipped.</p>")
-
-    if digest.get("position_changes"):
-        body += (
-            '<h3 style="color:#b45309;">&#9888; Position Changes This Week '
-            "(real team-list updates vs historical baseline)</h3><ul>"
-        )
-        for c in digest["position_changes"]:
-            body += f"<li><b>[{c['home_team']} v {c['away_team']}]</b> {c['change']}</li>"
-        body += "</ul>"
 
     body += section(
         "Match Win Probability",
@@ -790,6 +874,21 @@ def format_html(digest):
         digest["fixtures_skipped"],
         lambda f: f"{f['home_team']} v {f['away_team']}: {f['reason']}",
     )
+
+    # Moved to the very bottom per Sam's explicit request (2026-06-24).
+    # Only ever shown if there's a genuine real positional swap to
+    # report -- the "no real team list at all" infrastructure case is
+    # now log-only (see resolve_squad_positions()'s docstring), never
+    # surfaced here, so this section renders NOTHING at all (not even
+    # a header) in the normal case where nothing real changed.
+    if digest.get("position_changes"):
+        body += (
+            '<h3 style="color:#b45309;">&#9888; Position Changes This Week '
+            "(real team-list updates vs historical baseline)</h3><ul>"
+        )
+        for c in digest["position_changes"]:
+            body += f"<li><b>[{c['home_team']} v {c['away_team']}]</b> {c['change']}</li>"
+        body += "</ul>"
 
     if not digest["h2h_summaries"] and not digest["best_overall_edges"]:
         body += "<p>No real edges surfaced this round.</p>"
