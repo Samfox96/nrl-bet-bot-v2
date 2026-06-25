@@ -255,6 +255,27 @@ def get_real_form_streak(match_rows, team_aliases, team_full, current_season, cu
     (e.g. "WWLWL", most recent last) plus the real win count, or None
     if fewer than 2 real real games exist this season to draw from
     (too little real signal to be worth narrating).
+
+    REAL, CONFIRMED CONVENTION (clarified 2026-06-25 after a real,
+    investigated non-bug): this function counts the last `last_n`
+    GAMES ACTUALLY PLAYED, skipping bye rounds entirely (a bye
+    contributes nothing to win/loss, so it's correctly absent from the
+    output, not counted as a blank). This is a DIFFERENT real
+    convention from nrl.com's own public ladder "Form" column, which
+    counts by ROUND NUMBER instead -- confirmed via a real, traced
+    example (Dolphins, real Round 17 lookup): this function correctly
+    found 5 straight real wins across rounds 11/12/14/15/16 (skipping
+    the real Round 13 bye), while the real public ladder showed "4-0"
+    for the same team at the same moment, because its real window
+    (rounds 16/15/14/13/12) treats round 13's bye as a real gap rather
+    than skipping past it. BOTH are real, internally-consistent,
+    legitimate conventions -- this isn't a bug in either system. Sam's
+    explicit real choice (2026-06-25): keep this function's
+    games-played convention, since it's the more meaningful real
+    signal for prediction purposes -- but any narrative text built
+    from this function's output must say "games played" explicitly
+    (not just "their last N"), so it never again reads as contradicting
+    whatever a reader sees on the real public ladder.
     """
     games = []
     for m in match_rows:
