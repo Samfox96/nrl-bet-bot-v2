@@ -624,16 +624,27 @@ def _build_fixture_analysis(h2h_summary, most_likely, due, biggest_margin, golde
         ]))
 
     # --- Real reason #5: the due players, named plainly, no jargon ---
+    # REVISED 2026-06-25 per Sam's real feedback: the original version
+    # repeated "could be the one to watch" once per due player, which
+    # reads repetitively when (the normal case) there are 2 due players
+    # in the same paragraph. Fixed: name all due players together in
+    # ONE framing sentence, then give each player's own real reason as
+    # a separate clause -- the phrase itself appears once per fixture,
+    # not once per player.
     if due_entries_with_factors:
+        names = " and ".join(d["player_name"] for d in due_entries_with_factors)
+        framing = pick([
+            f"These are the players to watch: {names}.",
+            f"Worth tracking too: {names}.",
+            f"A couple of other names worth knowing: {names}.",
+        ])
+        parts.append(framing)
         for d in due_entries_with_factors:
             plain_reason = _plain_language_due_reason(d)
-            parts.append(pick([
-                f"{d['player_name']} could be the one to watch -- {plain_reason}.",
-                f"Don't overlook {d['player_name']} either -- {plain_reason}.",
-            ]))
+            parts.append(f"{d['player_name']}: {plain_reason}.")
     elif due:
-        for d in due:
-            parts.append(f"{d['player_name']} could be the one to watch -- the numbers like him this week.")
+        names = " and ".join(d["player_name"] for d in due)
+        parts.append(f"These are the players to watch: {names} -- the numbers like both this week.")
 
     # --- Golden Boy, kept as a real, fun callout ---
     if golden_boy:
@@ -894,6 +905,78 @@ def format_html(digest):
         body += "<p>No real edges surfaced this round.</p>"
 
     return body
+
+
+def validate_digest_before_send(digest):
+    """
+    Real, content-based sanity check on the digest, added 2026-06-25
+    per Sam's explicit request: every checkpoint in this pipeline up to
+    this point is exception-based ("did the code crash"), not content-
+    based ("does the output actually look right"). A genuine bug
+    upstream (in xtry_model.py, edge_finder.py, odds_probability.py,
+    or this module itself) could in principle produce a digest that's
+    structurally valid Python/JSON but substantively wrong -- e.g. a
+    fixture with real try_scorer_edges but no per_game entry (a real,
+    confirmed-possible digest-builder bug class from earlier today),
+    or a win probability outside (0,1) (a real, confirmed-possible
+    upstream model bug class, also from earlier today -- see
+    get_real_head_to_head's own real winner-determination bug, found
+    only by manually checking output against ground truth, not by any
+    automated check). This function is exactly that automated check,
+    built from the real failure patterns already found and fixed in
+    this project, not arbitrary thresholds.
+
+    Returns (is_valid, problems) where problems is a list of real,
+    human-readable strings describing every issue found (empty list if
+    none). Does NOT raise -- the caller decides whether a failed check
+    should block the send (see generate-predictions.yml's real usage).
+    """
+    problems = []
+
+    n_fixtures = len(digest.get("fixtures_ok", [])) + len(digest.get("fixtures_skipped", []))
+    # Real NRL rounds run 4-9 matches (confirmed across this session:
+    # Round 13 had 7, Round 15 had 5, Round 16 had 7, Round 17 had 8 --
+    # never fewer than 4 or more than 9 in any real round checked).
+    if n_fixtures == 0:
+        problems.append("Zero real fixtures found at all -- the round may not exist yet, or the season draw/odds lookup failed silently.")
+    elif n_fixtures < 4 or n_fixtures > 9:
+        problems.append(f"Real fixture count ({n_fixtures}) is outside the normal real NRL round range of 4-9 -- worth checking season_draw_2026.json and the real bye schedule for this round.")
+
+    for s in digest.get("h2h_summaries", []):
+        prob = s.get("our_favourite_prob")
+        if prob is not None and not (0 < prob < 1):
+            problems.append(f"{s['home_team']} v {s['away_team']}: our_favourite_prob={prob} is outside the real valid (0,1) range -- a genuine logic bug, not a data issue.")
+        odds = s.get("our_favourite_fair_odds")
+        if odds is not None and odds <= 1.0:
+            problems.append(f"{s['home_team']} v {s['away_team']}: our_favourite_fair_odds={odds} is <= 1.0, which is mathematically impossible for real decimal odds.")
+
+    for g in digest.get("per_game", []):
+        for section_name in ("most_likely", "biggest_margin"):
+            for e in g.get(section_name, []):
+                odds = e.get("fair_odds_implied_by_our_model")
+                if odds is not None and odds <= 1.0:
+                    problems.append(f"{g['home_team']} v {g['away_team']}: {e.get('player_name')}'s {section_name} fair odds ({odds}) is <= 1.0, mathematically impossible.")
+
+    # Real, confirmed-possible bug class from earlier today: a fixture
+    # genuinely had try_scorer_edges but no per_game entry was built
+    # for it (the per_game loop silently skips a fixture with empty
+    # all_edges -- correct when edges are GENUINELY empty, a real bug
+    # if they weren't). Cross-check fixtures_ok against per_game.
+    per_game_fixtures = {(g["home_team"], g["away_team"]) for g in digest.get("per_game", [])}
+    ok_fixtures = {(f["home_team"], f["away_team"]) for f in digest.get("fixtures_ok", [])}
+    missing_per_game = ok_fixtures - per_game_fixtures
+    if missing_per_game and digest.get("best_overall_edges"):
+        # Only flag as a real problem if we KNOW real edges exist
+        # somewhere this round (best_overall_edges non-empty) -- if
+        # the whole round genuinely has no real try-scorer data, an
+        # empty per_game for every fixture is correct, not a bug.
+        for home, away in missing_per_game:
+            problems.append(f"{home} v {away}: processed OK but has no per_game entry, even though real edges exist elsewhere this round -- worth checking why this specific fixture's edges weren't captured.")
+
+    if ok_fixtures and not digest.get("best_overall_edges") and any(digest.get("per_game", [])):
+        problems.append("per_game has entries but best_overall_edges is empty -- this combination has never legitimately occurred in this project's real testing history.")
+
+    return len(problems) == 0, problems
 
 
 def send_predictions_email(digest, to_email, api_key=None):
