@@ -1,5 +1,5 @@
 {
-  "round": 16,
+  "round": 17,
   "season": 2026,
   "due_flags": [
     {
@@ -8,15 +8,33 @@
       "position_code": "WG",
       "season_tpg": 1.154,
       "recent_tpg": 0.5,
-      "opponent_this_round": "Wests Tigers",
-      "composite_score": 0.615,
+      "opponent_this_round": "Dolphins",
+      "composite_score": 0.567,
       "weight_coverage": 0.999,
       "factors": {
         "drought": 1,
-        "opponent_matchup": 0.424,
+        "opponent_matchup": 0.23,
         "team_form": 0.0,
         "usage_trend": 0.035,
         "structure_share": 0.079
+      },
+      "structure_share_is_approximate": true
+    },
+    {
+      "player_name": "Blaize Talagi",
+      "team": "Penrith Panthers",
+      "position_code": "FE",
+      "season_tpg": 0.357,
+      "recent_tpg": 0.0,
+      "opponent_this_round": "South Sydney Rabbitohs",
+      "composite_score": 0.56,
+      "weight_coverage": 0.999,
+      "factors": {
+        "drought": 0.595,
+        "opponent_matchup": 0.966,
+        "team_form": 0.127,
+        "usage_trend": 0.126,
+        "structure_share": 0.004
       },
       "structure_share_is_approximate": true
     },
@@ -26,12 +44,12 @@
       "position_code": "FB",
       "season_tpg": 0.867,
       "recent_tpg": 0.25,
-      "opponent_this_round": "Manly-Warringah Sea Eagles",
-      "composite_score": 0.611,
-      "weight_coverage": 0.999,
+      "opponent_this_round": null,
+      "composite_score": 0.539,
+      "weight_coverage": 0.749,
       "factors": {
         "drought": 1,
-        "opponent_matchup": 0.29,
+        "opponent_matchup": null,
         "team_form": 0.174,
         "usage_trend": 0.247,
         "structure_share": 0.044
@@ -39,56 +57,38 @@
       "structure_share_is_approximate": true
     },
     {
-      "player_name": "Trey Mooney",
-      "team": "Newcastle Knights",
-      "position_code": "PR",
-      "season_tpg": 0.385,
+      "player_name": "KL Iro",
+      "team": "Cronulla-Sutherland Sharks",
+      "position_code": "CE",
+      "season_tpg": 0.692,
       "recent_tpg": 0.0,
-      "opponent_this_round": "Wests Tigers",
-      "composite_score": 0.515,
+      "opponent_this_round": "Brisbane Broncos",
+      "composite_score": 0.523,
       "weight_coverage": 0.999,
       "factors": {
-        "drought": 0.641,
-        "opponent_matchup": 0.756,
-        "team_form": 0.0,
-        "usage_trend": 0.152,
-        "structure_share": -0.087
+        "drought": 1,
+        "opponent_matchup": 0.247,
+        "team_form": -0.492,
+        "usage_trend": 0.124,
+        "structure_share": -0.098
       },
       "structure_share_is_approximate": true
     },
     {
-      "player_name": "Tallis Duncan",
-      "team": "South Sydney Rabbitohs",
-      "position_code": "CE",
-      "season_tpg": 0.385,
+      "player_name": "Ronald Volkman",
+      "team": "Parramatta Eels",
+      "position_code": "HB",
+      "season_tpg": 0.333,
       "recent_tpg": 0.0,
-      "opponent_this_round": "Parramatta Eels",
-      "composite_score": 0.496,
+      "opponent_this_round": "Manly-Warringah Sea Eagles",
+      "composite_score": 0.457,
       "weight_coverage": 0.999,
       "factors": {
-        "drought": 0.641,
-        "opponent_matchup": 0.591,
-        "team_form": -0.566,
-        "usage_trend": 0.483,
-        "structure_share": 0.415
-      },
-      "structure_share_is_approximate": true
-    },
-    {
-      "player_name": "Ali Leiataua",
-      "team": "New Zealand Warriors",
-      "position_code": "CE",
-      "season_tpg": 0.273,
-      "recent_tpg": 0.0,
-      "opponent_this_round": "Dolphins",
-      "composite_score": 0.463,
-      "weight_coverage": 0.999,
-      "factors": {
-        "drought": 0.455,
-        "opponent_matchup": 0.575,
-        "team_form": -0.347,
-        "usage_trend": 0.722,
-        "structure_share": 0.728
+        "drought": 0.556,
+        "opponent_matchup": 0.514,
+        "team_form": -0.519,
+        "usage_trend": 0.5,
+        "structure_share": 0.63
       },
       "structure_share_is_approximate": true
     }
