@@ -115,7 +115,12 @@ jobs:
         run: |
           git config user.name "nrl-bot-automation"
           git config user.email "actions@github.com"
-          git add data/predictions_current.csv data/predictions_current.json data/predictions_history/ data/betting_decisions.json
+          # Add predictions files unconditionally
+          git add data/predictions_current.csv data/predictions_current.json data/predictions_history/
+          # Add betting_decisions.json only if the decision engine succeeded (best-effort, may not exist)
+          if [ -f data/betting_decisions.json ]; then
+            git add data/betting_decisions.json
+          fi
           git commit -m "Auto-generate predictions for round ${{ steps.round.outputs.round }}" || echo "Nothing to commit"
           git push
 
