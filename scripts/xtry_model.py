@@ -321,34 +321,87 @@ def component_1_base_tpg(games, position_code, weighted_league_tpg_by_position):
     Flagged here explicitly as an interpretation, not a verified-exact
     match to the original spec -- correct if Sam clarifies otherwise.
 
-    Returns (raw_season_tpg, base_tpg_adjusted).
+    MINUTES REPROJECTION (2026-07-03, Stage 1 task 2 -- "Option B").
+    The architect doc flags that fringe/interchange players are
+    overestimated, because raw tries-per-GAME over-credits a short
+    appearance: 1 try in a 20-minute cameo counts as the same 1.0 TPG
+    as 1 try in a full 80. The fix used here is NOT a flat low-minute
+    penalty (that would wrongly under-rate a genuine super-sub who
+    scores efficiently in limited minutes, and couldn't scale a player
+    UP when their role grows). Instead we reproject onto a per-minute
+    rate x expected minutes:
+
+        tries_per_min = total_tries / total_minutes_actually_played
+        expected_min  = mean of the last 5 PLAYED games' minutes,
+                        capped at 80 (a 90-min golden-point game must
+                        not inflate the projection)
+        reprojected_tpg = tries_per_min * expected_min
+
+    Confirmed against real data (2026-07-03): this is an exact no-op
+    for a stable full-time starter (expected_min ~= their season-avg
+    minutes, so reprojected_tpg reproduces raw tries/games), and only
+    moves players whose RECENT minutes differ from their season-average
+    minutes -- i.e. a changing role. Real examples: Alex Seyfarth
+    (season avg 38 min, recent 61 -> rate scales UP 0.143->0.232);
+    Soni Luke (season avg 32, recent 22 -> scales DOWN 0.200->0.138).
+    So the "penalty" is really a role-adjusted reprojection that can go
+    either way -- flagged as a deliberate, more-correct reading of the
+    doc's literal "penalty" wording, not an exact match to it.
+
+    The reprojected rate feeds the shrinkage/blend/floor below; the
+    RETURNED raw_season_tpg stays the pure per-game rate, unchanged, so
+    downstream display (send_predictions_digest's "Nx league average"
+    positional-unusual flag) is not silently altered.
+
+    Returns (raw_season_tpg, base_tpg_adjusted, expected_minutes).
+    expected_minutes is None when no real minutes were available to
+    reproject from (in which case the raw per-game rate is used as-is,
+    never guessed).
     """
     if not games:
-        return 0.0, 0.0
+        return 0.0, 0.0, None
 
     total_tries = sum(safe_int(g["tries"]) for g in games)
     n_games = len(games)
     raw_season_tpg = total_tries / n_games
 
+    # --- Minutes reprojection (Option B) ---------------------------------
+    REFERENCE_MINUTES = 80.0
+    played_minutes = [
+        m for m in (parse_mins_played(g["mins_played"]) for g in games)
+        if m is not None and m > 0
+    ]
+    total_minutes = sum(played_minutes)
+    if total_minutes > 0:
+        last5 = played_minutes[-5:]
+        expected_minutes = min(sum(last5) / len(last5), REFERENCE_MINUTES)
+        tries_per_min = total_tries / total_minutes
+        own_rate = tries_per_min * expected_minutes
+    else:
+        # No real on-field minutes to reproject from -- fall back to the
+        # raw per-game rate rather than guessing a minutes figure.
+        expected_minutes = None
+        own_rate = raw_season_tpg
+
     league_avg = weighted_league_tpg_by_position.get(position_code)
     if not league_avg or league_avg <= 0:
         # No real baseline for this position -- can't compute the
-        # normalised half of the blend. Fall back to raw TPG alone
-        # rather than guessing a league average.
-        position_normalised_tpg = raw_season_tpg
+        # normalised half of the blend. Fall back to the player's own
+        # (reprojected) rate alone rather than guessing a league average.
+        position_normalised_tpg = own_rate
     else:
         CREDIBILITY_GAMES = 12.0
         shrink_weight = n_games / (n_games + CREDIBILITY_GAMES)
         position_normalised_tpg = (
-            shrink_weight * raw_season_tpg + (1 - shrink_weight) * league_avg
+            shrink_weight * own_rate + (1 - shrink_weight) * league_avg
         )
 
-    blended = 0.5 * raw_season_tpg + 0.5 * position_normalised_tpg
+    blended = 0.5 * own_rate + 0.5 * position_normalised_tpg
 
     floor = 0.30 * league_avg if league_avg else 0.0
     base_tpg_adjusted = max(blended, floor)
 
-    return raw_season_tpg, base_tpg_adjusted
+    return raw_season_tpg, base_tpg_adjusted, expected_minutes
 
 
 # ----------------------------------------------------------------------
@@ -957,7 +1010,7 @@ def calculate_player_xtry_raw(
     consistency), which then gets multiplied by the six genuine
     ratio-multipliers (3, 4, 5, 6, 7, 8) in sequence.
     """
-    raw_season_tpg, base_tpg_adjusted = component_1_base_tpg(
+    raw_season_tpg, base_tpg_adjusted, expected_minutes = component_1_base_tpg(
         games, position_code, weighted_league_tpg_by_position
     )
     fmi_raw, blended_try_rate = component_2_fmi(games, base_tpg_adjusted)
@@ -1003,6 +1056,7 @@ def calculate_player_xtry_raw(
         "components": {
             "raw_season_tpg": round(raw_season_tpg, 4),
             "base_tpg_adjusted": round(base_tpg_adjusted, 4),
+            "expected_minutes": round(expected_minutes, 1) if expected_minutes is not None else None,
             "fmi_raw": round(fmi_raw, 4) if fmi_raw is not None else None,
             "blended_try_rate": round(blended_try_rate, 4),
             "season_iqs_per_min": round(season_iqs, 4) if season_iqs is not None else None,
