@@ -199,6 +199,10 @@ def save_failure_screenshot(driver, label):
         print(f"    Could not save debug screenshot: {e}")
 new_rows = []
 
+# P5 diagnostic one-shot flag (see extract_table) -- ensures the raw-header
+# dump prints exactly once per run, not once per team per match.
+_HEADER_DIAG_PRINTED = False
+
 
 def get_player_name(cell):
     try:
@@ -232,6 +236,35 @@ def extract_table(table_el, team_name, opponent_name, round_num):
         if len([h for h in raw_headers if h]) < 5:
             return []
         mapped_headers = [HEADER_MAP.get(h, h) for h in raw_headers]
+
+        # P5 DIAGNOSTIC added 2026-07-03 -- targeted at the confirmed
+        # dead `play_the_ball` column (reads '0' for all 4,864 rows in
+        # nrl_master.csv). The scraper's HEADER_MAP maps a header called
+        # "play_the_ball", but the real column is clearly coming through
+        # under a DIFFERENT header string that HEADER_MAP doesn't catch
+        # -- proven by the fact that `average_play_the_ball_speed`
+        # DOES populate correctly, so the play-the-ball data is
+        # genuinely on the page, just under a header we're not matching.
+        # I can't see nrl.com's live table from the dev environment, so
+        # rather than guess a HEADER_MAP entry, this logs (once per
+        # process, first stats table only) the real raw headers and
+        # explicitly flags any that fell through HEADER_MAP unchanged.
+        # The next real Actions run's log will show the actual header
+        # string for the play-the-ball count column, turning the fix
+        # into a one-line, certain HEADER_MAP addition instead of a
+        # blind guess. Gated behind a module-level flag so it prints
+        # exactly once, not once per team per match (34+ times).
+        global _HEADER_DIAG_PRINTED
+        if not _HEADER_DIAG_PRINTED:
+            _HEADER_DIAG_PRINTED = True
+            print("  [P5 DIAG] Raw table headers seen on nrl.com (post-normalisation):")
+            print(f"  [P5 DIAG]   {raw_headers}")
+            unmapped = [h for h in raw_headers if h and HEADER_MAP.get(h, h) == h and h not in HEADER_MAP]
+            print(f"  [P5 DIAG] Headers NOT in HEADER_MAP (passed through unchanged): {unmapped}")
+            ptb_like = [h for h in raw_headers if "play" in h and "ball" in h]
+            print(f"  [P5 DIAG] Headers containing both 'play' and 'ball' (candidates for the "
+                  f"real play_the_ball count column): {ptb_like}")
+
         for row in table_el.find_elements(By.CSS_SELECTOR, "tbody tr"):
             cells = row.find_elements(By.TAG_NAME, "td")
             if len(cells) < 3:
