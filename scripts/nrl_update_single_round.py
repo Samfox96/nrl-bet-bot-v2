@@ -42,170 +42,27 @@ RUN_HEADLESS = args.headless or os.environ.get("CI", "").lower() == "true"
 print(f"Scraping round {ROUND_TO_SCRAPE}, output -> {OUTPUT_CSV}, headless={RUN_HEADLESS}")
 
 BASE = "https://www.nrl.com/draw/nrl-premiership/2026"
-FALLBACK_URLS = {
-    1: [
-        f"{BASE}/round-1/warriors-v-roosters",
-        f"{BASE}/round-1/sea-eagles-v-raiders",
-        f"{BASE}/round-1/storm-v-eels",
-        f"{BASE}/round-1/sharks-v-titans",
-        f"{BASE}/round-1/broncos-v-panthers",
-        f"{BASE}/round-1/knights-v-cowboys",
-        f"{BASE}/round-1/dolphins-v-rabbitohs",
-        f"{BASE}/round-1/bulldogs-v-dragons",
-    ],
-    2: [
-        f"{BASE}/round-2/broncos-v-eels",
-        f"{BASE}/round-2/warriors-v-raiders",
-        f"{BASE}/round-2/roosters-v-rabbitohs",
-        f"{BASE}/round-2/sea-eagles-v-knights",
-        f"{BASE}/round-2/dolphins-v-titans",
-        f"{BASE}/round-2/panthers-v-sharks",
-        f"{BASE}/round-2/dragons-v-storm",
-        f"{BASE}/round-2/wests-tigers-v-cowboys",
-    ],
-    3: [
-        f"{BASE}/round-3/storm-v-broncos",
-        f"{BASE}/round-3/roosters-v-panthers",
-        f"{BASE}/round-3/sharks-v-dolphins",
-        f"{BASE}/round-3/cowboys-v-titans",
-        f"{BASE}/round-3/rabbitohs-v-wests-tigers",
-        f"{BASE}/round-3/raiders-v-bulldogs",
-        f"{BASE}/round-3/eels-v-dragons",
-        f"{BASE}/round-3/knights-v-warriors",
-    ],
-    4: [
-        f"{BASE}/round-4/bulldogs-v-knights",
-        f"{BASE}/round-4/warriors-v-wests-tigers",
-        f"{BASE}/round-4/raiders-v-sharks",
-        f"{BASE}/round-4/broncos-v-dolphins",
-        f"{BASE}/round-4/sea-eagles-v-roosters",
-        f"{BASE}/round-4/cowboys-v-storm",
-        f"{BASE}/round-4/panthers-v-eels",
-        f"{BASE}/round-4/titans-v-dragons",
-    ],
-    5: [
-        f"{BASE}/round-5/titans-v-broncos",
-        f"{BASE}/round-5/knights-v-raiders",
-        f"{BASE}/round-5/dolphins-v-sea-eagles",
-        f"{BASE}/round-5/rabbitohs-v-bulldogs",
-        f"{BASE}/round-5/dragons-v-cowboys",
-        f"{BASE}/round-5/eels-v-wests-tigers",
-        f"{BASE}/round-5/panthers-v-storm",
-        f"{BASE}/round-5/sharks-v-warriors",
-    ],
-    6: [
-        f"{BASE}/round-6/storm-v-warriors",
-        f"{BASE}/round-6/rabbitohs-v-raiders",
-        f"{BASE}/round-6/dragons-v-sea-eagles",
-        f"{BASE}/round-6/eels-v-titans",
-        f"{BASE}/round-6/wests-tigers-v-knights",
-        f"{BASE}/round-6/sharks-v-roosters",
-        f"{BASE}/round-6/bulldogs-v-panthers",
-        f"{BASE}/round-6/broncos-v-cowboys",
-    ],
-    7: [
-        f"{BASE}/round-7/roosters-v-knights",
-        f"{BASE}/round-7/dolphins-v-panthers",
-        f"{BASE}/round-7/warriors-v-titans",
-        f"{BASE}/round-7/rabbitohs-v-dragons",
-        f"{BASE}/round-7/wests-tigers-v-broncos",
-        f"{BASE}/round-7/eels-v-bulldogs",
-        f"{BASE}/round-7/cowboys-v-sea-eagles",
-        f"{BASE}/round-7/raiders-v-storm",
-    ],
-    8: [
-        f"{BASE}/round-8/dragons-v-roosters",
-        f"{BASE}/round-8/storm-v-rabbitohs",
-        f"{BASE}/round-8/wests-tigers-v-raiders",
-        f"{BASE}/round-8/cowboys-v-sharks",
-        f"{BASE}/round-8/broncos-v-bulldogs",
-        f"{BASE}/round-8/knights-v-panthers",
-        f"{BASE}/round-8/sea-eagles-v-eels",
-        f"{BASE}/round-8/warriors-v-dolphins",
-    ],
-    9: [
-        f"{BASE}/round-9/bulldogs-v-cowboys",
-        f"{BASE}/round-9/eels-v-warriors",
-        f"{BASE}/round-9/titans-v-raiders",
-        f"{BASE}/round-9/panthers-v-sea-eagles",
-        f"{BASE}/round-9/roosters-v-broncos",
-        f"{BASE}/round-9/knights-v-rabbitohs",
-        f"{BASE}/round-9/dolphins-v-storm",
-        f"{BASE}/round-9/sharks-v-wests-tigers",
-    ],
-    10: [
-        f"{BASE}/round-10/sea-eagles-v-broncos",
-        f"{BASE}/round-10/storm-v-wests-tigers",
-        f"{BASE}/round-10/raiders-v-panthers",
-        f"{BASE}/round-10/rabbitohs-v-sharks",
-        f"{BASE}/round-10/dolphins-v-bulldogs",
-        f"{BASE}/round-10/dragons-v-knights",
-        f"{BASE}/round-10/cowboys-v-eels",
-        f"{BASE}/round-10/roosters-v-titans",
-    ],
-    11: [
-        f"{BASE}/round-11/wests-tigers-v-sea-eagles",
-        f"{BASE}/round-11/eels-v-storm",
-        f"{BASE}/round-11/rabbitohs-v-dolphins",
-        f"{BASE}/round-11/titans-v-knights",
-        f"{BASE}/round-11/panthers-v-dragons",
-        f"{BASE}/round-11/roosters-v-cowboys",
-        f"{BASE}/round-11/warriors-v-broncos",
-        f"{BASE}/round-11/sharks-v-bulldogs",
-    ],
-    12: [
-        f"{BASE}/round-12/sea-eagles-v-titans",
-        f"{BASE}/round-12/dragons-v-warriors",
-        f"{BASE}/round-12/raiders-v-dolphins",
-        f"{BASE}/round-12/bulldogs-v-storm",
-        f"{BASE}/round-12/cowboys-v-rabbitohs",
-        f"{BASE}/round-12/broncos-v-roosters",
-        f"{BASE}/round-12/knights-v-sharks",
-        f"{BASE}/round-12/panthers-v-eels",
-    ],
-    13: [
-        f"{BASE}/round-13/sharks-v-sea-eagles",
-        f"{BASE}/round-13/knights-v-eels",
-        f"{BASE}/round-13/wests-tigers-v-bulldogs",
-        f"{BASE}/round-13/storm-v-roosters",
-        f"{BASE}/round-13/broncos-v-dragons",
-        f"{BASE}/round-13/raiders-v-cowboys",
-        f"{BASE}/round-13/panthers-v-warriors",
-        # NOTE: "dolphins-v-rabbitohs" removed here — per official NRL draw, Dolphins, Rabbitohs
-        # AND Titans all have a bye in R13, so this fixture cannot exist. It was a data error
-        # in the original script. R13 correctly has only 7 matches (14 of 17 teams play).
-    ],
-    # R14, R15 added — verified against official NRL 2026 draw PDF (nrl.com/globalassets/nrl-draw-2026---final.pdf)
-    14: [
-        f"{BASE}/round-14/sea-eagles-v-rabbitohs",
-        f"{BASE}/round-14/storm-v-knights",
-        f"{BASE}/round-14/raiders-v-roosters",
-        f"{BASE}/round-14/cowboys-v-dolphins",
-        f"{BASE}/round-14/broncos-v-titans",
-        f"{BASE}/round-14/wests-tigers-v-panthers",
-        f"{BASE}/round-14/sharks-v-dragons",
-        f"{BASE}/round-14/bulldogs-v-eels",
-        # Bye R14: Warriors
-    ],
-    15: [
-        f"{BASE}/round-15/rabbitohs-v-broncos",
-        f"{BASE}/round-15/dolphins-v-roosters",
-        f"{BASE}/round-15/warriors-v-sharks",
-        f"{BASE}/round-15/eels-v-raiders",
-        f"{BASE}/round-15/wests-tigers-v-titans",
-        # Byes R15: Bulldogs, Cowboys, Dragons, Knights, Panthers, Sea Eagles, Storm (7 teams, 5 matches)
-    ],
-    16: [
-        f"{BASE}/round-16/knights-v-dragons",
-        f"{BASE}/round-16/wests-tigers-v-dolphins",
-        f"{BASE}/round-16/titans-v-panthers",
-        f"{BASE}/round-16/bulldogs-v-sea-eagles",
-        f"{BASE}/round-16/warriors-v-cowboys",
-        f"{BASE}/round-16/storm-v-raiders",
-        f"{BASE}/round-16/roosters-v-sharks",
-        # Byes R16: Broncos, Eels, Rabbitohs (7 matches, 14/17 teams)
-    ],
-}
+# REAL FIX 2026-07-03, per a full project audit: FALLBACK_URLS used to be
+# a hand-maintained dict of every match URL for every round, requiring a
+# manual edit each new round -- confirmed real production failure when
+# Round 17 was missing (scraper crashed outright, no data captured, a
+# GitHub Issue was auto-opened for manual review). It also caused a
+# separate real bug previously (an erroneous "dolphins-v-rabbitohs"
+# Round 13 fixture that could never have existed, since Dolphins,
+# Rabbitohs, AND Titans all had a bye that round -- since removed).
+#
+# Retired entirely rather than patched round-by-round: this script
+# already has a proven, working dynamic-discovery path below (visits
+# nrl.com's round-level draw page and finds match links via Selenium)
+# that was originally only a fallback for rounds missing from this
+# dict. Confirmed live via a real Round 17 Actions run (2026-07-03):
+# it correctly found and scraped all 8 real Round 17 matches with zero
+# hardcoded URLs. Since that path already works and needs no manual
+# maintenance, keeping a hand-maintained list alongside it added
+# recurring maintenance burden and a recurring failure mode for zero
+# real benefit -- removed per the project's own standing principle:
+# never hardcode what can be derived. match_urls now always starts
+# empty, so every round goes through the dynamic-discovery path below.
 
 OUTPUT_COLUMNS = [
     "player_name", "team", "opponent", "round", "season",
@@ -578,7 +435,7 @@ try:
     for round_num in ROUNDS_TO_SCRAPE:
         print(f"\n=== Round {round_num} ===")
 
-        match_urls = FALLBACK_URLS.get(round_num, [])
+        match_urls = []  # always discovered dynamically now -- see comment above (FALLBACK_URLS retired)
 
         if not match_urls:
             draw_url = f"https://www.nrl.com/draw/?competition=111&round={round_num}&season={SEASON}"
@@ -843,29 +700,44 @@ if new_rows:
     combined_df.to_csv(OUTPUT_CSV, index=False)
     print(f"\nSaved {len(combined_df)} total rows to {OUTPUT_CSV}")
 
-    ALL_TEAMS = {
-        'Broncos','Bulldogs','Cowboys','Dolphins','Dragons','Eels',
-        'Knights','Panthers','Rabbitohs','Raiders','Roosters',
-        'Sea Eagles','Sharks','Storm','Titans','Warriors','Wests Tigers'
-    }
-    BYES = {
-        1:['Wests Tigers'], 2:['Bulldogs'], 3:['Sea Eagles'], 4:['Rabbitohs'],
-        5:['Roosters'], 6:['Dolphins'], 7:['Sharks'], 8:['Titans'],
-        9:['Dragons'], 10:['Warriors'], 11:['Raiders'],
-        12:['Broncos','Eels','Knights','Panthers','Roosters','Sharks','Wests Tigers'],
-        13:['Dolphins','Rabbitohs','Titans'],
-        14:['Warriors'],
-        15:['Bulldogs','Cowboys','Dragons','Knights','Panthers','Sea Eagles','Storm'],
-        16:['Broncos','Eels','Rabbitohs'],
-    }
+    # REAL FIX 2026-07-03, per a full project audit: this used to be a
+    # second, separate hardcoded bye dict (short team names, rounds
+    # 1-16 only) -- a duplicate of the same real-world fact already
+    # maintained properly in scripts/bye_schedule.json (used by
+    # validate_round.py, which already covers all 27 rounds). Two
+    # separate hand-maintained copies of the same schedule is exactly
+    # the kind of drift risk this project has been burned by before
+    # (see merge_match_results_backfill.py's own EXPECTED_BYES, fixed
+    # in this same pass, which had actually drifted -- it claimed zero
+    # byes for Round 17 while this file's version and the real official
+    # draw both correctly show the Sharks bye). Now derives from the
+    # same two real, already-canonical source files every other part of
+    # this project uses: team_aliases.json for the full team list, and
+    # bye_schedule.json for the per-round bye list. This coverage check
+    # runs before canonical normalization happens (that's
+    # merge_round.py's job, a later step), so scraped team names here
+    # are still short-form ("Knights", not "Newcastle Knights") --
+    # resolved through team_aliases.json's aliases map for the
+    # comparison, matching the pattern validate_round.py already uses.
+    import json as _json
+    with open("data/team_aliases.json") as _f:
+        _team_aliases_data = _json.load(_f)
+    _short_to_canonical = _team_aliases_data["aliases"]
+    ALL_TEAMS_CANONICAL = set(_team_aliases_data["canonical_teams"])
+    with open("scripts/bye_schedule.json") as _f:
+        _bye_schedule_raw = _json.load(_f)
+    BYE_SCHEDULE = {int(k): v for k, v in _bye_schedule_raw.items() if not k.startswith("_")}
+
     print("\n=== COVERAGE CHECK ===")
     for r in ROUNDS_TO_SCRAPE:
         rd = combined_df[combined_df["round"] == r]
-        teams = set(rd["team"].unique())
-        expected_missing = set(BYES.get(r, []))
-        unexpected = sorted((ALL_TEAMS - teams) - expected_missing)
+        teams_present_canonical = {
+            _short_to_canonical.get(t, t) for t in rd["team"].unique()
+        }
+        expected_missing = set(BYE_SCHEDULE.get(r, []))
+        unexpected = sorted((ALL_TEAMS_CANONICAL - teams_present_canonical) - expected_missing)
         status = "OK" if not unexpected else f"MISSING: {unexpected}"
-        print(f"R{r:02d}: {len(teams)}/17 teams — {status}")
+        print(f"R{r:02d}: {len(teams_present_canonical)}/17 teams — {status}")
 
 else:
     print("\nNo data scraped. Check errors above.")
