@@ -88,3 +88,8 @@ Runs weekly, ~3 hours after Job A (so that round's freshly-merged data is genuin
 
 ## Failsafe Rule
 **Nothing gets merged into a real data file until it has passed validation against the known schedule and internal consistency checks.** A failed validation leaves the existing file untouched and raises a GitHub Issue — never a silent partial merge.
+
+## Round 17 Auto-Merge Summary (2026-07-03)
+- Scraped and validated automatically via GitHub Actions (Phase 3)
+- 304 rows added, 4560 -> 4864 total rows in nrl_master.csv
+- Validation: PASSED (see workflow log for full report)
