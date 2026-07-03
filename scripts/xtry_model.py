@@ -151,6 +151,52 @@ Component 6 (ruck factor) uses receipts as a working fallback weight
 (see _weighted_team_ptb_speed's docstring), but the underlying scraper
 gap should be looked at separately -- it may be silently affecting other
 things that were never built to expect a populated play_the_ball column.
+
+STAGE 6 REAL FINDING (2026-07-04): POSSESSION/TERRITORY PROXIES FOR
+COMPONENTS 4 AND 7 WERE TESTED AND REJECTED -- documented here so a
+future session doesn't rediscover this the hard way, same discipline
+as nrl_elo.py's own rejected form-blend findings.
+
+Candidate signals tested: cumulative team error rate (possession proxy
+for Component 7's attacking-volume factor), cumulative kicking metres
+and forced drop-outs (territory proxy for Component 4's ZCR factor).
+Real, out-of-sample test using nrl_master.csv's 2026 season (the ONLY
+player-named dataset available -- historical_player_match_rows.csv has
+no player names, per this project's own data rules, so 2021-2025 can't
+be used for this kind of player-level backtest). Cumulative team stats
+computed strictly from rounds BEFORE the round being predicted -- no
+leakage. n=176 team-round observations, rounds 5-16.
+
+Standalone correlation with next-round tries, none significant at
+p<0.05: cumulative errors r=0.124 (p=0.101, and WRONG direction -- more
+errors trending toward slightly MORE tries, likely a tempo confound
+where high-error teams are often just running more plays, not a real
+possession-quality signal); cumulative kicking metres r=-0.106
+(p=0.163); cumulative forced drop-outs r=0.118 (p=0.119). Referee
+identity vs total match scoring rate also tested (one-way ANOVA across
+8 real 2026 referees with >=5 matches each): F=0.65, p=0.715, no real
+signal.
+
+Multivariate check against the baseline signal Component 1/7 already
+use (cumulative team tries-per-game, itself the only variable that
+clears significance: r=0.204, p=0.007): baseline-only R^2=0.0415,
+baseline+3 proxies R^2=0.0648. Joint F-test on whether the three
+proxies add real explanatory power beyond the existing baseline:
+F=1.42, p=0.238 -- FAILS to reject the null. The nominal R^2 gain is
+statistically indistinguishable from noise at this sample size.
+
+CONCLUSION: do not wire these into Component 4 or Component 7. Same
+pattern as nrl_elo.py's rejected blend attempts -- a plausible-sounding
+signal that doesn't survive an honest out-of-sample test, and wiring
+it in anyway would very likely add estimation noise on top of a
+working model rather than genuine new signal.
+
+HONEST CAVEAT: n=176 from 16 rounds is a real but small sample --
+this is "current evidence doesn't support it," not "proven zero
+effect." Worth re-testing with the same methodology once the 2026
+season has more rounds banked (e.g. after Round 26). Don't re-attempt
+wiring these specific proxies into the live model without new evidence
+this conclusion no longer holds.
 """
 
 import csv
