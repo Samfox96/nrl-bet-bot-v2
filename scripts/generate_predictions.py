@@ -82,6 +82,7 @@ import csv
 import json
 import os
 import sys
+from datetime import datetime, timezone
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
@@ -1086,6 +1087,47 @@ def write_predictions_json(results, path="data/predictions_current.json"):
     return path
 
 
+def archive_predictions(results, season, round_num, history_dir="data/predictions_history"):
+    """
+    REAL FIX 2026-07-03, closing a genuine, long-standing gap: the
+    project's own roadmap has said since Phase 3 that predictions
+    should be archived round-by-round for an accuracy ledger, but
+    predictions_current.json was always a single file, silently
+    overwritten every round -- there was never anywhere for
+    score_predictions.py (added alongside this function) to read a
+    past round's real predictions from once that round's real results
+    land. Writes an immutable per-round snapshot, separate from
+    predictions_current.json/.csv (which stay exactly as they were --
+    this doesn't replace them, it adds a permanent copy).
+
+    File naming: {season}_round_{round_num}.json -- season-scoped so
+    multiple seasons' archives can coexist in the same directory
+    without collision.
+
+    Deliberately does NOT overwrite an existing archive file for the
+    same round -- if this round was already archived (e.g. a rerun),
+    the original stands; a resend/rerun should never quietly rewrite
+    history out from under an accuracy check that might already have
+    run against it. Prints a clear message either way so this is
+    never a silent no-op.
+    """
+    os.makedirs(history_dir, exist_ok=True)
+    archive_path = os.path.join(history_dir, f"{season}_round_{round_num}.json")
+    if os.path.exists(archive_path):
+        print(f"Archive already exists at {archive_path} -- leaving it untouched "
+              f"(not overwriting a real historical record on a rerun).")
+        return archive_path
+    with open(archive_path, "w") as f:
+        json.dump({
+            "season": season,
+            "round": round_num,
+            "archived_at": datetime.now(timezone.utc).isoformat(),
+            "results": results,
+        }, f, indent=2)
+    print(f"Archived predictions to {archive_path}")
+    return archive_path
+
+
 if __name__ == "__main__":
     import argparse
 
@@ -1145,6 +1187,7 @@ if __name__ == "__main__":
     results = generate_round_predictions(args.season, args.round_num, api_key, args.data_dir)
     path = write_predictions_csv(results, args.output)
     json_path = write_predictions_json(results, args.json_output)
+    archive_path = archive_predictions(results, args.season, args.round_num)
 
     n_ok = sum(1 for r in results if r["status"] == "ok")
     n_skipped = len(results) - n_ok
@@ -1154,3 +1197,4 @@ if __name__ == "__main__":
             print(f"  SKIPPED: {r['home_team']} v {r['away_team']} -- {r['status']}")
     print(f"Written to {path}")
     print(f"Written to {json_path}")
+    print(f"Archived to {archive_path}")
