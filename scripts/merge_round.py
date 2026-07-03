@@ -141,8 +141,32 @@ def main():
     pending_files = sorted(PENDING_DIR.glob("nrl_round_*_new.csv")) if PENDING_DIR.exists() else []
 
     if not pending_files:
-        print("No pending scrape file found in data/pending/. Nothing to merge.")
-        sys.exit(0)
+        # REAL BUG FOUND AND FIXED 2026-07-03: this used to exit(0) --
+        # "nothing to do" was treated as a benign no-op, which is a
+        # reasonable default for a script that might run when nothing
+        # changed. But in this specific pipeline, merge_round.py exists
+        # ONLY to consume the output of the scrape step that runs
+        # immediately before it in weekly-update.yml -- there is no
+        # legitimate scenario where this script runs and a pending file
+        # is genuinely, correctly absent. A missing file here means the
+        # scrape step failed to produce one (confirmed real case:
+        # Round 17, scraper crashed on a missing bs4 import before
+        # writing anything). Exiting 0 made that look like a clean
+        # merge to the workflow, which let a stale-data digest email
+        # fire under the new round's label. This is exactly the
+        # "content-based, not exception-based" checkpoint principle --
+        # the absence of real content IS the failure signal here, not
+        # a side effect to shrug off. Exiting 1 now ensures the
+        # workflow's failure-issue path fires and the digest/commit
+        # steps (gated on this step's success) correctly skip.
+        print("FAILURE: No pending scrape file found in data/pending/. "
+              "This script only ever runs immediately after a scrape step "
+              "that should have produced one -- a missing file means that "
+              "scrape did not genuinely succeed, even if it didn't raise "
+              "an exception. Treating this as a real failure, not a "
+              "no-op, so nothing downstream (commit, digest) proceeds "
+              "on the strength of a merge that never actually happened.")
+        sys.exit(1)
 
     if len(pending_files) > 1:
         print(f"WARNING: multiple pending files found: {pending_files}. "
