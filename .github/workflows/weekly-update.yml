@@ -229,6 +229,53 @@ jobs:
           git push
           rm -rf data/pending_match_results
 
+      # ============================================================
+      # REAL ACCURACY SCORING -- added 2026-07-03
+      # ============================================================
+      # Closes a genuine gap that's been on this project's roadmap since
+      # Phase 3 ("an accuracy ledger, logging predicted vs actual results
+      # week over week") but was never actually built -- predictions_
+      # current.json was overwritten every round with no history, so
+      # there was never anything for a scorer to compare against. This
+      # round's real match results just landed above; IF that round's
+      # predictions were archived (generate_predictions.py's
+      # archive_predictions(), added the same session), score them now.
+      #
+      # Deliberately best-effort (continue-on-error): a missing archive
+      # is expected and normal for any round predicted before 2026-07-03
+      # (archiving didn't exist yet), and this must never block the real
+      # match-results merge above, which already succeeded and is more
+      # important than the accuracy ledger. Failure here opens its own
+      # Issue, separate from the match-results failure path, so it's
+      # never confused with a real data problem.
+      - name: Score this round's predictions against real results
+        id: score_predictions
+        if: env.RESEND_ROUND == '' && steps.validate_merge_match_results.outcome == 'success'
+        continue-on-error: true
+        run: |
+          python3 scripts/score_predictions.py \
+            --season 2026 \
+            --round "${{ steps.next_round.outputs.round }}" \
+            --data-dir data
+
+      - name: Commit accuracy ledger (only runs if scoring succeeded)
+        if: env.RESEND_ROUND == '' && steps.score_predictions.outcome == 'success'
+        run: |
+          git config user.name "nrl-bot-automation"
+          git config user.email "actions@github.com"
+          git add data/accuracy_ledger.json
+          git commit -m "Score round ${{ steps.next_round.outputs.round }} predictions" || echo "Nothing to commit"
+          git push
+
+      - name: Note on failure (accuracy scoring) -- informational only, not a real failure
+        if: env.RESEND_ROUND == '' && steps.score_predictions.outcome == 'failure'
+        run: |
+          echo "Accuracy scoring did not run for round ${{ steps.next_round.outputs.round }} -- most likely because "
+          echo "this round's predictions were never archived (expected for any round predicted before "
+          echo "2026-07-03, when archiving was added), or predictions genuinely weren't generated for it. "
+          echo "This is informational only and does not affect real data: match_data_FINAL_fixed.csv and "
+          echo "nrl_master.csv are already correctly merged and committed above, independent of this step."
+
       - name: Open issue on failure (match results)
         if: env.RESEND_ROUND == '' && (steps.scrape_match_results.outcome == 'failure' || steps.validate_merge_match_results.outcome == 'failure')
         uses: actions/github-script@v7
