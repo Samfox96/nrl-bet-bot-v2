@@ -140,6 +140,56 @@ jobs:
           if-no-files-found: ignore
           retention-days: 7
 
+      - name: Capture closing odds (CLV, Stage 4)
+        # Only fires on cron-job.org workflow_dispatch triggers (i.e. near-
+        # kickoff) -- NOT on the Tuesday schedule: baseline scrape).
+        # The Tuesday run fires with schedule event_name; cron-job.org fires
+        # with workflow_dispatch. So this step is gated on workflow_dispatch.
+        #
+        # Why here and not in generate-predictions.yml: predictions run once
+        # per round (Thursday). Closing odds must be captured once per MATCH,
+        # ~1h before kickoff. The cron-job.org triggers that fire team-list
+        # polling already fire once per match -- so this step is free to add
+        # here without any new infrastructure.
+        #
+        # Credit cost: 2 markets (h2h + tryscorer) x 1 region (au) = 2
+        # credits per call. 8 calls per round = 16 credits. Combined with
+        # the predictions run (24 credits): 40 credits/round, ~160/month --
+        # well within the 500/month budget (2026-07-04 confirmed).
+        #
+        # Best-effort: a failed closing odds fetch does NOT block the
+        # team-list commit. CLV entries just stay None for that fixture,
+        # which is a worse ledger but not a pipeline failure.
+        if: ${{ github.event_name == 'workflow_dispatch' }}
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+        run: |
+          # Extract home and away team from the dispatch inputs.
+          # schedule-kickoffs.yml (cron-job.org trigger creator) passes
+          # the fixture as "Home Team v Away Team" in the workflow inputs
+          # when it creates the trigger -- read it from the environment
+          # variable set by the dispatching job, which uses the fixture
+          # label from season_draw_2026.json. Falls back to no-op if
+          # inputs aren't present (e.g. a manual dispatch without them).
+          FIXTURE="${{ github.event.inputs.fixture }}"
+          ROUND="${{ github.event.inputs.round }}"
+          SEASON="${{ github.event.inputs.season }}"
+          if [ -z "$FIXTURE" ] || [ -z "$ROUND" ] || [ -z "$SEASON" ]; then
+            echo "No fixture/round/season inputs on this dispatch -- closing odds capture skipped."
+            echo "(Expected from cron-job.org trigger; manual dispatches without these inputs skip this step.)"
+            exit 0
+          fi
+          # Parse "Home Team v Away Team" -> separate args
+          HOME_TEAM="${FIXTURE% v *}"
+          AWAY_TEAM="${FIXTURE#* v }"
+          echo "Capturing closing odds for: $HOME_TEAM v $AWAY_TEAM (Round $ROUND, $SEASON)"
+          python3 scripts/capture_closing_odds.py \
+            --season "$SEASON" \
+            --round "$ROUND" \
+            --home-team "$HOME_TEAM" \
+            --away-team "$AWAY_TEAM" \
+            --data-dir data || echo "Closing odds capture failed (best-effort, non-fatal)"
+
       - name: Commit if updated
         run: |
           git config user.name "nrl-bot-automation"
