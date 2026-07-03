@@ -641,10 +641,43 @@ def resolve_squad_positions(historical_squad, team_short, real_team_list, positi
 
 def build_raw_scores(baselines, by_player, team_games_played, team_season_tries,
                       attacking_speed, speed_allowed, squad, team_short,
-                      opponent_full, is_home):
+                      opponent_full, is_home, due_severity_by_player=None):
     """One team's full set of real per-player xTry raw scores for one
     upcoming match, reusing the exact validated pattern from this
-    session's test harnesses -- not a new code path."""
+    session's test harnesses -- not a new code path.
+
+    xTry Component 8 wiring (2026-07-03): two of Component 8's situational
+    inputs are now fed real values here, closing the "dead-but-present"
+    gap where every context factor silently defaulted to neutral:
+
+      - scored_last_game: derived from the player's own most-recent PLAYED
+        game (games is already sorted ascending by round in
+        build_player_game_log, and bye/DNP rounds produce no row, so
+        games[-1] is genuinely their last game on the park). Feeds
+        Component 8's mild x0.95 regression-to-mean discount.
+
+      - due_flag_severity: sourced from due_severity_by_player, a
+        {player_name -> due_flags_v2 composite_score} lookup for THIS
+        team (built at the call site from the same due_watch_by_team the
+        email badge uses -- so the try-probability boost and the DUE badge
+        can no longer disagree, which was the whole point). Observed real
+        R17 composite range is [-0.539, +0.539]; Component 8 clips to
+        [0,1] and maps linearly to 1.0-1.30x, so only a genuinely-due
+        (positive-composite) proven scorer gets any boost, and a
+        median/non-due player (composite <= 0) stays neutral. We pass
+        None for non-positive composites so the "due_flag" note only
+        appears for players actually flagged as due.
+
+    DELIBERATELY still neutral (not fabricated): games_since_return_from_injury,
+    games_since_rep_return, was_dropped_and_recalled. There is no real,
+    unambiguous data source for these -- injury-return can only be
+    approximated by a round gap that conflates injury/drop/rest (an
+    already-documented open limitation), rep-return needs an Origin/Test
+    schedule that doesn't exist in the repo, and drop-and-recall needs a
+    selection-vs-injury signal the stats alone don't carry. Left at their
+    neutral defaults rather than guessed."""
+    if due_severity_by_player is None:
+        due_severity_by_player = {}
     raw_scores = []
     for player_name, pos_label in squad.items():
         games = by_player.get(player_name, [])
@@ -653,6 +686,12 @@ def build_raw_scores(baselines, by_player, team_games_played, team_season_tries,
         pos_code = normalise_position(pos_label, baselines["position_aliases"])
         if pos_code is None:
             continue
+
+        scored_last_game = safe_int(games[-1]["tries"]) > 0
+
+        raw_composite = due_severity_by_player.get(player_name)
+        due_flag_severity = raw_composite if (raw_composite is not None and raw_composite > 0) else None
+
         result = calculate_player_xtry_raw(
             player_name, games, pos_code, team_short, opponent_full, is_home,
             baselines["weighted_tpg"], baselines["weighted_zcr"],
@@ -660,6 +699,8 @@ def build_raw_scores(baselines, by_player, team_games_played, team_season_tries,
             team_season_tries.get(team_short, 0), attacking_speed, speed_allowed,
             baselines["team_overall_zcr"], baselines["league_avg_overall_zcr"],
             team_games_played=team_games_played.get(team_short),
+            scored_last_game=scored_last_game,
+            due_flag_severity=due_flag_severity,
         )
         raw_scores.append(result)
     return raw_scores
@@ -947,13 +988,24 @@ def generate_round_predictions(season, up_to_round, the_odds_api_key, data_dir="
                 "away": away_due_filtered,
             }
 
+            # DUE severity lookups for Component 8, built from the SAME
+            # due_watch entries that feed the email's DUE badge (home_due_raw
+            # / away_due_raw above) -- so the try-probability boost and the
+            # displayed DUE flag are guaranteed to come from one source and
+            # can't contradict each other. composite_score is passed raw;
+            # build_raw_scores gates on > 0 and Component 8 clips to [0,1].
+            home_due_sev = {d["player_name"]: d["composite_score"] for d in home_due_raw}
+            away_due_sev = {d["player_name"]: d["composite_score"] for d in away_due_raw}
+
             home_raw = build_raw_scores(
                 baselines, by_player, team_games_played, team_season_tries,
-                attacking_speed, speed_allowed, home_squad, home_short, away_full, True
+                attacking_speed, speed_allowed, home_squad, home_short, away_full, True,
+                due_severity_by_player=home_due_sev,
             )
             away_raw = build_raw_scores(
                 baselines, by_player, team_games_played, team_season_tries,
-                attacking_speed, speed_allowed, away_squad, away_short, home_full, False
+                attacking_speed, speed_allowed, away_squad, away_short, home_full, False,
+                due_severity_by_player=away_due_sev,
             )
             edge_result = find_edges_for_match(
                 home_raw, away_raw, real_avg_tries, try_scorer_odds
