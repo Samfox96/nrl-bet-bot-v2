@@ -176,8 +176,25 @@ def build_decisions(predictions_path, manual_notes_path=None):
         # try-scorer market
         for edge_entry in fixture.get("try_scorer_edges", []):
             edge_val = edge_entry.get("edge") or 0
-            if edge_val < MINIMUM_EDGE:
+            if edge_val <= 0:
+                continue  # only positive edges considered
+
+            # Stage 3 uncertainty penalty (added 2026-07-04): shrink the
+            # effective edge by 1/sqrt(n_games) before applying the minimum
+            # threshold. A player with 4 games (penalty=0.50) at raw edge 0.08
+            # has effective edge 0.04 -- right at the floor. An established
+            # 16-game starter at the same raw edge has effective edge ~0.06.
+            # n_games is populated by edge_finder.py from xtry_model's
+            # components dict (added same session). Defaults to 10 (a
+            # conservative mid-range) if absent for any reason.
+            import math as _math
+            n_games = edge_entry.get("n_games") or 10
+            uncertainty_penalty = min(1.0, 1.0 / _math.sqrt(max(n_games, 1)))
+            effective_edge = edge_val * (1.0 - uncertainty_penalty)
+
+            if effective_edge < MINIMUM_EDGE:
                 continue
+
             our_p = edge_entry.get("our_probability")
             mkt_p = edge_entry.get("market_probability")
             stake = _kelly_fraction_stake(our_p, mkt_p)
@@ -188,7 +205,7 @@ def build_decisions(predictions_path, manual_notes_path=None):
             player = edge_entry.get("player_name")
             team = edge_entry.get("team")
 
-            # Attach any manual note for this player this round
+            # Attach any manual note for this player this round (Stage 5)
             note_key = f"{player}:{round_num}"
             note = (manual_notes.get(note_key) or {}).get("note")
 
@@ -204,6 +221,9 @@ def build_decisions(predictions_path, manual_notes_path=None):
                 "our_probability": round(our_p, 4),
                 "market_probability": round(mkt_p, 4),
                 "edge": round(edge_val, 4),
+                "effective_edge": round(effective_edge, 4),
+                "uncertainty_penalty": round(uncertainty_penalty, 4),
+                "n_games": n_games,
                 "ev_per_unit": ev,
                 "kelly_stake_fraction": stake,
                 "adjusted_stake_fraction": stake,

@@ -139,6 +139,13 @@ def find_edges_for_match(
                 "team": our_info["team"],
                 "position_code": our_info["position_code"],
                 "bookmaker": bookmaker_key,
+                # n_games passed through from xtry_model's components dict so the
+                # decision engine can apply the sample-size uncertainty penalty
+                # (1/sqrt(n_games)) -- a 2-game hot streak gets discounted heavily;
+                # a 16-game established starter is discounted negligibly.
+                # Lives under components (not top-level in our_info), consistent
+                # with how normalise_match_xtry packages the raw output.
+                "n_games": (our_info.get("components") or {}).get("n_games"),
                 **edge_result,
             })
 

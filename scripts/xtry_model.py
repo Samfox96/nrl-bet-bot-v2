@@ -1054,6 +1054,7 @@ def calculate_player_xtry_raw(
         "is_home": is_home,
         "raw_xtry": raw_xtry,
         "components": {
+            "n_games": len(games),  # exposed for decision_engine's uncertainty penalty (1/sqrt(n))
             "raw_season_tpg": round(raw_season_tpg, 4),
             "base_tpg_adjusted": round(base_tpg_adjusted, 4),
             "expected_minutes": round(expected_minutes, 1) if expected_minutes is not None else None,
