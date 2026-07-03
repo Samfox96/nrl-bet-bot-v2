@@ -1102,6 +1102,46 @@ if __name__ == "__main__":
         print("ERROR: ODDS_API_KEY environment variable not set.", file=sys.stderr)
         sys.exit(1)
 
+    # REAL, CONTENT-BASED CHECKPOINT added 2026-07-03, after a confirmed
+    # real incident: on 2026-07-02 this workflow computed round=17 (via
+    # nrl_master.csv's max round + 1) because nrl_master.csv was stuck
+    # at Round 16 (the same scrape-crash chain documented in
+    # weekly-update.yml/merge_round.py), but Round 17 had ALREADY BEEN
+    # PLAYED days earlier and was already sitting in
+    # match_data_FINAL_fixed.csv with real final scores. The run didn't
+    # crash -- the-odds-api.com correctly has no upcoming event for a
+    # match that already happened, so every fixture came back
+    # "status": "skipped: no real upcoming odds-api event found", and
+    # that got committed and emailed as a real, if hollow-looking,
+    # "predictions" output. This check catches the actual underlying
+    # condition directly (the target round already has real results on
+    # file) rather than relying on the odds API's absence of data as an
+    # indirect signal -- the two fixes upstream (weekly-update.yml's
+    # scrape-success gate, merge_round.py's failure-on-empty-pending)
+    # should prevent nrl_master.csv from staying stuck like this again,
+    # but this is the real, direct backstop specifically for the
+    # predictions script, independent of whatever upstream state caused
+    # the wrong round number to be computed in the first place.
+    match_rows = load_csv(f"{args.data_dir}/match_data_FINAL_fixed.csv")
+    already_played = [
+        r for r in match_rows
+        if int(r["season"]) == args.season and int(r["round"]) == args.round_num
+        and r.get("home_score", "").strip() != "" and r.get("away_score", "").strip() != ""
+    ]
+    if already_played:
+        print(
+            f"ERROR: Round {args.round_num} (season {args.season}) already has "
+            f"{len(already_played)} real, final match result(s) recorded in "
+            f"match_data_FINAL_fixed.csv -- this round has already been played. "
+            f"Generating 'predictions' for a finished round is almost always a "
+            f"symptom of nrl_master.csv being stuck on an earlier round (so the "
+            f"'next round' calculation is wrong), not a legitimate request. "
+            f"Refusing to overwrite predictions_current.json/.csv with junk output. "
+            f"Check nrl_master.csv's actual max round and STATUS.md before retrying.",
+            file=sys.stderr,
+        )
+        sys.exit(1)
+
     results = generate_round_predictions(args.season, args.round_num, api_key, args.data_dir)
     path = write_predictions_csv(results, args.output)
     json_path = write_predictions_json(results, args.json_output)
