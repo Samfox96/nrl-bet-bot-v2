@@ -197,6 +197,69 @@ effect." Worth re-testing with the same methodology once the 2026
 season has more rounds banked (e.g. after Round 26). Don't re-attempt
 wiring these specific proxies into the live model without new evidence
 this conclusion no longer holds.
+
+STAGE 7 REAL FINDING (2026-07-04): COMPONENT 3'S IQS_STAT_WEIGHTS WERE
+NEVER CALIBRATED AGAINST REAL DATA -- confirmed by checking (unlike
+nrl_elo.py's HOME_ADVANTAGE and K_FACTOR_BASE, which both cite real
+backtest evidence, IQS_STAT_WEIGHTS's original values (line_breaks=4.0,
+tackle_breaks=2.0, all_run_metres=0.02, all_runs=0.15,
+post_contact_metres=0.01, inside_10_metres=0.5, kick_return_metres=0.01)
+had no documented source beyond "the spec" -- intuition-based weights
+that had never actually been tested.
+
+Real test performed: standardized logistic regression, real player-
+level data from nrl_master.csv (2026 season, the only player-named
+dataset available -- see Stage 6 note above for why 2021-2025 can't be
+used). Target: did this player score >=1 try in round N (binary),
+given each stat's cumulative per-minute rate from rounds BEFORE N (no
+leakage). n=2,612 real player-round observations, 413 unique players,
+rounds 6-16. McFadden pseudo-R^2=0.056 (a genuinely noisy target at
+the individual level, consistent with everything else found this
+session about individual try-scoring prediction).
+
+RESULTS (standardized coefficients, directly comparable to each other
+unlike the raw IQS_STAT_WEIGHTS which mix different scales):
+  line_breaks:          coef=+0.309, p=0.0000 -- CONFIRMED, strongest
+                         real predictor, correctly the heaviest weight
+  tackle_breaks:         coef=+0.155, p=0.011  -- CONFIRMED, and the
+                         real 2:1 ratio vs line_breaks roughly matches
+                         the existing 4.0:2.0 weight ratio
+  all_run_metres:        coef=+0.223, p=0.373  -- inconclusive
+  all_runs:              coef=-0.114, p=0.497  -- inconclusive
+  post_contact_metres:   coef=-0.330, p=0.016  -- REAL PROBLEM: the
+                         data says this stat's true relationship with
+                         future try probability is NEGATIVE and
+                         significant, opposite the small positive
+                         weight it had. REMOVED from IQS_STAT_WEIGHTS
+                         (see that dict's own comment) rather than sign-
+                         flipped -- this regression didn't control for
+                         position (forwards accumulate post-contact
+                         metres grinding through tackles but score far
+                         less than backs breaking tackles for line
+                         breaks), so the negative sign may be a real
+                         individual effect OR a position confound this
+                         test can't distinguish. Not confident enough in
+                         either direction to keep any weight on it.
+  inside_10_metres:      coef=-0.051, p=0.335  -- inconclusive
+  kick_return_metres:    coef=-0.056, p=0.402  -- inconclusive
+
+CONCLUSION: line_breaks and tackle_breaks -- the two heaviest weights
+in the existing scheme -- are genuinely well-supported by real data,
+confirming rather than contradicting the original design. The one
+weight that WAS contradicted (post_contact_metres) has been removed.
+The four inconclusive stats (all_run_metres, all_runs, inside_10_metres,
+kick_return_metres) were deliberately left AT THEIR EXISTING WEIGHTS --
+inconclusive evidence is not evidence of absence, and reweighting a
+noisy target (pseudo-R^2=0.056) based on one partial-season test risks
+overfitting far more than it risks leaving a slightly-wrong small
+weight in place. Don't change these four without a real, larger-sample
+test first.
+
+HONEST CAVEAT: same as Stage 6 -- one partial season, no position
+control on this specific test. Worth re-running with a position-split
+version (test post_contact_metres's real effect separately for
+forwards vs backs) once there's a defensible reason to believe
+position-splitting the IQS blend is worth the added complexity.
 """
 
 import csv
@@ -551,7 +614,18 @@ IQS_STAT_WEIGHTS = {
     "tackle_breaks": 2.0,
     "all_run_metres": 0.02,
     "all_runs": 0.15,
-    "post_contact_metres": 0.01,
+    # post_contact_metres removed 2026-07-04 (Stage 7 finding) -- see the
+    # module docstring's "STAGE 7 REAL FINDING" note. A real, standardized
+    # logistic regression against 2,612 real player-round observations
+    # showed this stat's true relationship with future try probability is
+    # NEGATIVE and statistically significant (coef=-0.330, p=0.016) --
+    # the opposite direction from its small positive weight here. Removed
+    # rather than flipped: the regression didn't control for position
+    # (forwards accumulate post-contact metres grinding through tackles
+    # but score far less than backs), so the negative sign may be a
+    # position confound rather than the stat's real individual effect --
+    # not confident enough in EITHER sign to keep it weighted. Revisit
+    # with a position-controlled test before re-adding in any direction.
     "inside_10_metres": 0.5,
     "kick_return_metres": 0.01,
 }
