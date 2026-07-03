@@ -464,39 +464,51 @@ def merge_try_minutes_into_rows(rows, try_minutes_agg):
 
 def extract_kickoff_times(driver, round_num):
     """
-    Extracts each match's AEST kickoff time from the draw page's link
-    elements -- the same elements used for match-URL discovery carry a text/
-    aria-label pattern like:
-        "Round 16 - Round 16 - Friday 19 Jun 10:00 am Knightshome TeamKnights
-         Dragonsaway TeamDragons"
-    which encodes kickoff time in UTC. Confirmed via cross-check against the
-    independently-sourced team-list page (2026-06-22): this text's time is
-    UTC, requiring a +10h conversion to AEST. See parse_draw_link_text.py
-    for the parser and its self-test.
+    Extracts each match's AEST kickoff time from the round-level draw
+    page's real match markup (the same page driver is already on when
+    this is called, right after match-URL discovery -- see call site).
 
     Returns a list of dicts: {round, home_team, away_team, kickoff_aest}.
     Best-effort -- if this fails, callers should treat it as "kickoff times
     unavailable this run," NOT as a reason to abort the whole scrape, since
     match-URL discovery (the more critical path) doesn't depend on this.
-    """
-    from parse_draw_link_text import parse_draw_link
 
-    results = []
+    REAL BUG FOUND AND FIXED 2026-07-03, via a real live Actions log
+    (Round 17's first genuine run through this code path -- it had never
+    actually executed live before): this function's body was written
+    against parse_draw_link_text.py's ORIGINAL interface
+    (`parse_draw_link(label)`, parsing Selenium element aria-label text).
+    That module was rewritten 2026-06-22 -- the same day this function
+    was added -- to a completely different, more robust interface:
+    `extract_kickoffs_from_html(page_html)`, which parses the page's raw
+    HTML via BeautifulSoup instead. This caller was never updated after
+    that rewrite. Confirmed real consequence: `ImportError: cannot
+    import name 'parse_draw_link' from 'parse_draw_link_text'` --
+    and because that import sat OUTSIDE this function's own try/except,
+    it crashed the ENTIRE round-17 scrape rather than degrading
+    gracefully, directly contradicting this function's own documented
+    "best-effort, non-fatal" intent. Both fixed together: the call now
+    matches parse_draw_link_text.py's actual, current, self-tested
+    interface (page_html via driver.page_source, taken while driver is
+    still on the draw page from the call site), and the import is moved
+    inside the try block so ANY future failure here -- import, parsing,
+    whatever -- degrades to "kickoff times unavailable this run" exactly
+    as originally documented, instead of taking down the whole scrape.
+    """
     try:
-        link_els = driver.find_elements(By.XPATH, "//a[contains(@href, '/draw/nrl-premiership/')]")
-        seen_pairs = set()
-        for el in link_els:
-            label = el.get_attribute("aria-label") or el.text or ""
-            parsed = parse_draw_link(label)
-            if parsed:
-                pair = (parsed["home_team"], parsed["away_team"])
-                if pair not in seen_pairs:
-                    seen_pairs.add(pair)
-                    results.append(parsed)
+        from parse_draw_link_text import extract_kickoffs_from_html
+        page_html = driver.page_source
+        results = extract_kickoffs_from_html(page_html)
+        # Defensive filter: extract_kickoffs_from_html returns every match
+        # div it finds on the page, keyed by the round number embedded in
+        # each match's own URL -- normally all of them belong to round_num
+        # since this is a round-specific draw page, but filtering here
+        # costs nothing and guards against a future page-structure change
+        # silently mixing in matches from an adjacent round.
+        return [r for r in results if r["round"] == round_num]
     except Exception as e:
         print(f"  Could not extract kickoff times (non-fatal): {e}")
-
-    return results
+        return []
 
 
 def click_team_tab(driver, team_name, is_away=False):
@@ -562,221 +574,223 @@ def click_team_tab(driver, team_name, is_away=False):
 # ============================================================
 # MAIN SCRAPE LOOP
 # ============================================================
-for round_num in ROUNDS_TO_SCRAPE:
-    print(f"\n=== Round {round_num} ===")
+try:
+    for round_num in ROUNDS_TO_SCRAPE:
+        print(f"\n=== Round {round_num} ===")
 
-    match_urls = FALLBACK_URLS.get(round_num, [])
-
-    if not match_urls:
-        draw_url = f"https://www.nrl.com/draw/?competition=111&round={round_num}&season={SEASON}"
-        try:
-            driver.set_page_load_timeout(30)  # fail fast instead of hanging for the default ~120s
-            driver.get(draw_url)
-        except Exception as e:
-            print(f"  Page load timed out or failed for {draw_url}: {e}")
-            continue
-
-        dismiss_cookie_banner(driver)
-        time.sleep(3)
-
-        # Detect nrl.com's own "not published yet" state before trying to find match links.
-        # Seen verbatim on the site for rounds whose draw hasn't been published/dated yet.
-        page_text = ""
-        try:
-            page_text = driver.find_element(By.TAG_NAME, "body").text
-        except Exception:
-            pass
-
-        if "couldn't load that draw" in page_text.lower() or "no data available" in page_text.lower():
-            print(f"  Round {round_num} draw is not yet available on nrl.com "
-                  f"(page reports no data for this round). Skipping -- try again closer to game day.")
-            continue
-
-        try:
-            link_els = driver.find_elements(By.XPATH, "//a[contains(@href, '/draw/nrl-premiership/')]")
-            match_urls = list(set([
-                el.get_attribute("href").split("#")[0].rstrip("/")
-                for el in link_els
-                if el.get_attribute("href") and "/round-" in el.get_attribute("href")
-            ]))
-        except Exception as e:
-            print(f"  Could not find match links: {e}")
-            save_failure_screenshot(driver, f"round{round_num}_no_match_links")
-            continue
-
-        # Best-effort: also capture kickoff times from this same page visit,
-        # so Job B (team-list polling) can know exactly when to check without
-        # a second browser session. Written as a sidecar file next to the
-        # main output -- failure here never blocks the main stats scrape.
-        kickoffs = extract_kickoff_times(driver, round_num)
-        if kickoffs:
-            import json
-            kickoff_path = os.path.join(os.path.dirname(OUTPUT_CSV) or ".",
-                                         f"round_{round_num}_kickoffs.json")
-            try:
-                with open(kickoff_path, "w") as f:
-                    json.dump(
-                        [{**k, "kickoff_aest": k["kickoff_aest"].isoformat()} for k in kickoffs],
-                        f, indent=2
-                    )
-                print(f"  Saved {len(kickoffs)} kickoff times to {kickoff_path}")
-            except Exception as e:
-                print(f"  Could not save kickoff times sidecar file (non-fatal): {e}")
+        match_urls = FALLBACK_URLS.get(round_num, [])
 
         if not match_urls:
-            print(f"  No match links found for round {round_num} even though the page loaded. "
-                  f"The draw page structure may have changed, or this round genuinely has no "
-                  f"fixtures published yet.")
-            continue
+            draw_url = f"https://www.nrl.com/draw/?competition=111&round={round_num}&season={SEASON}"
+            try:
+                driver.set_page_load_timeout(30)  # fail fast instead of hanging for the default ~120s
+                driver.get(draw_url)
+            except Exception as e:
+                print(f"  Page load timed out or failed for {draw_url}: {e}")
+                continue
 
-    print(f"  Scraping {len(match_urls)} matches")
-
-    for match_url in match_urls:
-        print(f"\n  Visiting: {match_url}")
-        try:
-            driver.set_page_load_timeout(30)
-            driver.get(match_url)
             dismiss_cookie_banner(driver)
-            time.sleep(4)
+            time.sleep(3)
 
+            # Detect nrl.com's own "not published yet" state before trying to find match links.
+            # Seen verbatim on the site for rounds whose draw hasn't been published/dated yet.
+            page_text = ""
             try:
-                slug = match_url.split("/")[-1]
-                parts = slug.split("-v-")
-                home_slug = parts[0].replace("-", " ").title() if parts else "Home"
-                away_slug = parts[1].replace("-", " ").title() if len(parts) > 1 else "Away"
-            except Exception:
-                home_slug, away_slug = "Home", "Away"
-
-            home_team, away_team = home_slug, away_slug
-            try:
-                team_els = driver.find_elements(By.CSS_SELECTOR, ".match-header__team-name")
-                if len(team_els) >= 2:
-                    home_team = team_els[0].text.strip()
-                    away_team = team_els[1].text.strip()
+                page_text = driver.find_element(By.TAG_NAME, "body").text
             except Exception:
                 pass
-            print(f"    {home_team} vs {away_team}")
 
-            # ── TRY MINUTES (Phase 4) ────────────────────────────────────────
-            # Captured here, BEFORE clicking into Player Stats, because the
-            # Tries summary box renders on the page's default/initial view
-            # (it sits above the News & Video / Play by Play / Team Lists /
-            # Team Stats / Player Stats tab row -- confirmed via real DevTools
-            # capture, Round 16, 2026-06-23). Best-effort: failure here must
-            # never block the main player-stats scrape, since that's the more
-            # critical data path.
-            try:
-                match_page_html = driver.page_source
-                parsed_tries = parse_try_minutes(match_page_html, team_aliases_path="team_aliases.json")
-                try_minutes_agg = aggregate_try_minutes(parsed_tries)
-                if try_minutes_agg:
-                    print(f"    Parsed {len(parsed_tries)} try entries from Tries summary box")
-                else:
-                    print(f"    No Tries summary box entries found (0-0 first half, or page structure differs)")
-            except Exception as e:
-                print(f"    Could not parse try minutes (non-fatal): {e}")
-                try_minutes_agg = {}
-
-            # Click Player Stats tab
-            try:
-                tab = wait.until(EC.element_to_be_clickable((
-                    By.XPATH, "//a[.//span[contains(text(),'Player Stats')]]"
-                )))
-                driver.execute_script("arguments[0].click();", tab)
-                time.sleep(3)
-            except Exception as e:
-                print(f"    Could not click Player Stats tab: {e}")
-                save_failure_screenshot(driver, f"round{round_num}_no_stats_tab")
+            if "couldn't load that draw" in page_text.lower() or "no data available" in page_text.lower():
+                print(f"  Round {round_num} draw is not yet available on nrl.com "
+                      f"(page reports no data for this round). Skipping -- try again closer to game day.")
                 continue
 
-            # Wait for table
             try:
-                wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "div#player-stats table")))
+                link_els = driver.find_elements(By.XPATH, "//a[contains(@href, '/draw/nrl-premiership/')]")
+                match_urls = list(set([
+                    el.get_attribute("href").split("#")[0].rstrip("/")
+                    for el in link_els
+                    if el.get_attribute("href") and "/round-" in el.get_attribute("href")
+                ]))
             except Exception as e:
-                print(f"    No table found: {e}")
+                print(f"  Could not find match links: {e}")
+                save_failure_screenshot(driver, f"round{round_num}_no_match_links")
                 continue
 
-            # ── HOME TEAM ─────────────────────────────────────────────────────
-            print(f"    Clicking home tab: {home_team}")
-            click_team_tab(driver, home_team, is_away=False)
+            # Best-effort: also capture kickoff times from this same page visit,
+            # so Job B (team-list polling) can know exactly when to check without
+            # a second browser session. Written as a sidecar file next to the
+            # main output -- failure here never blocks the main stats scrape.
+            kickoffs = extract_kickoff_times(driver, round_num)
+            if kickoffs:
+                import json
+                kickoff_path = os.path.join(os.path.dirname(OUTPUT_CSV) or ".",
+                                             f"round_{round_num}_kickoffs.json")
+                try:
+                    with open(kickoff_path, "w") as f:
+                        json.dump(
+                            [{**k, "kickoff_aest": k["kickoff_aest"].isoformat()} for k in kickoffs],
+                            f, indent=2
+                        )
+                    print(f"  Saved {len(kickoffs)} kickoff times to {kickoff_path}")
+                except Exception as e:
+                    print(f"  Could not save kickoff times sidecar file (non-fatal): {e}")
 
-            home_rows = []
-            tables = driver.find_elements(By.CSS_SELECTOR, "div#player-stats table")
-            print(f"    Found {len(tables)} tables")
-            for table in tables:
-                rows = extract_table(table, home_team, away_team, round_num)
-                if rows:
-                    home_rows = rows
-                    break
-            home_rows = merge_try_minutes_into_rows(home_rows, try_minutes_agg)
-            new_rows.extend(home_rows)
-            print(f"    Got {len(home_rows)} home rows for {home_team}")
-
-            # ── AWAY TEAM ─────────────────────────────────────────────────────
-            print(f"    Clicking away tab: {away_team}")
-            clicked = click_team_tab(driver, away_team, is_away=True)
-            if not clicked:
-                print(f"    WARNING: Could not click away tab — SKIPPING {away_team}")
+            if not match_urls:
+                print(f"  No match links found for round {round_num} even though the page loaded. "
+                      f"The draw page structure may have changed, or this round genuinely has no "
+                      f"fixtures published yet.")
                 continue
 
-            away_rows = []
-            tables = driver.find_elements(By.CSS_SELECTOR, "div#player-stats table")
-            for table in tables:
-                rows = extract_table(table, away_team, home_team, round_num)
-                if rows:
-                    away_rows = rows
-                    break
-            away_rows = merge_try_minutes_into_rows(away_rows, try_minutes_agg)
+        print(f"  Scraping {len(match_urls)} matches")
 
-            # Dedup guard
-            if away_rows and home_rows:
-                home_players = {r["player_name"] for r in home_rows}
-                away_players = {r["player_name"] for r in away_rows}
-                overlap_pct = len(home_players & away_players) / max(len(home_players), 1)
-                if overlap_pct > 0.5:
-                    print(f"    WARNING: Away data is duplicate ({overlap_pct:.0%} overlap) — DISCARDING")
-                    away_rows = []
-                else:
+        for match_url in match_urls:
+            print(f"\n  Visiting: {match_url}")
+            try:
+                driver.set_page_load_timeout(30)
+                driver.get(match_url)
+                dismiss_cookie_banner(driver)
+                time.sleep(4)
+
+                try:
+                    slug = match_url.split("/")[-1]
+                    parts = slug.split("-v-")
+                    home_slug = parts[0].replace("-", " ").title() if parts else "Home"
+                    away_slug = parts[1].replace("-", " ").title() if len(parts) > 1 else "Away"
+                except Exception:
+                    home_slug, away_slug = "Home", "Away"
+
+                home_team, away_team = home_slug, away_slug
+                try:
+                    team_els = driver.find_elements(By.CSS_SELECTOR, ".match-header__team-name")
+                    if len(team_els) >= 2:
+                        home_team = team_els[0].text.strip()
+                        away_team = team_els[1].text.strip()
+                except Exception:
+                    pass
+                print(f"    {home_team} vs {away_team}")
+
+                # ── TRY MINUTES (Phase 4) ────────────────────────────────────────
+                # Captured here, BEFORE clicking into Player Stats, because the
+                # Tries summary box renders on the page's default/initial view
+                # (it sits above the News & Video / Play by Play / Team Lists /
+                # Team Stats / Player Stats tab row -- confirmed via real DevTools
+                # capture, Round 16, 2026-06-23). Best-effort: failure here must
+                # never block the main player-stats scrape, since that's the more
+                # critical data path.
+                try:
+                    match_page_html = driver.page_source
+                    parsed_tries = parse_try_minutes(match_page_html, team_aliases_path="team_aliases.json")
+                    try_minutes_agg = aggregate_try_minutes(parsed_tries)
+                    if try_minutes_agg:
+                        print(f"    Parsed {len(parsed_tries)} try entries from Tries summary box")
+                    else:
+                        print(f"    No Tries summary box entries found (0-0 first half, or page structure differs)")
+                except Exception as e:
+                    print(f"    Could not parse try minutes (non-fatal): {e}")
+                    try_minutes_agg = {}
+
+                # Click Player Stats tab
+                try:
+                    tab = wait.until(EC.element_to_be_clickable((
+                        By.XPATH, "//a[.//span[contains(text(),'Player Stats')]]"
+                    )))
+                    driver.execute_script("arguments[0].click();", tab)
+                    time.sleep(3)
+                except Exception as e:
+                    print(f"    Could not click Player Stats tab: {e}")
+                    save_failure_screenshot(driver, f"round{round_num}_no_stats_tab")
+                    continue
+
+                # Wait for table
+                try:
+                    wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "div#player-stats table")))
+                except Exception as e:
+                    print(f"    No table found: {e}")
+                    continue
+
+                # ── HOME TEAM ─────────────────────────────────────────────────────
+                print(f"    Clicking home tab: {home_team}")
+                click_team_tab(driver, home_team, is_away=False)
+
+                home_rows = []
+                tables = driver.find_elements(By.CSS_SELECTOR, "div#player-stats table")
+                print(f"    Found {len(tables)} tables")
+                for table in tables:
+                    rows = extract_table(table, home_team, away_team, round_num)
+                    if rows:
+                        home_rows = rows
+                        break
+                home_rows = merge_try_minutes_into_rows(home_rows, try_minutes_agg)
+                new_rows.extend(home_rows)
+                print(f"    Got {len(home_rows)} home rows for {home_team}")
+
+                # ── AWAY TEAM ─────────────────────────────────────────────────────
+                print(f"    Clicking away tab: {away_team}")
+                clicked = click_team_tab(driver, away_team, is_away=True)
+                if not clicked:
+                    print(f"    WARNING: Could not click away tab — SKIPPING {away_team}")
+                    continue
+
+                away_rows = []
+                tables = driver.find_elements(By.CSS_SELECTOR, "div#player-stats table")
+                for table in tables:
+                    rows = extract_table(table, away_team, home_team, round_num)
+                    if rows:
+                        away_rows = rows
+                        break
+                away_rows = merge_try_minutes_into_rows(away_rows, try_minutes_agg)
+
+                # Dedup guard
+                if away_rows and home_rows:
+                    home_players = {r["player_name"] for r in home_rows}
+                    away_players = {r["player_name"] for r in away_rows}
+                    overlap_pct = len(home_players & away_players) / max(len(home_players), 1)
+                    if overlap_pct > 0.5:
+                        print(f"    WARNING: Away data is duplicate ({overlap_pct:.0%} overlap) — DISCARDING")
+                        away_rows = []
+                    else:
+                        new_rows.extend(away_rows)
+                        print(f"    Got {len(away_rows)} away rows for {away_team}")
+                elif away_rows:
                     new_rows.extend(away_rows)
                     print(f"    Got {len(away_rows)} away rows for {away_team}")
-            elif away_rows:
-                new_rows.extend(away_rows)
-                print(f"    Got {len(away_rows)} away rows for {away_team}")
-            else:
-                print(f"    No away rows captured for {away_team}")
+                else:
+                    print(f"    No away rows captured for {away_team}")
 
-            # ── TRY MINUTES VALIDATION (Phase 4) ─────────────────────────────
-            # Cross-checks parsed try_minutes counts against this match's own
-            # `tries` column, per the validation gap flagged in STATUS.md
-            # ("no validation cross-check against the existing tries column
-            # count exists yet"). Never silently trusts a clean-looking parse.
-            # A failure here is logged loudly but does NOT abort the scrape --
-            # the underlying player-stats data (tries, points, etc.) is still
-            # good even if try_minutes attribution has an issue this match.
-            try:
-                this_match_rows = [r for r in (home_rows + away_rows) if r.get("tries")]
-                if this_match_rows and try_minutes_agg:
-                    validation = validate_try_minutes(parsed_tries, this_match_rows)
-                    if validation["ok"]:
-                        print(f"    Try-minute validation: OK ({len(parsed_tries)} tries matched)")
-                    else:
-                        print(f"    Try-minute validation: MISMATCH — review needed")
-                        if validation["mismatches"]:
-                            print(f"      Count mismatches: {validation['mismatches']}")
-                        if validation["unmatched_team_names"]:
-                            print(f"      Unresolved team names: {validation['unmatched_team_names']}")
-                        if validation["unparsed_entries"]:
-                            print(f"      Unparsed li entries (unexpected minute format?): {validation['unparsed_entries']}")
+                # ── TRY MINUTES VALIDATION (Phase 4) ─────────────────────────────
+                # Cross-checks parsed try_minutes counts against this match's own
+                # `tries` column, per the validation gap flagged in STATUS.md
+                # ("no validation cross-check against the existing tries column
+                # count exists yet"). Never silently trusts a clean-looking parse.
+                # A failure here is logged loudly but does NOT abort the scrape --
+                # the underlying player-stats data (tries, points, etc.) is still
+                # good even if try_minutes attribution has an issue this match.
+                try:
+                    this_match_rows = [r for r in (home_rows + away_rows) if r.get("tries")]
+                    if this_match_rows and try_minutes_agg:
+                        validation = validate_try_minutes(parsed_tries, this_match_rows)
+                        if validation["ok"]:
+                            print(f"    Try-minute validation: OK ({len(parsed_tries)} tries matched)")
+                        else:
+                            print(f"    Try-minute validation: MISMATCH — review needed")
+                            if validation["mismatches"]:
+                                print(f"      Count mismatches: {validation['mismatches']}")
+                            if validation["unmatched_team_names"]:
+                                print(f"      Unresolved team names: {validation['unmatched_team_names']}")
+                            if validation["unparsed_entries"]:
+                                print(f"      Unparsed li entries (unexpected minute format?): {validation['unparsed_entries']}")
+                except Exception as e:
+                    print(f"    Try-minute validation failed to run (non-fatal): {e}")
+
             except Exception as e:
-                print(f"    Try-minute validation failed to run (non-fatal): {e}")
+                print(f"    Error processing match: {e}")
+                traceback.print_exc()
+                continue
 
-        except Exception as e:
-            print(f"    Error processing match: {e}")
-            traceback.print_exc()
-            continue
-
-driver.quit()
-print("\nBrowser closed.")
+finally:
+    driver.quit()
+    print("\nBrowser closed.")
 
 # ============================================================
 # SAVE
