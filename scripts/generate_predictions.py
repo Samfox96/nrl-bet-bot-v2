@@ -1250,3 +1250,26 @@ if __name__ == "__main__":
     print(f"Written to {path}")
     print(f"Written to {json_path}")
     print(f"Archived to {archive_path}")
+
+    # Stage 4 + 5: decision engine (best-effort -- a failure here does NOT
+    # block the predictions email; betting_decisions.json is advisory only).
+    # manual_notes.json provides the Stage 5 intangibles layer: declared,
+    # auditable adjustments that sit outside the model's own probability
+    # output and are applied transparently at the decision layer only.
+    try:
+        from decision_engine import build_decisions, write_decisions
+        manual_notes_path = os.path.join(args.data_dir, "manual_notes.json")
+        decisions = build_decisions(json_path, manual_notes_path)
+        decisions_path = os.path.join(args.data_dir, "betting_decisions.json")
+        write_decisions(decisions, decisions_path)
+        s = decisions["summary"]
+        if s["status"] == "NO_POSITIVE_EV_BETS_FOUND":
+            print("Decision engine: NO +EV BETS FOUND this round.")
+        else:
+            print(f"Decision engine: {s['total_bets']} bets, "
+                  f"total stake {s['total_stake_fraction']:.3f} units -> {decisions_path}")
+    except Exception as _de_err:
+        # Best-effort: log but do not propagate -- predictions are already
+        # written and archived, so a decision-engine failure is recoverable.
+        import sys as _sys
+        print(f"Decision engine skipped (best-effort): {_de_err}", file=_sys.stderr)
