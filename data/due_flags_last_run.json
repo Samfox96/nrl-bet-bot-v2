@@ -6,53 +6,17 @@
       "player_name": "Greg Marzhew",
       "team": "Newcastle Knights",
       "position_code": "WG",
-      "season_tpg": 1.154,
-      "recent_tpg": 0.5,
+      "season_tpg": 1.071,
+      "recent_tpg": 0.25,
       "opponent_this_round": "Dolphins",
-      "composite_score": 0.567,
+      "composite_score": 0.555,
       "weight_coverage": 0.999,
       "factors": {
         "drought": 1,
         "opponent_matchup": 0.23,
-        "team_form": 0.0,
-        "usage_trend": 0.035,
-        "structure_share": 0.079
-      },
-      "structure_share_is_approximate": true
-    },
-    {
-      "player_name": "Blaize Talagi",
-      "team": "Penrith Panthers",
-      "position_code": "FE",
-      "season_tpg": 0.357,
-      "recent_tpg": 0.0,
-      "opponent_this_round": "South Sydney Rabbitohs",
-      "composite_score": 0.56,
-      "weight_coverage": 0.999,
-      "factors": {
-        "drought": 0.595,
-        "opponent_matchup": 0.966,
-        "team_form": 0.127,
-        "usage_trend": 0.126,
-        "structure_share": 0.004
-      },
-      "structure_share_is_approximate": true
-    },
-    {
-      "player_name": "Sualauvi Faalogo",
-      "team": "Melbourne Storm",
-      "position_code": "FB",
-      "season_tpg": 0.867,
-      "recent_tpg": 0.25,
-      "opponent_this_round": null,
-      "composite_score": 0.539,
-      "weight_coverage": 0.749,
-      "factors": {
-        "drought": 1,
-        "opponent_matchup": null,
-        "team_form": 0.174,
-        "usage_trend": 0.247,
-        "structure_share": 0.044
+        "team_form": -0.437,
+        "usage_trend": 0.194,
+        "structure_share": 0.212
       },
       "structure_share_is_approximate": true
     },
@@ -75,20 +39,56 @@
       "structure_share_is_approximate": true
     },
     {
-      "player_name": "Ronald Volkman",
-      "team": "Parramatta Eels",
-      "position_code": "HB",
+      "player_name": "Blaize Talagi",
+      "team": "Penrith Panthers",
+      "position_code": "FE",
       "season_tpg": 0.333,
       "recent_tpg": 0.0,
-      "opponent_this_round": "Manly-Warringah Sea Eagles",
-      "composite_score": 0.457,
+      "opponent_this_round": "South Sydney Rabbitohs",
+      "composite_score": 0.523,
       "weight_coverage": 0.999,
       "factors": {
         "drought": 0.556,
-        "opponent_matchup": 0.514,
-        "team_form": -0.519,
-        "usage_trend": 0.5,
-        "structure_share": 0.63
+        "opponent_matchup": 0.966,
+        "team_form": -0.056,
+        "usage_trend": 0.209,
+        "structure_share": -0.112
+      },
+      "structure_share_is_approximate": true
+    },
+    {
+      "player_name": "Dominic Young",
+      "team": "Newcastle Knights",
+      "position_code": "WG",
+      "season_tpg": 0.933,
+      "recent_tpg": 0.0,
+      "opponent_this_round": "Dolphins",
+      "composite_score": 0.512,
+      "weight_coverage": 0.999,
+      "factors": {
+        "drought": 1,
+        "opponent_matchup": 0.23,
+        "team_form": -0.437,
+        "usage_trend": -0.06,
+        "structure_share": -0.046
+      },
+      "structure_share_is_approximate": true
+    },
+    {
+      "player_name": "Sualauvi Faalogo",
+      "team": "Melbourne Storm",
+      "position_code": "FB",
+      "season_tpg": 0.812,
+      "recent_tpg": 0.25,
+      "opponent_this_round": null,
+      "composite_score": 0.486,
+      "weight_coverage": 0.749,
+      "factors": {
+        "drought": 0.938,
+        "opponent_matchup": null,
+        "team_form": 0.057,
+        "usage_trend": 0.175,
+        "structure_share": -0.024
       },
       "structure_share_is_approximate": true
     }
