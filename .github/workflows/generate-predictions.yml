@@ -115,7 +115,7 @@ jobs:
         run: |
           git config user.name "nrl-bot-automation"
           git config user.email "actions@github.com"
-          git add data/predictions_current.csv data/predictions_current.json
+          git add data/predictions_current.csv data/predictions_current.json data/predictions_history/
           git commit -m "Auto-generate predictions for round ${{ steps.round.outputs.round }}" || echo "Nothing to commit"
           git push
 
