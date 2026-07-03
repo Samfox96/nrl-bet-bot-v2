@@ -73,7 +73,20 @@ jobs:
       - name: Install dependencies
         if: env.RESEND_ROUND == ''
         run: |
-          pip install pandas selenium webdriver-manager
+          # beautifulsoup4 added 2026-07-03 -- REAL ROOT CAUSE of the
+          # Round 17 scrape failure: nrl_update_single_round.py imports
+          # parse_try_minutes.py at module level (added 2026-06-23 for
+          # Phase 4 try_minute capture), and parse_try_minutes.py
+          # imports bs4. This step never installed it, so the scraper
+          # crashed at import time -- before FALLBACK_URLS or any round
+          # logic ever ran. Confirmed via local reproduction: running
+          # the scraper with exactly this step's pre-fix dependency set
+          # raises "ModuleNotFoundError: No module named 'bs4'" and
+          # exits 1. generate-predictions.yml already had this exact
+          # fix applied 2026-06-24 for the same reason (its own
+          # parse_team_list.py -> bs4 chain) -- this brings Job A's
+          # install step to parity with that one.
+          pip install pandas selenium webdriver-manager beautifulsoup4
 
       - name: Install Chrome
         if: env.RESEND_ROUND == ''
@@ -117,7 +130,26 @@ jobs:
 
       - name: Validate and merge
         id: validate_merge
-        if: env.RESEND_ROUND == ''
+        # REAL BUG FOUND AND FIXED 2026-07-03: this step was missing
+        # `steps.scrape.outcome == 'success'` -- the match-results
+        # equivalent below ("Validate and merge match results") already
+        # has this exact gate, this one never did. Confirmed real
+        # consequence: when the scrape step crashed (bs4 missing, see
+        # Install dependencies step above), this step still ran,
+        # merge_round.py found no pending file and exited 0 ("nothing
+        # to merge" treated as success), which made
+        # steps.validate_merge.outcome == 'success' true anyway --
+        # silently firing the digest for "Round 17" off stale Round 16
+        # data. Confirmed via real commit history: a due-flags snapshot
+        # and a nrl_master-unchanged commit both landed the same run
+        # the scrape failure issue was opened. Adding the scrape-
+        # success gate here (mirroring the match-results step) means a
+        # failed scrape now correctly skips merge/digest entirely
+        # rather than reaching merge_round.py's benign "nothing to do"
+        # path. merge_round.py itself is also hardened separately (see
+        # its own docstring) so this can't recur even if this gate is
+        # ever removed again.
+        if: env.RESEND_ROUND == '' && steps.scrape.outcome == 'success'
         continue-on-error: true
         run: |
           python3 scripts/merge_round.py
