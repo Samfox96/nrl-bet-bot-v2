@@ -331,6 +331,36 @@ def build_digest(master_csv_path, round_num, season,
 
     round_rows = [r for r in master_rows if r["round"] == str(round_num) and r["season"] == str(season)]
 
+    # REAL, CONTENT-BASED CHECKPOINT added 2026-07-03, after a confirmed
+    # real incident: the Round 17 scrape crashed (missing bs4 import,
+    # see nrl_update_single_round.py), but merge_round.py's own
+    # "nothing to merge" path exited 0, which the workflow's step-
+    # outcome gating treated as a genuine success -- so this function
+    # got called with round_num=17 while nrl_master.csv was still only
+    # populated through Round 16. Nothing before this line would have
+    # caught that: round_rows would just come back empty, and the rest
+    # of this function's sections (built from season_averages etc.)
+    # would silently render a mostly-hollow digest under the WRONG
+    # round's label rather than failing loudly. Two separate real fixes
+    # already close the specific Round 17 path (the missing dependency,
+    # and a new scrape-success gate on the merge step in
+    # weekly-update.yml) -- this check exists as the actual content-
+    # based backstop per the project's own stated principle: every
+    # checkpoint should verify the real data looks right, not just that
+    # the prior step didn't raise. If this function is ever called with
+    # a round that genuinely has zero rows in nrl_master.csv, that is
+    # itself the bug signal, regardless of how it got called that way.
+    if not round_rows:
+        raise RuntimeError(
+            f"build_digest called for round {round_num} (season {season}), but "
+            f"nrl_master.csv has zero rows for that round/season combination. "
+            f"This almost always means the round hasn't actually been merged yet "
+            f"(a scrape or merge step upstream silently no-op'd or failed) -- "
+            f"refusing to build a digest that would describe a round with no "
+            f"real underlying data. Check that nrl_master.csv's max round is "
+            f"genuinely >= {round_num} before calling this again."
+        )
+
     season_averages = build_season_averages(master_rows, season, up_to_round=round_num)
 
     try:
