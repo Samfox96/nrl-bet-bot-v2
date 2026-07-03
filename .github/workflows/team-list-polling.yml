@@ -62,6 +62,35 @@ name: Team List Polling (Job B)
 # early April and early October) -- this cron is tuned for AEST
 # (winter, no daylight saving, current as of 2026-06-25). Worth
 # revisiting if this is still running come October.
+#
+# P7 DECISION 2026-07-03 -- reviewed, DELIBERATELY NOT migrated to
+# cron-job.org (the audit asked to either migrate this Tuesday trigger
+# the way the kickoff triggers were, OR confirm it's not worth it).
+# Confirmed not worth it, for real reasons:
+#   - Unlike the kickoff triggers, this job's timing is NOT critical.
+#     Those fire 1h before kickoff to catch late lineups, so GitHub
+#     cron's real 1-5h drift could push them PAST kickoff -- a genuine
+#     correctness bug. This job just captures the round's initial team
+#     list (~4pm Tue) for a round whose earliest match is Thu night --
+#     a ~48h cushion. Even GitHub cron's worst observed drift (4h late)
+#     still lands the list Tue evening, ~48h before it's needed, and
+#     the --hours-before 96 window below is deliberately wide enough to
+#     absorb exactly this.
+#   - cron-job.org's free tier has a finite job budget (~190/season,
+#     already largely spent on the per-kickoff triggers). Spending more
+#     of it on a standing weekly job that gains no timing benefit is a
+#     poor trade.
+#   - It would add a second external dependency + credential path to a
+#     job that currently needs neither -- more failure surface, for a
+#     job whose failure has a 48h recovery cushion anyway.
+#   - Migrating wouldn't even fix the DST drift noted above: any
+#     fixed-time scheduler has the same daylight-saving problem, and a
+#     1h drift on a 48h cushion is harmless regardless.
+# If a future session wants everything on one scheduler for
+# consistency, the migration is straightforward (mirror
+# schedule_kickoff_triggers.py's idempotent pattern) -- but it should
+# be a deliberate consistency choice, not treated as a bug fix, because
+# there is no real timing defect here to fix.
 on:
   workflow_dispatch: {}
   schedule:
