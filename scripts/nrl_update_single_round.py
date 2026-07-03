@@ -680,7 +680,28 @@ try:
                 # critical data path.
                 try:
                     match_page_html = driver.page_source
-                    parsed_tries = parse_try_minutes(match_page_html, team_aliases_path="team_aliases.json")
+                    # REAL BUG FOUND AND FIXED 2026-07-03, via a real live
+                    # Actions log: this passed the bare filename
+                    # "team_aliases.json", but weekly-update.yml runs this
+                    # script from the repo root (git checkout puts
+                    # everything there), where the real file only exists
+                    # at data/team_aliases.json. Confirmed real
+                    # consequence: every single match in the Round 17 run
+                    # logged "Could not parse try minutes (non-fatal):
+                    # [Errno 2] No such file or directory:
+                    # 'team_aliases.json'" -- caught only because the
+                    # surrounding try/except correctly treated it as
+                    # non-fatal (per this block's own design), not because
+                    # the path was right. try_minutes silently never
+                    # populated as a result. Checked parse_try_minutes.py's
+                    # own __main__ self-test block for the same bare
+                    # filename -- that one is a deliberate, documented
+                    # local-testing convention (files kept alongside the
+                    # script for ad-hoc runs) and is NOT a live production
+                    # code path, so left untouched. This call site is the
+                    # only real production caller and is the one that
+                    # actually broke.
+                    parsed_tries = parse_try_minutes(match_page_html, team_aliases_path="data/team_aliases.json")
                     try_minutes_agg = aggregate_try_minutes(parsed_tries)
                     if try_minutes_agg:
                         print(f"    Parsed {len(parsed_tries)} try entries from Tries summary box")
