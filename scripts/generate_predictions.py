@@ -823,7 +823,18 @@ def generate_round_predictions(season, up_to_round, the_odds_api_key, data_dir="
             continue
 
         h2h_odds = extract_h2h_for_consensus(odds_response, team_aliases=team_aliases)
-        try_scorer_odds = extract_try_scorer_odds(odds_response)
+        try_scorer_odds_all = extract_try_scorer_odds(odds_response)
+        # Filter try-scorer odds to Sportsbet only (2026-07-04).
+        # Sam bets exclusively on Sportsbet, so edge calculations against
+        # other bookmakers produce entries he can't act on. Filtering at
+        # source means one clean price per player in the decision engine
+        # output rather than one row per (player, bookmaker). H2H consensus
+        # stays multi-book -- de-margining is more accurate with more books.
+        # This does NOT reduce API credit cost (cost scales with markets x
+        # regions, not bookmakers); it only cleans up the output.
+        PREFERRED_BOOKMAKER = "sportsbet"
+        try_scorer_odds = {PREFERRED_BOOKMAKER: try_scorer_odds_all[PREFERRED_BOOKMAKER]} \
+            if PREFERRED_BOOKMAKER in try_scorer_odds_all else try_scorer_odds_all
 
         # --- h2h via nrl_elo.py ---
         home_short = full_to_short.get(home_full)

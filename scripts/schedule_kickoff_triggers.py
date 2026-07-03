@@ -43,6 +43,7 @@ job before trusting this with real match data.
 import os
 import sys
 import time
+import json
 import argparse
 import requests
 from datetime import datetime, timedelta
@@ -149,7 +150,19 @@ def create_cronjob_trigger(api_key, github_token, round_num, match, trigger_dt):
                     "Accept": "application/vnd.github+json",
                     "X-GitHub-Api-Version": "2022-11-28",
                 },
-                "body": '{"ref":"main"}',
+                "body": json.dumps({
+                    "ref": "main",
+                    "inputs": {
+                        # Passed to team-list-polling.yml's closing odds
+                        # capture step (capture_closing_odds.py, Stage 4
+                        # CLV capture, added 2026-07-04). Canonical team
+                        # names so capture_closing_odds.py can pass them
+                        # straight to resolve_event_for_fixture().
+                        "fixture": f"{match['home_team']} v {match['away_team']}",
+                        "round": str(round_num),
+                        "season": "2026",
+                    },
+                }),
             },
         }
     }
