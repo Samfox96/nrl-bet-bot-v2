@@ -10,8 +10,9 @@ name: Schedule Kickoff Triggers (cron-job.org)
 # before the first match of the round, so there's a comfortable window.
 # Team lists are typically published a few days before a round starts
 # (confirmed: Round 16's list published 2026-06-16 for a round starting
-# 2026-06-18). Running this every Tuesday and Wednesday gives two chances
-# to catch a freshly-published list even if one day's run is early.
+# 2026-06-18). Running this on two mornings (Wednesday and Thursday AEST --
+# see the cron comments below for why the day-of-week fields say 2/3) gives
+# two chances to catch a freshly-published list even if one day's run is early.
 #
 # What it actually does (schedule_kickoff_triggers.py):
 #   1. Finds the current round's team-list article and extracts every
@@ -27,8 +28,8 @@ name: Schedule Kickoff Triggers (cron-job.org)
 # this real weekly version was wired in.
 on:
   schedule:
-    - cron: '17 20 * * 2'  # Tuesday ~6:17am AEST (offset off :00 to avoid GitHub's queueing pile-up)
-    - cron: '17 20 * * 3'  # Wednesday ~6:17am AEST, second chance in case Tuesday's list isn't out yet
+    - cron: '17 20 * * 2'  # Wed ~6:17am AEST -- NOTE: cron day-of-week 2 is Tuesday in UTC, but 20:17 UTC + 10h AEST rolls over to WEDNESDAY morning AEST. Comment corrected 2026-07-03 (was mislabelled "Tuesday"). Behaviour unchanged and confirmed working -- only the label was wrong. (:17 offset avoids GitHub's on-the-hour queueing pile-up.)
+    - cron: '17 20 * * 3'  # Thu ~6:17am AEST -- likewise cron day 3 is Wednesday UTC, firing THURSDAY morning AEST after the +10h rollover. Second chance in case the first run was before the team list was published. Comment corrected 2026-07-03 (was mislabelled "Wednesday").
   workflow_dispatch: {}
 
 jobs:
