@@ -1,0 +1,6 @@
+{
+  "_comment": "Stage 5 intangibles layer. Adjustments here are applied transparently at the decision layer ONLY -- they never alter model probabilities. Each entry is auditable: committed to the repo, shown in betting_decisions.json's manual_note field, and visible in the weekly email. Delete or zero-out entries each week; do not carry stale notes forward. An absent or empty notes list is valid -- the engine runs without adjustment.",
+  "round": 18,
+  "season": 2026,
+  "notes": []
+}
