@@ -1,221 +1,316 @@
 player_name,team,opponent,position,jersey_number,round,season
-Dylan Edwards,Panthers,,Fullback,1,18,2026
-Jye Gray,Rabbitohs,,Fullback,1,18,2026
-Thomas Jenkins,Panthers,,Winger,2,18,2026
-Dayne Jennings,Rabbitohs,,Winger,2,18,2026
-Izack Tago,Panthers,,Centre,3,18,2026
-Latrell Siegwalt,Rabbitohs,,Centre,3,18,2026
-Paul Alamoti,Panthers,,Centre,4,18,2026
-Jack Wighton,Rabbitohs,,Centre,4,18,2026
-Brian To'o,Panthers,,Winger,5,18,2026
-Edward Kosi,Rabbitohs,,Winger,5,18,2026
-Blaize Talagi,Panthers,,Five-Eighth,6,18,2026
-Cody Walker,Rabbitohs,,Five-Eighth,6,18,2026
-Jack Cogger,Panthers,,Halfback,7,18,2026
-Ashton Ward,Rabbitohs,,Halfback,7,18,2026
-Moses Leota,Panthers,,Prop,8,18,2026
-Tevita Tatola,Rabbitohs,,Prop,8,18,2026
-Freddy Lussick,Panthers,,Hooker,9,18,2026
-Brandon Smith,Rabbitohs,,Hooker,9,18,2026
-Liam Henry,Panthers,,Prop,10,18,2026
-Keaon Koloamatangi,Rabbitohs,,Prop,10,18,2026
-Scott Sorensen,Panthers,,2nd Row,11,18,2026
-David Fifita,Rabbitohs,,2nd Row,11,18,2026
-Luke Garner,Panthers,,2nd Row,12,18,2026
-Tallis Duncan,Rabbitohs,,2nd Row,12,18,2026
-Lindsay Smith,Panthers,,Lock,13,18,2026
-Lachlan Hubner,Rabbitohs,,Lock,13,18,2026
-Billy Scott,Panthers,,Interchange,14,18,2026
-Jamie Humphreys,Rabbitohs,,Interchange,14,18,2026
-Kalani Leuluai-Going,Panthers,,Interchange,15,18,2026
-Euan Aitken,Rabbitohs,,Interchange,15,18,2026
-Billy Phillips,Panthers,,Interchange,16,18,2026
-Liam Le Blanc,Rabbitohs,,Interchange,16,18,2026
-Luron Patea,Panthers,,Interchange,17,18,2026
-John Radel,Rabbitohs,,Interchange,17,18,2026
-Jack Cole,Panthers,,Interchange,18,18,2026
-Matthew Dufty,Rabbitohs,,Interchange,18,18,2026
-Sione Fonua,Panthers,,Interchange,19,18,2026
-Jayden Sullivan,Rabbitohs,,Interchange,19,18,2026
-Zakauri Clarke,Panthers,,Reserve,20,18,2026
-Moala Graham-Taufa,Rabbitohs,,Reserve,20,18,2026
-Jaxen Edgar,Panthers,,Reserve,21,18,2026
-Peter Mamouzelos,Rabbitohs,,Reserve,21,18,2026
-Tom Ale,Panthers,,Reserve,23,18,2026
-Thomas Fletcher,Rabbitohs,,Reserve,22,18,2026
-Clinton Gutherson,Dragons,,Fullback,1,18,2026
-Jahream Bula,Wests Tigers,,Fullback,1,18,2026
-Setu Tu,Dragons,,Winger,2,18,2026
-Sunia Turuva,Wests Tigers,,Winger,2,18,2026
-Mathew Feagai,Dragons,,Centre,3,18,2026
-Heamasi Makasini,Wests Tigers,,Centre,3,18,2026
-Valentine Holmes,Dragons,,Centre,4,18,2026
-Starford To'a,Wests Tigers,,Centre,4,18,2026
-Tyrell Sloan,Dragons,,Winger,5,18,2026
-Jeral Skelton,Wests Tigers,,Winger,5,18,2026
-Daniel Atkinson,Dragons,,Five-Eighth,6,18,2026
-Jock Madden,Wests Tigers,,Five-Eighth,6,18,2026
-Kyle Flanagan,Dragons,,Halfback,7,18,2026
-Adam Doueihi,Wests Tigers,,Halfback,7,18,2026
-Loko Jnr Pasifiki Tonga,Dragons,,Prop,8,18,2026
-Terrell May,Wests Tigers,,Prop,8,18,2026
-Damien Cook,Dragons,,Hooker,9,18,2026
-Apisai Koroisau,Wests Tigers,,Hooker,9,18,2026
-Toby Couchman,Dragons,,Prop,10,18,2026
-Fonua Pole,Wests Tigers,,Prop,10,18,2026
-Dylan Egan,Dragons,,2nd Row,11,18,2026
-Tony Sukkar,Wests Tigers,,2nd Row,11,18,2026
-Hamish Stewart,Dragons,,2nd Row,12,18,2026
-Sione Fainu,Wests Tigers,,2nd Row,12,18,2026
-Ryan Couchman,Dragons,,Lock,13,18,2026
-Alex Twal,Wests Tigers,,Lock,13,18,2026
-Jacob Liddle,Dragons,,Interchange,14,18,2026
-Josese Lanyon,Wests Tigers,,Interchange,14,18,2026
-Luciano Leilua,Dragons,,Interchange,15,18,2026
-Bunty Afoa,Wests Tigers,,Interchange,15,18,2026
-Josh Kerr,Dragons,,Interchange,16,18,2026
-Alex Seyfarth,Wests Tigers,,Interchange,16,18,2026
-Emre Guler,Dragons,,Interchange,17,18,2026
-Latu Fainu,Wests Tigers,,Interchange,17,18,2026
-Jacob Halangahu,Dragons,,Interchange,18,18,2026
-Faaletino Tavana,Wests Tigers,,Interchange,18,18,2026
-Lyhkan King-Togia,Dragons,,Interchange,19,18,2026
-Charlie Murray,Wests Tigers,,Interchange,19,18,2026
-Hame Sele,Dragons,,Reserve,20,18,2026
-Javon Andrews,Wests Tigers,,Reserve,20,18,2026
-Moses Suli,Dragons,,Reserve,21,18,2026
-Heath Mason,Wests Tigers,,Reserve,21,18,2026
-Christian Tuipulotu,Dragons,,Reserve,22,18,2026
-Mavrik Geyer,Wests Tigers,,Reserve,22,18,2026
-Hayze Perham,Broncos,,Fullback,1,18,2026
-William Kennedy,Sharks,,Fullback,1,18,2026
-Grant Anderson,Broncos,,Winger,2,18,2026
-Sione Katoa,Sharks,,Winger,2,18,2026
-Kotoni Staggs,Broncos,,Centre,3,18,2026
-Jesse Ramien,Sharks,,Centre,3,18,2026
-Gehamat Shibasaki,Broncos,,Centre,4,18,2026
-KL Iro,Sharks,,Centre,4,18,2026
-Deine Mariner,Broncos,,Winger,5,18,2026
-Ronaldo Mulitalo,Sharks,,Winger,5,18,2026
-Thomas Duffy,Broncos,,Five-Eighth,6,18,2026
-Braydon Trindall,Sharks,,Five-Eighth,6,18,2026
-Ben Hunt,Broncos,,Halfback,7,18,2026
-Nicholas Hynes,Sharks,,Halfback,7,18,2026
-Va'a Semu,Broncos,,Prop,8,18,2026
-Thomas Hazelton,Sharks,,Prop,8,18,2026
-Cory Paix,Broncos,,Hooker,9,18,2026
-Jayden Berrell,Sharks,,Hooker,9,18,2026
-Preston Riki,Broncos,,Prop,10,18,2026
-Jesse Colquhoun,Sharks,,Prop,10,18,2026
-Brendan Piakura,Broncos,,2nd Row,11,18,2026
-Billy Burns,Sharks,,2nd Row,11,18,2026
-Jordan Riki,Broncos,,2nd Row,12,18,2026
-Teig Wilton,Sharks,,2nd Row,12,18,2026
-Xavier Willison,Broncos,,Lock,13,18,2026
-Cameron McInnes,Sharks,,Lock,13,18,2026
-Blake Mozer,Broncos,,Interchange,14,18,2026
-Hohepa Puru,Sharks,,Interchange,14,18,2026
-Ben Talty,Broncos,,Interchange,15,18,2026
-Oregon Kaufusi,Sharks,,Interchange,15,18,2026
-Jaiyden Hunt,Broncos,,Interchange,16,18,2026
-Siosifa Talakai,Sharks,,Interchange,16,18,2026
-Jesse Arthars,Broncos,,Interchange,17,18,2026
-Tuku Hau Tapuha,Sharks,,Interchange,17,18,2026
-Josh Rogers,Broncos,,Interchange,18,18,2026
-Mawene Hiroti,Sharks,,Interchange,18,18,2026
-Luke Gale,Broncos,,Interchange,19,18,2026
-Harrison Hassett,Sharks,,Interchange,19,18,2026
-Joshua Coric,Broncos,,Reserve,20,18,2026
-Niwhai Puru,Sharks,,Reserve,20,18,2026
-Kane Bradley,Broncos,,Reserve,21,18,2026
-Samuel Stonestreet,Sharks,,Reserve,21,18,2026
-Tupou Francis,Broncos,,Reserve,22,18,2026
-Liam Ison,Sharks,,Reserve,22,18,2026
-Isaiah Iongi,Eels,,Fullback,1,18,2026
-Tom Trbojevic,Sea Eagles,,Fullback,1,18,2026
-Brian Kelly,Eels,,Winger,2,18,2026
-Jason Saab,Sea Eagles,,Winger,2,18,2026
-Jordan Samrani,Eels,,Centre,3,18,2026
-Clayton Faulalo,Sea Eagles,,Centre,3,18,2026
-Sean Russell,Eels,,Centre,4,18,2026
-Reuben Garrick,Sea Eagles,,Centre,4,18,2026
-Josh Addo-Carr,Eels,,Winger,5,18,2026
-Lehi Hopoate,Sea Eagles,,Winger,5,18,2026
-Ronald Volkman,Eels,,Five-Eighth,6,18,2026
-Joey Walsh,Sea Eagles,,Five-Eighth,6,18,2026
-Jonah Pezet,Eels,,Halfback,7,18,2026
-Jamal Fogarty,Sea Eagles,,Halfback,7,18,2026
-Luca Moretti,Eels,,Prop,8,18,2026
-Taniela Paseka,Sea Eagles,,Prop,8,18,2026
-Tallyn Da Silva,Eels,,Hooker,9,18,2026
-Jake Simpkin,Sea Eagles,,Hooker,9,18,2026
-Jack Williams,Eels,,Prop,10,18,2026
-Kobe Hetherington,Sea Eagles,,Prop,10,18,2026
-Kelma Tuilagi,Eels,,2nd Row,11,18,2026
-Corey Waddell,Sea Eagles,,2nd Row,11,18,2026
-Kitione Kautoga,Eels,,2nd Row,12,18,2026
-Ben Trbojevic,Sea Eagles,,2nd Row,12,18,2026
-Jack De Belin,Eels,,Lock,13,18,2026
-Jake Trbojevic,Sea Eagles,,Lock,13,18,2026
-Dylan Walker,Eels,,Interchange,14,18,2026
-Josh Feledy,Sea Eagles,,Interchange,14,18,2026
-Sam Tuivaiti,Eels,,Interchange,15,18,2026
-Nathan Brown,Sea Eagles,,Interchange,15,18,2026
-Teancum Brown,Eels,,Interchange,16,18,2026
-Ethan Bullemor,Sea Eagles,,Interchange,16,18,2026
-Harrison Edwards,Eels,,Interchange,17,18,2026
-Simione Laiafi,Sea Eagles,,Interchange,17,18,2026
-Joash Papalii,Eels,,Interchange,18,18,2026
-Aaron Schoupp,Sea Eagles,,Interchange,18,18,2026
-Charlie Guymer,Eels,,Interchange,19,18,2026
-Zaidas Muagututia,Sea Eagles,,Interchange,19,18,2026
-Apa Twidle,Eels,,Reserve,20,18,2026
-Hugo Hart,Sea Eagles,,Reserve,20,18,2026
-Ryley Smith,Eels,,Reserve,21,18,2026
-Blake Wilson,Sea Eagles,,Reserve,21,18,2026
-Toni Mataele,Eels,,Reserve,22,18,2026
-Fletcher Baker,Sea Eagles,,Reserve,22,18,2026
-Fletcher Sharpe,Knights,,Fullback,1,18,2026
-Trai Fuller,Dolphins,,Fullback,1,18,2026
-Dominic Young,Knights,,Winger,2,18,2026
-Jamayne Isaako,Dolphins,,Winger,2,18,2026
-Dane Gagai,Knights,,Centre,3,18,2026
-Jake Averillo,Dolphins,,Centre,3,18,2026
-Fletcher Hunt,Knights,,Centre,4,18,2026
-Herbie Farnworth,Dolphins,,Centre,4,18,2026
-Greg Marzhew,Knights,,Winger,5,18,2026
-Tevita Naufahu,Dolphins,,Winger,5,18,2026
-Sandon Smith,Knights,,Five-Eighth,6,18,2026
-Kodi Nikorima,Dolphins,,Five-Eighth,6,18,2026
-Dylan Brown,Knights,,Halfback,7,18,2026
-Bradley Schneider,Dolphins,,Halfback,7,18,2026
-Jacob Saifiti,Knights,,Prop,8,18,2026
-Felise Kaufusi,Dolphins,,Prop,8,18,2026
-Phoenix Crossland,Knights,,Hooker,9,18,2026
-Jeremy Marshall-King,Dolphins,,Hooker,9,18,2026
-Trey Mooney,Knights,,Prop,10,18,2026
-Francis Molo,Dolphins,,Prop,10,18,2026
-Dylan Lucas,Knights,,2nd Row,11,18,2026
-Connelly Lemuelu,Dolphins,,2nd Row,11,18,2026
-Jermaine McEwen,Knights,,2nd Row,12,18,2026
-Kulikefu Finefeuiaki,Dolphins,,2nd Row,12,18,2026
-Mat Croker,Knights,,Lock,13,18,2026
-Morgan Knowles,Dolphins,,Lock,13,18,2026
-Harrison Graham,Knights,,Interchange,14,18,2026
-Kurt Donoghoe,Dolphins,,Interchange,14,18,2026
-Tyson Frizell,Knights,,Interchange,15,18,2026
-Tom Gilbert,Dolphins,,Interchange,15,18,2026
-Cody Hopwood,Knights,,Interchange,16,18,2026
-Ray Stone,Dolphins,,Interchange,16,18,2026
-Thomas Cant,Knights,,Interchange,17,18,2026
-Brian Pouniu,Dolphins,,Interchange,17,18,2026
-Lachlan Crouch,Knights,,Interchange,18,18,2026
-Sebastian Su'a,Dolphins,,Interchange,18,18,2026
-Francis Manuleleua,Knights,,Interchange,19,18,2026
-John Fineanganofo,Dolphins,,Interchange,19,18,2026
-Kyle McCarthy,Knights,,Reserve,20,18,2026
-Sam Elliott,Dolphins,,Reserve,20,18,2026
-Tyson Gamble,Knights,,Reserve,21,18,2026
-LJ Nonu,Dolphins,,Reserve,21,18,2026
-Elijah Salesa-Leaumoana,Knights,,Reserve,22,18,2026
-Zac Garton,Dolphins,,Reserve,22,18,2026
+Jahream Bula,Wests Tigers,,Fullback,1,19,2026
+Taine Tuaupiki,Warriors,,Fullback,1,19,2026
+Sunia Turuva,Wests Tigers,,Winger,2,19,2026
+Charnze Nicoll-Klokstad,Warriors,,Winger,2,19,2026
+Heamasi Makasini,Wests Tigers,,Centre,3,19,2026
+Ali Leiataua,Warriors,,Centre,3,19,2026
+Starford To'a,Wests Tigers,,Centre,4,19,2026
+Adam Pompey,Warriors,,Centre,4,19,2026
+Jeral Skelton,Wests Tigers,,Winger,5,19,2026
+Alofiana Khan-Pereira,Warriors,,Winger,5,19,2026
+Jarome Luai,Wests Tigers,,Five-Eighth,6,19,2026
+Chanel Harris-Tavita,Warriors,,Five-Eighth,6,19,2026
+Adam Doueihi,Wests Tigers,,Halfback,7,19,2026
+Te Maire Martin,Warriors,,Halfback,7,19,2026
+Terrell May,Wests Tigers,,Prop,8,19,2026
+James Fisher-Harris,Warriors,,Prop,8,19,2026
+Josese Lanyon,Wests Tigers,,Hooker,9,19,2026
+Wayde Egan,Warriors,,Hooker,9,19,2026
+Bunty Afoa,Wests Tigers,,Prop,10,19,2026
+Tanner Stowers-Smith,Warriors,,Prop,10,19,2026
+Samuela Fainu,Wests Tigers,,2nd Row,11,19,2026
+Leka Halasima,Warriors,,2nd Row,11,19,2026
+Sione Fainu,Wests Tigers,,2nd Row,12,19,2026
+Jacob Laban,Warriors,,2nd Row,12,19,2026
+Alex Twal,Wests Tigers,,Lock,13,19,2026
+Erin Clark,Warriors,,Lock,13,19,2026
+Latu Fainu,Wests Tigers,,Interchange,14,19,2026
+Sam Healey,Warriors,,Interchange,14,19,2026
+Fonua Pole,Wests Tigers,,Interchange,15,19,2026
+Eddie Ieremia-Toeava,Warriors,,Interchange,15,19,2026
+Alex Seyfarth,Wests Tigers,,Interchange,16,19,2026
+Demitric Vaimauga,Warriors,,Interchange,16,19,2026
+Tony Sukkar,Wests Tigers,,Interchange,17,19,2026
+Marata Niukore,Warriors,,Interchange,17,19,2026
+Faaletino Tavana,Wests Tigers,,Interchange,18,19,2026
+Luke Metcalf,Warriors,,Interchange,18,19,2026
+Charlie Murray,Wests Tigers,,Interchange,19,19,2026
+Makaia Tafua,Warriors,,Interchange,20,19,2026
+Heath Mason,Wests Tigers,,Reserve,20,19,2026
+Luke Laulilii,Warriors,,Reserve,21,19,2026
+Jock Madden,Wests Tigers,,Reserve,21,19,2026
+Mitchell Barnett,Warriors,,Reserve,22,19,2026
+Jared Haywood,Wests Tigers,,Reserve,22,19,2026
+Kurt Capewell,Warriors,,Reserve,23,19,2026
+Trai Fuller,Dolphins,,Fullback,1,19,2026
+William Kennedy,Sharks,,Fullback,1,19,2026
+Jamayne Isaako,Dolphins,,Winger,2,19,2026
+Sione Katoa,Sharks,,Winger,2,19,2026
+Jake Averillo,Dolphins,,Centre,3,19,2026
+Jesse Ramien,Sharks,,Centre,3,19,2026
+Herbie Farnworth,Dolphins,,Centre,4,19,2026
+KL Iro,Sharks,,Centre,4,19,2026
+Tevita Naufahu,Dolphins,,Winger,5,19,2026
+Ronaldo Mulitalo,Sharks,,Winger,5,19,2026
+Kodi Nikorima,Dolphins,,Five-Eighth,6,19,2026
+Braydon Trindall,Sharks,,Five-Eighth,6,19,2026
+Bradley Schneider,Dolphins,,Halfback,7,19,2026
+Nicho Hynes,Sharks,,Halfback,7,19,2026
+Felise Kaufusi,Dolphins,,Prop,8,19,2026
+Thomas Hazelton,Sharks,,Prop,8,19,2026
+Jeremy Marshall-King,Dolphins,,Hooker,9,19,2026
+Jayden Berrell,Sharks,,Hooker,9,19,2026
+Francis Molo,Dolphins,,Prop,10,19,2026
+Jesse Colquhoun,Sharks,,Prop,10,19,2026
+Connelly Lemuelu,Dolphins,,2nd Row,11,19,2026
+Billy Burns,Sharks,,2nd Row,11,19,2026
+Kulikefu Finefeuiaki,Dolphins,,2nd Row,12,19,2026
+Teig Wilton,Sharks,,2nd Row,12,19,2026
+Morgan Knowles,Dolphins,,Lock,13,19,2026
+Cameron McInnes,Sharks,,Lock,13,19,2026
+Kurt Donoghoe,Dolphins,,Interchange,14,19,2026
+Hohepa Puru,Sharks,,Interchange,14,19,2026
+Ray Stone,Dolphins,,Interchange,15,19,2026
+Siosifa Talakai,Sharks,,Interchange,15,19,2026
+Tom Gilbert,Dolphins,,Interchange,16,19,2026
+Oregon Kaufusi,Sharks,,Interchange,16,19,2026
+Sebastian Su'a,Dolphins,,Interchange,17,19,2026
+Tuku Hau Tapuha,Sharks,,Interchange,17,19,2026
+Brian Pouniu,Dolphins,,Interchange,18,19,2026
+Mawene Hiroti,Sharks,,Interchange,18,19,2026
+John Fineanganofo,Dolphins,,Interchange,19,19,2026
+Samuel Stonestreet,Sharks,,Interchange,19,19,2026
+Hamiso Tabuai-Fidow,Dolphins,,Reserve,20,19,2026
+Niwhai Puru,Sharks,,Reserve,20,19,2026
+Selwyn Cobbo,Dolphins,,Reserve,21,19,2026
+Briton Nikora,Sharks,,Reserve,21,19,2026
+Jack Bostock,Dolphins,,Reserve,22,19,2026
+Blayke Brailey,Sharks,,Reserve,22,19,2026
+Max Plath,Dolphins,,Reserve,23,19,2026
+Addin Fonua-Blake,Sharks,,Reserve,23,19,2026
+Thomas Flegler,Dolphins,,Reserve,24,19,2026
+Connor Tracey,Bulldogs,,Fullback,1,19,2026
+Kaeo Weekes,Raiders,,Fullback,1,19,2026
+Jacob Kiraz,Bulldogs,,Winger,2,19,2026
+Sebastian Kris,Raiders,,Winger,2,19,2026
+Matt Burton,Bulldogs,,Centre,3,19,2026
+Simi Sasagi,Raiders,,Centre,3,19,2026
+Enari Tuala,Bulldogs,,Centre,4,19,2026
+Matthew Timoko,Raiders,,Centre,4,19,2026
+Jethro Rinakama,Bulldogs,,Winger,5,19,2026
+Xavier Savage,Raiders,,Winger,5,19,2026
+Stephen Crichton,Bulldogs,,Five-Eighth,6,19,2026
+Ethan Strange,Raiders,,Five-Eighth,6,19,2026
+Lachlan Galvin,Bulldogs,,Halfback,7,19,2026
+Ethan Sanders,Raiders,,Halfback,7,19,2026
+Max King,Bulldogs,,Prop,8,19,2026
+Corey Horsburgh,Raiders,,Prop,8,19,2026
+Bailey Hayward,Bulldogs,,Hooker,9,19,2026
+Owen Pattie,Raiders,,Hooker,9,19,2026
+Leo Thompson,Bulldogs,,Prop,10,19,2026
+Joseph Tapine,Raiders,,Prop,10,19,2026
+Josh Curran,Bulldogs,,2nd Row,11,19,2026
+Hudson Young,Raiders,,2nd Row,11,19,2026
+Jaeman Salmon,Bulldogs,,2nd Row,12,19,2026
+Noah Martin,Raiders,,2nd Row,12,19,2026
+Harry Hayes,Bulldogs,,Lock,13,19,2026
+Zac Hosking,Raiders,,Lock,13,19,2026
+Kurt Mann,Bulldogs,,Interchange,14,19,2026
+Tom Starling,Raiders,,Interchange,14,19,2026
+Alekolasimi Jones,Bulldogs,,Interchange,15,19,2026
+Ata Mariota,Raiders,,Interchange,15,19,2026
+Jack Underhill,Bulldogs,,Interchange,16,19,2026
+Josh Papalii,Raiders,,Interchange,16,19,2026
+Lipoi Hopoi,Bulldogs,,Interchange,17,19,2026
+Daine Laurie,Raiders,,Interchange,17,19,2026
+Bronson Xerri,Bulldogs,,Interchange,19,19,2026
+Chevy Stewart,Raiders,,Interchange,18,19,2026
+Sean O'Sullivan,Bulldogs,,Interchange,20,19,2026
+Morgan Smithies,Raiders,,Interchange,19,19,2026
+Jacob Preston,Bulldogs,,Reserve,21,19,2026
+Coby Black,Raiders,,Reserve,20,19,2026
+Logan Spinks,Bulldogs,,Reserve,22,19,2026
+Jed Stuart,Raiders,,Reserve,21,19,2026
+Jed Reardon,Bulldogs,,Reserve,23,19,2026
+Joe Roddy,Raiders,,Reserve,22,19,2026
+James Tedesco,Roosters,,Fullback,1,19,2026
+Isaiah Iongi,Eels,,Fullback,1,19,2026
+Daniel Tupou,Roosters,,Winger,2,19,2026
+Brian Kelly,Eels,,Winger,2,19,2026
+Billy Smith,Roosters,,Centre,3,19,2026
+Jordan Samrani,Eels,,Centre,3,19,2026
+Robert Toia,Roosters,,Centre,4,19,2026
+Araz Nanva,Eels,,Centre,4,19,2026
+Mark Nawaqanitawase,Roosters,,Winger,5,19,2026
+Josh Addo-Carr,Eels,,Winger,5,19,2026
+Daly Cherry-Evans,Roosters,,Five-Eighth,6,19,2026
+Ronald Volkman,Eels,,Five-Eighth,6,19,2026
+Hugo Savala,Roosters,,Halfback,7,19,2026
+Mitchell Moses,Eels,,Halfback,7,19,2026
+Naufahu Whyte,Roosters,,Prop,8,19,2026
+Sam Tuivaiti,Eels,,Prop,8,19,2026
+Connor Watson,Roosters,,Hooker,9,19,2026
+Tallyn Da Silva,Eels,,Hooker,9,19,2026
+Spencer Leniu,Roosters,,Prop,10,19,2026
+Jack Williams,Eels,,Prop,10,19,2026
+Salesi Foketi,Roosters,,2nd Row,11,19,2026
+Kelma Tuilagi,Eels,,2nd Row,11,19,2026
+Siua Wong,Roosters,,2nd Row,12,19,2026
+Kitione Kautoga,Eels,,2nd Row,12,19,2026
+Victor Radley,Roosters,,Lock,13,19,2026
+Jack De Belin,Eels,,Lock,13,19,2026
+Benaiah Ioelu,Roosters,,Interchange,14,19,2026
+Dylan Walker,Eels,,Interchange,14,19,2026
+Taylor Losalu,Roosters,,Interchange,15,19,2026
+Toni Mataele,Eels,,Interchange,15,19,2026
+Egan Butcher,Roosters,,Interchange,16,19,2026
+Teancum Brown,Eels,,Interchange,16,19,2026
+De La Salle Va'a,Roosters,,Interchange,17,19,2026
+Harrison Edwards,Eels,,Interchange,17,19,2026
+Rex Bassingthwaighte,Roosters,,Interchange,18,19,2026
+Joash Papalii,Eels,,Interchange,18,19,2026
+Tommy Talau,Roosters,,Interchange,19,19,2026
+Charlie Guymer,Eels,,Interchange,19,19,2026
+Toby Rodwell,Roosters,,Reserve,20,19,2026
+Saxon Pryke,Eels,,Reserve,20,19,2026
+Reece Foley,Roosters,,Reserve,21,19,2026
+Ryley Smith,Eels,,Reserve,21,19,2026
+Cody Ramsey,Roosters,,Reserve,22,19,2026
+Jonah Pezet,Eels,,Reserve,22,19,2026
+Reece Robson,Roosters,,Reserve,23,19,2026
+Sam Walker,Roosters,,Reserve,24,19,2026
+Matthew Dufty,Rabbitohs,,Fullback,1,19,2026
+Kalyn Ponga,Knights,,Fullback,1,19,2026
+Dayne Jennings,Rabbitohs,,Winger,2,19,2026
+Dominic Young,Knights,,Winger,2,19,2026
+Tallis Duncan,Rabbitohs,,Centre,3,19,2026
+Dane Gagai,Knights,,Centre,3,19,2026
+Jack Wighton,Rabbitohs,,Centre,4,19,2026
+Bradman Best,Knights,,Centre,4,19,2026
+Campbell Graham,Rabbitohs,,Winger,5,19,2026
+Greg Marzhew,Knights,,Winger,5,19,2026
+Jayden Sullivan,Rabbitohs,,Five-Eighth,6,19,2026
+Fletcher Sharpe,Knights,,Five-Eighth,6,19,2026
+Ashton Ward,Rabbitohs,,Halfback,7,19,2026
+Dylan Brown,Knights,,Halfback,7,19,2026
+Tevita Tatola,Rabbitohs,,Prop,8,19,2026
+Cody Hopwood,Knights,,Prop,8,19,2026
+Brandon Smith,Rabbitohs,,Hooker,9,19,2026
+Phoenix Crossland,Knights,,Hooker,9,19,2026
+Keaon Koloamatangi,Rabbitohs,,Prop,10,19,2026
+Trey Mooney,Knights,,Prop,10,19,2026
+David Fifita,Rabbitohs,,2nd Row,11,19,2026
+Dylan Lucas,Knights,,2nd Row,11,19,2026
+Euan Aitken,Rabbitohs,,2nd Row,12,19,2026
+Jermaine McEwen,Knights,,2nd Row,12,19,2026
+Cameron Murray,Rabbitohs,,Lock,13,19,2026
+Mat Croker,Knights,,Lock,13,19,2026
+Lachlan Hubner,Rabbitohs,,Interchange,14,19,2026
+Sandon Smith,Knights,,Interchange,14,19,2026
+Jamie Humphreys,Rabbitohs,,Interchange,15,19,2026
+Tyson Frizell,Knights,,Interchange,15,19,2026
+John Radel,Rabbitohs,,Interchange,16,19,2026
+Lachlan Crouch,Knights,,Interchange,16,19,2026
+Liam Le Blanc,Rabbitohs,,Interchange,17,19,2026
+Thomas Cant,Knights,,Interchange,17,19,2026
+Jye Gray,Rabbitohs,,Interchange,18,19,2026
+Harrison Graham,Knights,,Interchange,18,19,2026
+Latrell Siegwalt,Rabbitohs,,Interchange,19,19,2026
+Fletcher Hunt,Knights,,Interchange,19,19,2026
+Edward Kosi,Rabbitohs,,Reserve,20,19,2026
+Francis Manuleleua,Knights,,Reserve,20,19,2026
+Thomas Fletcher,Rabbitohs,,Reserve,21,19,2026
+Tyson Gamble,Knights,,Reserve,21,19,2026
+Peter Mamouzelos,Rabbitohs,,Reserve,22,19,2026
+Kyle McCarthy,Knights,,Reserve,22,19,2026
+Tom Trbojevic,Sea Eagles,,Fullback,1,19,2026
+Scott Drinkwater,Cowboys,,Fullback,1,19,2026
+Jason Saab,Sea Eagles,,Winger,2,19,2026
+Braidon Burns,Cowboys,,Winger,2,19,2026
+Tolutau Koula,Sea Eagles,,Centre,3,19,2026
+Zac Laybutt,Cowboys,,Centre,3,19,2026
+Reuben Garrick,Sea Eagles,,Centre,4,19,2026
+Tom Chester,Cowboys,,Centre,4,19,2026
+Lehi Hopoate,Sea Eagles,,Winger,5,19,2026
+Murray Taulagi,Cowboys,,Winger,5,19,2026
+Joey Walsh,Sea Eagles,,Five-Eighth,6,19,2026
+Jaxon Purdue,Cowboys,,Five-Eighth,6,19,2026
+Jamal Fogarty,Sea Eagles,,Halfback,7,19,2026
+Jake Clifford,Cowboys,,Halfback,7,19,2026
+Taniela Paseka,Sea Eagles,,Prop,8,19,2026
+Thomas Mikaele,Cowboys,,Prop,8,19,2026
+Jake Simpkin,Sea Eagles,,Hooker,9,19,2026
+Reed Mahoney,Cowboys,,Hooker,9,19,2026
+Kobe Hetherington,Sea Eagles,,Prop,10,19,2026
+Jason Taumalolo,Cowboys,,Prop,10,19,2026
+Haumole Olakau'atu,Sea Eagles,,2nd Row,11,19,2026
+Heilum Luki,Cowboys,,2nd Row,11,19,2026
+Ben Trbojevic,Sea Eagles,,2nd Row,12,19,2026
+Jeremiah Nanai,Cowboys,,2nd Row,12,19,2026
+Jake Trbojevic,Sea Eagles,,Lock,13,19,2026
+Reuben Cotter,Cowboys,,Lock,13,19,2026
+Corey Waddell,Sea Eagles,,Interchange,14,19,2026
+Soni Luke,Cowboys,,Interchange,14,19,2026
+Nathan Brown,Sea Eagles,,Interchange,15,19,2026
+Griffin Neame,Cowboys,,Interchange,15,19,2026
+Ethan Bullemor,Sea Eagles,,Interchange,16,19,2026
+Matthew Lodge,Cowboys,,Interchange,16,19,2026
+Simione Laiafi,Sea Eagles,,Interchange,17,19,2026
+Coen Hess,Cowboys,,Interchange,17,19,2026
+Josh Feledy,Sea Eagles,,Interchange,18,19,2026
+Sam McIntyre,Cowboys,,Interchange,18,19,2026
+Aaron Schoupp,Sea Eagles,,Interchange,19,19,2026
+John Bateman,Cowboys,,Interchange,19,19,2026
+Blake Wilson,Sea Eagles,,Reserve,20,19,2026
+Liam Sutton,Cowboys,,Reserve,20,19,2026
+Fletcher Baker,Sea Eagles,,Reserve,21,19,2026
+Ethan King,Cowboys,,Reserve,21,19,2026
+Nicholas Lenaz,Sea Eagles,,Reserve,22,19,2026
+Ronald Philitoga,Cowboys,,Reserve,22,19,2026
+Tom Dearden,Cowboys,,Reserve,23,19,2026
+Sualauvi Faalogo,Storm,,Fullback,1,19,2026
+Keano Kini,Titans,,Fullback,1,19,2026
+Will Warbrick,Storm,,Winger,2,19,2026
+Dean Ieremia,Titans,,Winger,2,19,2026
+Jack Howarth,Storm,,Centre,3,19,2026
+Jojo Fifita,Titans,,Centre,3,19,2026
+Nick Meaney,Storm,,Centre,4,19,2026
+AJ Brimson,Titans,,Centre,4,19,2026
+Manaia Waitere,Storm,,Winger,5,19,2026
+Phillip Sami,Titans,,Winger,5,19,2026
+Cameron Munster,Storm,,Five-Eighth,6,19,2026
+Jayden Campbell,Titans,,Five-Eighth,6,19,2026
+Jahrome Hughes,Storm,,Halfback,7,19,2026
+Zane Harrison,Titans,,Halfback,7,19,2026
+Stefano Utoikamanu,Storm,,Prop,8,19,2026
+Moeaki Fotuaika,Titans,,Prop,8,19,2026
+Harry Grant,Storm,,Hooker,9,19,2026
+Oliver Pascoe,Titans,,Hooker,9,19,2026
+Josh King,Storm,,Prop,10,19,2026
+Tino Fa'asuamaleaui,Titans,,Prop,10,19,2026
+Cooper Clarke,Storm,,2nd Row,11,19,2026
+Arama Hau,Titans,,2nd Row,11,19,2026
+Alec MacDonald,Storm,,2nd Row,12,19,2026
+Beau Fermor,Titans,,2nd Row,12,19,2026
+Trent Loiero,Storm,,Lock,13,19,2026
+Chris Randall,Titans,,Lock,13,19,2026
+Tyran Wishart,Storm,,Interchange,14,19,2026
+Kurtis Morrin,Titans,,Interchange,14,19,2026
+Joe Chan,Storm,,Interchange,15,19,2026
+Josh Patston,Titans,,Interchange,15,19,2026
+Jack Hetherington,Storm,,Interchange,16,19,2026
+Klese Haas,Titans,,Interchange,16,19,2026
+Josiah Pahulu,Storm,,Interchange,17,19,2026
+Cooper Bai,Titans,,Interchange,17,19,2026
+Oryn Keeley,Storm,,Interchange,18,19,2026
+Sam Verrills,Titans,,Interchange,18,19,2026
+Trent Toelau,Storm,,Interchange,19,19,2026
+Jaylan De Groot,Titans,,Interchange,19,19,2026
+Davvy Moale,Storm,,Reserve,20,19,2026
+Jett Liu,Titans,,Reserve,20,19,2026
+Siulagi Tuimalatu-Brown,Storm,,Reserve,21,19,2026
+Lachlan Ilias,Titans,,Reserve,21,19,2026
+Gabriel Satrick,Storm,,Reserve,22,19,2026
+Siale Faeamani,Titans,,Reserve,22,19,2026
+Hayden Watson,Storm,,Reserve,23,19,2026
