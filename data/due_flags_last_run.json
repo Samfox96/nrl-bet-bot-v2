@@ -1,22 +1,22 @@
 {
-  "round": 17,
+  "round": 18,
   "season": 2026,
   "due_flags": [
     {
-      "player_name": "Greg Marzhew",
-      "team": "Newcastle Knights",
-      "position_code": "WG",
-      "season_tpg": 1.071,
+      "player_name": "Sualauvi Faalogo",
+      "team": "Melbourne Storm",
+      "position_code": "FB",
+      "season_tpg": 0.812,
       "recent_tpg": 0.25,
-      "opponent_this_round": "Dolphins",
-      "composite_score": 0.555,
+      "opponent_this_round": "Gold Coast Titans",
+      "composite_score": 0.736,
       "weight_coverage": 0.999,
       "factors": {
-        "drought": 1,
-        "opponent_matchup": 0.23,
-        "team_form": -0.437,
-        "usage_trend": 0.194,
-        "structure_share": 0.212
+        "drought": 0.938,
+        "opponent_matchup": 1,
+        "team_form": 0.057,
+        "usage_trend": 0.175,
+        "structure_share": -0.024
       },
       "structure_share_is_approximate": true
     },
@@ -24,71 +24,71 @@
       "player_name": "KL Iro",
       "team": "Cronulla-Sutherland Sharks",
       "position_code": "CE",
-      "season_tpg": 0.692,
-      "recent_tpg": 0.0,
-      "opponent_this_round": "Brisbane Broncos",
-      "composite_score": 0.523,
-      "weight_coverage": 0.999,
-      "factors": {
-        "drought": 1,
-        "opponent_matchup": 0.247,
-        "team_form": -0.492,
-        "usage_trend": 0.124,
-        "structure_share": -0.098
-      },
-      "structure_share_is_approximate": true
-    },
-    {
-      "player_name": "Blaize Talagi",
-      "team": "Penrith Panthers",
-      "position_code": "FE",
-      "season_tpg": 0.333,
-      "recent_tpg": 0.0,
-      "opponent_this_round": "South Sydney Rabbitohs",
-      "composite_score": 0.523,
-      "weight_coverage": 0.999,
-      "factors": {
-        "drought": 0.556,
-        "opponent_matchup": 0.966,
-        "team_form": -0.056,
-        "usage_trend": 0.209,
-        "structure_share": -0.112
-      },
-      "structure_share_is_approximate": true
-    },
-    {
-      "player_name": "Dominic Young",
-      "team": "Newcastle Knights",
-      "position_code": "WG",
-      "season_tpg": 0.933,
+      "season_tpg": 0.643,
       "recent_tpg": 0.0,
       "opponent_this_round": "Dolphins",
-      "composite_score": 0.512,
+      "composite_score": 0.634,
       "weight_coverage": 0.999,
       "factors": {
         "drought": 1,
-        "opponent_matchup": 0.23,
-        "team_form": -0.437,
-        "usage_trend": -0.06,
-        "structure_share": -0.046
+        "opponent_matchup": 0.575,
+        "team_form": -0.5,
+        "usage_trend": 0.26,
+        "structure_share": 0.118
       },
       "structure_share_is_approximate": true
     },
     {
-      "player_name": "Sualauvi Faalogo",
-      "team": "Melbourne Storm",
-      "position_code": "FB",
-      "season_tpg": 0.812,
-      "recent_tpg": 0.25,
-      "opponent_this_round": null,
-      "composite_score": 0.486,
-      "weight_coverage": 0.749,
+      "player_name": "Dallin Watene-Zelezniak",
+      "team": "New Zealand Warriors",
+      "position_code": "WG",
+      "season_tpg": 1.067,
+      "recent_tpg": 0.5,
+      "opponent_this_round": "Wests Tigers",
+      "composite_score": 0.587,
+      "weight_coverage": 0.999,
       "factors": {
-        "drought": 0.938,
-        "opponent_matchup": null,
-        "team_form": 0.057,
-        "usage_trend": 0.175,
-        "structure_share": -0.024
+        "drought": 0.944,
+        "opponent_matchup": 0.424,
+        "team_form": -0.52,
+        "usage_trend": 0.377,
+        "structure_share": 0.246
+      },
+      "structure_share_is_approximate": true
+    },
+    {
+      "player_name": "Greg Marzhew",
+      "team": "Newcastle Knights",
+      "position_code": "WG",
+      "season_tpg": 1.0,
+      "recent_tpg": 0.0,
+      "opponent_this_round": "South Sydney Rabbitohs",
+      "composite_score": 0.54,
+      "weight_coverage": 0.999,
+      "factors": {
+        "drought": 1,
+        "opponent_matchup": 0.306,
+        "team_form": -0.703,
+        "usage_trend": 0.174,
+        "structure_share": 0.089
+      },
+      "structure_share_is_approximate": true
+    },
+    {
+      "player_name": "Chanel Harris-Tavita",
+      "team": "New Zealand Warriors",
+      "position_code": "FE",
+      "season_tpg": 0.214,
+      "recent_tpg": 0.0,
+      "opponent_this_round": "Wests Tigers",
+      "composite_score": 0.527,
+      "weight_coverage": 0.999,
+      "factors": {
+        "drought": 0.357,
+        "opponent_matchup": 1,
+        "team_form": -0.52,
+        "usage_trend": 0.823,
+        "structure_share": 0.881
       },
       "structure_share_is_approximate": true
     }
