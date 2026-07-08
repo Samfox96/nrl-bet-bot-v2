@@ -1,119 +1,202 @@
 home_team,away_team,status,our_home_win_prob,market_home_win_prob,our_home_fair_odds,h2h_edge,our_predicted_margin,margin_mae,market_spread_bookmaker,market_spread_point,player_name,player_team,position_code,bookmaker,our_try_probability,market_try_probability,try_scorer_edge,fair_odds
-Penrith Panthers,South Sydney Rabbitohs,skipped: no real upcoming odds-api event found for Penrith Panthers v South Sydney Rabbitohs,,,,,,,,,,,,,,,,
-St George Illawarra Dragons,Wests Tigers,ok,0.4488,0.4251,2.228,0.0237,-1.4,14.0,sportsbet,4.5,Alex Seyfarth,Wests Tigers,IC,sportsbet,0.2263,0.14814814814814814,0.07815185185185186,4.419
-St George Illawarra Dragons,Wests Tigers,ok,0.4488,0.4251,2.228,0.0237,-1.4,14.0,sportsbet,4.5,Valentine Holmes,St George Illawarra Dragons,CE,sportsbet,0.4881,0.4347826086956522,0.05331739130434776,2.049
-St George Illawarra Dragons,Wests Tigers,ok,0.4488,0.4251,2.228,0.0237,-1.4,14.0,sportsbet,4.5,Setu Tu,St George Illawarra Dragons,WG,sportsbet,0.5433,0.5050505050505051,0.03824949494949492,1.841
-St George Illawarra Dragons,Wests Tigers,ok,0.4488,0.4251,2.228,0.0237,-1.4,14.0,sportsbet,4.5,Adam Doueihi,Wests Tigers,HB,sportsbet,0.3939,0.37735849056603776,0.01654150943396221,2.539
-St George Illawarra Dragons,Wests Tigers,ok,0.4488,0.4251,2.228,0.0237,-1.4,14.0,sportsbet,4.5,Mathew Feagai,St George Illawarra Dragons,WG,sportsbet,0.3116,0.29850746268656714,0.01309253731343285,3.209
-St George Illawarra Dragons,Wests Tigers,ok,0.4488,0.4251,2.228,0.0237,-1.4,14.0,sportsbet,4.5,Dylan Egan,St George Illawarra Dragons,2RF,sportsbet,0.2053,0.2173913043478261,-0.012091304347826098,4.871
-St George Illawarra Dragons,Wests Tigers,ok,0.4488,0.4251,2.228,0.0237,-1.4,14.0,sportsbet,4.5,Sione Fainu,Wests Tigers,2RF,sportsbet,0.2425,0.25641025641025644,-0.01391025641025645,4.124
-St George Illawarra Dragons,Wests Tigers,ok,0.4488,0.4251,2.228,0.0237,-1.4,14.0,sportsbet,4.5,Tyrell Sloan,St George Illawarra Dragons,IC,sportsbet,0.4919,0.5128205128205129,-0.020920512820512882,2.033
-St George Illawarra Dragons,Wests Tigers,ok,0.4488,0.4251,2.228,0.0237,-1.4,14.0,sportsbet,4.5,Tony Sukkar,Wests Tigers,2RF,sportsbet,0.1779,0.2040816326530612,-0.0261816326530612,5.621
-St George Illawarra Dragons,Wests Tigers,ok,0.4488,0.4251,2.228,0.0237,-1.4,14.0,sportsbet,4.5,Emre Guler,St George Illawarra Dragons,PR,sportsbet,0.0319,0.09523809523809523,-0.06333809523809524,31.348
-St George Illawarra Dragons,Wests Tigers,ok,0.4488,0.4251,2.228,0.0237,-1.4,14.0,sportsbet,4.5,Jacob Liddle,St George Illawarra Dragons,IC,sportsbet,0.1148,0.18181818181818182,-0.06701818181818182,8.711
-St George Illawarra Dragons,Wests Tigers,ok,0.4488,0.4251,2.228,0.0237,-1.4,14.0,sportsbet,4.5,Alex Twal,Wests Tigers,LK,sportsbet,0.0091,0.08,-0.0709,109.89
-St George Illawarra Dragons,Wests Tigers,ok,0.4488,0.4251,2.228,0.0237,-1.4,14.0,sportsbet,4.5,Hamish Stewart,St George Illawarra Dragons,2RF,sportsbet,0.0852,0.19607843137254904,-0.11087843137254905,11.737
-St George Illawarra Dragons,Wests Tigers,ok,0.4488,0.4251,2.228,0.0237,-1.4,14.0,sportsbet,4.5,Toby Couchman,St George Illawarra Dragons,PR,sportsbet,0.0088,0.12121212121212122,-0.11241212121212121,113.636
-St George Illawarra Dragons,Wests Tigers,ok,0.4488,0.4251,2.228,0.0237,-1.4,14.0,sportsbet,4.5,Ryan Couchman,St George Illawarra Dragons,LK,sportsbet,0.0108,0.12903225806451613,-0.11823225806451612,92.593
-St George Illawarra Dragons,Wests Tigers,ok,0.4488,0.4251,2.228,0.0237,-1.4,14.0,sportsbet,4.5,Bunty Afoa,Wests Tigers,IC,sportsbet,0.0097,0.12903225806451613,-0.11933225806451613,103.093
-St George Illawarra Dragons,Wests Tigers,ok,0.4488,0.4251,2.228,0.0237,-1.4,14.0,sportsbet,4.5,Daniel Atkinson,St George Illawarra Dragons,FE,sportsbet,0.1119,0.23529411764705882,-0.12339411764705882,8.937
-St George Illawarra Dragons,Wests Tigers,ok,0.4488,0.4251,2.228,0.0237,-1.4,14.0,sportsbet,4.5,Starford To'a,Wests Tigers,CE,sportsbet,0.27,0.4,-0.13,3.704
-St George Illawarra Dragons,Wests Tigers,ok,0.4488,0.4251,2.228,0.0237,-1.4,14.0,sportsbet,4.5,Fonua Pole,Wests Tigers,PR,sportsbet,0.0078,0.13793103448275862,-0.13013103448275862,128.205
-St George Illawarra Dragons,Wests Tigers,ok,0.4488,0.4251,2.228,0.0237,-1.4,14.0,sportsbet,4.5,Terrell May,Wests Tigers,PR,sportsbet,0.0221,0.16,-0.1379,45.249
-St George Illawarra Dragons,Wests Tigers,ok,0.4488,0.4251,2.228,0.0237,-1.4,14.0,sportsbet,4.5,Apisai Koroisau,Wests Tigers,HK,sportsbet,0.0815,0.23255813953488372,-0.15105813953488373,12.27
-St George Illawarra Dragons,Wests Tigers,ok,0.4488,0.4251,2.228,0.0237,-1.4,14.0,sportsbet,4.5,Kyle Flanagan,St George Illawarra Dragons,HB,sportsbet,0.0304,0.18181818181818182,-0.1514181818181818,32.895
-St George Illawarra Dragons,Wests Tigers,ok,0.4488,0.4251,2.228,0.0237,-1.4,14.0,sportsbet,4.5,Damien Cook,St George Illawarra Dragons,HK,sportsbet,0.0358,0.2040816326530612,-0.1682816326530612,27.933
-St George Illawarra Dragons,Wests Tigers,ok,0.4488,0.4251,2.228,0.0237,-1.4,14.0,sportsbet,4.5,Jock Madden,Wests Tigers,FE,sportsbet,0.0297,0.2173913043478261,-0.1876913043478261,33.67
-St George Illawarra Dragons,Wests Tigers,ok,0.4488,0.4251,2.228,0.0237,-1.4,14.0,sportsbet,4.5,Clinton Gutherson,St George Illawarra Dragons,FB,sportsbet,0.0781,0.30303030303030304,-0.22493030303030304,12.804
-St George Illawarra Dragons,Wests Tigers,ok,0.4488,0.4251,2.228,0.0237,-1.4,14.0,sportsbet,4.5,Jeral Skelton,Wests Tigers,WG,sportsbet,0.2793,0.5555555555555556,-0.2762555555555556,3.58
-St George Illawarra Dragons,Wests Tigers,ok,0.4488,0.4251,2.228,0.0237,-1.4,14.0,sportsbet,4.5,Jahream Bula,Wests Tigers,FB,sportsbet,0.1812,0.47619047619047616,-0.29499047619047614,5.519
-St George Illawarra Dragons,Wests Tigers,ok,0.4488,0.4251,2.228,0.0237,-1.4,14.0,sportsbet,4.5,Heamasi Makasini,Wests Tigers,CE,sportsbet,0.0558,0.3921568627450981,-0.3363568627450981,17.921
-St George Illawarra Dragons,Wests Tigers,ok,0.4488,0.4251,2.228,0.0237,-1.4,14.0,sportsbet,4.5,Sunia Turuva,Wests Tigers,WG,sportsbet,0.0712,0.5291005291005292,-0.4579005291005292,14.045
-Brisbane Broncos,Cronulla-Sutherland Sharks,ok,0.442,0.3542,2.262,0.0878,-1.6,14.0,sportsbet,7.5,Xavier Willison,Brisbane Broncos,LK,sportsbet,0.2942,0.2040816326530612,0.09011836734693882,3.399
-Brisbane Broncos,Cronulla-Sutherland Sharks,ok,0.442,0.3542,2.262,0.0878,-1.6,14.0,sportsbet,7.5,Kotoni Staggs,Brisbane Broncos,CE,sportsbet,0.4414,0.4347826086956522,0.006617391304347797,2.266
-Brisbane Broncos,Cronulla-Sutherland Sharks,ok,0.442,0.3542,2.262,0.0878,-1.6,14.0,sportsbet,7.5,Teig Wilton,Cronulla-Sutherland Sharks,2RF,sportsbet,0.3005,0.3125,-0.01200000000000001,3.328
-Brisbane Broncos,Cronulla-Sutherland Sharks,ok,0.442,0.3542,2.262,0.0878,-1.6,14.0,sportsbet,7.5,Siosifa Talakai,Cronulla-Sutherland Sharks,IC,sportsbet,0.1279,0.15384615384615385,-0.02594615384615384,7.819
-Brisbane Broncos,Cronulla-Sutherland Sharks,ok,0.442,0.3542,2.262,0.0878,-1.6,14.0,sportsbet,7.5,Brendan Piakura,Brisbane Broncos,2RF,sportsbet,0.2098,0.23809523809523808,-0.028295238095238096,4.766
-Brisbane Broncos,Cronulla-Sutherland Sharks,ok,0.442,0.3542,2.262,0.0878,-1.6,14.0,sportsbet,7.5,Thomas Duffy,Brisbane Broncos,IC,sportsbet,0.1436,0.18181818181818182,-0.03821818181818182,6.964
-Brisbane Broncos,Cronulla-Sutherland Sharks,ok,0.442,0.3542,2.262,0.0878,-1.6,14.0,sportsbet,7.5,Nicholas Hynes,Cronulla-Sutherland Sharks,HB,sportsbet,0.188,0.25641025641025644,-0.06841025641025644,5.319
-Brisbane Broncos,Cronulla-Sutherland Sharks,ok,0.442,0.3542,2.262,0.0878,-1.6,14.0,sportsbet,7.5,Jesse Colquhoun,Cronulla-Sutherland Sharks,LK,sportsbet,0.1162,0.2040816326530612,-0.0878816326530612,8.606
-Brisbane Broncos,Cronulla-Sutherland Sharks,ok,0.442,0.3542,2.262,0.0878,-1.6,14.0,sportsbet,7.5,Jaiyden Hunt,Brisbane Broncos,IC,sportsbet,0.0089,0.1,-0.0911,112.36
-Brisbane Broncos,Cronulla-Sutherland Sharks,ok,0.442,0.3542,2.262,0.0878,-1.6,14.0,sportsbet,7.5,Cory Paix,Brisbane Broncos,HK,sportsbet,0.0409,0.13333333333333333,-0.09243333333333334,24.45
-Brisbane Broncos,Cronulla-Sutherland Sharks,ok,0.442,0.3542,2.262,0.0878,-1.6,14.0,sportsbet,7.5,Ben Talty,Brisbane Broncos,IC,sportsbet,0.0314,0.125,-0.0936,31.847
-Brisbane Broncos,Cronulla-Sutherland Sharks,ok,0.442,0.3542,2.262,0.0878,-1.6,14.0,sportsbet,7.5,Va'a Semu,Brisbane Broncos,IC,sportsbet,0.0115,0.10810810810810811,-0.09660810810810812,86.957
-Brisbane Broncos,Cronulla-Sutherland Sharks,ok,0.442,0.3542,2.262,0.0878,-1.6,14.0,sportsbet,7.5,Cameron McInnes,Cronulla-Sutherland Sharks,LK,sportsbet,0.0245,0.125,-0.1005,40.816
-Brisbane Broncos,Cronulla-Sutherland Sharks,ok,0.442,0.3542,2.262,0.0878,-1.6,14.0,sportsbet,7.5,Blake Mozer,Brisbane Broncos,IC,sportsbet,0.0132,0.11428571428571428,-0.10108571428571428,75.758
-Brisbane Broncos,Cronulla-Sutherland Sharks,ok,0.442,0.3542,2.262,0.0878,-1.6,14.0,sportsbet,7.5,Braydon Trindall,Cronulla-Sutherland Sharks,FE,sportsbet,0.298,0.4,-0.10200000000000004,3.356
-Brisbane Broncos,Cronulla-Sutherland Sharks,ok,0.442,0.3542,2.262,0.0878,-1.6,14.0,sportsbet,7.5,Ronaldo Mulitalo,Cronulla-Sutherland Sharks,WG,sportsbet,0.5301,0.6329113924050632,-0.1028113924050632,1.886
-Brisbane Broncos,Cronulla-Sutherland Sharks,ok,0.442,0.3542,2.262,0.0878,-1.6,14.0,sportsbet,7.5,Oregon Kaufusi,Cronulla-Sutherland Sharks,IC,sportsbet,0.0132,0.12121212121212122,-0.10801212121212121,75.758
-Brisbane Broncos,Cronulla-Sutherland Sharks,ok,0.442,0.3542,2.262,0.0878,-1.6,14.0,sportsbet,7.5,Thomas Hazelton,Cronulla-Sutherland Sharks,IC,sportsbet,0.0334,0.14814814814814814,-0.11474814814814814,29.94
-Brisbane Broncos,Cronulla-Sutherland Sharks,ok,0.442,0.3542,2.262,0.0878,-1.6,14.0,sportsbet,7.5,William Kennedy,Cronulla-Sutherland Sharks,FB,sportsbet,0.2472,0.36363636363636365,-0.11643636363636364,4.045
-Brisbane Broncos,Cronulla-Sutherland Sharks,ok,0.442,0.3542,2.262,0.0878,-1.6,14.0,sportsbet,7.5,Grant Anderson,Brisbane Broncos,CE,sportsbet,0.3338,0.45454545454545453,-0.12074545454545454,2.996
-Brisbane Broncos,Cronulla-Sutherland Sharks,ok,0.442,0.3542,2.262,0.0878,-1.6,14.0,sportsbet,7.5,Billy Burns,Cronulla-Sutherland Sharks,2RF,sportsbet,0.1538,0.2857142857142857,-0.1319142857142857,6.502
-Brisbane Broncos,Cronulla-Sutherland Sharks,ok,0.442,0.3542,2.262,0.0878,-1.6,14.0,sportsbet,7.5,Jesse Ramien,Cronulla-Sutherland Sharks,CE,sportsbet,0.2039,0.3448275862068966,-0.14092758620689658,4.904
-Brisbane Broncos,Cronulla-Sutherland Sharks,ok,0.442,0.3542,2.262,0.0878,-1.6,14.0,sportsbet,7.5,Jordan Riki,Brisbane Broncos,2RF,sportsbet,0.0533,0.19607843137254904,-0.14277843137254903,18.762
-Brisbane Broncos,Cronulla-Sutherland Sharks,ok,0.442,0.3542,2.262,0.0878,-1.6,14.0,sportsbet,7.5,Jayden Berrell,Cronulla-Sutherland Sharks,IC,sportsbet,0.0111,0.16,-0.1489,90.09
-Brisbane Broncos,Cronulla-Sutherland Sharks,ok,0.442,0.3542,2.262,0.0878,-1.6,14.0,sportsbet,7.5,Ben Hunt,Brisbane Broncos,IC,sportsbet,0.006,0.16,-0.154,166.667
-Brisbane Broncos,Cronulla-Sutherland Sharks,ok,0.442,0.3542,2.262,0.0878,-1.6,14.0,sportsbet,7.5,Gehamat Shibasaki,Brisbane Broncos,CE,sportsbet,0.1538,0.3389830508474576,-0.18518305084745762,6.502
-Brisbane Broncos,Cronulla-Sutherland Sharks,ok,0.442,0.3542,2.262,0.0878,-1.6,14.0,sportsbet,7.5,Deine Mariner,Brisbane Broncos,WG,sportsbet,0.225,0.5025125628140703,-0.27751256281407033,4.444
-Brisbane Broncos,Cronulla-Sutherland Sharks,ok,0.442,0.3542,2.262,0.0878,-1.6,14.0,sportsbet,7.5,Hayze Perham,Brisbane Broncos,IC,sportsbet,0.0089,0.29850746268656714,-0.2896074626865671,112.36
-Brisbane Broncos,Cronulla-Sutherland Sharks,ok,0.442,0.3542,2.262,0.0878,-1.6,14.0,sportsbet,7.5,Sione Katoa,Cronulla-Sutherland Sharks,WG,sportsbet,0.2512,0.5586592178770949,-0.30745921787709496,3.981
-Parramatta Eels,Manly-Warringah Sea Eagles,ok,0.3334,0.3044,2.999,0.0291,-4.8,14.0,sportsbet,8.5,Clayton Faulalo,Manly-Warringah Sea Eagles,FB,sportsbet,0.4967,0.4587155963302752,0.037984403669724776,2.013
-Parramatta Eels,Manly-Warringah Sea Eagles,ok,0.3334,0.3044,2.999,0.0291,-4.8,14.0,sportsbet,8.5,Kelma Tuilagi,Parramatta Eels,2RF,sportsbet,0.1922,0.1724137931034483,0.019786206896551722,5.203
-Parramatta Eels,Manly-Warringah Sea Eagles,ok,0.3334,0.3044,2.999,0.0291,-4.8,14.0,sportsbet,8.5,Kitione Kautoga,Parramatta Eels,2RF,sportsbet,0.1899,0.18518518518518517,0.004714814814814838,5.266
-Parramatta Eels,Manly-Warringah Sea Eagles,ok,0.3334,0.3044,2.999,0.0291,-4.8,14.0,sportsbet,8.5,Dylan Walker,Parramatta Eels,IC,sportsbet,0.1297,0.13333333333333333,-0.0036333333333333218,7.71
-Parramatta Eels,Manly-Warringah Sea Eagles,ok,0.3334,0.3044,2.999,0.0291,-4.8,14.0,sportsbet,8.5,Jason Saab,Manly-Warringah Sea Eagles,WG,sportsbet,0.541,0.5586592178770949,-0.0176592178770949,1.848
-Parramatta Eels,Manly-Warringah Sea Eagles,ok,0.3334,0.3044,2.999,0.0291,-4.8,14.0,sportsbet,8.5,Tallyn Da Silva,Parramatta Eels,IC,sportsbet,0.2198,0.24390243902439027,-0.02410243902439027,4.55
-Parramatta Eels,Manly-Warringah Sea Eagles,ok,0.3334,0.3044,2.999,0.0291,-4.8,14.0,sportsbet,8.5,Jonah Pezet,Parramatta Eels,FE,sportsbet,0.1946,0.22727272727272727,-0.03267272727272727,5.139
-Parramatta Eels,Manly-Warringah Sea Eagles,ok,0.3334,0.3044,2.999,0.0291,-4.8,14.0,sportsbet,8.5,Sam Tuivaiti,Parramatta Eels,IC,sportsbet,0.0059,0.07692307692307693,-0.07102307692307692,169.492
-Parramatta Eels,Manly-Warringah Sea Eagles,ok,0.3334,0.3044,2.999,0.0291,-4.8,14.0,sportsbet,8.5,Luca Moretti,Parramatta Eels,PR,sportsbet,0.0123,0.1,-0.0877,81.301
-Parramatta Eels,Manly-Warringah Sea Eagles,ok,0.3334,0.3044,2.999,0.0291,-4.8,14.0,sportsbet,8.5,Jake Trbojevic,Manly-Warringah Sea Eagles,LK,sportsbet,0.0224,0.1111111111111111,-0.0887111111111111,44.643
-Parramatta Eels,Manly-Warringah Sea Eagles,ok,0.3334,0.3044,2.999,0.0291,-4.8,14.0,sportsbet,8.5,Jack De Belin,Parramatta Eels,LK,sportsbet,0.0085,0.1,-0.0915,117.647
-Parramatta Eels,Manly-Warringah Sea Eagles,ok,0.3334,0.3044,2.999,0.0291,-4.8,14.0,sportsbet,8.5,Jack Williams,Parramatta Eels,PR,sportsbet,0.0062,0.1,-0.09380000000000001,161.29
-Parramatta Eels,Manly-Warringah Sea Eagles,ok,0.3334,0.3044,2.999,0.0291,-4.8,14.0,sportsbet,8.5,Kobe Hetherington,Manly-Warringah Sea Eagles,PR,sportsbet,0.0097,0.11428571428571428,-0.10458571428571428,103.093
-Parramatta Eels,Manly-Warringah Sea Eagles,ok,0.3334,0.3044,2.999,0.0291,-4.8,14.0,sportsbet,8.5,Nathan Brown,Manly-Warringah Sea Eagles,IC,sportsbet,0.0043,0.1111111111111111,-0.1068111111111111,232.558
-Parramatta Eels,Manly-Warringah Sea Eagles,ok,0.3334,0.3044,2.999,0.0291,-4.8,14.0,sportsbet,8.5,Taniela Paseka,Manly-Warringah Sea Eagles,PR,sportsbet,0.022,0.12903225806451613,-0.10703225806451613,45.455
-Parramatta Eels,Manly-Warringah Sea Eagles,ok,0.3334,0.3044,2.999,0.0291,-4.8,14.0,sportsbet,8.5,Jordan Samrani,Parramatta Eels,CE,sportsbet,0.2171,0.3278688524590164,-0.11076885245901644,4.606
-Parramatta Eels,Manly-Warringah Sea Eagles,ok,0.3334,0.3044,2.999,0.0291,-4.8,14.0,sportsbet,8.5,Brian Kelly,Parramatta Eels,WG,sportsbet,0.3688,0.4807692307692307,-0.11196923076923071,2.711
-Parramatta Eels,Manly-Warringah Sea Eagles,ok,0.3334,0.3044,2.999,0.0291,-4.8,14.0,sportsbet,8.5,Reuben Garrick,Manly-Warringah Sea Eagles,CE,sportsbet,0.2972,0.4166666666666667,-0.11946666666666667,3.365
-Parramatta Eels,Manly-Warringah Sea Eagles,ok,0.3334,0.3044,2.999,0.0291,-4.8,14.0,sportsbet,8.5,Ben Trbojevic,Manly-Warringah Sea Eagles,2RF,sportsbet,0.2429,0.36363636363636365,-0.12073636363636364,4.117
-Parramatta Eels,Manly-Warringah Sea Eagles,ok,0.3334,0.3044,2.999,0.0291,-4.8,14.0,sportsbet,8.5,Ethan Bullemor,Manly-Warringah Sea Eagles,IC,sportsbet,0.0128,0.14285714285714285,-0.13005714285714284,78.125
-Parramatta Eels,Manly-Warringah Sea Eagles,ok,0.3334,0.3044,2.999,0.0291,-4.8,14.0,sportsbet,8.5,Isaiah Iongi,Parramatta Eels,FB,sportsbet,0.197,0.3278688524590164,-0.13086885245901642,5.076
-Parramatta Eels,Manly-Warringah Sea Eagles,ok,0.3334,0.3044,2.999,0.0291,-4.8,14.0,sportsbet,8.5,Ronald Volkman,Parramatta Eels,FE,sportsbet,0.0676,0.2173913043478261,-0.14979130434782612,14.793
-Parramatta Eels,Manly-Warringah Sea Eagles,ok,0.3334,0.3044,2.999,0.0291,-4.8,14.0,sportsbet,8.5,Jamal Fogarty,Manly-Warringah Sea Eagles,HB,sportsbet,0.0798,0.24390243902439027,-0.16410243902439026,12.531
-Parramatta Eels,Manly-Warringah Sea Eagles,ok,0.3334,0.3044,2.999,0.0291,-4.8,14.0,sportsbet,8.5,Sean Russell,Parramatta Eels,CE,sportsbet,0.1361,0.3076923076923077,-0.1715923076923077,7.348
-Parramatta Eels,Manly-Warringah Sea Eagles,ok,0.3334,0.3044,2.999,0.0291,-4.8,14.0,sportsbet,8.5,Lehi Hopoate,Manly-Warringah Sea Eagles,WG,sportsbet,0.459,0.6329113924050632,-0.1739113924050632,2.179
-Parramatta Eels,Manly-Warringah Sea Eagles,ok,0.3334,0.3044,2.999,0.0291,-4.8,14.0,sportsbet,8.5,Jake Simpkin,Manly-Warringah Sea Eagles,IC,sportsbet,0.0021,0.18181818181818182,-0.17971818181818183,476.19
-Parramatta Eels,Manly-Warringah Sea Eagles,ok,0.3334,0.3044,2.999,0.0291,-4.8,14.0,sportsbet,8.5,Corey Waddell,Manly-Warringah Sea Eagles,IC,sportsbet,0.0388,0.23255813953488372,-0.19375813953488372,25.773
-Parramatta Eels,Manly-Warringah Sea Eagles,ok,0.3334,0.3044,2.999,0.0291,-4.8,14.0,sportsbet,8.5,Joey Walsh,Manly-Warringah Sea Eagles,IC,sportsbet,0.0396,0.24390243902439027,-0.20430243902439027,25.253
-Parramatta Eels,Manly-Warringah Sea Eagles,ok,0.3334,0.3044,2.999,0.0291,-4.8,14.0,sportsbet,8.5,Josh Addo-Carr,Parramatta Eels,WG,sportsbet,0.2344,0.5263157894736842,-0.2919157894736842,4.266
-Parramatta Eels,Manly-Warringah Sea Eagles,ok,0.3334,0.3044,2.999,0.0291,-4.8,14.0,sportsbet,8.5,Tom Trbojevic,Manly-Warringah Sea Eagles,FB,sportsbet,0.2413,0.5617977528089888,-0.32049775280898884,4.144
-Newcastle Knights,Dolphins,ok,0.3701,0.4827,2.702,-0.1126,-3.7,14.0,sportsbet,1.5,Dylan Lucas,Newcastle Knights,2RF,sportsbet,0.6059,0.37037037037037035,0.23552962962962964,1.65
-Newcastle Knights,Dolphins,ok,0.3701,0.4827,2.702,-0.1126,-3.7,14.0,sportsbet,1.5,Jacob Saifiti,Newcastle Knights,PR,sportsbet,0.0777,0.1111111111111111,-0.0334111111111111,12.87
-Newcastle Knights,Dolphins,ok,0.3701,0.4827,2.702,-0.1126,-3.7,14.0,sportsbet,1.5,Greg Marzhew,Newcastle Knights,WG,sportsbet,0.4998,0.5464480874316939,-0.04664808743169391,2.001
-Newcastle Knights,Dolphins,ok,0.3701,0.4827,2.702,-0.1126,-3.7,14.0,sportsbet,1.5,Jermaine McEwen,Newcastle Knights,2RF,sportsbet,0.1078,0.16,-0.052199999999999996,9.276
-Newcastle Knights,Dolphins,ok,0.3701,0.4827,2.702,-0.1126,-3.7,14.0,sportsbet,1.5,Trey Mooney,Newcastle Knights,PR,sportsbet,0.1079,0.16666666666666666,-0.05876666666666666,9.268
-Newcastle Knights,Dolphins,ok,0.3701,0.4827,2.702,-0.1126,-3.7,14.0,sportsbet,1.5,Morgan Knowles,Dolphins,LK,sportsbet,0.0189,0.1,-0.0811,52.91
-Newcastle Knights,Dolphins,ok,0.3701,0.4827,2.702,-0.1126,-3.7,14.0,sportsbet,1.5,Felise Kaufusi,Dolphins,PR,sportsbet,0.0046,0.1,-0.09540000000000001,217.391
-Newcastle Knights,Dolphins,ok,0.3701,0.4827,2.702,-0.1126,-3.7,14.0,sportsbet,1.5,Francis Molo,Dolphins,PR,sportsbet,0.003,0.1,-0.097,333.333
-Newcastle Knights,Dolphins,ok,0.3701,0.4827,2.702,-0.1126,-3.7,14.0,sportsbet,1.5,Tyson Frizell,Newcastle Knights,IC,sportsbet,0.0274,0.12903225806451613,-0.10163225806451612,36.496
-Newcastle Knights,Dolphins,ok,0.3701,0.4827,2.702,-0.1126,-3.7,14.0,sportsbet,1.5,Kurt Donoghoe,Dolphins,IC,sportsbet,0.0763,0.17857142857142858,-0.10227142857142857,13.106
-Newcastle Knights,Dolphins,ok,0.3701,0.4827,2.702,-0.1126,-3.7,14.0,sportsbet,1.5,Tom Gilbert,Dolphins,IC,sportsbet,0.0088,0.1111111111111111,-0.1023111111111111,113.636
-Newcastle Knights,Dolphins,ok,0.3701,0.4827,2.702,-0.1126,-3.7,14.0,sportsbet,1.5,Dylan Brown,Newcastle Knights,HB,sportsbet,0.1254,0.23255813953488372,-0.1071581395348837,7.974
-Newcastle Knights,Dolphins,ok,0.3701,0.4827,2.702,-0.1126,-3.7,14.0,sportsbet,1.5,Dominic Young,Newcastle Knights,WG,sportsbet,0.4796,0.5882352941176471,-0.10863529411764705,2.085
-Newcastle Knights,Dolphins,ok,0.3701,0.4827,2.702,-0.1126,-3.7,14.0,sportsbet,1.5,Jamayne Isaako,Dolphins,WG,sportsbet,0.4724,0.5813953488372093,-0.10899534883720935,2.117
-Newcastle Knights,Dolphins,ok,0.3701,0.4827,2.702,-0.1126,-3.7,14.0,sportsbet,1.5,Connelly Lemuelu,Dolphins,2RF,sportsbet,0.1672,0.2777777777777778,-0.1105777777777778,5.981
-Newcastle Knights,Dolphins,ok,0.3701,0.4827,2.702,-0.1126,-3.7,14.0,sportsbet,1.5,Jeremy Marshall-King,Dolphins,HK,sportsbet,0.0829,0.19607843137254904,-0.11317843137254904,12.063
-Newcastle Knights,Dolphins,ok,0.3701,0.4827,2.702,-0.1126,-3.7,14.0,sportsbet,1.5,Cody Hopwood,Newcastle Knights,IC,sportsbet,0.0076,0.12121212121212122,-0.11361212121212122,131.579
-Newcastle Knights,Dolphins,ok,0.3701,0.4827,2.702,-0.1126,-3.7,14.0,sportsbet,1.5,Phoenix Crossland,Newcastle Knights,HK,sportsbet,0.0354,0.16,-0.1246,28.249
-Newcastle Knights,Dolphins,ok,0.3701,0.4827,2.702,-0.1126,-3.7,14.0,sportsbet,1.5,Mat Croker,Newcastle Knights,LK,sportsbet,0.0077,0.13333333333333333,-0.12563333333333332,129.87
-Newcastle Knights,Dolphins,ok,0.3701,0.4827,2.702,-0.1126,-3.7,14.0,sportsbet,1.5,Sandon Smith,Newcastle Knights,FE,sportsbet,0.0833,0.21052631578947367,-0.1272263157894737,12.005
-Newcastle Knights,Dolphins,ok,0.3701,0.4827,2.702,-0.1126,-3.7,14.0,sportsbet,1.5,Kodi Nikorima,Dolphins,FE,sportsbet,0.1578,0.2898550724637681,-0.13205507246376813,6.337
-Newcastle Knights,Dolphins,ok,0.3701,0.4827,2.702,-0.1126,-3.7,14.0,sportsbet,1.5,Fletcher Sharpe,Newcastle Knights,FE,sportsbet,0.3565,0.4926108374384237,-0.13611083743842373,2.805
-Newcastle Knights,Dolphins,ok,0.3701,0.4827,2.702,-0.1126,-3.7,14.0,sportsbet,1.5,Jake Averillo,Dolphins,CE,sportsbet,0.2617,0.4081632653061224,-0.14646326530612241,3.821
-Newcastle Knights,Dolphins,ok,0.3701,0.4827,2.702,-0.1126,-3.7,14.0,sportsbet,1.5,Fletcher Hunt,Newcastle Knights,IC,sportsbet,0.2349,0.3921568627450981,-0.1572568627450981,4.257
-Newcastle Knights,Dolphins,ok,0.3701,0.4827,2.702,-0.1126,-3.7,14.0,sportsbet,1.5,Kulikefu Finefeuiaki,Dolphins,2RF,sportsbet,0.0349,0.22727272727272727,-0.19237272727272725,28.653
-Newcastle Knights,Dolphins,ok,0.3701,0.4827,2.702,-0.1126,-3.7,14.0,sportsbet,1.5,Herbie Farnworth,Dolphins,CE,sportsbet,0.3127,0.5076142131979695,-0.19491421319796953,3.198
-Newcastle Knights,Dolphins,ok,0.3701,0.4827,2.702,-0.1126,-3.7,14.0,sportsbet,1.5,Dane Gagai,Newcastle Knights,CE,sportsbet,0.0711,0.2898550724637681,-0.21875507246376813,14.065
-Newcastle Knights,Dolphins,ok,0.3701,0.4827,2.702,-0.1126,-3.7,14.0,sportsbet,1.5,Trai Fuller,Dolphins,FB,sportsbet,0.1787,0.4347826086956522,-0.25608260869565225,5.596
-Newcastle Knights,Dolphins,ok,0.3701,0.4827,2.702,-0.1126,-3.7,14.0,sportsbet,1.5,Tevita Naufahu,Dolphins,WG,sportsbet,0.2706,0.5494505494505494,-0.2788505494505494,3.695
+Wests Tigers,New Zealand Warriors,ok,0.3017,0.3037,3.315,-0.002,-5.8,14.0,sportsbet,8.5,Adam Doueihi,Wests Tigers,HB,sportsbet,0.6277,0.30303030303030304,0.324669696969697,1.593
+Wests Tigers,New Zealand Warriors,ok,0.3017,0.3037,3.315,-0.002,-5.8,14.0,sportsbet,8.5,Jarome Luai,Wests Tigers,FE,sportsbet,0.3249,0.13793103448275862,0.1869689655172414,3.078
+Wests Tigers,New Zealand Warriors,ok,0.3017,0.3037,3.315,-0.002,-5.8,14.0,sportsbet,8.5,Alex Seyfarth,Wests Tigers,IC,sportsbet,0.1316,0.09523809523809523,0.03636190476190476,7.599
+Wests Tigers,New Zealand Warriors,ok,0.3017,0.3037,3.315,-0.002,-5.8,14.0,sportsbet,8.5,Starford To'a,Wests Tigers,CE,sportsbet,0.2675,0.29850746268656714,-0.031007462686567122,3.738
+Wests Tigers,New Zealand Warriors,ok,0.3017,0.3037,3.315,-0.002,-5.8,14.0,sportsbet,8.5,Charnze Nicoll-Klokstad,New Zealand Warriors,FB,sportsbet,0.5569,0.591715976331361,-0.03481597633136102,1.796
+Wests Tigers,New Zealand Warriors,ok,0.3017,0.3037,3.315,-0.002,-5.8,14.0,sportsbet,8.5,Jacob Laban,New Zealand Warriors,2RF,sportsbet,0.1997,0.24390243902439027,-0.04420243902439028,5.008
+Wests Tigers,New Zealand Warriors,ok,0.3017,0.3037,3.315,-0.002,-5.8,14.0,sportsbet,8.5,Sione Fainu,Wests Tigers,2RF,sportsbet,0.1166,0.16666666666666666,-0.05006666666666666,8.576
+Wests Tigers,New Zealand Warriors,ok,0.3017,0.3037,3.315,-0.002,-5.8,14.0,sportsbet,8.5,Alex Twal,Wests Tigers,LK,sportsbet,0.009,0.06666666666666667,-0.057666666666666665,111.111
+Wests Tigers,New Zealand Warriors,ok,0.3017,0.3037,3.315,-0.002,-5.8,14.0,sportsbet,8.5,Fonua Pole,Wests Tigers,IC,sportsbet,0.0068,0.08695652173913043,-0.08015652173913043,147.059
+Wests Tigers,New Zealand Warriors,ok,0.3017,0.3037,3.315,-0.002,-5.8,14.0,sportsbet,8.5,Terrell May,Wests Tigers,PR,sportsbet,0.0224,0.10526315789473684,-0.08286315789473683,44.643
+Wests Tigers,New Zealand Warriors,ok,0.3017,0.3037,3.315,-0.002,-5.8,14.0,sportsbet,8.5,Latu Fainu,Wests Tigers,IC,sportsbet,0.0042,0.09090909090909091,-0.08670909090909092,238.095
+Wests Tigers,New Zealand Warriors,ok,0.3017,0.3037,3.315,-0.002,-5.8,14.0,sportsbet,8.5,Bunty Afoa,Wests Tigers,PR,sportsbet,0.0102,0.1,-0.0898,98.039
+Wests Tigers,New Zealand Warriors,ok,0.3017,0.3037,3.315,-0.002,-5.8,14.0,sportsbet,8.5,Leka Halasima,New Zealand Warriors,2RF,sportsbet,0.1537,0.25641025641025644,-0.10271025641025644,6.506
+Wests Tigers,New Zealand Warriors,ok,0.3017,0.3037,3.315,-0.002,-5.8,14.0,sportsbet,8.5,Demitric Vaimauga,New Zealand Warriors,IC,sportsbet,0.0049,0.10810810810810811,-0.10320810810810811,204.082
+Wests Tigers,New Zealand Warriors,ok,0.3017,0.3037,3.315,-0.002,-5.8,14.0,sportsbet,8.5,Samuela Fainu,Wests Tigers,2RF,sportsbet,0.0935,0.2,-0.10650000000000001,10.695
+Wests Tigers,New Zealand Warriors,ok,0.3017,0.3037,3.315,-0.002,-5.8,14.0,sportsbet,8.5,Tanner Stowers-Smith,New Zealand Warriors,IC,sportsbet,0.0069,0.11764705882352941,-0.1107470588235294,144.928
+Wests Tigers,New Zealand Warriors,ok,0.3017,0.3037,3.315,-0.002,-5.8,14.0,sportsbet,8.5,James Fisher-Harris,New Zealand Warriors,PR,sportsbet,0.026,0.14814814814814814,-0.12214814814814814,38.462
+Wests Tigers,New Zealand Warriors,ok,0.3017,0.3037,3.315,-0.002,-5.8,14.0,sportsbet,8.5,Erin Clark,New Zealand Warriors,LK,sportsbet,0.0545,0.17857142857142858,-0.12407142857142858,18.349
+Wests Tigers,New Zealand Warriors,ok,0.3017,0.3037,3.315,-0.002,-5.8,14.0,sportsbet,8.5,Marata Niukore,New Zealand Warriors,IC,sportsbet,0.0182,0.14285714285714285,-0.12465714285714286,54.945
+Wests Tigers,New Zealand Warriors,ok,0.3017,0.3037,3.315,-0.002,-5.8,14.0,sportsbet,8.5,Te Maire Martin,New Zealand Warriors,HB,sportsbet,0.2169,0.3508771929824561,-0.1339771929824561,4.61
+Wests Tigers,New Zealand Warriors,ok,0.3017,0.3037,3.315,-0.002,-5.8,14.0,sportsbet,8.5,Taine Tuaupiki,New Zealand Warriors,FB,sportsbet,0.2151,0.36363636363636365,-0.14853636363636363,4.649
+Wests Tigers,New Zealand Warriors,ok,0.3017,0.3037,3.315,-0.002,-5.8,14.0,sportsbet,8.5,Wayde Egan,New Zealand Warriors,HK,sportsbet,0.021,0.17857142857142858,-0.15757142857142858,47.619
+Wests Tigers,New Zealand Warriors,ok,0.3017,0.3037,3.315,-0.002,-5.8,14.0,sportsbet,8.5,Adam Pompey,New Zealand Warriors,CE,sportsbet,0.1462,0.3125,-0.1663,6.84
+Wests Tigers,New Zealand Warriors,ok,0.3017,0.3037,3.315,-0.002,-5.8,14.0,sportsbet,8.5,Jahream Bula,Wests Tigers,FB,sportsbet,0.1794,0.37037037037037035,-0.19097037037037035,5.574
+Wests Tigers,New Zealand Warriors,ok,0.3017,0.3037,3.315,-0.002,-5.8,14.0,sportsbet,8.5,Jeral Skelton,Wests Tigers,WG,sportsbet,0.2329,0.4347826086956522,-0.20188260869565222,4.294
+Wests Tigers,New Zealand Warriors,ok,0.3017,0.3037,3.315,-0.002,-5.8,14.0,sportsbet,8.5,Chanel Harris-Tavita,New Zealand Warriors,FE,sportsbet,0.0715,0.2777777777777778,-0.20627777777777778,13.986
+Wests Tigers,New Zealand Warriors,ok,0.3017,0.3037,3.315,-0.002,-5.8,14.0,sportsbet,8.5,Alofiana Khan-Pereira,New Zealand Warriors,WG,sportsbet,0.3918,0.6172839506172839,-0.22548395061728393,2.552
+Wests Tigers,New Zealand Warriors,ok,0.3017,0.3037,3.315,-0.002,-5.8,14.0,sportsbet,8.5,Ali Leiataua,New Zealand Warriors,CE,sportsbet,0.0834,0.3225806451612903,-0.2391806451612903,11.99
+Wests Tigers,New Zealand Warriors,ok,0.3017,0.3037,3.315,-0.002,-5.8,14.0,sportsbet,8.5,Heamasi Makasini,Wests Tigers,CE,sportsbet,0.055,0.29850746268656714,-0.24350746268656714,18.182
+Wests Tigers,New Zealand Warriors,ok,0.3017,0.3037,3.315,-0.002,-5.8,14.0,sportsbet,8.5,Sunia Turuva,Wests Tigers,WG,sportsbet,0.0914,0.4081632653061224,-0.3167632653061224,10.941
+Dolphins,Cronulla-Sutherland Sharks,ok,0.5594,0.613,1.788,-0.0536,1.7,14.0,sportsbet,-4.5,Nicholas Hynes,Cronulla-Sutherland Sharks,HB,sportsbet,0.2174,0.21052631578947367,0.006873684210526337,4.6
+Dolphins,Cronulla-Sutherland Sharks,ok,0.5594,0.613,1.788,-0.0536,1.7,14.0,sportsbet,-4.5,Sione Katoa,Cronulla-Sutherland Sharks,WG,sportsbet,0.4933,0.5102040816326531,-0.016904081632653056,2.027
+Dolphins,Cronulla-Sutherland Sharks,ok,0.5594,0.613,1.788,-0.0536,1.7,14.0,sportsbet,-4.5,Ronaldo Mulitalo,Cronulla-Sutherland Sharks,WG,sportsbet,0.4829,0.5076142131979695,-0.024714213197969515,2.071
+Dolphins,Cronulla-Sutherland Sharks,ok,0.5594,0.613,1.788,-0.0536,1.7,14.0,sportsbet,-4.5,Kurt Donoghoe,Dolphins,IC,sportsbet,0.1595,0.18867924528301888,-0.02917924528301888,6.27
+Dolphins,Cronulla-Sutherland Sharks,ok,0.5594,0.613,1.788,-0.0536,1.7,14.0,sportsbet,-4.5,William Kennedy,Cronulla-Sutherland Sharks,FB,sportsbet,0.2995,0.3333333333333333,-0.033833333333333326,3.339
+Dolphins,Cronulla-Sutherland Sharks,ok,0.5594,0.613,1.788,-0.0536,1.7,14.0,sportsbet,-4.5,Siosifa Talakai,Cronulla-Sutherland Sharks,IC,sportsbet,0.0711,0.12903225806451613,-0.05793225806451613,14.065
+Dolphins,Cronulla-Sutherland Sharks,ok,0.5594,0.613,1.788,-0.0536,1.7,14.0,sportsbet,-4.5,Morgan Knowles,Dolphins,LK,sportsbet,0.0373,0.09523809523809523,-0.05793809523809523,26.81
+Dolphins,Cronulla-Sutherland Sharks,ok,0.5594,0.613,1.788,-0.0536,1.7,14.0,sportsbet,-4.5,Teig Wilton,Cronulla-Sutherland Sharks,2RF,sportsbet,0.1984,0.2631578947368421,-0.0647578947368421,5.04
+Dolphins,Cronulla-Sutherland Sharks,ok,0.5594,0.613,1.788,-0.0536,1.7,14.0,sportsbet,-4.5,Felise Kaufusi,Dolphins,PR,sportsbet,0.0063,0.09090909090909091,-0.08460909090909091,158.73
+Dolphins,Cronulla-Sutherland Sharks,ok,0.5594,0.613,1.788,-0.0536,1.7,14.0,sportsbet,-4.5,Francis Molo,Dolphins,PR,sportsbet,0.0045,0.09090909090909091,-0.08640909090909091,222.222
+Dolphins,Cronulla-Sutherland Sharks,ok,0.5594,0.613,1.788,-0.0536,1.7,14.0,sportsbet,-4.5,Oregon Kaufusi,Cronulla-Sutherland Sharks,IC,sportsbet,0.0116,0.1,-0.0884,86.207
+Dolphins,Cronulla-Sutherland Sharks,ok,0.5594,0.613,1.788,-0.0536,1.7,14.0,sportsbet,-4.5,Ray Stone,Dolphins,IC,sportsbet,0.0176,0.10810810810810811,-0.09050810810810811,56.818
+Dolphins,Cronulla-Sutherland Sharks,ok,0.5594,0.613,1.788,-0.0536,1.7,14.0,sportsbet,-4.5,Tom Gilbert,Dolphins,IC,sportsbet,0.0084,0.1,-0.0916,119.048
+Dolphins,Cronulla-Sutherland Sharks,ok,0.5594,0.613,1.788,-0.0536,1.7,14.0,sportsbet,-4.5,Thomas Hazelton,Cronulla-Sutherland Sharks,IC,sportsbet,0.0289,0.12121212121212122,-0.09231212121212122,34.602
+Dolphins,Cronulla-Sutherland Sharks,ok,0.5594,0.613,1.788,-0.0536,1.7,14.0,sportsbet,-4.5,Cameron McInnes,Cronulla-Sutherland Sharks,LK,sportsbet,0.0113,0.10810810810810811,-0.09680810810810811,88.496
+Dolphins,Cronulla-Sutherland Sharks,ok,0.5594,0.613,1.788,-0.0536,1.7,14.0,sportsbet,-4.5,Jesse Colquhoun,Cronulla-Sutherland Sharks,LK,sportsbet,0.071,0.1694915254237288,-0.09849152542372881,14.085
+Dolphins,Cronulla-Sutherland Sharks,ok,0.5594,0.613,1.788,-0.0536,1.7,14.0,sportsbet,-4.5,Jesse Ramien,Cronulla-Sutherland Sharks,CE,sportsbet,0.1685,0.27027027027027023,-0.10177027027027022,5.935
+Dolphins,Cronulla-Sutherland Sharks,ok,0.5594,0.613,1.788,-0.0536,1.7,14.0,sportsbet,-4.5,Jeremy Marshall-King,Dolphins,HK,sportsbet,0.0874,0.19607843137254904,-0.10867843137254904,11.442
+Dolphins,Cronulla-Sutherland Sharks,ok,0.5594,0.613,1.788,-0.0536,1.7,14.0,sportsbet,-4.5,Jamayne Isaako,Dolphins,WG,sportsbet,0.4591,0.5780346820809249,-0.11893468208092489,2.178
+Dolphins,Cronulla-Sutherland Sharks,ok,0.5594,0.613,1.788,-0.0536,1.7,14.0,sportsbet,-4.5,Jayden Berrell,Cronulla-Sutherland Sharks,IC,sportsbet,0.0086,0.12903225806451613,-0.12043225806451613,116.279
+Dolphins,Cronulla-Sutherland Sharks,ok,0.5594,0.613,1.788,-0.0536,1.7,14.0,sportsbet,-4.5,Billy Burns,Cronulla-Sutherland Sharks,2RF,sportsbet,0.0997,0.22727272727272727,-0.12757272727272728,10.03
+Dolphins,Cronulla-Sutherland Sharks,ok,0.5594,0.613,1.788,-0.0536,1.7,14.0,sportsbet,-4.5,Braydon Trindall,Cronulla-Sutherland Sharks,FE,sportsbet,0.2149,0.3448275862068966,-0.12992758620689657,4.653
+Dolphins,Cronulla-Sutherland Sharks,ok,0.5594,0.613,1.788,-0.0536,1.7,14.0,sportsbet,-4.5,Herbie Farnworth,Dolphins,CE,sportsbet,0.317,0.45454545454545453,-0.13754545454545453,3.155
+Dolphins,Cronulla-Sutherland Sharks,ok,0.5594,0.613,1.788,-0.0536,1.7,14.0,sportsbet,-4.5,Jake Averillo,Dolphins,CE,sportsbet,0.2456,0.4081632653061224,-0.1625632653061224,4.072
+Dolphins,Cronulla-Sutherland Sharks,ok,0.5594,0.613,1.788,-0.0536,1.7,14.0,sportsbet,-4.5,Connelly Lemuelu,Dolphins,2RF,sportsbet,0.0944,0.2777777777777778,-0.1833777777777778,10.593
+Dolphins,Cronulla-Sutherland Sharks,ok,0.5594,0.613,1.788,-0.0536,1.7,14.0,sportsbet,-4.5,Kodi Nikorima,Dolphins,FE,sportsbet,0.0935,0.29411764705882354,-0.20061764705882354,10.695
+Dolphins,Cronulla-Sutherland Sharks,ok,0.5594,0.613,1.788,-0.0536,1.7,14.0,sportsbet,-4.5,Trai Fuller,Dolphins,FB,sportsbet,0.2028,0.4347826086956522,-0.2319826086956522,4.931
+Dolphins,Cronulla-Sutherland Sharks,ok,0.5594,0.613,1.788,-0.0536,1.7,14.0,sportsbet,-4.5,Kulikefu Finefeuiaki,Dolphins,2RF,sportsbet,0.0321,0.2777777777777778,-0.2456777777777778,31.153
+Dolphins,Cronulla-Sutherland Sharks,ok,0.5594,0.613,1.788,-0.0536,1.7,14.0,sportsbet,-4.5,Tevita Naufahu,Dolphins,WG,sportsbet,0.2184,0.5747126436781609,-0.35631264367816085,4.579
+Canterbury-Bankstown Bulldogs,Canberra Raiders,ok,0.5806,0.592,1.722,-0.0113,2.3,14.0,sportsbet,-4.5,Max King,Canterbury-Bankstown Bulldogs,PR,sportsbet,0.2215,0.09090909090909091,0.1305909090909091,4.515
+Canterbury-Bankstown Bulldogs,Canberra Raiders,ok,0.5806,0.592,1.722,-0.0113,2.3,14.0,sportsbet,-4.5,Owen Pattie,Canberra Raiders,IC,sportsbet,0.2468,0.11764705882352941,0.12915294117647058,4.052
+Canterbury-Bankstown Bulldogs,Canberra Raiders,ok,0.5806,0.592,1.722,-0.0113,2.3,14.0,sportsbet,-4.5,Tom Starling,Canberra Raiders,HK,sportsbet,0.2255,0.11428571428571428,0.11121428571428572,4.435
+Canterbury-Bankstown Bulldogs,Canberra Raiders,ok,0.5806,0.592,1.722,-0.0113,2.3,14.0,sportsbet,-4.5,Matthew Timoko,Canberra Raiders,CE,sportsbet,0.3628,0.29411764705882354,0.06868235294117647,2.756
+Canterbury-Bankstown Bulldogs,Canberra Raiders,ok,0.5806,0.592,1.722,-0.0113,2.3,14.0,sportsbet,-4.5,Josh Curran,Canterbury-Bankstown Bulldogs,IC,sportsbet,0.2984,0.2631578947368421,0.03524210526315791,3.351
+Canterbury-Bankstown Bulldogs,Canberra Raiders,ok,0.5806,0.592,1.722,-0.0113,2.3,14.0,sportsbet,-4.5,Lachlan Galvin,Canterbury-Bankstown Bulldogs,HB,sportsbet,0.3695,0.36363636363636365,0.005863636363636349,2.706
+Canterbury-Bankstown Bulldogs,Canberra Raiders,ok,0.5806,0.592,1.722,-0.0113,2.3,14.0,sportsbet,-4.5,Hudson Young,Canberra Raiders,2RF,sportsbet,0.2874,0.2857142857142857,0.0016857142857142904,3.479
+Canterbury-Bankstown Bulldogs,Canberra Raiders,ok,0.5806,0.592,1.722,-0.0113,2.3,14.0,sportsbet,-4.5,Jethro Rinakama,Canterbury-Bankstown Bulldogs,IC,sportsbet,0.4919,0.5076142131979695,-0.015714213197969507,2.033
+Canterbury-Bankstown Bulldogs,Canberra Raiders,ok,0.5806,0.592,1.722,-0.0113,2.3,14.0,sportsbet,-4.5,Simi Sasagi,Canberra Raiders,CE,sportsbet,0.3137,0.3448275862068966,-0.031127586206896596,3.188
+Canterbury-Bankstown Bulldogs,Canberra Raiders,ok,0.5806,0.592,1.722,-0.0113,2.3,14.0,sportsbet,-4.5,Xavier Savage,Canberra Raiders,WG,sportsbet,0.4359,0.4716981132075471,-0.03579811320754711,2.294
+Canterbury-Bankstown Bulldogs,Canberra Raiders,ok,0.5806,0.592,1.722,-0.0113,2.3,14.0,sportsbet,-4.5,Stephen Crichton,Canterbury-Bankstown Bulldogs,CE,sportsbet,0.3065,0.3448275862068966,-0.03832758620689658,3.263
+Canterbury-Bankstown Bulldogs,Canberra Raiders,ok,0.5806,0.592,1.722,-0.0113,2.3,14.0,sportsbet,-4.5,Corey Horsburgh,Canberra Raiders,PR,sportsbet,0.0489,0.09523809523809523,-0.046338095238095234,20.45
+Canterbury-Bankstown Bulldogs,Canberra Raiders,ok,0.5806,0.592,1.722,-0.0113,2.3,14.0,sportsbet,-4.5,Noah Martin,Canberra Raiders,2RF,sportsbet,0.121,0.17857142857142858,-0.05757142857142858,8.264
+Canterbury-Bankstown Bulldogs,Canberra Raiders,ok,0.5806,0.592,1.722,-0.0113,2.3,14.0,sportsbet,-4.5,Josh Papalii,Canberra Raiders,PR,sportsbet,0.0155,0.07692307692307693,-0.06142307692307693,64.516
+Canterbury-Bankstown Bulldogs,Canberra Raiders,ok,0.5806,0.592,1.722,-0.0113,2.3,14.0,sportsbet,-4.5,Jack Underhill,Canterbury-Bankstown Bulldogs,IC,sportsbet,0.0086,0.08333333333333333,-0.07473333333333333,116.279
+Canterbury-Bankstown Bulldogs,Canberra Raiders,ok,0.5806,0.592,1.722,-0.0113,2.3,14.0,sportsbet,-4.5,Zac Hosking,Canberra Raiders,2RF,sportsbet,0.0588,0.13793103448275862,-0.07913103448275863,17.007
+Canterbury-Bankstown Bulldogs,Canberra Raiders,ok,0.5806,0.592,1.722,-0.0113,2.3,14.0,sportsbet,-4.5,Ata Mariota,Canberra Raiders,IC,sportsbet,0.0145,0.1,-0.0855,68.966
+Canterbury-Bankstown Bulldogs,Canberra Raiders,ok,0.5806,0.592,1.722,-0.0113,2.3,14.0,sportsbet,-4.5,Ethan Sanders,Canberra Raiders,HB,sportsbet,0.067,0.15384615384615385,-0.08684615384615385,14.925
+Canterbury-Bankstown Bulldogs,Canberra Raiders,ok,0.5806,0.592,1.722,-0.0113,2.3,14.0,sportsbet,-4.5,Leo Thompson,Canterbury-Bankstown Bulldogs,PR,sportsbet,0.0094,0.10526315789473684,-0.09586315789473683,106.383
+Canterbury-Bankstown Bulldogs,Canberra Raiders,ok,0.5806,0.592,1.722,-0.0113,2.3,14.0,sportsbet,-4.5,Joseph Tapine,Canberra Raiders,PR,sportsbet,0.0106,0.1111111111111111,-0.1005111111111111,94.34
+Canterbury-Bankstown Bulldogs,Canberra Raiders,ok,0.5806,0.592,1.722,-0.0113,2.3,14.0,sportsbet,-4.5,Bailey Hayward,Canterbury-Bankstown Bulldogs,HK,sportsbet,0.0295,0.13333333333333333,-0.10383333333333333,33.898
+Canterbury-Bankstown Bulldogs,Canberra Raiders,ok,0.5806,0.592,1.722,-0.0113,2.3,14.0,sportsbet,-4.5,Harry Hayes,Canterbury-Bankstown Bulldogs,IC,sportsbet,0.008,0.12903225806451613,-0.12103225806451612,125.0
+Canterbury-Bankstown Bulldogs,Canberra Raiders,ok,0.5806,0.592,1.722,-0.0113,2.3,14.0,sportsbet,-4.5,Ethan Strange,Canberra Raiders,FE,sportsbet,0.1887,0.3125,-0.1238,5.299
+Canterbury-Bankstown Bulldogs,Canberra Raiders,ok,0.5806,0.592,1.722,-0.0113,2.3,14.0,sportsbet,-4.5,Kurt Mann,Canterbury-Bankstown Bulldogs,IC,sportsbet,0.0068,0.13333333333333333,-0.12653333333333333,147.059
+Canterbury-Bankstown Bulldogs,Canberra Raiders,ok,0.5806,0.592,1.722,-0.0113,2.3,14.0,sportsbet,-4.5,Kaeo Weekes,Canberra Raiders,FB,sportsbet,0.2782,0.4081632653061224,-0.1299632653061224,3.595
+Canterbury-Bankstown Bulldogs,Canberra Raiders,ok,0.5806,0.592,1.722,-0.0113,2.3,14.0,sportsbet,-4.5,Jaeman Salmon,Canterbury-Bankstown Bulldogs,LK,sportsbet,0.0277,0.18867924528301888,-0.16097924528301888,36.101
+Canterbury-Bankstown Bulldogs,Canberra Raiders,ok,0.5806,0.592,1.722,-0.0113,2.3,14.0,sportsbet,-4.5,Jacob Kiraz,Canterbury-Bankstown Bulldogs,WG,sportsbet,0.4046,0.5952380952380952,-0.19063809523809522,2.472
+Canterbury-Bankstown Bulldogs,Canberra Raiders,ok,0.5806,0.592,1.722,-0.0113,2.3,14.0,sportsbet,-4.5,Enari Tuala,Canterbury-Bankstown Bulldogs,CE,sportsbet,0.1699,0.36363636363636365,-0.19373636363636365,5.886
+Canterbury-Bankstown Bulldogs,Canberra Raiders,ok,0.5806,0.592,1.722,-0.0113,2.3,14.0,sportsbet,-4.5,Sebastian Kris,Canberra Raiders,CE,sportsbet,0.2281,0.425531914893617,-0.19743191489361703,4.384
+Canterbury-Bankstown Bulldogs,Canberra Raiders,ok,0.5806,0.592,1.722,-0.0113,2.3,14.0,sportsbet,-4.5,Connor Tracey,Canterbury-Bankstown Bulldogs,FB,sportsbet,0.0958,0.30303030303030304,-0.20723030303030304,10.438
+Canterbury-Bankstown Bulldogs,Canberra Raiders,ok,0.5806,0.592,1.722,-0.0113,2.3,14.0,sportsbet,-4.5,Matt Burton,Canterbury-Bankstown Bulldogs,FE,sportsbet,0.0974,0.4,-0.30260000000000004,10.267
+Sydney Roosters,Parramatta Eels,ok,0.8056,0.7445,1.241,0.0611,9.9,14.0,sportsbet,-10.5,Kelma Tuilagi,Parramatta Eels,2RF,sportsbet,0.2465,0.16666666666666666,0.07983333333333334,4.057
+Sydney Roosters,Parramatta Eels,ok,0.8056,0.7445,1.241,0.0611,9.9,14.0,sportsbet,-10.5,Ronald Volkman,Parramatta Eels,FE,sportsbet,0.2891,0.21052631578947367,0.07857368421052635,3.459
+Sydney Roosters,Parramatta Eels,ok,0.8056,0.7445,1.241,0.0611,9.9,14.0,sportsbet,-10.5,Billy Smith,Sydney Roosters,CE,sportsbet,0.4752,0.45454545454545453,0.02065454545454548,2.104
+Sydney Roosters,Parramatta Eels,ok,0.8056,0.7445,1.241,0.0611,9.9,14.0,sportsbet,-10.5,Dylan Walker,Parramatta Eels,IC,sportsbet,0.0922,0.11428571428571428,-0.022085714285714278,10.846
+Sydney Roosters,Parramatta Eels,ok,0.8056,0.7445,1.241,0.0611,9.9,14.0,sportsbet,-10.5,Robert Toia,Sydney Roosters,CE,sportsbet,0.3724,0.4,-0.027600000000000013,2.685
+Sydney Roosters,Parramatta Eels,ok,0.8056,0.7445,1.241,0.0611,9.9,14.0,sportsbet,-10.5,Kitione Kautoga,Parramatta Eels,2RF,sportsbet,0.1263,0.16666666666666666,-0.04036666666666666,7.918
+Sydney Roosters,Parramatta Eels,ok,0.8056,0.7445,1.241,0.0611,9.9,14.0,sportsbet,-10.5,Tallyn Da Silva,Parramatta Eels,IC,sportsbet,0.1731,0.24390243902439027,-0.07080243902439026,5.777
+Sydney Roosters,Parramatta Eels,ok,0.8056,0.7445,1.241,0.0611,9.9,14.0,sportsbet,-10.5,Toni Mataele,Parramatta Eels,IC,sportsbet,0.0092,0.08695652173913043,-0.07775652173913043,108.696
+Sydney Roosters,Parramatta Eels,ok,0.8056,0.7445,1.241,0.0611,9.9,14.0,sportsbet,-10.5,Isaiah Iongi,Parramatta Eels,FB,sportsbet,0.2323,0.3125,-0.0802,4.305
+Sydney Roosters,Parramatta Eels,ok,0.8056,0.7445,1.241,0.0611,9.9,14.0,sportsbet,-10.5,Jack De Belin,Parramatta Eels,LK,sportsbet,0.0087,0.09090909090909091,-0.08220909090909091,114.943
+Sydney Roosters,Parramatta Eels,ok,0.8056,0.7445,1.241,0.0611,9.9,14.0,sportsbet,-10.5,Sam Tuivaiti,Parramatta Eels,IC,sportsbet,0.0067,0.09523809523809523,-0.08853809523809524,149.254
+Sydney Roosters,Parramatta Eels,ok,0.8056,0.7445,1.241,0.0611,9.9,14.0,sportsbet,-10.5,Jack Williams,Parramatta Eels,PR,sportsbet,0.0064,0.09523809523809523,-0.08883809523809523,156.25
+Sydney Roosters,Parramatta Eels,ok,0.8056,0.7445,1.241,0.0611,9.9,14.0,sportsbet,-10.5,Naufahu Whyte,Sydney Roosters,PR,sportsbet,0.0044,0.10526315789473684,-0.10086315789473684,227.273
+Sydney Roosters,Parramatta Eels,ok,0.8056,0.7445,1.241,0.0611,9.9,14.0,sportsbet,-10.5,Spencer Leniu,Sydney Roosters,IC,sportsbet,0.0045,0.1111111111111111,-0.1066111111111111,222.222
+Sydney Roosters,Parramatta Eels,ok,0.8056,0.7445,1.241,0.0611,9.9,14.0,sportsbet,-10.5,Victor Radley,Sydney Roosters,LK,sportsbet,0.0299,0.14814814814814814,-0.11824814814814814,33.445
+Sydney Roosters,Parramatta Eels,ok,0.8056,0.7445,1.241,0.0611,9.9,14.0,sportsbet,-10.5,Benaiah Ioelu,Sydney Roosters,HK,sportsbet,0.0253,0.14814814814814814,-0.12284814814814814,39.526
+Sydney Roosters,Parramatta Eels,ok,0.8056,0.7445,1.241,0.0611,9.9,14.0,sportsbet,-10.5,Hugo Savala,Sydney Roosters,CE,sportsbet,0.2424,0.37037037037037035,-0.12797037037037035,4.125
+Sydney Roosters,Parramatta Eels,ok,0.8056,0.7445,1.241,0.0611,9.9,14.0,sportsbet,-10.5,Daniel Tupou,Sydney Roosters,WG,sportsbet,0.4714,0.6024096385542169,-0.13100963855421693,2.121
+Sydney Roosters,Parramatta Eels,ok,0.8056,0.7445,1.241,0.0611,9.9,14.0,sportsbet,-10.5,Egan Butcher,Sydney Roosters,IC,sportsbet,0.0028,0.14814814814814814,-0.14534814814814814,357.143
+Sydney Roosters,Parramatta Eels,ok,0.8056,0.7445,1.241,0.0611,9.9,14.0,sportsbet,-10.5,Jordan Samrani,Parramatta Eels,CE,sportsbet,0.1521,0.31746031746031744,-0.16536031746031743,6.575
+Sydney Roosters,Parramatta Eels,ok,0.8056,0.7445,1.241,0.0611,9.9,14.0,sportsbet,-10.5,Salesi Foketi,Sydney Roosters,IC,sportsbet,0.0025,0.17857142857142858,-0.17607142857142857,400.0
+Sydney Roosters,Parramatta Eels,ok,0.8056,0.7445,1.241,0.0611,9.9,14.0,sportsbet,-10.5,Siua Wong,Sydney Roosters,2RF,sportsbet,0.0265,0.2040816326530612,-0.1775816326530612,37.736
+Sydney Roosters,Parramatta Eels,ok,0.8056,0.7445,1.241,0.0611,9.9,14.0,sportsbet,-10.5,Mark Nawaqanitawase,Sydney Roosters,WG,sportsbet,0.5378,0.7194244604316548,-0.1816244604316548,1.859
+Sydney Roosters,Parramatta Eels,ok,0.8056,0.7445,1.241,0.0611,9.9,14.0,sportsbet,-10.5,Daly Cherry-Evans,Sydney Roosters,FE,sportsbet,0.081,0.2631578947368421,-0.18215789473684207,12.346
+Sydney Roosters,Parramatta Eels,ok,0.8056,0.7445,1.241,0.0611,9.9,14.0,sportsbet,-10.5,Brian Kelly,Parramatta Eels,WG,sportsbet,0.2644,0.45454545454545453,-0.1901454545454545,3.782
+Sydney Roosters,Parramatta Eels,ok,0.8056,0.7445,1.241,0.0611,9.9,14.0,sportsbet,-10.5,Connor Watson,Sydney Roosters,IC,sportsbet,0.0139,0.2040816326530612,-0.1901816326530612,71.942
+Sydney Roosters,Parramatta Eels,ok,0.8056,0.7445,1.241,0.0611,9.9,14.0,sportsbet,-10.5,Mitchell Moses,Parramatta Eels,HB,sportsbet,0.0278,0.23255813953488372,-0.20475813953488373,35.971
+Sydney Roosters,Parramatta Eels,ok,0.8056,0.7445,1.241,0.0611,9.9,14.0,sportsbet,-10.5,Josh Addo-Carr,Parramatta Eels,WG,sportsbet,0.2194,0.4807692307692307,-0.2613692307692307,4.558
+South Sydney Rabbitohs,Newcastle Knights,ok,0.6031,0.4832,1.658,0.1199,2.9,14.0,sportsbet,1.5,Dylan Lucas,Newcastle Knights,2RF,sportsbet,0.6306,0.4347826086956522,0.19581739130434783,1.586
+South Sydney Rabbitohs,Newcastle Knights,ok,0.6031,0.4832,1.658,0.1199,2.9,14.0,sportsbet,1.5,Fletcher Sharpe,Newcastle Knights,FE,sportsbet,0.5179,0.3846153846153846,0.13328461538461545,1.931
+South Sydney Rabbitohs,Newcastle Knights,ok,0.6031,0.4832,1.658,0.1199,2.9,14.0,sportsbet,1.5,Trey Mooney,Newcastle Knights,PR,sportsbet,0.0886,0.16,-0.0714,11.287
+South Sydney Rabbitohs,Newcastle Knights,ok,0.6031,0.4832,1.658,0.1199,2.9,14.0,sportsbet,1.5,Jermaine McEwen,Newcastle Knights,2RF,sportsbet,0.0919,0.16666666666666666,-0.07476666666666666,10.881
+South Sydney Rabbitohs,Newcastle Knights,ok,0.6031,0.4832,1.658,0.1199,2.9,14.0,sportsbet,1.5,Greg Marzhew,Newcastle Knights,WG,sportsbet,0.4523,0.53475935828877,-0.08245935828876999,2.211
+South Sydney Rabbitohs,Newcastle Knights,ok,0.6031,0.4832,1.658,0.1199,2.9,14.0,sportsbet,1.5,Euan Aitken,South Sydney Rabbitohs,2RF,sportsbet,0.1244,0.2173913043478261,-0.09299130434782611,8.039
+South Sydney Rabbitohs,Newcastle Knights,ok,0.6031,0.4832,1.658,0.1199,2.9,14.0,sportsbet,1.5,Tallis Duncan,South Sydney Rabbitohs,2RF,sportsbet,0.2914,0.3846153846153846,-0.09321538461538459,3.432
+South Sydney Rabbitohs,Newcastle Knights,ok,0.6031,0.4832,1.658,0.1199,2.9,14.0,sportsbet,1.5,Tyson Frizell,Newcastle Knights,IC,sportsbet,0.0275,0.13793103448275862,-0.11043103448275862,36.364
+South Sydney Rabbitohs,Newcastle Knights,ok,0.6031,0.4832,1.658,0.1199,2.9,14.0,sportsbet,1.5,Tevita Tatola,South Sydney Rabbitohs,PR,sportsbet,0.004,0.11764705882352941,-0.1136470588235294,250.0
+South Sydney Rabbitohs,Newcastle Knights,ok,0.6031,0.4832,1.658,0.1199,2.9,14.0,sportsbet,1.5,Keaon Koloamatangi,South Sydney Rabbitohs,PR,sportsbet,0.034,0.14814814814814814,-0.11414814814814814,29.412
+South Sydney Rabbitohs,Newcastle Knights,ok,0.6031,0.4832,1.658,0.1199,2.9,14.0,sportsbet,1.5,Dominic Young,Newcastle Knights,WG,sportsbet,0.4482,0.5649717514124294,-0.1167717514124294,2.231
+South Sydney Rabbitohs,Newcastle Knights,ok,0.6031,0.4832,1.658,0.1199,2.9,14.0,sportsbet,1.5,Dylan Brown,Newcastle Knights,HB,sportsbet,0.1105,0.22727272727272727,-0.11677272727272726,9.05
+South Sydney Rabbitohs,Newcastle Knights,ok,0.6031,0.4832,1.658,0.1199,2.9,14.0,sportsbet,1.5,Phoenix Crossland,Newcastle Knights,HK,sportsbet,0.0256,0.14285714285714285,-0.11725714285714285,39.062
+South Sydney Rabbitohs,Newcastle Knights,ok,0.6031,0.4832,1.658,0.1199,2.9,14.0,sportsbet,1.5,Cody Hopwood,Newcastle Knights,IC,sportsbet,0.0068,0.125,-0.1182,147.059
+South Sydney Rabbitohs,Newcastle Knights,ok,0.6031,0.4832,1.658,0.1199,2.9,14.0,sportsbet,1.5,Lachlan Hubner,South Sydney Rabbitohs,IC,sportsbet,0.0139,0.13333333333333333,-0.11943333333333334,71.942
+South Sydney Rabbitohs,Newcastle Knights,ok,0.6031,0.4832,1.658,0.1199,2.9,14.0,sportsbet,1.5,Mat Croker,Newcastle Knights,LK,sportsbet,0.0066,0.14814814814814814,-0.14154814814814815,151.515
+South Sydney Rabbitohs,Newcastle Knights,ok,0.6031,0.4832,1.658,0.1199,2.9,14.0,sportsbet,1.5,Bradman Best,Newcastle Knights,CE,sportsbet,0.2804,0.425531914893617,-0.14513191489361704,3.566
+South Sydney Rabbitohs,Newcastle Knights,ok,0.6031,0.4832,1.658,0.1199,2.9,14.0,sportsbet,1.5,Ashton Ward,South Sydney Rabbitohs,HB,sportsbet,0.0161,0.1694915254237288,-0.1533915254237288,62.112
+South Sydney Rabbitohs,Newcastle Knights,ok,0.6031,0.4832,1.658,0.1199,2.9,14.0,sportsbet,1.5,Brandon Smith,South Sydney Rabbitohs,HK,sportsbet,0.0121,0.17857142857142858,-0.16647142857142858,82.645
+South Sydney Rabbitohs,Newcastle Knights,ok,0.6031,0.4832,1.658,0.1199,2.9,14.0,sportsbet,1.5,Cameron Murray,South Sydney Rabbitohs,LK,sportsbet,0.0586,0.23529411764705882,-0.17669411764705883,17.065
+South Sydney Rabbitohs,Newcastle Knights,ok,0.6031,0.4832,1.658,0.1199,2.9,14.0,sportsbet,1.5,Jayden Sullivan,South Sydney Rabbitohs,IC,sportsbet,0.0094,0.2222222222222222,-0.21282222222222222,106.383
+South Sydney Rabbitohs,Newcastle Knights,ok,0.6031,0.4832,1.658,0.1199,2.9,14.0,sportsbet,1.5,Dane Gagai,Newcastle Knights,CE,sportsbet,0.0629,0.29850746268656714,-0.23560746268656713,15.898
+South Sydney Rabbitohs,Newcastle Knights,ok,0.6031,0.4832,1.658,0.1199,2.9,14.0,sportsbet,1.5,David Fifita,South Sydney Rabbitohs,2RF,sportsbet,0.1223,0.37037037037037035,-0.24807037037037033,8.177
+South Sydney Rabbitohs,Newcastle Knights,ok,0.6031,0.4832,1.658,0.1199,2.9,14.0,sportsbet,1.5,Campbell Graham,South Sydney Rabbitohs,WG,sportsbet,0.262,0.5405405405405405,-0.27854054054054045,3.817
+South Sydney Rabbitohs,Newcastle Knights,ok,0.6031,0.4832,1.658,0.1199,2.9,14.0,sportsbet,1.5,Jack Wighton,South Sydney Rabbitohs,CE,sportsbet,0.0634,0.35714285714285715,-0.29374285714285714,15.773
+South Sydney Rabbitohs,Newcastle Knights,ok,0.6031,0.4832,1.658,0.1199,2.9,14.0,sportsbet,1.5,Kalyn Ponga,Newcastle Knights,FB,sportsbet,0.0489,0.37037037037037035,-0.32147037037037035,20.45
+South Sydney Rabbitohs,Newcastle Knights,ok,0.6031,0.4832,1.658,0.1199,2.9,14.0,sportsbet,1.5,Matthew Dufty,South Sydney Rabbitohs,IC,sportsbet,0.0646,0.4,-0.33540000000000003,15.48
+Manly-Warringah Sea Eagles,North Queensland Cowboys,ok,0.6328,0.619,1.58,0.0138,3.8,14.0,sportsbet,-4.5,Jeremiah Nanai,North Queensland Cowboys,2RF,sportsbet,0.4602,0.3389830508474576,0.12121694915254239,2.173
+Manly-Warringah Sea Eagles,North Queensland Cowboys,ok,0.6328,0.619,1.58,0.0138,3.8,14.0,sportsbet,-4.5,Braidon Burns,North Queensland Cowboys,WG,sportsbet,0.5653,0.5319148936170213,0.03338510638297876,1.769
+Manly-Warringah Sea Eagles,North Queensland Cowboys,ok,0.6328,0.619,1.58,0.0138,3.8,14.0,sportsbet,-4.5,Haumole Olakau'atu,Manly-Warringah Sea Eagles,2RF,sportsbet,0.4469,0.45454545454545453,-0.007645454545454511,2.238
+Manly-Warringah Sea Eagles,North Queensland Cowboys,ok,0.6328,0.619,1.58,0.0138,3.8,14.0,sportsbet,-4.5,Murray Taulagi,North Queensland Cowboys,WG,sportsbet,0.519,0.5434782608695652,-0.02447826086956517,1.927
+Manly-Warringah Sea Eagles,North Queensland Cowboys,ok,0.6328,0.619,1.58,0.0138,3.8,14.0,sportsbet,-4.5,Joey Walsh,Manly-Warringah Sea Eagles,IC,sportsbet,0.1935,0.2222222222222222,-0.028722222222222205,5.168
+Manly-Warringah Sea Eagles,North Queensland Cowboys,ok,0.6328,0.619,1.58,0.0138,3.8,14.0,sportsbet,-4.5,Ben Trbojevic,Manly-Warringah Sea Eagles,2RF,sportsbet,0.2568,0.2857142857142857,-0.028914285714285726,3.894
+Manly-Warringah Sea Eagles,North Queensland Cowboys,ok,0.6328,0.619,1.58,0.0138,3.8,14.0,sportsbet,-4.5,Jake Clifford,North Queensland Cowboys,FE,sportsbet,0.1517,0.19047619047619047,-0.038776190476190464,6.592
+Manly-Warringah Sea Eagles,North Queensland Cowboys,ok,0.6328,0.619,1.58,0.0138,3.8,14.0,sportsbet,-4.5,Heilum Luki,North Queensland Cowboys,2RF,sportsbet,0.2255,0.2777777777777778,-0.052277777777777784,4.435
+Manly-Warringah Sea Eagles,North Queensland Cowboys,ok,0.6328,0.619,1.58,0.0138,3.8,14.0,sportsbet,-4.5,Jake Trbojevic,Manly-Warringah Sea Eagles,LK,sportsbet,0.0265,0.09090909090909091,-0.06440909090909092,37.736
+Manly-Warringah Sea Eagles,North Queensland Cowboys,ok,0.6328,0.619,1.58,0.0138,3.8,14.0,sportsbet,-4.5,Reed Mahoney,North Queensland Cowboys,HK,sportsbet,0.0703,0.13793103448275862,-0.06763103448275862,14.225
+Manly-Warringah Sea Eagles,North Queensland Cowboys,ok,0.6328,0.619,1.58,0.0138,3.8,14.0,sportsbet,-4.5,Scott Drinkwater,North Queensland Cowboys,FB,sportsbet,0.3234,0.4,-0.0766,3.092
+Manly-Warringah Sea Eagles,North Queensland Cowboys,ok,0.6328,0.619,1.58,0.0138,3.8,14.0,sportsbet,-4.5,Reuben Cotter,North Queensland Cowboys,LK,sportsbet,0.0348,0.11764705882352941,-0.08284705882352941,28.736
+Manly-Warringah Sea Eagles,North Queensland Cowboys,ok,0.6328,0.619,1.58,0.0138,3.8,14.0,sportsbet,-4.5,Kobe Hetherington,Manly-Warringah Sea Eagles,PR,sportsbet,0.0216,0.11764705882352941,-0.0960470588235294,46.296
+Manly-Warringah Sea Eagles,North Queensland Cowboys,ok,0.6328,0.619,1.58,0.0138,3.8,14.0,sportsbet,-4.5,Taniela Paseka,Manly-Warringah Sea Eagles,PR,sportsbet,0.0449,0.14285714285714285,-0.09795714285714285,22.272
+Manly-Warringah Sea Eagles,North Queensland Cowboys,ok,0.6328,0.619,1.58,0.0138,3.8,14.0,sportsbet,-4.5,Thomas Mikaele,North Queensland Cowboys,IC,sportsbet,0.0044,0.10526315789473684,-0.10086315789473684,227.273
+Manly-Warringah Sea Eagles,North Queensland Cowboys,ok,0.6328,0.619,1.58,0.0138,3.8,14.0,sportsbet,-4.5,Jason Saab,Manly-Warringah Sea Eagles,WG,sportsbet,0.4196,0.5263157894736842,-0.10671578947368421,2.383
+Manly-Warringah Sea Eagles,North Queensland Cowboys,ok,0.6328,0.619,1.58,0.0138,3.8,14.0,sportsbet,-4.5,Lehi Hopoate,Manly-Warringah Sea Eagles,WG,sportsbet,0.4761,0.5952380952380952,-0.11913809523809521,2.1
+Manly-Warringah Sea Eagles,North Queensland Cowboys,ok,0.6328,0.619,1.58,0.0138,3.8,14.0,sportsbet,-4.5,Tom Chester,North Queensland Cowboys,CE,sportsbet,0.1909,0.3278688524590164,-0.13696885245901644,5.238
+Manly-Warringah Sea Eagles,North Queensland Cowboys,ok,0.6328,0.619,1.58,0.0138,3.8,14.0,sportsbet,-4.5,Jaxon Purdue,North Queensland Cowboys,CE,sportsbet,0.1442,0.29411764705882354,-0.14991764705882354,6.935
+Manly-Warringah Sea Eagles,North Queensland Cowboys,ok,0.6328,0.619,1.58,0.0138,3.8,14.0,sportsbet,-4.5,Jamal Fogarty,Manly-Warringah Sea Eagles,HB,sportsbet,0.0661,0.22727272727272727,-0.16117272727272725,15.129
+Manly-Warringah Sea Eagles,North Queensland Cowboys,ok,0.6328,0.619,1.58,0.0138,3.8,14.0,sportsbet,-4.5,Jason Taumalolo,North Queensland Cowboys,PR,sportsbet,0.0052,0.16666666666666666,-0.16146666666666665,192.308
+Manly-Warringah Sea Eagles,North Queensland Cowboys,ok,0.6328,0.619,1.58,0.0138,3.8,14.0,sportsbet,-4.5,Reuben Garrick,Manly-Warringah Sea Eagles,CE,sportsbet,0.2212,0.3846153846153846,-0.16341538461538457,4.521
+Manly-Warringah Sea Eagles,North Queensland Cowboys,ok,0.6328,0.619,1.58,0.0138,3.8,14.0,sportsbet,-4.5,Jake Simpkin,Manly-Warringah Sea Eagles,IC,sportsbet,0.0048,0.18181818181818182,-0.17701818181818182,208.333
+Manly-Warringah Sea Eagles,North Queensland Cowboys,ok,0.6328,0.619,1.58,0.0138,3.8,14.0,sportsbet,-4.5,Zac Laybutt,North Queensland Cowboys,WG,sportsbet,0.1015,0.2898550724637681,-0.18835507246376812,9.852
+Manly-Warringah Sea Eagles,North Queensland Cowboys,ok,0.6328,0.619,1.58,0.0138,3.8,14.0,sportsbet,-4.5,Tolutau Koula,Manly-Warringah Sea Eagles,CE,sportsbet,0.2628,0.5434782608695652,-0.2806782608695652,3.805
+Manly-Warringah Sea Eagles,North Queensland Cowboys,ok,0.6328,0.619,1.58,0.0138,3.8,14.0,sportsbet,-4.5,Tom Trbojevic,Manly-Warringah Sea Eagles,FB,sportsbet,0.1726,0.5181347150259068,-0.3455347150259068,5.794
+Melbourne Storm,Gold Coast Titans,ok,0.8431,0.7244,1.186,0.1186,11.7,14.0,sportsbet,-10.5,Phillip Sami,Gold Coast Titans,WG,sportsbet,0.65,0.425531914893617,0.224468085106383,1.538
+Melbourne Storm,Gold Coast Titans,ok,0.8431,0.7244,1.186,0.1186,11.7,14.0,sportsbet,-10.5,Kurtis Morrin,Gold Coast Titans,IC,sportsbet,0.288,0.125,0.16299999999999998,3.472
+Melbourne Storm,Gold Coast Titans,ok,0.8431,0.7244,1.186,0.1186,11.7,14.0,sportsbet,-10.5,Arama Hau,Gold Coast Titans,2RF,sportsbet,0.2656,0.2173913043478261,0.048208695652173894,3.765
+Melbourne Storm,Gold Coast Titans,ok,0.8431,0.7244,1.186,0.1186,11.7,14.0,sportsbet,-10.5,Stefano Utoikamanu,Melbourne Storm,PR,sportsbet,0.1061,0.1,0.006099999999999994,9.425
+Melbourne Storm,Gold Coast Titans,ok,0.8431,0.7244,1.186,0.1186,11.7,14.0,sportsbet,-10.5,Will Warbrick,Melbourne Storm,WG,sportsbet,0.65,0.6451612903225806,0.004838709677419395,1.538
+Melbourne Storm,Gold Coast Titans,ok,0.8431,0.7244,1.186,0.1186,11.7,14.0,sportsbet,-10.5,Trent Loiero,Melbourne Storm,LK,sportsbet,0.0979,0.1,-0.0021000000000000046,10.215
+Melbourne Storm,Gold Coast Titans,ok,0.8431,0.7244,1.186,0.1186,11.7,14.0,sportsbet,-10.5,Sualauvi Faalogo,Melbourne Storm,FB,sportsbet,0.5669,0.5714285714285714,-0.004528571428571437,1.764
+Melbourne Storm,Gold Coast Titans,ok,0.8431,0.7244,1.186,0.1186,11.7,14.0,sportsbet,-10.5,Jayden Campbell,Gold Coast Titans,FE,sportsbet,0.2692,0.3076923076923077,-0.038492307692307715,3.715
+Melbourne Storm,Gold Coast Titans,ok,0.8431,0.7244,1.186,0.1186,11.7,14.0,sportsbet,-10.5,Moeaki Fotuaika,Gold Coast Titans,PR,sportsbet,0.0058,0.07692307692307693,-0.07112307692307693,172.414
+Melbourne Storm,Gold Coast Titans,ok,0.8431,0.7244,1.186,0.1186,11.7,14.0,sportsbet,-10.5,Josh King,Melbourne Storm,PR,sportsbet,0.048,0.12121212121212122,-0.07321212121212121,20.833
+Melbourne Storm,Gold Coast Titans,ok,0.8431,0.7244,1.186,0.1186,11.7,14.0,sportsbet,-10.5,Cooper Bai,Gold Coast Titans,LK,sportsbet,0.0297,0.10526315789473684,-0.07556315789473683,33.67
+Melbourne Storm,Gold Coast Titans,ok,0.8431,0.7244,1.186,0.1186,11.7,14.0,sportsbet,-10.5,Tino Fa'asuamaleaui,Gold Coast Titans,PR,sportsbet,0.0047,0.09523809523809523,-0.09053809523809524,212.766
+Melbourne Storm,Gold Coast Titans,ok,0.8431,0.7244,1.186,0.1186,11.7,14.0,sportsbet,-10.5,Chris Randall,Gold Coast Titans,LK,sportsbet,0.0221,0.11428571428571428,-0.09218571428571429,45.249
+Melbourne Storm,Gold Coast Titans,ok,0.8431,0.7244,1.186,0.1186,11.7,14.0,sportsbet,-10.5,Klese Haas,Gold Coast Titans,IC,sportsbet,0.0068,0.10526315789473684,-0.09846315789473684,147.059
+Melbourne Storm,Gold Coast Titans,ok,0.8431,0.7244,1.186,0.1186,11.7,14.0,sportsbet,-10.5,Jack Hetherington,Melbourne Storm,IC,sportsbet,0.0094,0.10810810810810811,-0.09870810810810811,106.383
+Melbourne Storm,Gold Coast Titans,ok,0.8431,0.7244,1.186,0.1186,11.7,14.0,sportsbet,-10.5,Cameron Munster,Melbourne Storm,FE,sportsbet,0.1939,0.29411764705882354,-0.10021764705882355,5.157
+Melbourne Storm,Gold Coast Titans,ok,0.8431,0.7244,1.186,0.1186,11.7,14.0,sportsbet,-10.5,Tyran Wishart,Melbourne Storm,IC,sportsbet,0.0987,0.2222222222222222,-0.12352222222222221,10.132
+Melbourne Storm,Gold Coast Titans,ok,0.8431,0.7244,1.186,0.1186,11.7,14.0,sportsbet,-10.5,Beau Fermor,Gold Coast Titans,2RF,sportsbet,0.0709,0.19607843137254904,-0.12517843137254903,14.104
+Melbourne Storm,Gold Coast Titans,ok,0.8431,0.7244,1.186,0.1186,11.7,14.0,sportsbet,-10.5,Harry Grant,Melbourne Storm,HK,sportsbet,0.1591,0.2898550724637681,-0.13075507246376813,6.285
+Melbourne Storm,Gold Coast Titans,ok,0.8431,0.7244,1.186,0.1186,11.7,14.0,sportsbet,-10.5,Oliver Pascoe,Gold Coast Titans,HK,sportsbet,0.0174,0.15384615384615385,-0.13644615384615386,57.471
+Melbourne Storm,Gold Coast Titans,ok,0.8431,0.7244,1.186,0.1186,11.7,14.0,sportsbet,-10.5,Zane Harrison,Gold Coast Titans,HB,sportsbet,0.0101,0.16,-0.1499,99.01
+Melbourne Storm,Gold Coast Titans,ok,0.8431,0.7244,1.186,0.1186,11.7,14.0,sportsbet,-10.5,Jack Howarth,Melbourne Storm,CE,sportsbet,0.1518,0.3225806451612903,-0.17078064516129032,6.588
+Melbourne Storm,Gold Coast Titans,ok,0.8431,0.7244,1.186,0.1186,11.7,14.0,sportsbet,-10.5,AJ Brimson,Gold Coast Titans,CE,sportsbet,0.0926,0.2777777777777778,-0.18517777777777777,10.799
+Melbourne Storm,Gold Coast Titans,ok,0.8431,0.7244,1.186,0.1186,11.7,14.0,sportsbet,-10.5,Alec MacDonald,Melbourne Storm,IC,sportsbet,0.0073,0.19607843137254904,-0.18877843137254904,136.986
+Melbourne Storm,Gold Coast Titans,ok,0.8431,0.7244,1.186,0.1186,11.7,14.0,sportsbet,-10.5,Keano Kini,Gold Coast Titans,FB,sportsbet,0.0835,0.2777777777777778,-0.19427777777777777,11.976
+Melbourne Storm,Gold Coast Titans,ok,0.8431,0.7244,1.186,0.1186,11.7,14.0,sportsbet,-10.5,Cooper Clarke,Melbourne Storm,2RF,sportsbet,0.0378,0.27027027027027023,-0.23247027027027023,26.455
+Melbourne Storm,Gold Coast Titans,ok,0.8431,0.7244,1.186,0.1186,11.7,14.0,sportsbet,-10.5,Jojo Fifita,Gold Coast Titans,CE,sportsbet,0.1504,0.3846153846153846,-0.23421538461538458,6.649
+Melbourne Storm,Gold Coast Titans,ok,0.8431,0.7244,1.186,0.1186,11.7,14.0,sportsbet,-10.5,Jahrome Hughes,Melbourne Storm,HB,sportsbet,0.0837,0.35714285714285715,-0.27344285714285715,11.947
+Melbourne Storm,Gold Coast Titans,ok,0.8431,0.7244,1.186,0.1186,11.7,14.0,sportsbet,-10.5,Nick Meaney,Melbourne Storm,CE,sportsbet,0.0579,0.3389830508474576,-0.2810830508474576,17.271
+Melbourne Storm,Gold Coast Titans,ok,0.8431,0.7244,1.186,0.1186,11.7,14.0,sportsbet,-10.5,Manaia Waitere,Melbourne Storm,IC,sportsbet,0.1359,0.5494505494505494,-0.41355054945054937,7.358
