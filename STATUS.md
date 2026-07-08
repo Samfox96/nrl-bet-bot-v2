@@ -124,3 +124,8 @@ Credentials (`CRONJOB_API_KEY`, `WORKFLOW_DISPATCH_TOKEN`, `RESEND_API_KEY`, `DI
 - Zero duplicate rows (player+team+round+season; home+away+season+round)
 - Round numbers match expected NRL draw sequence
 - Content-based pre-send sanity check before email (fixture count, valid probabilities, valid odds, no missing per-game entries)
+
+## Round 18 Auto-Merge Summary (2026-07-08)
+- Scraped and validated automatically via GitHub Actions (Phase 3)
+- 190 rows added, 4864 -> 5054 total rows in nrl_master.csv
+- Validation: PASSED (see workflow log for full report)
