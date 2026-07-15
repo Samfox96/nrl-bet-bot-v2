@@ -1,0 +1,20 @@
+{
+  "season": null,
+  "round": null,
+  "generated_at": "2026-07-15T23:49:50.183930+00:00",
+  "parameters": {
+    "minimum_edge": 0.05,
+    "kelly_fraction": 0.25,
+    "max_stake_per_match": 0.1,
+    "correlation_discount": 0.5
+  },
+  "summary": {
+    "status": "NO_POSITIVE_EV_BETS_FOUND",
+    "total_bets": 0,
+    "total_stake_fraction": 0,
+    "excluded_below_minimum_edge": 0,
+    "excluded_by_fixture_cap": 0,
+    "calibration_warning": "Stakes are computed on uncalibrated model probabilities. Treat as illustrative until Stage 3 calibration has a full season of scored rounds (mid-2027 at earliest). Quarter-Kelly multiplier is an explicit hedge against this uncertainty."
+  },
+  "bets": []
+}
