@@ -140,6 +140,42 @@
           "North Queensland Cowboys"
         ]
       ]
+    },
+    "21": {
+      "fixtures": [
+        [
+          "Parramatta Eels",
+          "Penrith Panthers"
+        ],
+        [
+          "Newcastle Knights",
+          "Sydney Roosters"
+        ],
+        [
+          "South Sydney Rabbitohs",
+          "Melbourne Storm"
+        ],
+        [
+          "Canberra Raiders",
+          "Wests Tigers"
+        ],
+        [
+          "Canterbury-Bankstown Bulldogs",
+          "New Zealand Warriors"
+        ],
+        [
+          "North Queensland Cowboys",
+          "Brisbane Broncos"
+        ],
+        [
+          "St George Illawarra Dragons",
+          "Gold Coast Titans"
+        ],
+        [
+          "Manly-Warringah Sea Eagles",
+          "Cronulla-Sutherland Sharks"
+        ]
+      ]
     }
   }
 }
