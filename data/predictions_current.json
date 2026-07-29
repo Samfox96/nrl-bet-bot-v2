@@ -1,65 +1,74 @@
 [
   {
-    "home_team": "Wests Tigers",
-    "away_team": "New Zealand Warriors",
+    "home_team": "Penrith Panthers",
+    "away_team": "Brisbane Broncos",
     "due_watch": {
       "home": [],
       "away": []
     },
-    "status": "skipped: no real upcoming odds-api event found for Wests Tigers v New Zealand Warriors"
+    "status": "skipped: no real upcoming odds-api event found for Penrith Panthers v Brisbane Broncos"
   },
   {
-    "home_team": "Dolphins",
-    "away_team": "Cronulla-Sutherland Sharks",
-    "due_watch": {
-      "home": [],
-      "away": []
-    },
-    "status": "skipped: no real upcoming odds-api event found for Dolphins v Cronulla-Sutherland Sharks"
-  },
-  {
-    "home_team": "Canterbury-Bankstown Bulldogs",
-    "away_team": "Canberra Raiders",
-    "due_watch": {
-      "home": [],
-      "away": []
-    },
-    "status": "skipped: no real upcoming odds-api event found for Canterbury-Bankstown Bulldogs v Canberra Raiders"
-  },
-  {
-    "home_team": "Sydney Roosters",
-    "away_team": "Parramatta Eels",
-    "due_watch": {
-      "home": [],
-      "away": []
-    },
-    "status": "skipped: no real upcoming odds-api event found for Sydney Roosters v Parramatta Eels"
-  },
-  {
-    "home_team": "South Sydney Rabbitohs",
+    "home_team": "Cronulla-Sutherland Sharks",
     "away_team": "Newcastle Knights",
     "due_watch": {
       "home": [],
       "away": []
     },
-    "status": "skipped: no real upcoming odds-api event found for South Sydney Rabbitohs v Newcastle Knights"
+    "status": "skipped: no real upcoming odds-api event found for Cronulla-Sutherland Sharks v Newcastle Knights"
   },
   {
-    "home_team": "Manly-Warringah Sea Eagles",
+    "home_team": "Sydney Roosters",
+    "away_team": "Melbourne Storm",
+    "due_watch": {
+      "home": [],
+      "away": []
+    },
+    "status": "skipped: no real upcoming odds-api event found for Sydney Roosters v Melbourne Storm"
+  },
+  {
+    "home_team": "Canberra Raiders",
+    "away_team": "South Sydney Rabbitohs",
+    "due_watch": {
+      "home": [],
+      "away": []
+    },
+    "status": "skipped: no real upcoming odds-api event found for Canberra Raiders v South Sydney Rabbitohs"
+  },
+  {
+    "home_team": "New Zealand Warriors",
+    "away_team": "St George Illawarra Dragons",
+    "due_watch": {
+      "home": [],
+      "away": []
+    },
+    "status": "skipped: no real upcoming odds-api event found for New Zealand Warriors v St George Illawarra Dragons"
+  },
+  {
+    "home_team": "Canterbury-Bankstown Bulldogs",
+    "away_team": "Wests Tigers",
+    "due_watch": {
+      "home": [],
+      "away": []
+    },
+    "status": "skipped: no real upcoming odds-api event found for Canterbury-Bankstown Bulldogs v Wests Tigers"
+  },
+  {
+    "home_team": "Gold Coast Titans",
+    "away_team": "Manly-Warringah Sea Eagles",
+    "due_watch": {
+      "home": [],
+      "away": []
+    },
+    "status": "skipped: no real upcoming odds-api event found for Gold Coast Titans v Manly-Warringah Sea Eagles"
+  },
+  {
+    "home_team": "Dolphins",
     "away_team": "North Queensland Cowboys",
     "due_watch": {
       "home": [],
       "away": []
     },
-    "status": "skipped: no real upcoming odds-api event found for Manly-Warringah Sea Eagles v North Queensland Cowboys"
-  },
-  {
-    "home_team": "Melbourne Storm",
-    "away_team": "Gold Coast Titans",
-    "due_watch": {
-      "home": [],
-      "away": []
-    },
-    "status": "skipped: no real upcoming odds-api event found for Melbourne Storm v Gold Coast Titans"
+    "status": "skipped: no real upcoming odds-api event found for Dolphins v North Queensland Cowboys"
   }
 ]
