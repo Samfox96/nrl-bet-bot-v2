@@ -1,0 +1,62 @@
+[
+  {
+    "season": 2026,
+    "round": 20,
+    "scored_at": "2026-08-05T21:16:31.446484+00:00",
+    "fixtures_with_real_results": 8,
+    "fixtures_scored_for_winner": 0,
+    "correct_winner_pct": null,
+    "margin_mae": null,
+    "due_watch_flagged": 0,
+    "due_watch_hit_rate_pct": null,
+    "try_scorer_edges_flagged": 0,
+    "try_scorer_edge_hit_rate_pct": null,
+    "brier_winner_ours": null,
+    "brier_winner_market": null,
+    "brier_tryscorer_ours": null,
+    "brier_tryscorer_market": null,
+    "prediction_time_ev_log": [],
+    "fixture_detail": [
+      {
+        "home_team": "Penrith Panthers",
+        "away_team": "Brisbane Broncos",
+        "real_score": "12-14"
+      },
+      {
+        "home_team": "Cronulla-Sutherland Sharks",
+        "away_team": "Newcastle Knights",
+        "real_score": "20-18"
+      },
+      {
+        "home_team": "Sydney Roosters",
+        "away_team": "Melbourne Storm",
+        "real_score": "14-6"
+      },
+      {
+        "home_team": "Canberra Raiders",
+        "away_team": "South Sydney Rabbitohs",
+        "real_score": "34-24"
+      },
+      {
+        "home_team": "New Zealand Warriors",
+        "away_team": "St George Illawarra Dragons",
+        "real_score": "20-12"
+      },
+      {
+        "home_team": "Canterbury-Bankstown Bulldogs",
+        "away_team": "Wests Tigers",
+        "real_score": "32-0"
+      },
+      {
+        "home_team": "Gold Coast Titans",
+        "away_team": "Manly-Warringah Sea Eagles",
+        "real_score": "38-32"
+      },
+      {
+        "home_team": "Dolphins",
+        "away_team": "North Queensland Cowboys",
+        "real_score": "36-16"
+      }
+    ]
+  }
+]
