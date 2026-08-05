@@ -176,6 +176,42 @@
           "Cronulla-Sutherland Sharks"
         ]
       ]
+    },
+    "22": {
+      "fixtures": [
+        [
+          "North Queensland Cowboys",
+          "Sydney Roosters"
+        ],
+        [
+          "St George Illawarra Dragons",
+          "Dolphins"
+        ],
+        [
+          "Melbourne Storm",
+          "Canterbury-Bankstown Bulldogs"
+        ],
+        [
+          "Gold Coast Titans",
+          "New Zealand Warriors"
+        ],
+        [
+          "Penrith Panthers",
+          "Canberra Raiders"
+        ],
+        [
+          "Brisbane Broncos",
+          "Newcastle Knights"
+        ],
+        [
+          "Cronulla-Sutherland Sharks",
+          "South Sydney Rabbitohs"
+        ],
+        [
+          "Wests Tigers",
+          "Parramatta Eels"
+        ]
+      ]
     }
   }
 }
