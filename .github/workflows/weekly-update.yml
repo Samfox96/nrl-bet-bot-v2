@@ -570,3 +570,34 @@ jobs:
           git add data/due_flags_last_run.json
           git commit -m "Resend digest snapshot for round ${{ env.RESEND_ROUND }}" || echo "Nothing to commit"
           git push
+
+      # Studio OS heartbeat (added 2026-10-12). Reports which round this run tried and
+      # whether it merged. Studio OS raises one alert if the same round comes up three runs
+      # in a row -- the silent "retries one round forever" failure this bot had from August.
+      # Healthchecks.io gets a ping on every run, so a run that never happens is caught too.
+      # Never fails the job: reporting problems only print a note.
+      - name: Report to Studio OS and Healthchecks
+        if: always() && env.RESEND_ROUND == ''
+        env:
+          HEARTBEAT_URL: ${{ secrets.STUDIO_OS_HEARTBEAT_URL }}
+          HEARTBEAT_SECRET: ${{ secrets.STUDIO_OS_HEARTBEAT_SECRET }}
+          HEALTHCHECKS_URL: ${{ secrets.HEALTHCHECKS_NRL_URL }}
+          ROUND: ${{ steps.next_round.outputs.round }}
+          MERGED: ${{ steps.validate_merge.outcome == 'success' }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set +e
+          if [ -n "$HEARTBEAT_URL" ] && [ -n "$HEARTBEAT_SECRET" ] && [ -n "$ROUND" ]; then
+            curl -sS --max-time 20 -X POST "$HEARTBEAT_URL" \
+              -H "x-heartbeat-secret: $HEARTBEAT_SECRET" -H 'content-type: application/json' \
+              -d "{\"module\":\"nrl-weekly-update\",\"ok\":$MERGED,\"progress\":{\"round\":$ROUND,\"merged\":$MERGED},\"run_url\":\"$RUN_URL\"}"
+            echo
+          else
+            echo "Studio OS heartbeat not set up (or no round worked out); skipping."
+          fi
+          if [ -n "$HEALTHCHECKS_URL" ]; then
+            curl -fsS --max-time 10 --retry 3 "$HEALTHCHECKS_URL" > /dev/null && echo "Pinged Healthchecks." || echo "Couldn't ping Healthchecks."
+          else
+            echo "HEALTHCHECKS_NRL_URL not set; skipping."
+          fi
+          exit 0
