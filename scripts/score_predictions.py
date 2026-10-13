@@ -395,15 +395,27 @@ def print_cumulative_summary(ledger_path="data/accuracy_ledger.json"):
         print(f"  DUE hit rate:  {all_due_hits}/{all_due_flagged} ({100*all_due_hits/all_due_flagged:.1f}%)")
     if all_edge_flagged:
         print(f"  Edge hit rate: {all_edge_hits}/{all_edge_flagged} ({100*all_edge_hits/all_edge_flagged:.1f}%)")
+    # REAL BUG FOUND AND FIXED 2026-10-13: an f-string format spec can't
+    # hold a conditional expression (`{wb_mkt:.4f if ... else ...}` is not
+    # valid Python -- everything after the `:` is treated as a literal
+    # format spec, not code), so this crashed with "Invalid format
+    # specifier" every time wb_mkt/ts_mkt was a real float, which is the
+    # normal case once market Brier data exists. The ledger entry itself
+    # was already written by update_ledger() before this runs, so no data
+    # was lost, but the script exited non-zero -- which a caller running
+    # this once per round (e.g. a backfill loop) would treat as a failure.
+    # Fixed by formatting the market value to a plain string first.
     wb_ours = wmean(our_brier_w)
     wb_mkt = wmean(mkt_brier_w)
     if wb_ours is not None:
-        print(f"  Brier (winner):    ours={wb_ours:.4f}  market={wb_mkt:.4f if wb_mkt is not None else 'n/a'}"
+        wb_mkt_str = f"{wb_mkt:.4f}" if wb_mkt is not None else "n/a"
+        print(f"  Brier (winner):    ours={wb_ours:.4f}  market={wb_mkt_str}"
               f"  (lower=better; coin-flip=0.2500)")
     ts_ours = wmean(our_brier_ts)
     ts_mkt = wmean(mkt_brier_ts)
     if ts_ours is not None:
-        print(f"  Brier (try-scorer): ours={ts_ours:.4f}  market={ts_mkt:.4f if ts_mkt is not None else 'n/a'}")
+        ts_mkt_str = f"{ts_mkt:.4f}" if ts_mkt is not None else "n/a"
+        print(f"  Brier (try-scorer): ours={ts_ours:.4f}  market={ts_mkt_str}")
     print(f"  NOTE: CLV not yet computable -- closing_market_probability")
     print(f"        is None in all ev_log entries until a near-kickoff")
     print(f"        odds capture step is added to the pipeline.")
