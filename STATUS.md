@@ -103,7 +103,7 @@ Credentials (`CRONJOB_API_KEY`, `WORKFLOW_DISPATCH_TOKEN`, `RESEND_API_KEY`, `DI
 - [ ] `totals` (over/under) line-mismatch across bookmakers — confirmed real, still unsolved
 - [ ] No week-over-week DUE-flag diffing yet
 - [ ] False-alarm GitHub Issue from R17 match results merge — **close manually** (R17 results were already present; duplicate guard fired correctly)
-- [ ] `weekly-update.yml`'s "Commit changes" step (and the match-results equivalent) never commits `data/pending/` — a successfully-merged pending file's deletion is never pushed, so it can resurface as a zombie that confuses the NEXT round's file lookup (this is exactly what caused the Round 20 stall). **Needs Sam:** add `data/pending` to that step's `git add` line.
+- [x] `weekly-update.yml`'s "Commit changes" step (and the match-results equivalent) never commits `data/pending/` — a successfully-merged pending file's deletion is never pushed, so it can resurface as a zombie that confuses the NEXT round's file lookup (this is exactly what caused the Round 20 stall). **Done (13 Oct 2026):** the merge commit step now also stages `data/pending` (match results use their own `data/pending_match_results` folder and a duplicate guard, so they were left as they are).
 
 ## Known Issues Fixed (historical)
 1. Three inconsistent team-naming schemes → `team_aliases.json`

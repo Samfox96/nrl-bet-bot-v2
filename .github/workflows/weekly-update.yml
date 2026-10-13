@@ -160,6 +160,9 @@ jobs:
           git config user.name "nrl-bot-automation"
           git config user.email "actions@github.com"
           git add data/nrl_master.csv STATUS.md
+          # Also commit the merged round's pending file being removed, so it can't resurface as a
+          # "zombie" and block the next round (the cause of the Round 20 stall, Aug-Oct 2026).
+          git add --all -- data/pending 2>/dev/null || true
           git commit -m "Auto-merge round ${{ steps.next_round.outputs.round }} (validated)" || echo "Nothing to commit"
           git push
 
