@@ -137,43 +137,73 @@ def update_status_md(round_num, rows_added, before, after, validation_output):
         f.write(entry)
 
 
-def main():
-    pending_files = sorted(PENDING_DIR.glob("nrl_round_*_new.csv")) if PENDING_DIR.exists() else []
+def find_pending_file(expected_round):
+    """
+    REAL BUG FOUND AND FIXED 2026-10-13: this used to be
+    `sorted(PENDING_DIR.glob("nrl_round_*_new.csv"))[0]` -- "just take the
+    first pending file alphabetically". That silently broke the moment more
+    than one pending file existed at once, which is exactly what happened:
+    Round 19's first attempt failed validation and was committed to
+    data/pending/ "for review" (by design -- see the failure path below).
+    Round 19's retry later succeeded and merged cleanly, but the retry's
+    local `pending_csv.unlink()` only deletes the file on disk -- the
+    workflow's own "Commit changes" step (in weekly-update.yml) only
+    `git add`s data/nrl_master.csv and STATUS.md, never data/pending, so
+    that deletion was never actually committed. The stale
+    nrl_round_19_new.csv stayed tracked in git forever. Every week since,
+    "nrl_round_19_new.csv" sorted before "nrl_round_20_new.csv"
+    alphabetically, so this function kept handing the OLD round-19 file to
+    validate_round.py while asking it to validate round 20 -- which always
+    failed on the very first check ("Round mismatch: expected only round
+    20, found rounds [19]"), every single week, while round 20's own
+    genuinely-fine scrape sat right next to it, never actually tried.
 
-    if not pending_files:
-        # REAL BUG FOUND AND FIXED 2026-07-03: this used to exit(0) --
-        # "nothing to do" was treated as a benign no-op, which is a
-        # reasonable default for a script that might run when nothing
-        # changed. But in this specific pipeline, merge_round.py exists
-        # ONLY to consume the output of the scrape step that runs
-        # immediately before it in weekly-update.yml -- there is no
-        # legitimate scenario where this script runs and a pending file
-        # is genuinely, correctly absent. A missing file here means the
-        # scrape step failed to produce one (confirmed real case:
-        # Round 17, scraper crashed on a missing bs4 import before
-        # writing anything). Exiting 0 made that look like a clean
-        # merge to the workflow, which let a stale-data digest email
-        # fire under the new round's label. This is exactly the
-        # "content-based, not exception-based" checkpoint principle --
-        # the absence of real content IS the failure signal here, not
-        # a side effect to shrug off. Exiting 1 now ensures the
-        # workflow's failure-issue path fires and the digest/commit
-        # steps (gated on this step's success) correctly skip.
-        print("FAILURE: No pending scrape file found in data/pending/. "
-              "This script only ever runs immediately after a scrape step "
-              "that should have produced one -- a missing file means that "
-              "scrape did not genuinely succeed, even if it didn't raise "
-              "an exception. Treating this as a real failure, not a "
-              "no-op, so nothing downstream (commit, digest) proceeds "
-              "on the strength of a merge that never actually happened.")
+    Real fix: ask for the exact filename the expected round's scrape step
+    wrote this run, instead of guessing from a sorted directory listing.
+    Any other pending file left over from a previous round is reported as
+    a warning (so it's visible, not re-introducing a silent problem) but
+    never mistaken for the one we're supposed to process.
+    """
+    pending_files = sorted(PENDING_DIR.glob("nrl_round_*_new.csv")) if PENDING_DIR.exists() else []
+    expected_path = PENDING_DIR / f"nrl_round_{expected_round}_new.csv"
+
+    leftovers = [p for p in pending_files if p != expected_path]
+    if leftovers:
+        print(f"WARNING: found {len(leftovers)} other pending file(s) that do NOT match "
+              f"the expected round ({expected_round}): {[p.name for p in leftovers]}. "
+              f"These are leftovers from an earlier round -- most likely a validation "
+              f"failure that was later fixed and merged some other way without the pending "
+              f"file itself ever being cleaned up from git. Ignoring them; they will not "
+              f"be processed or deleted by this run. If one of these corresponds to a round "
+              f"that is NOT yet in nrl_master.csv, investigate and merge it manually -- "
+              f"this script only ever acts on the current expected round.")
+
+    if not expected_path.exists():
+        # REAL BUG FOUND AND FIXED 2026-07-03: this used to exit(0) when no
+        # pending file existed at all -- "nothing to do" was treated as a
+        # benign no-op. But this script exists ONLY to consume the output
+        # of the scrape step that runs immediately before it in
+        # weekly-update.yml -- there is no legitimate scenario where this
+        # script runs and the expected round's pending file is genuinely,
+        # correctly absent. A missing file here means the scrape step
+        # failed to produce one (confirmed real case: Round 17, scraper
+        # crashed on a missing bs4 import before writing anything).
+        # Exiting 0 made that look like a clean merge to the workflow,
+        # which let a stale-data digest email fire under the new round's
+        # label. The absence of real content IS the failure signal here,
+        # not a side effect to shrug off.
+        print(f"FAILURE: no pending file found for the expected round ({expected_round}) at "
+              f"{expected_path}. This script only ever runs immediately after a scrape step "
+              f"that should have produced exactly this file -- its absence means that scrape "
+              f"did not genuinely succeed, even if it didn't raise an exception.")
         sys.exit(1)
 
-    if len(pending_files) > 1:
-        print(f"WARNING: multiple pending files found: {pending_files}. "
-              f"Processing only the first; investigate the rest manually.")
+    return expected_path
 
-    pending_csv = pending_files[0]
+
+def main():
     expected_round = get_next_round()
+    pending_csv = find_pending_file(expected_round)
 
     print(f"Next expected round: {expected_round}")
     print(f"Pending file: {pending_csv}")
