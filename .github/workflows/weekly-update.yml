@@ -601,3 +601,12 @@ jobs:
             echo "HEALTHCHECKS_NRL_URL not set; skipping."
           fi
           exit 0
+
+      # Added 2026-10-15. A scrape or merge that failed has already been committed for review and an issue
+      # opened, but the run itself stayed green. That is how the Round 20 stall hid for seven weeks. After the
+      # report to Studio OS has gone out, turn the run red so GitHub, and Studio OS's repo check, notice.
+      - name: Fail the run if the round did not merge
+        if: always() && env.RESEND_ROUND == '' && (steps.validate_merge.outcome == 'failure' || steps.scrape.outcome == 'failure')
+        run: |
+          echo "::error::Round ${{ steps.next_round.outputs.round }} did not merge. See the issue that was opened and data/pending/."
+          exit 1
