@@ -94,6 +94,14 @@ jobs:
           echo "round=$ROUND" >> "$GITHUB_OUTPUT"
           echo "Generating predictions for round: $ROUND"
 
+      # Added 2026-10-15. This job works out its round as "highest round in nrl_master.csv + 1", so when the
+      # player-stats update stalls it keeps redoing the same round every week and looks healthy. If the
+      # round's predictions were already made in an earlier week, stop and turn the run red instead.
+      # A manual round_override skips this check (you meant it).
+      - name: Stop if this round was already predicted in an earlier week
+        if: github.event.inputs.round_override == ''
+        run: python3 scripts/check_round_not_repeated.py --round "${{ steps.round.outputs.round }}" --season 2026
+
       - name: Generate predictions
         id: generate
         continue-on-error: true
