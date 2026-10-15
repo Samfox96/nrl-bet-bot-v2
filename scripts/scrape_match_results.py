@@ -61,13 +61,31 @@ from webdriver_manager.chrome import ChromeDriverManager
 MATCH_TEXT_PATTERN = re.compile(
     r"(?P<day>\w+)\s+(?P<date>\d+\w*\s+\w+)\s*\n"
     r"(?:FULL TIME|HALF TIME|\d+:\d+)\s*\n"
-    r"home Team\s*\n(?P<home_team>[\w\s'-]+?)\s*\n"
+    r"home Team\s*\n(?P<home_team>[^\n]+?)\s*\n"
+    r"(?:.*\n)?"
     r"Scored\s*\n(?P<home_score>\d+)\s*\n"
     r"points?\s*\n"
-    r"away Team\s*\n(?P<away_team>[\w\s'-]+?)\s*\n"
+    r"away Team\s*\n(?P<away_team>[^\n]+?)\s*\n"
+    r"(?:.*\n)?"
     r"Scored\s*\n(?P<away_score>\d+)",
     re.IGNORECASE,
 )
+# REAL BUG FIX (2026-10-13, found during the Round 21-27 backfill): starting
+# Round 23, nrl.com began printing a traditional-custodian acknowledgment
+# line (e.g. "Dharawal & Gadigal") directly under the team name, before
+# "Scored". The OLD pattern's team-name group was [\w\s'-]+? -- \s matches
+# a newline, so when the acknowledgment line had no "&"/"," it silently
+# swallowed BOTH lines into home_team/away_team (e.g. "Titans\nYugambeh"
+# captured as the real team name), and when the line DID contain "&" or
+# "," (not in that character class) the whole card failed to match and
+# was silently dropped -- confirmed from a real backfill run's own log:
+# 5 of 8 Round 23 cards dropped, the other 3 mis-parsed. NEW pattern:
+# home_team/away_team are now [^\n]+? (team names are always one real
+# line, never span lines), with a real optional (?:.*\n)? line in between
+# to swallow a possible acknowledgment line without being required when
+# there isn't one -- confirmed against both the real pre-Round-23 (no
+# acknowledgment line) and real Round-23 (acknowledgment line, with and
+# without "&") card text captured in that failed run's log.
 
 FIELDNAMES = [
     "season", "league", "round", "date", "time", "home_team", "home_score",
