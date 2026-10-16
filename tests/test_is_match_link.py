@@ -4,7 +4,7 @@ import sys
 import unittest
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "scripts"))
-from match_links import is_match_link  # noqa: E402
+from match_links import is_match_link, teams_from_buttons  # noqa: E402
 
 BASE = "https://www.nrl.com/draw/nrl-premiership/2026"
 
@@ -34,6 +34,19 @@ class IsMatchLinkTests(unittest.TestCase):
         self.assertFalse(is_match_link("https://www.nrl.com/draw/"))
         self.assertFalse(is_match_link(None))
         self.assertFalse(is_match_link(""))
+
+
+ALIASES = {"Roosters": "Sydney Roosters", "Sydney Roosters": "Sydney Roosters",
+           "Knights": "Newcastle Knights", "Newcastle Knights": "Newcastle Knights"}
+
+
+class TeamsFromButtonsTests(unittest.TestCase):
+    def test_grand_final_tabs(self):
+        self.assertEqual(teams_from_buttons(["MORE", "Roosters", "Knights", ""], ALIASES), ["Roosters", "Knights"])
+
+    def test_wrong_count_returns_nothing(self):
+        self.assertEqual(teams_from_buttons(["MORE", "Roosters", ""], ALIASES), [])
+        self.assertEqual(teams_from_buttons(["Roosters", "Sydney Roosters"], ALIASES), [])
 
 
 if __name__ == "__main__":

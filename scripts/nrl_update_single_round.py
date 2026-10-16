@@ -1,11 +1,12 @@
 import time
 import os
 import argparse
+import json
 import pandas as pd
 import traceback
 import warnings
 from parse_try_minutes import parse_try_minutes, aggregate_try_minutes, validate_try_minutes
-from match_links import is_match_link
+from match_links import is_match_link, teams_from_buttons
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
@@ -626,6 +627,20 @@ try:
                 except Exception as e:
                     print(f"    No table found: {e}")
                     continue
+
+                # Grand Final pages have no 'team-v-team' in the URL, and their header gave no
+                # names, so read the two team tabs instead (otherwise the team is "Game 1").
+                if "-v-" not in match_url.split("/")[-1] and (home_team, away_team) == (home_slug, away_slug):
+                    try:
+                        with open("data/team_aliases.json") as f:
+                            tab_aliases = json.load(f)["aliases"]
+                        tab_names = teams_from_buttons(
+                            [b.text for b in driver.find_elements(By.TAG_NAME, "button")], tab_aliases)
+                        if tab_names:
+                            home_team, away_team = tab_names
+                            print(f"    Team names read from the page tabs: {home_team} vs {away_team}")
+                    except Exception as e:
+                        print(f"    Could not read team names from the tabs (non-fatal): {e}")
 
                 # ── HOME TEAM ─────────────────────────────────────────────────────
                 print(f"    Clicking home tab: {home_team}")

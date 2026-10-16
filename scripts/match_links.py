@@ -21,3 +21,19 @@ def is_match_link(href):
     last = href.split("#")[0].rstrip("/").split("/")[-1]
     # A match page ends in "team-v-team", or (Grand Final) in "game-1".
     return "-v-" in last or last.startswith("game-")
+
+
+def teams_from_buttons(button_texts, aliases):
+    """The two team names shown as tabs on a match page (e.g. ['MORE', 'Roosters', 'Knights', '']).
+
+    Used when the match URL has no 'team-v-team' slug (the Grand Final page is
+    '.../grand-final/game-1') and the page header gave no names. Only texts that
+    are real team names in team_aliases.json count, in page order, no repeats.
+    Returns [] unless exactly two distinct teams are found, so a wrong guess can't slip through.
+    """
+    found = []
+    for text in button_texts:
+        text = (text or "").strip()
+        if text in aliases and aliases[text] not in [aliases[f] for f in found]:
+            found.append(text)
+    return found if len(found) == 2 else []
