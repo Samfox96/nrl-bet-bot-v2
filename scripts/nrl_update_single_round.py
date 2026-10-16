@@ -5,6 +5,7 @@ import pandas as pd
 import traceback
 import warnings
 from parse_try_minutes import parse_try_minutes, aggregate_try_minutes, validate_try_minutes
+from match_links import is_match_link
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
@@ -500,7 +501,7 @@ try:
                 match_urls = list(set([
                     el.get_attribute("href").split("#")[0].rstrip("/")
                     for el in link_els
-                    if el.get_attribute("href") and "/round-" in el.get_attribute("href")
+                    if is_match_link(el.get_attribute("href"))
                 ]))
             except Exception as e:
                 print(f"  Could not find match links: {e}")
