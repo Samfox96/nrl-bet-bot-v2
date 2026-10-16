@@ -20,11 +20,16 @@ class IsMatchLinkTests(unittest.TestCase):
     def test_grand_final(self):
         self.assertTrue(is_match_link(f"{BASE}/grand-final/game-1/storm-v-panthers/"))
 
+    def test_grand_final_game_page_without_team_slug(self):
+        self.assertTrue(is_match_link(f"{BASE}/grand-final/game-1/"))
+        self.assertTrue(is_match_link(f"{BASE}/grand-final/storm-v-panthers/"))
+
     def test_trailing_fragment_ok(self):
         self.assertTrue(is_match_link(f"{BASE}/finals-week-1/storm-v-panthers/#stats"))
 
     def test_not_a_match_page(self):
         self.assertFalse(is_match_link(f"{BASE}/finals-week-1/"))
+        self.assertFalse(is_match_link(f"{BASE}/grand-final/"))
         self.assertFalse(is_match_link(f"{BASE}/"))
         self.assertFalse(is_match_link("https://www.nrl.com/draw/"))
         self.assertFalse(is_match_link(None))

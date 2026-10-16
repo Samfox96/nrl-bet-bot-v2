@@ -528,6 +528,12 @@ try:
                     print(f"  Could not save kickoff times sidecar file (non-fatal): {e}")
 
             if not match_urls:
+                # Show what the page did offer, so a new link shape is easy to spot in the run log.
+                try:
+                    seen = sorted({(el.get_attribute("href") or "") for el in link_els})
+                    print(f"  Draw links seen on the page ({len(seen)}): {seen[:30]}")
+                except Exception:
+                    pass
                 print(f"  No match links found for round {round_num} even though the page loaded. "
                       f"The draw page structure may have changed, or this round genuinely has no "
                       f"fixtures published yet.")

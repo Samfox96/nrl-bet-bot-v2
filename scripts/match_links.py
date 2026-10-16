@@ -7,7 +7,7 @@ FINALS_ROUND_SEGMENTS uses). Without the finals markers the player-stats
 scraper sees zero matches for rounds 28-31.
 """
 
-FINALS_URL_MARKERS = ("/finals-week-", "/grand-final/")
+FINALS_URL_MARKERS = ("/finals-week-", "/grand-final")
 
 
 def is_match_link(href):
@@ -16,5 +16,8 @@ def is_match_link(href):
         return False
     if "/round-" in href:
         return True
+    if not any(m in href for m in FINALS_URL_MARKERS):
+        return False
     last = href.split("#")[0].rstrip("/").split("/")[-1]
-    return any(m in href for m in FINALS_URL_MARKERS) and "-v-" in last
+    # A match page ends in "team-v-team", or (Grand Final) in "game-1".
+    return "-v-" in last or last.startswith("game-")
