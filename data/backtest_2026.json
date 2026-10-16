@@ -1,0 +1,851 @@
+{
+  "season": 2026,
+  "generated_at": "2026-10-16T22:24:45.569873+00:00",
+  "method": "For each round, ratings and try-scorer chances are rebuilt from data before that round only. Try scorers are the players who took the field (past team lists are unknown), each at his most frequent position so far. No odds and no money.",
+  "rounds_covered": 31,
+  "teams": {
+    "matches": 213,
+    "winners_correct": 125,
+    "winners_scored": 213,
+    "correct_pct": 58.7,
+    "margin_mae": 15.4286,
+    "brier": 0.2364
+  },
+  "try_scorers": {
+    "players": 6559,
+    "brier": 0.1467,
+    "base_rate": 0.1871,
+    "brier_if_everyone_at_base_rate": 0.1521,
+    "top3_hit_pct": 43.8
+  },
+  "try_scorer_calibration": [
+    {
+      "from": 0.0,
+      "to": 0.1,
+      "players": 3148,
+      "bot_says_pct": 2.9,
+      "really_scored_pct": 9.7
+    },
+    {
+      "from": 0.1,
+      "to": 0.2,
+      "players": 1014,
+      "bot_says_pct": 14.7,
+      "really_scored_pct": 18.4
+    },
+    {
+      "from": 0.2,
+      "to": 0.3,
+      "players": 808,
+      "bot_says_pct": 24.6,
+      "really_scored_pct": 24.3
+    },
+    {
+      "from": 0.3,
+      "to": 0.45,
+      "players": 812,
+      "bot_says_pct": 36.8,
+      "really_scored_pct": 26.7
+    },
+    {
+      "from": 0.45,
+      "to": 1.0,
+      "players": 777,
+      "bot_says_pct": 56.8,
+      "really_scored_pct": 41.6
+    }
+  ],
+  "best_rounds": [
+    {
+      "round": 17,
+      "matches": 8,
+      "winners_correct": 7,
+      "winners_scored": 8,
+      "correct_pct": 87.5,
+      "margin_mae": 11.0125,
+      "brier": 0.2146
+    },
+    {
+      "round": 20,
+      "matches": 8,
+      "winners_correct": 6,
+      "winners_scored": 8,
+      "correct_pct": 75.0,
+      "margin_mae": 11.3375,
+      "brier": 0.2294
+    },
+    {
+      "round": 26,
+      "matches": 8,
+      "winners_correct": 6,
+      "winners_scored": 8,
+      "correct_pct": 75.0,
+      "margin_mae": 15.6625,
+      "brier": 0.1772
+    }
+  ],
+  "worst_rounds": [
+    {
+      "round": 15,
+      "matches": 5,
+      "winners_correct": 1,
+      "winners_scored": 5,
+      "correct_pct": 20.0,
+      "margin_mae": 18.44,
+      "brier": 0.2498
+    },
+    {
+      "round": 6,
+      "matches": 8,
+      "winners_correct": 2,
+      "winners_scored": 8,
+      "correct_pct": 25.0,
+      "margin_mae": 19.6875,
+      "brier": 0.394
+    },
+    {
+      "round": 27,
+      "matches": 8,
+      "winners_correct": 3,
+      "winners_scored": 8,
+      "correct_pct": 37.5,
+      "margin_mae": 13.6625,
+      "brier": 0.2504
+    }
+  ],
+  "biggest_upsets": [
+    {
+      "round": 25,
+      "winner": "Wests Tigers",
+      "loser": "Sydney Roosters",
+      "score": "24-25",
+      "home_team": "Sydney Roosters",
+      "bot_gave_winner_pct": 10.1
+    },
+    {
+      "round": 16,
+      "winner": "Gold Coast Titans",
+      "loser": "Penrith Panthers",
+      "score": "19-18",
+      "home_team": "Gold Coast Titans",
+      "bot_gave_winner_pct": 12.1
+    },
+    {
+      "round": 13,
+      "winner": "St George Illawarra Dragons",
+      "loser": "Brisbane Broncos",
+      "score": "26-30",
+      "home_team": "Brisbane Broncos",
+      "bot_gave_winner_pct": 15.2
+    },
+    {
+      "round": 23,
+      "winner": "St George Illawarra Dragons",
+      "loser": "Cronulla-Sutherland Sharks",
+      "score": "24-16",
+      "home_team": "St George Illawarra Dragons",
+      "bot_gave_winner_pct": 15.4
+    },
+    {
+      "round": 20,
+      "winner": "Brisbane Broncos",
+      "loser": "Penrith Panthers",
+      "score": "12-14",
+      "home_team": "Penrith Panthers",
+      "bot_gave_winner_pct": 17.9
+    },
+    {
+      "round": 14,
+      "winner": "Gold Coast Titans",
+      "loser": "Brisbane Broncos",
+      "score": "23-28",
+      "home_team": "Brisbane Broncos",
+      "bot_gave_winner_pct": 18.4
+    }
+  ],
+  "grand_final": {
+    "round": 31,
+    "home_team": "Sydney Roosters",
+    "away_team": "Newcastle Knights",
+    "home_score": 19,
+    "away_score": 18,
+    "our_home_win_prob": 0.7354,
+    "bot_picked": "Sydney Roosters",
+    "bot_was_right": true
+  },
+  "against_the_bot": {
+    "biggest_misses": [
+      {
+        "player_name": "Murray Taulagi",
+        "team": "North Queensland Cowboys",
+        "round": 6,
+        "fixture": "Brisbane Broncos v North Queensland Cowboys",
+        "bot_said_pct": 65.0,
+        "tries": 0,
+        "at_model_ceiling": true
+      },
+      {
+        "player_name": "Sualauvi Faalogo",
+        "team": "Melbourne Storm",
+        "round": 6,
+        "fixture": "Melbourne Storm v New Zealand Warriors",
+        "bot_said_pct": 65.0,
+        "tries": 0,
+        "at_model_ceiling": true
+      },
+      {
+        "player_name": "Will Warbrick",
+        "team": "Melbourne Storm",
+        "round": 6,
+        "fixture": "Melbourne Storm v New Zealand Warriors",
+        "bot_said_pct": 65.0,
+        "tries": 0,
+        "at_model_ceiling": true
+      },
+      {
+        "player_name": "Jojo Fifita",
+        "team": "Gold Coast Titans",
+        "round": 6,
+        "fixture": "Parramatta Eels v Gold Coast Titans",
+        "bot_said_pct": 65.0,
+        "tries": 0,
+        "at_model_ceiling": true
+      },
+      {
+        "player_name": "Kaeo Weekes",
+        "team": "Canberra Raiders",
+        "round": 7,
+        "fixture": "Canberra Raiders v Melbourne Storm",
+        "bot_said_pct": 65.0,
+        "tries": 0,
+        "at_model_ceiling": true
+      },
+      {
+        "player_name": "Hudson Young",
+        "team": "Canberra Raiders",
+        "round": 7,
+        "fixture": "Canberra Raiders v Melbourne Storm",
+        "bot_said_pct": 65.0,
+        "tries": 0,
+        "at_model_ceiling": true
+      }
+    ],
+    "biggest_surprises": [
+      {
+        "player_name": "Harrison Graham",
+        "team": "Newcastle Knights",
+        "round": 13,
+        "fixture": "Newcastle Knights v Parramatta Eels",
+        "bot_said_pct": 0.2,
+        "tries": 1,
+        "at_model_ceiling": false
+      },
+      {
+        "player_name": "Jacob Saifiti",
+        "team": "Newcastle Knights",
+        "round": 14,
+        "fixture": "Melbourne Storm v Newcastle Knights",
+        "bot_said_pct": 0.4,
+        "tries": 1,
+        "at_model_ceiling": false
+      },
+      {
+        "player_name": "Jayden Sullivan",
+        "team": "South Sydney Rabbitohs",
+        "round": 27,
+        "fixture": "South Sydney Rabbitohs v Sydney Roosters",
+        "bot_said_pct": 0.4,
+        "tries": 1,
+        "at_model_ceiling": false
+      },
+      {
+        "player_name": "Blake Lawrie",
+        "team": "St George Illawarra Dragons",
+        "round": 27,
+        "fixture": "St George Illawarra Dragons v Parramatta Eels",
+        "bot_said_pct": 0.4,
+        "tries": 1,
+        "at_model_ceiling": false
+      },
+      {
+        "player_name": "Moses Leota",
+        "team": "Penrith Panthers",
+        "round": 24,
+        "fixture": "Penrith Panthers v Sydney Roosters",
+        "bot_said_pct": 0.5,
+        "tries": 1,
+        "at_model_ceiling": false
+      },
+      {
+        "player_name": "Addin Fonua-Blake",
+        "team": "Cronulla-Sutherland Sharks",
+        "round": 22,
+        "fixture": "Cronulla-Sutherland Sharks v South Sydney Rabbitohs",
+        "bot_said_pct": 0.5,
+        "tries": 1,
+        "at_model_ceiling": false
+      }
+    ],
+    "rule": "A player needs at least 5 games to go on (the sample rule)."
+  },
+  "per_round": [
+    {
+      "round": 1,
+      "teams": {
+        "matches": 8,
+        "winners_correct": 4,
+        "winners_scored": 8,
+        "correct_pct": 50.0,
+        "margin_mae": 19.1125,
+        "brier": 0.2331
+      },
+      "try_scorers": {
+        "players": 0,
+        "brier": null,
+        "base_rate": null,
+        "brier_if_everyone_at_base_rate": null,
+        "top3_hit_pct": null
+      }
+    },
+    {
+      "round": 2,
+      "teams": {
+        "matches": 8,
+        "winners_correct": 5,
+        "winners_scored": 8,
+        "correct_pct": 62.5,
+        "margin_mae": 18.0375,
+        "brier": 0.2501
+      },
+      "try_scorers": {
+        "players": 0,
+        "brier": null,
+        "base_rate": null,
+        "brier_if_everyone_at_base_rate": null,
+        "top3_hit_pct": null
+      }
+    },
+    {
+      "round": 3,
+      "teams": {
+        "matches": 8,
+        "winners_correct": 5,
+        "winners_scored": 8,
+        "correct_pct": 62.5,
+        "margin_mae": 15.25,
+        "brier": 0.2548
+      },
+      "try_scorers": {
+        "players": 0,
+        "brier": null,
+        "base_rate": null,
+        "brier_if_everyone_at_base_rate": null,
+        "top3_hit_pct": null
+      }
+    },
+    {
+      "round": 4,
+      "teams": {
+        "matches": 8,
+        "winners_correct": 4,
+        "winners_scored": 8,
+        "correct_pct": 50.0,
+        "margin_mae": 14.2,
+        "brier": 0.3115
+      },
+      "try_scorers": {
+        "players": 197,
+        "brier": 0.173,
+        "base_rate": 0.2081,
+        "brier_if_everyone_at_base_rate": 0.1648,
+        "top3_hit_pct": 41.7
+      }
+    },
+    {
+      "round": 5,
+      "teams": {
+        "matches": 8,
+        "winners_correct": 4,
+        "winners_scored": 8,
+        "correct_pct": 50.0,
+        "margin_mae": 19.5125,
+        "brier": 0.2436
+      },
+      "try_scorers": {
+        "players": 252,
+        "brier": 0.1657,
+        "base_rate": 0.2024,
+        "brier_if_everyone_at_base_rate": 0.1614,
+        "top3_hit_pct": 37.5
+      }
+    },
+    {
+      "round": 6,
+      "teams": {
+        "matches": 8,
+        "winners_correct": 2,
+        "winners_scored": 8,
+        "correct_pct": 25.0,
+        "margin_mae": 19.6875,
+        "brier": 0.394
+      },
+      "try_scorers": {
+        "players": 256,
+        "brier": 0.1727,
+        "base_rate": 0.2344,
+        "brier_if_everyone_at_base_rate": 0.1794,
+        "top3_hit_pct": 45.8
+      }
+    },
+    {
+      "round": 7,
+      "teams": {
+        "matches": 8,
+        "winners_correct": 5,
+        "winners_scored": 8,
+        "correct_pct": 62.5,
+        "margin_mae": 11.0,
+        "brier": 0.1731
+      },
+      "try_scorers": {
+        "players": 252,
+        "brier": 0.1421,
+        "base_rate": 0.1905,
+        "brier_if_everyone_at_base_rate": 0.1542,
+        "top3_hit_pct": 45.8
+      }
+    },
+    {
+      "round": 8,
+      "teams": {
+        "matches": 8,
+        "winners_correct": 5,
+        "winners_scored": 8,
+        "correct_pct": 62.5,
+        "margin_mae": 21.475,
+        "brier": 0.2175
+      },
+      "try_scorers": {
+        "players": 259,
+        "brier": 0.1768,
+        "base_rate": 0.2278,
+        "brier_if_everyone_at_base_rate": 0.1759,
+        "top3_hit_pct": 29.2
+      }
+    },
+    {
+      "round": 9,
+      "teams": {
+        "matches": 8,
+        "winners_correct": 5,
+        "winners_scored": 8,
+        "correct_pct": 62.5,
+        "margin_mae": 16.0,
+        "brier": 0.1932
+      },
+      "try_scorers": {
+        "players": 269,
+        "brier": 0.1457,
+        "base_rate": 0.2045,
+        "brier_if_everyone_at_base_rate": 0.1627,
+        "top3_hit_pct": 62.5
+      }
+    },
+    {
+      "round": 10,
+      "teams": {
+        "matches": 8,
+        "winners_correct": 5,
+        "winners_scored": 8,
+        "correct_pct": 62.5,
+        "margin_mae": 19.175,
+        "brier": 0.201
+      },
+      "try_scorers": {
+        "players": 270,
+        "brier": 0.1462,
+        "base_rate": 0.1889,
+        "brier_if_everyone_at_base_rate": 0.1532,
+        "top3_hit_pct": 50.0
+      }
+    },
+    {
+      "round": 11,
+      "teams": {
+        "matches": 8,
+        "winners_correct": 6,
+        "winners_scored": 8,
+        "correct_pct": 75.0,
+        "margin_mae": 19.3,
+        "brier": 0.202
+      },
+      "try_scorers": {
+        "players": 271,
+        "brier": 0.1649,
+        "base_rate": 0.1845,
+        "brier_if_everyone_at_base_rate": 0.1505,
+        "top3_hit_pct": 25.0
+      }
+    },
+    {
+      "round": 12,
+      "teams": {
+        "matches": 5,
+        "winners_correct": 3,
+        "winners_scored": 5,
+        "correct_pct": 60.0,
+        "margin_mae": 9.74,
+        "brier": 0.1731
+      },
+      "try_scorers": {
+        "players": 168,
+        "brier": 0.1404,
+        "base_rate": 0.1726,
+        "brier_if_everyone_at_base_rate": 0.1428,
+        "top3_hit_pct": 46.7
+      }
+    },
+    {
+      "round": 13,
+      "teams": {
+        "matches": 7,
+        "winners_correct": 4,
+        "winners_scored": 7,
+        "correct_pct": 57.1,
+        "margin_mae": 9.1,
+        "brier": 0.2728
+      },
+      "try_scorers": {
+        "players": 248,
+        "brier": 0.1329,
+        "base_rate": 0.1734,
+        "brier_if_everyone_at_base_rate": 0.1433,
+        "top3_hit_pct": 47.6
+      }
+    },
+    {
+      "round": 14,
+      "teams": {
+        "matches": 8,
+        "winners_correct": 6,
+        "winners_scored": 8,
+        "correct_pct": 75.0,
+        "margin_mae": 18.4375,
+        "brier": 0.1815
+      },
+      "try_scorers": {
+        "players": 296,
+        "brier": 0.1541,
+        "base_rate": 0.1858,
+        "brier_if_everyone_at_base_rate": 0.1513,
+        "top3_hit_pct": 45.8
+      }
+    },
+    {
+      "round": 15,
+      "teams": {
+        "matches": 5,
+        "winners_correct": 1,
+        "winners_scored": 5,
+        "correct_pct": 20.0,
+        "margin_mae": 18.44,
+        "brier": 0.2498
+      },
+      "try_scorers": {
+        "players": 172,
+        "brier": 0.156,
+        "base_rate": 0.1686,
+        "brier_if_everyone_at_base_rate": 0.1402,
+        "top3_hit_pct": 26.7
+      }
+    },
+    {
+      "round": 16,
+      "teams": {
+        "matches": 7,
+        "winners_correct": 5,
+        "winners_scored": 7,
+        "correct_pct": 71.4,
+        "margin_mae": 11.0571,
+        "brier": 0.2352
+      },
+      "try_scorers": {
+        "players": 254,
+        "brier": 0.1339,
+        "base_rate": 0.185,
+        "brier_if_everyone_at_base_rate": 0.1508,
+        "top3_hit_pct": 42.9
+      }
+    },
+    {
+      "round": 17,
+      "teams": {
+        "matches": 8,
+        "winners_correct": 7,
+        "winners_scored": 8,
+        "correct_pct": 87.5,
+        "margin_mae": 11.0125,
+        "brier": 0.2146
+      },
+      "try_scorers": {
+        "players": 294,
+        "brier": 0.1158,
+        "base_rate": 0.1361,
+        "brier_if_everyone_at_base_rate": 0.1175,
+        "top3_hit_pct": 45.8
+      }
+    },
+    {
+      "round": 18,
+      "teams": {
+        "matches": 5,
+        "winners_correct": 2,
+        "winners_scored": 5,
+        "correct_pct": 40.0,
+        "margin_mae": 11.24,
+        "brier": 0.2752
+      },
+      "try_scorers": {
+        "players": 174,
+        "brier": 0.126,
+        "base_rate": 0.1494,
+        "brier_if_everyone_at_base_rate": 0.1271,
+        "top3_hit_pct": 40.0
+      }
+    },
+    {
+      "round": 19,
+      "teams": {
+        "matches": 7,
+        "winners_correct": 4,
+        "winners_scored": 7,
+        "correct_pct": 57.1,
+        "margin_mae": 19.1,
+        "brier": 0.1945
+      },
+      "try_scorers": {
+        "players": 251,
+        "brier": 0.1411,
+        "base_rate": 0.1753,
+        "brier_if_everyone_at_base_rate": 0.1446,
+        "top3_hit_pct": 52.4
+      }
+    },
+    {
+      "round": 20,
+      "teams": {
+        "matches": 8,
+        "winners_correct": 6,
+        "winners_scored": 8,
+        "correct_pct": 75.0,
+        "margin_mae": 11.3375,
+        "brier": 0.2294
+      },
+      "try_scorers": {
+        "players": 292,
+        "brier": 0.135,
+        "base_rate": 0.1678,
+        "brier_if_everyone_at_base_rate": 0.1396,
+        "top3_hit_pct": 37.5
+      }
+    },
+    {
+      "round": 21,
+      "teams": {
+        "matches": 8,
+        "winners_correct": 5,
+        "winners_scored": 8,
+        "correct_pct": 62.5,
+        "margin_mae": 15.7125,
+        "brier": 0.1918
+      },
+      "try_scorers": {
+        "players": 288,
+        "brier": 0.1595,
+        "base_rate": 0.191,
+        "brier_if_everyone_at_base_rate": 0.1545,
+        "top3_hit_pct": 33.3
+      }
+    },
+    {
+      "round": 22,
+      "teams": {
+        "matches": 8,
+        "winners_correct": 6,
+        "winners_scored": 8,
+        "correct_pct": 75.0,
+        "margin_mae": 21.375,
+        "brier": 0.1801
+      },
+      "try_scorers": {
+        "players": 293,
+        "brier": 0.1437,
+        "base_rate": 0.1945,
+        "brier_if_everyone_at_base_rate": 0.1567,
+        "top3_hit_pct": 62.5
+      }
+    },
+    {
+      "round": 23,
+      "teams": {
+        "matches": 8,
+        "winners_correct": 5,
+        "winners_scored": 8,
+        "correct_pct": 62.5,
+        "margin_mae": 11.625,
+        "brier": 0.2524
+      },
+      "try_scorers": {
+        "players": 294,
+        "brier": 0.1377,
+        "base_rate": 0.1803,
+        "brier_if_everyone_at_base_rate": 0.1478,
+        "top3_hit_pct": 45.8
+      }
+    },
+    {
+      "round": 24,
+      "teams": {
+        "matches": 8,
+        "winners_correct": 3,
+        "winners_scored": 8,
+        "correct_pct": 37.5,
+        "margin_mae": 12.6125,
+        "brier": 0.2927
+      },
+      "try_scorers": {
+        "players": 295,
+        "brier": 0.1393,
+        "base_rate": 0.1729,
+        "brier_if_everyone_at_base_rate": 0.143,
+        "top3_hit_pct": 41.7
+      }
+    },
+    {
+      "round": 25,
+      "teams": {
+        "matches": 8,
+        "winners_correct": 5,
+        "winners_scored": 8,
+        "correct_pct": 62.5,
+        "margin_mae": 12.9625,
+        "brier": 0.2611
+      },
+      "try_scorers": {
+        "players": 297,
+        "brier": 0.1483,
+        "base_rate": 0.2054,
+        "brier_if_everyone_at_base_rate": 0.1632,
+        "top3_hit_pct": 41.7
+      }
+    },
+    {
+      "round": 26,
+      "teams": {
+        "matches": 8,
+        "winners_correct": 6,
+        "winners_scored": 8,
+        "correct_pct": 75.0,
+        "margin_mae": 15.6625,
+        "brier": 0.1772
+      },
+      "try_scorers": {
+        "players": 291,
+        "brier": 0.1457,
+        "base_rate": 0.2062,
+        "brier_if_everyone_at_base_rate": 0.1637,
+        "top3_hit_pct": 50.0
+      }
+    },
+    {
+      "round": 27,
+      "teams": {
+        "matches": 8,
+        "winners_correct": 3,
+        "winners_scored": 8,
+        "correct_pct": 37.5,
+        "margin_mae": 13.6625,
+        "brier": 0.2504
+      },
+      "try_scorers": {
+        "players": 286,
+        "brier": 0.1628,
+        "base_rate": 0.2098,
+        "brier_if_everyone_at_base_rate": 0.1658,
+        "top3_hit_pct": 45.8
+      }
+    },
+    {
+      "round": 28,
+      "teams": {
+        "matches": 4,
+        "winners_correct": 2,
+        "winners_scored": 4,
+        "correct_pct": 50.0,
+        "margin_mae": 8.15,
+        "brier": 0.236
+      },
+      "try_scorers": {
+        "players": 151,
+        "brier": 0.1109,
+        "base_rate": 0.1457,
+        "brier_if_everyone_at_base_rate": 0.1245,
+        "top3_hit_pct": 41.7
+      }
+    },
+    {
+      "round": 29,
+      "teams": {
+        "matches": 2,
+        "winners_correct": 1,
+        "winners_scored": 2,
+        "correct_pct": 50.0,
+        "margin_mae": 21.05,
+        "brier": 0.3479
+      },
+      "try_scorers": {
+        "players": 76,
+        "brier": 0.1074,
+        "base_rate": 0.1579,
+        "brier_if_everyone_at_base_rate": 0.133,
+        "top3_hit_pct": 66.7
+      }
+    },
+    {
+      "round": 30,
+      "teams": {
+        "matches": 2,
+        "winners_correct": 0,
+        "winners_scored": 2,
+        "correct_pct": 0.0,
+        "margin_mae": 18.2,
+        "brier": 0.499
+      },
+      "try_scorers": {
+        "players": 76,
+        "brier": 0.1505,
+        "base_rate": 0.1842,
+        "brier_if_everyone_at_base_rate": 0.1503,
+        "top3_hit_pct": 50.0
+      }
+    },
+    {
+      "round": 31,
+      "teams": {
+        "matches": 1,
+        "winners_correct": 1,
+        "winners_scored": 1,
+        "correct_pct": 100.0,
+        "margin_mae": 6.1,
+        "brier": 0.07
+      },
+      "try_scorers": {
+        "players": 37,
+        "brier": 0.115,
+        "base_rate": 0.1351,
+        "brier_if_everyone_at_base_rate": 0.1169,
+        "top3_hit_pct": 66.7
+      }
+    }
+  ]
+}

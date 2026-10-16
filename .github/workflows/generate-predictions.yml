@@ -141,6 +141,17 @@ jobs:
             --data-dir data \
             --output data/predictions_current.csv
 
+      # Added 2026-10-16. The week's ranked picks for the Studio OS BetBot app (scripts/build_weekly_picks.py):
+      # the top 20 by edge across try scorers, winners and the points line, with flags, saved every week
+      # with the prices seen. With no prices (the price service only lists games that haven't started) it
+      # writes status "no_prices" and exits 2: the file is still committed so the app can say so, and the
+      # run turns red at the end, never green with an empty week.
+      - name: Build the weekly picks
+        id: picks
+        if: steps.generate.outcome == 'success'
+        continue-on-error: true
+        run: python3 scripts/build_weekly_picks.py --data-dir data
+
       - name: Commit predictions file (only runs if generation succeeded)
         if: steps.generate.outcome == 'success'
         run: |
@@ -148,6 +159,13 @@ jobs:
           git config user.email "actions@github.com"
           # Add predictions files unconditionally
           git add data/predictions_current.csv data/predictions_current.json data/predictions_history/
+          # The weekly picks (written even for a no-prices week, so the app can say so)
+          if [ -f data/weekly_picks.json ]; then
+            git add data/weekly_picks.json
+          fi
+          if [ -d data/picks_history ]; then
+            git add data/picks_history/
+          fi
           # Add betting_decisions.json only if the decision engine succeeded (best-effort, may not exist)
           if [ -f data/betting_decisions.json ]; then
             git add data/betting_decisions.json
@@ -273,3 +291,10 @@ jobs:
               ].join('\n'),
               labels: ['needs-review', 'automation', 'phase-8']
             })
+
+      # Last on purpose, so a no-prices week still sends its email and opens its issues first.
+      - name: Turn the run red if there were no prices
+        if: always() && steps.picks.outcome == 'failure'
+        run: |
+          echo "::error::No picks this week: the price service had no upcoming games, so the picks file says no_prices. Check that this run happens before kickoff."
+          exit 1

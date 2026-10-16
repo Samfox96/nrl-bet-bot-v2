@@ -293,6 +293,28 @@ jobs:
           git commit -m "Score round ${{ steps.next_round.outputs.round }} predictions" || echo "Nothing to commit"
           git push
 
+      # Added 2026-10-16. Marks last week's saved picks won/lost/push/void and works out the pretend return
+      # (scripts/score_picks.py), for the Studio OS BetBot app's Money tab. Best-effort like the scoring above:
+      # a round with no saved picks (everything before round 18, or a no-prices week) is normal, not a failure.
+      - name: Score this round's picks against real results
+        id: score_picks
+        if: env.RESEND_ROUND == '' && steps.validate_merge_match_results.outcome == 'success'
+        continue-on-error: true
+        run: |
+          python3 scripts/score_picks.py \
+            --season 2026 \
+            --round "${{ steps.next_round.outputs.round }}" \
+            --data-dir data
+
+      - name: Commit the scored picks (only runs if scoring succeeded)
+        if: env.RESEND_ROUND == '' && steps.score_picks.outcome == 'success'
+        run: |
+          git config user.name "nrl-bot-automation"
+          git config user.email "actions@github.com"
+          git add data/picks_history/
+          git commit -m "Score round ${{ steps.next_round.outputs.round }} picks" || echo "Nothing to commit"
+          git push
+
       - name: Note on failure (accuracy scoring) -- informational only, not a real failure
         if: env.RESEND_ROUND == '' && steps.score_predictions.outcome == 'failure'
         run: |
