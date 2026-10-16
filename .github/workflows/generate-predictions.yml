@@ -19,9 +19,32 @@ on:
         description: 'Round number to generate predictions for (optional -- defaults to nrl_master.csv max round + 1, same logic as the scheduled run)'
         required: false
         type: string
+      force_run:
+        description: 'Run the full job even though the season is over (normally it stays quiet between seasons).'
+        required: false
+        type: boolean
 
 jobs:
+  # Added 2026-10-16. Works out whether the season is on, over, or over for too long
+  # (scripts/season_status.py). When it is over the jobs below stay quiet instead of failing every week.
+  season:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    outputs:
+      state: ${{ steps.s.outputs.state }}
+      last_round: ${{ steps.s.outputs.last_round }}
+      reason: ${{ steps.s.outputs.reason }}
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Work out the season state
+        id: s
+        run: python3 scripts/season_status.py | tee -a "$GITHUB_OUTPUT"
+
   generate-predictions:
+    needs: season
+    if: needs.season.outputs.state == 'in_season' || github.event.inputs.force_run == 'true' || github.event.inputs.round_override != ''
     runs-on: ubuntu-latest
     timeout-minutes: 15
     # 15 min is generous for this job's real workload: 8 real event-odds
@@ -89,7 +112,7 @@ jobs:
             # layers (YAML / bash / Python). Tested directly against
             # real nrl_master.csv under bash (GitHub Actions' real
             # default shell) before trusting it.
-            ROUND=$(python3 -c "import pandas as pd; df = pd.read_csv('data/nrl_master.csv'); print(int(df['round'].max()) + 1)")
+            ROUND=$(python3 scripts/season_status.py --next-round)
           fi
           echo "round=$ROUND" >> "$GITHUB_OUTPUT"
           echo "Generating predictions for round: $ROUND"

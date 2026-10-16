@@ -97,7 +97,26 @@ on:
     - cron: '10 6 * * 2'  # Tuesday ~4:10pm AEST -- real baseline team-list scrape
 
 jobs:
+  # Added 2026-10-16. Works out whether the season is on, over, or over for too long
+  # (scripts/season_status.py). When it is over the jobs below stay quiet instead of failing every week.
+  season:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    outputs:
+      state: ${{ steps.s.outputs.state }}
+      last_round: ${{ steps.s.outputs.last_round }}
+      reason: ${{ steps.s.outputs.reason }}
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Work out the season state
+        id: s
+        run: python3 scripts/season_status.py | tee -a "$GITHUB_OUTPUT"
+
   poll-team-lists:
+    needs: season
+    if: github.event_name != 'schedule' || needs.season.outputs.state == 'in_season'
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
