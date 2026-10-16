@@ -1,0 +1,79 @@
+{
+  "season": 2026,
+  "round": 21,
+  "archived_at": "2026-10-15T01:04:51.004883+00:00",
+  "results": [
+    {
+      "home_team": "Parramatta Eels",
+      "away_team": "Penrith Panthers",
+      "due_watch": {
+        "home": [],
+        "away": []
+      },
+      "status": "skipped: no real upcoming odds-api event found for Parramatta Eels v Penrith Panthers"
+    },
+    {
+      "home_team": "Newcastle Knights",
+      "away_team": "Sydney Roosters",
+      "due_watch": {
+        "home": [],
+        "away": []
+      },
+      "status": "skipped: no real upcoming odds-api event found for Newcastle Knights v Sydney Roosters"
+    },
+    {
+      "home_team": "South Sydney Rabbitohs",
+      "away_team": "Melbourne Storm",
+      "due_watch": {
+        "home": [],
+        "away": []
+      },
+      "status": "skipped: no real upcoming odds-api event found for South Sydney Rabbitohs v Melbourne Storm"
+    },
+    {
+      "home_team": "Canberra Raiders",
+      "away_team": "Wests Tigers",
+      "due_watch": {
+        "home": [],
+        "away": []
+      },
+      "status": "skipped: no real upcoming odds-api event found for Canberra Raiders v Wests Tigers"
+    },
+    {
+      "home_team": "Canterbury-Bankstown Bulldogs",
+      "away_team": "New Zealand Warriors",
+      "due_watch": {
+        "home": [],
+        "away": []
+      },
+      "status": "skipped: no real upcoming odds-api event found for Canterbury-Bankstown Bulldogs v New Zealand Warriors"
+    },
+    {
+      "home_team": "North Queensland Cowboys",
+      "away_team": "Brisbane Broncos",
+      "due_watch": {
+        "home": [],
+        "away": []
+      },
+      "status": "skipped: no real upcoming odds-api event found for North Queensland Cowboys v Brisbane Broncos"
+    },
+    {
+      "home_team": "St George Illawarra Dragons",
+      "away_team": "Gold Coast Titans",
+      "due_watch": {
+        "home": [],
+        "away": []
+      },
+      "status": "skipped: no real upcoming odds-api event found for St George Illawarra Dragons v Gold Coast Titans"
+    },
+    {
+      "home_team": "Manly-Warringah Sea Eagles",
+      "away_team": "Cronulla-Sutherland Sharks",
+      "due_watch": {
+        "home": [],
+        "away": []
+      },
+      "status": "skipped: no real upcoming odds-api event found for Manly-Warringah Sea Eagles v Cronulla-Sutherland Sharks"
+    }
+  ]
+}

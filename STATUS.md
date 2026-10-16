@@ -186,3 +186,8 @@ Credentials (`CRONJOB_API_KEY`, `WORKFLOW_DISPATCH_TOKEN`, `RESEND_API_KEY`, `DI
 - Scraped and validated automatically via GitHub Actions (Phase 3)
 - 305 rows added, 7448 -> 7753 total rows in nrl_master.csv
 - Validation: PASSED (see workflow log for full report)
+
+## Round 20 Auto-Merge Summary (2026-10-14)
+- Scraped and validated automatically via GitHub Actions (Phase 3)
+- 304 rows added, 5319 -> 5623 total rows in nrl_master.csv
+- Validation: PASSED (see workflow log for full report)

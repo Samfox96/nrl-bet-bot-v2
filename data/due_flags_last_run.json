@@ -1,94 +1,94 @@
 {
-  "round": 19,
+  "round": 20,
   "season": 2026,
   "due_flags": [
     {
-      "player_name": "Tom Trbojevic",
-      "team": "Manly-Warringah Sea Eagles",
-      "position_code": "FB",
-      "season_tpg": 0.6,
+      "player_name": "Fletcher Sharpe",
+      "team": "Newcastle Knights",
+      "position_code": "FE",
+      "season_tpg": 0.438,
       "recent_tpg": 0.0,
-      "opponent_this_round": "Gold Coast Titans",
-      "composite_score": 0.75,
+      "opponent_this_round": "Sydney Roosters",
+      "composite_score": 0.539,
       "weight_coverage": 0.999,
       "factors": {
-        "drought": 1,
-        "opponent_matchup": 1,
-        "team_form": -0.455,
-        "usage_trend": 0.312,
-        "structure_share": 0.143
+        "drought": 0.729,
+        "opponent_matchup": 0.809,
+        "team_form": -0.683,
+        "usage_trend": 0.383,
+        "structure_share": -0.039
       },
       "structure_share_is_approximate": true
     },
     {
-      "player_name": "Jacob Kiraz",
-      "team": "Canterbury-Bankstown Bulldogs",
-      "position_code": "WG",
-      "season_tpg": 0.5,
+      "player_name": "Jayden Campbell",
+      "team": "Gold Coast Titans",
+      "position_code": "FE",
+      "season_tpg": 0.533,
+      "recent_tpg": 0.25,
+      "opponent_this_round": "St George Illawarra Dragons",
+      "composite_score": 0.536,
+      "weight_coverage": 0.999,
+      "factors": {
+        "drought": 0.472,
+        "opponent_matchup": 0.945,
+        "team_form": 0.305,
+        "usage_trend": 0.398,
+        "structure_share": 0.07
+      },
+      "structure_share_is_approximate": true
+    },
+    {
+      "player_name": "Ethan Strange",
+      "team": "Canberra Raiders",
+      "position_code": "FE",
+      "season_tpg": 0.267,
       "recent_tpg": 0.0,
       "opponent_this_round": "Wests Tigers",
-      "composite_score": 0.49,
+      "composite_score": 0.504,
       "weight_coverage": 0.999,
       "factors": {
-        "drought": 0.833,
-        "opponent_matchup": 0.424,
-        "team_form": -0.041,
-        "usage_trend": -0.19,
-        "structure_share": -0.157
+        "drought": 0.444,
+        "opponent_matchup": 1,
+        "team_form": 0.727,
+        "usage_trend": -0.225,
+        "structure_share": -0.12
       },
       "structure_share_is_approximate": true
     },
     {
-      "player_name": "Chanel Harris-Tavita",
-      "team": "New Zealand Warriors",
-      "position_code": "FE",
-      "season_tpg": 0.2,
-      "recent_tpg": 0.0,
-      "opponent_this_round": "St George Illawarra Dragons",
-      "composite_score": 0.477,
+      "player_name": "Taylan May",
+      "team": "Wests Tigers",
+      "position_code": "CE",
+      "season_tpg": 0.667,
+      "recent_tpg": 0.25,
+      "opponent_this_round": "Canberra Raiders",
+      "composite_score": 0.474,
       "weight_coverage": 0.999,
       "factors": {
-        "drought": 0.333,
-        "opponent_matchup": 0.945,
-        "team_form": -0.244,
-        "usage_trend": 0.308,
-        "structure_share": 0.826
-      },
-      "structure_share_is_approximate": true
-    },
-    {
-      "player_name": "Dallin Watene-Zelezniak",
-      "team": "New Zealand Warriors",
-      "position_code": "WG",
-      "season_tpg": 1.067,
-      "recent_tpg": 0.5,
-      "opponent_this_round": "St George Illawarra Dragons",
-      "composite_score": 0.459,
-      "weight_coverage": 0.999,
-      "factors": {
-        "drought": 0.944,
-        "opponent_matchup": -0.181,
-        "team_form": -0.244,
-        "usage_trend": 0.377,
-        "structure_share": 0.246
+        "drought": 0.694,
+        "opponent_matchup": 0.86,
+        "team_form": -1,
+        "usage_trend": 0.01,
+        "structure_share": -0.073
       },
       "structure_share_is_approximate": true
     },
     {
       "player_name": "Leka Halasima",
       "team": "New Zealand Warriors",
-      "position_code": "2RF",
-      "season_tpg": 0.385,
+      "position_code": "IC",
+      "season_tpg": 0.357,
       "recent_tpg": 0.0,
-      "opponent_this_round": "St George Illawarra Dragons",
-      "composite_score": 0.432,
+      "opponent_this_round": "Canterbury-Bankstown Bulldogs",
+      "composite_score": 0.457,
       "weight_coverage": 0.999,
       "factors": {
-        "drought": 0.641,
-        "opponent_matchup": 0.624,
-        "team_form": -0.244,
-        "usage_trend": -0.039,
-        "structure_share": -0.255
+        "drought": 0.595,
+        "opponent_matchup": 1,
+        "team_form": 0.0,
+        "usage_trend": -0.483,
+        "structure_share": -0.611
       },
       "structure_share_is_approximate": true
     }
