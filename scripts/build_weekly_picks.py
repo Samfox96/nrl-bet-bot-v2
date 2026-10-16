@@ -205,7 +205,7 @@ def margin_candidate(fixture):
     return _common("margin", f"{home} v {away}", f"{home} {sign}", f"{home} {sign} on the points line", price, False,
                    h.get("market_spread_bookmaker", "unknown"), our_p, mkt_p, edge, edge,
                    None, [], f"Bot expects {home} by {pred:+.0f} ({pct(our_p)} to cover); the line is {sign} at ${price:.2f}",
-                   {"team": home})
+                   {"team": home, "line": point})
 
 
 # ------------------------------------------------------------------ build
@@ -222,7 +222,13 @@ def load_predictions(path):
 def build(predictions_path, master_path, now=None):
     season, rnd, fixtures = load_predictions(predictions_path)
     games = load_games(master_path)
-    now = now or datetime.now(timezone.utc)
+    if now is None:   # a replay of a saved round keeps the time it was predicted
+        try:
+            with open(predictions_path, encoding="utf-8") as f:
+                saved = json.load(f).get("archived_at")
+            now = datetime.fromisoformat(saved) if saved else datetime.now(timezone.utc)
+        except (OSError, ValueError, AttributeError):
+            now = datetime.now(timezone.utc)
     priced = [f for f in fixtures if f.get("status") in ("ok", None)]
 
     out = {
@@ -243,10 +249,11 @@ def build(predictions_path, master_path, now=None):
 
     candidates = []
     for f in priced:
-        candidates += try_scorer_candidates(f, games, season, rnd)
-        for c in (winner_candidate(f), margin_candidate(f)):
-            if c:
-                candidates.append(c)
+        found = try_scorer_candidates(f, games, season, rnd)
+        found += [c for c in (winner_candidate(f), margin_candidate(f)) if c]
+        for c in found:   # scoring later needs the two teams of every pick
+            c["home_team"], c["away_team"] = f.get("home_team"), f.get("away_team")
+        candidates += found
     candidates.sort(key=lambda c: (c["effective_edge"], c["ev_per_unit"]), reverse=True)
     kept = candidates[:KEEP]
     # The bot's own stake rule (decision_engine.py): a try scorer whose team is also picked to win or cover
