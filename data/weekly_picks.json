@@ -1,0 +1,18 @@
+{
+  "season": 2026,
+  "round": 20,
+  "generated_at": "2026-10-16T22:20:24.082618+00:00",
+  "top_n": 8,
+  "keep": 20,
+  "parameters": {
+    "min_games": 5,
+    "prior_season_until_round": 5,
+    "long_shot_price": 12.0
+  },
+  "calibration_warning": "The bot's chances are not calibrated yet, so edges are estimates. The pretend-money line is what shows whether they hold up.",
+  "fixtures_total": 8,
+  "fixtures_priced": 0,
+  "picks": [],
+  "status": "no_prices",
+  "reason": "The price service had no upcoming event for any fixture this round (prices only exist before kickoff, so the run was probably too late or the round has no games yet)."
+}
