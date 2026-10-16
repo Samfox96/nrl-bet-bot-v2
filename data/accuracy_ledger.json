@@ -1,8 +1,1763 @@
 [
   {
     "season": 2026,
+    "round": 18,
+    "scored_at": "2026-10-13T22:31:45.388428+00:00",
+    "fixtures_with_real_results": 5,
+    "fixtures_scored_for_winner": 5,
+    "correct_winner_pct": 40.0,
+    "margin_mae": 11.2,
+    "due_watch_flagged": 20,
+    "due_watch_hit_rate_pct": 10.0,
+    "try_scorer_edges_flagged": 158,
+    "try_scorer_edge_hit_rate_pct": 31.0,
+    "brier_winner_ours": 0.2752,
+    "brier_winner_market": 0.2752,
+    "brier_tryscorer_ours": 0.1243,
+    "brier_tryscorer_market": 0.1349,
+    "prediction_time_ev_log": [
+      {
+        "player_name": "Cody Walker",
+        "team": "South Sydney Rabbitohs",
+        "our_probability": 0.3853,
+        "market_probability": 0.2632,
+        "edge": 0.1221,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Cody Walker",
+        "team": "South Sydney Rabbitohs",
+        "our_probability": 0.3853,
+        "market_probability": 0.2703,
+        "edge": 0.115,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Cody Walker",
+        "team": "South Sydney Rabbitohs",
+        "our_probability": 0.3853,
+        "market_probability": 0.2857,
+        "edge": 0.0996,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Cody Walker",
+        "team": "South Sydney Rabbitohs",
+        "our_probability": 0.3853,
+        "market_probability": 0.2857,
+        "edge": 0.0996,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Cody Walker",
+        "team": "South Sydney Rabbitohs",
+        "our_probability": 0.3853,
+        "market_probability": 0.2857,
+        "edge": 0.0996,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Tallis Duncan",
+        "team": "South Sydney Rabbitohs",
+        "our_probability": 0.3884,
+        "market_probability": 0.2899,
+        "edge": 0.0985,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Tallis Duncan",
+        "team": "South Sydney Rabbitohs",
+        "our_probability": 0.3884,
+        "market_probability": 0.2899,
+        "edge": 0.0985,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Tallis Duncan",
+        "team": "South Sydney Rabbitohs",
+        "our_probability": 0.3884,
+        "market_probability": 0.2941,
+        "edge": 0.0943,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Cody Walker",
+        "team": "South Sydney Rabbitohs",
+        "our_probability": 0.3853,
+        "market_probability": 0.2941,
+        "edge": 0.0912,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Tallis Duncan",
+        "team": "South Sydney Rabbitohs",
+        "our_probability": 0.3884,
+        "market_probability": 0.2985,
+        "edge": 0.0899,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Cody Walker",
+        "team": "South Sydney Rabbitohs",
+        "our_probability": 0.3853,
+        "market_probability": 0.2985,
+        "edge": 0.0868,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Cody Walker",
+        "team": "South Sydney Rabbitohs",
+        "our_probability": 0.3853,
+        "market_probability": 0.303,
+        "edge": 0.0823,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Cody Walker",
+        "team": "South Sydney Rabbitohs",
+        "our_probability": 0.3853,
+        "market_probability": 0.303,
+        "edge": 0.0823,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Tallis Duncan",
+        "team": "South Sydney Rabbitohs",
+        "our_probability": 0.3884,
+        "market_probability": 0.3077,
+        "edge": 0.0807,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Tallis Duncan",
+        "team": "South Sydney Rabbitohs",
+        "our_probability": 0.3884,
+        "market_probability": 0.3077,
+        "edge": 0.0807,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Tallis Duncan",
+        "team": "South Sydney Rabbitohs",
+        "our_probability": 0.3884,
+        "market_probability": 0.3125,
+        "edge": 0.0759,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Tallis Duncan",
+        "team": "South Sydney Rabbitohs",
+        "our_probability": 0.3884,
+        "market_probability": 0.3125,
+        "edge": 0.0759,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Thomas Jenkins",
+        "team": "Penrith Panthers",
+        "our_probability": 0.65,
+        "market_probability": 0.5882,
+        "edge": 0.0618,
+        "outcome_scored": true,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Lindsay Smith",
+        "team": "Penrith Panthers",
+        "our_probability": 0.1851,
+        "market_probability": 0.125,
+        "edge": 0.0601,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Lindsay Smith",
+        "team": "Penrith Panthers",
+        "our_probability": 0.1851,
+        "market_probability": 0.1333,
+        "edge": 0.0518,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Lindsay Smith",
+        "team": "Penrith Panthers",
+        "our_probability": 0.1851,
+        "market_probability": 0.1333,
+        "edge": 0.0518,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Lindsay Smith",
+        "team": "Penrith Panthers",
+        "our_probability": 0.1851,
+        "market_probability": 0.1333,
+        "edge": 0.0518,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Lindsay Smith",
+        "team": "Penrith Panthers",
+        "our_probability": 0.1851,
+        "market_probability": 0.1333,
+        "edge": 0.0518,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Thomas Jenkins",
+        "team": "Penrith Panthers",
+        "our_probability": 0.65,
+        "market_probability": 0.5988,
+        "edge": 0.0512,
+        "outcome_scored": true,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Thomas Jenkins",
+        "team": "Penrith Panthers",
+        "our_probability": 0.65,
+        "market_probability": 0.5988,
+        "edge": 0.0512,
+        "outcome_scored": true,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Thomas Jenkins",
+        "team": "Penrith Panthers",
+        "our_probability": 0.65,
+        "market_probability": 0.5988,
+        "edge": 0.0512,
+        "outcome_scored": true,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Freddy Lussick",
+        "team": "Penrith Panthers",
+        "our_probability": 0.2039,
+        "market_probability": 0.1538,
+        "edge": 0.0501,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Freddy Lussick",
+        "team": "Penrith Panthers",
+        "our_probability": 0.2039,
+        "market_probability": 0.1538,
+        "edge": 0.0501,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Thomas Jenkins",
+        "team": "Penrith Panthers",
+        "our_probability": 0.65,
+        "market_probability": 0.6061,
+        "edge": 0.0439,
+        "outcome_scored": true,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Thomas Jenkins",
+        "team": "Penrith Panthers",
+        "our_probability": 0.65,
+        "market_probability": 0.6061,
+        "edge": 0.0439,
+        "outcome_scored": true,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Thomas Jenkins",
+        "team": "Penrith Panthers",
+        "our_probability": 0.65,
+        "market_probability": 0.6061,
+        "edge": 0.0439,
+        "outcome_scored": true,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Tallis Duncan",
+        "team": "South Sydney Rabbitohs",
+        "our_probability": 0.3884,
+        "market_probability": 0.3448,
+        "edge": 0.0436,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Freddy Lussick",
+        "team": "Penrith Panthers",
+        "our_probability": 0.2039,
+        "market_probability": 0.1613,
+        "edge": 0.0426,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Freddy Lussick",
+        "team": "Penrith Panthers",
+        "our_probability": 0.2039,
+        "market_probability": 0.1613,
+        "edge": 0.0426,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Lindsay Smith",
+        "team": "Penrith Panthers",
+        "our_probability": 0.1851,
+        "market_probability": 0.1429,
+        "edge": 0.0422,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Lindsay Smith",
+        "team": "Penrith Panthers",
+        "our_probability": 0.1851,
+        "market_probability": 0.1429,
+        "edge": 0.0422,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Lindsay Smith",
+        "team": "Penrith Panthers",
+        "our_probability": 0.1851,
+        "market_probability": 0.1429,
+        "edge": 0.0422,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Euan Aitken",
+        "team": "South Sydney Rabbitohs",
+        "our_probability": 0.1635,
+        "market_probability": 0.125,
+        "edge": 0.0385,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Freddy Lussick",
+        "team": "Penrith Panthers",
+        "our_probability": 0.2039,
+        "market_probability": 0.1667,
+        "edge": 0.0372,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Freddy Lussick",
+        "team": "Penrith Panthers",
+        "our_probability": 0.2039,
+        "market_probability": 0.1667,
+        "edge": 0.0372,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Freddy Lussick",
+        "team": "Penrith Panthers",
+        "our_probability": 0.2039,
+        "market_probability": 0.1667,
+        "edge": 0.0372,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Thomas Jenkins",
+        "team": "Penrith Panthers",
+        "our_probability": 0.65,
+        "market_probability": 0.6173,
+        "edge": 0.0327,
+        "outcome_scored": true,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Thomas Jenkins",
+        "team": "Penrith Panthers",
+        "our_probability": 0.65,
+        "market_probability": 0.6211,
+        "edge": 0.0289,
+        "outcome_scored": true,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Jamie Humphreys",
+        "team": "South Sydney Rabbitohs",
+        "our_probability": 0.1196,
+        "market_probability": 0.0909,
+        "edge": 0.0287,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Jamie Humphreys",
+        "team": "South Sydney Rabbitohs",
+        "our_probability": 0.1196,
+        "market_probability": 0.0909,
+        "edge": 0.0287,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Jamie Humphreys",
+        "team": "South Sydney Rabbitohs",
+        "our_probability": 0.1196,
+        "market_probability": 0.0952,
+        "edge": 0.0244,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Freddy Lussick",
+        "team": "Penrith Panthers",
+        "our_probability": 0.2039,
+        "market_probability": 0.1818,
+        "edge": 0.0221,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Euan Aitken",
+        "team": "South Sydney Rabbitohs",
+        "our_probability": 0.1635,
+        "market_probability": 0.1429,
+        "edge": 0.0206,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Lindsay Smith",
+        "team": "Penrith Panthers",
+        "our_probability": 0.1851,
+        "market_probability": 0.1667,
+        "edge": 0.0184,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Jamie Humphreys",
+        "team": "South Sydney Rabbitohs",
+        "our_probability": 0.1196,
+        "market_probability": 0.1026,
+        "edge": 0.017,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Jamie Humphreys",
+        "team": "South Sydney Rabbitohs",
+        "our_probability": 0.1196,
+        "market_probability": 0.1026,
+        "edge": 0.017,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Euan Aitken",
+        "team": "South Sydney Rabbitohs",
+        "our_probability": 0.1635,
+        "market_probability": 0.1562,
+        "edge": 0.0073,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Euan Aitken",
+        "team": "South Sydney Rabbitohs",
+        "our_probability": 0.1635,
+        "market_probability": 0.1562,
+        "edge": 0.0073,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Adam Doueihi",
+        "team": "Wests Tigers",
+        "our_probability": 0.4224,
+        "market_probability": 0.3077,
+        "edge": 0.1147,
+        "outcome_scored": true,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Alex Seyfarth",
+        "team": "Wests Tigers",
+        "our_probability": 0.2086,
+        "market_probability": 0.1333,
+        "edge": 0.0753,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Alex Seyfarth",
+        "team": "Wests Tigers",
+        "our_probability": 0.2086,
+        "market_probability": 0.1333,
+        "edge": 0.0753,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Alex Seyfarth",
+        "team": "Wests Tigers",
+        "our_probability": 0.2086,
+        "market_probability": 0.1333,
+        "edge": 0.0753,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Adam Doueihi",
+        "team": "Wests Tigers",
+        "our_probability": 0.4224,
+        "market_probability": 0.3509,
+        "edge": 0.0715,
+        "outcome_scored": true,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Alex Seyfarth",
+        "team": "Wests Tigers",
+        "our_probability": 0.2086,
+        "market_probability": 0.1379,
+        "edge": 0.0707,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Alex Seyfarth",
+        "team": "Wests Tigers",
+        "our_probability": 0.2086,
+        "market_probability": 0.1379,
+        "edge": 0.0707,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Setu Tu",
+        "team": "St George Illawarra Dragons",
+        "our_probability": 0.5459,
+        "market_probability": 0.4762,
+        "edge": 0.0697,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Setu Tu",
+        "team": "St George Illawarra Dragons",
+        "our_probability": 0.5459,
+        "market_probability": 0.4762,
+        "edge": 0.0697,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Valentine Holmes",
+        "team": "St George Illawarra Dragons",
+        "our_probability": 0.4803,
+        "market_probability": 0.4167,
+        "edge": 0.0636,
+        "outcome_scored": true,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Valentine Holmes",
+        "team": "St George Illawarra Dragons",
+        "our_probability": 0.4803,
+        "market_probability": 0.4167,
+        "edge": 0.0636,
+        "outcome_scored": true,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Valentine Holmes",
+        "team": "St George Illawarra Dragons",
+        "our_probability": 0.4803,
+        "market_probability": 0.4167,
+        "edge": 0.0636,
+        "outcome_scored": true,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Valentine Holmes",
+        "team": "St George Illawarra Dragons",
+        "our_probability": 0.4803,
+        "market_probability": 0.4167,
+        "edge": 0.0636,
+        "outcome_scored": true,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Valentine Holmes",
+        "team": "St George Illawarra Dragons",
+        "our_probability": 0.4803,
+        "market_probability": 0.4167,
+        "edge": 0.0636,
+        "outcome_scored": true,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Alex Seyfarth",
+        "team": "Wests Tigers",
+        "our_probability": 0.2086,
+        "market_probability": 0.1481,
+        "edge": 0.0605,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Adam Doueihi",
+        "team": "Wests Tigers",
+        "our_probability": 0.4224,
+        "market_probability": 0.3636,
+        "edge": 0.0588,
+        "outcome_scored": true,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Adam Doueihi",
+        "team": "Wests Tigers",
+        "our_probability": 0.4224,
+        "market_probability": 0.3636,
+        "edge": 0.0588,
+        "outcome_scored": true,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Adam Doueihi",
+        "team": "Wests Tigers",
+        "our_probability": 0.4224,
+        "market_probability": 0.3636,
+        "edge": 0.0588,
+        "outcome_scored": true,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Setu Tu",
+        "team": "St George Illawarra Dragons",
+        "our_probability": 0.5459,
+        "market_probability": 0.4878,
+        "edge": 0.0581,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Valentine Holmes",
+        "team": "St George Illawarra Dragons",
+        "our_probability": 0.4803,
+        "market_probability": 0.4255,
+        "edge": 0.0548,
+        "outcome_scored": true,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Alex Seyfarth",
+        "team": "Wests Tigers",
+        "our_probability": 0.2086,
+        "market_probability": 0.1538,
+        "edge": 0.0548,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Adam Doueihi",
+        "team": "Wests Tigers",
+        "our_probability": 0.4224,
+        "market_probability": 0.3704,
+        "edge": 0.052,
+        "outcome_scored": true,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Adam Doueihi",
+        "team": "Wests Tigers",
+        "our_probability": 0.4224,
+        "market_probability": 0.3704,
+        "edge": 0.052,
+        "outcome_scored": true,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Setu Tu",
+        "team": "St George Illawarra Dragons",
+        "our_probability": 0.5459,
+        "market_probability": 0.5,
+        "edge": 0.0459,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Setu Tu",
+        "team": "St George Illawarra Dragons",
+        "our_probability": 0.5459,
+        "market_probability": 0.5,
+        "edge": 0.0459,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Setu Tu",
+        "team": "St George Illawarra Dragons",
+        "our_probability": 0.5459,
+        "market_probability": 0.5,
+        "edge": 0.0459,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Valentine Holmes",
+        "team": "St George Illawarra Dragons",
+        "our_probability": 0.4803,
+        "market_probability": 0.4348,
+        "edge": 0.0455,
+        "outcome_scored": true,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Adam Doueihi",
+        "team": "Wests Tigers",
+        "our_probability": 0.4224,
+        "market_probability": 0.3774,
+        "edge": 0.045,
+        "outcome_scored": true,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Setu Tu",
+        "team": "St George Illawarra Dragons",
+        "our_probability": 0.5459,
+        "market_probability": 0.5051,
+        "edge": 0.0408,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Adam Doueihi",
+        "team": "Wests Tigers",
+        "our_probability": 0.4224,
+        "market_probability": 0.3817,
+        "edge": 0.0407,
+        "outcome_scored": true,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Setu Tu",
+        "team": "St George Illawarra Dragons",
+        "our_probability": 0.5459,
+        "market_probability": 0.5076,
+        "edge": 0.0383,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Valentine Holmes",
+        "team": "St George Illawarra Dragons",
+        "our_probability": 0.4803,
+        "market_probability": 0.4444,
+        "edge": 0.0359,
+        "outcome_scored": true,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Valentine Holmes",
+        "team": "St George Illawarra Dragons",
+        "our_probability": 0.4803,
+        "market_probability": 0.4444,
+        "edge": 0.0359,
+        "outcome_scored": true,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Alex Seyfarth",
+        "team": "Wests Tigers",
+        "our_probability": 0.2086,
+        "market_probability": 0.1818,
+        "edge": 0.0268,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Setu Tu",
+        "team": "St George Illawarra Dragons",
+        "our_probability": 0.5459,
+        "market_probability": 0.5263,
+        "edge": 0.0196,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Tyrell Sloan",
+        "team": "St George Illawarra Dragons",
+        "our_probability": 0.4956,
+        "market_probability": 0.4878,
+        "edge": 0.0078,
+        "outcome_scored": true,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Tyrell Sloan",
+        "team": "St George Illawarra Dragons",
+        "our_probability": 0.4956,
+        "market_probability": 0.4878,
+        "edge": 0.0078,
+        "outcome_scored": true,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Jacob Liddle",
+        "team": "St George Illawarra Dragons",
+        "our_probability": 0.1131,
+        "market_probability": 0.1111,
+        "edge": 0.002,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Sione Fainu",
+        "team": "Wests Tigers",
+        "our_probability": 0.2399,
+        "market_probability": 0.2381,
+        "edge": 0.0018,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Xavier Willison",
+        "team": "Brisbane Broncos",
+        "our_probability": 0.282,
+        "market_probability": 0.1818,
+        "edge": 0.1002,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Xavier Willison",
+        "team": "Brisbane Broncos",
+        "our_probability": 0.282,
+        "market_probability": 0.2,
+        "edge": 0.082,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Xavier Willison",
+        "team": "Brisbane Broncos",
+        "our_probability": 0.282,
+        "market_probability": 0.2,
+        "edge": 0.082,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Xavier Willison",
+        "team": "Brisbane Broncos",
+        "our_probability": 0.282,
+        "market_probability": 0.2,
+        "edge": 0.082,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Xavier Willison",
+        "team": "Brisbane Broncos",
+        "our_probability": 0.282,
+        "market_probability": 0.2,
+        "edge": 0.082,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Xavier Willison",
+        "team": "Brisbane Broncos",
+        "our_probability": 0.282,
+        "market_probability": 0.2,
+        "edge": 0.082,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Xavier Willison",
+        "team": "Brisbane Broncos",
+        "our_probability": 0.282,
+        "market_probability": 0.2041,
+        "edge": 0.0779,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Xavier Willison",
+        "team": "Brisbane Broncos",
+        "our_probability": 0.282,
+        "market_probability": 0.2083,
+        "edge": 0.0737,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Xavier Willison",
+        "team": "Brisbane Broncos",
+        "our_probability": 0.282,
+        "market_probability": 0.2083,
+        "edge": 0.0737,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Jesse Arthars",
+        "team": "Brisbane Broncos",
+        "our_probability": 0.3426,
+        "market_probability": 0.2857,
+        "edge": 0.0569,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Kotoni Staggs",
+        "team": "Brisbane Broncos",
+        "our_probability": 0.4334,
+        "market_probability": 0.4082,
+        "edge": 0.0252,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Brendan Piakura",
+        "team": "Brisbane Broncos",
+        "our_probability": 0.2251,
+        "market_probability": 0.2041,
+        "edge": 0.021,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Kotoni Staggs",
+        "team": "Brisbane Broncos",
+        "our_probability": 0.4334,
+        "market_probability": 0.4167,
+        "edge": 0.0167,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Kotoni Staggs",
+        "team": "Brisbane Broncos",
+        "our_probability": 0.4334,
+        "market_probability": 0.4167,
+        "edge": 0.0167,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Kotoni Staggs",
+        "team": "Brisbane Broncos",
+        "our_probability": 0.4334,
+        "market_probability": 0.4167,
+        "edge": 0.0167,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Kotoni Staggs",
+        "team": "Brisbane Broncos",
+        "our_probability": 0.4334,
+        "market_probability": 0.4219,
+        "edge": 0.0115,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Brendan Piakura",
+        "team": "Brisbane Broncos",
+        "our_probability": 0.2251,
+        "market_probability": 0.2222,
+        "edge": 0.0029,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Clayton Faulalo",
+        "team": "Manly-Warringah Sea Eagles",
+        "our_probability": 0.4998,
+        "market_probability": 0.4167,
+        "edge": 0.0831,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Clayton Faulalo",
+        "team": "Manly-Warringah Sea Eagles",
+        "our_probability": 0.4998,
+        "market_probability": 0.4167,
+        "edge": 0.0831,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Dylan Walker",
+        "team": "Parramatta Eels",
+        "our_probability": 0.1485,
+        "market_probability": 0.0909,
+        "edge": 0.0576,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Clayton Faulalo",
+        "team": "Manly-Warringah Sea Eagles",
+        "our_probability": 0.4998,
+        "market_probability": 0.4545,
+        "edge": 0.0453,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Clayton Faulalo",
+        "team": "Manly-Warringah Sea Eagles",
+        "our_probability": 0.4998,
+        "market_probability": 0.4545,
+        "edge": 0.0453,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Clayton Faulalo",
+        "team": "Manly-Warringah Sea Eagles",
+        "our_probability": 0.4998,
+        "market_probability": 0.4545,
+        "edge": 0.0453,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Clayton Faulalo",
+        "team": "Manly-Warringah Sea Eagles",
+        "our_probability": 0.4998,
+        "market_probability": 0.4587,
+        "edge": 0.0411,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Kitione Kautoga",
+        "team": "Parramatta Eels",
+        "our_probability": 0.2099,
+        "market_probability": 0.1739,
+        "edge": 0.036,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Kelma Tuilagi",
+        "team": "Parramatta Eels",
+        "our_probability": 0.2019,
+        "market_probability": 0.1667,
+        "edge": 0.0352,
+        "outcome_scored": true,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Clayton Faulalo",
+        "team": "Manly-Warringah Sea Eagles",
+        "our_probability": 0.4998,
+        "market_probability": 0.4651,
+        "edge": 0.0347,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Dylan Walker",
+        "team": "Parramatta Eels",
+        "our_probability": 0.1485,
+        "market_probability": 0.1176,
+        "edge": 0.0309,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Kelma Tuilagi",
+        "team": "Parramatta Eels",
+        "our_probability": 0.2019,
+        "market_probability": 0.1724,
+        "edge": 0.0295,
+        "outcome_scored": true,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Kitione Kautoga",
+        "team": "Parramatta Eels",
+        "our_probability": 0.2099,
+        "market_probability": 0.1818,
+        "edge": 0.0281,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Kelma Tuilagi",
+        "team": "Parramatta Eels",
+        "our_probability": 0.2019,
+        "market_probability": 0.1739,
+        "edge": 0.028,
+        "outcome_scored": true,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Kelma Tuilagi",
+        "team": "Parramatta Eels",
+        "our_probability": 0.2019,
+        "market_probability": 0.1739,
+        "edge": 0.028,
+        "outcome_scored": true,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Dylan Walker",
+        "team": "Parramatta Eels",
+        "our_probability": 0.1485,
+        "market_probability": 0.1212,
+        "edge": 0.0273,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Dylan Walker",
+        "team": "Parramatta Eels",
+        "our_probability": 0.1485,
+        "market_probability": 0.1212,
+        "edge": 0.0273,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Kitione Kautoga",
+        "team": "Parramatta Eels",
+        "our_probability": 0.2099,
+        "market_probability": 0.1852,
+        "edge": 0.0247,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Dylan Walker",
+        "team": "Parramatta Eels",
+        "our_probability": 0.1485,
+        "market_probability": 0.125,
+        "edge": 0.0235,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Dylan Walker",
+        "team": "Parramatta Eels",
+        "our_probability": 0.1485,
+        "market_probability": 0.125,
+        "edge": 0.0235,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Dylan Walker",
+        "team": "Parramatta Eels",
+        "our_probability": 0.1485,
+        "market_probability": 0.125,
+        "edge": 0.0235,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Tallyn Da Silva",
+        "team": "Parramatta Eels",
+        "our_probability": 0.2332,
+        "market_probability": 0.2105,
+        "edge": 0.0227,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Kelma Tuilagi",
+        "team": "Parramatta Eels",
+        "our_probability": 0.2019,
+        "market_probability": 0.1818,
+        "edge": 0.0201,
+        "outcome_scored": true,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Kitione Kautoga",
+        "team": "Parramatta Eels",
+        "our_probability": 0.2099,
+        "market_probability": 0.1905,
+        "edge": 0.0194,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Kitione Kautoga",
+        "team": "Parramatta Eels",
+        "our_probability": 0.2099,
+        "market_probability": 0.1905,
+        "edge": 0.0194,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Dylan Walker",
+        "team": "Parramatta Eels",
+        "our_probability": 0.1485,
+        "market_probability": 0.1333,
+        "edge": 0.0152,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Jason Saab",
+        "team": "Manly-Warringah Sea Eagles",
+        "our_probability": 0.5618,
+        "market_probability": 0.5495,
+        "edge": 0.0123,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Jason Saab",
+        "team": "Manly-Warringah Sea Eagles",
+        "our_probability": 0.5618,
+        "market_probability": 0.5495,
+        "edge": 0.0123,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Jason Saab",
+        "team": "Manly-Warringah Sea Eagles",
+        "our_probability": 0.5618,
+        "market_probability": 0.5495,
+        "edge": 0.0123,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Jonah Pezet",
+        "team": "Parramatta Eels",
+        "our_probability": 0.2153,
+        "market_probability": 0.2041,
+        "edge": 0.0112,
+        "outcome_scored": true,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Kitione Kautoga",
+        "team": "Parramatta Eels",
+        "our_probability": 0.2099,
+        "market_probability": 0.2,
+        "edge": 0.0099,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Kitione Kautoga",
+        "team": "Parramatta Eels",
+        "our_probability": 0.2099,
+        "market_probability": 0.2,
+        "edge": 0.0099,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Kitione Kautoga",
+        "team": "Parramatta Eels",
+        "our_probability": 0.2099,
+        "market_probability": 0.2,
+        "edge": 0.0099,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Jonah Pezet",
+        "team": "Parramatta Eels",
+        "our_probability": 0.2153,
+        "market_probability": 0.2105,
+        "edge": 0.0048,
+        "outcome_scored": true,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Jonah Pezet",
+        "team": "Parramatta Eels",
+        "our_probability": 0.2153,
+        "market_probability": 0.2105,
+        "edge": 0.0048,
+        "outcome_scored": true,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Jason Saab",
+        "team": "Manly-Warringah Sea Eagles",
+        "our_probability": 0.5618,
+        "market_probability": 0.5587,
+        "edge": 0.0031,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Tallyn Da Silva",
+        "team": "Parramatta Eels",
+        "our_probability": 0.2332,
+        "market_probability": 0.2309,
+        "edge": 0.0023,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Kelma Tuilagi",
+        "team": "Parramatta Eels",
+        "our_probability": 0.2019,
+        "market_probability": 0.2,
+        "edge": 0.0019,
+        "outcome_scored": true,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Kelma Tuilagi",
+        "team": "Parramatta Eels",
+        "our_probability": 0.2019,
+        "market_probability": 0.2,
+        "edge": 0.0019,
+        "outcome_scored": true,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Kelma Tuilagi",
+        "team": "Parramatta Eels",
+        "our_probability": 0.2019,
+        "market_probability": 0.2,
+        "edge": 0.0019,
+        "outcome_scored": true,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Dylan Lucas",
+        "team": "Newcastle Knights",
+        "our_probability": 0.6294,
+        "market_probability": 0.3509,
+        "edge": 0.2785,
+        "outcome_scored": true,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Dylan Lucas",
+        "team": "Newcastle Knights",
+        "our_probability": 0.6294,
+        "market_probability": 0.3509,
+        "edge": 0.2785,
+        "outcome_scored": true,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Dylan Lucas",
+        "team": "Newcastle Knights",
+        "our_probability": 0.6294,
+        "market_probability": 0.3704,
+        "edge": 0.259,
+        "outcome_scored": true,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Dylan Lucas",
+        "team": "Newcastle Knights",
+        "our_probability": 0.6294,
+        "market_probability": 0.3704,
+        "edge": 0.259,
+        "outcome_scored": true,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Dylan Lucas",
+        "team": "Newcastle Knights",
+        "our_probability": 0.6294,
+        "market_probability": 0.4,
+        "edge": 0.2294,
+        "outcome_scored": true,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Dylan Lucas",
+        "team": "Newcastle Knights",
+        "our_probability": 0.6294,
+        "market_probability": 0.4,
+        "edge": 0.2294,
+        "outcome_scored": true,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Dylan Lucas",
+        "team": "Newcastle Knights",
+        "our_probability": 0.6294,
+        "market_probability": 0.4,
+        "edge": 0.2294,
+        "outcome_scored": true,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Dylan Lucas",
+        "team": "Newcastle Knights",
+        "our_probability": 0.6294,
+        "market_probability": 0.4,
+        "edge": 0.2294,
+        "outcome_scored": true,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Dylan Lucas",
+        "team": "Newcastle Knights",
+        "our_probability": 0.6294,
+        "market_probability": 0.4167,
+        "edge": 0.2127,
+        "outcome_scored": true,
+        "closing_market_probability": null
+      }
+    ],
+    "fixture_detail": [
+      {
+        "home_team": "Penrith Panthers",
+        "away_team": "South Sydney Rabbitohs",
+        "real_score": "36-14",
+        "winner_correct": true,
+        "margin_error": 11.9
+      },
+      {
+        "home_team": "St George Illawarra Dragons",
+        "away_team": "Wests Tigers",
+        "real_score": "24-10",
+        "winner_correct": false,
+        "margin_error": 15.4
+      },
+      {
+        "home_team": "Brisbane Broncos",
+        "away_team": "Cronulla-Sutherland Sharks",
+        "real_score": "16-28",
+        "winner_correct": true,
+        "margin_error": 10.4
+      },
+      {
+        "home_team": "Parramatta Eels",
+        "away_team": "Manly-Warringah Sea Eagles",
+        "real_score": "23-14",
+        "winner_correct": false,
+        "margin_error": 13.8
+      },
+      {
+        "home_team": "Newcastle Knights",
+        "away_team": "Dolphins",
+        "real_score": "13-12",
+        "winner_correct": false,
+        "margin_error": 4.7
+      }
+    ]
+  },
+  {
+    "season": 2026,
+    "round": 19,
+    "scored_at": "2026-10-13T22:32:07.280473+00:00",
+    "fixtures_with_real_results": 7,
+    "fixtures_scored_for_winner": 7,
+    "correct_winner_pct": 57.1,
+    "margin_mae": 19.1,
+    "due_watch_flagged": 28,
+    "due_watch_hit_rate_pct": 17.9,
+    "try_scorer_edges_flagged": 23,
+    "try_scorer_edge_hit_rate_pct": 13.0,
+    "brier_winner_ours": 0.1945,
+    "brier_winner_market": 0.23,
+    "brier_tryscorer_ours": 0.1539,
+    "brier_tryscorer_market": 0.1484,
+    "prediction_time_ev_log": [
+      {
+        "player_name": "Adam Doueihi",
+        "team": "Wests Tigers",
+        "our_probability": 0.6277,
+        "market_probability": 0.303,
+        "edge": 0.3247,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Jarome Luai",
+        "team": "Wests Tigers",
+        "our_probability": 0.3249,
+        "market_probability": 0.1379,
+        "edge": 0.187,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Alex Seyfarth",
+        "team": "Wests Tigers",
+        "our_probability": 0.1316,
+        "market_probability": 0.0952,
+        "edge": 0.0364,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Nicholas Hynes",
+        "team": "Cronulla-Sutherland Sharks",
+        "our_probability": 0.2174,
+        "market_probability": 0.2105,
+        "edge": 0.0069,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Max King",
+        "team": "Canterbury-Bankstown Bulldogs",
+        "our_probability": 0.2215,
+        "market_probability": 0.0909,
+        "edge": 0.1306,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Owen Pattie",
+        "team": "Canberra Raiders",
+        "our_probability": 0.2468,
+        "market_probability": 0.1176,
+        "edge": 0.1292,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Tom Starling",
+        "team": "Canberra Raiders",
+        "our_probability": 0.2255,
+        "market_probability": 0.1143,
+        "edge": 0.1112,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Matthew Timoko",
+        "team": "Canberra Raiders",
+        "our_probability": 0.3628,
+        "market_probability": 0.2941,
+        "edge": 0.0687,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Josh Curran",
+        "team": "Canterbury-Bankstown Bulldogs",
+        "our_probability": 0.2984,
+        "market_probability": 0.2632,
+        "edge": 0.0352,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Lachlan Galvin",
+        "team": "Canterbury-Bankstown Bulldogs",
+        "our_probability": 0.3695,
+        "market_probability": 0.3636,
+        "edge": 0.0059,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Hudson Young",
+        "team": "Canberra Raiders",
+        "our_probability": 0.2874,
+        "market_probability": 0.2857,
+        "edge": 0.0017,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Kelma Tuilagi",
+        "team": "Parramatta Eels",
+        "our_probability": 0.2465,
+        "market_probability": 0.1667,
+        "edge": 0.0798,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Ronald Volkman",
+        "team": "Parramatta Eels",
+        "our_probability": 0.2891,
+        "market_probability": 0.2105,
+        "edge": 0.0786,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Billy Smith",
+        "team": "Sydney Roosters",
+        "our_probability": 0.4752,
+        "market_probability": 0.4545,
+        "edge": 0.0207,
+        "outcome_scored": true,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Dylan Lucas",
+        "team": "Newcastle Knights",
+        "our_probability": 0.6306,
+        "market_probability": 0.4348,
+        "edge": 0.1958,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Fletcher Sharpe",
+        "team": "Newcastle Knights",
+        "our_probability": 0.5179,
+        "market_probability": 0.3846,
+        "edge": 0.1333,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Jeremiah Nanai",
+        "team": "North Queensland Cowboys",
+        "our_probability": 0.4602,
+        "market_probability": 0.339,
+        "edge": 0.1212,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Braidon Burns",
+        "team": "North Queensland Cowboys",
+        "our_probability": 0.5653,
+        "market_probability": 0.5319,
+        "edge": 0.0334,
+        "outcome_scored": true,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Phillip Sami",
+        "team": "Gold Coast Titans",
+        "our_probability": 0.65,
+        "market_probability": 0.4255,
+        "edge": 0.2245,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Kurtis Morrin",
+        "team": "Gold Coast Titans",
+        "our_probability": 0.288,
+        "market_probability": 0.125,
+        "edge": 0.163,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Arama Hau",
+        "team": "Gold Coast Titans",
+        "our_probability": 0.2656,
+        "market_probability": 0.2174,
+        "edge": 0.0482,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Stefano Utoikamanu",
+        "team": "Melbourne Storm",
+        "our_probability": 0.1061,
+        "market_probability": 0.1,
+        "edge": 0.0061,
+        "outcome_scored": false,
+        "closing_market_probability": null
+      },
+      {
+        "player_name": "Will Warbrick",
+        "team": "Melbourne Storm",
+        "our_probability": 0.65,
+        "market_probability": 0.6452,
+        "edge": 0.0048,
+        "outcome_scored": true,
+        "closing_market_probability": null
+      }
+    ],
+    "fixture_detail": [
+      {
+        "home_team": "Wests Tigers",
+        "away_team": "New Zealand Warriors",
+        "real_score": "6-32",
+        "winner_correct": true,
+        "margin_error": 20.2
+      },
+      {
+        "home_team": "Dolphins",
+        "away_team": "Cronulla-Sutherland Sharks",
+        "real_score": "0-66",
+        "winner_correct": false,
+        "margin_error": 67.7
+      },
+      {
+        "home_team": "Canterbury-Bankstown Bulldogs",
+        "away_team": "Canberra Raiders",
+        "real_score": "16-40",
+        "winner_correct": false,
+        "margin_error": 26.3
+      },
+      {
+        "home_team": "Sydney Roosters",
+        "away_team": "Parramatta Eels",
+        "real_score": "28-12",
+        "winner_correct": true,
+        "margin_error": 6.1
+      },
+      {
+        "home_team": "South Sydney Rabbitohs",
+        "away_team": "Newcastle Knights",
+        "real_score": "26-24",
+        "winner_correct": true,
+        "margin_error": 0.9
+      },
+      {
+        "home_team": "Manly-Warringah Sea Eagles",
+        "away_team": "North Queensland Cowboys",
+        "real_score": "18-19",
+        "winner_correct": false,
+        "margin_error": 4.8
+      },
+      {
+        "home_team": "Melbourne Storm",
+        "away_team": "Gold Coast Titans",
+        "real_score": "22-18",
+        "winner_correct": true,
+        "margin_error": 7.7
+      }
+    ]
+  },
+  {
+    "season": 2026,
     "round": 20,
-    "scored_at": "2026-08-05T21:16:31.446484+00:00",
+    "scored_at": "2026-10-13T22:32:10.525256+00:00",
     "fixtures_with_real_results": 8,
     "fixtures_scored_for_winner": 0,
     "correct_winner_pct": null,

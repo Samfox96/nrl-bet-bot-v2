@@ -67,6 +67,25 @@ def _load_expected_byes():
 
 EXPECTED_BYES = _load_expected_byes()
 
+# REAL FIX 2026-10-16, built as part of the finals backfill step: round
+# count check 4 below used to silently SKIP any round not covered by
+# bye_schedule.json (rounds 1-27 only) -- fine for a one-time regular-
+# season backfill, but it meant a finals round (28-31) got NO real
+# match-count check at all, just an unconditional pass. Which teams
+# reach the 2026 finals is ladder-dependent (no fixed bye list is
+# possible), but how many MATCHES each finals week has is fixed every
+# year -- so finals rounds get their own expected-count table instead
+# of silently skipping the check. Source: nrl.com's own 2026 draw,
+# confirmed during the regular-season backfill (see STATUS.md,
+# 2026-10-13 session) and scripts/validate_round.py's matching
+# FINALS_TEAM_COUNTS (team count here is just that table halved).
+FINALS_MATCH_COUNTS = {
+    28: 4,  # Finals Week 1 (8 teams)
+    29: 2,  # Finals Week 2 / Semi Finals (4 teams)
+    30: 2,  # Finals Week 3 / Preliminary Finals (4 teams)
+    31: 1,  # Grand Final (2 teams)
+}
+
 MASTER_FIELDNAMES_ORIGINAL = [
     "season", "league", "round", "date", "time", "home_team", "home_score",
     "away_team", "away_score", "referee", "venue", "attendance",
@@ -170,6 +189,20 @@ def validate(rows, team_aliases, existing_master_rows):
                     f"the real expected count ({expected_count}) given the known bye schedule "
                     f"({expected_byes}). File may have been edited or scraped incompletely."
                 )
+        elif round_num in FINALS_MATCH_COUNTS:
+            expected_count = FINALS_MATCH_COUNTS[round_num]
+            if len(round_rows) != expected_count:
+                problems.append(
+                    f"Round {round_num}: real row count ({len(round_rows)}) does not match "
+                    f"the expected finals match count ({expected_count}) for this finals "
+                    f"week. File may have been edited or scraped incompletely."
+                )
+        else:
+            problems.append(
+                f"Round {round_num}: no known expected match count -- not a regular-season "
+                f"round covered by bye_schedule.json, nor a recognised finals round in "
+                f"FINALS_MATCH_COUNTS. Refusing to guess at validity."
+            )
 
     return len(problems) == 0, problems
 

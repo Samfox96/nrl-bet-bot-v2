@@ -61,19 +61,62 @@ from webdriver_manager.chrome import ChromeDriverManager
 MATCH_TEXT_PATTERN = re.compile(
     r"(?P<day>\w+)\s+(?P<date>\d+\w*\s+\w+)\s*\n"
     r"(?:FULL TIME|HALF TIME|\d+:\d+)\s*\n"
-    r"home Team\s*\n(?P<home_team>[\w\s'-]+?)\s*\n"
+    r"home Team\s*\n(?P<home_team>[^\n]+?)\s*\n"
+    r"(?:.*\n)?"
     r"Scored\s*\n(?P<home_score>\d+)\s*\n"
     r"points?\s*\n"
-    r"away Team\s*\n(?P<away_team>[\w\s'-]+?)\s*\n"
+    r"away Team\s*\n(?P<away_team>[^\n]+?)\s*\n"
+    r"(?:.*\n)?"
     r"Scored\s*\n(?P<away_score>\d+)",
     re.IGNORECASE,
 )
+# REAL BUG FIX (2026-10-13, found during the Round 21-27 backfill): starting
+# Round 23, nrl.com began printing a traditional-custodian acknowledgment
+# line (e.g. "Dharawal & Gadigal") directly under the team name, before
+# "Scored". The OLD pattern's team-name group was [\w\s'-]+? -- \s matches
+# a newline, so when the acknowledgment line had no "&"/"," it silently
+# swallowed BOTH lines into home_team/away_team (e.g. "Titans\nYugambeh"
+# captured as the real team name), and when the line DID contain "&" or
+# "," (not in that character class) the whole card failed to match and
+# was silently dropped -- confirmed from a real backfill run's own log:
+# 5 of 8 Round 23 cards dropped, the other 3 mis-parsed. NEW pattern:
+# home_team/away_team are now [^\n]+? (team names are always one real
+# line, never span lines), with a real optional (?:.*\n)? line in between
+# to swallow a possible acknowledgment line without being required when
+# there isn't one -- confirmed against both the real pre-Round-23 (no
+# acknowledgment line) and real Round-23 (acknowledgment line, with and
+# without "&") card text captured in that failed run's log.
 
 FIELDNAMES = [
     "season", "league", "round", "date", "time", "home_team", "home_score",
     "away_team", "away_score", "referee", "venue", "attendance",
     "ground_conditions", "weather",
 ]
+
+# REAL FIX 2026-10-16, found while backfilling the 2026 finals: every
+# individual match-centre page URL on nrl.com for a regular-season round
+# uses a "/round-N/" path segment (e.g. ".../2026/round-21/..."), which is
+# why this was hardcoded below. Confirmed live (headless browser, real
+# page content) that finals rounds use a DIFFERENT, named segment instead
+# of "round-28" etc: Finals Week 1 = "finals-week-1", Finals Week 2 =
+# "finals-week-2", Finals Week 3 (Preliminary Finals) = "finals-week-3",
+# Grand Final = "grand-final/game-1" (not just "grand-final" -- nrl.com
+# nests the single match one level deeper under "game-1"). Without this,
+# a finals match-centre page fetch 404s and venue/weather/attendance are
+# silently left blank for every finals match -- not fabricated, but
+# needlessly incomplete when the real URL is simply a different, known
+# string, not actually unknowable.
+FINALS_ROUND_SEGMENTS = {
+    28: "finals-week-1",
+    29: "finals-week-2",
+    30: "finals-week-3",
+    31: "grand-final/game-1",
+}
+
+
+def round_url_segment(round_num):
+    """Real per-round URL path segment nrl.com uses under /draw/nrl-premiership/<season>/."""
+    return FINALS_ROUND_SEGMENTS.get(round_num, f"round-{round_num}")
 
 
 def slug_for_match(home_team, away_team):

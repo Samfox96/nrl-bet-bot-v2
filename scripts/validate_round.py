@@ -38,6 +38,23 @@ ALL_TEAMS = {
     "Sydney Roosters", "Wests Tigers",
 }
 
+LAST_REGULAR_SEASON_ROUND = 27  # last round scripts/bye_schedule.json covers
+
+# 2026 finals: which teams play round 28-31 depends on the ladder and who
+# wins each week, not a pre-published bye list, so we can't check WHICH
+# teams by name the way the regular season's fixed bye_schedule.json lets
+# us. What IS fixed, every finals series, is how many teams survive each
+# week -- so finals rounds get a team-COUNT check instead of a team-NAME
+# check. Source: nrl.com's own 2026 draw (?competition=111&season=2026&
+# round=28..31), confirmed during the regular-season backfill (see
+# STATUS.md, 2026-10-13 session).
+FINALS_TEAM_COUNTS = {
+    28: 8,  # Finals Week 1 (top 8, 4 matches)
+    29: 4,  # Finals Week 2 / Semi Finals (4 teams, 2 matches)
+    30: 4,  # Finals Week 3 / Preliminary Finals (4 teams, 2 matches)
+    31: 2,  # Grand Final (2 teams, 1 match)
+}
+
 
 def load_aliases():
     with open(DATA_DIR / "team_aliases.json") as f:
@@ -93,23 +110,43 @@ def validate(new_csv_path, expected_round):
             f"Example: {dupes[dup_subset].iloc[0].to_dict()}"
         )
 
-    # --- 5. Bye-schedule coverage check ---
-    bye_schedule = load_bye_schedule()
-    expected_byes = set(bye_schedule.get(expected_round, []))
-    expected_playing = ALL_TEAMS - expected_byes
-    missing_teams = expected_playing - canonical_teams_present
-    unexpected_teams = canonical_teams_present - expected_playing
+    # --- 5. Team coverage check (regular season: bye schedule; finals: team count) ---
+    if expected_round <= LAST_REGULAR_SEASON_ROUND:
+        bye_schedule = load_bye_schedule()
+        expected_byes = set(bye_schedule.get(expected_round, []))
+        expected_playing = ALL_TEAMS - expected_byes
+        missing_teams = expected_playing - canonical_teams_present
+        unexpected_teams = canonical_teams_present - expected_playing
 
-    if missing_teams:
+        if missing_teams:
+            failures.append(
+                f"Missing data for teams expected to play in round {expected_round} "
+                f"(not on the bye list): {sorted(missing_teams)}"
+            )
+        if unexpected_teams:
+            failures.append(
+                f"Data present for teams expected to be on bye in round {expected_round}: "
+                f"{sorted(unexpected_teams)}. Either the bye schedule is wrong or the scrape "
+                f"pulled in the wrong round."
+            )
+    elif expected_round in FINALS_TEAM_COUNTS:
+        # Finals: which teams survive is ladder-dependent, so we can only
+        # check how MANY teams played, not which ones by name. The
+        # unmapped-name check (#3) above already catches a genuinely bogus
+        # team value; this catches a partial or wrong-round finals scrape.
+        expected_count = FINALS_TEAM_COUNTS[expected_round]
+        if len(canonical_teams_present) != expected_count:
+            failures.append(
+                f"Round {expected_round} is a finals round expected to have "
+                f"{expected_count} teams playing, but {len(canonical_teams_present)} "
+                f"teams were found in the data: {sorted(canonical_teams_present)}."
+            )
+    else:
         failures.append(
-            f"Missing data for teams expected to play in round {expected_round} "
-            f"(not on the bye list): {sorted(missing_teams)}"
-        )
-    if unexpected_teams:
-        failures.append(
-            f"Data present for teams expected to be on bye in round {expected_round}: "
-            f"{sorted(unexpected_teams)}. Either the bye schedule is wrong or the scrape "
-            f"pulled in the wrong round."
+            f"No validation rule exists for round {expected_round} -- it is neither a "
+            f"regular-season round (1-{LAST_REGULAR_SEASON_ROUND}, checked against "
+            f"bye_schedule.json) nor a recognised 2026 finals round "
+            f"({sorted(FINALS_TEAM_COUNTS)}). Refusing to guess at validity."
         )
 
     # --- 6. Per-team row count sanity (partial scrape detection) ---
