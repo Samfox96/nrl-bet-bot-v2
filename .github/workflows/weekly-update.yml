@@ -46,9 +46,32 @@ on:
         description: 'Round number to RESEND THE DIGEST ONLY for (skips scrape/merge entirely -- use this to recover from a digest-send failure on an already-merged round). Leave blank for a normal full run.'
         required: false
         type: string
+      force_run:
+        description: 'Run the full job even though the season is over (normally it stays quiet between seasons).'
+        required: false
+        type: boolean
 
 jobs:
+  # Added 2026-10-16. Works out whether the season is on, over, or over for too long
+  # (scripts/season_status.py). When it is over the jobs below stay quiet instead of failing every week.
+  season:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    outputs:
+      state: ${{ steps.s.outputs.state }}
+      last_round: ${{ steps.s.outputs.last_round }}
+      reason: ${{ steps.s.outputs.reason }}
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Work out the season state
+        id: s
+        run: python3 scripts/season_status.py | tee -a "$GITHUB_OUTPUT"
+
   scrape-validate-merge:
+    needs: season
+    if: needs.season.outputs.state == 'in_season' || github.event.inputs.force_run == 'true' || github.event.inputs.resend_digest_for_round != ''
     runs-on: ubuntu-latest
     timeout-minutes: 30
     env:
@@ -105,7 +128,7 @@ jobs:
           # generate-predictions.yml's own comment here for the full
           # real story). Tested directly against real nrl_master.csv
           # under bash before trusting it.
-          NEXT_ROUND=$(python3 -c "import pandas as pd; df = pd.read_csv('data/nrl_master.csv'); print(int(df['round'].max()) + 1)")
+          NEXT_ROUND=$(python3 scripts/season_status.py --next-round)  # per season, not across all seasons
           echo "round=$NEXT_ROUND" >> "$GITHUB_OUTPUT"
           echo "Next round to scrape: $NEXT_ROUND"
 
@@ -612,4 +635,46 @@ jobs:
         if: always() && env.RESEND_ROUND == '' && (steps.validate_merge.outcome == 'failure' || steps.scrape.outcome == 'failure')
         run: |
           echo "::error::Round ${{ steps.next_round.outputs.round }} did not merge. See the issue that was opened and data/pending/."
+          exit 1
+
+  # Between seasons: nothing to scrape, so say so and report in. Studio OS gets a normal heartbeat marked
+  # off-season (its "same round three runs in a row" alarm is skipped) and Healthchecks is pinged, so a run that
+  # never happens is still caught. If the next season is close (1 Feb) and the bot still has no new-season setup,
+  # the run goes red instead of staying quiet: that would be the silent failure this bot has had before.
+  off-season:
+    needs: season
+    if: needs.season.outputs.state != 'in_season' && github.event.inputs.force_run != 'true' && github.event.inputs.resend_digest_for_round == ''
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      HEARTBEAT_URL: ${{ secrets.STUDIO_OS_HEARTBEAT_URL }}
+      HEARTBEAT_SECRET: ${{ secrets.STUDIO_OS_HEARTBEAT_SECRET }}
+      HEALTHCHECKS_URL: ${{ secrets.HEALTHCHECKS_NRL_URL }}
+      STATE: ${{ needs.season.outputs.state }}
+      ROUND: ${{ needs.season.outputs.last_round }}
+      REASON: ${{ needs.season.outputs.reason }}
+      RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+    steps:
+      - name: Report in (off-season)
+        run: |
+          set +e
+          echo "$REASON"
+          OK=true; [ "$STATE" = "off_season" ] || OK=false
+          if [ -n "$HEARTBEAT_URL" ] && [ -n "$HEARTBEAT_SECRET" ] && [ -n "$ROUND" ]; then
+            curl -sS --max-time 20 -X POST "$HEARTBEAT_URL" \
+              -H "x-heartbeat-secret: $HEARTBEAT_SECRET" -H 'content-type: application/json' \
+              -d "{\"module\":\"nrl-weekly-update\",\"ok\":$OK,\"progress\":{\"round\":$ROUND,\"merged\":false,\"off_season\":true},\"run_url\":\"$RUN_URL\"}"
+            echo
+          else
+            echo "Studio OS heartbeat not set up; skipping."
+          fi
+          if [ "$STATE" = "off_season" ] && [ -n "$HEALTHCHECKS_URL" ]; then
+            curl -fsS --max-time 10 --retry 3 "$HEALTHCHECKS_URL" > /dev/null && echo "Pinged Healthchecks." || echo "Couldn't ping Healthchecks."
+          fi
+          exit 0
+
+      - name: Go red if the new season is close and the bot is not ready
+        if: needs.season.outputs.state == 'off_season_overdue'
+        run: |
+          echo "::error::$REASON. Do the \"Pick up each new season's draw by itself\" job."
           exit 1
