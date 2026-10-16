@@ -93,6 +93,31 @@ FIELDNAMES = [
     "ground_conditions", "weather",
 ]
 
+# REAL FIX 2026-10-16, found while backfilling the 2026 finals: every
+# individual match-centre page URL on nrl.com for a regular-season round
+# uses a "/round-N/" path segment (e.g. ".../2026/round-21/..."), which is
+# why this was hardcoded below. Confirmed live (headless browser, real
+# page content) that finals rounds use a DIFFERENT, named segment instead
+# of "round-28" etc: Finals Week 1 = "finals-week-1", Finals Week 2 =
+# "finals-week-2", Finals Week 3 (Preliminary Finals) = "finals-week-3",
+# Grand Final = "grand-final/game-1" (not just "grand-final" -- nrl.com
+# nests the single match one level deeper under "game-1"). Without this,
+# a finals match-centre page fetch 404s and venue/weather/attendance are
+# silently left blank for every finals match -- not fabricated, but
+# needlessly incomplete when the real URL is simply a different, known
+# string, not actually unknowable.
+FINALS_ROUND_SEGMENTS = {
+    28: "finals-week-1",
+    29: "finals-week-2",
+    30: "finals-week-3",
+    31: "grand-final/game-1",
+}
+
+
+def round_url_segment(round_num):
+    """Real per-round URL path segment nrl.com uses under /draw/nrl-premiership/<season>/."""
+    return FINALS_ROUND_SEGMENTS.get(round_num, f"round-{round_num}")
+
 
 def slug_for_match(home_team, away_team):
     """

@@ -43,18 +43,20 @@ succeed). A missing or already-scored prediction archive does NOT stop
 the run (matches weekly-update.yml's own "informational only" treatment
 of that step).
 
-FINALS NOTE (2026-10-13): validate_round.py and merge_match_results_
-backfill.py's row-count checks both cross-reference scripts/bye_schedule.json,
-which only covers rounds 1-27 (the regular season) -- which teams play in a
-finals round depends on the ladder, not a pre-published bye schedule, so
-those checks can't apply as-is to round 28 onward (2026 finals: Finals Week
-1/2/3, Grand Final). This script's --finals flag is accepted here as a
-forward-compatible marker for the caller's intent, but finals support
-(extending those two validation checks to accept a real, ladder-dependent
-team count instead of a fixed bye list) is NOT YET BUILT -- a dedicated
-follow-up step. Passing --finals today does not change this script's
-behaviour; a finals round will currently fail the same way any
-unrecognised-round validation failure does (loud, no merge, no guess).
+FINALS NOTE (2026-10-13, built 2026-10-16): validate_round.py and
+merge_match_results_backfill.py's row-count checks both used to
+cross-reference scripts/bye_schedule.json only, which covers rounds
+1-27 (the regular season) -- which teams play in a finals round depends
+on the ladder, not a pre-published bye schedule, so a fixed team-NAME
+check can't apply to round 28 onward (2026 finals: Finals Week 1/2/3,
+Grand Final). Both scripts now also know a fixed team/match-COUNT table
+for rounds 28-31 (FINALS_TEAM_COUNTS / FINALS_MATCH_COUNTS) and use that
+instead for those rounds -- see each script's own comments. This
+script's --finals flag is still accepted as a marker for the caller's
+intent (and shows up in this script's own log output), but the actual
+validation branch is chosen automatically from the round number by the
+two scripts above, so passing it is optional, not required, for a
+finals round to backfill correctly.
 
 Usage:
     # Regular season, explicit range:
