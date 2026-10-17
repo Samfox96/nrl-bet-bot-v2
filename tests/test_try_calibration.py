@@ -59,3 +59,12 @@ def test_match_output_keeps_the_raw_chance_and_calibrates():
     raw = xtry_model.normalise_match_xtry(home, [], 3.0, calibrate=False)
     assert out["A"]["uncalibrated_probability"] == raw["A"]["display_probability"] == 0.65
     assert out["A"]["display_probability"] < 0.65
+
+
+def test_nobody_who_takes_the_field_has_a_zero_chance():
+    team = [{"player_name": "Star", "team": "X", "position_code": "WG", "raw_xtry": 5.0, "components": {}},
+            {"player_name": "Prop", "team": "X", "position_code": "PR", "raw_xtry": 0.0001, "components": {}}]
+    out = xtry_model.normalise_match_xtry(team, [], 4.0)
+    assert out["Prop"]["display_probability"] == xtry_model.MIN_TRY_CHANCE == 0.03
+    assert out["Prop"]["uncalibrated_probability"] == 0.03
+    assert out["Star"]["display_probability"] > 0.3
