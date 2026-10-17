@@ -265,6 +265,7 @@ position-splitting the IQS blend is worth the added complexity.
 import csv
 import json
 import math
+import os
 from collections import defaultdict
 
 
@@ -1201,6 +1202,50 @@ def calculate_player_xtry_raw(
 
 
 # ----------------------------------------------------------------------
+# Calibration of the top end (17 Oct 2026)
+# ----------------------------------------------------------------------
+# The 2026 backtest showed the model overconfident where it matters for picks: players it gave 45%+ scored 42% of the
+# time (it said 57%), and players it gave 30-45% scored 27% (it said 37%). So above CALIBRATE_FROM the chance is pulled
+# down to what such players really did, using knots fitted by scripts/fit_try_calibration.py and saved in
+# data/try_scorer_calibration.json. It only ever LOWERS a chance and never touches the low end: the low end looked
+# too low in the backtest only because it includes bench players the bot could not have known about, and raising
+# longshots would invent edges. Fitted on rounds up to 20 and tested on 21+, the Brier score still improved.
+CALIBRATE_FROM = 0.20
+CALIBRATION_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data", "try_scorer_calibration.json")
+_knots_cache = {}
+
+
+def load_calibration_knots(path=None):
+    """-> list of [model chance, real rate] pairs, rising, or [] if the file is missing (then nothing is changed)."""
+    path = path or CALIBRATION_FILE
+    if path not in _knots_cache:
+        try:
+            with open(path, encoding="utf-8") as f:
+                _knots_cache[path] = [tuple(k) for k in json.load(f)["knots"]]
+        except (OSError, ValueError, KeyError, TypeError):
+            _knots_cache[path] = []
+    return _knots_cache[path]
+
+
+def calibrate_try_probability(p, knots=None):
+    """The model's chance pulled down towards what players like that really did. Never raises it; below 20% unchanged."""
+    knots = load_calibration_knots() if knots is None else knots
+    if not knots or p < CALIBRATE_FROM:
+        return p
+    if p <= knots[0][0]:
+        v = knots[0][1]
+    elif p >= knots[-1][0]:
+        v = knots[-1][1]
+    else:
+        v = p
+        for (x0, y0), (x1, y1) in zip(knots, knots[1:]):
+            if x0 <= p <= x1:
+                v = y0 + (y1 - y0) * (p - x0) / (x1 - x0) if x1 > x0 else y0
+                break
+    return min(p, v)
+
+
+# ----------------------------------------------------------------------
 # Normalisation across a match
 # ----------------------------------------------------------------------
 
@@ -1227,7 +1272,7 @@ def compute_real_avg_tries_per_team_per_game(master_rows, season, up_to_round):
     return sum(all_team_game_tries) / len(all_team_game_tries)
 
 
-def normalise_match_xtry(home_team_raw_scores, away_team_raw_scores, real_avg_tries_per_team):
+def normalise_match_xtry(home_team_raw_scores, away_team_raw_scores, real_avg_tries_per_team, calibrate=True):
     """
     Scales BOTH teams' raw xTry scores so each team's total matches the
     real season-to-date average tries/team/game (NOT a fixed "5-6"
@@ -1269,11 +1314,15 @@ def normalise_match_xtry(home_team_raw_scores, away_team_raw_scores, real_avg_tr
             # P(>=1 try) = 1 - e^(-expected_tries).
             display_prob = 1 - math.exp(-scaled_xtry)
             display_prob_capped = clip(display_prob, 0.0, 0.65)
+            uncalibrated = display_prob_capped
+            if calibrate:
+                display_prob_capped = calibrate_try_probability(display_prob_capped)
 
             results[p["player_name"]] = {
                 "raw_xtry": round(p["raw_xtry"], 4),
                 "scaled_xtry_expected_tries": round(scaled_xtry, 4),
                 "display_probability": round(display_prob_capped, 4),
+                "uncalibrated_probability": round(uncalibrated, 4),
                 "components": p["components"],
                 "team": p["team"],
                 "position_code": p["position_code"],

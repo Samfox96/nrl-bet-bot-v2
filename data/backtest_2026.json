@@ -1,6 +1,6 @@
 {
   "season": 2026,
-  "generated_at": "2026-10-16T22:24:45.569873+00:00",
+  "generated_at": "2026-10-17T23:24:44.158375+00:00",
   "method": "For each round, ratings and try-scorer chances are rebuilt from data before that round only. Try scorers are the players who took the field (past team lists are unknown), each at his most frequent position so far. No odds and no money.",
   "rounds_covered": 31,
   "teams": {
@@ -13,12 +13,49 @@
   },
   "try_scorers": {
     "players": 6559,
-    "brier": 0.1467,
+    "brier": 0.1425,
     "base_rate": 0.1871,
     "brier_if_everyone_at_base_rate": 0.1521,
-    "top3_hit_pct": 43.8
+    "top3_hit_pct": 44.1
   },
   "try_scorer_calibration": [
+    {
+      "from": 0.0,
+      "to": 0.1,
+      "players": 3148,
+      "bot_says_pct": 2.9,
+      "really_scored_pct": 9.7
+    },
+    {
+      "from": 0.1,
+      "to": 0.2,
+      "players": 1014,
+      "bot_says_pct": 14.7,
+      "really_scored_pct": 18.4
+    },
+    {
+      "from": 0.2,
+      "to": 0.3,
+      "players": 1480,
+      "bot_says_pct": 24.7,
+      "really_scored_pct": 25.3
+    },
+    {
+      "from": 0.3,
+      "to": 0.45,
+      "players": 661,
+      "bot_says_pct": 37.1,
+      "really_scored_pct": 36.8
+    },
+    {
+      "from": 0.45,
+      "to": 1.0,
+      "players": 256,
+      "bot_says_pct": 45.7,
+      "really_scored_pct": 46.5
+    }
+  ],
+  "try_scorer_calibration_before_fix": [
     {
       "from": 0.0,
       "to": 0.1,
@@ -55,6 +92,7 @@
       "really_scored_pct": 41.6
     }
   ],
+  "try_scorer_brier_before_fix": 0.1467,
   "best_rounds": [
     {
       "round": 17,
@@ -180,54 +218,54 @@
         "team": "North Queensland Cowboys",
         "round": 6,
         "fixture": "Brisbane Broncos v North Queensland Cowboys",
-        "bot_said_pct": 65.0,
+        "bot_said_pct": 45.8,
         "tries": 0,
-        "at_model_ceiling": true
+        "at_model_ceiling": false
       },
       {
         "player_name": "Sualauvi Faalogo",
         "team": "Melbourne Storm",
         "round": 6,
         "fixture": "Melbourne Storm v New Zealand Warriors",
-        "bot_said_pct": 65.0,
+        "bot_said_pct": 45.8,
         "tries": 0,
-        "at_model_ceiling": true
+        "at_model_ceiling": false
       },
       {
         "player_name": "Will Warbrick",
         "team": "Melbourne Storm",
         "round": 6,
         "fixture": "Melbourne Storm v New Zealand Warriors",
-        "bot_said_pct": 65.0,
+        "bot_said_pct": 45.8,
         "tries": 0,
-        "at_model_ceiling": true
+        "at_model_ceiling": false
       },
       {
         "player_name": "Jojo Fifita",
         "team": "Gold Coast Titans",
         "round": 6,
         "fixture": "Parramatta Eels v Gold Coast Titans",
-        "bot_said_pct": 65.0,
+        "bot_said_pct": 45.8,
         "tries": 0,
-        "at_model_ceiling": true
+        "at_model_ceiling": false
       },
       {
         "player_name": "Kaeo Weekes",
         "team": "Canberra Raiders",
         "round": 7,
         "fixture": "Canberra Raiders v Melbourne Storm",
-        "bot_said_pct": 65.0,
+        "bot_said_pct": 45.8,
         "tries": 0,
-        "at_model_ceiling": true
+        "at_model_ceiling": false
       },
       {
         "player_name": "Hudson Young",
         "team": "Canberra Raiders",
         "round": 7,
         "fixture": "Canberra Raiders v Melbourne Storm",
-        "bot_said_pct": 65.0,
+        "bot_said_pct": 45.8,
         "tries": 0,
-        "at_model_ceiling": true
+        "at_model_ceiling": false
       }
     ],
     "biggest_surprises": [
@@ -355,7 +393,7 @@
       },
       "try_scorers": {
         "players": 197,
-        "brier": 0.173,
+        "brier": 0.164,
         "base_rate": 0.2081,
         "brier_if_everyone_at_base_rate": 0.1648,
         "top3_hit_pct": 41.7
@@ -373,10 +411,10 @@
       },
       "try_scorers": {
         "players": 252,
-        "brier": 0.1657,
+        "brier": 0.1583,
         "base_rate": 0.2024,
         "brier_if_everyone_at_base_rate": 0.1614,
-        "top3_hit_pct": 37.5
+        "top3_hit_pct": 41.7
       }
     },
     {
@@ -391,7 +429,7 @@
       },
       "try_scorers": {
         "players": 256,
-        "brier": 0.1727,
+        "brier": 0.1719,
         "base_rate": 0.2344,
         "brier_if_everyone_at_base_rate": 0.1794,
         "top3_hit_pct": 45.8
@@ -409,7 +447,7 @@
       },
       "try_scorers": {
         "players": 252,
-        "brier": 0.1421,
+        "brier": 0.138,
         "base_rate": 0.1905,
         "brier_if_everyone_at_base_rate": 0.1542,
         "top3_hit_pct": 45.8
@@ -427,10 +465,10 @@
       },
       "try_scorers": {
         "players": 259,
-        "brier": 0.1768,
+        "brier": 0.1721,
         "base_rate": 0.2278,
         "brier_if_everyone_at_base_rate": 0.1759,
-        "top3_hit_pct": 29.2
+        "top3_hit_pct": 33.3
       }
     },
     {
@@ -463,7 +501,7 @@
       },
       "try_scorers": {
         "players": 270,
-        "brier": 0.1462,
+        "brier": 0.1408,
         "base_rate": 0.1889,
         "brier_if_everyone_at_base_rate": 0.1532,
         "top3_hit_pct": 50.0
@@ -481,7 +519,7 @@
       },
       "try_scorers": {
         "players": 271,
-        "brier": 0.1649,
+        "brier": 0.1526,
         "base_rate": 0.1845,
         "brier_if_everyone_at_base_rate": 0.1505,
         "top3_hit_pct": 25.0
@@ -499,7 +537,7 @@
       },
       "try_scorers": {
         "players": 168,
-        "brier": 0.1404,
+        "brier": 0.1352,
         "base_rate": 0.1726,
         "brier_if_everyone_at_base_rate": 0.1428,
         "top3_hit_pct": 46.7
@@ -517,7 +555,7 @@
       },
       "try_scorers": {
         "players": 248,
-        "brier": 0.1329,
+        "brier": 0.1299,
         "base_rate": 0.1734,
         "brier_if_everyone_at_base_rate": 0.1433,
         "top3_hit_pct": 47.6
@@ -535,7 +573,7 @@
       },
       "try_scorers": {
         "players": 296,
-        "brier": 0.1541,
+        "brier": 0.1494,
         "base_rate": 0.1858,
         "brier_if_everyone_at_base_rate": 0.1513,
         "top3_hit_pct": 45.8
@@ -553,7 +591,7 @@
       },
       "try_scorers": {
         "players": 172,
-        "brier": 0.156,
+        "brier": 0.1447,
         "base_rate": 0.1686,
         "brier_if_everyone_at_base_rate": 0.1402,
         "top3_hit_pct": 26.7
@@ -571,7 +609,7 @@
       },
       "try_scorers": {
         "players": 254,
-        "brier": 0.1339,
+        "brier": 0.1335,
         "base_rate": 0.185,
         "brier_if_everyone_at_base_rate": 0.1508,
         "top3_hit_pct": 42.9
@@ -589,7 +627,7 @@
       },
       "try_scorers": {
         "players": 294,
-        "brier": 0.1158,
+        "brier": 0.1075,
         "base_rate": 0.1361,
         "brier_if_everyone_at_base_rate": 0.1175,
         "top3_hit_pct": 45.8
@@ -607,7 +645,7 @@
       },
       "try_scorers": {
         "players": 174,
-        "brier": 0.126,
+        "brier": 0.1191,
         "base_rate": 0.1494,
         "brier_if_everyone_at_base_rate": 0.1271,
         "top3_hit_pct": 40.0
@@ -625,7 +663,7 @@
       },
       "try_scorers": {
         "players": 251,
-        "brier": 0.1411,
+        "brier": 0.1371,
         "base_rate": 0.1753,
         "brier_if_everyone_at_base_rate": 0.1446,
         "top3_hit_pct": 52.4
@@ -643,7 +681,7 @@
       },
       "try_scorers": {
         "players": 292,
-        "brier": 0.135,
+        "brier": 0.1309,
         "base_rate": 0.1678,
         "brier_if_everyone_at_base_rate": 0.1396,
         "top3_hit_pct": 37.5
@@ -661,7 +699,7 @@
       },
       "try_scorers": {
         "players": 288,
-        "brier": 0.1595,
+        "brier": 0.1534,
         "base_rate": 0.191,
         "brier_if_everyone_at_base_rate": 0.1545,
         "top3_hit_pct": 33.3
@@ -679,7 +717,7 @@
       },
       "try_scorers": {
         "players": 293,
-        "brier": 0.1437,
+        "brier": 0.1442,
         "base_rate": 0.1945,
         "brier_if_everyone_at_base_rate": 0.1567,
         "top3_hit_pct": 62.5
@@ -697,7 +735,7 @@
       },
       "try_scorers": {
         "players": 294,
-        "brier": 0.1377,
+        "brier": 0.1342,
         "base_rate": 0.1803,
         "brier_if_everyone_at_base_rate": 0.1478,
         "top3_hit_pct": 45.8
@@ -715,7 +753,7 @@
       },
       "try_scorers": {
         "players": 295,
-        "brier": 0.1393,
+        "brier": 0.1336,
         "base_rate": 0.1729,
         "brier_if_everyone_at_base_rate": 0.143,
         "top3_hit_pct": 41.7
@@ -733,7 +771,7 @@
       },
       "try_scorers": {
         "players": 297,
-        "brier": 0.1483,
+        "brier": 0.1481,
         "base_rate": 0.2054,
         "brier_if_everyone_at_base_rate": 0.1632,
         "top3_hit_pct": 41.7
@@ -751,7 +789,7 @@
       },
       "try_scorers": {
         "players": 291,
-        "brier": 0.1457,
+        "brier": 0.148,
         "base_rate": 0.2062,
         "brier_if_everyone_at_base_rate": 0.1637,
         "top3_hit_pct": 50.0
@@ -769,7 +807,7 @@
       },
       "try_scorers": {
         "players": 286,
-        "brier": 0.1628,
+        "brier": 0.1595,
         "base_rate": 0.2098,
         "brier_if_everyone_at_base_rate": 0.1658,
         "top3_hit_pct": 45.8
@@ -787,7 +825,7 @@
       },
       "try_scorers": {
         "players": 151,
-        "brier": 0.1109,
+        "brier": 0.1081,
         "base_rate": 0.1457,
         "brier_if_everyone_at_base_rate": 0.1245,
         "top3_hit_pct": 41.7
@@ -805,7 +843,7 @@
       },
       "try_scorers": {
         "players": 76,
-        "brier": 0.1074,
+        "brier": 0.1124,
         "base_rate": 0.1579,
         "brier_if_everyone_at_base_rate": 0.133,
         "top3_hit_pct": 66.7
@@ -823,7 +861,7 @@
       },
       "try_scorers": {
         "players": 76,
-        "brier": 0.1505,
+        "brier": 0.1458,
         "base_rate": 0.1842,
         "brier_if_everyone_at_base_rate": 0.1503,
         "top3_hit_pct": 50.0
@@ -841,7 +879,7 @@
       },
       "try_scorers": {
         "players": 37,
-        "brier": 0.115,
+        "brier": 0.1049,
         "base_rate": 0.1351,
         "brier_if_everyone_at_base_rate": 0.1169,
         "top3_hit_pct": 66.7

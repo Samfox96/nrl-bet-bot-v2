@@ -135,6 +135,7 @@ def predict_round(season, rnd, baselines, master_rows, match_rows):
                         "player_name": name, "team": d["team"], "round": rnd,
                         "fixture": f"{mt['home_team']} v {mt['away_team']}",
                         "our_probability": d["display_probability"],
+                        "uncalibrated_probability": d["uncalibrated_probability"],
                         "scored": tries > 0, "tries": tries,
                     })
     return {"matches": matches, "scorers": scorers}
@@ -176,14 +177,14 @@ def summarise_scorers(scorers):
     }
 
 
-def calibration(scorers):
+def calibration(scorers, key="our_probability"):
     bands = [(0.0, 0.10), (0.10, 0.20), (0.20, 0.30), (0.30, 0.45), (0.45, 1.01)]
     out = []
     for lo, hi in bands:
-        grp = [s for s in scorers if lo <= s["our_probability"] < hi]
+        grp = [s for s in scorers if lo <= s[key] < hi]
         if grp:
             out.append({"from": lo, "to": min(hi, 1.0), "players": len(grp),
-                        "bot_says_pct": round(100 * mean(s["our_probability"] for s in grp), 1),
+                        "bot_says_pct": round(100 * mean(s[key] for s in grp), 1),
                         "really_scored_pct": round(100 * mean(1.0 if s["scored"] else 0.0 for s in grp), 1)})
     return out
 
@@ -260,6 +261,8 @@ def build(season, data_dir="data", now=None, first_round=1, last_round=None):
         "teams": summarise_matches(only_matches),
         "try_scorers": summarise_scorers(all_scorers),
         "try_scorer_calibration": calibration(all_scorers),
+        "try_scorer_calibration_before_fix": calibration(all_scorers, "uncalibrated_probability"),
+        "try_scorer_brier_before_fix": r4(mean(brier(s["uncalibrated_probability"], 1.0 if s["scored"] else 0.0) for s in all_scorers)),
         "best_rounds": [{"round": r["round"], **r["teams"]} for r in best],
         "worst_rounds": [{"round": r["round"], **r["teams"]} for r in worst],
         "biggest_upsets": upsets(all_matches),
