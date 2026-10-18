@@ -1211,6 +1211,9 @@ def calculate_player_xtry_raw(
 # too low in the backtest only because it includes bench players the bot could not have known about, and raising
 # longshots would invent edges. Fitted on rounds up to 20 and tested on 21+, the Brier score still improved.
 CALIBRATE_FROM = 0.20
+# Nobody who takes the field has a 0% chance. The backtest showed players the model put under 1% scored 5.7% of the time
+# (1-2%: 7.2%), so no chance is shown below 3%, which is still under what really happened.
+MIN_TRY_CHANCE = 0.03
 CALIBRATION_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data", "try_scorer_calibration.json")
 _knots_cache = {}
 
@@ -1313,7 +1316,7 @@ def normalise_match_xtry(home_team_raw_scores, away_team_raw_scores, real_avg_tr
             # Convert to a try-scoring PROBABILITY via Poisson:
             # P(>=1 try) = 1 - e^(-expected_tries).
             display_prob = 1 - math.exp(-scaled_xtry)
-            display_prob_capped = clip(display_prob, 0.0, 0.65)
+            display_prob_capped = clip(display_prob, MIN_TRY_CHANCE, 0.65)
             uncalibrated = display_prob_capped
             if calibrate:
                 display_prob_capped = calibrate_try_probability(display_prob_capped)
